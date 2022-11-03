@@ -159,7 +159,7 @@ export declare namespace console {
 export namespace console {
   @inline
   function log(text: string): void {
-    trace("console.log", 11, text, text.length, 0);
+    trace(text, text.length, "", 0, 0);
   }
 }
 
