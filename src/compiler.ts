@@ -1831,9 +1831,20 @@ export class Compiler extends DiagnosticEmitter {
       stringSegment = assert(segments.get(stringValue)); // reuse
     } else {
       let len = stringValue.length;
-      let buf = stringInstance.createBuffer(len << 1);
+      // FIXME: now handling only ASCII. UTF-8 isn't that complicated
+      // (see https://gist.github.com/joni/3760795 ), but enough that
+      // it can wait...
+      let buf = stringInstance.createBuffer(len);
       for (let i = 0; i < len; ++i) {
-        writeI16(stringValue.charCodeAt(i), buf, totalOverhead + (i << 1));
+        let c = stringValue.charCodeAt(i);
+        if (c >= 0x80) {
+          this.error(
+            DiagnosticCode.Not_implemented_0,
+            null,
+            "Unicode not supported"
+          );
+        }
+        buf[totalOverhead + i] = c;
       }
       stringSegment = this.addRuntimeMemorySegment(buf);
       segments.set(stringValue, stringSegment);
