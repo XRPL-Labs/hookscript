@@ -48,7 +48,7 @@ import { Array } from "./array";
   @builtin static raw(parts: TemplateStringsArray, ...args: unknown[]): string { return unreachable(); }
 
   get length(): i32 {
-    return changetype<OBJECT>(changetype<usize>(this) - TOTAL_OVERHEAD).rtSize >> 1;
+    return changetype<OBJECT>(changetype<usize>(this) - TOTAL_OVERHEAD).rtSize;
   }
 
   at(pos: i32): String {
