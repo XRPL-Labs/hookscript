@@ -140,8 +140,6 @@ export declare namespace Date {
 export declare namespace console {
   @external("env", "console.assert")
   export function assert(condition: bool, message: string): void;
-  @external("env", "console.log")
-  export function log(text: string): void;
   @external("env", "console.debug")
   export function debug(text: string): void;
   @external("env", "console.info")
@@ -156,6 +154,13 @@ export declare namespace console {
   export function timeLog(label: string): void;
   @external("env", "console.timeEnd")
   export function timeEnd(label: string): void;
+}
+
+export namespace console {
+  @inline
+  function log(text: string): void {
+    trace("console.log", 11, text, text.length, 0);
+  }
 }
 
 export declare namespace document {

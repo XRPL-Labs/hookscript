@@ -2514,16 +2514,13 @@ declare function abort(
 
 // @ts-ignore: decorator
 @external("env", "trace")
-@external.js("console.log(message, ...[a0, a1, a2, a3, a4].slice(0, n));")
 declare function trace(
-  message: string,
-  n?: i32,
-  a0?: f64,
-  a1?: f64,
-  a2?: f64,
-  a3?: f64,
-  a4?: f64
-): void;
+  mread_ptr: string,
+  mread_len: i32,
+  dread_ptr: string,
+  dread_len: i32,
+  as_hex: i32
+): i64;
 
 // @ts-ignore: decorator
 @external("env", "seed")
