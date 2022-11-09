@@ -2516,10 +2516,10 @@ declare function abort(
 @external("env", "trace")
 declare function trace(
   mread_ptr: string,
-  mread_len: i32,
+  mread_len: u32,
   dread_ptr: string,
-  dread_len: i32,
-  as_hex: i32
+  dread_len: u32,
+  as_hex: u32
 ): i64;
 
 // @ts-ignore: decorator
