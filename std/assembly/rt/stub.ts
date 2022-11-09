@@ -8,16 +8,12 @@ import { E_ALLOCATION_TOO_LARGE } from "../util/error";
 // @ts-ignore: decorator
 @lazy let offset: usize = startOffset;
 
-function maybeGrowMemory(newOffset: usize): void {
+@inline function maybeGrowMemory(newOffset: usize): void {
   // assumes newOffset is aligned
   let pagesBefore = memory.size();
   let maxOffset = ((<usize>pagesBefore << 16) + AL_MASK) & ~AL_MASK;
   if (newOffset > maxOffset) {
-    let pagesNeeded = <i32>(((newOffset - maxOffset + 0xffff) & ~0xffff) >>> 16);
-    let pagesWanted = max(pagesBefore, pagesNeeded); // double memory
-    if (memory.grow(pagesWanted) < 0) {
-      if (memory.grow(pagesNeeded) < 0) unreachable(); // out of memory
-    }
+      unreachable(); // out of memory
   }
   offset = newOffset;
 }
@@ -30,7 +26,9 @@ function maybeGrowMemory(newOffset: usize): void {
 // @ts-ignore: decorator
 @unsafe @global
 export function __alloc(size: usize): usize {
-  if (size > BLOCK_MAXSIZE) throw new Error(E_ALLOCATION_TOO_LARGE);
+  if (size > BLOCK_MAXSIZE)
+    unreachable();
+
   let block = changetype<BLOCK>(offset);
   let ptr = offset + BLOCK_OVERHEAD;
   let payloadSize = computeSize(size);
@@ -83,7 +81,6 @@ export function __reset(): void { // special
 // @ts-ignore: decorator
 @unsafe @global
 export function __new(size: usize, id: u32): usize {
-  if (size > OBJECT_MAXSIZE) throw new Error(E_ALLOCATION_TOO_LARGE);
   let ptr = __alloc(OBJECT_OVERHEAD + size);
   let object = changetype<OBJECT>(ptr - BLOCK_OVERHEAD);
   object.gcInfo = 0;
