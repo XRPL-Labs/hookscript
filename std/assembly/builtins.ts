@@ -2517,7 +2517,7 @@ declare function abort(
 declare function trace(
   mread_ptr: string,
   mread_len: u32,
-  dread_ptr: string,
+  dread_ptr: u32,
   dread_len: u32,
   as_hex: u32
 ): i64;
