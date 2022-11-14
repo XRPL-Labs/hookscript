@@ -397,3 +397,77 @@ export class StaticArray<T> {
     }
   }
 }
+
+@final
+export class Bytes20 {
+  [key: number]: u8;
+
+  @inline
+  constructor() {
+    let out = changetype<Bytes20>(__new(20, idof<StaticArray<u8>>()));
+
+    // memory.fill isn't useable b/c it has a cycle of dynamic length;
+    // for cycle fails guard check at runtime (and also takes more
+    // space than unrolled)
+    let dest = changetype<usize>(out);
+    store<u64>(dest, 0);
+    dest += 8;
+    store<u64>(dest, 0);
+    dest += 8;
+    store<u32>(dest, 0);
+
+    return out;
+  }
+
+  @inline
+  get length(): i32 {
+    return 20;
+  }
+
+  @inline
+  at(index: i32): u8 {
+    let len = this.length;
+    index += select(0, len, index >= 0);
+    if (<u32>index >= <u32>len) unreachable();
+    return load<u8>(changetype<usize>(this) + <usize>index);
+  }
+
+  @inline @operator("[]")
+  private __get(index: i32): u8 {
+    return load<u8>(changetype<usize>(this) + <usize>index);
+  }
+
+  @inline @operator("[]=")
+  private __set(index: i32, value: u8): void {
+    if (<u32>index >= <u32>this.length) unreachable();
+    this.__uset(index, value);
+  }
+
+  @inline @operator("==")
+  private static __eq(left: Bytes20, right: Bytes20): bool {
+    let ptr1 = changetype<usize>(left);
+    let ptr2 = changetype<usize>(right);
+    if (ptr1 == ptr2) return true;
+
+    // unrolled loop takes less space (also doesn't need a call to _g
+    // with a globally-unique ID)
+    if (load<u64>(ptr1) != load<u64>(ptr2)) return false;
+    ptr1 += 8;
+    ptr2 += 8;
+    if (load<u64>(ptr1) != load<u64>(ptr2)) return false;
+    ptr1 += 8;
+    ptr2 += 8;
+
+    if (load<u32>(ptr1) != load<u32>(ptr2)) return false;
+    return true;
+  }
+
+  @inline @operator("!=")
+  private static __ne(left: Bytes20, right: Bytes20): bool {
+    return !this.__eq(left, right);
+  }
+
+  @unsafe @operator("{}=") private __uset(index: i32, value: u8): void {
+    store<u8>(changetype<usize>(this) + <usize>index, value);
+  }
+}

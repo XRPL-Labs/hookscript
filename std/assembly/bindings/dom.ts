@@ -163,6 +163,23 @@ export namespace console {
   }
 }
 
+@global @inline
+export function etxn_reserve(count: u32): void {
+  let r = etxn_reserve_(count);
+  if (r != count)
+    rollback(0, 0, r);
+}
+
+@global @inline
+export function hook_account(): Bytes20 {
+  let a = new Bytes20();
+  let r = hook_account_(changetype<u32>(a), 20);
+  if (r != 20)
+    rollback(0, 0, r);
+
+  return a;
+}
+
 export declare namespace document {
   /** Returns document's encoding. */
   @external("env", "document.characterSet")

@@ -2513,6 +2513,50 @@ declare function abort(
 ): void;
 
 // @ts-ignore: decorator
+@external("env", "_g")
+declare function _g(
+  id: i32,
+  maxiter: i32
+): i32
+
+// @ts-ignore: decorator
+@external("env", "accept")
+declare function accept(
+  read_ptr: string = "",
+  read_len: usize = read_ptr.length,
+  err: i64 = 0
+): i64
+
+// @ts-ignore: decorator
+@external("env", "etxn_reserve")
+export declare function etxn_reserve_(
+  count: u32
+): i64
+
+// @ts-ignore: decorator
+@external("env", "hook_account")
+declare function hook_account_(
+  write_ptr: u32,
+  write_len: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "otxn_field")
+declare function otxn_field(
+  write_ptr: u32,
+  write_len: u32,
+  field_id: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "rollback")
+declare function rollback(
+  read_ptr: u32,
+  read_len: u32,
+  error_code: i64
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "trace")
 declare function trace(
   mread_ptr: string,
