@@ -2521,10 +2521,10 @@ declare function _g(
 
 // @ts-ignore: decorator
 @external("env", "accept")
-declare function accept(
-  read_ptr: string = "",
-  read_len: usize = read_ptr.length,
-  err: i64 = 0
+declare function accept_(
+  read_ptr: string,
+  read_len: u32,
+  err: i64
 ): i64
 
 // @ts-ignore: decorator

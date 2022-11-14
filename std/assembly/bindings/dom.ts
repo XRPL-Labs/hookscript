@@ -164,6 +164,12 @@ export namespace console {
 }
 
 @global @inline
+export function accept(msg: string = "", err: i64 = 0): void {
+  accept_(msg, msg.length, err);
+  // does not return
+}
+
+@global @inline
 export function etxn_reserve(count: u32): void {
   let r = etxn_reserve_(count);
   if (r != count)
