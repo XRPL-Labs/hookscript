@@ -244,9 +244,9 @@ export namespace CommonNames {
   // runtime
   export const abort = "abort";
   export const _g = "_g";
-  export const accept = "accept_";
-  export const etxn_reserve = "etxn_reserve_";
-  export const hook_account = "hook_account_";
+  export const accept = "$accept";
+  export const etxn_reserve = "$etxn_reserve";
+  export const hook_account = "$hook_account";
   export const otxn_field = "otxn_field";
   export const rollback = "rollback";
   export const trace = "trace";

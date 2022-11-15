@@ -2521,7 +2521,7 @@ declare function _g(
 
 // @ts-ignore: decorator
 @external("env", "accept")
-declare function accept_(
+declare function $accept(
   read_ptr: string,
   read_len: u32,
   err: i64
@@ -2529,13 +2529,13 @@ declare function accept_(
 
 // @ts-ignore: decorator
 @external("env", "etxn_reserve")
-export declare function etxn_reserve_(
+export declare function $etxn_reserve(
   count: u32
 ): i64
 
 // @ts-ignore: decorator
 @external("env", "hook_account")
-declare function hook_account_(
+declare function $hook_account(
   write_ptr: u32,
   write_len: u32
 ): i64;

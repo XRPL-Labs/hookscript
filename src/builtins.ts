@@ -124,9 +124,9 @@ export namespace BuiltinNames {
   // std/builtins.ts
   export const abort = "~lib/builtins/abort";
   export const _g = "~lib/builtins/_g";
-  export const accept = "~lib/builtins/accept_";
-  export const etxn_reserve = "~lib/builtins/etxn_reserve_";
-  export const hook_account = "~lib/builtins/hook_account_";
+  export const accept = "~lib/builtins/$accept";
+  export const etxn_reserve = "~lib/builtins/$etxn_reserve";
+  export const hook_account = "~lib/builtins/$hook_account";
   export const otxn_field = "~lib/builtins/otxn_field";
   export const rollback = "~lib/builtins/rollback";
   export const trace = "~lib/builtins/trace";

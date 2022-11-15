@@ -165,13 +165,13 @@ export namespace console {
 
 @global @inline
 export function accept(msg: string = "", err: i64 = 0): void {
-  accept_(msg, msg.length, err);
+  $accept(msg, msg.length, err);
   // does not return
 }
 
 @global @inline
 export function etxn_reserve(count: u32): void {
-  let r = etxn_reserve_(count);
+  let r = $etxn_reserve(count);
   if (r != count)
     rollback(0, 0, r);
 }
@@ -179,7 +179,7 @@ export function etxn_reserve(count: u32): void {
 @global @inline
 export function hook_account(): Bytes20 {
   let a = new Bytes20();
-  let r = hook_account_(changetype<u32>(a), 20);
+  let r = $hook_account(changetype<u32>(a), 20);
   if (r != 20)
     rollback(0, 0, r);
 
