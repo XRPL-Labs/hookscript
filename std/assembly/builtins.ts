@@ -2528,6 +2528,29 @@ declare function $accept(
 ): i64
 
 // @ts-ignore: decorator
+@external("env", "emit")
+declare function $emit(
+  write_ptr: u32,
+  write_len: u32,
+  read_ptr: u32,
+  read_len: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "etxn_details")
+export declare function $etxn_details(
+  write_ptr: u32,
+  write_len: u32
+): i64
+
+// @ts-ignore: decorator
+@external("env", "etxn_fee_base")
+export declare function $etxn_fee_base(
+  read_ptr: u32,
+  read_len: u32
+): i64
+
+// @ts-ignore: decorator
 @external("env", "etxn_reserve")
 export declare function $etxn_reserve(
   count: u32
@@ -2538,6 +2561,11 @@ export declare function $etxn_reserve(
 declare function $hook_account(
   write_ptr: u32,
   write_len: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "ledger_seq")
+declare function ledger_seq(
 ): i64;
 
 // @ts-ignore: decorator
@@ -2564,6 +2592,15 @@ declare function trace(
   dread_ptr: u32,
   dread_len: u32,
   as_hex: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "util_accid")
+declare function $util_accid(
+  write_ptr: u32,
+  write_len: u32,
+  read_ptr: u32,
+  read_len: u32
 ): i64;
 
 // @ts-ignore: decorator

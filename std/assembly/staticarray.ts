@@ -398,12 +398,90 @@ export class StaticArray<T> {
   }
 }
 
+// maximally simple (like a C buffer): uninitialized, cannot be
+// compared, doesn't even remember its length, not meant to be passed
+// between functions
 @final
-export class Bytes20 {
+export class ByteArray {
   [key: number]: u8;
 
   @inline
+  constructor(length: i32) {
+    return changetype<ByteArray>(__new(length, idof<StaticArray<u8>>()));
+  }
+
+  @inline @operator("[]")
+  private __get(index: i32): u8 {
+    return load<u8>(changetype<usize>(this) + <usize>index);
+  }
+
+  @inline @operator("[]=")
+  private __set(index: i32, value: u8): void {
+    store<u8>(changetype<usize>(this) + <usize>index, value);
+  }
+}
+
+export abstract class BytesBase {
+  [key: number]: u8;
+
+  abstract get length(): i32;
+
+  @inline @operator("[]")
+  private __get(index: i32): u8 {
+    return load<u8>(changetype<usize>(this) + <usize>index);
+  }
+
+  @inline @operator("[]=")
+  private __set(index: i32, value: u8): void {
+    // this looks like a reasonable check, but actually gets compiled
+    // into very strange (and often satisfied) conditions - maybe
+    // classes backed by linear memory cannot have virtual functions?
+    // if (<u32>index >= <u32>(this.length)) unreachable();
+    this.__uset(index, value);
+  }
+
+  @unsafe @inline @operator("{}=") private __uset(index: i32, value: u8): void {
+    store<u8>(changetype<usize>(this) + <usize>index, value);
+  }
+};
+
+@final
+export class Bytes8 extends BytesBase {
+  @inline
   constructor() {
+    super();
+    let out = changetype<Bytes8>(__new(8, idof<StaticArray<u8>>()));
+
+    let dest = changetype<usize>(out);
+    store<u64>(dest, 0);
+
+    return out;
+  }
+
+  override get length(): i32 {
+    return 8;
+  }
+
+  @inline @operator("==")
+  private static __eq(left: Bytes8, right: Bytes8): bool {
+    let ptr1 = changetype<usize>(left);
+    let ptr2 = changetype<usize>(right);
+    if (ptr1 == ptr2) return true;
+
+    return load<u64>(ptr1) == load<u64>(ptr2);
+  }
+
+  @inline @operator("!=")
+  private static __ne(left: Bytes8, right: Bytes8): bool {
+    return !this.__eq(left, right);
+  }
+}
+
+@final
+export class Bytes20 extends BytesBase {
+  @inline
+  constructor() {
+    super();
     let out = changetype<Bytes20>(__new(20, idof<StaticArray<u8>>()));
 
     // memory.fill isn't useable b/c it has a cycle of dynamic length;
@@ -419,28 +497,8 @@ export class Bytes20 {
     return out;
   }
 
-  @inline
-  get length(): i32 {
+  override get length(): i32 {
     return 20;
-  }
-
-  @inline
-  at(index: i32): u8 {
-    let len = this.length;
-    index += select(0, len, index >= 0);
-    if (<u32>index >= <u32>len) unreachable();
-    return load<u8>(changetype<usize>(this) + <usize>index);
-  }
-
-  @inline @operator("[]")
-  private __get(index: i32): u8 {
-    return load<u8>(changetype<usize>(this) + <usize>index);
-  }
-
-  @inline @operator("[]=")
-  private __set(index: i32, value: u8): void {
-    if (<u32>index >= <u32>this.length) unreachable();
-    this.__uset(index, value);
   }
 
   @inline @operator("==")
@@ -466,8 +524,86 @@ export class Bytes20 {
   private static __ne(left: Bytes20, right: Bytes20): bool {
     return !this.__eq(left, right);
   }
+}
 
-  @unsafe @operator("{}=") private __uset(index: i32, value: u8): void {
-    store<u8>(changetype<usize>(this) + <usize>index, value);
+@final
+export class Bytes32 extends BytesBase {
+  @inline
+  constructor() {
+    super();
+    let out = changetype<Bytes32>(__new(32, idof<StaticArray<u8>>()));
+
+    let dest = changetype<usize>(out);
+    for (let i = 0; _g(10002, 5), i < 4; ++i) {
+      store<u64>(dest, 0);
+      dest += 8;
+    }
+
+    return out;
+  }
+
+  override get length(): i32 {
+    return 32;
+  }
+
+  @inline @operator("==")
+  private static __eq(left: Bytes32, right: Bytes32): bool {
+    let ptr1 = changetype<usize>(left);
+    let ptr2 = changetype<usize>(right);
+    if (ptr1 == ptr2) return true;
+
+    for (let i = 0; _g(10003, 5), i < 4; ++i) {
+      if (load<u64>(ptr1) != load<u64>(ptr2)) return false;
+      ptr1 += 8;
+      ptr2 += 8;
+    }
+
+    return true;
+  }
+
+  @inline @operator("!=")
+  private static __ne(left: Bytes32, right: Bytes32): bool {
+    return !this.__eq(left, right);
+  }
+}
+
+@final
+export class Bytes48 extends BytesBase {
+  @inline
+  constructor() {
+    super();
+    let out = changetype<Bytes48>(__new(48, idof<StaticArray<u8>>()));
+
+    let dest = changetype<usize>(out);
+    for (let i = 0; _g(10000, 8), i < 7; ++i) {
+      store<u64>(dest, 0);
+      dest += 8;
+    }
+
+    return out;
+  }
+
+  override get length(): i32 {
+    return 48;
+  }
+
+  @inline @operator("==")
+  private static __eq(left: Bytes48, right: Bytes48): bool {
+    let ptr1 = changetype<usize>(left);
+    let ptr2 = changetype<usize>(right);
+    if (ptr1 == ptr2) return true;
+
+    for (let i = 0; _g(10001, 8), i < 7; ++i) {
+      if (load<u64>(ptr1) != load<u64>(ptr2)) return false;
+      ptr1 += 8;
+      ptr2 += 8;
+    }
+
+    return true;
+  }
+
+  @inline @operator("!=")
+  private static __ne(left: Bytes48, right: Bytes48): bool {
+    return !this.__eq(left, right);
   }
 }

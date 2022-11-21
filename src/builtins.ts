@@ -125,11 +125,16 @@ export namespace BuiltinNames {
   export const abort = "~lib/builtins/abort";
   export const _g = "~lib/builtins/_g";
   export const accept = "~lib/builtins/$accept";
+  export const emit = "~lib/builtins/$emit";
+  export const etxn_details = "~lib/builtins/$etxn_details";
+  export const etxn_fee_base = "~lib/builtins/$etxn_fee_base";
   export const etxn_reserve = "~lib/builtins/$etxn_reserve";
   export const hook_account = "~lib/builtins/$hook_account";
+  export const ledger_seq = "~lib/builtins/ledger_seq";
   export const otxn_field = "~lib/builtins/otxn_field";
   export const rollback = "~lib/builtins/rollback";
   export const trace = "~lib/builtins/trace";
+  export const util_accid = "~lib/builtins/$util_accid";
   export const seed = "~lib/builtins/seed";
 
   export const isBoolean = "~lib/builtins/isBoolean";

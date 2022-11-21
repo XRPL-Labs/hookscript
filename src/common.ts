@@ -245,11 +245,16 @@ export namespace CommonNames {
   export const abort = "abort";
   export const _g = "_g";
   export const accept = "$accept";
+  export const emit = "$emit";
+  export const etxn_details = "$etxn_details";
+  export const etxn_fee_base = "$etxn_fee_base";
   export const etxn_reserve = "$etxn_reserve";
   export const hook_account = "$hook_account";
+  export const ledger_seq = "ledger_seq";
   export const otxn_field = "otxn_field";
   export const rollback = "rollback";
   export const trace = "trace";
+  export const util_accid = "$util_accid";
   export const seed = "seed";
   export const pow = "pow";
   export const ipow32 = "ipow32";

@@ -1,3 +1,20 @@
+import {
+  _01_02_ENCODE_TT,
+  _02_02_ENCODE_FLAGS,
+  _02_03_ENCODE_TAG_SRC,
+  _02_04_ENCODE_SEQUENCE,
+  _02_14_ENCODE_TAG_DST,
+  _02_26_ENCODE_FLS,
+  _02_27_ENCODE_LLS,
+  _06_01_ENCODE_DROPS_AMOUNT,
+  _06_08_ENCODE_DROPS_FEE,
+  _07_03_ENCODE_SIGNING_PUBKEY_NULL,
+  _08_01_ENCODE_ACCOUNT_SRC,
+  _08_03_ENCODE_ACCOUNT_DST,
+  tfCANONICAL,
+  ttPAYMENT
+} from "./encode";
+
 @external("env", "globalThis")
 export declare const globalThis: externref;
 
@@ -170,6 +187,42 @@ export function accept(msg: string = "", err: i64 = 0): void {
 }
 
 @global @inline
+export function emit(tx: EmitSpec): Bytes32 {
+  let buf = new ByteArray(248); // FIXME: w/o cbak only, so far
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttPAYMENT);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_03_ENCODE_TAG_SRC(buf_out, 0); // FIXME: source tag not supported
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_14_ENCODE_TAG_DST(buf_out, 0); // FIXME: destination tag not supported
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, tx.amount.bytes);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.account.bytes));
+
+  // doesn't check return value
+  $etxn_details(buf_out, 248 - (buf_out - changetype<u32>(buf)));
+
+  // ditto
+  let fee = $etxn_fee_base(changetype<u32>(buf), 248);
+  _06_08_ENCODE_DROPS_FEE(fee_ptr, fee);
+
+  let emit_hash = new Bytes32();
+  let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buf), 248);
+  if (emit_result < 0)
+    rollback(0, 0, emit_result);
+
+  return emit_hash;
+}
+
+@global @inline
 export function etxn_reserve(count: u32): void {
   let r = $etxn_reserve(count);
   if (r != count)
@@ -181,6 +234,16 @@ export function hook_account(): Bytes20 {
   let a = new Bytes20();
   let r = $hook_account(changetype<u32>(a), 20);
   if (r != 20)
+    rollback(0, 0, r);
+
+  return a;
+}
+
+@global @inline
+export function util_accid(raddr: string): Bytes20 {
+  let a = new Bytes20();
+  let r = $util_accid(changetype<u32>(a), 20, changetype<u32>(raddr), raddr.length);
+  if (r < 20)
     rollback(0, 0, r);
 
   return a;
