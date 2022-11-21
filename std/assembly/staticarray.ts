@@ -450,12 +450,7 @@ export class Bytes8 extends BytesBase {
   @inline
   constructor() {
     super();
-    let out = changetype<Bytes8>(__new(8, idof<StaticArray<u8>>()));
-
-    let dest = changetype<usize>(out);
-    store<u64>(dest, 0);
-
-    return out;
+    return changetype<Bytes8>(__new(8, idof<StaticArray<u8>>()));
   }
 
   override get length(): i32 {
@@ -482,19 +477,7 @@ export class Bytes20 extends BytesBase {
   @inline
   constructor() {
     super();
-    let out = changetype<Bytes20>(__new(20, idof<StaticArray<u8>>()));
-
-    // memory.fill isn't useable b/c it has a cycle of dynamic length;
-    // for cycle fails guard check at runtime (and also takes more
-    // space than unrolled)
-    let dest = changetype<usize>(out);
-    store<u64>(dest, 0);
-    dest += 8;
-    store<u64>(dest, 0);
-    dest += 8;
-    store<u32>(dest, 0);
-
-    return out;
+    return changetype<Bytes20>(__new(20, idof<StaticArray<u8>>()));
   }
 
   override get length(): i32 {
@@ -531,15 +514,7 @@ export class Bytes32 extends BytesBase {
   @inline
   constructor() {
     super();
-    let out = changetype<Bytes32>(__new(32, idof<StaticArray<u8>>()));
-
-    let dest = changetype<usize>(out);
-    for (let i = 0; _g(10002, 5), i < 4; ++i) {
-      store<u64>(dest, 0);
-      dest += 8;
-    }
-
-    return out;
+    return changetype<Bytes32>(__new(32, idof<StaticArray<u8>>()));
   }
 
   override get length(): i32 {
@@ -552,7 +527,7 @@ export class Bytes32 extends BytesBase {
     let ptr2 = changetype<usize>(right);
     if (ptr1 == ptr2) return true;
 
-    for (let i = 0; _g(10003, 5), i < 4; ++i) {
+    for (let i = 0; _g(10000, 5), i < 4; ++i) {
       if (load<u64>(ptr1) != load<u64>(ptr2)) return false;
       ptr1 += 8;
       ptr2 += 8;
@@ -572,15 +547,7 @@ export class Bytes48 extends BytesBase {
   @inline
   constructor() {
     super();
-    let out = changetype<Bytes48>(__new(48, idof<StaticArray<u8>>()));
-
-    let dest = changetype<usize>(out);
-    for (let i = 0; _g(10000, 8), i < 7; ++i) {
-      store<u64>(dest, 0);
-      dest += 8;
-    }
-
-    return out;
+    return changetype<Bytes48>(__new(48, idof<StaticArray<u8>>()));
   }
 
   override get length(): i32 {
