@@ -398,9 +398,7 @@ export class StaticArray<T> {
   }
 }
 
-// maximally simple (like a C buffer): uninitialized, cannot be
-// compared, doesn't even remember its length, not meant to be passed
-// between functions
+// variable-length, cannot be compared
 @final
 export class ByteArray {
   [key: number]: u8;
@@ -408,6 +406,14 @@ export class ByteArray {
   @inline
   constructor(length: i32) {
     return changetype<ByteArray>(__new(length, idof<StaticArray<u8>>()));
+  }
+
+  @inline get length(): i32 {
+    return changetype<OBJECT>(changetype<usize>(this) - TOTAL_OVERHEAD).rtSize;
+  }
+
+  @inline set length(length: i32) {
+    changetype<OBJECT>(changetype<usize>(this) - TOTAL_OVERHEAD).rtSize = <u32>length;
   }
 
   @inline @operator("[]")
@@ -418,6 +424,11 @@ export class ByteArray {
   @inline @operator("[]=")
   private __set(index: i32, value: u8): void {
     store<u8>(changetype<usize>(this) + <usize>index, value);
+  }
+
+  @operator.prefix("!")
+  private static __not(a: ByteArray | null): bool {
+    return changetype<usize>(a) == 0 || !changetype<ByteArray>(a).length;
   }
 }
 
