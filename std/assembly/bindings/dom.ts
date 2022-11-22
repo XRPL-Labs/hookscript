@@ -240,6 +240,12 @@ export function hook_account(): Bytes20 {
 }
 
 @global @inline
+export function trace_num(msg: string, num: i64): void {
+  $trace_num(msg, msg.length, num);
+  // could check return value here, but C macros don't do it either...
+}
+
+@global @inline
 export function util_accid(raddr: string): Bytes20 {
   let a = new Bytes20();
   let r = $util_accid(changetype<u32>(a), 20, changetype<u32>(raddr), raddr.length);

@@ -254,6 +254,7 @@ export namespace CommonNames {
   export const otxn_field = "otxn_field";
   export const rollback = "rollback";
   export const trace = "trace";
+  export const trace_num = "$trace_num";
   export const util_accid = "$util_accid";
   export const seed = "seed";
   export const pow = "pow";

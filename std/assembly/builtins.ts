@@ -2595,6 +2595,14 @@ declare function trace(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "trace_num")
+declare function $trace_num(
+  read_ptr: string,
+  read_len: u32,
+  num: i64
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "util_accid")
 declare function $util_accid(
   write_ptr: u32,
