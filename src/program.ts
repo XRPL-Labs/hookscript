@@ -1485,6 +1485,9 @@ export class Program extends DiagnosticEmitter {
       if (!globalAliases.has(CommonNames.rollback)) {
         globalAliases.set(CommonNames.rollback, BuiltinNames.rollback);
       }
+      if (!globalAliases.has(CommonNames.sto_subarray)) {
+        globalAliases.set(CommonNames.sto_subarray, BuiltinNames.sto_subarray);
+      }
       if (!globalAliases.has(CommonNames.trace)) {
         globalAliases.set(CommonNames.trace, BuiltinNames.trace);
       }

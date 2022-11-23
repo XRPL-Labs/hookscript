@@ -432,6 +432,24 @@ export class ByteArray {
   }
 }
 
+export class ByteView {
+  [key: number]: u8;
+
+  @inline
+  constructor(public underlying: ByteArray, public offset: i32, public length: i32) {
+  }
+
+  @inline @operator("[]")
+  private __get(index: i32): u8 {
+    return this.underlying[this.offset + index];
+  }
+
+  @inline @operator("[]=")
+  private __set(index: i32, value: u8): void {
+    this.underlying[this.offset + index] = value;
+  }
+}
+
 export abstract class BytesBase {
   [key: number]: u8;
 

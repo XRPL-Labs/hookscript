@@ -240,6 +240,17 @@ export function hook_account(): Bytes20 {
 }
 
 @global @inline
+export function sto_subarray(array: ByteView, index: i32): ByteView {
+  let r = $sto_subarray(changetype<u32>(array.underlying) + array.offset, <u32>(array.length), <u32>index);
+  if (r < 0)
+    rollback(0, 0, r);
+
+  let offset = <i32>(r >> 32);
+  let length = <i32>(r & 0xFFFFFFFF);
+  return new ByteView(array.underlying, array.offset + offset, length);
+}
+
+@global @inline
 export function trace_num(msg: string, num: i64): void {
   $trace_num(msg, msg.length, num);
   // could check return value here, but C macros don't do it either...

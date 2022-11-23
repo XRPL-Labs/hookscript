@@ -2585,6 +2585,14 @@ declare function rollback(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "sto_subarray")
+declare function $sto_subarray(
+  read_ptr: u32,
+  read_len: u32,
+  array_id: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "trace")
 declare function trace(
   mread_ptr: string,
