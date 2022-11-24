@@ -2593,6 +2593,14 @@ declare function $sto_subarray(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "sto_subfield")
+declare function $sto_subfield(
+  read_ptr: u32,
+  read_len: u32,
+  field_id: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "trace")
 declare function trace(
   mread_ptr: string,

@@ -134,6 +134,7 @@ export namespace BuiltinNames {
   export const otxn_field = "~lib/builtins/otxn_field";
   export const rollback = "~lib/builtins/rollback";
   export const sto_subarray = "~lib/builtins/$sto_subarray";
+  export const sto_subfield = "~lib/builtins/$sto_subfield";
   export const trace = "~lib/builtins/trace";
   export const trace_num = "~lib/builtins/$trace_num";
   export const util_accid = "~lib/builtins/$util_accid";

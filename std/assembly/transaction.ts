@@ -1,6 +1,9 @@
-const sfAmount = ((6 << 16) + 1);
-const sfAccount = ((8 << 16) + 1);
-const sfMemos = ((15 << 16) + 9);
+export const sfAmount = ((6 << 16) + 1);
+export const sfMemoData = ((7 << 16) + 13);
+export const sfMemoFormat = ((7 << 16) + 14);
+export const sfAccount = ((8 << 16) + 1);
+export const sfMemo = ((14 << 16) + 10);
+export const sfMemos = ((15 << 16) + 9);
 
 export class Tx {
   @inline

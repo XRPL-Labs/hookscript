@@ -251,6 +251,17 @@ export function sto_subarray(array: ByteView, index: i32): ByteView {
 }
 
 @global @inline
+export function sto_subfield(obj: ByteView, field_id: i32): ByteView {
+  let r = $sto_subfield(changetype<u32>(obj.underlying) + obj.offset, <u32>(obj.length), <u32>field_id);
+  if (r < 0)
+    rollback(0, 0, r);
+
+  let offset = <i32>(r >> 32);
+  let length = <i32>(r & 0xFFFFFFFF);
+  return new ByteView(obj.underlying, obj.offset + offset, length);
+}
+
+@global @inline
 export function trace_num(msg: string, num: i64): void {
   $trace_num(msg, msg.length, num);
   // could check return value here, but C macros don't do it either...
