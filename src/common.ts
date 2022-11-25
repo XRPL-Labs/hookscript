@@ -244,6 +244,7 @@ export namespace CommonNames {
   // runtime
   export const abort = "abort";
   export const _g = "_g";
+  export const max_iterations = "max_iterations";
   export const accept = "$accept";
   export const emit = "$emit";
   export const etxn_details = "$etxn_details";

@@ -39,6 +39,7 @@ import {
   LiteralKind,
   StringLiteralExpression,
   CallExpression,
+  Node,
   NodeKind,
   LiteralExpression,
   ArrayLiteralExpression
@@ -98,6 +99,7 @@ import {
 
 import {
   CommonFlags,
+  CommonNames,
   Feature,
   featureToString,
   TypeinfoFlags
@@ -124,6 +126,7 @@ export namespace BuiltinNames {
   // std/builtins.ts
   export const abort = "~lib/builtins/abort";
   export const _g = "~lib/builtins/_g";
+  export const max_iterations = "~lib/builtins/max_iterations";
   export const accept = "~lib/builtins/$accept";
   export const emit = "~lib/builtins/$emit";
   export const etxn_details = "~lib/builtins/$etxn_details";
@@ -776,6 +779,8 @@ export const builtins = new Map<string,(ctx: BuiltinContext) => ExpressionRef>()
 
 /** Function builtins map. */
 export const function_builtins = new Map<string,(ctx: BuiltinContext) => ExpressionRef>();
+
+let guard_id_counter: u32 = 1 << 31;
 
 // === Static type evaluation =================================================================
 
@@ -3752,6 +3757,34 @@ function builtin_string_raw(ctx: BuiltinContext): ExpressionRef {
   return module.unreachable();
 }
 builtins.set(BuiltinNames.String_raw, builtin_string_raw);
+
+function builtin_max_iterations(ctx: BuiltinContext): ExpressionRef {
+  let compiler = ctx.compiler;
+  let module = compiler.module;
+  compiler.currentType = Type.i32;
+  if (
+    checkTypeAbsent(ctx) |
+    checkArgsRequired(ctx, 1)
+  ) return module.unreachable();
+  let maxiter = ctx.operands[0];
+  // we actually could tolerate a compile-time constant expression,
+  // but it isn't clear how to recognize it...
+  if (maxiter.kind != NodeKind.Literal) {
+    compiler.error(
+      DiagnosticCode.Expression_must_be_a_compile_time_constant,
+      maxiter.range
+    );
+    return module.unreachable();
+  }
+  let gid = Node.createIntegerLiteralExpression(i64_new(++guard_id_counter), maxiter.range);
+  let args = new Array<Expression>();
+  args.push(gid);
+  args.push(maxiter);
+  let name = Node.createIdentifierExpression(CommonNames._g, ctx.reportNode.expression.range);
+  let call = Node.createCallExpression(name, null, args, ctx.reportNode.range);
+  return compiler.compileCallExpression(call, Type.i32);
+}
+builtins.set(BuiltinNames.max_iterations, builtin_max_iterations);
 
 // === Portable type conversions ==============================================================
 

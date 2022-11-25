@@ -2519,6 +2519,9 @@ declare function _g(
   maxiter: i32
 ): i32
 
+@builtin
+export declare function max_iterations(maxiter: i32): i32;
+
 // @ts-ignore: decorator
 @external("env", "accept")
 declare function $accept(
