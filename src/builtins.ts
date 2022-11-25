@@ -37,6 +37,7 @@ import {
 import {
   Expression,
   LiteralKind,
+  IntegerLiteralExpression,
   StringLiteralExpression,
   CallExpression,
   Node,
@@ -3769,17 +3770,20 @@ function builtin_max_iterations(ctx: BuiltinContext): ExpressionRef {
   let maxiter = ctx.operands[0];
   // we actually could tolerate a compile-time constant expression,
   // but it isn't clear how to recognize it...
-  if (maxiter.kind != NodeKind.Literal) {
+  if ((maxiter.kind != NodeKind.Literal) || ((<LiteralExpression>maxiter).literalKind != LiteralKind.Integer)) {
     compiler.error(
       DiagnosticCode.Expression_must_be_a_compile_time_constant,
       maxiter.range
     );
     return module.unreachable();
   }
-  let gid = Node.createIntegerLiteralExpression(i64_new(++guard_id_counter), maxiter.range);
   let args = new Array<Expression>();
+  let gid = Node.createIntegerLiteralExpression(i64_new(++guard_id_counter), maxiter.range);
   args.push(gid);
-  args.push(maxiter);
+  // maxiter argument of _g is actually 1 + the argument of max_iterations
+  let value = <IntegerLiteralExpression>(maxiter).value;
+  let incremented = Node.createIntegerLiteralExpression(i64_new(++value));
+  args.push(incremented);
   let name = Node.createIdentifierExpression(CommonNames._g, ctx.reportNode.expression.range);
   let call = Node.createCallExpression(name, null, args, ctx.reportNode.range);
   return compiler.compileCallExpression(call, Type.i32);
