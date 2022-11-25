@@ -556,7 +556,7 @@ export class Bytes32 extends BytesBase {
     let ptr2 = changetype<usize>(right);
     if (ptr1 == ptr2) return true;
 
-    for (let i = 0; _g(10000, 5), i < 4; ++i) {
+    for (let i = 0; max_iterations(4), i < 4; ++i) {
       if (load<u64>(ptr1) != load<u64>(ptr2)) return false;
       ptr1 += 8;
       ptr2 += 8;
@@ -589,7 +589,7 @@ export class Bytes48 extends BytesBase {
     let ptr2 = changetype<usize>(right);
     if (ptr1 == ptr2) return true;
 
-    for (let i = 0; _g(10001, 8), i < 7; ++i) {
+    for (let i = 0; max_iterations(6), i < 6; ++i) {
       if (load<u64>(ptr1) != load<u64>(ptr2)) return false;
       ptr1 += 8;
       ptr2 += 8;
