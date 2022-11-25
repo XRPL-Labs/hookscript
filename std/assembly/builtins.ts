@@ -2519,6 +2519,9 @@ declare function _g(
   maxiter: i32
 ): i32
 
+@builtin
+export declare function max_iterations(maxiter: i32): i32;
+
 // @ts-ignore: decorator
 @external("env", "accept")
 declare function $accept(
@@ -2582,6 +2585,22 @@ declare function rollback(
   read_ptr: u32,
   read_len: u32,
   error_code: i64
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "sto_subarray")
+declare function $sto_subarray(
+  read_ptr: u32,
+  read_len: u32,
+  array_id: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "sto_subfield")
+declare function $sto_subfield(
+  read_ptr: u32,
+  read_len: u32,
+  field_id: u32
 ): i64;
 
 // @ts-ignore: decorator

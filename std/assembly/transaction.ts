@@ -1,5 +1,9 @@
-const sfAmount = ((6 << 16) + 1);
-const sfAccount = ((8 << 16) + 1);
+export const sfAmount = ((6 << 16) + 1);
+export const sfMemoData = ((7 << 16) + 13);
+export const sfMemoFormat = ((7 << 16) + 14);
+export const sfAccount = ((8 << 16) + 1);
+export const sfMemo = ((14 << 16) + 10);
+export const sfMemos = ((15 << 16) + 9);
 
 export class Tx {
   @inline
@@ -23,6 +27,17 @@ export class Tx {
       rollback(0, 0, r);
 
     return new Amount(a, l);
+  }
+
+  @inline
+  static get Memos(): ByteArray {
+    let a = new ByteArray(2048);
+    let r = otxn_field(changetype<u32>(a), 2048, sfMemos);
+    if (r < 0)
+      r = 0;
+
+    a.length = <i32>r;
+    return a;
   }
 }
 

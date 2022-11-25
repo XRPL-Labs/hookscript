@@ -244,6 +244,7 @@ export namespace CommonNames {
   // runtime
   export const abort = "abort";
   export const _g = "_g";
+  export const max_iterations = "max_iterations";
   export const accept = "$accept";
   export const emit = "$emit";
   export const etxn_details = "$etxn_details";
@@ -253,6 +254,8 @@ export namespace CommonNames {
   export const ledger_seq = "ledger_seq";
   export const otxn_field = "otxn_field";
   export const rollback = "rollback";
+  export const sto_subarray = "$sto_subarray";
+  export const sto_subfield = "$sto_subfield";
   export const trace = "trace";
   export const trace_num = "$trace_num";
   export const util_accid = "$util_accid";

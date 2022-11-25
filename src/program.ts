@@ -1458,6 +1458,9 @@ export class Program extends DiagnosticEmitter {
       if (!globalAliases.has(CommonNames._g)) {
         globalAliases.set(CommonNames._g, BuiltinNames._g);
       }
+      if (!globalAliases.has(CommonNames.max_iterations)) {
+        globalAliases.set(CommonNames.max_iterations, BuiltinNames.max_iterations);
+      }
       if (!globalAliases.has(CommonNames.accept)) {
         globalAliases.set(CommonNames.accept, BuiltinNames.accept);
       }
@@ -1484,6 +1487,12 @@ export class Program extends DiagnosticEmitter {
       }
       if (!globalAliases.has(CommonNames.rollback)) {
         globalAliases.set(CommonNames.rollback, BuiltinNames.rollback);
+      }
+      if (!globalAliases.has(CommonNames.sto_subarray)) {
+        globalAliases.set(CommonNames.sto_subarray, BuiltinNames.sto_subarray);
+      }
+      if (!globalAliases.has(CommonNames.sto_subfield)) {
+        globalAliases.set(CommonNames.sto_subfield, BuiltinNames.sto_subfield);
       }
       if (!globalAliases.has(CommonNames.trace)) {
         globalAliases.set(CommonNames.trace, BuiltinNames.trace);
