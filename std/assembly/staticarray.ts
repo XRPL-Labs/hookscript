@@ -448,6 +448,11 @@ export class ByteView {
   private __set(index: i32, value: u8): void {
     this.underlying[this.offset + index] = value;
   }
+
+  @inline @builtin @operator("==")
+  private static __eq(left: ByteView, right: string): bool {
+    return false; // shouldn't even get here
+  }
 }
 
 export abstract class BytesBase {

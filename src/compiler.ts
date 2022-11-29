@@ -5527,6 +5527,26 @@ export class Compiler extends DiagnosticEmitter {
     right: Expression,
     reportNode: Node
   ): ExpressionRef {
+    if (operatorInstance.hasDecorator(DecoratorFlags.Builtin)) {
+      // for operators, @builtin is used only for ByteView::__eq (so far)
+      if (right.isLiteralKind(LiteralKind.String)) {
+        let literal = (<StringLiteralExpression>right).value;
+        let length = literal.length;
+        let args = new Array<Expression>();
+        args.push(left);
+        args.push(right);
+        let name = Node.createIdentifierExpression("__eq" + length.toString(), reportNode.range);
+        let call = Node.createCallExpression(name, null, args, reportNode.range);
+        return this.compileCallExpression(call, Type.bool);
+      } else {
+        this.error(
+          DiagnosticCode.String_literal_expected,
+          right.range
+        );
+        return this.module.unreachable();
+      }
+    }
+
     let rightType: Type;
     let signature = operatorInstance.signature;
     let parameterTypes = signature.parameterTypes;
