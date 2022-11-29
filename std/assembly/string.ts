@@ -51,35 +51,8 @@ import { Array } from "./array";
     return changetype<OBJECT>(changetype<usize>(this) - TOTAL_OVERHEAD).rtSize;
   }
 
-  at(pos: i32): String {
-    let len = this.length;
-    pos += select(0, len, pos >= 0);
-    if (<u32>pos >= <u32>len) throw new RangeError(E_INDEXOUTOFRANGE);
-    let out = __new(2, idof<String>());
-    store<u16>(out, load<u16>(changetype<usize>(this) + (<usize>pos << 1)));
-    return changetype<String>(out); // retains
-  }
-
-  @operator("[]") charAt(pos: i32): String {
-    if (<u32>pos >= <u32>this.length) return changetype<String>("");
-    let out = changetype<String>(__new(2, idof<String>()));
-    store<u16>(changetype<usize>(out), load<u16>(changetype<usize>(this) + (<usize>pos << 1)));
-    return out;
-  }
-
-  charCodeAt(pos: i32): i32 {
-    if (<u32>pos >= <u32>this.length) return -1; // (NaN)
-    return load<u16>(changetype<usize>(this) + (<usize>pos << 1));
-  }
-
-  codePointAt(pos: i32): i32 {
-    let len = this.length;
-    if (<u32>pos >= <u32>len) return -1; // (undefined)
-    let first = <i32>load<u16>(changetype<usize>(this) + (<usize>pos << 1));
-    if ((first & 0xFC00) != 0xD800 || pos + 1 == len) return first;
-    let second = <i32>load<u16>(changetype<usize>(this) + (<usize>pos << 1), 2);
-    if ((second & 0xFC00) != 0xDC00) return first;
-    return (first - 0xD800 << 10) + (second - 0xDC00) + 0x10000;
+  @operator("[]") charAt(pos: i32): u8 {
+    return load<u8>(changetype<usize>(this) + <usize>pos);
   }
 
   @operator("+") private static __concat(left: String, right: String): String {
