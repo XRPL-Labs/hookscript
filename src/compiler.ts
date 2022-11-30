@@ -10311,33 +10311,15 @@ export class Compiler extends DiagnosticEmitter {
     return this.makeStaticAbort(messageArg, codeLocation);
   }
 
-  /** Makes a call to `abort`, if present, otherwise creates a trap. */
+  /** creates a trap. */
   makeStaticAbort(
     /** Message argument of type string. May be zero. */
     messageExpr: ExpressionRef,
     /** Code location to report when aborting. */
     codeLocation: Node
   ): ExpressionRef {
-    let program = this.program;
     let module = this.module;
-    let abortInstance = program.abortInstance;
-    if (!abortInstance || !this.compileFunction(abortInstance)) return module.unreachable();
-
-    let filenameExpr = this.ensureStaticString(codeLocation.range.source.normalizedPath);
-    let range = codeLocation.range;
-    let source = range.source;
-    return module.block(null, [
-      module.call(
-        abortInstance.internalName, [
-          messageExpr,
-          filenameExpr,
-          module.i32(source.lineAt(range.start)),
-          module.i32(source.columnAt())
-        ],
-        TypeRef.None
-      ),
-      module.unreachable()
-    ]);
+    return module.unreachable();
   }
 
   /** Makes a runtime non-null check, e.g. on `<Type>possiblyNull` or `possiblyNull!`. */
