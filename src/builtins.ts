@@ -136,7 +136,7 @@ export namespace BuiltinNames {
   export const hook_account = "~lib/builtins/$hook_account";
   export const ledger_seq = "~lib/builtins/ledger_seq";
   export const otxn_field = "~lib/builtins/otxn_field";
-  export const rollback = "~lib/builtins/rollback";
+  export const rollback = "~lib/builtins/$rollback";
   export const sto_subarray = "~lib/builtins/$sto_subarray";
   export const sto_subfield = "~lib/builtins/$sto_subfield";
   export const trace = "~lib/builtins/trace";

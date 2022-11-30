@@ -2581,8 +2581,8 @@ declare function otxn_field(
 
 // @ts-ignore: decorator
 @external("env", "rollback")
-declare function rollback(
-  read_ptr: u32,
+declare function $rollback(
+  read_ptr: string,
   read_len: u32,
   error_code: i64
 ): i64;

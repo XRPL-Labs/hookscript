@@ -11,7 +11,7 @@ export class Tx {
     let a = new Bytes20();
     let r = otxn_field(changetype<u32>(a), 20, sfAccount);
     if (r != 20)
-      rollback(0, 0, r);
+      rollback("", r);
 
     return a;
   }
@@ -24,7 +24,7 @@ export class Tx {
     if (r == 8)
       l = 8;
     else if (r != 48)
-      rollback(0, 0, r);
+      rollback("", r);
 
     return new Amount(a, l);
   }

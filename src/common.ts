@@ -253,7 +253,7 @@ export namespace CommonNames {
   export const hook_account = "$hook_account";
   export const ledger_seq = "ledger_seq";
   export const otxn_field = "otxn_field";
-  export const rollback = "rollback";
+  export const rollback = "$rollback";
   export const sto_subarray = "$sto_subarray";
   export const sto_subfield = "$sto_subfield";
   export const trace = "trace";

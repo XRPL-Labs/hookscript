@@ -217,7 +217,7 @@ export function emit(tx: EmitSpec): Bytes32 {
   let emit_hash = new Bytes32();
   let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buf), 248);
   if (emit_result < 0)
-    rollback(0, 0, emit_result);
+    rollback("", emit_result);
 
   return emit_hash;
 }
@@ -226,7 +226,7 @@ export function emit(tx: EmitSpec): Bytes32 {
 export function etxn_reserve(count: u32): void {
   let r = $etxn_reserve(count);
   if (r != count)
-    rollback(0, 0, r);
+    rollback("", r);
 }
 
 @global @inline
@@ -234,16 +234,22 @@ export function hook_account(): Bytes20 {
   let a = new Bytes20();
   let r = $hook_account(changetype<u32>(a), 20);
   if (r != 20)
-    rollback(0, 0, r);
+    rollback("", r);
 
   return a;
+}
+
+@global @inline
+export function rollback(msg: string = "", err: i64 = 0): void {
+  $rollback(msg, msg.length, err);
+  // does not return
 }
 
 @global @inline
 export function sto_subarray(array: ByteView, index: i32): ByteView {
   let r = $sto_subarray(changetype<u32>(array.underlying) + array.offset, <u32>(array.length), <u32>index);
   if (r < 0)
-    rollback(0, 0, r);
+    rollback("", r);
 
   let offset = <i32>(r >> 32);
   let length = <i32>(r & 0xFFFFFFFF);
@@ -254,7 +260,7 @@ export function sto_subarray(array: ByteView, index: i32): ByteView {
 export function sto_subfield(obj: ByteView, field_id: i32): ByteView {
   let r = $sto_subfield(changetype<u32>(obj.underlying) + obj.offset, <u32>(obj.length), <u32>field_id);
   if (r < 0)
-    rollback(0, 0, r);
+    rollback("", r);
 
   let offset = <i32>(r >> 32);
   let length = <i32>(r & 0xFFFFFFFF);
@@ -272,7 +278,7 @@ export function util_accid(raddr: string): Bytes20 {
   let a = new Bytes20();
   let r = $util_accid(changetype<u32>(a), 20, changetype<u32>(raddr), raddr.length);
   if (r < 20)
-    rollback(0, 0, r);
+    rollback("", r);
 
   return a;
 }
