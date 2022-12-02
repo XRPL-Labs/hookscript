@@ -432,6 +432,16 @@ export class ByteArray {
   }
 
   @inline
+  static fromUInt(v: u32): ByteArray {
+    let a = new ByteArray(4);
+    a[0] = <u8>((v >> 24) & 0xFF);
+    a[1] = <u8>((v >> 16) & 0xFF);
+    a[2] = <u8>((v >> 8) & 0xFF);
+    a[3] = <u8>(v & 0xFF);
+    return a;
+  }
+
+  @inline
   toUInt(): u32 {
     return (this[0] << 24) + (this[1] << 16) + (this[2] << 8) + this[3];
   }
