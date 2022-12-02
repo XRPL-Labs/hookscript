@@ -1,8 +1,11 @@
+export const sfFlags = ((2 << 16) + 2);
+export const sfSequence = ((2 << 16) + 4);
 export const sfAmount = ((6 << 16) + 1);
 export const sfMemoData = ((7 << 16) + 13);
 export const sfMemoFormat = ((7 << 16) + 14);
 export const sfAccount = ((8 << 16) + 1);
 export const sfMemo = ((14 << 16) + 10);
+export const sfTemplate = ((15 << 16) + 5);
 export const sfMemos = ((15 << 16) + 9);
 
 export class Tx {
