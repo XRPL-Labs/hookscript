@@ -430,6 +430,11 @@ export class ByteArray {
   private static __not(a: ByteArray | null): bool {
     return changetype<usize>(a) == 0 || !changetype<ByteArray>(a).length;
   }
+
+  @inline
+  toUInt(): u32 {
+    return (this[0] << 24) + (this[1] << 16) + (this[2] << 8) + this[3];
+  }
 }
 
 export class ByteView {
@@ -452,6 +457,11 @@ export class ByteView {
   @inline @builtin @operator("==")
   private static __eq(left: ByteView, right: string): bool {
     return false; // shouldn't even get here
+  }
+
+  @inline
+  toUInt(): u32 {
+    return (this[0] << 24) + (this[1] << 16) + (this[2] << 8) + this[3];
   }
 }
 
