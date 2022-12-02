@@ -240,6 +240,17 @@ export function hook_account(): Bytes20 {
 }
 
 @global @inline
+export function hook_param(name: string): ByteArray {
+  let a = new ByteArray(64);
+  let r = $hook_param(changetype<u32>(a), 64, changetype<u32>(name), name.length);
+  if (r < 0)
+    r = 0;
+
+  a.length = <i32>r;
+  return a;
+}
+
+@global @inline
 export function rollback(msg: string = "", err: i64 = 0): void {
   $rollback(msg, msg.length, err);
   // does not return

@@ -251,6 +251,7 @@ export namespace CommonNames {
   export const etxn_fee_base = "$etxn_fee_base";
   export const etxn_reserve = "$etxn_reserve";
   export const hook_account = "$hook_account";
+  export const hook_param = "$hook_param";
   export const ledger_seq = "ledger_seq";
   export const otxn_field = "otxn_field";
   export const rollback = "$rollback";

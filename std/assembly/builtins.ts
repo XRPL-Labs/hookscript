@@ -2567,6 +2567,15 @@ declare function $hook_account(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "hook_param")
+declare function $hook_param(
+  write_ptr: u32,
+  write_len: u32,
+  read_ptr: u32,
+  read_len: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "ledger_seq")
 declare function ledger_seq(
 ): i64;
