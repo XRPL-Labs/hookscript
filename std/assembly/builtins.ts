@@ -2597,6 +2597,24 @@ declare function $rollback(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "state")
+declare function $state(
+  write_ptr: u32,
+  write_len: u32,
+  kread_ptr: u32,
+  kread_len: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "state_set")
+declare function $state_set(
+  read_ptr: u32,
+  read_len: u32,
+  kread_ptr: u32,
+  kread_len: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "sto_subarray")
 declare function $sto_subarray(
   read_ptr: u32,

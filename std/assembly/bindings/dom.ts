@@ -257,6 +257,24 @@ export function rollback(msg: string = "", err: i64 = 0): void {
 }
 
 @global @inline
+export function state(key: Bytes32, el: i32 = 64): ByteArray {
+  let a = new ByteArray(el);
+  let r = $state(changetype<u32>(a), <u32>el, changetype<u32>(key), 32);
+  if (r < 0)
+    r = 0;
+
+  a.length = <i32>r;
+  return a;
+}
+
+@global @inline
+export function state_set(key: Bytes32, data: ByteArray): void {
+  let r = $state_set(changetype<u32>(data), data.length, changetype<u32>(key), 32);
+  if (r < 0)
+    rollback("", r);
+}
+
+@global @inline
 export function sto_subarray(array: ByteView, index: i32): ByteView {
   let r = $sto_subarray(changetype<u32>(array.underlying) + array.offset, <u32>(array.length), <u32>index);
   if (r < 0)
