@@ -2640,6 +2640,17 @@ declare function $util_accid(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "util_verify")
+declare function $util_verify(
+  dread_ptr: u32,
+  dread_len: u32,
+  sread_ptr: u32,
+  sread_len: u32,
+  kread_ptr: u32,
+  kread_len: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "seed")
 @external.js("return Date.now() * Math.random();")
 declare function seed(): f64;

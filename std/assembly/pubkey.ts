@@ -27,4 +27,17 @@ export class PubKey {
   private static __ne(left: PubKey, right: ByteArray): bool {
     return !this.__eq(left, right);
   }
+
+  @inline
+  verify(data: ByteView, sig: ByteView): void {
+    if (!$util_verify(
+      changetype<u32>(data.underlying) + data.offset,
+      data.length,
+      changetype<u32>(sig.underlying) + sig.offset,
+      sig.length,
+      changetype<u32>(this.bytes.underlying) + this.bytes.offset,
+      this.bytes.length)) {
+      rollback("Invalid Signature.");
+    }
+  }
 }
