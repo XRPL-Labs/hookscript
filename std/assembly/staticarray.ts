@@ -443,7 +443,7 @@ export class ByteArray {
 
   @inline
   toUInt(): u32 {
-    return (this[0] << 24) + (this[1] << 16) + (this[2] << 8) + this[3];
+    return (<u32>(this[0]) << 24) + (<u32>(this[1]) << 16) + (<u32>(this[2]) << 8) + <u32>(this[3]);
   }
 }
 
@@ -471,7 +471,7 @@ export class ByteView {
 
   @inline
   toUInt(): u32 {
-    return (this[0] << 24) + (this[1] << 16) + (this[2] << 8) + this[3];
+    return (<u32>(this[0]) << 24) + (<u32>(this[1]) << 16) + (<u32>(this[2]) << 8) + <u32>(this[3]);
   }
 }
 
