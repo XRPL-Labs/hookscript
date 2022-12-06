@@ -257,9 +257,9 @@ export function rollback(msg: string = "", err: i64 = 0): void {
 }
 
 @global @inline
-export function state(key: Bytes32, el: i32 = 64): ByteArray {
+export function state(key: ByteArray, el: i32 = 64): ByteArray {
   let a = new ByteArray(el);
-  let r = $state(changetype<u32>(a), <u32>el, changetype<u32>(key), 32);
+  let r = $state(changetype<u32>(a), <u32>el, changetype<u32>(key), key.length);
   if (r < 0)
     r = 0;
 
@@ -279,8 +279,8 @@ export function state_foreign(key: Bytes20, ns: ByteArray, acc: ByteArray, el: i
 }
 
 @global @inline
-export function state_set(key: Bytes32, data: ByteArray): void {
-  let r = $state_set(changetype<u32>(data), data.length, changetype<u32>(key), 32);
+export function state_set(key: ByteArray, data: ByteArray): void {
+  let r = $state_set(changetype<u32>(data), data.length, changetype<u32>(key), key.length);
   if (r < 0)
     rollback("", r);
 }
