@@ -268,6 +268,17 @@ export function state(key: Bytes32, el: i32 = 64): ByteArray {
 }
 
 @global @inline
+export function state_foreign(key: Bytes20, ns: ByteArray, acc: ByteArray, el: i32 = 64): ByteArray {
+  let a = new ByteArray(el);
+  let r = $state_foreign(changetype<u32>(a), <u32>el, changetype<u32>(key), 20, changetype<u32>(ns), ns.length, changetype<u32>(acc), acc.length);
+  if (r < 0)
+    r = 0;
+
+  a.length = <i32>r;
+  return a;
+}
+
+@global @inline
 export function state_set(key: Bytes32, data: ByteArray): void {
   let r = $state_set(changetype<u32>(data), data.length, changetype<u32>(key), 32);
   if (r < 0)

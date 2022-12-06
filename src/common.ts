@@ -256,6 +256,7 @@ export namespace CommonNames {
   export const otxn_field = "otxn_field";
   export const rollback = "$rollback";
   export const state = "$state";
+  export const state_foreign = "$state_foreign";
   export const state_set = "$state_set";
   export const sto_subarray = "$sto_subarray";
   export const sto_subfield = "$sto_subfield";

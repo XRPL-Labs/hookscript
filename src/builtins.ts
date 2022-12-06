@@ -139,6 +139,7 @@ export namespace BuiltinNames {
   export const otxn_field = "~lib/builtins/otxn_field";
   export const rollback = "~lib/builtins/$rollback";
   export const state = "~lib/builtins/$state";
+  export const state_foreign = "~lib/builtins/$state_foreign";
   export const state_set = "~lib/builtins/$state_set";
   export const sto_subarray = "~lib/builtins/$sto_subarray";
   export const sto_subfield = "~lib/builtins/$sto_subfield";
