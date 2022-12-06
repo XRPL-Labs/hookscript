@@ -1481,7 +1481,8 @@ export class Resolver extends DiagnosticEmitter {
         break;
       }
       default: { // enums or other namespace-like elements
-        let member = target.getMember(propertyName);
+        let lookupName = (target.internalName == "~lib/params/Params") ? "__get" : propertyName;
+        let member = target.getMember(lookupName);
         if (member) {
           this.currentThisExpression = targetNode;
           this.currentElementExpression = null;

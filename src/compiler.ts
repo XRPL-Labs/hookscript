@@ -8953,6 +8953,10 @@ export class Compiler extends DiagnosticEmitter {
         let functionPrototype = <FunctionPrototype>target;
         let functionInstance = this.resolver.resolveFunction(functionPrototype, null);
         if (!functionInstance) return module.unreachable();
+        if (target.internalName == "~lib/params/Params.__get") {
+          let args = [ Node.createStringLiteralExpression(expression.property.text, expression.property.range) ]
+          return this.compileCallDirect(functionInstance, args, expression);
+        }
         if (!this.compileFunction(functionInstance)) return module.unreachable();
         this.currentType = functionInstance.type;
         let offset = this.ensureRuntimeFunction(functionInstance);
