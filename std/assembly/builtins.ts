@@ -2671,6 +2671,20 @@ declare function $util_accid(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "util_keylet")
+declare function $util_keylet(
+  write_ptr: u32,
+  write_len: u32,
+  keylet_type: u32,
+  a: u32,
+  b: u32,
+  c: u32,
+  d: u32,
+  e: u32,
+  f: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "util_verify")
 declare function $util_verify(
   dread_ptr: u32,

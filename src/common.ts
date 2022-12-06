@@ -263,6 +263,7 @@ export namespace CommonNames {
   export const trace = "trace";
   export const trace_num = "$trace_num";
   export const util_accid = "$util_accid";
+  export const util_keylet = "$util_keylet";
   export const util_verify = "$util_verify";
   export const seed = "seed";
   export const pow = "pow";

@@ -146,6 +146,7 @@ export namespace BuiltinNames {
   export const trace = "~lib/builtins/trace";
   export const trace_num = "~lib/builtins/$trace_num";
   export const util_accid = "~lib/builtins/$util_accid";
+  export const util_keylet = "~lib/builtins/$util_keylet";
   export const util_verify = "~lib/builtins/$util_verify";
   export const seed = "~lib/builtins/seed";
 
