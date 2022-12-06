@@ -2597,6 +2597,44 @@ declare function $rollback(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "slot")
+declare function $slot(
+  write_ptr: u32,
+  write_len: u32,
+  slot_no: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "slot_count")
+declare function $slot_count(
+  slot_no: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "slot_set")
+declare function $slot_set(
+  read_ptr: u32,
+  read_len: u32,
+  slot_no: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "slot_subarray")
+declare function $slot_subarray(
+  parent_slot: u32,
+  array_id: u32,
+  new_slot: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "slot_subfield")
+declare function $slot_subfield(
+  parent_slot: u32,
+  field_id: u32,
+  new_slot: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "state")
 declare function $state(
   write_ptr: u32,

@@ -138,6 +138,11 @@ export namespace BuiltinNames {
   export const ledger_seq = "~lib/builtins/ledger_seq";
   export const otxn_field = "~lib/builtins/otxn_field";
   export const rollback = "~lib/builtins/$rollback";
+  export const slot = "~lib/builtins/$slot";
+  export const slot_count = "~lib/builtins/$slot_count";
+  export const slot_set = "~lib/builtins/$slot_set";
+  export const slot_subarray = "~lib/builtins/$slot_subarray";
+  export const slot_subfield = "~lib/builtins/$slot_subfield";
   export const state = "~lib/builtins/$state";
   export const state_foreign = "~lib/builtins/$state_foreign";
   export const state_set = "~lib/builtins/$state_set";

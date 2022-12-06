@@ -257,6 +257,52 @@ export function rollback(msg: string = "", err: i64 = 0): void {
 }
 
 @global @inline
+export function slot(sn: i32, el: i32 = 64): ByteArray {
+  let a = new ByteArray(el);
+  let r = $slot(changetype<u32>(a), <u32>el, <u32>sn);
+  if (r < 0)
+    rollback("", r);
+
+  return a;
+}
+
+@global @inline
+export function slot_count(sn: i32): i32 {
+  let r = $slot_count(<u32>sn);
+  if (r < 0)
+    rollback("", r);
+
+  return <i32>r;
+}
+
+@global @inline
+export function slot_set(keylet: ByteArray, sn: i32): i32 {
+  let r = $slot_set(changetype<u32>(keylet), <u32>(keylet.length), <u32>sn);
+  if (r < 0)
+    rollback("", r);
+
+  return <i32>r;
+}
+
+@global @inline
+export function slot_subarray(parent: i32, idx: i32, target: i32): i32 {
+  let r = $slot_subarray(<u32>parent, <u32>idx, <u32>target);
+  if (r < 0)
+    rollback("", r);
+
+  return <i32>r;
+}
+
+@global @inline
+export function slot_subfield(parent: i32, field: i32, target: i32): i32 {
+  let r = $slot_subfield(<u32>parent, <u32>field, <u32>target);
+  if (r < 0)
+    rollback("", r);
+
+  return <i32>r;
+}
+
+@global @inline
 export function state(key: ByteArray, el: i32 = 64): ByteArray {
   let a = new ByteArray(el);
   let r = $state(changetype<u32>(a), <u32>el, changetype<u32>(key), key.length);

@@ -255,6 +255,11 @@ export namespace CommonNames {
   export const ledger_seq = "ledger_seq";
   export const otxn_field = "otxn_field";
   export const rollback = "$rollback";
+  export const slot = "$slot";
+  export const slot_count = "$slot_count";
+  export const slot_set = "$slot_set";
+  export const slot_subarray = "$slot_subarray";
+  export const slot_subfield = "$slot_subfield";
   export const state = "$state";
   export const state_foreign = "$state_foreign";
   export const state_set = "$state_set";
