@@ -1,5 +1,6 @@
 export const sfFlags = ((2 << 16) + 2);
 export const sfSequence = ((2 << 16) + 4);
+export const sfInvoiceID = ((5 << 16) + 17);
 export const sfAmount = ((6 << 16) + 1);
 export const sfMemoData = ((7 << 16) + 13);
 export const sfMemoFormat = ((7 << 16) + 14);
@@ -30,6 +31,17 @@ export class Tx {
       rollback("", r);
 
     return new Amount(a, l);
+  }
+
+  @inline
+  static get InvoiceID(): ByteArray {
+    let a = new ByteArray(32);
+    let r = otxn_field(changetype<u32>(a), 32, sfInvoiceID);
+    if (r < 0)
+      r = 0;
+
+    a.length = <i32>r;
+    return a;
   }
 
   @inline
