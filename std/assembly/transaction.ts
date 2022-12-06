@@ -1,5 +1,6 @@
 export const sfFlags = ((2 << 16) + 2);
 export const sfSequence = ((2 << 16) + 4);
+export const sfLastLedgerSequence = ((2 << 16) + 27);
 export const sfInvoiceID = ((5 << 16) + 17);
 export const sfAmount = ((6 << 16) + 1);
 export const sfMemoData = ((7 << 16) + 13);
