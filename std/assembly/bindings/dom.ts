@@ -230,8 +230,8 @@ export function etxn_reserve(count: u32): void {
 }
 
 @global @inline
-export function hook_account(): Bytes20 {
-  let a = new Bytes20();
+export function hook_account(): ByteArray {
+  let a = new ByteArray(20);
   let r = $hook_account(changetype<u32>(a), 20);
   if (r != 20)
     rollback("", r);
@@ -314,9 +314,9 @@ export function state(key: ByteArray, el: i32 = 64): ByteArray {
 }
 
 @global @inline
-export function state_foreign(key: Bytes20, ns: ByteArray, acc: ByteArray, el: i32 = 64): ByteArray {
+export function state_foreign(key: ByteArray, ns: ByteArray, acc: ByteArray, el: i32 = 64): ByteArray {
   let a = new ByteArray(el);
-  let r = $state_foreign(changetype<u32>(a), <u32>el, changetype<u32>(key), 20, changetype<u32>(ns), ns.length, changetype<u32>(acc), acc.length);
+  let r = $state_foreign(changetype<u32>(a), <u32>el, changetype<u32>(key), key.length, changetype<u32>(ns), ns.length, changetype<u32>(acc), acc.length);
   if (r < 0)
     r = 0;
 
@@ -360,8 +360,8 @@ export function trace_num(msg: string, num: i64): void {
 }
 
 @global @inline
-export function util_accid(raddr: string): Bytes20 {
-  let a = new Bytes20();
+export function util_accid(raddr: string): ByteArray {
+  let a = new ByteArray(20);
   let r = $util_accid(changetype<u32>(a), 20, changetype<u32>(raddr), raddr.length);
   if (r < 20)
     rollback("", r);

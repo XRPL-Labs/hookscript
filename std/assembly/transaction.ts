@@ -1,24 +1,27 @@
+export const sfSignerWeight = ((1 << 16) + 3);
 export const sfFlags = ((2 << 16) + 2);
 export const sfSequence = ((2 << 16) + 4);
 export const sfLastLedgerSequence = ((2 << 16) + 27);
+export const sfSignerQuorum = ((2 << 16) + 35);
 export const sfInvoiceID = ((5 << 16) + 17);
 export const sfAmount = ((6 << 16) + 1);
 export const sfMemoData = ((7 << 16) + 13);
 export const sfMemoFormat = ((7 << 16) + 14);
 export const sfAccount = ((8 << 16) + 1);
 export const sfMemo = ((14 << 16) + 10);
+export const sfSignerEntries = ((15 << 16) + 4);
 export const sfTemplate = ((15 << 16) + 5);
 export const sfMemos = ((15 << 16) + 9);
 
 export class Tx {
   @inline
-  static get Account(): Bytes20 {
-    let a = new Bytes20();
+  static get Account(): Account {
+    let a = new ByteArray(20);
     let r = otxn_field(changetype<u32>(a), 20, sfAccount);
     if (r != 20)
       rollback("", r);
 
-    return a;
+    return new Account(a);
   }
 
   @inline
