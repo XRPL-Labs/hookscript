@@ -445,6 +445,11 @@ export class ByteArray {
   toUInt(): u32 {
     return (<u32>(this[0]) << 24) + (<u32>(this[1]) << 16) + (<u32>(this[2]) << 8) + <u32>(this[3]);
   }
+
+  @inline
+  toUShort(): u16 {
+    return (<u16>(this[0]) << 8) + <u16>(this[1]);
+  }
 }
 
 export class ByteView {
