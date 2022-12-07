@@ -5528,7 +5528,7 @@ export class Compiler extends DiagnosticEmitter {
     reportNode: Node
   ): ExpressionRef {
     if (operatorInstance.hasDecorator(DecoratorFlags.Builtin)) {
-      // for operators, @builtin is used only for ByteView::__eq (so far)
+      // for operators, @builtin is used only for ByteView::__n?eq (so far)
       if (right.isLiteralKind(LiteralKind.String)) {
         let literal = (<StringLiteralExpression>right).value;
         let length = literal.length;
@@ -5536,8 +5536,11 @@ export class Compiler extends DiagnosticEmitter {
         args.push(left);
         args.push(right);
         let name = Node.createIdentifierExpression("__eq" + length.toString(), reportNode.range);
-        let call = Node.createCallExpression(name, null, args, reportNode.range);
-        return this.compileCallExpression(call, Type.bool);
+        let cmp = Node.createCallExpression(name, null, args, reportNode.range);
+        let exprOp = reportNode.operator;
+        if ((exprOp == Token.Exclamation_Equals_Equals) || (exprOp == Token.Exclamation_Equals))
+          cmp = Node.createUnaryPrefixExpression(Token.Exclamation, cmp, cmp.range);
+        return this.compileExpression(cmp, Type.bool);
       } else {
         this.error(
           DiagnosticCode.String_literal_expected,

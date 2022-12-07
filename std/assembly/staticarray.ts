@@ -474,6 +474,11 @@ export class ByteView {
     return false; // shouldn't even get here
   }
 
+  @inline @builtin @operator("!=")
+  private static __neq(left: ByteView, right: string): bool {
+    return false; // shouldn't even get here
+  }
+
   @inline
   toUInt(): u32 {
     return (<u32>(this[0]) << 24) + (<u32>(this[1]) << 16) + (<u32>(this[2]) << 8) + <u32>(this[3]);
