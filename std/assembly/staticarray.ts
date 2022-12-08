@@ -447,6 +447,14 @@ export class ByteArray {
   }
 
   @inline
+  static fromUShort(v: u16): ByteArray {
+    let a = new ByteArray(2);
+    a[0] = <u8>((v >> 8) & 0xFF);
+    a[1] = <u8>(v & 0xFF);
+    return a;
+  }
+
+  @inline
   toUShort(): u16 {
     return (<u16>(this[0]) << 8) + <u16>(this[1]);
   }
