@@ -369,6 +369,16 @@ export function util_accid(raddr: string): ByteArray {
   return a;
 }
 
+@global @inline
+export function util_sha512h(data: ByteView): ByteArray {
+  let a = new ByteArray(32);
+  let r = $util_accid(changetype<u32>(a), 32, changetype<u32>(data.underlying) + data.offset, data.length);
+  if (r < 32)
+    rollback("", r);
+
+  return a;
+}
+
 export declare namespace document {
   /** Returns document's encoding. */
   @external("env", "document.characterSet")

@@ -2723,6 +2723,15 @@ declare function $util_keylet(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "util_sha512h")
+declare function $util_sha512h(
+  write_ptr: u32,
+  write_len: u32,
+  read_ptr: u32,
+  read_len: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "util_verify")
 declare function $util_verify(
   dread_ptr: u32,
