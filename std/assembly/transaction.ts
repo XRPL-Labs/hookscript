@@ -1,3 +1,4 @@
+export const sfTransactionType = ((1 << 16) + 2);
 export const sfSignerWeight = ((1 << 16) + 3);
 export const sfFlags = ((2 << 16) + 2);
 export const sfSequence = ((2 << 16) + 4);
