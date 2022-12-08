@@ -325,8 +325,8 @@ export function state_foreign(key: ByteArray, ns: ByteArray, acc: ByteArray, el:
 }
 
 @global @inline
-export function state_set(key: ByteArray, data: ByteArray): void {
-  let r = $state_set(changetype<u32>(data), data.length, changetype<u32>(key), key.length);
+export function state_set(key: ByteArray, data: ByteView): void {
+  let r = $state_set(changetype<u32>(data.underlying) + data.offset, data.length, changetype<u32>(key), key.length);
   if (r < 0)
     rollback("", r);
 }
