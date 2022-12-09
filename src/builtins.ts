@@ -146,6 +146,8 @@ export namespace BuiltinNames {
   export const state = "~lib/builtins/$state";
   export const state_foreign = "~lib/builtins/$state_foreign";
   export const state_set = "~lib/builtins/$state_set";
+  export const sto_emplace = "~lib/builtins/$sto_emplace";
+  export const sto_erase = "~lib/builtins/$sto_erase";
   export const sto_subarray = "~lib/builtins/$sto_subarray";
   export const sto_subfield = "~lib/builtins/$sto_subfield";
   export const trace = "~lib/builtins/trace";

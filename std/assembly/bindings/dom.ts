@@ -332,6 +332,31 @@ export function state_set(key: ByteArray, data: ByteView): void {
 }
 
 @global @inline
+export function sto_emplace(obj: ByteView, field: ByteView, fid: i32): ByteArray {
+  let a = new ByteArray(obj.length + field.length);
+  let r = $sto_emplace(changetype<u32>(a), a.length, changetype<u32>(obj.underlying) + obj.offset, obj.length, changetype<u32>(field.underlying) + field.offset, field.length, fid);
+  if (r < 0)
+    rollback("", r);
+
+  return a;
+}
+
+@global @inline
+export function sto_erase(obj: ByteView, fid: i32): ByteView {
+  let a = new ByteArray(obj.length);
+  let r = $sto_erase(changetype<u32>(a), a.length, changetype<u32>(obj.underlying) + obj.offset, obj.length, fid);
+  if (r == -5) { // DOESNT_EXIST
+    __free(changetype<usize>(a));
+    return obj;
+  }
+
+  if (r < 0)
+    rollback("", r);
+
+  return new ByteView(a, 0, <i32>r);
+}
+
+@global @inline
 export function sto_subarray(array: ByteView, index: i32): ByteView {
   let r = $sto_subarray(changetype<u32>(array.underlying) + array.offset, <u32>(array.length), <u32>index);
   if (r < 0)
@@ -343,8 +368,8 @@ export function sto_subarray(array: ByteView, index: i32): ByteView {
 }
 
 @global @inline
-export function sto_subfield(obj: ByteView, field_id: i32): ByteView {
-  let r = $sto_subfield(changetype<u32>(obj.underlying) + obj.offset, <u32>(obj.length), <u32>field_id);
+export function sto_subfield(obj: ByteView, fid: i32): ByteView {
+  let r = $sto_subfield(changetype<u32>(obj.underlying) + obj.offset, <u32>(obj.length), <u32>fid);
   if (r < 0)
     rollback("", r);
 

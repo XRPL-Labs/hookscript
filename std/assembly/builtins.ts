@@ -2666,6 +2666,28 @@ declare function $state_set(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "sto_emplace")
+declare function $sto_emplace(
+  write_ptr: u32,
+  write_len: u32,
+  sread_ptr: u32,
+  sread_len: u32,
+  fread_ptr: u32,
+  fread_len: u32,
+  field_id: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "sto_erase")
+declare function $sto_erase(
+  write_ptr: u32,
+  write_len: u32,
+  read_ptr: u32,
+  read_len: u32,
+  field_id: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "sto_subarray")
 declare function $sto_subarray(
   read_ptr: u32,

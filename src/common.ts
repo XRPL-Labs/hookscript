@@ -263,6 +263,8 @@ export namespace CommonNames {
   export const state = "$state";
   export const state_foreign = "$state_foreign";
   export const state_set = "$state_set";
+  export const sto_emplace = "$sto_emplace";
+  export const sto_erase = "$sto_erase";
   export const sto_subarray = "$sto_subarray";
   export const sto_subfield = "$sto_subfield";
   export const trace = "trace";
