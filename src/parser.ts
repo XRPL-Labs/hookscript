@@ -4314,12 +4314,29 @@ export class Parser extends DiagnosticEmitter {
     let parts = new Array<string>();
     let rawParts = new Array<string>();
     let exprs = new Array<Expression>();
+    let exprLengths = new Array<i64>();
     parts.push(tn.readString(0, tag != null));
     rawParts.push(tn.source.text.substring(tn.readStringStart, tn.readStringEnd));
     while (tn.readingTemplateString) {
       let expr = this.parseExpression(tn);
       if (!expr) return null;
       exprs.push(expr);
+      if (!tn.skip(Token.Colon)) {
+        this.error(
+          DiagnosticCode._0_expected,
+          tn.range(), ":"
+        );
+        return null;
+      }
+      let length = tn.readInteger();
+      if (length <= 0) {
+        this.error(
+          DiagnosticCode._0_expected,
+          tn.range(), "length"
+        );
+        return null;
+      }
+      exprLengths.push(length);
       if (!tn.skip(Token.CloseBrace)) {
         this.error(
           DiagnosticCode._0_expected,
@@ -4330,7 +4347,7 @@ export class Parser extends DiagnosticEmitter {
       parts.push(tn.readString(CharCode.Backtick, tag != null));
       rawParts.push(tn.source.text.substring(tn.readStringStart, tn.readStringEnd));
     }
-    return Node.createTemplateLiteralExpression(tag, parts, rawParts, exprs, tn.range(startPos, tn.pos));
+    return Node.createTemplateLiteralExpression(tag, parts, rawParts, exprs, exprLengths, tn.range(startPos, tn.pos));
   }
 
   private joinPropertyCall(

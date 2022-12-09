@@ -7901,7 +7901,9 @@ export class Compiler extends DiagnosticEmitter {
     let numParts = parts.length;
     let expressions = expression.expressions;
     let numExpressions = expressions.length;
+    let exprLengths = expression.exprLengths;
     assert(numExpressions == numParts - 1);
+    assert(exprLengths.length == numExpressions);
 
     let module = this.module;
     let stringInstance = this.program.stringInstance;
@@ -7913,105 +7915,53 @@ export class Compiler extends DiagnosticEmitter {
         return this.ensureStaticString(parts[0]);
       }
 
-      // Shortcut for `${expr}`, `<prefix>${expr}`, `${expr}<suffix>`
-      if (numParts == 2) {
-        let expression = expressions[0];
-        let lhsLen = parts[0].length;
-        let rhsLen = parts[1].length;
-        // Shortcut for `${expr}`  ->   expr.toString()
-        if (!lhsLen && !rhsLen) {
-          return this.makeToString(
-            this.compileExpression(expression, stringType),
-            this.currentType, expression
-          );
-        }
-        // Shortcuts for
-        // `<prefix>${expr}`  ->  "<prefix>" + expr.toString()
-        // `${expr}<suffix>`  ->  expr.toString() + "<suffix>"
-        let hasPrefix = lhsLen != 0;
-        // @ts-ignore: cast
-        if (hasPrefix ^ (rhsLen != 0)) {
-          let lhs: ExpressionRef;
-          let rhs: ExpressionRef;
-          let expr = this.makeToString(
-            this.compileExpression(expression, stringType),
-            this.currentType, expression
-          );
-          if (hasPrefix) {
-            lhs = this.ensureStaticString(parts[0]);
-            rhs = expr;
-          } else {
-            // suffix
-            lhs = expr;
-            rhs = this.ensureStaticString(parts[1]);
-          }
-          let concatMethod = assert(stringInstance.getMethod("concat"));
-          return this.makeCallDirect(concatMethod, [ lhs, rhs ], expression);
-        }
+      // Compile to nested calls to __copy<n> in the general case
+      let totalLength = i64_new(0);
+      for (let i = 0; i < numParts; ++i) {
+        totalLength = i64_add(totalLength, parts[i].length);
+      }
+      for (let i = 0; i < numExpressions; ++i) {
+        totalLength = i64_add(totalLength, exprLengths[i]);
       }
 
-      // Shortcut for `${exprA}${exprB}`  ->  exprA.toString() + exprB.toString()
-      if (numParts == 3 && !parts[0].length && !parts[1].length && !parts[2].length) {
-        let exprA = expressions[0];
-        let exprB = expressions[1];
-
-        let lhs = this.makeToString(
-          this.compileExpression(exprA, stringType),
-          this.currentType, exprA
-        );
-        let rhs = this.makeToString(
-          this.compileExpression(exprB, stringType),
-          this.currentType, exprB
-        );
-        let concatMethod = assert(stringInstance.getMethod("concat"));
-        return this.makeCallDirect(concatMethod, [ lhs, rhs ], expression);
+      let callIdent = Node.createIdentifierExpression("newStringBuffer", expression.range);
+      let args = new Array<Expression>();
+      args.push(Node.createIntegerLiteralExpression(totalLength, expression.range));
+      let call = Node.createCallExpression(callIdent, null, args, expression.range);
+      let literalSegment = parts[0];
+      let curLength = literalSegment.length;
+      if (curLength) {
+        callIdent = Node.createIdentifierExpression("__copy" + curLength.toString(), expression.range);
+        args = new Array<Expression>();
+        args.push(call);
+        args.push(Node.createStringLiteralExpression(literalSegment, expression.range));
+        call = Node.createCallExpression(callIdent, null, args, expression.range);
       }
 
-      // Compile to a `StaticArray<string>#join("") in the general case
-      let expressionPositions = new Array<i32>(numExpressions);
-      let values = new Array<usize>();
-      if (parts[0].length > 0) values.push(this.ensureStaticString(parts[0]));
       for (let i = 1; i < numParts; ++i) {
-        expressionPositions[i - 1] = values.length;
-        values.push(module.usize(0));
-        if (parts[i].length > 0) values.push(this.ensureStaticString(parts[i]));
+        curLength = i64_low(exprLengths[i - 1]);
+        callIdent = Node.createIdentifierExpression("__copy" + curLength.toString(), expression.range);
+        args = new Array<Expression>();
+        args.push(call);
+        args.push(expressions[i - 1]);
+        call = Node.createCallExpression(callIdent, null, args, expression.range);
+        literalSegment = parts[i];
+        curLength = literalSegment.length;
+        if (curLength) {
+          callIdent = Node.createIdentifierExpression("__copy" + curLength.toString(), expression.range);
+          args = new Array<Expression>();
+          args.push(call);
+          args.push(Node.createStringLiteralExpression(literalSegment, expression.range));
+          call = Node.createCallExpression(callIdent, null, args, expression.range);
+        }
       }
-      let arrayInstance = assert(this.resolver.resolveClass(this.program.staticArrayPrototype, [ stringType ]));
-      let segment = this.addStaticBuffer(stringType, values, arrayInstance.id);
-      this.program.OBJECTInstance.writeField("gcInfo", 3, segment.buffer, 0); // use transparent gcinfo
-      let offset = i64_add(segment.offset, i64_new(this.program.totalOverhead));
-      let joinInstance = assert(arrayInstance.getMethod("join"));
-      let indexedSetInstance = assert(arrayInstance.lookupOverload(OperatorKind.IndexedSet, true));
-      let stmts = new Array<ExpressionRef>(2 * numExpressions + 1);
-      // Use one local per toString'ed subexpression, since otherwise recursion on the same
-      // static array would overwrite already prepared parts. Avoids a temporary array.
-      let temps = new Array<Local>(numExpressions);
-      let flow = this.currentFlow;
-      for (let i = 0; i < numExpressions; ++i) {
-        let expression = expressions[i];
-        let temp = flow.getTempLocal(stringType);
-        temps[i] = temp;
-        stmts[i] = module.local_set(temp.index,
-          this.makeToString(
-            this.compileExpression(expression, stringType),
-            this.currentType, expression
-          ),
-          true
-        );
-      }
-      // Populate the static array with the toString'ed subexpressions and call .join("")
-      for (let i = 0; i < numExpressions; ++i) {
-        stmts[numExpressions + i] = this.makeCallDirect(indexedSetInstance, [
-          module.usize(offset),
-          module.i32(expressionPositions[i]),
-          module.local_get(temps[i].index, stringType.toRef())
-        ], expression);
-      }
-      stmts[2 * numExpressions] = this.makeCallDirect(joinInstance, [
-        module.usize(offset),
-        this.ensureStaticString("")
-      ], expression);
-      return module.flatten(stmts, stringType.toRef());
+
+      callIdent = Node.createIdentifierExpression("convertStringBuffer", expression.range);
+      args = new Array<Expression>();
+      args.push(call);
+      args.push(Node.createIntegerLiteralExpression(totalLength, expression.range));
+      call = Node.createCallExpression(callIdent, null, args, expression.range);
+      return this.compileCallExpression(call, stringType);
     }
 
     // Try to find out whether the template function takes a full-blown TemplateStringsArray or if

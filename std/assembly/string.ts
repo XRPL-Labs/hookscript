@@ -630,6 +630,16 @@ export function parseFloat(str: string): f64 {
   return strtod(str);
 }
 
+@global @inline
+export function newStringBuffer(size: usize): usize {
+  return __new(size, idof<String>());
+}
+
+@global @inline
+export function convertStringBuffer(buf: usize, size: usize): string {
+  return changetype<string>(buf - size);
+}
+
 // Encoding helpers
 export namespace String {
 
