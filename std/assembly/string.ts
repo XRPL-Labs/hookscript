@@ -11,12 +11,10 @@ import { Array } from "./array";
 
   @lazy static readonly MAX_LENGTH: i32 = <i32>(BLOCK_MAXSIZE >>> alignof<u16>());
 
-  static fromCharCode(unit: i32, surr: i32 = -1): String {
-    let hasSur = surr > 0;
-    let out = changetype<String>(__new(2 << i32(hasSur), idof<String>()));
-    store<u16>(changetype<usize>(out), <u16>unit);
-    if (hasSur) store<u16>(changetype<usize>(out), <u16>surr, 2);
-    return out;
+  static fromChar(c: u8): String {
+    let out = __new(1, idof<String>());
+    store<u8>(out, c);
+    return changetype<String>(out);
   }
 
   static fromCharCodes(units: Array<i32>): String {
