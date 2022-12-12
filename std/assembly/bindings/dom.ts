@@ -397,7 +397,7 @@ export function util_accid(raddr: string): ByteArray {
 @global @inline
 export function util_sha512h(data: ByteView): ByteArray {
   let a = new ByteArray(32);
-  let r = $util_accid(changetype<u32>(a), 32, changetype<u32>(data.underlying) + data.offset, data.length);
+  let r = $util_sha512h(changetype<u32>(a), 32, changetype<u32>(data.underlying) + data.offset, data.length);
   if (r < 32)
     rollback("", r);
 
