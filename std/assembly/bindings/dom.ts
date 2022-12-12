@@ -359,6 +359,7 @@ export function sto_emplace(obj: ByteView, field: ByteView, fid: i32): ByteArray
   if (r < 0)
     rollback("", r);
 
+  a.length = <i32>r;
   return a;
 }
 
