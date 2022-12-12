@@ -230,10 +230,12 @@ export function emit_sto(buffer: ByteArray): Bytes32 {
 
   let fee_buf = new ByteArray(9);
   _06_08_ENCODE_DROPS_FEE(changetype<u32>(fee_buf), fee_to_pay);
-  let buffer2 = new ByteArray(buffer.length + 9);
+  let buffer2 = new ByteArray(buffer.length + 13);
   let r = $sto_emplace(changetype<u32>(buffer2), buffer2.length, changetype<u32>(buffer), buffer.length, changetype<u32>(fee_buf), 9, sfFee);
   if (r < 0)
     rollback("", r);
+
+  buffer2.length = <i32>r;
 
   let emit_hash = new Bytes32();
   let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buffer2), buffer2.length);
@@ -354,7 +356,7 @@ export function state_set(key: ByteArray, data: ByteView): void {
 
 @global @inline
 export function sto_emplace(obj: ByteView, field: ByteView, fid: i32): ByteArray {
-  let a = new ByteArray(obj.length + field.length);
+  let a = new ByteArray(obj.length + field.length + 4);
   let r = $sto_emplace(changetype<u32>(a), a.length, changetype<u32>(obj.underlying) + obj.offset, obj.length, changetype<u32>(field.underlying) + field.offset, field.length, fid);
   if (r < 0)
     rollback("", r);
