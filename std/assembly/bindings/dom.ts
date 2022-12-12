@@ -367,7 +367,6 @@ export function sto_erase(obj: ByteView, fid: i32): ByteView {
   let a = new ByteArray(obj.length);
   let r = $sto_erase(changetype<u32>(a), a.length, changetype<u32>(obj.underlying) + obj.offset, obj.length, fid);
   if (r == -5) { // DOESNT_EXIST
-    __free(changetype<usize>(a));
     return obj;
   }
 
