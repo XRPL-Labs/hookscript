@@ -223,6 +223,27 @@ export function emit(tx: EmitSpec): Bytes32 {
 }
 
 @global @inline
+export function emit_sto(buffer: ByteArray): Bytes32 {
+  let fee_to_pay = $etxn_fee_base(changetype<u32>(buffer), buffer.length);
+  if (fee_to_pay < 0)
+    rollback("", fee_to_pay);
+
+  let fee_buf = new ByteArray(9);
+  _06_08_ENCODE_DROPS_FEE(changetype<u32>(fee_buf), fee_to_pay);
+  let buffer2 = new ByteArray(buffer.length + 9);
+  let r = $sto_emplace(changetype<u32>(buffer2), buffer2.length, changetype<u32>(buffer), buffer.length, changetype<u32>(fee_buf), 9, sfFee);
+  if (r < 0)
+    rollback("", r);
+
+  let emit_hash = new Bytes32();
+  let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buffer2), buffer2.length);
+  if (emit_result < 0)
+    rollback("", emit_result);
+
+  return emit_hash;
+}
+
+@global @inline
 export function etxn_reserve(count: u32): void {
   let r = $etxn_reserve(count);
   if (r != count)
