@@ -5,6 +5,26 @@ export class Account {
       rollback("", bytes.length);
   }
 
+  compare(right: ByteArray): i32 {
+    let ptr1 = changetype<usize>(this.bytes);
+    let ptr2 = changetype<usize>(right);
+    if (ptr1 == ptr2) return 0;
+
+    for (let i = 0; max_iterations(20), i < 20; ++i) {
+      let a = load<u8>(ptr1);
+      let b = load<u8>(ptr2);
+      if (a > b)
+        return 1;
+      else if (a < b)
+        return -1;
+
+      ++ptr1;
+      ++ptr2;
+    }
+
+    return 0;
+  }
+
   @inline @operator("==")
   private static __eq(left: Account, right: ByteArray): bool {
     if (right.length != 20)
