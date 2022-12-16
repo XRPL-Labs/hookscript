@@ -271,6 +271,15 @@ export function float_set(exponent: i32, mantissa: i64): i64 {
 }
 
 @global @inline
+export function float_sto_set(data: ByteView): i64 {
+  let r = $float_sto_set(changetype<u32>(data.underlying) + data.offset, data.length);
+  if (r < 0)
+    rollback("", r);
+
+  return r;
+}
+
+@global @inline
 export function hook_account(): ByteArray {
   let a = new ByteArray(20);
   let r = $hook_account(changetype<u32>(a), 20);
@@ -289,6 +298,15 @@ export function hook_param(name: string): ByteArray {
 
   a.length = <i32>r;
   return a;
+}
+
+@global @inline
+export function otxn_slot(sn: i32): i32 {
+  let r = $otxn_slot(sn);
+  if (r < 0)
+    rollback("", r);
+
+  return <i32>r;
 }
 
 @global @inline
@@ -346,6 +364,15 @@ export function slot_subarray(parent: i32, idx: i32, target: i32): i32 {
 @global @inline
 export function slot_subfield(parent: i32, field: i32, target: i32): i32 {
   let r = $slot_subfield(<u32>parent, <u32>field, <u32>target);
+  if (r < 0)
+    rollback("", r);
+
+  return <i32>r;
+}
+
+@global @inline
+export function slot_type(sn: u32, flags: u32): i32 {
+  let r = $slot_type(sn, flags);
   if (r < 0)
     rollback("", r);
 

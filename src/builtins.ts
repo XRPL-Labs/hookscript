@@ -135,10 +135,12 @@ export namespace BuiltinNames {
   export const etxn_reserve = "~lib/builtins/$etxn_reserve";
   export const float_compare = "~lib/builtins/$float_compare";
   export const float_set = "~lib/builtins/$float_set";
+  export const float_sto_set = "~lib/builtins/$float_sto_set";
   export const hook_account = "~lib/builtins/$hook_account";
   export const hook_param = "~lib/builtins/$hook_param";
   export const ledger_seq = "~lib/builtins/ledger_seq";
   export const otxn_field = "~lib/builtins/otxn_field";
+  export const otxn_slot = "~lib/builtins/$otxn_slot";
   export const rollback = "~lib/builtins/$rollback";
   export const slot = "~lib/builtins/$slot";
   export const slot_count = "~lib/builtins/$slot_count";
@@ -146,6 +148,7 @@ export namespace BuiltinNames {
   export const slot_set = "~lib/builtins/$slot_set";
   export const slot_subarray = "~lib/builtins/$slot_subarray";
   export const slot_subfield = "~lib/builtins/$slot_subfield";
+  export const slot_type = "~lib/builtins/$slot_type";
   export const state = "~lib/builtins/$state";
   export const state_foreign = "~lib/builtins/$state_foreign";
   export const state_set = "~lib/builtins/$state_set";

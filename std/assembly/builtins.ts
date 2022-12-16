@@ -2575,6 +2575,13 @@ declare function $float_set(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "float_sto_set")
+declare function $float_sto_set(
+  read_ptr: u32,
+  read_len: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "hook_account")
 declare function $hook_account(
   write_ptr: u32,
@@ -2601,6 +2608,12 @@ declare function otxn_field(
   write_ptr: u32,
   write_len: u32,
   field_id: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "otxn_slot")
+declare function $otxn_slot(
+  slot_no: u32
 ): i64;
 
 // @ts-ignore: decorator
@@ -2653,6 +2666,13 @@ declare function $slot_subfield(
   parent_slot: u32,
   field_id: u32,
   new_slot: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "slot_type")
+declare function $slot_type(
+  slot_no: u32,
+  flags: u32
 ): i64;
 
 // @ts-ignore: decorator
