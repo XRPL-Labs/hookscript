@@ -8066,8 +8066,12 @@ export class Compiler extends DiagnosticEmitter {
     assert(element.kind == ElementKind.Class);
     let arrayInstance = <Class>element;
     let arrayType = arrayInstance.type;
-    let elementType = arrayInstance.getTypeArgumentsTo(program.arrayPrototype)![0];
-    let arrayBufferInstance = assert(program.arrayBufferInstance);
+    let elementType = (arrayInstance.prototype != program.byteArrayPrototype)
+      ? arrayInstance.getTypeArgumentsTo(program.arrayPrototype)![0]
+      : Type.u8;
+    let arrayBufferInstance = (arrayInstance.prototype != program.byteArrayPrototype)
+      ? assert(program.arrayBufferInstance)
+      : arrayInstance;
 
     // block those here so compiling expressions doesn't conflict
     let tempThis = flow.getTempLocal(this.options.usizeType);
@@ -8098,14 +8102,25 @@ export class Compiler extends DiagnosticEmitter {
       }
     }
 
-    // if the array is static, make a static arraybuffer segment
+    // if the array is static, make a static arraybuffer segment / static ByteArray
     if (isStatic) {
       let totalOverhead = program.totalOverhead;
-      let bufferSegment = this.addStaticBuffer(elementType, values);
+      let bufferSegment = this.addStaticBuffer(elementType, values, arrayBufferInstance.id);
       let bufferAddress = i64_add(bufferSegment.offset, i64_new(totalOverhead));
 
-      // make both the buffer and array header static if assigned to a global. this can't be done
-      // if inside of a function because each invocation must create a new array reference then.
+      // Make ByteArray static; this couldn't be done in generic
+      // AssemblyScript if inside of a function, because each
+      // invocation would have to create a new array reference, but as
+      // Hooks do not support functions calling each other the problem
+      // does not arise.
+      if (arrayInstance.prototype == program.byteArrayPrototype) {
+        let expr = this.options.isWasm64
+          ? module.i64(i64_low(bufferAddress), i64_high(bufferAddress))
+          : module.i32(i64_low(bufferAddress));
+        this.currentType = arrayType;
+        return expr;
+      }
+
       if (constraints & Constraints.PreferStatic) {
         let arraySegment = this.addStaticArrayHeader(elementType, bufferSegment);
         let arrayAddress = i64_add(arraySegment.offset, i64_new(totalOverhead));
@@ -8141,14 +8156,18 @@ export class Compiler extends DiagnosticEmitter {
       )
     );
     // tempData = tempThis.dataStart
-    let dataStartMember = assert(arrayInstance.getMember("dataStart"));
-    assert(dataStartMember.kind == ElementKind.Field);
+    let memoryOffset = 0;
+    let dataStartMember = arrayInstance.getMember("dataStart");
+    if (dataStartMember) {
+      assert(dataStartMember.kind == ElementKind.Field);
+      memoryOffset = (<Field>dataStartMember).memoryOffset;
+    }
     stmts.push(
       module.local_set(tempDataStart.index,
         module.load(arrayType.byteSize, false,
           module.local_get(tempThis.index, arrayTypeRef),
           arrayTypeRef,
-          (<Field>dataStartMember).memoryOffset
+          memoryOffset
         ),
         true // ArrayBuffer
       )
@@ -8186,7 +8205,9 @@ export class Compiler extends DiagnosticEmitter {
     let program = this.program;
     let module = this.module;
     assert(!arrayInstance.extends(program.staticArrayPrototype));
-    let elementType = arrayInstance.getArrayValueType(); // asserts
+    let elementType = (arrayInstance.prototype != program.byteArrayPrototype)
+      ? arrayInstance.getArrayValueType() // asserts
+      : Type.u8;
 
     // __newArray(length, alignLog2, classId, staticBuffer)
     let expr = this.makeCallDirect(program.newArrayInstance, [

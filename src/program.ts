@@ -515,6 +515,14 @@ export class Program extends DiagnosticEmitter {
   }
   private _staticArrayPrototype: ClassPrototype | null = null;
 
+  /** Gets the standard `ByteArray` prototype. */
+  get byteArrayPrototype(): ClassPrototype {
+    let cached = this._byteArrayPrototype;
+    if (!cached) this._byteArrayPrototype = cached = <ClassPrototype>this.require("ByteArray", ElementKind.ClassPrototype);
+    return cached;
+  }
+  private _byteArrayPrototype: ClassPrototype | null = null;
+
   /** Gets the standard `Set` prototype. */
   get setPrototype(): ClassPrototype {
     let cached = this._setPrototype;

@@ -2311,7 +2311,7 @@ export class Resolver extends DiagnosticEmitter {
         // otherwise infer, ignoring ctxType
         let expressions = (<ArrayLiteralExpression>node).elementExpressions;
         let length = expressions.length;
-        let elementType = Type.auto;
+        let elementType = Type.u8; // we want ByteArray, if the elements fit
         let numNullLiterals = 0;
         for (let i = 0, k = length; i < k; ++i) {
           let expression = expressions[i];
@@ -2319,10 +2319,12 @@ export class Resolver extends DiagnosticEmitter {
             if (expression.kind == NodeKind.Null && length > 1) {
               ++numNullLiterals;
             } else {
-              let currentType = this.resolveExpression(expression, ctxFlow, elementType);
-              if (!currentType) return null;
-              if (elementType == Type.auto) elementType = currentType;
-              else if (currentType != elementType) {
+              let currentType = Type.u8;
+              if (expression.kind != NodeKind.Omitted) {
+                currentType = this.resolveExpression(expression, ctxFlow, elementType);
+                if (!currentType) return null;
+              }
+              if (currentType != elementType) {
                 let commonType = Type.commonDenominator(elementType, currentType, false);
                 if (commonType) elementType = commonType;
                 // otherwise triggers error on compilation
@@ -2330,18 +2332,17 @@ export class Resolver extends DiagnosticEmitter {
             }
           }
         }
-        if (elementType /* still */ == Type.auto) {
-          if (numNullLiterals == length) { // all nulls infers as usize
-            elementType = this.program.options.usizeType;
-          } else {
+        if (elementType /* still */ == Type.u8) {
+          if (numNullLiterals > 0) {
             if (reportMode == ReportMode.Report) {
               this.error(
-                DiagnosticCode.The_type_argument_for_type_parameter_0_cannot_be_inferred_from_the_usage_Consider_specifying_the_type_arguments_explicitly,
-                node.range, "T"
+                DiagnosticCode.Type_0_cannot_be_nullable,
+                node.range, "u8"
               );
             }
             return null;
           }
+          return assert(this.resolveClass(this.program.byteArrayPrototype));
         }
         if (
           numNullLiterals > 0 &&
