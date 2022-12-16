@@ -1,3 +1,4 @@
+export const KEYLET_LINE = 9;
 export const KEYLET_SIGNERS = 14;
 
 export class Keylet {
@@ -10,5 +11,15 @@ export class Keylet {
       rollback("", r);
 
     return a;
+  }
+
+  @inline
+  static getTrustLine(high: Account, low: Account, currency: ByteArray): ByteArray {
+    let res = new ByteArray(34);
+    let r = $util_keylet(changetype<u32>(res), 34, KEYLET_LINE, changetype<u32>(high.bytes), 20, changetype<u32>(low.bytes), 20, changetype<u32>(currency), currency.length);
+    if (r != 34)
+      rollback("", r);
+
+    return res;
   }
 }
