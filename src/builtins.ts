@@ -133,6 +133,8 @@ export namespace BuiltinNames {
   export const etxn_details = "~lib/builtins/$etxn_details";
   export const etxn_fee_base = "~lib/builtins/$etxn_fee_base";
   export const etxn_reserve = "~lib/builtins/$etxn_reserve";
+  export const float_compare = "~lib/builtins/$float_compare";
+  export const float_set = "~lib/builtins/$float_set";
   export const hook_account = "~lib/builtins/$hook_account";
   export const hook_param = "~lib/builtins/$hook_param";
   export const ledger_seq = "~lib/builtins/ledger_seq";
@@ -140,6 +142,7 @@ export namespace BuiltinNames {
   export const rollback = "~lib/builtins/$rollback";
   export const slot = "~lib/builtins/$slot";
   export const slot_count = "~lib/builtins/$slot_count";
+  export const slot_float = "~lib/builtins/$slot_float";
   export const slot_set = "~lib/builtins/$slot_set";
   export const slot_subarray = "~lib/builtins/$slot_subarray";
   export const slot_subfield = "~lib/builtins/$slot_subfield";
@@ -151,6 +154,7 @@ export namespace BuiltinNames {
   export const sto_subarray = "~lib/builtins/$sto_subarray";
   export const sto_subfield = "~lib/builtins/$sto_subfield";
   export const trace = "~lib/builtins/trace";
+  export const trace_float = "~lib/builtins/$trace_float";
   export const trace_num = "~lib/builtins/$trace_num";
   export const util_accid = "~lib/builtins/$util_accid";
   export const util_keylet = "~lib/builtins/$util_keylet";

@@ -1484,6 +1484,12 @@ export class Program extends DiagnosticEmitter {
       if (!globalAliases.has(CommonNames.etxn_reserve)) {
         globalAliases.set(CommonNames.etxn_reserve, BuiltinNames.etxn_reserve);
       }
+      if (!globalAliases.has(CommonNames.float_compare)) {
+        globalAliases.set(CommonNames.float_compare, BuiltinNames.float_compare);
+      }
+      if (!globalAliases.has(CommonNames.float_set)) {
+        globalAliases.set(CommonNames.float_set, BuiltinNames.float_set);
+      }
       if (!globalAliases.has(CommonNames.hook_account)) {
         globalAliases.set(CommonNames.hook_account, BuiltinNames.hook_account);
       }
@@ -1504,6 +1510,9 @@ export class Program extends DiagnosticEmitter {
       }
       if (!globalAliases.has(CommonNames.slot_count)) {
         globalAliases.set(CommonNames.slot_count, BuiltinNames.slot_count);
+      }
+      if (!globalAliases.has(CommonNames.slot_float)) {
+        globalAliases.set(CommonNames.slot_float, BuiltinNames.slot_float);
       }
       if (!globalAliases.has(CommonNames.slot_set)) {
         globalAliases.set(CommonNames.slot_set, BuiltinNames.slot_set);
@@ -1537,6 +1546,9 @@ export class Program extends DiagnosticEmitter {
       }
       if (!globalAliases.has(CommonNames.trace)) {
         globalAliases.set(CommonNames.trace, BuiltinNames.trace);
+      }
+      if (!globalAliases.has(CommonNames.trace_float)) {
+        globalAliases.set(CommonNames.trace_float, BuiltinNames.trace_float);
       }
       if (!globalAliases.has(CommonNames.trace_num)) {
         globalAliases.set(CommonNames.trace_num, BuiltinNames.trace_num);

@@ -2560,6 +2560,21 @@ export declare function $etxn_reserve(
 ): i64
 
 // @ts-ignore: decorator
+@external("env", "float_compare")
+declare function $float_compare(
+  float1: i64,
+  float2: i64,
+  mode: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "float_set")
+declare function $float_set(
+  exponent: i32,
+  mantissa: i64
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "hook_account")
 declare function $hook_account(
   write_ptr: u32,
@@ -2607,6 +2622,12 @@ declare function $slot(
 // @ts-ignore: decorator
 @external("env", "slot_count")
 declare function $slot_count(
+  slot_no: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "slot_float")
+declare function $slot_float(
   slot_no: u32
 ): i64;
 
@@ -2711,6 +2732,14 @@ declare function trace(
   dread_ptr: u32,
   dread_len: u32,
   as_hex: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "trace_float")
+declare function $trace_float(
+  read_ptr: string,
+  read_len: u32,
+  float1: i64
 ): i64;
 
 // @ts-ignore: decorator

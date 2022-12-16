@@ -253,6 +253,24 @@ export function etxn_reserve(count: u32): void {
 }
 
 @global @inline
+export function float_compare(float1: i64, float2: i64, mode: u32): i32 {
+  let r = $float_compare(float1, float2, mode);
+  if ((r < 0) || (r > 1))
+    rollback("", r);
+
+  return <i32>r;
+}
+
+@global @inline
+export function float_set(exponent: i32, mantissa: i64): i64 {
+  let r = $float_set(exponent, mantissa);
+  if (r < 0)
+    rollback("", r);
+
+  return r;
+}
+
+@global @inline
 export function hook_account(): ByteArray {
   let a = new ByteArray(20);
   let r = $hook_account(changetype<u32>(a), 20);
@@ -296,6 +314,15 @@ export function slot_count(sn: i32): i32 {
     rollback("", r);
 
   return <i32>r;
+}
+
+@global @inline
+export function slot_float(sn: i32): i64 {
+  let r = $slot_float(<u32>sn);
+  if (r < 0)
+    rollback("", r);
+
+  return r;
 }
 
 @global @inline
@@ -399,6 +426,11 @@ export function sto_subfield(obj: ByteView, fid: i32): ByteView {
   let offset = <i32>(r >> 32);
   let length = <i32>(r & 0xFFFFFFFF);
   return new ByteView(obj.underlying, obj.offset + offset, length);
+}
+
+@global @inline
+export function trace_float(msg: string, fln: i64): void {
+  $trace_float(msg, msg.length, fln);
 }
 
 @global @inline

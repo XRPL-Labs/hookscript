@@ -250,6 +250,8 @@ export namespace CommonNames {
   export const etxn_details = "$etxn_details";
   export const etxn_fee_base = "$etxn_fee_base";
   export const etxn_reserve = "$etxn_reserve";
+  export const float_compare = "$float_compare";
+  export const float_set = "$float_set";
   export const hook_account = "$hook_account";
   export const hook_param = "$hook_param";
   export const ledger_seq = "ledger_seq";
@@ -257,6 +259,7 @@ export namespace CommonNames {
   export const rollback = "$rollback";
   export const slot = "$slot";
   export const slot_count = "$slot_count";
+  export const slot_float = "$slot_float";
   export const slot_set = "$slot_set";
   export const slot_subarray = "$slot_subarray";
   export const slot_subfield = "$slot_subfield";
@@ -268,6 +271,7 @@ export namespace CommonNames {
   export const sto_subarray = "$sto_subarray";
   export const sto_subfield = "$sto_subfield";
   export const trace = "trace";
+  export const trace_float = "$trace_float";
   export const trace_num = "$trace_num";
   export const util_accid = "$util_accid";
   export const util_keylet = "$util_keylet";
