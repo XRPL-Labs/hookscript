@@ -7,6 +7,7 @@ import {
   _02_26_ENCODE_FLS,
   _02_27_ENCODE_LLS,
   _06_01_ENCODE_DROPS_AMOUNT,
+  _06_01_ENCODE_TL_AMOUNT,
   _06_08_ENCODE_DROPS_FEE,
   _07_03_ENCODE_SIGNING_PUBKEY_NULL,
   _08_01_ENCODE_ACCOUNT_SRC,
@@ -188,7 +189,10 @@ export function accept(msg: string = "", err: i64 = 0): void {
 
 @global @inline
 export function emit(tx: EmitSpec): Bytes32 {
-  let buf = new ByteArray(248); // FIXME: w/o cbak only, so far
+  // 288 for non-XRP transactions is bigger than
+  // PREPARE_PAYMENT_SIMPLE_TRUSTLINE_SIZE in macro.h (287) because
+  // macro.h is incorrect
+  let buf = new ByteArray(tx.amount.isXrp() ? 248 : 288); // FIXME: w/o cbak only, so far
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -200,7 +204,10 @@ export function emit(tx: EmitSpec): Bytes32 {
   buf_out = _02_14_ENCODE_TAG_DST(buf_out, tx.destinationTag);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
   buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
-  buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, tx.amount.bytes);
+  if (tx.amount.isXrp())
+    buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, tx.amount.bytes);
+  else
+    buf_out = _06_01_ENCODE_TL_AMOUNT(buf_out, tx.amount.bytes);
   let fee_ptr = buf_out;
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
@@ -208,14 +215,14 @@ export function emit(tx: EmitSpec): Bytes32 {
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.account.bytes));
 
   // doesn't check return value
-  $etxn_details(buf_out, 248 - (buf_out - changetype<u32>(buf)));
+  $etxn_details(buf_out, buf.length - (buf_out - changetype<u32>(buf)));
 
   // ditto
-  let fee = $etxn_fee_base(changetype<u32>(buf), 248);
+  let fee = $etxn_fee_base(changetype<u32>(buf), buf.length);
   _06_08_ENCODE_DROPS_FEE(fee_ptr, fee);
 
   let emit_hash = new Bytes32();
-  let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buf), 248);
+  let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buf), buf.length);
   if (emit_result < 0)
     rollback("", emit_result);
 

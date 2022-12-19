@@ -8,6 +8,14 @@ export const amAMOUNT: u8 = 1;
 export const amFEE: u8 = 8;
 
 @inline
+export function ENCODE_TL(buf: u32, tlamt: u32, uat: u8): u32 {
+  store<u8>(buf, 0x60 + (uat & 0x0F));
+  for (let i = 0; max_iterations(6), i < 48; i += 8)
+    store<u64>(buf + i + 1, load<u64>(tlamt + i));
+  return buf + 49;
+}
+
+@inline
 export function ENCODE_TT(buf: u32, utt: u8): u32 {
   store<u8>(buf, 0x12);
   store<u8>(buf + 1, 0);
@@ -114,6 +122,11 @@ export function _02_27_ENCODE_LLS(buf: u32, lls: u32): u32 {
 @inline
 export function _06_01_ENCODE_DROPS_AMOUNT(buf: u32, drops: BytesBase): u32 {
   return ENCODE_DROPS_ARRAY(buf, drops, amAMOUNT);
+}
+
+@inline
+export function _06_01_ENCODE_TL_AMOUNT(buf: u32, drops: BytesBase): u32 {
+  return ENCODE_TL(buf, changetype<u32>(drops), amAMOUNT);
 }
 
 @inline
