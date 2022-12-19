@@ -2568,6 +2568,35 @@ declare function $float_compare(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "float_divide")
+declare function $float_divide(
+  float1: i64,
+  float2: i64
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "float_mulratio")
+declare function $float_mulratio(
+  float1: i64,
+  round_up: u32,
+  numerator: u32,
+  denominator: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "float_multiply")
+declare function $float_multiply(
+  float1: i64,
+  float2: i64
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "float_negate")
+declare function $float_negate(
+  float1: i64
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "float_set")
 declare function $float_set(
   exponent: i32,
@@ -2575,10 +2604,30 @@ declare function $float_set(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "float_sto")
+declare function $float_sto(
+  write_ptr: u32,
+  write_len: u32,
+  cread_ptr: u32,
+  cread_len: u32,
+  iread_ptr: u32,
+  iread_len: u32,
+  float1: i64,
+  field_code: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "float_sto_set")
 declare function $float_sto_set(
   read_ptr: u32,
   read_len: u32
+): i64;
+
+// @ts-ignore: decorator
+@external("env", "float_sum")
+declare function $float_sum(
+  float1: i64,
+  float2: i64
 ): i64;
 
 // @ts-ignore: decorator

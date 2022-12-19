@@ -1487,11 +1487,29 @@ export class Program extends DiagnosticEmitter {
       if (!globalAliases.has(CommonNames.float_compare)) {
         globalAliases.set(CommonNames.float_compare, BuiltinNames.float_compare);
       }
+      if (!globalAliases.has(CommonNames.float_divide)) {
+        globalAliases.set(CommonNames.float_divide, BuiltinNames.float_divide);
+      }
+      if (!globalAliases.has(CommonNames.float_mulratio)) {
+        globalAliases.set(CommonNames.float_mulratio, BuiltinNames.float_mulratio);
+      }
+      if (!globalAliases.has(CommonNames.float_multiply)) {
+        globalAliases.set(CommonNames.float_multiply, BuiltinNames.float_multiply);
+      }
+      if (!globalAliases.has(CommonNames.float_negate)) {
+        globalAliases.set(CommonNames.float_negate, BuiltinNames.float_negate);
+      }
       if (!globalAliases.has(CommonNames.float_set)) {
         globalAliases.set(CommonNames.float_set, BuiltinNames.float_set);
       }
+      if (!globalAliases.has(CommonNames.float_sto)) {
+        globalAliases.set(CommonNames.float_sto, BuiltinNames.float_sto);
+      }
       if (!globalAliases.has(CommonNames.float_sto_set)) {
         globalAliases.set(CommonNames.float_sto_set, BuiltinNames.float_sto_set);
+      }
+      if (!globalAliases.has(CommonNames.float_sum)) {
+        globalAliases.set(CommonNames.float_sum, BuiltinNames.float_sum);
       }
       if (!globalAliases.has(CommonNames.hook_account)) {
         globalAliases.set(CommonNames.hook_account, BuiltinNames.hook_account);

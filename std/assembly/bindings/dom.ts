@@ -262,6 +262,42 @@ export function float_compare(float1: i64, float2: i64, mode: u32): i32 {
 }
 
 @global @inline
+export function float_divide(float1: i64, float2: i64): i64 {
+  let r = $float_divide(float1, float2);
+  if (r < 0)
+    rollback("", r);
+
+  return r;
+}
+
+@global @inline
+export function float_mulratio(float1: i64, round_up: u32, numerator: u32, denominator: u32): i64 {
+  let r = $float_mulratio(float1, round_up, numerator, denominator);
+  if (r < 0)
+    rollback("", r);
+
+  return r;
+}
+
+@global @inline
+export function float_multiply(float1: i64, float2: i64): i64 {
+  let r = $float_multiply(float1, float2);
+  if (r < 0)
+    rollback("", r);
+
+  return r;
+}
+
+@global @inline
+export function float_negate(float1: i64): i64 {
+  let r = $float_negate(float1);
+  if (r < 0)
+    rollback("", r);
+
+  return r;
+}
+
+@global @inline
 export function float_set(exponent: i32, mantissa: i64): i64 {
   let r = $float_set(exponent, mantissa);
   if (r < 0)
@@ -271,8 +307,32 @@ export function float_set(exponent: i32, mantissa: i64): i64 {
 }
 
 @global @inline
+export function float_sto(currency: ByteView, issuer: ByteView, float1: i64, field: i32, el: i32 = 8): ByteArray {
+  let a = new ByteArray(el);
+  let r = $float_sto(
+    changetype<u32>(a), el,
+    changetype<u32>(currency.underlying) + currency.offset, currency.length,
+    changetype<u32>(issuer.underlying) + issuer.offset, issuer.length,
+    float1,
+    field);
+  if (r < 0)
+    rollback("", r);
+
+  return a;
+}
+
+@global @inline
 export function float_sto_set(data: ByteView): i64 {
   let r = $float_sto_set(changetype<u32>(data.underlying) + data.offset, data.length);
+  if (r < 0)
+    rollback("", r);
+
+  return r;
+}
+
+@global @inline
+export function float_sum(float1: i64, float2: i64): i64 {
+  let r = $float_sum(float1, float2);
   if (r < 0)
     rollback("", r);
 

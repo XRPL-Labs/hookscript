@@ -134,8 +134,14 @@ export namespace BuiltinNames {
   export const etxn_fee_base = "~lib/builtins/$etxn_fee_base";
   export const etxn_reserve = "~lib/builtins/$etxn_reserve";
   export const float_compare = "~lib/builtins/$float_compare";
+  export const float_divide = "~lib/builtins/$float_divide";
+  export const float_mulratio = "~lib/builtins/$float_mulratio";
+  export const float_multiply = "~lib/builtins/$float_multiply";
+  export const float_negate = "~lib/builtins/$float_negate";
   export const float_set = "~lib/builtins/$float_set";
+  export const float_sto = "~lib/builtins/$float_sto";
   export const float_sto_set = "~lib/builtins/$float_sto_set";
+  export const float_sum = "~lib/builtins/$float_sum";
   export const hook_account = "~lib/builtins/$hook_account";
   export const hook_param = "~lib/builtins/$hook_param";
   export const ledger_seq = "~lib/builtins/ledger_seq";
