@@ -77,4 +77,6 @@ export class Tx {
 export class EmitSpec {
   account: Account;
   amount: Amount;
+  sourceTag: u32;
+  destinationTag: u32;
 }

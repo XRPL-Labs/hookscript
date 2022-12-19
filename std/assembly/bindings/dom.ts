@@ -195,9 +195,9 @@ export function emit(tx: EmitSpec): Bytes32 {
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttPAYMENT);
   buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
-  buf_out = _02_03_ENCODE_TAG_SRC(buf_out, 0); // FIXME: source tag not supported
+  buf_out = _02_03_ENCODE_TAG_SRC(buf_out, tx.sourceTag);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
-  buf_out = _02_14_ENCODE_TAG_DST(buf_out, 0); // FIXME: destination tag not supported
+  buf_out = _02_14_ENCODE_TAG_DST(buf_out, tx.destinationTag);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
   buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
   buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, tx.amount.bytes);
