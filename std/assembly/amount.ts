@@ -1,7 +1,13 @@
 export class Amount {
   @inline
-  constructor(public bytes: BytesBase, public length: i32) {
-    // assert((bytes.length == 8) || (bytes.length == 48)) && ((length == 8) || (length == 48)) && (bytes.length >= length)); calls abort
+  constructor(public bytes: ByteArray) {
+    if ((bytes.length != 8) && (bytes.length != 48))
+      rollback("", bytes.length);
+  }
+
+  @inline
+  get length(): i32 {
+    return this.bytes.length;
   }
 
   @inline
@@ -26,7 +32,7 @@ export class Amount {
 
   @inline
   static fromDrops(drops: u64): Amount {
-    let buf = new Bytes8();
+    let buf = new ByteArray(8);
     buf[0] = <u8>((drops >> 56) & 0x3F);
     buf[1] = <u8>((drops >> 48) & 0xFF);
     buf[2] = <u8>((drops >> 40) & 0xFF);
@@ -36,6 +42,6 @@ export class Amount {
     buf[6] = <u8>((drops >> 8) & 0xFF);
     buf[7] = <u8>(drops & 0xFF);
 
-    return new Amount(buf, 8);
+    return new Amount(buf);
   }
 };

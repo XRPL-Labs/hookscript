@@ -576,36 +576,3 @@ export class Bytes32 extends BytesBase {
     return !this.__eq(left, right);
   }
 }
-
-@final
-export class Bytes48 extends BytesBase {
-  @inline
-  constructor() {
-    super();
-    return changetype<Bytes48>(__new(48, idof<StaticArray<u8>>()));
-  }
-
-  override get length(): i32 {
-    return 48;
-  }
-
-  @inline @operator("==")
-  private static __eq(left: Bytes48, right: Bytes48): bool {
-    let ptr1 = changetype<usize>(left);
-    let ptr2 = changetype<usize>(right);
-    if (ptr1 == ptr2) return true;
-
-    for (let i = 0; max_iterations(6), i < 6; ++i) {
-      if (load<u64>(ptr1) != load<u64>(ptr2)) return false;
-      ptr1 += 8;
-      ptr2 += 8;
-    }
-
-    return true;
-  }
-
-  @inline @operator("!=")
-  private static __ne(left: Bytes48, right: Bytes48): bool {
-    return !this.__eq(left, right);
-  }
-}

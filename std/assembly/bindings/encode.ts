@@ -61,7 +61,7 @@ export function ENCODE_DROPS(buf: u32, udrops: u64, uat: u8): u32 {
 }
 
 @inline
-export function ENCODE_DROPS_ARRAY(buf: u32, drops: BytesBase, uat: u8): u32 {
+export function ENCODE_DROPS_ARRAY(buf: u32, drops: ByteArray, uat: u8): u32 {
   store<u8>(buf, 0x60 + (uat & 0x0F));
   store<u8>(buf + 1, 0x40 + drops[0]);
   store<u8>(buf + 2, drops[1]);
@@ -120,12 +120,12 @@ export function _02_27_ENCODE_LLS(buf: u32, lls: u32): u32 {
 }
 
 @inline
-export function _06_01_ENCODE_DROPS_AMOUNT(buf: u32, drops: BytesBase): u32 {
+export function _06_01_ENCODE_DROPS_AMOUNT(buf: u32, drops: ByteArray): u32 {
   return ENCODE_DROPS_ARRAY(buf, drops, amAMOUNT);
 }
 
 @inline
-export function _06_01_ENCODE_TL_AMOUNT(buf: u32, drops: BytesBase): u32 {
+export function _06_01_ENCODE_TL_AMOUNT(buf: u32, drops: ByteArray): u32 {
   return ENCODE_TL(buf, changetype<u32>(drops), amAMOUNT);
 }
 

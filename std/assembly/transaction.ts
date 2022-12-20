@@ -40,15 +40,14 @@ export class Tx {
 
   @inline
   static get Amount(): Amount {
-    let a = new Bytes48();
-    let l = 48;
+    let a = new ByteArray(48);
     let r = otxn_field(changetype<u32>(a), 48, sfAmount);
     if (r == 8)
-      l = 8;
+      a.length = 8;
     else if (r != 48)
       rollback("", r);
 
-    return new Amount(a, l);
+    return new Amount(a);
   }
 
   @inline
