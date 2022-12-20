@@ -252,6 +252,7 @@ export namespace CommonNames {
   export const etxn_reserve = "$etxn_reserve";
   export const float_compare = "$float_compare";
   export const float_divide = "$float_divide";
+  export const float_int = "$float_int";
   export const float_mulratio = "$float_mulratio";
   export const float_multiply = "$float_multiply";
   export const float_negate = "$float_negate";

@@ -278,6 +278,15 @@ export function float_divide(float1: i64, float2: i64): i64 {
 }
 
 @global @inline
+export function float_int(float1: i64, dec: u32, abs: u32): i64 {
+  let r = $float_int(float1, dec, abs);
+  if (r < 0)
+    rollback("", r);
+
+  return r;
+}
+
+@global @inline
 export function float_mulratio(float1: i64, round_up: u32, numerator: u32, denominator: u32): i64 {
   let r = $float_mulratio(float1, round_up, numerator, denominator);
   if (r < 0)

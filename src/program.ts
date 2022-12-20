@@ -1490,6 +1490,9 @@ export class Program extends DiagnosticEmitter {
       if (!globalAliases.has(CommonNames.float_divide)) {
         globalAliases.set(CommonNames.float_divide, BuiltinNames.float_divide);
       }
+      if (!globalAliases.has(CommonNames.float_int)) {
+        globalAliases.set(CommonNames.float_int, BuiltinNames.float_int);
+      }
       if (!globalAliases.has(CommonNames.float_mulratio)) {
         globalAliases.set(CommonNames.float_mulratio, BuiltinNames.float_mulratio);
       }

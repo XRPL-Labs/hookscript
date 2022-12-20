@@ -2575,6 +2575,14 @@ declare function $float_divide(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "float_int")
+declare function $float_int(
+  float1: i64,
+  decimal_places: u32,
+  abs: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "float_mulratio")
 declare function $float_mulratio(
   float1: i64,

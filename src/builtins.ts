@@ -135,6 +135,7 @@ export namespace BuiltinNames {
   export const etxn_reserve = "~lib/builtins/$etxn_reserve";
   export const float_compare = "~lib/builtins/$float_compare";
   export const float_divide = "~lib/builtins/$float_divide";
+  export const float_int = "~lib/builtins/$float_int";
   export const float_mulratio = "~lib/builtins/$float_mulratio";
   export const float_multiply = "~lib/builtins/$float_multiply";
   export const float_negate = "~lib/builtins/$float_negate";
