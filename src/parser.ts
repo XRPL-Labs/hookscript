@@ -282,6 +282,9 @@ export class Parser extends DiagnosticEmitter {
       case Token.Function: {
         tn.next();
         statement = this.parseFunction(tn, flags, decorators, startPos);
+        // might have added export flag
+        if (statement && ((<FunctionDeclaration>statement).flags & CommonFlags.Export))
+          flags |= CommonFlags.Export;
         decorators = null;
         break;
       }
@@ -1435,6 +1438,9 @@ export class Parser extends DiagnosticEmitter {
     }
 
     let name = Node.createIdentifierExpression(tn.readIdentifier(), tn.range());
+    // hook entry points are always exported
+    if ((name.text == 'hook') || (name.text == 'cbak'))
+      flags |= CommonFlags.Export;
     let signatureStart = -1;
 
     let typeParameters: TypeParameterNode[] | null = null;
