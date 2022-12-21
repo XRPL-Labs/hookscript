@@ -1493,14 +1493,14 @@ export class Parser extends DiagnosticEmitter {
     }
 
     if (!returnType) {
-      returnType = Node.createOmittedType(
-        tn.range(tn.pos)
-      );
-      if (!isSetter) {
-        this.error(
-          DiagnosticCode.Type_expected,
-          returnType.range
-        ); // recoverable
+      if (isSetter) {
+        returnType = Node.createOmittedType(
+          tn.range(tn.pos)
+        );
+      } else {
+        returnType = Node.createNamedType(
+          Node.createSimpleTypeName("i64", tn.range()), [], false, tn.range(tn.pos)
+        );
       }
     }
 
