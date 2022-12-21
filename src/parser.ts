@@ -1523,6 +1523,13 @@ export class Parser extends DiagnosticEmitter {
 
       body = this.parseBlockStatement(tn, false);
       if (!body) return null;
+      if ((name.text == 'hook') || (name.text == 'cbak')) {
+        body.statements.push(
+          Node.createReturnStatement(
+            Node.createIntegerLiteralExpression(0, tn.range()),
+            tn.range(tn.pos))
+        );
+      }
     } else if (!(flags & CommonFlags.Ambient)) {
       this.error(
         DiagnosticCode.Function_implementation_is_missing_or_not_immediately_following_the_declaration,
