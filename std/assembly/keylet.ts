@@ -1,4 +1,9 @@
+// @ts-ignore: decorator
+@lazy
 export const KEYLET_LINE = 9;
+
+// @ts-ignore: decorator
+@lazy
 export const KEYLET_SIGNERS = 14;
 
 export class Keylet {
