@@ -541,6 +541,21 @@ export class Compiler extends DiagnosticEmitter {
       }
     }
 
+    // hooks must import _g to pass validation; the easiest way is to
+    // just call it (in dead code after accept, if there's no better
+    // place), but we can save 7 bytes by only importing it...
+    let instance = program.requireFunction(CommonNames._g);
+    if (!instance.is(CommonFlags.Compiled)) {
+      this.compileFunction(instance);
+      // ...except optimization will remove the import if it isn't
+      // used; so export it instead of calling (this might seem to
+      // contradict the documented restriction that hooks "must only
+      // export the cbak and hook functions", but works in practice,
+      // because the export is removed in post-processing by hook
+      // cleaner)
+      module.addFunctionExport(BuiltinNames._g, CommonNames._g);
+    }
+
     // compile lazy functions
     let lazyFunctions = this.lazyFunctions;
     do {
