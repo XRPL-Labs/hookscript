@@ -1,10 +1,25 @@
+// @ts-ignore: decorator
+@lazy
 export const ttPAYMENT: u8 = 0;
+
+// @ts-ignore: decorator
+@lazy
 export const tfCANONICAL: u32 = 0x80000000;
 
+// @ts-ignore: decorator
+@lazy
 export const atACCOUNT: u8 = 1;
+
+// @ts-ignore: decorator
+@lazy
 export const atDESTINATION: u8 = 3;
 
+// @ts-ignore: decorator
+@lazy
 export const amAMOUNT: u8 = 1;
+
+// @ts-ignore: decorator
+@lazy
 export const amFEE: u8 = 8;
 
 @inline

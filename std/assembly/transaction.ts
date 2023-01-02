@@ -1,30 +1,109 @@
+// @ts-ignore: decorator
+@lazy
 export const COMPARE_EQUAL = 1;
+
+// @ts-ignore: decorator
+@lazy
 export const COMPARE_LESS = 2;
+
+// @ts-ignore: decorator
+@lazy
 export const COMPARE_GREATER = 4;
 
+// @ts-ignore: decorator
+@lazy
 export const sfTransactionType = ((1 << 16) + 2);
+
+// @ts-ignore: decorator
+@lazy
 export const sfSignerWeight = ((1 << 16) + 3);
+
+// @ts-ignore: decorator
+@lazy
 export const sfFlags = ((2 << 16) + 2);
+
+// @ts-ignore: decorator
+@lazy
 export const sfSourceTag = ((2 << 16) + 3);
+
+// @ts-ignore: decorator
+@lazy
 export const sfSequence = ((2 << 16) + 4);
+
+// @ts-ignore: decorator
+@lazy
 export const sfFirstLedgerSequence = ((2 << 16) + 26);
+
+// @ts-ignore: decorator
+@lazy
 export const sfLastLedgerSequence = ((2 << 16) + 27);
+
+// @ts-ignore: decorator
+@lazy
 export const sfSignerQuorum = ((2 << 16) + 35);
+
+// @ts-ignore: decorator
+@lazy
 export const sfInvoiceID = ((5 << 16) + 17);
+
+// @ts-ignore: decorator
+@lazy
 export const sfAmount = ((6 << 16) + 1);
+
+// @ts-ignore: decorator
+@lazy
 export const sfLowLimit = ((6 << 16) + 6);
+
+// @ts-ignore: decorator
+@lazy
 export const sfHighLimit = ((6 << 16) + 7);
+
+// @ts-ignore: decorator
+@lazy
 export const sfFee = ((6 << 16) + 8);
+
+// @ts-ignore: decorator
+@lazy
 export const sfSigningPubKey = ((7 << 16) + 3);
+
+// @ts-ignore: decorator
+@lazy
 export const sfTxnSignature = ((7 << 16) + 4);
+
+// @ts-ignore: decorator
+@lazy
 export const sfMemoData = ((7 << 16) + 13);
+
+// @ts-ignore: decorator
+@lazy
 export const sfMemoFormat = ((7 << 16) + 14);
+
+// @ts-ignore: decorator
+@lazy
 export const sfAccount = ((8 << 16) + 1);
+
+// @ts-ignore: decorator
+@lazy
 export const sfMemo = ((14 << 16) + 10);
+
+// @ts-ignore: decorator
+@lazy
 export const sfEmitDetails = ((14 << 16) + 13);
+
+// @ts-ignore: decorator
+@lazy
 export const sfSigners = ((15 << 16) + 3);
+
+// @ts-ignore: decorator
+@lazy
 export const sfSignerEntries = ((15 << 16) + 4);
+
+// @ts-ignore: decorator
+@lazy
 export const sfTemplate = ((15 << 16) + 5);
+
+// @ts-ignore: decorator
+@lazy
 export const sfMemos = ((15 << 16) + 9);
 
 export class Tx {
