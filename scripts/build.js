@@ -268,10 +268,53 @@ if (watch) {
   });
 }
 
+function produceLKG() {
+  const startTime = Date.now();
+  const stderr = [];
+  console.log(`${time()} - ${"lkg"} - Starting new build ...`);
+  const subprocess = childProcess.spawn("node", ["./produce-lkg.js"], {
+    cwd: dirname,
+    stdio: "pipe",
+  });
+
+  subprocess.stderr.on("data", data => {
+    stderr.push(new TextDecoder().decode(data));
+  });
+
+  function reportError() {
+    const duration = Date.now() - startTime;
+    if (stderr.length) {
+      const msg = stderr.join("");
+      console.error(msg);
+    }
+    console.log(
+      `${time()}  - ${"dts"} - ${stdoutColors.red(
+        "ERROR"
+      )} (had errors, ${duration} ms)`
+    );
+  }
+
+  subprocess.on("error", err => {
+    reportError();
+  });
+  subprocess.on("close", code => {
+    if (code) return reportError();
+    const duration = Date.now() - startTime;
+    console.log(
+      `${time()} - ${"lkg"} - ${stdoutColors.green(
+        "SUCCESS"
+      )} (no errors, ${duration} ms)`
+    );
+  });
+}
+
+
 console.log(`src : Compiler as a library
 cli : Compiler frontend asc
 dts : TS definition bundles
+lkg : Last known good release. 
 web : Example web template\n`);
 
 await Promise.all([ srcBuild, cliBuild ]);
 buildDefinitions();
+produceLKG();
