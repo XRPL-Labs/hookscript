@@ -64,11 +64,13 @@
     "asinit": "./bin/asinit.js"
   },
   "scripts": {
+    "prepublishOnly": "npm run lkg",
     "check": "npm run check:config && npm run check:import && npm run lint",
     "check:config": "tsc --noEmit -p src --diagnostics --listFiles",
     "check:import": "tsc --noEmit --target ESNEXT --module es6 --experimentalDecorators tests/import/index",
     "lint": "eslint --max-warnings 0 --ext js . && eslint --max-warnings 0 --ext ts .",
     "build": "node scripts/build",
+    "lkg": "node scripts/lkg",
     "watch": "node scripts/build --watch",
     "coverage": "npx c8 -- npm test",
     "test": "npm run test:parser && npm run test:compiler -- --parallel && npm run test:browser && npm run test:asconfig && npm run test:transform",

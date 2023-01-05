@@ -270,7 +270,7 @@ if (watch) {
 
 console.log(`src : Compiler as a library
 cli : Compiler frontend asc
-dts : TS definition bundles
+dts : TS definition bundles 
 web : Example web template\n`);
 
 await Promise.all([ srcBuild, cliBuild ]);
