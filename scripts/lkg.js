@@ -34,6 +34,7 @@ async function copyScriptOutputs() {
 
 /**
  * @param {string} fileName
+ * @param {string} prefix
  * @param {string} destName
  */
 async function copyFile(fileName, prefix, destName = fileName) {
