@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import url from "url";
+import { stdoutColors } from "../util/terminal.js";
 
 const __filename = url.fileURLToPath(new URL(import.meta.url));
 const __dirname = path.dirname(__filename);
@@ -10,8 +11,16 @@ const source = path.join(root, "dist");
 const dest = path.join(root, "lib/lkg");
 const copyright = ""; // TODO
 
+function info(msg) {
+  console.log(`${stdoutColors.cyan("INFO")} ${msg}`);
+}
+function error(msg) {
+  console.log(`${stdoutColors.red("ERROR")} ${msg}`);
+}
+
 async function produceLKG() {
-  console.log(`Building LKG from ${source} to ${dest}.`);
+  info("Started...");
+  info(`Building LKG from ${source} to ${dest}.`);
   await copyScriptOutputs();
 }
 
@@ -34,19 +43,22 @@ async function copyFile(fileName, prefix, destName = fileName) {
   );
   if (!fs.existsSync(dest)) {
     await fs.promises.mkdir(dest, {
-      recursive: true
+      recursive: true,
     });
   }
   await fs.promises.writeFile(
     path.join(dest, destName),
-    prefix + "\n" + content,
+    prefix + "\n" + content
   );
 }
 
 process.on("unhandledRejection", handleError);
 
-produceLKG();
+produceLKG().then(() => {
+  info("Done!");
+}, handleError);
 
 function handleError(err) {
-  throw err;
+  error("Errors occurred.");
+  console.error(err);
 }
