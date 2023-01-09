@@ -1,4 +1,6 @@
 (module
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $exports-lazy/lazyGlobalUsed i32 (i32.const 1088))
  (global $exports-lazy/lazyGlobalUnused i32 (i32.const 1168))
  (memory $0 1)
@@ -12,5 +14,6 @@
  (data (i32.const 1160) "\03\00\00\00\10\00\00\00p\04\00\00p\04\00\00\0c\00\00\00\03")
  (export "lazyGlobalUnused" (global $exports-lazy/lazyGlobalUnused))
  (export "lazyGlobalUsed" (global $exports-lazy/lazyGlobalUsed))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
 )

@@ -1,30 +1,31 @@
 (module
  (type $i32_=>_none (func_subtype (param i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
- (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
- (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 34172))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 34124))
  (memory $0 1)
  (data (i32.const 1036) "\1c")
  (data (i32.const 1048) "\01")
  (data (i32.const 1068) "\1c")
- (data (i32.const 1080) "\01\00\00\00\02\00\00\00a")
+ (data (i32.const 1080) "\01\00\00\00\01\00\00\00a")
  (data (i32.const 1100) "\1c")
- (data (i32.const 1112) "\01\00\00\00\04\00\00\00a\00b")
+ (data (i32.const 1112) "\01\00\00\00\02\00\00\00ab")
  (data (i32.const 1132) "\1c")
- (data (i32.const 1144) "\01\00\00\00\06\00\00\00a\00b\00c")
+ (data (i32.const 1144) "\01\00\00\00\03\00\00\00abc")
  (data (i32.const 1164) "\1c")
- (data (i32.const 1176) "\01\00\00\00\08\00\00\00a\00b\00c\00d")
+ (data (i32.const 1176) "\01\00\00\00\04\00\00\00abcd")
  (data (i32.const 1196) "\1c")
- (data (i32.const 1208) "\01\00\00\00\n\00\00\00a\00b\00c\00d\00e")
+ (data (i32.const 1208) "\01\00\00\00\05\00\00\00abcde")
  (data (i32.const 1228) "\1c")
- (data (i32.const 1240) "\01\00\00\00\0c\00\00\00a\00b\00c\00d\00e\00f")
- (data (i32.const 1260) ",")
- (data (i32.const 1272) "\01\00\00\00\0e\00\00\00a\00b\00c\00d\00e\00f\00g")
- (data (i32.const 1308) ",")
- (data (i32.const 1320) "\01\00\00\00\10\00\00\00a\00b\00c\00d\00e\00f\00g\00h")
- (data (i32.const 1356) ",")
- (data (i32.const 1368) "\01\00\00\00\12\00\00\00a\00b\00c\00d\00e\00f\00g\00h\00i")
+ (data (i32.const 1240) "\01\00\00\00\06\00\00\00abcdef")
+ (data (i32.const 1260) "\1c")
+ (data (i32.const 1272) "\01\00\00\00\07\00\00\00abcdefg")
+ (data (i32.const 1292) "\1c")
+ (data (i32.const 1304) "\01\00\00\00\08\00\00\00abcdefgh")
+ (data (i32.const 1324) "\1c")
+ (data (i32.const 1336) "\01\00\00\00\t\00\00\00abcdefghi")
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/util/hash/HASH<~lib/string/String|null> (type $i32_=>_none) (param $0 i32)
@@ -42,8 +43,8 @@
    i32.const 20
    i32.sub
    i32.load $0 offset=16
-   i32.const -2
-   i32.and
+   i32.const 1
+   i32.shl
    local.tee $3
    i32.const 16
    i32.ge_u
@@ -203,14 +204,9 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 1404
+  i32.const 1356
   i32.lt_s
   if
-   i32.const 34192
-   i32.const 34240
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
@@ -259,14 +255,14 @@
   i32.const 1280
   call $~lib/util/hash/HASH<~lib/string/String|null>
   global.get $~lib/memory/__stack_pointer
-  i32.const 1328
+  i32.const 1312
   i32.store $0
-  i32.const 1328
+  i32.const 1312
   call $~lib/util/hash/HASH<~lib/string/String|null>
   global.get $~lib/memory/__stack_pointer
-  i32.const 1376
+  i32.const 1344
   i32.store $0
-  i32.const 1376
+  i32.const 1344
   call $~lib/util/hash/HASH<~lib/string/String|null>
   global.get $~lib/memory/__stack_pointer
   i32.const 4

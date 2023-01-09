@@ -3,27 +3,28 @@
  (type $none_=>_none (func_subtype func))
  (type $f32_=>_i32 (func_subtype (param f32) (result i32) func))
  (type $f64_=>_i32 (func_subtype (param f64) (result i32) func))
- (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
- (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
  (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
- (global $~lib/memory/__data_end i32 (i32.const 380))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33148))
- (global $~lib/memory/__heap_base i32 (i32.const 33148))
+ (global $~lib/memory/__data_end i32 (i32.const 332))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33100))
+ (global $~lib/memory/__heap_base i32 (i32.const 33100))
  (memory $0 1)
  (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 44) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\00a\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 76) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00a\00b\00\00\00\00\00\00\00\00\00")
- (data (i32.const 108) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\06\00\00\00a\00b\00c\00\00\00\00\00\00\00")
- (data (i32.const 140) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\00a\00b\00c\00d\00\00\00\00\00")
- (data (i32.const 172) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\n\00\00\00a\00b\00c\00d\00e\00\00\00")
- (data (i32.const 204) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0c\00\00\00a\00b\00c\00d\00e\00f\00")
- (data (i32.const 236) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0e\00\00\00a\00b\00c\00d\00e\00f\00g\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 284) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\10\00\00\00a\00b\00c\00d\00e\00f\00g\00h\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 332) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\12\00\00\00a\00b\00c\00d\00e\00f\00g\00h\00i\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 44) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00a\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 76) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\00ab\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 108) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\03\00\00\00abc\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 140) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00abcd\00\00\00\00\00\00\00\00")
+ (data (i32.const 172) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00abcde\00\00\00\00\00\00\00")
+ (data (i32.const 204) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\06\00\00\00abcdef\00\00\00\00\00\00")
+ (data (i32.const 236) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\07\00\00\00abcdefg\00\00\00\00\00")
+ (data (i32.const 268) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\00abcdefgh\00\00\00\00")
+ (data (i32.const 300) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\t\00\00\00abcdefghi\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/string/String#get:length (type $i32_=>_i32) (param $this i32) (result i32)
@@ -31,8 +32,6 @@
   i32.const 20
   i32.sub
   i32.load $0 offset=16
-  i32.const 1
-  i32.shr_u
  )
  (func $~lib/util/hash/HASH<~lib/string/String|null> (type $i32_=>_i32) (param $key i32) (result i32)
   (local $key|1 i32)
@@ -720,11 +719,6 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 33168
-   i32.const 33216
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )
@@ -814,7 +808,7 @@
   call $~lib/util/hash/HASH<~lib/string/String>
   call $std/hash/check
   drop
-  i32.const 304
+  i32.const 288
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
@@ -823,7 +817,7 @@
   call $~lib/util/hash/HASH<~lib/string/String>
   call $std/hash/check
   drop
-  i32.const 352
+  i32.const 320
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0

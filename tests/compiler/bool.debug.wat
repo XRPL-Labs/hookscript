@@ -1,7 +1,9 @@
 (module
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $bool/i (mut i32) (i32.const 2))
  (global $bool/I (mut i64) (i64.const 2))
  (global $bool/u (mut i32) (i32.const 2))
@@ -41,13 +43,13 @@
  (global $bool/F12 (mut f64) (f64.const 0))
  (global $bool/F13 (mut f64) (f64.const 0))
  (global $bool/uu (mut i32) (i32.const 2))
- (global $~lib/memory/__data_end i32 (i32.const 60))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32828))
- (global $~lib/memory/__heap_base i32 (i32.const 32828))
- (memory $0 1)
- (data (i32.const 12) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0e\00\00\00b\00o\00o\00l\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (global $~lib/memory/__data_end i32 (i32.const 8))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32776))
+ (global $~lib/memory/__heap_base i32 (i32.const 32776))
+ (memory $0 0)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $start:bool (type $none_=>_none)
@@ -58,11 +60,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 2
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/I
@@ -72,11 +69,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 4
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/u
@@ -86,11 +78,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 6
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/U
@@ -100,11 +87,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 8
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/f
@@ -119,11 +101,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 11
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/f0
@@ -138,11 +115,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 13
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/f1
@@ -157,11 +129,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 15
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/f2
@@ -176,11 +143,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 17
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   f32.const nan:0x400000
@@ -198,11 +160,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 19
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/builtins/f32.MAX_VALUE
@@ -219,11 +176,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 21
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/builtins/f32.MAX_VALUE
@@ -241,11 +193,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 23
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/f6
@@ -260,11 +207,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 25
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   f32.const inf
@@ -282,11 +224,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 27
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/builtins/f32.MIN_VALUE
@@ -303,11 +240,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 29
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/builtins/f32.MIN_VALUE
@@ -325,11 +257,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 31
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 1
@@ -347,11 +274,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 33
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 2139095040
@@ -371,11 +293,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 35
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 2139095040
@@ -395,11 +312,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 37
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const -8388608
@@ -419,11 +331,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 39
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/F
@@ -438,11 +345,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 42
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/F0
@@ -457,11 +359,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 44
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/F1
@@ -476,11 +373,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 46
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/F2
@@ -495,11 +387,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 48
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   f64.const nan:0x8000000000000
@@ -517,11 +404,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 50
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/builtins/f64.MAX_VALUE
@@ -538,11 +420,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 52
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/builtins/f64.MAX_VALUE
@@ -560,11 +437,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 54
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/F6
@@ -579,11 +451,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 56
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   f64.const inf
@@ -601,11 +468,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 58
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/builtins/f64.MIN_VALUE
@@ -622,11 +484,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 60
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/builtins/f64.MIN_VALUE
@@ -644,11 +501,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 62
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i64.const 1
@@ -666,11 +518,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 64
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i64.const 9218868437227405312
@@ -690,11 +537,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 66
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i64.const 9218868437227405312
@@ -714,11 +556,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 68
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i64.const -4503599627370496
@@ -738,11 +575,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 70
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $bool/uu
@@ -752,11 +584,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 73
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )

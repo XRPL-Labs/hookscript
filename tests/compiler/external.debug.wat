@@ -1,9 +1,11 @@
 (module
  (type $none_=>_none (func_subtype func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "foo" "var" (global $external/var_ i32))
  (import "external" "foo" (func $external/foo))
  (import "external" "bar" (func $external/two))
  (import "foo" "baz" (func $external/three))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/memory/__data_end i32 (i32.const 8))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32776))
  (global $~lib/memory/__heap_base i32 (i32.const 32776))
@@ -14,5 +16,6 @@
  (export "two" (func $external/two))
  (export "three" (func $external/three))
  (export "var_" (global $external/var_))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
 )

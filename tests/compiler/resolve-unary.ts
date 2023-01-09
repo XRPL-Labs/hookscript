@@ -1,53 +1,17 @@
 // prefix
-assert(
-  (-1).toString()
-  ==
-  "-1"
-);
-assert(
-  (+1).toString()
-  ==
-  "1"
-);
+assert((-1) == -1);
+assert((+1) == 1);
 var a = 1;
-assert(
-  (++a).toString()
-  ==
-  "2"
-);
-assert(
-  (--a).toString()
-  ==
-  "1"
-);
-assert(
-  (!a).toString()
-  ==
-  "false"
-);
-assert(
-  (!!a).toString()
-  ==
-  "true"
-);
-assert(
-  (~a).toString()
-  ==
-  "-2"
-);
+assert((++a) == 2);
+assert((--a) == 1);
+assert(!(!a));
+assert((!!a));
+assert((~a) == -2);
 
 // postfix
 var b = 1;
-assert(
-  (b++).toString()
-  ==
-  "1"
-);
-assert(
-  (b--).toString()
-  ==
-  "2"
-);
+assert((b++) == 1);
+assert((b--) == 2);
 
 // overloads
 class Foo {
@@ -88,16 +52,8 @@ class Foo {
   }
 }
 var foo = new Foo();
-assert(
-  (+foo).toString()
-  ==
-  "+"
-);
-assert(
-  (-foo).toString()
-  ==
-  "-"
-);
+assert((+foo) == "+");
+assert((-foo) == "-");
 assert(
   (++foo).self()
   ==
@@ -108,16 +64,8 @@ assert(
   ==
   foo
 );
-assert(
-  (!foo).toString()
-  ==
-  "!"
-);
-assert(
-  (~foo).toString()
-  ==
-  "~"
-);
+assert((!foo) == "!");
+assert((~foo) == "~");
 assert(
   (foo++).self()
   ==

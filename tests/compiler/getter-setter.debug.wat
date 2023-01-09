@@ -3,15 +3,17 @@
  (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $getter-setter/Foo._bar (mut i32) (i32.const 0))
- (global $~lib/memory/__data_end i32 (i32.const 76))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32844))
- (global $~lib/memory/__heap_base i32 (i32.const 32844))
- (memory $0 1)
- (data (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00 \00\00\00g\00e\00t\00t\00e\00r\00-\00s\00e\00t\00t\00e\00r\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (global $~lib/memory/__data_end i32 (i32.const 8))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32776))
+ (global $~lib/memory/__heap_base i32 (i32.const 32776))
+ (memory $0 0)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $getter-setter/Foo.get:bar (type $none_=>_i32) (result i32)
@@ -27,11 +29,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 13
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 1
@@ -41,11 +38,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 15
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 2
@@ -55,11 +47,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 16
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )

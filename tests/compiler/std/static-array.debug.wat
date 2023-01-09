@@ -15,6 +15,7 @@
  (type $i32_i32_=>_f32 (func_subtype (param i32 i32) (result f32) func))
  (type $i32_i32_=>_f64 (func_subtype (param i32 i32) (result f64) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $std/static-array/i i32 (i32.const 64))
  (global $std/static-array/I i32 (i32.const 160))
  (global $std/static-array/f i32 (i32.const 240))
@@ -34,10 +35,10 @@
  (global $~lib/rt/tlsf/ROOT (mut i32) (i32.const 0))
  (global $~lib/native/ASC_LOW_MEMORY_LIMIT i32 (i32.const 0))
  (global $~lib/native/ASC_RUNTIME i32 (i32.const 2))
- (global $~lib/rt/__rtti_base i32 (i32.const 928))
- (global $~lib/memory/__data_end i32 (i32.const 988))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33756))
- (global $~lib/memory/__heap_base i32 (i32.const 33756))
+ (global $~lib/rt/__rtti_base i32 (i32.const 608))
+ (global $~lib/memory/__data_end i32 (i32.const 668))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33436))
+ (global $~lib/memory/__heap_base i32 (i32.const 33436))
  (memory $0 1)
  (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\08\00\00\00\01\00\00\00\02\00\00\00\00\00\00\00")
  (data (i32.const 44) ",\00\00\00\00\00\00\00\00\00\00\00\03\00\00\00\10\00\00\00 \00\00\00 \00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -47,20 +48,16 @@
  (data (i32.const 220) ",\00\00\00\00\00\00\00\00\00\00\00\05\00\00\00\10\00\00\00\d0\00\00\00\d0\00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 268) ",\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\00\00\f4?\00\00\00\00\00\00\02@\00\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 316) ",\00\00\00\00\00\00\00\00\00\00\00\06\00\00\00\10\00\00\00 \01\00\00 \01\00\00\10\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 364) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00&\00\00\00s\00t\00d\00/\00s\00t\00a\00t\00i\00c\00-\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00\00\00\00\00")
- (data (i32.const 428) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00$\00\00\00I\00n\00d\00e\00x\00 \00o\00u\00t\00 \00o\00f\00 \00r\00a\00n\00g\00e\00\00\00\00\00\00\00\00\00")
- (data (i32.const 492) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00")
- (data (i32.const 540) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h\00")
- (data (i32.const 588) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
- (data (i32.const 652) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 720) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 752) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 780) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00~\00l\00i\00b\00/\00r\00t\00.\00t\00s\00\00\00\00\00\00\00\00\00")
- (data (i32.const 832) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 860) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00l\00s\00f\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 928) "\07\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02\n\00\00\00\00\00\00\02\19\00\00\00\00\00\00\02\1a\00\00\00\00\00\00")
+ (data (i32.const 364) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\12\00\00\00Index out of range\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 412) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0e\00\00\00Invalid length\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 460) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00Allocation too large\00\00\00\00\00\00\00\00")
+ (data (i32.const 512) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 544) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 576) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 608) "\07\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02\n\00\00\00\00\00\00\02\19\00\00\00\00\00\00\02\1a\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/array/Array<i32>#get:length (type $i32_=>_i32) (param $this i32) (result i32)
@@ -74,11 +71,6 @@
   i32.load $0 offset=12
   i32.ge_u
   if
-   i32.const 448
-   i32.const 512
-   i32.const 114
-   i32.const 42
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $this
@@ -157,11 +149,6 @@
     i32.eq
     i32.eqz
     if
-     i32.const 0
-     i32.const 672
-     i32.const 159
-     i32.const 16
-     call $~lib/builtins/abort
      unreachable
     end
     local.get $iter
@@ -223,11 +210,6 @@
    end
    i32.eqz
    if
-    i32.const 0
-    i32.const 672
-    i32.const 127
-    i32.const 18
-    call $~lib/builtins/abort
     unreachable
    end
    return
@@ -240,11 +222,6 @@
   local.get $prev
   i32.eqz
   if
-   i32.const 0
-   i32.const 672
-   i32.const 131
-   i32.const 16
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $next
@@ -263,11 +240,6 @@
   i32.load $0
   i32.gt_u
   if
-   i32.const 448
-   i32.const 800
-   i32.const 22
-   i32.const 28
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $ptr
@@ -329,11 +301,6 @@
    local.tee $1
    i32.eqz
    if (result i32)
-    i32.const 0
-    i32.const 672
-    i32.const 147
-    i32.const 30
-    call $~lib/builtins/abort
     unreachable
    else
     local.get $1
@@ -467,11 +434,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 268
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $blockInfo
@@ -487,11 +449,6 @@
   i32.ge_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 270
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $size
@@ -550,11 +507,6 @@
   end
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 284
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $block
@@ -697,11 +649,6 @@
   local.get $block
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 201
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $block
@@ -714,11 +661,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 203
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $block
@@ -794,11 +736,6 @@
    i32.and
    i32.eqz
    if
-    i32.const 0
-    i32.const 880
-    i32.const 221
-    i32.const 16
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $root
@@ -837,11 +774,6 @@
   i32.ge_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 233
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 1
@@ -855,11 +787,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 234
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $right
@@ -923,11 +850,6 @@
   end
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 251
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $root
@@ -1029,11 +951,6 @@
   i32.le_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 377
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $start
@@ -1072,11 +989,6 @@
    i32.ge_u
    i32.eqz
    if
-    i32.const 0
-    i32.const 880
-    i32.const 384
-    i32.const 16
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $start
@@ -1105,11 +1017,6 @@
    i32.ge_u
    i32.eqz
    if
-    i32.const 0
-    i32.const 880
-    i32.const 397
-    i32.const 5
-    call $~lib/builtins/abort
     unreachable
    end
   end
@@ -1353,11 +1260,6 @@
   end
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 559
-   i32.const 3
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $block
@@ -1578,11 +1480,6 @@
     i32.eq
     i32.eqz
     if
-     i32.const 0
-     i32.const 672
-     i32.const 228
-     i32.const 20
-     call $~lib/builtins/abort
      unreachable
     end
     local.get $obj
@@ -1685,11 +1582,6 @@
   i32.const 1073741820
   i32.gt_u
   if
-   i32.const 608
-   i32.const 880
-   i32.const 458
-   i32.const 29
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $size
@@ -1777,11 +1669,6 @@
   end
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 330
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $root
@@ -1842,11 +1729,6 @@
     local.get $slMap
     i32.eqz
     if
-     i32.const 0
-     i32.const 880
-     i32.const 343
-     i32.const 18
-     call $~lib/builtins/abort
      unreachable
     end
     local.get $root
@@ -1996,11 +1878,6 @@
   i32.eqz
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 357
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $blockInfo
@@ -2105,11 +1982,6 @@
    local.get $block
    i32.eqz
    if
-    i32.const 0
-    i32.const 880
-    i32.const 496
-    i32.const 16
-    call $~lib/builtins/abort
     unreachable
    end
   end
@@ -2125,11 +1997,6 @@
   i32.ge_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 880
-   i32.const 498
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $root
@@ -2167,11 +2034,6 @@
   i32.const 1073741804
   i32.ge_u
   if
-   i32.const 608
-   i32.const 672
-   i32.const 260
-   i32.const 31
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/rt/itcms/total
@@ -2271,11 +2133,6 @@
   local.get $parentPtr
   i32.eqz
   if
-   i32.const 0
-   i32.const 672
-   i32.const 294
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $childPtr
@@ -2351,11 +2208,6 @@
    i32.shr_u
    i32.gt_u
    if
-    i32.const 560
-    i32.const 512
-    i32.const 19
-    i32.const 48
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $array
@@ -2448,11 +2300,6 @@
    i32.const 0
    i32.lt_s
    if
-    i32.const 448
-    i32.const 512
-    i32.const 130
-    i32.const 22
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $this
@@ -2484,11 +2331,6 @@
   i32.load $0 offset=12
   i32.ge_u
   if
-   i32.const 448
-   i32.const 512
-   i32.const 114
-   i32.const 42
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $this
@@ -2530,11 +2372,6 @@
    i32.const 0
    i32.lt_s
    if
-    i32.const 448
-    i32.const 512
-    i32.const 130
-    i32.const 22
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $this
@@ -2566,11 +2403,6 @@
   i32.load $0 offset=12
   i32.ge_u
   if
-   i32.const 448
-   i32.const 512
-   i32.const 114
-   i32.const 42
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $this
@@ -2612,11 +2444,6 @@
    i32.const 0
    i32.lt_s
    if
-    i32.const 448
-    i32.const 512
-    i32.const 130
-    i32.const 22
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $this
@@ -2648,11 +2475,6 @@
   i32.load $0 offset=12
   i32.ge_u
   if
-   i32.const 448
-   i32.const 512
-   i32.const 114
-   i32.const 42
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $this
@@ -2694,11 +2516,6 @@
    i32.const 0
    i32.lt_s
    if
-    i32.const 448
-    i32.const 512
-    i32.const 130
-    i32.const 22
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $this
@@ -2749,13 +2566,13 @@
    local.get $0
    call $~lib/rt/itcms/__visit
   end
-  i32.const 448
+  i32.const 384
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 560
+  i32.const 432
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 608
+  i32.const 480
   local.get $0
   call $~lib/rt/itcms/__visit
  )
@@ -2876,11 +2693,6 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 33776
-   i32.const 33824
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )
@@ -2913,11 +2725,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 6
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/i
@@ -2932,11 +2739,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 7
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/i
@@ -2951,11 +2753,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 8
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   memory.size $0
@@ -2966,13 +2763,13 @@
   i32.const 1
   i32.shr_u
   global.set $~lib/rt/itcms/threshold
-  i32.const 720
+  i32.const 512
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/pinSpace
-  i32.const 752
+  i32.const 544
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/toSpace
-  i32.const 832
+  i32.const 576
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/fromSpace
   global.get $std/static-array/i
@@ -2996,11 +2793,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 10
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/I
@@ -3014,11 +2806,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 12
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/I
@@ -3033,11 +2820,6 @@
   i64.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 13
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/I
@@ -3052,11 +2834,6 @@
   i64.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 14
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/I
@@ -3080,11 +2857,6 @@
   i64.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 16
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/f
@@ -3098,11 +2870,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 18
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/f
@@ -3117,11 +2884,6 @@
   f32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 19
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/f
@@ -3136,11 +2898,6 @@
   f32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 20
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/f
@@ -3164,11 +2921,6 @@
   f32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 22
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/F
@@ -3182,11 +2934,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 24
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/F
@@ -3201,11 +2948,6 @@
   f64.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 25
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/F
@@ -3220,11 +2962,6 @@
   f64.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 26
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $std/static-array/F
@@ -3248,11 +2985,6 @@
   f64.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 384
-   i32.const 28
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer

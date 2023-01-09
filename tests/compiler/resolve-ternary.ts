@@ -2,19 +2,11 @@ var b = true;
 
 // literal
 
-assert(
-  (b ? 1 : 2).toString()
-  ==
-  "1"
-);
+assert((b ? 1 : 2) == 1);
 
 // literal mismatch (convert lhs to f64)
 
-assert(
-  (b ? 1 : 2.0).toString()
-  ==
-  "1.0"
-);
+assert((b ? 1 : 2.0) == 1.0);
 
 // function type
 

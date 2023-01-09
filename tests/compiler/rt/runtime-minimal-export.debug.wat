@@ -1,13 +1,14 @@
 (module
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
  (type $none_=>_none (func_subtype func))
- (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/rt/tlsf/ROOT (mut i32) (i32.const 0))
  (global $~lib/native/ASC_LOW_MEMORY_LIMIT i32 (i32.const 0))
  (global $~lib/rt/tcms/fromSpace (mut i32) (i32.const 0))
@@ -15,18 +16,16 @@
  (global $~lib/rt/tcms/total (mut i32) (i32.const 0))
  (global $~lib/rt/tcms/pinSpace (mut i32) (i32.const 0))
  (global $~lib/rt/tcms/toSpace (mut i32) (i32.const 0))
- (global $~lib/rt/__rtti_base i32 (i32.const 432))
- (global $~lib/memory/__heap_base i32 (i32.const 460))
+ (global $~lib/rt/__rtti_base i32 (i32.const 256))
+ (global $~lib/memory/__heap_base i32 (i32.const 284))
  (memory $0 1)
- (data (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
- (data (i32.const 76) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 140) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00l\00s\00f\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 208) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 236) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d\00\00\00")
- (data (i32.const 304) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 332) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d\00\00\00\00\00")
- (data (i32.const 400) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 432) "\03\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00Allocation too large\00\00\00\00\00\00\00\00")
+ (data (i32.const 64) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 92) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\15\00\00\00Object already pinned\00\00\00\00\00\00\00")
+ (data (i32.const 144) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 172) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00Object is not pinned\00\00\00\00\00\00\00\00")
+ (data (i32.const 224) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 256) "\03\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "__new" (func $~lib/rt/tcms/__new))
@@ -34,6 +33,7 @@
  (export "__unpin" (func $~lib/rt/tcms/__unpin))
  (export "__collect" (func $~lib/rt/tcms/__collect))
  (export "__rtti_base" (global $~lib/rt/__rtti_base))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/tlsf/Root#set:flMap (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
@@ -89,11 +89,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 268
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $blockInfo
@@ -109,11 +104,6 @@
   i32.ge_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 270
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $size
@@ -172,11 +162,6 @@
   end
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 284
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $block
@@ -319,11 +304,6 @@
   local.get $block
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 201
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $block
@@ -336,11 +316,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 203
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $block
@@ -416,11 +391,6 @@
    i32.and
    i32.eqz
    if
-    i32.const 0
-    i32.const 160
-    i32.const 221
-    i32.const 16
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $root
@@ -459,11 +429,6 @@
   i32.ge_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 233
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 1
@@ -477,11 +442,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 234
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $right
@@ -545,11 +505,6 @@
   end
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 251
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $root
@@ -651,11 +606,6 @@
   i32.le_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 377
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $start
@@ -694,11 +644,6 @@
    i32.ge_u
    i32.eqz
    if
-    i32.const 0
-    i32.const 160
-    i32.const 384
-    i32.const 16
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $start
@@ -727,11 +672,6 @@
    i32.ge_u
    i32.eqz
    if
-    i32.const 0
-    i32.const 160
-    i32.const 397
-    i32.const 5
-    call $~lib/builtins/abort
     unreachable
    end
   end
@@ -972,11 +912,6 @@
   i32.const 1073741820
   i32.gt_u
   if
-   i32.const 32
-   i32.const 160
-   i32.const 458
-   i32.const 29
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $size
@@ -1064,11 +999,6 @@
   end
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 330
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $root
@@ -1129,11 +1059,6 @@
     local.get $slMap
     i32.eqz
     if
-     i32.const 0
-     i32.const 160
-     i32.const 343
-     i32.const 18
-     call $~lib/builtins/abort
      unreachable
     end
     local.get $root
@@ -1283,11 +1208,6 @@
   i32.eqz
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 357
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $blockInfo
@@ -1392,11 +1312,6 @@
    local.get $block
    i32.eqz
    if
-    i32.const 0
-    i32.const 160
-    i32.const 496
-    i32.const 16
-    call $~lib/builtins/abort
     unreachable
    end
   end
@@ -1412,11 +1327,6 @@
   i32.ge_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 498
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $root
@@ -1517,11 +1427,6 @@
   i32.const 1073741804
   i32.gt_u
   if
-   i32.const 32
-   i32.const 96
-   i32.const 125
-   i32.const 30
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 16
@@ -1589,11 +1494,6 @@
    end
    i32.eqz
    if
-    i32.const 0
-    i32.const 96
-    i32.const 101
-    i32.const 18
-    call $~lib/builtins/abort
     unreachable
    end
    return
@@ -1606,11 +1506,6 @@
   local.get $prev
   i32.eqz
   if
-   i32.const 0
-   i32.const 96
-   i32.const 105
-   i32.const 16
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $next
@@ -1633,11 +1528,6 @@
    i32.const 3
    i32.eq
    if
-    i32.const 256
-    i32.const 96
-    i32.const 181
-    i32.const 7
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $obj
@@ -1665,11 +1555,6 @@
   i32.const 3
   i32.ne
   if
-   i32.const 352
-   i32.const 96
-   i32.const 195
-   i32.const 5
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $obj
@@ -1707,11 +1592,6 @@
   end
   i32.eqz
   if
-   i32.const 0
-   i32.const 160
-   i32.const 559
-   i32.const 3
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $block
@@ -1780,11 +1660,6 @@
     i32.eq
     i32.eqz
     if
-     i32.const 0
-     i32.const 96
-     i32.const 213
-     i32.const 16
-     call $~lib/builtins/abort
      unreachable
     end
     local.get $iter
@@ -1821,11 +1696,6 @@
     i32.eq
     i32.eqz
     if
-     i32.const 0
-     i32.const 96
-     i32.const 223
-     i32.const 16
-     call $~lib/builtins/abort
      unreachable
     end
     local.get $iter
@@ -1859,11 +1729,6 @@
     i32.eq
     i32.eqz
     if
-     i32.const 0
-     i32.const 96
-     i32.const 232
-     i32.const 16
-     call $~lib/builtins/abort
      unreachable
     end
     local.get $iter
@@ -1946,10 +1811,10 @@
   i32.const 32
   local.get $0
   call $~lib/rt/tcms/__visit
-  i32.const 256
+  i32.const 112
   local.get $0
   call $~lib/rt/tcms/__visit
-  i32.const 352
+  i32.const 192
   local.get $0
   call $~lib/rt/tcms/__visit
  )
@@ -1987,13 +1852,13 @@
   unreachable
  )
  (func $~start (type $none_=>_none)
-  i32.const 208
+  i32.const 64
   call $~lib/rt/tcms/initLazy
   global.set $~lib/rt/tcms/fromSpace
-  i32.const 304
+  i32.const 144
   call $~lib/rt/tcms/initLazy
   global.set $~lib/rt/tcms/pinSpace
-  i32.const 400
+  i32.const 224
   call $~lib/rt/tcms/initLazy
   global.set $~lib/rt/tcms/toSpace
  )

@@ -6,20 +6,21 @@
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
  (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
  (global $~lib/native/ASC_SHRINK_LEVEL i32 (i32.const 0))
- (global $~lib/memory/__data_end i32 (i32.const 284))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33052))
- (global $~lib/memory/__heap_base i32 (i32.const 33052))
+ (global $~lib/memory/__data_end i32 (i32.const 172))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32940))
+ (global $~lib/memory/__heap_base i32 (i32.const 32940))
  (memory $0 1)
- (data (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00$\00\00\00I\00n\00d\00e\00x\00 \00o\00u\00t\00 \00o\00f\00 \00r\00a\00n\00g\00e\00\00\00\00\00\00\00\00\00")
- (data (i32.const 76) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00")
- (data (i32.const 124) "|\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00^\00\00\00E\00l\00e\00m\00e\00n\00t\00 \00t\00y\00p\00e\00 \00m\00u\00s\00t\00 \00b\00e\00 \00n\00u\00l\00l\00a\00b\00l\00e\00 \00i\00f\00 \00a\00r\00r\00a\00y\00 \00i\00s\00 \00h\00o\00l\00e\00y\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 252) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\12\00\00\00Index out of range\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 60) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00/\00\00\00Element type must be nullable if array is holey\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 140) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "i32ArrayArrayElementAccess" (func $export:std/array-access/i32ArrayArrayElementAccess))
  (export "stringArrayPropertyAccess" (func $export:std/array-access/stringArrayPropertyAccess))
@@ -33,11 +34,6 @@
   i32.load $0 offset=12
   i32.ge_u
   if
-   i32.const 32
-   i32.const 96
-   i32.const 114
-   i32.const 42
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $this
@@ -57,8 +53,6 @@
   i32.const 20
   i32.sub
   i32.load $0 offset=16
-  i32.const 1
-  i32.shr_u
  )
  (func $~lib/util/string/compareImpl (type $i32_i32_i32_i32_i32_=>_i32) (param $str1 i32) (param $index1 i32) (param $str2 i32) (param $index2 i32) (param $len i32) (result i32)
   (local $ptr1 i32)
@@ -218,11 +212,6 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 33072
-   i32.const 33120
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )
@@ -297,7 +286,7 @@
   local.get $1
   i32.store $0
   local.get $1
-  i32.const 272
+  i32.const 160
   local.set $1
   global.get $~lib/memory/__stack_pointer
   local.get $1
@@ -373,7 +362,7 @@
   local.get $1
   i32.store $0
   local.get $1
-  i32.const 272
+  i32.const 160
   local.set $1
   global.get $~lib/memory/__stack_pointer
   local.get $1
@@ -404,11 +393,6 @@
   i32.load $0 offset=12
   i32.ge_u
   if
-   i32.const 32
-   i32.const 96
-   i32.const 114
-   i32.const 42
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
@@ -429,11 +413,6 @@
   local.get $value
   i32.eqz
   if
-   i32.const 144
-   i32.const 96
-   i32.const 118
-   i32.const 40
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $value
@@ -460,11 +439,6 @@
   i32.load $0 offset=12
   i32.ge_u
   if
-   i32.const 32
-   i32.const 96
-   i32.const 114
-   i32.const 42
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
@@ -485,11 +459,6 @@
   local.get $value
   i32.eqz
   if
-   i32.const 144
-   i32.const 96
-   i32.const 118
-   i32.const 40
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $value
@@ -516,11 +485,6 @@
   i32.load $0 offset=12
   i32.ge_u
   if
-   i32.const 32
-   i32.const 96
-   i32.const 114
-   i32.const 42
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
@@ -541,11 +505,6 @@
   local.get $value
   i32.eqz
   if
-   i32.const 144
-   i32.const 96
-   i32.const 118
-   i32.const 40
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $value

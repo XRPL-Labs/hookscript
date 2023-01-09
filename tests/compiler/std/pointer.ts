@@ -73,10 +73,12 @@ class Entry {
   val: i32;
 }
 
-var one = new Pointer<Entry>(8);
-var two = new Pointer<Entry>(24);
-assert(one.offset == 8);
-assert(two.offset == 24);
+const base: usize = __alloc(64);
+
+var one = new Pointer<Entry>(base + 8);
+var two = new Pointer<Entry>(base + 24);
+assert(one.offset == base + 8);
+assert(two.offset == base + 24);
 
 one.value.key = 1;
 one.value.val = 2;
@@ -84,20 +86,20 @@ assert(one.value.key == 1);
 assert(one.value.val == 2);
 
 var add = one + two;
-assert(add.offset == 32);
+assert(add.offset == 2 * base + 32);
 
 var sub = two - one;
 assert(sub.offset == 16);
 
-assert(one.offset == 8);
+assert(one.offset == base + 8);
 var nextOne = ++one;
 assert(nextOne == one);
-assert(one.offset == 16);
+assert(one.offset == base + 16);
 
-assert(two.offset == 24);
+assert(two.offset == base + 24);
 --two;
 --two;
-assert(two.offset == 8);
+assert(two.offset == base + 8);
 assert(two.value.key == 1);
 assert(two.value.val == 2);
 
@@ -106,7 +108,7 @@ assert(one.offset != two.offset);
 assert(one.value.key == 1);
 assert(one.value.val == 2);
 
-var buf = new Pointer<f32>(0);
+var buf = new Pointer<f32>(base);
 buf[0] = 1.1;
 buf[1] = 1.2;
 
@@ -116,14 +118,14 @@ assert(buf[1] == 1.2);
 assert(buf.get(0) == 1.1);
 assert(buf.get(1) == 1.2);
 
-assert(load<f32>(0) == 1.1);
-assert(load<f32>(4) == 1.2);
+assert(load<f32>(base) == 1.1);
+assert(load<f32>(base + 4) == 1.2);
 
 buf.set(2, 1.3);
 assert(buf[2] == 1.3);
 assert(buf.get(2) == 1.3);
-assert(load<f32>(8) == 1.3);
+assert(load<f32>(base + 8) == 1.3);
 
 buf.value = 1.4;
 assert(buf.value == 1.4);
-assert(load<f32>(0) == 1.4);
+assert(load<f32>(base) == 1.4);

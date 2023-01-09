@@ -1,16 +1,18 @@
 (module
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $comma/a (mut i32) (i32.const 0))
  (global $comma/b (mut i32) (i32.const 0))
- (global $~lib/memory/__data_end i32 (i32.const 60))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32828))
- (global $~lib/memory/__heap_base i32 (i32.const 32828))
- (memory $0 1)
- (data (i32.const 12) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\10\00\00\00c\00o\00m\00m\00a\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (global $~lib/memory/__data_end i32 (i32.const 8))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32776))
+ (global $~lib/memory/__heap_base i32 (i32.const 32776))
+ (memory $0 0)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $start:comma (type $none_=>_none)
@@ -31,11 +33,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 4
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $comma/b
@@ -43,11 +40,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 5
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $comma/a
@@ -61,11 +53,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 8
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $comma/b
@@ -73,11 +60,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 9
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 0
@@ -95,11 +77,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 14
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $comma/b
@@ -107,11 +84,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 15
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $comma/a
@@ -127,11 +99,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 18
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $comma/b
@@ -139,11 +106,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 19
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 0
@@ -172,11 +134,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 22
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 1

@@ -2,17 +2,19 @@
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~argumentsLength (mut i32) (i32.const 0))
- (global $call-optional/optIndirect (mut i32) (i32.const 96))
- (global $~lib/memory/__data_end i32 (i32.const 108))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32876))
- (global $~lib/memory/__heap_base i32 (i32.const 32876))
+ (global $call-optional/optIndirect (mut i32) (i32.const 32))
+ (global $~lib/memory/__data_end i32 (i32.const 44))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32812))
+ (global $~lib/memory/__heap_base i32 (i32.const 32812))
  (memory $0 1)
- (data (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00 \00\00\00c\00a\00l\00l\00-\00o\00p\00t\00i\00o\00n\00a\00l\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 76) "\1c\00\00\00\00\00\00\00\00\00\00\00\03\00\00\00\08\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\03\00\00\00\08\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 2 2 funcref)
  (elem $0 (i32.const 1) $call-optional/opt@varargs)
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $call-optional/opt (type $i32_i32_i32_=>_i32) (param $a i32) (param $b i32) (param $c i32) (result i32)
@@ -56,11 +58,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 4
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 3
@@ -73,11 +70,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 5
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 3
@@ -88,11 +80,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 6
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 3
@@ -107,11 +94,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 9
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 3
@@ -126,11 +108,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 10
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 3
@@ -145,11 +122,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 11
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )

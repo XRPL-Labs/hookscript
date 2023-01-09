@@ -599,7 +599,6 @@ assert(Atomics.isLockFree(8) == false);
   let c = idof<(a: u32) => void>();
   let d = idof<(val: C) => C>();
   let e = idof<(val2: C) => C>();
-  trace("signatures", 5, a, b, c, d, e);
 
   assert(a == b, "testing");
   assert(a != c);

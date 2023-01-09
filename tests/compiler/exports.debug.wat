@@ -1,6 +1,7 @@
 (module
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $exports/Animal.CAT i32 (i32.const 0))
  (global $exports/Animal.DOG i32 (i32.const 1))
  (global $exports/animals.Animal.CAT i32 (i32.const 0))
@@ -23,6 +24,7 @@
  (export "Animal.CAT" (global $exports/Animal.CAT))
  (export "Animal.DOG" (global $exports/Animal.DOG))
  (export "renamed_mul" (func $export/mul))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "__setArgumentsLength" (func $~setArgumentsLength))
  (func $exports/add (type $i32_i32_=>_i32) (param $a i32) (param $b i32) (result i32)

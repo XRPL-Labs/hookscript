@@ -1,9 +1,10 @@
 (module
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
- (type $i32_=>_none (func_subtype (param i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (type $i32_=>_none (func_subtype (param i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $function-inline-regressions/struct i32 (i32.const 0))
  (global $~lib/memory/__data_end i32 (i32.const 8))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32776))
@@ -13,6 +14,7 @@
  (elem $0 (i32.const 1))
  (export "baz" (func $function-inline-regressions/baz))
  (export "foo" (func $function-inline-regressions/foo))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $function-inline-regressions/baz (type $i32_=>_none) (param $v i32)
   local.get $v

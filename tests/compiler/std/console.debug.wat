@@ -2,9 +2,11 @@
  (type $i32_=>_none (func_subtype (param i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
- (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
+ (type $i32_i32_i32_i32_i32_=>_i64 (func_subtype (param i32 i32 i32 i32 i32) (result i64) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "console.assert" (func $~lib/bindings/dom/console.assert (param i32 i32)))
- (import "env" "console.log" (func $~lib/bindings/dom/console.log (param i32)))
+ (import "env" "trace" (func $~lib/builtins/trace (param i32 i32 i32 i32 i32) (result i64)))
  (import "env" "console.debug" (func $~lib/bindings/dom/console.debug (param i32)))
  (import "env" "console.info" (func $~lib/bindings/dom/console.info (param i32)))
  (import "env" "console.warn" (func $~lib/bindings/dom/console.warn (param i32)))
@@ -12,27 +14,31 @@
  (import "env" "console.time" (func $~lib/bindings/dom/console.time (param i32)))
  (import "env" "console.timeLog" (func $~lib/bindings/dom/console.timeLog (param i32)))
  (import "env" "console.timeEnd" (func $~lib/bindings/dom/console.timeEnd (param i32)))
- (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
- (global $~lib/memory/__data_end i32 (i32.const 588))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33356))
- (global $~lib/memory/__heap_base i32 (i32.const 33356))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
+ (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
+ (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
+ (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
+ (global $~lib/memory/__data_end i32 (i32.const 476))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33244))
+ (global $~lib/memory/__heap_base i32 (i32.const 33244))
  (memory $0 1)
- (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0c\00\00\00w\00h\00o\00o\00p\00s\00")
- (data (i32.const 44) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\00p\00h\00e\00w\00\00\00\00\00")
- (data (i32.const 76) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\12\00\00\00h\00e\00l\00l\00o\00 \00l\00o\00g\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 124) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\16\00\00\00h\00e\00l\00l\00o\00 \00d\00e\00b\00u\00g\00\00\00\00\00\00\00")
- (data (i32.const 172) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00h\00e\00l\00l\00o\00 \00i\00n\00f\00o\00\00\00\00\00\00\00\00\00")
- (data (i32.const 220) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00h\00e\00l\00l\00o\00 \00w\00a\00r\00n\00\00\00\00\00\00\00\00\00")
- (data (i32.const 268) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\16\00\00\00h\00e\00l\00l\00o\00 \00e\00r\00r\00o\00r\00\00\00\00\00\00\00")
- (data (i32.const 316) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\12\00\00\00s\00o\00m\00e\00L\00a\00b\00e\00l\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 364) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00w\00r\00o\00n\00g\00L\00a\00b\00e\00l\00\00\00\00\00\00\00\00\00")
- (data (i32.const 412) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1c\00\00\00d\00u\00p\00l\00i\00c\00a\00t\00e\00L\00a\00b\00e\00l\00")
- (data (i32.const 460) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\001\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 492) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\001\002\00\00\00\00\00\00\00\00\00")
- (data (i32.const 524) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\06\00\00\001\002\003\00\00\00\00\00\00\00")
- (data (i32.const 556) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\001\002\003\004\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\06\00\00\00whoops\00\00\00\00\00\00")
+ (data (i32.const 44) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00phew\00\00\00\00\00\00\00\00")
+ (data (i32.const 76) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\t\00\00\00hello log\00\00\00")
+ (data (i32.const 108) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0b\00\00\00hello debug\00")
+ (data (i32.const 140) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\n\00\00\00hello info\00\00")
+ (data (i32.const 172) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\n\00\00\00hello warn\00\00")
+ (data (i32.const 204) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0b\00\00\00hello error\00")
+ (data (i32.const 236) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\t\00\00\00someLabel\00\00\00")
+ (data (i32.const 268) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\n\00\00\00wrongLabel\00\00")
+ (data (i32.const 300) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0e\00\00\00duplicateLabel\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 348) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\001\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 380) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\0012\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 412) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\03\00\00\00123\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 444) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\001234\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/console/console.assert<bool> (type $i32_i32_=>_none) (param $condition i32) (param $message i32)
@@ -42,9 +48,24 @@
   local.get $message
   call $~lib/bindings/dom/console.assert
  )
+ (func $~lib/string/String#get:length (type $i32_=>_i32) (param $this i32) (result i32)
+  local.get $this
+  i32.const 20
+  i32.sub
+  i32.load $0 offset=16
+ )
  (func $~lib/console/console.log (type $i32_=>_none) (param $message i32)
+  (local $text i32)
   local.get $message
-  call $~lib/bindings/dom/console.log
+  local.set $text
+  local.get $text
+  local.get $text
+  call $~lib/string/String#get:length
+  i32.const 0
+  i32.const 0
+  i32.const 0
+  call $~lib/builtins/trace
+  drop
  )
  (func $~lib/console/console.debug (type $i32_=>_none) (param $message i32)
   local.get $message
@@ -82,11 +103,6 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 33376
-   i32.const 33424
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )
@@ -123,105 +139,105 @@
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.log
-  i32.const 144
+  i32.const 128
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.debug
-  i32.const 192
+  i32.const 160
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.info
-  i32.const 240
+  i32.const 192
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.warn
-  i32.const 288
+  i32.const 224
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.error
-  i32.const 336
+  i32.const 256
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.time
-  i32.const 336
+  i32.const 256
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.timeLog
-  i32.const 336
+  i32.const 256
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.timeEnd
-  i32.const 384
+  i32.const 288
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.timeLog
-  i32.const 384
+  i32.const 288
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.timeEnd
-  i32.const 432
+  i32.const 320
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.time
-  i32.const 432
+  i32.const 320
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.time
-  i32.const 480
+  i32.const 368
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.log
-  i32.const 512
+  i32.const 400
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.log
-  i32.const 544
+  i32.const 432
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.store $0 offset=4
   local.get $0
   call $~lib/console/console.log
-  i32.const 576
+  i32.const 464
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0

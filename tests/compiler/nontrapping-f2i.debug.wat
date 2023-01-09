@@ -1,5 +1,7 @@
 (module
  (type $none_=>_none (func_subtype func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/builtins/f32.MAX_VALUE f32 (f32.const 3402823466385288598117041e14))
  (global $~lib/builtins/i32.MAX_VALUE i32 (i32.const 2147483647))
  (global $~lib/builtins/i32.MIN_VALUE i32 (i32.const -2147483648))
@@ -19,6 +21,7 @@
  (memory $0 0)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
  (func $start:nontrapping-f2i (type $none_=>_none)

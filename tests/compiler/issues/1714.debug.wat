@@ -1,23 +1,24 @@
 (module
  (type $none_=>_i32 (func_subtype (result i32) func))
  (type $none_=>_none (func_subtype func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $i32_i32_i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32 i32 i32) (result i32) func))
- (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
  (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
  (global $~lib/native/ASC_SHRINK_LEVEL i32 (i32.const 0))
- (global $~lib/memory/__data_end i32 (i32.const 92))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32860))
- (global $~lib/memory/__heap_base i32 (i32.const 32860))
+ (global $~lib/memory/__data_end i32 (i32.const 44))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32812))
+ (global $~lib/memory/__heap_base i32 (i32.const 32812))
  (memory $0 1)
- (data (i32.const 12) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1c\00\00\00i\00s\00s\00u\00e\00s\00/\001\007\001\004\00.\00t\00s\00")
- (data (i32.const 60) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\06\00\00\00i\003\002\00\00\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\03\00\00\00i32\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $issues/1714/a_i64_i32<i64,i32> (type $none_=>_i32) (result i32)
@@ -33,7 +34,7 @@
  (func $issues/1714/bar<i32,f64> (type $none_=>_i32) (result i32)
   i32.const 0
   drop
-  i32.const 80
+  i32.const 32
  )
  (func $issues/1714/bar<f64,i32> (type $none_=>_i32) (result i32)
   i32.const 1
@@ -46,8 +47,6 @@
   i32.const 20
   i32.sub
   i32.load $0 offset=16
-  i32.const 1
-  i32.shr_u
  )
  (func $~lib/util/string/compareImpl (type $i32_i32_i32_i32_i32_=>_i32) (param $str1 i32) (param $index1 i32) (param $str2 i32) (param $index2 i32) (param $len i32) (result i32)
   (local $ptr1 i32)
@@ -205,11 +204,6 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 32880
-   i32.const 32928
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )
@@ -228,11 +222,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 9
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   call $issues/1714/bar<f64,i32>
@@ -241,7 +230,7 @@
   local.get $0
   i32.store $0
   local.get $0
-  i32.const 80
+  i32.const 32
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
@@ -250,11 +239,6 @@
   call $~lib/string/String.__eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 18
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer

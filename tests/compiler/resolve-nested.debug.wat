@@ -1,8 +1,8 @@
 (module
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
- (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
- (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $resolve-nested/Outer.Inner.a (mut i32) (i32.const 0))
  (global $resolve-nested/Outer.Inner.b (mut i32) (i32.const 0))
  (global $resolve-nested/Outer.Inner.c (mut i32) (i32.const 0))
@@ -23,6 +23,7 @@
  (memory $0 0)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "outer" (func $export:resolve-nested/outer))
  (func $resolve-nested/outer (type $i32_i32_i32_=>_none) (param $a i32) (param $b i32) (param $c i32)
@@ -33,11 +34,6 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 32800
-   i32.const 32848
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )

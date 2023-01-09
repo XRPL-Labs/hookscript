@@ -140,7 +140,7 @@ export function memcpy(dest: usize, src: usize, n: usize): usize {
   return ret;
 }
 
-const base: usize = 8;
+const base: usize = __alloc(1024);
 store<u64>(base     , 0x1111111111111111);
 store<u64>(base + 8 , 0x2222222222222222);
 store<u64>(base + 16, 0x3333333333333333);

@@ -3,17 +3,9 @@ namespace Namespace {
   @lazy export const lazyMember = 11;
 }
 
-assert(
-  (Namespace.member).toString()
-  ==
-  "1"
-);
+assert((Namespace.member) == 1);
 
-assert(
-  (Namespace.lazyMember).toString()
-  ==
-  "11"
-);
+assert((Namespace.lazyMember) == 11);
 
 function MergedNamespace(): i32 { return 0; }
 namespace MergedNamespace {
@@ -21,17 +13,9 @@ namespace MergedNamespace {
   @lazy export const lazyMember = 22;
 }
 
-assert(
-  (MergedNamespace.member).toString()
-  ==
-  "2"
-);
+assert((MergedNamespace.member) == 2);
 
-assert(
-  (MergedNamespace.lazyMember).toString()
-  ==
-  "22"
-);
+assert((MergedNamespace.lazyMember) == 22);
 
 namespace TypedNamespace {
   export const member = 3;
@@ -39,27 +23,15 @@ namespace TypedNamespace {
 }
 type TypedNamespace = string;
 
-assert(
-  (TypedNamespace.member).toString()
-  ==
-  "3"
-);
+assert((TypedNamespace.member) == 3);
 
-assert(
-  (TypedNamespace.lazyMember).toString()
-  ==
-  "33"
-);
+assert((TypedNamespace.lazyMember) == 33);
 
 enum Enum {
   VALUE = 4
 }
 
-assert(
-  (Enum.VALUE).toString()
-  ==
-  "4"
-);
+assert((Enum.VALUE) == 4);
 
 class Class {
   static staticField: i32 = 5;
@@ -69,34 +41,14 @@ class Class {
   get instanceProperty(): i32 { return 8; }
 }
 
-assert(
-  (Class.staticField).toString()
-  ==
-  "5"
-);
+assert((Class.staticField) == 5);
 
-assert(
-  (Class.lazyStaticField).toString()
-  ==
-  "55"
-);
+assert((Class.lazyStaticField) == 55);
 
-assert(
-  (Class.staticProperty).toString()
-  ==
-  "7"
-);
+assert((Class.staticProperty) == 7);
 
 {
   let instance = new Class();
-  assert(
-    (instance.instanceField).toString()
-    ==
-    "6"
-  );
-  assert(
-    (instance.instanceProperty).toString()
-    ==
-    "8"
-  );
+  assert((instance.instanceField) == 6);
+  assert((instance.instanceProperty) == 8);
 }

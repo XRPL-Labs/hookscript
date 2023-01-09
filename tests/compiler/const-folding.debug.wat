@@ -1,6 +1,8 @@
 (module
  (type $none_=>_none (func_subtype func))
  (type $i64_=>_i64 (func_subtype (param i64) (result i64) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $const-folding/w (mut i32) (i32.const 0))
  (global $const-folding/x (mut i32) (i32.const 0))
  (global $~lib/memory/__data_end i32 (i32.const 8))
@@ -11,6 +13,7 @@
  (elem $0 (i32.const 1))
  (export "x" (global $const-folding/x))
  (export "test" (func $const-folding/test))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $start:const-folding (type $none_=>_none)

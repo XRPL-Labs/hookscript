@@ -393,6 +393,9 @@ async function testInstantiate(binaryBuffer, glue, stderr) {
     const imports = rtrace.install({
       env: Object.assign({}, globalThis, {
         memory,
+        _g: function(i, m) {
+          return 1;
+        },
         abort: function(msg, file, line, column) {
           console.log(stdoutColors.red("  abort: " + getString(msg) + " in " + getString(file) + "(" + line + ":" + column + ")"));
         },

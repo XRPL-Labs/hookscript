@@ -131,12 +131,12 @@ ui = 255 % 255;
 assert(ui == 0);
 
 // inferring global type from load should still retain T
-var ri = load<i8>(0);
+var ri = load<i8>(__alloc(1));
 assert(ri instanceof i8);
 
 // inferring local type from load should still retain T
 function testLocalRetain(): void {
-  var ri = load<i8>(0);
+  var ri = load<i8>(__alloc(1));
   assert(ri instanceof i8);
 }
 testLocalRetain();

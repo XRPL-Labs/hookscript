@@ -3,19 +3,20 @@
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
- (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
- (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $ternary/a (mut i32) (i32.const 0))
  (global $~argumentsLength (mut i32) (i32.const 0))
  (global $~lib/memory/__data_end i32 (i32.const 44))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32812))
  (global $~lib/memory/__heap_base i32 (i32.const 32812))
  (memory $0 1)
- (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\00a\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00a\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "test" (func $ternary/test))
  (export "testDropWithTypeMismatch" (func $ternary/testDropWithTypeMismatch))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "testVoidInclTypeMismatch" (func $export:ternary/testVoidInclTypeMismatch))
  (start $~start)
@@ -117,11 +118,6 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 32832
-   i32.const 32880
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )

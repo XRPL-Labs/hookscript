@@ -1,5 +1,6 @@
 (module
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $export/a i32 (i32.const 1))
  (global $export/b i32 (i32.const 2))
  (global $export/c i32 (i32.const 3))
@@ -15,6 +16,7 @@
  (export "a" (global $export/a))
  (export "b" (global $export/b))
  (export "renamed_c" (global $export/c))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $export/add (type $i32_i32_=>_i32) (param $a i32) (param $b i32) (result i32)
   local.get $a

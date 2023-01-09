@@ -1,6 +1,8 @@
 (module
  (type $none_=>_i32 (func_subtype (result i32) func))
  (type $none_=>_none (func_subtype func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $namespace/Outer.outerVar (mut i32) (i32.const 1))
  (global $namespace/Outer.Inner.aVar (mut i32) (i32.const 0))
  (global $namespace/Outer.Inner.anotherVar (mut i32) (i32.const 0))
@@ -13,6 +15,7 @@
  (memory $0 0)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $namespace/Outer.Inner.aFunc (type $none_=>_i32) (result i32)

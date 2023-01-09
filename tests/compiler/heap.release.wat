@@ -3,16 +3,13 @@
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $none_=>_none (func_subtype func))
- (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
- (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
- (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/rt/tlsf/ROOT (mut i32) (i32.const 0))
  (global $heap/ptr (mut i32) (i32.const 0))
  (memory $0 1)
- (data (i32.const 1036) "<")
- (data (i32.const 1048) "\01\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00l\00s\00f\00.\00t\00s")
- (data (i32.const 1100) "<")
- (data (i32.const 1112) "\01\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e")
+ (data (i32.const 1036) ",")
+ (data (i32.const 1048) "\01\00\00\00\14\00\00\00Allocation too large")
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/tlsf/removeBlock (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
@@ -27,11 +24,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 268
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $2
@@ -41,11 +33,6 @@
   i32.const 12
   i32.lt_u
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 270
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $2
@@ -87,11 +74,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 284
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $1
@@ -177,11 +159,6 @@
   local.get $1
   i32.eqz
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 201
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $1
@@ -191,11 +168,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 203
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $1
@@ -252,11 +224,6 @@
    i32.and
    i32.eqz
    if
-    i32.const 0
-    i32.const 1056
-    i32.const 221
-    i32.const 16
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $0
@@ -285,11 +252,6 @@
   i32.const 12
   i32.lt_u
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 233
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $4
@@ -300,11 +262,6 @@
   i32.add
   i32.ne
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 234
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $4
@@ -351,11 +308,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 251
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $0
@@ -421,11 +373,6 @@
   local.get $2
   i32.gt_u
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 377
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $1
@@ -446,11 +393,6 @@
    local.get $1
    i32.gt_u
    if
-    i32.const 0
-    i32.const 1056
-    i32.const 384
-    i32.const 16
-    call $~lib/builtins/abort
     unreachable
    end
    local.get $1
@@ -474,11 +416,6 @@
    local.get $1
    i32.gt_u
    if
-    i32.const 0
-    i32.const 1056
-    i32.const 397
-    i32.const 5
-    call $~lib/builtins/abort
     unreachable
    end
   end
@@ -546,10 +483,10 @@
   if
    unreachable
   end
-  i32.const 33936
+  i32.const 33856
   i32.const 0
   i32.store $0
-  i32.const 35504
+  i32.const 35424
   i32.const 0
   i32.store $0
   loop $for-loop|0
@@ -560,7 +497,7 @@
     local.get $0
     i32.const 2
     i32.shl
-    i32.const 33936
+    i32.const 33856
     i32.add
     i32.const 0
     i32.store $0 offset=4
@@ -578,7 +515,7 @@
       i32.add
       i32.const 2
       i32.shl
-      i32.const 33936
+      i32.const 33856
       i32.add
       i32.const 0
       i32.store $0 offset=96
@@ -596,39 +533,14 @@
     br $for-loop|0
    end
   end
-  i32.const 33936
-  i32.const 35508
+  i32.const 33856
+  i32.const 35428
   memory.size $0
   i32.const 16
   i32.shl
   call $~lib/rt/tlsf/addMemory
-  i32.const 33936
+  i32.const 33856
   global.set $~lib/rt/tlsf/ROOT
- )
- (func $~lib/rt/tlsf/prepareSize (type $i32_=>_i32) (param $0 i32) (result i32)
-  local.get $0
-  i32.const 1073741820
-  i32.gt_u
-  if
-   i32.const 1120
-   i32.const 1056
-   i32.const 458
-   i32.const 29
-   call $~lib/builtins/abort
-   unreachable
-  end
-  i32.const 12
-  local.get $0
-  i32.const 19
-  i32.add
-  i32.const -16
-  i32.and
-  i32.const 4
-  i32.sub
-  local.get $0
-  i32.const 12
-  i32.le_u
-  select
  )
  (func $~lib/rt/tlsf/searchBlock (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -681,11 +593,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 330
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $0
@@ -733,11 +640,6 @@
     local.tee $2
     i32.eqz
     if
-     i32.const 0
-     i32.const 1056
-     i32.const 343
-     i32.const 18
-     call $~lib/builtins/abort
      unreachable
     end
     local.get $0
@@ -768,11 +670,6 @@
   i32.const 15
   i32.and
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 357
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $3
@@ -831,9 +728,25 @@
  (func $~lib/rt/tlsf/allocateBlock (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
-  local.get $0
   local.get $1
-  call $~lib/rt/tlsf/prepareSize
+  i32.const 1073741820
+  i32.gt_u
+  if
+   unreachable
+  end
+  local.get $0
+  i32.const 12
+  local.get $1
+  i32.const 19
+  i32.add
+  i32.const -16
+  i32.and
+  i32.const 4
+  i32.sub
+  local.get $1
+  i32.const 12
+  i32.le_u
+  select
   local.tee $2
   call $~lib/rt/tlsf/searchBlock
   local.tee $1
@@ -904,11 +817,6 @@
    local.tee $1
    i32.eqz
    if
-    i32.const 0
-    i32.const 1056
-    i32.const 496
-    i32.const 16
-    call $~lib/builtins/abort
     unreachable
    end
   end
@@ -919,11 +827,6 @@
   i32.and
   i32.gt_u
   if
-   i32.const 0
-   i32.const 1056
-   i32.const 498
-   i32.const 14
-   call $~lib/builtins/abort
    unreachable
   end
   local.get $0
@@ -933,36 +836,6 @@
   local.get $1
   local.get $2
   call $~lib/rt/tlsf/prepareBlock
-  local.get $1
- )
- (func $~lib/rt/tlsf/checkUsedBlock (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  local.get $0
-  i32.const 4
-  i32.sub
-  local.set $1
-  local.get $0
-  i32.const 15
-  i32.and
-  i32.const 1
-  local.get $0
-  select
-  if (result i32)
-   i32.const 1
-  else
-   local.get $1
-   i32.load $0
-   i32.const 1
-   i32.and
-  end
-  if
-   i32.const 0
-   i32.const 1056
-   i32.const 559
-   i32.const 3
-   call $~lib/builtins/abort
-   unreachable
-  end
   local.get $1
  )
  (func $~lib/rt/tlsf/moveBlock (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
@@ -982,7 +855,7 @@
   i32.and
   memory.copy $0 $0
   local.get $1
-  i32.const 33932
+  i32.const 33852
   i32.ge_u
   if
    local.get $1
@@ -1004,7 +877,6 @@
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
-  (local $6 i32)
   global.get $~lib/rt/tlsf/ROOT
   i32.eqz
   if
@@ -1017,42 +889,78 @@
   i32.add
   global.set $heap/ptr
   global.get $heap/ptr
-  local.set $0
+  local.set $1
   global.get $~lib/rt/tlsf/ROOT
   i32.eqz
   if
    call $~lib/rt/tlsf/initialize
   end
-  local.get $0
-  i32.const 33932
+  local.get $1
+  i32.const 33852
   i32.lt_u
   if
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.set $0
+   local.get $1
+   i32.const 15
+   i32.and
+   i32.const 1
+   local.get $1
+   select
+   if (result i32)
+    i32.const 1
+   else
+    local.get $0
+    i32.load $0
+    i32.const 1
+    i32.and
+   end
+   if
+    unreachable
+   end
    global.get $~lib/rt/tlsf/ROOT
    local.get $0
-   call $~lib/rt/tlsf/checkUsedBlock
    call $~lib/rt/tlsf/moveBlock
    local.set $0
   else
    block $__inlined_func$~lib/rt/tlsf/reallocateBlock
-    global.get $~lib/rt/tlsf/ROOT
-    local.set $3
-    local.get $0
-    call $~lib/rt/tlsf/checkUsedBlock
+    local.get $1
+    i32.const 4
+    i32.sub
     local.set $0
-    i32.const 32
-    call $~lib/rt/tlsf/prepareSize
-    local.tee $5
+    local.get $1
+    i32.const 15
+    i32.and
+    i32.const 1
+    local.get $1
+    select
+    if (result i32)
+     i32.const 1
+    else
+     local.get $0
+     i32.load $0
+     i32.const 1
+     i32.and
+    end
+    if
+     unreachable
+    end
+    global.get $~lib/rt/tlsf/ROOT
+    local.set $4
     local.get $0
     i32.load $0
-    local.tee $1
+    local.tee $2
     i32.const -4
     i32.and
-    local.tee $4
-    i32.le_u
+    local.tee $3
+    i32.const 44
+    i32.ge_u
     if
-     local.get $3
+     local.get $4
      local.get $0
-     local.get $5
+     i32.const 44
      call $~lib/rt/tlsf/prepareBlock
      br $__inlined_func$~lib/rt/tlsf/reallocateBlock
     end
@@ -1064,41 +972,41 @@
     i32.const -4
     i32.and
     i32.add
-    local.tee $2
+    local.tee $1
     i32.load $0
-    local.tee $6
+    local.tee $5
     i32.const 1
     i32.and
     if
-     local.get $4
+     local.get $3
      i32.const 4
      i32.add
-     local.get $6
+     local.get $5
      i32.const -4
      i32.and
      i32.add
-     local.tee $4
-     local.get $5
+     local.tee $3
+     i32.const 44
      i32.ge_u
      if
-      local.get $3
-      local.get $2
+      local.get $4
+      local.get $1
       call $~lib/rt/tlsf/removeBlock
       local.get $0
-      local.get $1
+      local.get $2
       i32.const 3
       i32.and
-      local.get $4
+      local.get $3
       i32.or
       i32.store $0
-      local.get $3
+      local.get $4
       local.get $0
-      local.get $5
+      i32.const 44
       call $~lib/rt/tlsf/prepareBlock
       br $__inlined_func$~lib/rt/tlsf/reallocateBlock
      end
     end
-    local.get $3
+    local.get $4
     local.get $0
     call $~lib/rt/tlsf/moveBlock
     local.set $0
@@ -1110,7 +1018,7 @@
   global.set $heap/ptr
   global.get $heap/ptr
   local.tee $0
-  i32.const 33932
+  i32.const 33852
   i32.ge_u
   if
    global.get $~lib/rt/tlsf/ROOT
@@ -1118,18 +1026,35 @@
    if
     call $~lib/rt/tlsf/initialize
    end
-   global.get $~lib/rt/tlsf/ROOT
+   local.get $0
+   i32.const 4
+   i32.sub
    local.set $1
    local.get $0
-   call $~lib/rt/tlsf/checkUsedBlock
-   local.tee $0
+   i32.const 15
+   i32.and
+   i32.const 1
    local.get $0
+   select
+   if (result i32)
+    i32.const 1
+   else
+    local.get $1
+    i32.load $0
+    i32.const 1
+    i32.and
+   end
+   if
+    unreachable
+   end
+   local.get $1
+   local.get $1
    i32.load $0
    i32.const 1
    i32.or
    i32.store $0
+   global.get $~lib/rt/tlsf/ROOT
    local.get $1
-   local.get $0
    call $~lib/rt/tlsf/insertBlock
   end
  )

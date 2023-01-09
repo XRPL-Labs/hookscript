@@ -1,6 +1,7 @@
 (module
- (memory $0 1)
- (data (i32.const 12) ",")
- (data (i32.const 24) "\01\00\00\00\14\00\00\00b\00o\00o\00l\00-\00O\00z\00.\00t\00s")
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
+ (memory $0 0)
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
 )

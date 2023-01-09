@@ -3,13 +3,14 @@
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
- (global $~lib/memory/__data_end i32 (i32.const 92))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32860))
- (global $~lib/memory/__heap_base i32 (i32.const 32860))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
+ (global $~lib/memory/__data_end i32 (i32.const 44))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32812))
+ (global $~lib/memory/__heap_base i32 (i32.const 32812))
  (memory $0 1)
- (data (i32.const 12) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\18\00\00\00l\00o\00o\00p\00-\00f\00l\00o\00w\00.\00t\00s\00\00\00\00\00")
- (data (i32.const 60) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\00t\00e\00r\00m\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00term\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "whileReturn" (func $loop-flow/whileReturn))
@@ -23,6 +24,7 @@
  (export "doReturn" (func $loop-flow/doReturn))
  (export "doThrow" (func $loop-flow/doThrow))
  (export "doAny" (func $loop-flow/doAny))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $loop-flow/whileReturn (type $none_=>_i32) (result i32)
@@ -56,11 +58,6 @@
      i32.const 2
      i32.eq
      if
-      i32.const 80
-      i32.const 32
-      i32.const 24
-      i32.const 22
-      call $~lib/builtins/abort
       unreachable
      else
       br $while-continue|0
@@ -104,11 +101,6 @@
       i32.const 2
       i32.eq
       if
-       i32.const 80
-       i32.const 32
-       i32.const 54
-       i32.const 22
-       call $~lib/builtins/abort
        unreachable
       else
        br $for-continue|0
@@ -143,11 +135,6 @@
      i32.const 2
      i32.eq
      if
-      i32.const 80
-      i32.const 32
-      i32.const 78
-      i32.const 22
-      call $~lib/builtins/abort
       unreachable
      else
       br $do-continue|0
@@ -168,11 +155,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 7
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 1
@@ -181,11 +163,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 29
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   call $loop-flow/forReturn
@@ -193,11 +170,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 37
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 1
@@ -206,11 +178,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 59
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   call $loop-flow/doReturn
@@ -218,11 +185,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 67
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   i32.const 1
@@ -231,11 +193,6 @@
   i32.eq
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 83
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )
@@ -246,11 +203,6 @@
    local.set $0
    local.get $0
    if
-    i32.const 80
-    i32.const 32
-    i32.const 11
-    i32.const 5
-    call $~lib/builtins/abort
     unreachable
    end
   end
@@ -275,11 +227,6 @@
    local.set $0
    local.get $0
    if
-    i32.const 80
-    i32.const 32
-    i32.const 41
-    i32.const 5
-    call $~lib/builtins/abort
     unreachable
    end
   end
@@ -302,11 +249,6 @@
  )
  (func $loop-flow/doThrow (type $none_=>_i32) (result i32)
   loop $do-loop|0
-   i32.const 80
-   i32.const 32
-   i32.const 71
-   i32.const 5
-   call $~lib/builtins/abort
    unreachable
   end
   unreachable

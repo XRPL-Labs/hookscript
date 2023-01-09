@@ -1,18 +1,20 @@
 (module
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $portable-conversions/i (mut i32) (i32.const 1))
  (global $portable-conversions/I (mut i64) (i64.const 1))
  (global $portable-conversions/f (mut f32) (f32.const 1))
  (global $portable-conversions/F (mut f64) (f64.const 1))
- (global $~lib/memory/__data_end i32 (i32.const 92))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32860))
- (global $~lib/memory/__heap_base i32 (i32.const 32860))
- (memory $0 1)
- (data (i32.const 12) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00.\00\00\00p\00o\00r\00t\00a\00b\00l\00e\00-\00c\00o\00n\00v\00e\00r\00s\00i\00o\00n\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (global $~lib/memory/__data_end i32 (i32.const 8))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32776))
+ (global $~lib/memory/__heap_base i32 (i32.const 32776))
+ (memory $0 0)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $start:portable-conversions (type $none_=>_none)
@@ -20,11 +22,6 @@
   i32.extend8_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 6
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
@@ -32,11 +29,6 @@
   i32.extend8_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 7
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
@@ -44,11 +36,6 @@
   i32.extend8_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 8
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
@@ -56,22 +43,12 @@
   i32.extend8_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 9
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
   i32.extend16_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 11
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
@@ -79,11 +56,6 @@
   i32.extend16_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 12
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
@@ -91,11 +63,6 @@
   i32.extend16_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 13
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
@@ -103,140 +70,75 @@
   i32.extend16_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 14
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 16
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
   i32.wrap_i64
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 17
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
   i32.trunc_sat_f32_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 18
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
   i32.trunc_sat_f64_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 19
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
   i64.extend_i32_s
   i64.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 21
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
   i64.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 22
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
   i64.trunc_sat_f32_s
   i64.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 23
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
   i64.trunc_sat_f64_s
   i64.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 24
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 26
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
   i32.wrap_i64
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 27
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
   i32.trunc_sat_f32_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 28
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
   i32.trunc_sat_f64_s
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 29
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
@@ -244,11 +146,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 31
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
@@ -257,11 +154,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 32
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
@@ -270,11 +162,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 33
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
@@ -283,11 +170,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 34
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
@@ -295,11 +177,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 36
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
@@ -308,11 +185,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 37
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
@@ -321,11 +193,6 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 38
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
@@ -334,140 +201,75 @@
   i32.and
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 39
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 41
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
   i32.wrap_i64
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 42
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
   i32.trunc_sat_f32_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 43
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
   i32.trunc_sat_f64_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 44
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
   i64.extend_i32_s
   i64.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 46
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
   i64.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 47
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
   i64.trunc_sat_f32_u
   i64.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 48
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
   i64.trunc_sat_f64_u
   i64.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 49
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 51
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
   i32.wrap_i64
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 52
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
   i32.trunc_sat_f32_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 53
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
   i32.trunc_sat_f64_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 54
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
@@ -475,11 +277,6 @@
   i32.ne
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 56
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
@@ -487,11 +284,6 @@
   i64.ne
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 57
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
@@ -504,11 +296,6 @@
   i32.le_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 58
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
@@ -521,11 +308,6 @@
   i64.le_u
   i32.eqz
   if
-   i32.const 0
-   i32.const 32
-   i32.const 59
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
@@ -533,11 +315,6 @@
   f32.const 0
   f32.eq
   if
-   i32.const 0
-   i32.const 32
-   i32.const 61
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
@@ -545,22 +322,12 @@
   f32.const 0
   f32.eq
   if
-   i32.const 0
-   i32.const 32
-   i32.const 62
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
   f32.const 0
   f32.eq
   if
-   i32.const 0
-   i32.const 32
-   i32.const 63
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
@@ -568,11 +335,6 @@
   f32.const 0
   f32.eq
   if
-   i32.const 0
-   i32.const 32
-   i32.const 64
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/i
@@ -580,11 +342,6 @@
   f64.const 0
   f64.eq
   if
-   i32.const 0
-   i32.const 32
-   i32.const 66
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/I
@@ -592,11 +349,6 @@
   f64.const 0
   f64.eq
   if
-   i32.const 0
-   i32.const 32
-   i32.const 67
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/f
@@ -604,22 +356,12 @@
   f64.const 0
   f64.eq
   if
-   i32.const 0
-   i32.const 32
-   i32.const 68
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $portable-conversions/F
   f64.const 0
   f64.eq
   if
-   i32.const 0
-   i32.const 32
-   i32.const 69
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
  )

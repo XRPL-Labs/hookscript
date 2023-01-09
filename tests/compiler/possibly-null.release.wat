@@ -1,10 +1,11 @@
 (module
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
- (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
- (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33792))
  (memory $0 0)
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "testTrue" (func $export:possibly-null/testTrue))
  (export "testFalseElse" (func $export:possibly-null/testTrue))
@@ -34,11 +35,6 @@
   i32.const 1024
   i32.lt_s
   if
-   i32.const 33824
-   i32.const 33872
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
@@ -59,11 +55,6 @@
   i32.const 1024
   i32.lt_s
   if
-   i32.const 33824
-   i32.const 33872
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
@@ -92,11 +83,6 @@
   i32.const 1024
   i32.lt_s
   if
-   i32.const 33824
-   i32.const 33872
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
@@ -129,11 +115,6 @@
   i32.const 1024
   i32.lt_s
   if
-   i32.const 33824
-   i32.const 33872
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
@@ -169,11 +150,6 @@
   i32.const 1024
   i32.lt_s
   if
-   i32.const 33824
-   i32.const 33872
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer

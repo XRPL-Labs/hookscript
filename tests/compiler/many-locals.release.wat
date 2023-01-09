@@ -1,10 +1,11 @@
 (module
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
- (memory $0 1)
- (data (i32.const 1036) ",")
- (data (i32.const 1048) "\01\00\00\00\1c\00\00\00m\00a\00n\00y\00-\00l\00o\00c\00a\00l\00s\00.\00t\00s")
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
+ (memory $0 0)
  (export "testI32" (func $many-locals/testI32))
  (export "testI8" (func $many-locals/testI8))
+ (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $many-locals/testI32 (type $i32_=>_i32) (param $0 i32) (result i32)
   local.get $0
