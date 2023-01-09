@@ -1,54 +1,82 @@
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
+# HookScript
 
-<p align="center">
-  <a href="https://assemblyscript.org" target="_blank" rel="noopener"><img width="100" src="https://avatars1.githubusercontent.com/u/28916798?s=200&v=4" alt="AssemblyScript logo"></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/AssemblyScript/assemblyscript/actions?query=workflow%3ATest"><img src="https://img.shields.io/github/workflow/status/AssemblyScript/assemblyscript/Test/main?label=test&logo=github" alt="Test status" /></a>
-  <a href="https://github.com/AssemblyScript/assemblyscript/actions?query=workflow%3APublish"><img src="https://img.shields.io/github/workflow/status/AssemblyScript/assemblyscript/Publish/main?label=publish&logo=github" alt="Publish status" /></a>
-  <a href="https://www.npmjs.com/package/assemblyscript"><img src="https://img.shields.io/npm/v/assemblyscript.svg?label=compiler&color=007acc&logo=npm" alt="npm compiler version" /></a>
-  <a href="https://www.npmjs.com/package/@assemblyscript/loader"><img src="https://img.shields.io/npm/v/@assemblyscript/loader.svg?label=loader&color=007acc&logo=npm" alt="npm loader version" /></a>
-  <a href="https://discord.gg/assemblyscript"><img src="https://img.shields.io/discord/721472913886281818.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2" alt="Discord online" /></a>
-</p>
-
-<p align="justify"><strong>AssemblyScript</strong> compiles a variant of <a href="http://www.typescriptlang.org">TypeScript</a> (basically JavaScript with types) to <a href="http://webassembly.org">WebAssembly</a> using <a href="https://github.com/WebAssembly/binaryen">Binaryen</a>. It generates lean and mean WebAssembly modules while being just an <code>npm install</code> away.</p>
+HookScript compiles a variant of <a href="https://assemblyscript.org">AssemblyScript</a> (basically TypeScript for <a href="http://webassembly.org">WebAssembly</a>) compatible with <a href="https://xrpl-hooks.readme.io/">XRPL Hooks</a>.
 
 <h3 align="center">
-  <a href="https://assemblyscript.org">About</a> &nbsp;·&nbsp;
-  <a href="https://assemblyscript.org/introduction.html">Introduction</a> &nbsp;·&nbsp;
-  <a href="https://assemblyscript.org/quick-start.html">Quick&nbsp;start</a> &nbsp;·&nbsp;
-  <a href="https://assemblyscript.org/examples.html">Examples</a> &nbsp;·&nbsp;
-  <a href="https://assemblyscript.org/development.html">Development&nbsp;instructions</a>
+  <a href="https://xrpl-hooks.readme.io/docs/introduction">XRPL Hooks Introduction</a> &nbsp;·&nbsp;
+  <a href="https://github.com/XRPL-Labs/hookscript">Examples</a>
 </h3>
 <br>
 
-<h2 align="center">Contributors</h2>
+# AssemblyScript modifications & current limitations
 
-<p align="center">
-  <a href="https://assemblyscript.org/#contributors"><img src="https://assemblyscript.org/contributors.svg" alt="Contributor logos" width="720" /></a>
-</p>
+* String format: currently, only ASCII string literals are supported. Full UTF-8 support is planned.
+* No garbage collection. Only the <a href="https://www.assemblyscript.org/runtime.html#variants">stub AssemblyScript runtime</a> is supported; it can allocate memory from one WebAssembly linear memory page but terminates the script when asked to allocate more than that.
+* <a href="https://xrpl-hooks.readme.io/reference/hook-api-conventions">Hook API</a> support, currently unfinished (see below).
+* Hooks can define their own functions, but they have to mark them @inline .
+* hook and cbak functions are always exported (when defined), even if not explicitly marked as such.
+* _g function is always imported - even if not called by the hook script.
 
-<h2 align="center">Thanks to our sponsors!</h2>
 
-<p align="justify">Most of the maintainers and contributors do this open source work in their free time. If you use AssemblyScript for a serious task or plan to do so, and you'd like us to invest more time on it, <a href="https://opencollective.com/assemblyscript/donate" target="_blank" rel="noopener">please donate</a> to our <a href="https://opencollective.com/assemblyscript" target="_blank" rel="noopener">OpenCollective</a>. By sponsoring this project, your logo will show up below. Thank you so much for your support!</p>
+## Hook API support
 
-<p align="center">
-  <a href="https://assemblyscript.org/#sponsors"><img src="https://assemblyscript.org/sponsors.svg" alt="Sponsor logos" width="720" /></a>
-</p>
+Currently only the basic functions (accept, rollback etc.) are supported for use without declaring - patches welcome. As the C conventions of Hook API are inconvenient for HookScript, the functions are generally imported with a prepended '$' sign (e.g. $accept, $rollback) and wrapped in a function with the original name but higher-level arguments (e.g. a string instead of a pointer + length), which also provides basic error handling, calling rollback on API error - so, for example, etxn_reserve is implemented as
+
+	// @ts-ignore: decorator
+	@external("env", "etxn_reserve")
+	export declare function $etxn_reserve(
+	  count: u32
+	): i64
+
+	@global @inline
+	export function etxn_reserve(count: u32): void {
+	  let r = $etxn_reserve(count);
+	  if (r != count)
+		rollback("", r);
+	}
+
+where rollback is
+
+	// @ts-ignore: decorator
+	@external("env", "rollback")
+	declare function $rollback(
+	  read_ptr: string,
+	  read_len: u32,
+	  error_code: i64
+	): i64;
+
+	@global @inline
+	export function rollback(msg: string = "", err: i64 = 0): void {
+	  $rollback(msg, msg.length, err);
+	  // does not return
+	}
+
+Both imported lower-level and inlined higher-level APIS are callable
+from user code. The guard function _g is available, but it's probably
+more convenient to call its wrapper, max_iterations, which takes care
+of generating a unique first argument to _g (max_iterations also
+increments the second argument by 1, like the GUARD macro in the C
+interface).
+
+Some classes (e.g. Account and Amount) were added for high-level Hooks
+support - see [the standard library](./std/assembly) for details. Note
+that while most of AssemblyScript standard library is still there,
+that doesn't mean it's working - hooks require bounded computation
+with guarding, which the code hadn't been updated (and in some case
+cannot be updated) to use.
+
 
 ## Development instructions
 
 A development environment can be set up by cloning the repository:
 
 ```sh
-git clone https://github.com/AssemblyScript/assemblyscript.git
+git clone https://github.com/eqlabs/assemblyscript.git
 cd assemblyscript
-npm install
-npm link
+npm run build
 ```
 
-The link step is optional and makes the development instance available globally. The full process is documented as part of the repository:
+The full process is documented as part of the repository:
 
 * [Compiler instructions](./src)
 * [Runtime instructions](./std/assembly/rt)
