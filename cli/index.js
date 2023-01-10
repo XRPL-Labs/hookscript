@@ -47,7 +47,7 @@ if (~wasmPos) {
   assemblyscript = await import(new URL(wasmPath, url.pathToFileURL(process.cwd() + "/")));
 }
 
-const require = module.createRequire(import.meta.url);
+const require = module.createRequire ? module.createRequire(import.meta.url): {};
 
 const WIN = process.platform === "win32";
 const EOL = WIN ? "\r\n" : "\n";
