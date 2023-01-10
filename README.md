@@ -10,7 +10,7 @@ HookScript compiles a variant of <a href="https://assemblyscript.org">AssemblySc
 
 # AssemblyScript modifications & current limitations
 
-* String format: currently, only ASCII string literals are supported. Full UTF-8 support is planned.
+* Strings are stored as UTF-8 in HookScript linear memory, for compatibility with Hook API.
 * No garbage collection. Only the <a href="https://www.assemblyscript.org/runtime.html#variants">stub AssemblyScript runtime</a> is supported; it can allocate memory from one WebAssembly linear memory page but terminates the script when asked to allocate more than that.
 * <a href="https://xrpl-hooks.readme.io/reference/hook-api-conventions">Hook API</a> support, currently unfinished (see below).
 * Hooks can define their own functions, but they have to mark them @inline .
