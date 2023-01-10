@@ -6,7 +6,7 @@
 import { path, module } from "./node.js";
 import { stdoutColors } from "./terminal.js";
 
-const require = module.createRequire(import.meta.url);
+const require = module.createRequire ? module.createRequire(import.meta.url): {};
 
 // type | meaning
 // -----|---------------
