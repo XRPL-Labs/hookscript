@@ -33,7 +33,7 @@ To build an example you can run
 	npm install
 	npm run compile
 
-from any hook's directory. The example `package.json` in each directory specifies how to build a hook.
+from any subdirectory of `hook-api-examples`. The example `package.json` in each directory specifies how to build a hook.
 
 All example hooks are installed by running `node deploy.js`. The usage information will be provided at the commandline.
 
