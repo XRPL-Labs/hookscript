@@ -73,6 +73,7 @@ A development environment can be set up by cloning the repository:
 ```sh
 git clone https://github.com/eqlabs/assemblyscript.git
 cd assemblyscript
+npm install
 npm run build
 ```
 
