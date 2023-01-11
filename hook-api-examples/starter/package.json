@@ -2,7 +2,6 @@
   "name": "starter",
   "version": "1.0.0",
   "description": "Starter is the simplest possible hook: it just accepts all transactions and logs that it is running.",
-  "main": "starter.js",
   "scripts": {
     "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub starter.ts -O3 -o starter.wasm && hook-cleaner starter.wasm"
   },
