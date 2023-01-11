@@ -35,7 +35,7 @@ To build an example you can run
 
 from any subdirectory of `hook-api-examples`. The example `package.json` in each directory specifies how to build a hook.
 
-All example hooks are installed by running `node deploy.js`. The usage information will be provided at the commandline.
+Example hooks are generally installed by running `node deploy.js`. The usage information will be provided at the commandline.
 
 You can check a reported `SetHook` transaction ID with the [Hooks Testnet Explorer](https://hooks-testnet-explorer.xrpl-labs.com/).
 
