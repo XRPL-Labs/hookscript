@@ -7,10 +7,9 @@ var nullStr: string;
 // exactly once in static memory
 assert(changetype<usize>(str) == changetype<usize>("hi, I'm a string"));
 
-// Unicode not supported
-// assert("\xDF" == "ß");
-// assert("\xDF\xDF" == "ßß");
-// assert("\xDFab" == "ßab");
+assert("\xDF" == "ß");
+assert("\xDF\xDF" == "ßß");
+assert("\xDFab" == "ßab");
 
 assert(str.length == 16);
 assert(str[0] == 0x68);
