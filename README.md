@@ -11,7 +11,7 @@ and compiled as documented there.
 
 For post-processing, it is also necessary to install <a href="https://github.com/XRPLF/hook-cleaner-c">Hook Cleaner</a> from
 
-	git clone https://github.com/eqlabs/assemblyscript
+	git clone https://github.com/XRPLF/hook-cleaner-c
 
 compile it as documented and install somewhere on PATH.
 
