@@ -1,0 +1,16 @@
+{
+  "name": "notary",
+  "version": "1.0.0",
+  "description": "Notary hook collects signatures for multi-sign transactions.",
+  "scripts": {
+    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub notary.ts -O3 -o notary.wasm && hook-cleaner notary.wasm"
+  },
+  "author": "Equilibrium - https://equilibrium.co",
+  "license": "Public Domain",
+  "dependencies": {
+    "ripple-binary-codec": "^1.6.0-beta.0",
+    "ripple-keypairs": "^1.1.4",
+    "xrpl-accountlib": "^1.6.1",
+    "xrpl-client": "^2.0.1"
+  }
+}
