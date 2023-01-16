@@ -29,6 +29,11 @@ async function copyScriptOutputs() {
   await copyFile("asc.d.ts", copyright);
   await copyFile("asc.generated.d.ts", copyright);
   await copyFile("asc.js.map", copyright);
+
+  await copyFile("assemblyscript.js", copyright);
+  await copyFile("assemblyscript.d.ts", copyright);
+  await copyFile("assemblyscript.generated.d.ts", copyright);
+  await copyFile("assemblyscript.js.map", copyright);
   // TODO Others when required.
 }
 
