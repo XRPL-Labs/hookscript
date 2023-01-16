@@ -8,7 +8,7 @@
     "assemblyscript",
     "wasm"
   ],
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.6",
   "author": "Daniel Wirtz <dcode+assemblyscript@dcode.io>",
   "license": "Apache-2.0",
   "homepage": "https://assemblyscript.org",
@@ -64,7 +64,7 @@
     "asinit": "./bin/asinit.js"
   },
   "scripts": {
-    "prepublishOnly": "npm run lkg",
+    "prepublishOnly": "npm run build && npm run lkg",
     "check": "npm run check:config && npm run check:import && npm run lint",
     "check:config": "tsc --noEmit -p src --diagnostics --listFiles",
     "check:import": "tsc --noEmit --target ESNEXT --module es6 --experimentalDecorators tests/import/index",
