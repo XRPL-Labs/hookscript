@@ -26,7 +26,7 @@ jobs:
         npm ci
     - name: Build packages
       run: |
-        VERSION=$(npx aspublish --version)
+        VERSION=$(npm version prerelease --preid=alpha)
         if [[ "$VERSION" == "" ]]; then
           echo "Changes do not trigger a release"
         elif [[ "$VERSION" != "0."* ]]; then
