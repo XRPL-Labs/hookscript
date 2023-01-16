@@ -213,23 +213,27 @@ const common = {
   incremental: watch
 };
 
-const srcBuild = esbuild.build({
-  entryPoints: [ "./src/index.ts" ],
-  tsconfig: "./src/tsconfig.json",
-  outfile: "./dist/assemblyscript.js",
-  banner: { js: prelude("The AssemblyScript compiler") },
-  plugins: [ diagnosticsPlugin, reportPlugin("src") ],
-  ...common
-});
+function buildSrc() {
+  return esbuild.build({
+    entryPoints: ["./src/index.ts"],
+    tsconfig: "./src/tsconfig.json",
+    outfile: "./dist/assemblyscript.js",
+    banner: { js: prelude("The AssemblyScript compiler") },
+    plugins: [diagnosticsPlugin, reportPlugin("src")],
+    ...common
+  });
+}
 
-const cliBuild = esbuild.build({
-  entryPoints: [ "./cli/index.js" ],
-  tsconfig: "./cli/tsconfig.json",
-  outfile: "./dist/asc.js",
-  banner: { js: prelude("The AssemblyScript frontend") },
-  plugins: [ stdlibPlugin, webPlugin, reportPlugin("cli") ],
-  ...common
-});
+function buildCli() {
+  return esbuild.build({
+    entryPoints: ["./cli/index.js"],
+    tsconfig: "./cli/tsconfig.json",
+    outfile: "./dist/asc.js",
+    banner: { js: prelude("The AssemblyScript frontend") },
+    plugins: [stdlibPlugin, webPlugin, reportPlugin("cli")],
+    ...common
+  });
+}
 
 // Optionally build definitions (takes a while)
 
@@ -240,6 +244,7 @@ function buildDefinitions() {
   const stdout = [];
   console.log(`${time()} - ${"dts"} - Starting new build ...`);
   buildingDefinitions = true;
+  // TODO Promisify it.
   childProcess.spawn("node", [ "./build-dts.js" ], {
     cwd: dirname,
     stdio: "pipe"
@@ -273,5 +278,24 @@ cli : Compiler frontend asc
 dts : TS definition bundles 
 web : Example web template\n`);
 
-await Promise.all([ srcBuild, cliBuild ]);
-buildDefinitions();
+task(series([buildSrc, parallel([buildCli, buildDefinitions])]));
+
+function series(tasks) {
+  return async () => {
+    for (let task of tasks) {
+      await task();
+    }
+  };
+}
+
+function parallel(tasks) {
+  return () => {
+    for (let task of tasks) {
+      task();
+    }
+  };
+}
+
+function task(t) {
+  return t();
+}
