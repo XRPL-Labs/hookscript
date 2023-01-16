@@ -1,0 +1,58 @@
+name: Release semantic version
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    - uses: actions/checkout@v1
+      with:
+        ref: main
+    - uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: current
+    - name: Install dependencies
+      run: | # npm>=7 is currently broken: https://github.com/npm/cli/issues/1973
+        npm -g install npm@6
+        npm -v
+        npm ci
+    - name: Set release version environment variable
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    - name: Build packages
+      run: |
+        VERSION=${{ env.RELEASE_VERSION }}
+        echo "Building version: $VERSION"
+        npm version "$VERSION" --no-git-tag-version
+        npm run build
+        npm test
+        cd lib/loader
+        npm version "$VERSION" --no-git-tag-version
+        npm run build
+        npm test
+        cd ../rtrace
+        npm version "$VERSION" --no-git-tag-version
+        npm run build
+        npm test
+        cd ../..
+    - name: Publish packages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        node ./scripts/prepublish
+        if [ $(node -pe "require('./package.json').version") != "0.0.0" ]; then
+          npx aspublish
+        fi
+        cd lib/loader
+        if [ $(node -pe "require('./package.json').version") != "0.0.0" ]; then
+          npm publish --access public
+        fi
+        cd ../rtrace
+        if [ $(node -pe "require('./package.json').version") != "0.0.0" ]; then
+          npm publish --access public
+        fi
+        cd ../..
+        node ./scripts/prepublish --reset
