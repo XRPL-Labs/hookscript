@@ -34,7 +34,7 @@ import * as optionsUtil from "../util/options.js";
 import * as generated from "./index.generated.js";
 
 import binaryen from "../lib/binaryen.js";
-import * as assemblyscriptJS from "assemblyscript";
+import * as assemblyscriptJS from "../dist/assemblyscript.js";
 
 // Use the TS->JS variant by default
 let assemblyscript = assemblyscriptJS;
@@ -47,7 +47,7 @@ if (~wasmPos) {
   assemblyscript = await import(new URL(wasmPath, url.pathToFileURL(process.cwd() + "/")));
 }
 
-const require = module.createRequire(import.meta.url);
+const require = module.createRequire ? module.createRequire(import.meta.url): {};
 
 const WIN = process.platform === "win32";
 const EOL = WIN ? "\r\n" : "\n";
