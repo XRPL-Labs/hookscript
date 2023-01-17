@@ -1,0 +1,4 @@
+**/node_modules
+dist/
+cli/index.generated.js
+src/diagnosticMessages.generated.ts

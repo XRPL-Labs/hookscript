@@ -73,8 +73,42 @@ A development environment can be set up by cloning the repository:
 ```sh
 git clone https://github.com/eqlabs/assemblyscript.git
 cd assemblyscript
+```
+
+After building the compiler, you can invoke it using cli from `bin/asc` or directly using the compiled bundles from `dist` folder in any browser/server environments.
+### Build using Docker.
+
+A docker image can be created using.
+
+```dockerfile
+docker build -t asc/img .
+```
+
+To create a container and copy built artifacts to the `dist` folder.
+
+```dockerfile
+docker create --name asc-cont asc-img && docker cp asc-cont:/app/dist/ ./
+```
+
+### Build manually. 
+
+Install NodeJS version `>=16` and npm `>=6`.
+
+Install dependencies.
+```sh
 npm install
+```
+
+Build the compiler.
+
+```sh
 npm run build
+```
+
+Watch for changes.
+
+```sh
+npm run watch
 ```
 
 The full process is documented as part of the repository:
