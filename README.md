@@ -14,7 +14,7 @@ HookScript compiles a variant of <a href="https://assemblyscript.org">AssemblySc
 * No garbage collection. Only the <a href="https://www.assemblyscript.org/runtime.html#variants">stub AssemblyScript runtime</a> is supported; it can allocate memory from one WebAssembly linear memory page but terminates the script when asked to allocate more than that.
 * <a href="https://xrpl-hooks.readme.io/reference/hook-api-conventions">Hook API</a> support, currently unfinished (see below).
 * Hooks can define their own functions, but they have to mark them @inline .
-* hook and cbak functions are always exported (when defined), even if not explicitly marked as such.
+* hook and cbak functions are always exported (when defined), even if not explicitly marked as such. They also don't have to declare their return types (i64 is used automatically) nor contain an explicit return statement (they return 0).
 * _g function is always imported - even if not called by the hook script.
 
 
