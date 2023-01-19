@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 const root = path.join(__dirname, "..");
 const source = path.join(root, "dist");
-const dest = path.join(root, "lib/lkg");
+const dest = path.join(root, "lkg");
 const copyright = ""; // TODO
 
 function info(msg) {
