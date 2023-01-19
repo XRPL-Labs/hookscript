@@ -36,7 +36,6 @@
  (export "renamed_renamed_b" (global $export/b))
  (export "default" (func $export-default/theDefault))
  (export "renamed_default" (func $export-default/theDefault))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

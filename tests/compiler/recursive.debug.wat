@@ -9,7 +9,6 @@
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "fib" (func $recursive/fib))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $recursive/fib (type $i32_=>_i32) (param $n i32) (result i32)
   local.get $n

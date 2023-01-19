@@ -33,7 +33,6 @@
  (data (i32.const 1340) ",")
  (data (i32.const 1352) "\01\00\00\00\12\00\00\00Index out of range")
  (data (i32.const 1424) "\03\00\00\00 \00\00\00\00\00\00\00 ")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/string/String.__eq (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)

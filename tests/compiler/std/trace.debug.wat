@@ -12,7 +12,6 @@
  (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\t\00\00\00three_int\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
  (func $~start (type $none_=>_none)

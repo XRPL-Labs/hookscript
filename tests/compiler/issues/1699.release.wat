@@ -28,7 +28,6 @@
  (data (i32.const 1288) "\01\00\00\00/\00\00\00Element type must be nullable if array is holey")
  (data (i32.const 1360) "\05\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1388) " \00\00\00\00\00\00\00\02A")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

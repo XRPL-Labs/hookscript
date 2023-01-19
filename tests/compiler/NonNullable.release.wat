@@ -14,7 +14,6 @@
  (data (i32.const 1160) "\01\00\00\00\01\00\00\00z")
  (data (i32.const 1180) ",")
  (data (i32.const 1192) "\01\00\00\00\0f\00\00\00unexpected null")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/string/String.__eq (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)

@@ -63,7 +63,6 @@
  (export "returnsArrayOfBasic" (func $bindings/noExportRuntime/returnsArrayOfBasic))
  (export "isArrayOfArray" (global $bindings/noExportRuntime/isArrayOfArray))
  (export "returnsArrayOfArray" (func $bindings/noExportRuntime/returnsArrayOfArray))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
  (export "takesNonPlainObject" (func $export:bindings/noExportRuntime/takesNonPlainObject))

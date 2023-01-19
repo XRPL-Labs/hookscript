@@ -13,7 +13,6 @@
  (elem $0 (i32.const 1))
  (export "testI32" (func $many-locals/testI32))
  (export "testI8" (func $many-locals/testI8))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $many-locals/testI32 (type $i32_=>_i32) (param $a i32) (result i32)

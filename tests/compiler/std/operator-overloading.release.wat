@@ -96,7 +96,6 @@
  (data (i32.const 1272) "\01\00\00\00\01\00\00\00y")
  (data (i32.const 1296) "\07\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1324) " \00\00\00\00\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00 ")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

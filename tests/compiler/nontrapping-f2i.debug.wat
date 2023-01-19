@@ -21,7 +21,6 @@
  (memory $0 0)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
  (func $start:nontrapping-f2i (type $none_=>_none)

@@ -4,7 +4,6 @@
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (memory $0 0)
  (export "test" (func $converge/test))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $converge/test (type $none_=>_none)
   nop

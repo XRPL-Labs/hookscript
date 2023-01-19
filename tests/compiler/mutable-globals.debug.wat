@@ -15,7 +15,6 @@
  (elem $0 (i32.const 1))
  (export "external" (global $mutable-globals/external))
  (export "internal" (global $mutable-globals/internal))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
  (func $start:mutable-globals (type $none_=>_none)

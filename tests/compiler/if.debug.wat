@@ -16,7 +16,6 @@
  (export "ifThen" (func $if/ifThen))
  (export "ifThenElseBlock" (func $if/ifThenElseBlock))
  (export "ifAlwaysReturns" (func $if/ifAlwaysReturns))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $if/ifThenElse (type $i32_=>_i32) (param $n i32) (result i32)

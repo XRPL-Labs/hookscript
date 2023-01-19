@@ -32,7 +32,6 @@
  (data (i32.const 1400) "\01\00\00\00\0e\00\00\00Invalid length")
  (data (i32.const 1440) "\t\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1496) "\04\00\00\00\02A\00\00\00\00\00\00\02A")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

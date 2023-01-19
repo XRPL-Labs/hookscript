@@ -28,7 +28,6 @@
  (data (i32.const 1280) "\04\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1308) "\02\t")
  (export "test" (func $return-unreachable/test))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

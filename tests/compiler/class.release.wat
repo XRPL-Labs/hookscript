@@ -29,7 +29,6 @@
  (data (i32.const 1308) " ")
  (data (i32.const 1324) "\02\t")
  (export "testGenericInitializer" (func $class/testGenericInitializer))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "test" (func $export:class/test))
  (start $~start)

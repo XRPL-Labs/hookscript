@@ -16,7 +16,6 @@
  (export "a" (global $export/a))
  (export "b" (global $export/b))
  (export "renamed_c" (global $export/c))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $export/add (type $i32_i32_=>_i32) (param $a i32) (param $b i32) (result i32)
   local.get $a

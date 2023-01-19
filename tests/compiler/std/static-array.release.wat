@@ -43,7 +43,6 @@
  (data (i32.const 1496) "\01\00\00\00\14\00\00\00Allocation too large")
  (data (i32.const 1632) "\07\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1660) "\02\t\00\00\00\00\00\00\02\n\00\00\00\00\00\00\02\19\00\00\00\00\00\00\02\1a")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

@@ -30,7 +30,6 @@
  (table $0 2 2 funcref)
  (elem $0 (i32.const 1) $inlining/func_fe~anonymous|0)
  (export "test" (func $inlining/test))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $inlining/test (type $none_=>_i32) (result i32)

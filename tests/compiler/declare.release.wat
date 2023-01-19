@@ -7,7 +7,6 @@
  (import "declare" "my.externalFunction" (func $declare/my.externalFunction))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (memory $0 0)
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~start (type $none_=>_none)

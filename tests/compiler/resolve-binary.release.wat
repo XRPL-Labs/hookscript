@@ -184,7 +184,6 @@
  (data (i32.const 7736) "\01\00\00\00\03\00\00\00pow")
  (data (i32.const 7760) "\06\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 7788) " \00\00\00\00\00\00\00 \00\00\00\00\00\00\00 ")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

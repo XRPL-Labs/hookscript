@@ -9,7 +9,6 @@
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "testInherit" (func $continue/testInherit))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $continue/testInherit (type $i32_=>_none) (param $b i32)
   (local $i i32)

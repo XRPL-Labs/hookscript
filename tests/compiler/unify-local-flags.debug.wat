@@ -11,7 +11,6 @@
  (export "testFor" (func $unify-local-flags/testFor))
  (export "testWhile" (func $unify-local-flags/testWhile))
  (export "testDo" (func $unify-local-flags/testDo))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $unify-local-flags/testFor (type $none_=>_none)
   (local $x i32)

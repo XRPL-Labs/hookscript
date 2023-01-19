@@ -1,7 +1,7 @@
 (module
  (type $none_=>_i32 (func_subtype (result i32) func))
- (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33836))
  (memory $0 1)
@@ -9,7 +9,6 @@
  (data (i32.const 1048) "\03\00\00\00\08\00\00\00\01")
  (table $0 2 2 funcref)
  (elem $0 (i32.const 1) $class-static-function/Example.staticFunc)
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $class-static-function/Example.staticFunc (type $none_=>_i32) (result i32)

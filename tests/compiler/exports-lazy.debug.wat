@@ -16,7 +16,6 @@
  (elem $0 (i32.const 1))
  (export "lazyGlobalUnused" (global $exports-lazy/lazyGlobalUnused))
  (export "lazyGlobalUsed" (global $exports-lazy/lazyGlobalUsed))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $start:exports-lazy (type $none_=>_none)
