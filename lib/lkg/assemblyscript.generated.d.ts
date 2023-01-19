@@ -1,5 +1,5 @@
 
-declare module "types:assemblyscript/src/common" {
+declare module "../src/common" {
     /**
      * @fileoverview Common constants used by various parts of the compiler.
      * @license Apache-2.0
@@ -288,12 +288,12 @@ declare module "types:assemblyscript/src/common" {
         const DefaultMemory = "0";
         const DefaultTable = "0";
     }
-    export { Feature, featureToString } from "types:assemblyscript/std/assembly/shared/feature";
-    export { Target } from "types:assemblyscript/std/assembly/shared/target";
-    export { Runtime } from "types:assemblyscript/std/assembly/shared/runtime";
-    export { Typeinfo, TypeinfoFlags } from "types:assemblyscript/std/assembly/shared/typeinfo";
+    export { Feature, featureToString } from "../std/assembly/shared/feature";
+    export { Target } from "../std/assembly/shared/target";
+    export { Runtime } from "../std/assembly/shared/runtime";
+    export { Typeinfo, TypeinfoFlags } from "../std/assembly/shared/typeinfo";
 }
-declare module "types:assemblyscript/src/diagnosticMessages.generated" {
+declare module "../src/diagnosticMessages.generated" {
     /** Enum of available diagnostic codes. */
     export enum DiagnosticCode {
         Not_implemented_0 = 100,
@@ -494,7 +494,7 @@ declare module "types:assemblyscript/src/diagnosticMessages.generated" {
     /** Translates a diagnostic code to its respective string. */
     export function diagnosticCodeToString(code: DiagnosticCode): string;
 }
-declare module "types:assemblyscript/src/util/binary" {
+declare module "../src/util/binary" {
     /**
      * @fileoverview Various binary reading and writing utility.
      * @license Apache-2.0
@@ -532,7 +532,7 @@ declare module "types:assemblyscript/src/util/binary" {
     /** Writes a 128-bit vector to the specified buffer. */
     export function writeV128(value: Uint8Array, buffer: Uint8Array, offset: number): void;
 }
-declare module "types:assemblyscript/src/util/collections" {
+declare module "../src/util/collections" {
     /**
      * @fileoverview Various collections utility.
      * @license Apache-2.0
@@ -557,7 +557,7 @@ declare module "types:assemblyscript/src/util/collections" {
         toString(): string;
     }
 }
-declare module "types:assemblyscript/src/util/math" {
+declare module "../src/util/math" {
     /**
      * @fileoverview Various math utility.
      * @license Apache-2.0
@@ -566,7 +566,7 @@ declare module "types:assemblyscript/src/util/math" {
     export function isPowerOf2(x: number): boolean;
     export function accuratePow64(x: number, y: number): number;
 }
-declare module "types:assemblyscript/src/util/text" {
+declare module "../src/util/text" {
     /**
      * @fileoverview Various character and text utility.
      * @license Apache-2.0
@@ -740,7 +740,7 @@ declare module "types:assemblyscript/src/util/text" {
     /** Escapes a string using the specified kind of quote. */
     export function escapeString(str: string, quote: CharCode): string;
 }
-declare module "types:assemblyscript/src/util/path" {
+declare module "../src/util/path" {
     /**
      * @fileoverview Various file path utility.
      * @license Apache-2.0
@@ -755,7 +755,7 @@ declare module "types:assemblyscript/src/util/path" {
     /** Obtains the directory portion of a normalized path. */
     export function dirname(normalizedPath: string): string;
 }
-declare module "types:assemblyscript/src/util/terminal" {
+declare module "../src/util/terminal" {
     /**
      * @fileoverview Terminal utility.
      * @license Apache-2.0
@@ -785,7 +785,7 @@ declare module "types:assemblyscript/src/util/terminal" {
     /** Wraps the specified text in the specified terminal color code. */
     export function colorize(text: string, color: string): string;
 }
-declare module "types:assemblyscript/src/util/vector" {
+declare module "../src/util/vector" {
     /**
      * @fileoverview Various vector utility.
      * @license Apache-2.0
@@ -795,27 +795,27 @@ declare module "types:assemblyscript/src/util/vector" {
     /** v128 all ones constant. */
     export const v128_ones: Uint8Array;
 }
-declare module "types:assemblyscript/src/util" {
+declare module "../src/util" {
     /**
      * @fileoverview Various utility.
      * @license Apache-2.0
      */
-    export * from "types:assemblyscript/src/util/binary";
-    export * from "types:assemblyscript/src/util/collections";
-    export * from "types:assemblyscript/src/util/math";
-    export * from "types:assemblyscript/src/util/path";
-    export * from "types:assemblyscript/src/util/terminal";
-    export * from "types:assemblyscript/src/util/text";
-    export * from "types:assemblyscript/src/util/vector";
+    export * from "../src/util/binary";
+    export * from "../src/util/collections";
+    export * from "../src/util/math";
+    export * from "../src/util/path";
+    export * from "../src/util/terminal";
+    export * from "../src/util/text";
+    export * from "../src/util/vector";
 }
-declare module "types:assemblyscript/src/diagnostics" {
+declare module "../src/diagnostics" {
     /**
      * @fileoverview Shared diagnostic handling.
      * @license Apache-2.0
      */
-    import { Source } from "types:assemblyscript/src/ast";
-    import { DiagnosticCode } from "types:assemblyscript/src/diagnosticMessages.generated";
-    export { DiagnosticCode, diagnosticCodeToString } from "types:assemblyscript/src/diagnosticMessages.generated";
+    import { Source } from "../src/ast";
+    import { DiagnosticCode } from "../src/diagnosticMessages.generated";
+    export { DiagnosticCode, diagnosticCodeToString } from "../src/diagnosticMessages.generated";
     /** Indicates the category of a {@link DiagnosticMessage}. */
     export const enum DiagnosticCategory {
         /** Overly pedantic message. */
@@ -898,7 +898,7 @@ declare module "types:assemblyscript/src/diagnostics" {
         errorRelated(code: DiagnosticCode, range: Range, relatedRange: Range, arg0?: string | null, arg1?: string | null, arg2?: string | null): void;
     }
 }
-declare module "types:assemblyscript/src/tokenizer" {
+declare module "../src/tokenizer" {
     /**
      * @fileoverview A TypeScript tokenizer modified for AssemblyScript.
      *
@@ -911,8 +911,8 @@ declare module "types:assemblyscript/src/tokenizer" {
      *
      * @license Apache-2.0
      */
-    import { Range, DiagnosticMessage, DiagnosticEmitter } from "types:assemblyscript/src/diagnostics";
-    import { Source, CommentKind } from "types:assemblyscript/src/ast";
+    import { Range, DiagnosticMessage, DiagnosticEmitter } from "../src/diagnostics";
+    import { Source, CommentKind } from "../src/ast";
     /** Named token types. */
     export const enum Token {
         Abstract = 0,
@@ -1112,13 +1112,13 @@ declare module "types:assemblyscript/src/tokenizer" {
         tokenPos: number);
     }
 }
-declare module "types:assemblyscript/src/types" {
+declare module "../src/types" {
     /**
      * @fileoverview Mappings from AssemblyScript types to WebAssembly types.
      * @license Apache-2.0
      */
-    import { Class, Program } from "types:assemblyscript/src/program";
-    import { TypeRef } from "types:assemblyscript/src/module";
+    import { Class, Program } from "../src/program";
+    import { TypeRef } from "../src/module";
     /** Indicates the kind of a type. */
     export const enum TypeKind {
         /** A 1-bit unsigned integer. */
@@ -1416,7 +1416,7 @@ declare module "types:assemblyscript/src/types" {
         clone(): Signature;
     }
 }
-declare module "types:assemblyscript/src/flow" {
+declare module "../src/flow" {
     /**
      * @fileoverview A concurrent code flow analyzer.
      *
@@ -1433,10 +1433,10 @@ declare module "types:assemblyscript/src/flow" {
      *
      * @license Apache-2.0
      */
-    import { Type } from "types:assemblyscript/src/types";
-    import { Program, Local, Function, Element, Field } from "types:assemblyscript/src/program";
-    import { ExpressionRef } from "types:assemblyscript/src/module";
-    import { Node } from "types:assemblyscript/src/ast";
+    import { Type } from "../src/types";
+    import { Program, Local, Function, Element, Field } from "../src/program";
+    import { ExpressionRef } from "../src/module";
+    import { Node } from "../src/ast";
     /** Control flow flags indicating specific conditions. */
     export const enum FlowFlags {
         /** No specific conditions. */
@@ -1626,7 +1626,7 @@ declare module "types:assemblyscript/src/flow" {
         toString(): string;
     }
 }
-declare module "types:assemblyscript/std/assembly/shared/feature" {
+declare module "../std/assembly/shared/feature" {
     /** Indicates specific features to activate. */
     export const enum Feature {
         /** No additional features. */
@@ -1665,7 +1665,7 @@ declare module "types:assemblyscript/std/assembly/shared/feature" {
     /** Gets the name of the specified feature one would specify on the command line. */
     export function featureToString(feature: Feature): string;
 }
-declare module "types:assemblyscript/std/assembly/shared/runtime" {
+declare module "../std/assembly/shared/runtime" {
     /** Runtime types. */
     export enum Runtime {
         /** Simple bump allocator without GC. */
@@ -1676,7 +1676,7 @@ declare module "types:assemblyscript/std/assembly/shared/runtime" {
         Incremental = 2
     }
 }
-declare module "types:assemblyscript/std/assembly/shared/target" {
+declare module "../std/assembly/shared/target" {
     /** Compilation target. */
     export enum Target {
         /** Portable. */
@@ -1687,7 +1687,7 @@ declare module "types:assemblyscript/std/assembly/shared/target" {
         Wasm64 = 2
     }
 }
-declare module "types:assemblyscript/std/assembly/shared/typeinfo" {
+declare module "../std/assembly/shared/typeinfo" {
     /** Runtime type information data structure. */
     export class Typeinfo {
         /** Flags describing the shape of this class type. */
@@ -1749,7 +1749,7 @@ declare module "types:assemblyscript/std/assembly/shared/typeinfo" {
         KEY_MANAGED = 8388608
     }
 }
-declare module "types:assemblyscript/src/glue/binaryen" {
+declare module "../src/glue/binaryen" {
     /**
      * @fileoverview Portable definitions for Binaryen's C-API.
      *

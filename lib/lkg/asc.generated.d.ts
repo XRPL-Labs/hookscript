@@ -1,6 +1,6 @@
 
 /// <reference path="./assemblyscript.generated.d.ts" />
-declare module "types:assemblyscript/util/options" {
+declare module "../util/options" {
     /**
      * @fileoverview Command line options utility definitions.
      * @license Apache-2.0
@@ -61,12 +61,12 @@ declare module "types:assemblyscript/util/options" {
     /** Populates default values on a parsed options result. */
     export function addDefaults(config: Config, options: OptionSet): void;
 }
-declare module "types:assemblyscript/cli/index" {
+declare module "../cli/index" {
     /**
      * @fileoverview Definitions for asc.
      * @license Apache-2.0
      */
-    import { OptionDescription } from "types:assemblyscript/util/options";
+    import { OptionDescription } from "../util/options";
     export { OptionDescription };
     /** AssemblyScript version. */
     export const version: string;
@@ -289,7 +289,7 @@ declare module "types:assemblyscript/cli/index" {
     export function createMemoryStream(fn?: (chunk: Uint8Array | string) => void): MemoryStream;
     /** Compatible TypeScript compiler options for syntax highlighting etc. */
     export const tscOptions: Record<string, unknown>;
-    import { Program, Parser, Module } from "types:assemblyscript/src/index";
+    import { Program, Parser, Module } from "../src/index";
     /** Compiler transform base class. */
     export abstract class Transform {
         /** Program reference. */
