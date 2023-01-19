@@ -14,7 +14,7 @@ HookScript compiles a variant of <a href="https://assemblyscript.org">AssemblySc
 * No garbage collection. Only the <a href="https://www.assemblyscript.org/runtime.html#variants">stub AssemblyScript runtime</a> is supported; it can allocate memory from one WebAssembly linear memory page but terminates the script when asked to allocate more than that.
 * <a href="https://xrpl-hooks.readme.io/reference/hook-api-conventions">Hook API</a> support, currently unfinished (see below).
 * Hooks can define their own functions, but they have to mark them @inline .
-* hook and cbak functions are always exported (when defined), even if not explicitly marked as such.
+* hook and cbak functions are always exported (when defined), even if not explicitly marked as such. They also don't have to declare their return types (i64 is used automatically) nor contain an explicit return statement (they return 0).
 * _g function is always imported - even if not called by the hook script.
 
 
@@ -73,8 +73,42 @@ A development environment can be set up by cloning the repository:
 ```sh
 git clone https://github.com/eqlabs/assemblyscript.git
 cd assemblyscript
+```
+
+After building the compiler, you can invoke it using cli from `bin/asc` or directly using the compiled bundles from `dist` folder in any browser/server environments.
+### Build using Docker.
+
+A docker image can be created using.
+
+```dockerfile
+docker build -t asc/img .
+```
+
+To create a container and copy built artifacts to the `dist` folder.
+
+```dockerfile
+docker create --name asc-cont asc-img && docker cp asc-cont:/app/dist/ ./
+```
+
+### Build manually. 
+
+Install NodeJS version `>=16` and npm `>=6`.
+
+Install dependencies.
+```sh
 npm install
+```
+
+Build the compiler.
+
+```sh
 npm run build
+```
+
+Watch for changes.
+
+```sh
+npm run watch
 ```
 
 The full process is documented as part of the repository:

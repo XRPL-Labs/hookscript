@@ -1,13 +1,13 @@
-name: Publish
+name: Release semantic version
+
 on:
-  schedule:
-  - cron: '0 0 * * *'
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
 jobs:
   release:
-    name: Packages
-    if: github.repository == 'AssemblyScript/assemblyscript'
     runs-on: ubuntu-latest
-    steps:
     - uses: actions/checkout@v1
       with:
         ref: main
@@ -19,29 +19,24 @@ jobs:
         npm -g install npm@6
         npm -v
         npm ci
+    - name: Set release version environment variable
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
     - name: Build packages
       run: |
-        VERSION=$(npx aspublish --version)
-        if [[ "$VERSION" == "" ]]; then
-          echo "Changes do not trigger a release"
-        elif [[ "$VERSION" != "0."* ]]; then
-          echo "Unexpected version: $VERSION"
-          exit 1
-        else
-          echo "Building version: $VERSION"
-          npm version "$VERSION" --no-git-tag-version
-          npm run build
-          npm test
-          cd lib/loader
-          npm version "$VERSION" --no-git-tag-version
-          npm run build
-          npm test
-          cd ../rtrace
-          npm version "$VERSION" --no-git-tag-version
-          npm run build
-          npm test
-          cd ../..
-        fi
+        VERSION=${{ env.RELEASE_VERSION }}
+        echo "Building version: $VERSION"
+        npm version "$VERSION" --no-git-tag-version
+        npm run build
+        npm test
+        cd lib/loader
+        npm version "$VERSION" --no-git-tag-version
+        npm run build
+        npm test
+        cd ../rtrace
+        npm version "$VERSION" --no-git-tag-version
+        npm run build
+        npm test
+        cd ../..
     - name: Publish packages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
