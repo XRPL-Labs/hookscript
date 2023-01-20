@@ -1,3 +1,8 @@
+// not used below, but bindings/hookapi (like all files in
+// subdirectories) must be imported somewhere to make its globals
+// available
+import { accept } from "./bindings/hookapi";
+
 export class Account {
   @inline
   constructor(public bytes: ByteArray) {
