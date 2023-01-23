@@ -1,5 +1,5 @@
 {
-  "name": "@muzamilsofi/assemblyscript",
+  "name": "@eqlabs/assemblyscript",
   "description": "A TypeScript-like language for WebAssembly.",
   "keywords": [
     "typescript",
