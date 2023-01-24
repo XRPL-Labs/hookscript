@@ -130,6 +130,7 @@ export namespace BuiltinNames {
   export const max_iterations = "~lib/builtins/max_iterations";
   export const accept = "~lib/builtins/$accept";
   export const emit = "~lib/builtins/$emit";
+  export const emit_buffer_size = "~lib/builtins/emit_buffer_size";
   export const etxn_details = "~lib/builtins/$etxn_details";
   export const etxn_fee_base = "~lib/builtins/$etxn_fee_base";
   export const etxn_reserve = "~lib/builtins/$etxn_reserve";
@@ -810,6 +811,14 @@ export const builtins = new Map<string,(ctx: BuiltinContext) => ExpressionRef>()
 export const function_builtins = new Map<string,(ctx: BuiltinContext) => ExpressionRef>();
 
 let guard_id_counter: u32 = 1 << 31;
+
+const EMIT_BUFFER_SIZE_XRP_WITH_CBAK = 270;
+const EMIT_BUFFER_SIZE_XRP_NO_CBAK = 248;
+const EMIT_BUFFER_SIZE_OTHER_WITH_CBAK = 309;
+const EMIT_BUFFER_SIZE_OTHER_NO_CBAK = 287;
+
+let emit_buffer_size_xrp = EMIT_BUFFER_SIZE_XRP_NO_CBAK;
+let emit_buffer_size_other = EMIT_BUFFER_SIZE_OTHER_NO_CBAK;
 
 // === Static type evaluation =================================================================
 
@@ -3817,6 +3826,23 @@ function builtin_max_iterations(ctx: BuiltinContext): ExpressionRef {
   return compiler.compileCallExpression(call, Type.i32);
 }
 builtins.set(BuiltinNames.max_iterations, builtin_max_iterations);
+
+function builtin_emit_buffer_size(ctx: BuiltinContext): ExpressionRef {
+  let compiler = ctx.compiler;
+  let module = compiler.module;
+  compiler.currentType = Type.i32;
+  if (
+    checkTypeAbsent(ctx) |
+    checkArgsRequired(ctx, 1)
+  ) return module.unreachable();
+  let xrpFlag = ctx.operands[0];
+  let range = ctx.reportNode.expression.range;
+  let xrpSize = Node.createIntegerLiteralExpression(i64_new(emit_buffer_size_xrp), range);
+  let otherSize = Node.createIntegerLiteralExpression(i64_new(emit_buffer_size_other), range);
+  let expr = Node.createTernaryExpression(xrpFlag, xrpSize, otherSize, range);
+  return compiler.compileTernaryExpression(expr, Type.i32);
+}
+builtins.set(BuiltinNames.emit_buffer_size, builtin_emit_buffer_size);
 
 // === Portable type conversions ==============================================================
 
@@ -10471,6 +10497,13 @@ function typeToRuntimeFlags(type: Type): TypeinfoFlags {
   if (type.is(TypeFlags.Nullable)) flags |= TypeinfoFlags.VALUE_NULLABLE;
   if (type.isManaged)              flags |= TypeinfoFlags.VALUE_MANAGED;
   return flags / TypeinfoFlags.VALUE_ALIGN_0;
+}
+
+/** Increases buffer sizes used by emit_buffer_size. Must be called
+ * before compiling it. */
+export function setEmitBufferSizeWithCbak() {
+  emit_buffer_size_xrp = EMIT_BUFFER_SIZE_XRP_WITH_CBAK;
+  emit_buffer_size_other = EMIT_BUFFER_SIZE_OTHER_WITH_CBAK;
 }
 
 /** Compiles runtime type information for use by stdlib. */

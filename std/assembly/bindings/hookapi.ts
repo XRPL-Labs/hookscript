@@ -24,10 +24,7 @@ export function accept(msg: string = "", err: i64 = 0): void {
 
 @global @inline
 export function emit(tx: EmitSpec): Bytes32 {
-  // 288 for non-XRP transactions is bigger than
-  // PREPARE_PAYMENT_SIMPLE_TRUSTLINE_SIZE in macro.h (287) because
-  // macro.h is incorrect
-  let buf = new ByteArray(tx.amount.isXrp() ? 248 : 288); // FIXME: w/o cbak only, so far
+  let buf = new ByteArray(emit_buffer_size(tx.amount.isXrp()));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -49,11 +46,10 @@ export function emit(tx: EmitSpec): Bytes32 {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.account.bytes));
 
-  // doesn't check return value
-  $etxn_details(buf_out, buf.length - (buf_out - changetype<u32>(buf)));
+  let offset = buf_out - changetype<u32>(buf);
+  etxn_details(new ByteView(buf, offset, buf.length - offset));
 
-  // ditto
-  let fee = $etxn_fee_base(changetype<u32>(buf), buf.length);
+  let fee = etxn_fee_base(buf);
   _06_08_ENCODE_DROPS_FEE(fee_ptr, fee);
 
   let emit_hash = new Bytes32();
@@ -62,6 +58,22 @@ export function emit(tx: EmitSpec): Bytes32 {
     rollback("", emit_result);
 
   return emit_hash;
+}
+
+@global @inline
+export function etxn_details(target: ByteView): void {
+  let r = $etxn_details(changetype<u32>(target.underlying) + target.offset, target.length);
+  if (r < 0)
+    rollback("", r);
+}
+
+@global @inline
+export function etxn_fee_base(source: ByteArray): u64 {
+  let fee = $etxn_fee_base(changetype<u32>(source), source.length);
+  if (fee < 0)
+    rollback("", fee);
+
+  return fee;
 }
 
 @global @inline

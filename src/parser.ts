@@ -14,6 +14,10 @@ import {
 } from "./common";
 
 import {
+  setEmitBufferSizeWithCbak
+} from "./builtins";
+
+import {
   Tokenizer,
   Token,
   CommentHandler,
@@ -1441,6 +1445,9 @@ export class Parser extends DiagnosticEmitter {
     // hook entry points are always exported
     if ((name.text == 'hook') || (name.text == 'cbak'))
       flags |= CommonFlags.Export;
+    // if the hook has cbak, emit requires a larger buffer
+    if (name.text == 'cbak')
+      setEmitBufferSizeWithCbak();
     let signatureStart = -1;
 
     let typeParameters: TypeParameterNode[] | null = null;

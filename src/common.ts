@@ -245,6 +245,7 @@ export namespace CommonNames {
   export const abort = "abort";
   export const _g = "_g";
   export const max_iterations = "max_iterations";
+  export const emit_buffer_size = "emit_buffer_size";
   export const accept = "$accept";
   export const emit = "$emit";
   export const etxn_details = "$etxn_details";
