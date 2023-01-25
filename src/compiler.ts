@@ -1526,8 +1526,8 @@ export class Compiler extends DiagnosticEmitter {
       }
 
       let isReturnOmitted = isTypeOmitted((instance.declaration as FunctionDeclaration).signature.returnType);
-      if (isReturnOmitted && !instance.is(CommonFlags.Constructor)) {
-        instance.signature.returnType = this.currentReturnType || Type.void;
+      if (isReturnOmitted && instance.signature.returnType == Type.void && this.currentReturnType && this.currentReturnType != Type.void) {
+        instance.signature.returnType = this.currentReturnType;
       }
 
       this.currentReturnType = prevReturnType;
@@ -3444,7 +3444,7 @@ export class Compiler extends DiagnosticEmitter {
       }
     }
     let isReturnOmitted = isTypeOmitted((flow.sourceFunction.declaration as FunctionDeclaration).signature.returnType);
-    if (isInReturnStatement && isReturnOmitted) {
+    if (isInReturnStatement && isReturnOmitted && flow.returnType == Type.void) {
       const prevRet = this.currentReturnType;
       if (prevRet && this.currentType.isAssignableTo(prevRet)) {
         contextualType = prevRet;
