@@ -1526,7 +1526,7 @@ export class Compiler extends DiagnosticEmitter {
       }
 
       let isReturnOmitted = isTypeOmitted((instance.declaration as FunctionDeclaration).signature.returnType);
-      if (isReturnOmitted) {
+      if (isReturnOmitted && !instance.is(CommonFlags.Constructor)) {
         instance.signature.returnType = this.currentReturnType || Type.void;
       }
 
