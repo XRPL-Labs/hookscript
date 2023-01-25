@@ -9,7 +9,6 @@
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "test" (func $converge/test))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $converge/test (type $none_=>_none)
   nop

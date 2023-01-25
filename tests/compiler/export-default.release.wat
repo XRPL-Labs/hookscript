@@ -5,7 +5,6 @@
  (memory $0 0)
  (export "theDefault" (func $export-default/theDefault))
  (export "default" (func $export-default/theDefault))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $export-default/theDefault (type $none_=>_none)
   nop

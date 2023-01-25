@@ -28,7 +28,6 @@
  (data (i32.const 1260) " \00\00\00\00\00\00\00 \00\00\00\03")
  (data (i32.const 1284) " ")
  (data (i32.const 1296) "\05\00\00\00 \00\00\00\t\00\00\00 ")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

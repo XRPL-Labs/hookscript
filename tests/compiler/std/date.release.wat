@@ -35,7 +35,6 @@
  (data (i32.const 1253) "\03\02\05\00\03\05\01\04\06\02\04")
  (data (i32.const 1264) "\04\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1292) " ")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
  (func $~lib/date/dateFromEpoch (type $i64_=>_i32) (param $0 i64) (result i32)

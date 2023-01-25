@@ -5,7 +5,6 @@
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33792))
  (memory $0 0)
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "testTrue" (func $export:possibly-null/testTrue))
  (export "testFalseElse" (func $export:possibly-null/testTrue))

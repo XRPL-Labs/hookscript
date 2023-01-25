@@ -9,7 +9,6 @@
  (export "ifThen" (func $if/ifThen))
  (export "ifThenElseBlock" (func $if/ifThenElse))
  (export "ifAlwaysReturns" (func $if/ifAlwaysReturns))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $if/ifThenElse (type $i32_=>_i32) (param $0 i32) (result i32)
   local.get $0

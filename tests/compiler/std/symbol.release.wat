@@ -45,7 +45,6 @@
  (data (i32.const 1368) "\01\00\00\00\0f\00\00\00unexpected null")
  (data (i32.const 1408) "\05\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1436) "\10\01\82\00\00\00\00\00\10A\02")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

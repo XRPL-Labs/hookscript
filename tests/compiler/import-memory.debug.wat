@@ -10,7 +10,6 @@
  (global $~lib/memory/__heap_base i32 (i32.const 32776))
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $start:import-memory (type $none_=>_none)

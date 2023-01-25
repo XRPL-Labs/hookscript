@@ -16,7 +16,6 @@
  (elem $0 (i32.const 1))
  (export "test" (func $ternary/test))
  (export "testDropWithTypeMismatch" (func $ternary/testDropWithTypeMismatch))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "testVoidInclTypeMismatch" (func $export:ternary/testVoidInclTypeMismatch))
  (start $~start)

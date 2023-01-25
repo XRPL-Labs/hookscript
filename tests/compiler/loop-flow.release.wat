@@ -17,7 +17,6 @@
  (export "doReturn" (func $loop-flow/whileReturn))
  (export "doThrow" (func $loop-flow/whileThrow))
  (export "doAny" (func $loop-flow/doAny))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $loop-flow/whileReturn (type $none_=>_i32) (result i32)
   i32.const 1

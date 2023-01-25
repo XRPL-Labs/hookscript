@@ -43,7 +43,6 @@
  (data (i32.const 1464) "\01\00\00\00\t\00\00\00undefined")
  (data (i32.const 1488) "\05\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1524) " ")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
  (func $~lib/string/String.__eq (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)

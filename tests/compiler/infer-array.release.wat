@@ -37,7 +37,6 @@
  (data (i32.const 1404) "\0c\00\00\00\00\00\80?\00\00\00@\00\00@@")
  (data (i32.const 1424) "\08\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1452) " \00\00\00\00\00\00\00\02\1a\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02\01\00\00\00\00\00\00\02\19")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

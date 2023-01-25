@@ -41,7 +41,6 @@
  (data (i32.const 1584) "\12")
  (data (i32.const 1600) "\12")
  (data (i32.const 1616) "\14")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

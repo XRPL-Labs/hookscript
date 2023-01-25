@@ -11,7 +11,6 @@
  (export "Animal.CAT" (global $exports/Animal.CAT))
  (export "Animal.DOG" (global $exports/Animal.DOG))
  (export "renamed_mul" (func $export/mul))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "__setArgumentsLength" (func $~setArgumentsLength))
  (func $exports/add (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)

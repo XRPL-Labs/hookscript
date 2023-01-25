@@ -11,6 +11,5 @@
  (export "two" (func $external/two))
  (export "three" (func $external/three))
  (export "var_" (global $external/var_))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
 )

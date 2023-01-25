@@ -1,7 +1,7 @@
 (module
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
- (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (memory $0 1)
  (data (i32.const 1036) "\1c")
@@ -14,7 +14,6 @@
  (data (i32.const 1144) "\03\00\00\00\08\00\00\00\04")
  (table $0 5 5 funcref)
  (elem $0 (i32.const 1) $start:resolve-ternary~anonymous|0 $start:resolve-ternary~anonymous|1 $resolve-ternary/g1 $resolve-ternary/g2)
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $start:resolve-ternary~anonymous|0 (type $i32_=>_i32) (param $0 i32) (result i32)

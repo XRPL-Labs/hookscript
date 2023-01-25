@@ -12,7 +12,6 @@
  (export "testAlwaysWrapped" (func $loop-wrap/testAlwaysWrapped))
  (export "testFirstWrapped" (func $loop-wrap/testFirstWrapped))
  (export "testSubsequentWrapped" (func $loop-wrap/testSubsequentWrapped))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $loop-wrap/testAlwaysWrapped (type $none_=>_none)
   (local $i i32)

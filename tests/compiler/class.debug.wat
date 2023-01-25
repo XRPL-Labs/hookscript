@@ -43,7 +43,6 @@
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "testGenericInitializer" (func $class/testGenericInitializer))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "test" (func $export:class/test))
  (start $~start)

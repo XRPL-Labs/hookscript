@@ -8,7 +8,6 @@
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (memory $0 0)
  (export "mod" (func $std/mod/mod))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $std/mod/test_fmod (type $f64_f64_f64_=>_i32) (param $0 f64) (param $1 f64) (param $2 f64) (result i32)

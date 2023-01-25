@@ -8,6 +8,5 @@
  (export "ÀÈ" (global $unicode-identifier/ÀÈ))
  (export "变量" (global $unicode-identifier/变量))
  (export "𠜎𠜱" (global $unicode-identifier/𠜎𠜱))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
 )

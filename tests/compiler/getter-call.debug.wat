@@ -40,7 +40,6 @@
  (table $0 2 2 funcref)
  (elem $0 (i32.const 1) $getter-call/C#get:x~anonymous|0)
  (export "test" (func $getter-call/test))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/Object#set:nextWithColor (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)

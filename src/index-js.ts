@@ -4,6 +4,7 @@ export * from "./index-wasm";
 // Full API
 export * from "./ast";
 export * from "./common";
+export * from "./builtins";
 export * from "./compiler";
 export * from "./bindings";
 export * from "./diagnostics";
