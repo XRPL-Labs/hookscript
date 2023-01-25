@@ -401,6 +401,8 @@ export class Compiler extends DiagnosticEmitter {
   currentParent: Element | null = null;
   /** Current type in compilation. */
   currentType: Type = Type.void;
+  /** Current function return type */
+  currentReturnType: Type | null = null;
   /** Start function statements. */
   currentBody: ExpressionRef[];
   /** Counting memory offset. */
@@ -1516,10 +1518,19 @@ export class Compiler extends DiagnosticEmitter {
       this.currentFlow = flow;
       let stmts = new Array<ExpressionRef>();
 
+      let prevReturnType = this.currentReturnType;
+      this.currentReturnType = null as Type | null;
+
       if (!this.compileFunctionBody(instance, stmts)) {
         stmts.push(module.unreachable());
       }
 
+      let isReturnOmitted = isTypeOmitted((instance.declaration as FunctionDeclaration).signature.returnType);
+      if (isReturnOmitted) {
+        instance.signature.returnType = this.currentReturnType || Type.void;
+      }
+
+      this.currentReturnType = prevReturnType;
       this.currentFlow = previousFlow;
 
       // create the function
@@ -2716,7 +2727,7 @@ export class Compiler extends DiagnosticEmitter {
       let constraints = Constraints.ConvImplicit;
       if (flow.sourceFunction.is(CommonFlags.ModuleExport)) constraints |= Constraints.MustWrap;
 
-      expr = this.compileExpression(valueExpression, returnType, constraints);
+      expr = this.compileExpression(valueExpression, returnType, constraints, true);
       if (!flow.canOverflow(expr, returnType)) flow.set(FlowFlags.ReturnsWrapped);
       if (flow.isNonnull(expr, returnType)) flow.set(FlowFlags.ReturnsNonNull);
       if (flow.sourceFunction.is(CommonFlags.Constructor) && valueExpression.kind != NodeKind.This) {
@@ -3339,8 +3350,10 @@ export class Compiler extends DiagnosticEmitter {
   compileExpression(
     expression: Expression,
     contextualType: Type,
-    constraints: Constraints = Constraints.None
+    constraints: Constraints = Constraints.None,
+    isInReturnStatement?: boolean
   ): ExpressionRef {
+    let flow = this.currentFlow;
     while (expression.kind == NodeKind.Parenthesized) { // skip
       expression = (<ParenthesizedExpression>expression).expression;
     }
@@ -3430,6 +3443,19 @@ export class Compiler extends DiagnosticEmitter {
         expr = this.module.unreachable();
       }
     }
+    let isReturnOmitted = isTypeOmitted((flow.sourceFunction.declaration as FunctionDeclaration).signature.returnType);
+    if (isInReturnStatement && isReturnOmitted) {
+      const prevRet = this.currentReturnType;
+      if (prevRet && this.currentType.isAssignableTo(prevRet)) {
+        contextualType = prevRet;
+      } else if (prevRet) {
+        this.errorText(`Return type '${this.currentType}' is not compatible with previously inferred return type '${prevRet}'. Add an explicit return type annotation to the function declaration.`, expression.range, flow.sourceFunction.identifierAndSignatureRange);
+        return this.module.unreachable();
+      } else if (this.currentType != Type.void) {
+        contextualType = this.currentType;
+      }
+    }
+
     // ensure conversion and wrapping in case the respective function doesn't on its own
     let currentType = this.currentType;
     let wrap = (constraints & Constraints.MustWrap) != 0;
@@ -3442,6 +3468,9 @@ export class Compiler extends DiagnosticEmitter {
         this.currentType = currentType = contextualType;
       }
     }
+    if (isInReturnStatement) {
+      this.currentReturnType = this.currentType;
+    } 
     if (wrap) expr = this.ensureSmallIntegerWrap(expr, currentType);
     // debug location is added here so the caller doesn't have to. means: compilation of an expression
     // must go through this function, with the respective per-kind functions not being used directly.
