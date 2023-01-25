@@ -25,7 +25,6 @@
  (data (i32.const 1160) "\01\00\00\00\12\00\00\00Index out of range")
  (data (i32.const 1232) "\05\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1264) "\04")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

@@ -211,7 +211,6 @@
  (data (i32.const 14225) "\a08\07\ae\"\d5?Y\c7d\81p\be.=\00\00\00\00\00\e0\e6?")
  (data (i32.const 14257) "\d0\c8S\f7{\d5?\ef@]\ee\ed\ad\1f=\00\00\00\00\00\c0\e6?")
  (data (i32.const 14289) "`Y\df\bd\d5\d5?\dce\a4\08*\0b\n\bd")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/math/NativeMath.scalbn (type $f64_i32_=>_f64) (param $0 f64) (param $1 i32) (result f64)
@@ -37594,7 +37593,7 @@
   if
    unreachable
   end
-  f64.const -nan:0x8000000000000
+  f64.const nan:0x8000000000000
   f64.const nan:0x8000000000000
   f64.const 0
   call $std/math/check<f64>
@@ -37628,7 +37627,7 @@
   if
    unreachable
   end
-  f64.const -nan:0x8000000000000
+  f64.const nan:0x8000000000000
   f64.const nan:0x8000000000000
   f64.const 0
   call $std/math/check<f64>
@@ -37645,7 +37644,7 @@
   if
    unreachable
   end
-  f64.const -nan:0x8000000000000
+  f64.const nan:0x8000000000000
   f64.const nan:0x8000000000000
   f64.const 0
   call $std/math/check<f64>
@@ -37696,7 +37695,7 @@
   if
    unreachable
   end
-  f64.const -nan:0x8000000000000
+  f64.const nan:0x8000000000000
   f64.const nan:0x8000000000000
   f64.const 0
   call $std/math/check<f64>
@@ -37747,7 +37746,7 @@
   if
    unreachable
   end
-  f64.const -nan:0x8000000000000
+  f64.const nan:0x8000000000000
   f64.const nan:0x8000000000000
   f64.const 0
   call $std/math/check<f64>
@@ -37798,7 +37797,7 @@
   if
    unreachable
   end
-  f64.const -nan:0x8000000000000
+  f64.const nan:0x8000000000000
   f64.const nan:0x8000000000000
   f64.const 0
   call $std/math/check<f64>
@@ -37866,7 +37865,7 @@
   if
    unreachable
   end
-  f64.const -nan:0x8000000000000
+  f64.const nan:0x8000000000000
   f64.const nan:0x8000000000000
   f64.const 0
   call $std/math/check<f64>
@@ -37951,7 +37950,7 @@
   if
    unreachable
   end
-  f64.const -nan:0x8000000000000
+  f64.const nan:0x8000000000000
   f64.const nan:0x8000000000000
   f64.const 0
   call $std/math/check<f64>
@@ -38070,7 +38069,7 @@
   if
    unreachable
   end
-  f64.const -nan:0x8000000000000
+  f64.const nan:0x8000000000000
   f64.const nan:0x8000000000000
   f64.const 0
   call $std/math/check<f64>
@@ -39022,7 +39021,7 @@
   if
    unreachable
   end
-  f32.const -nan:0x400000
+  f32.const nan:0x400000
   f32.const nan:0x400000
   f32.const 0
   call $std/math/check<f32>
@@ -39038,7 +39037,7 @@
   if
    unreachable
   end
-  f32.const -nan:0x400000
+  f32.const nan:0x400000
   f32.const nan:0x400000
   f32.const 0
   call $std/math/check<f32>
@@ -39046,7 +39045,7 @@
   if
    unreachable
   end
-  f32.const -nan:0x400000
+  f32.const nan:0x400000
   f32.const nan:0x400000
   f32.const 0
   call $std/math/check<f32>
@@ -39070,7 +39069,7 @@
   if
    unreachable
   end
-  f32.const -nan:0x400000
+  f32.const nan:0x400000
   f32.const nan:0x400000
   f32.const 0
   call $std/math/check<f32>
@@ -39094,7 +39093,7 @@
   if
    unreachable
   end
-  f32.const -nan:0x400000
+  f32.const nan:0x400000
   f32.const nan:0x400000
   f32.const 0
   call $std/math/check<f32>
@@ -39118,7 +39117,7 @@
   if
    unreachable
   end
-  f32.const -nan:0x400000
+  f32.const nan:0x400000
   f32.const nan:0x400000
   f32.const 0
   call $std/math/check<f32>
@@ -39150,7 +39149,7 @@
   if
    unreachable
   end
-  f32.const -nan:0x400000
+  f32.const nan:0x400000
   f32.const nan:0x400000
   f32.const 0
   call $std/math/check<f32>
@@ -39190,7 +39189,7 @@
   if
    unreachable
   end
-  f32.const -nan:0x400000
+  f32.const nan:0x400000
   f32.const nan:0x400000
   f32.const 0
   call $std/math/check<f32>
@@ -39206,7 +39205,7 @@
   if
    unreachable
   end
-  f32.const -nan:0x400000
+  f32.const nan:0x400000
   f32.const nan:0x400000
   f32.const 0
   call $std/math/check<f32>

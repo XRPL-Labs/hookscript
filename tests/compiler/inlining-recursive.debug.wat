@@ -11,7 +11,6 @@
  (export "foo" (func $inlining-recursive/foo))
  (export "bar" (func $inlining-recursive/bar))
  (export "baz" (func $inlining-recursive/baz))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $inlining-recursive/foo (type $none_=>_none)
   call $inlining-recursive/foo

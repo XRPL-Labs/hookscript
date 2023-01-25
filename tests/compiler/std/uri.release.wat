@@ -33,7 +33,6 @@
  (data (i32.const 1368) "\01\00\00\00\r\00\00\00URI malformed")
  (data (i32.const 1404) "0123456789ABCDEF")
  (data (i32.const 1424) "\03\00\00\00 \00\00\00\00\00\00\00 ")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

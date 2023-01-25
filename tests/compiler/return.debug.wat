@@ -13,7 +13,6 @@
  (table $0 2 2 funcref)
  (elem $0 (i32.const 1) $start:return~anonymous|0)
  (export "testVoidReturn" (func $return/testVoidReturn))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "testVoidReturnFunction" (func $export:return/testVoidReturnFunction))
  (start $~start)

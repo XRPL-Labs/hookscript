@@ -35,7 +35,6 @@
  (export "test_vars_f64x2_partial" (func $simd/test_vars_f64x2_partial))
  (export "test_vars_f64x2_full" (func $simd/test_vars_f64x2_full))
  (export "vec" (global $simd/vec))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/tlsf/removeBlock (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)

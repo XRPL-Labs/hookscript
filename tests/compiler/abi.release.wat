@@ -6,7 +6,6 @@
  (export "exported" (func $abi/exported))
  (export "exportedExported" (func $abi/exported))
  (export "exportedInternal" (func $abi/exported))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (func $abi/exported (type $none_=>_i32) (result i32)
   i32.const -128

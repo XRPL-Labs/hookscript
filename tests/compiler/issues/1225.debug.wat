@@ -40,7 +40,6 @@
  (elem $0 (i32.const 1))
  (export "normal" (func $issues/1225/normal))
  (export "viaThis" (func $issues/1225/viaThis))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $issues/1225/X#set:viaThis (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)

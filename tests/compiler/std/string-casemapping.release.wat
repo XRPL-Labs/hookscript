@@ -151,7 +151,6 @@
  (data (i32.const 11466) "\ff\ff\ff\03\ff\ff\ff\03\ff\ff\ff\03")
  (data (i32.const 11504) "\04\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 11532) "\a4")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

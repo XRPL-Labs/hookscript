@@ -13,7 +13,6 @@
  (elem $0 (i32.const 1))
  (export "x" (global $const-folding/x))
  (export "test" (func $const-folding/test))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $start:const-folding (type $none_=>_none)

@@ -36,7 +36,6 @@
  (data (i32.const 160) "\01")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $memory/test (type $none_=>_i32) (result i32)

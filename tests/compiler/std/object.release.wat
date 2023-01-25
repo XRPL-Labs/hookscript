@@ -12,7 +12,6 @@
  (data (i32.const 1112) "\01\00\00\00\02\00\00\00ab")
  (data (i32.const 1132) "\1c")
  (data (i32.const 1144) "\01")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/string/String.__eq (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)

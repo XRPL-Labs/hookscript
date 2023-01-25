@@ -60,7 +60,6 @@
  (export "rerenamed_sub" (func $export/mul))
  (export "default" (func $export-default/theDefault))
  (export "renamed_default" (func $export-default/theDefault))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $export/add (type $i32_i32_=>_i32) (param $a i32) (param $b i32) (result i32)

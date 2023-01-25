@@ -26,7 +26,6 @@
  (data (i32.const 1232) "\04\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1260) " ")
  (export "test" (func $issues/2322/index/test))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

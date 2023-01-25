@@ -37,7 +37,6 @@
  (table $0 2 2 funcref)
  (elem $0 (i32.const 1) $start:infer-generic~anonymous|0)
  (export "test1" (func $infer-generic/test1))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "test2" (func $export:infer-generic/test2))
  (export "test3" (func $export:infer-generic/test2))

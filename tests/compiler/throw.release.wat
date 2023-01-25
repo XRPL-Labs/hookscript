@@ -35,7 +35,6 @@
  (data (i32.const 1432) "\01\00\00\00\07\00\00\00doThrow")
  (data (i32.const 1456) "\03\00\00\00 \00\00\00\00\00\00\00 ")
  (export "doThrow" (func $throw/doThrow))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

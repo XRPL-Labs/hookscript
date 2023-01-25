@@ -58,6 +58,5 @@
  (export "SelfReference.ONE" (global $enum/SelfReference.ONE))
  (export "SelfReferenceConst.ZERO" (global $enum/SelfReferenceConst.ZERO))
  (export "SelfReferenceConst.ONE" (global $enum/SelfReferenceConst.ONE))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
 )

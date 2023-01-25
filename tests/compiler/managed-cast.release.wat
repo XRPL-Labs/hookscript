@@ -29,7 +29,6 @@
  (data (i32.const 1288) "\01\00\00\00\13\00\00\00unexpected downcast")
  (data (i32.const 1328) "\05\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 1356) " \00\00\00\04\00\00\00 ")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

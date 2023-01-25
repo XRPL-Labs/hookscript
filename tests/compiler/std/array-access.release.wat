@@ -10,7 +10,6 @@
  (data (i32.const 1096) "\01\00\00\00/\00\00\00Element type must be nullable if array is holey")
  (data (i32.const 1164) "\1c")
  (data (i32.const 1176) "\01")
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "i32ArrayArrayElementAccess" (func $export:std/array-access/i32ArrayArrayElementAccess))
  (export "stringArrayPropertyAccess" (func $export:std/array-access/stringArrayPropertyAccess))

@@ -452,7 +452,7 @@ function transformTypes(sourceFile) {
   return result;
 }
 
-const prefix = "types:assemblyscript";
+const prefix = "..";
 
 function generateSrc() {
   const stdout = new OutputStream();

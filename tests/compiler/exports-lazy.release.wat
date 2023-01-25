@@ -14,6 +14,5 @@
  (data (i32.const 1160) "\03\00\00\00\10\00\00\00p\04\00\00p\04\00\00\0c\00\00\00\03")
  (export "lazyGlobalUnused" (global $exports-lazy/lazyGlobalUnused))
  (export "lazyGlobalUsed" (global $exports-lazy/lazyGlobalUsed))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
 )

@@ -17,7 +17,6 @@
  (elem $0 (i32.const 1))
  (export "internalValue" (global $bigint-integration/internalValue))
  (export "getInternalValue" (func $bigint-integration/getInternalValue))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
  (func $start:bigint-integration (type $none_=>_none)

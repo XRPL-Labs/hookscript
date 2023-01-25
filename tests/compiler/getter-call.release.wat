@@ -30,7 +30,6 @@
  (table $0 2 2 funcref)
  (elem $0 (i32.const 1) $getter-call/C#get:x~anonymous|0)
  (export "test" (func $getter-call/test))
- (export "_g" (func $~lib/builtins/_g))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots (type $none_=>_none)

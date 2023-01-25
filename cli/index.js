@@ -854,6 +854,27 @@ export async function main(argv, options) {
     stats.optimizeTime += stats.end(begin);
   }
 
+  // Add HookScript specific things after optimization.
+  try {
+    applyPostOptimizeTransforms(binaryenModule);
+  }
+  catch (error) {
+    return prepareResult(error);
+  }
+
+  /**
+   * @param {binaryen.Module} mod 
+   */
+  function applyPostOptimizeTransforms(mod) {
+    const { BuiltinNames, CommonNames, Type } = assemblyscript;
+    const i32 = Type.i32.toRef();
+
+    // Add _g import.
+    mod.addFunctionImport(BuiltinNames._g, "env", CommonNames._g, binaryen.createType([i32, i32]), i32);
+
+    // Others...
+  }
+
   const pending = [];
 
   // Prepare output
