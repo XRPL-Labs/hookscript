@@ -23,7 +23,7 @@ export function accept(msg: string = "", err: i64 = 0): void {
 }
 
 @global @inline
-export function emit(tx: EmitSpec): Bytes32 {
+export function emit(tx: EmitSpec): ByteArray {
   let buf = new ByteArray(emit_buffer_size(tx.amount.isXrp()));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
@@ -52,7 +52,7 @@ export function emit(tx: EmitSpec): Bytes32 {
   let fee = etxn_fee_base(buf);
   _06_08_ENCODE_DROPS_FEE(fee_ptr, fee);
 
-  let emit_hash = new Bytes32();
+  let emit_hash = new ByteArray(32);
   let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buf), buf.length);
   if (emit_result < 0)
     rollback("", emit_result);
@@ -77,10 +77,8 @@ export function etxn_fee_base(source: ByteArray): u64 {
 }
 
 @global @inline
-export function emit_sto(buffer: ByteArray): Bytes32 {
-  let fee_to_pay = $etxn_fee_base(changetype<u32>(buffer), buffer.length);
-  if (fee_to_pay < 0)
-    rollback("", fee_to_pay);
+export function emit_sto(buffer: ByteArray): ByteArray {
+  let fee_to_pay = etxn_fee_base(buffer);
 
   let fee_buf = new ByteArray(9);
   _06_08_ENCODE_DROPS_FEE(changetype<u32>(fee_buf), fee_to_pay);
@@ -91,7 +89,7 @@ export function emit_sto(buffer: ByteArray): Bytes32 {
 
   buffer2.length = <i32>r;
 
-  let emit_hash = new Bytes32();
+  let emit_hash = new ByteArray(32);
   let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buffer2), buffer2.length);
   if (emit_result < 0)
     rollback("", emit_result);
