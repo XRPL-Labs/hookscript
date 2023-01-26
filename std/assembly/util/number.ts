@@ -369,6 +369,15 @@ export function utoa32(value: u32, radix: i32): String {
   return out;
 }
 
+export function u32toa(value: u32): String {
+  if (!value) return "0";
+
+  let decimals = decimalCount32(value);
+  let out = __new(decimals, idof<String>());
+  __reversestoreupto10(out + decimals, value);
+  return changetype<String>(out);
+}
+
 export function itoa32(value: i32, radix: i32): String {
   if (radix < 2 || radix > 36) {
     throw new RangeError("toString() radix argument must be between 2 and 36");

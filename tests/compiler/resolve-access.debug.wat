@@ -2,10 +2,10 @@
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
- (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $none_=>_none (func_subtype func))
  (type $none_=>_i32 (func_subtype (result i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i64_i32_=>_i32 (func_subtype (param i64 i32) (result i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $i32_i64_i32_=>_none (func_subtype (param i32 i64 i32) func))
@@ -2760,10 +2760,295 @@
   i64.load $0
   i32.wrap_i64
  )
- (func $~lib/number/U32#toString (type $i32_i32_=>_i32) (param $this i32) (param $radix i32) (result i32)
+ (func $~lib/util/number/u32toa (type $i32_=>_i32) (param $value i32) (result i32)
+  (local $decimals i32)
+  (local $out i32)
+  (local $end i32)
+  (local $num i32)
+  (local $t i32)
+  (local $r i32)
+  (local $end|7 i32)
+  (local $num|8 i32)
+  (local $t|9 i32)
+  (local $r|10 i32)
+  (local $end|11 i32)
+  (local $num|12 i32)
+  (local $t|13 i32)
+  (local $r|14 i32)
+  (local $end|15 i32)
+  (local $num|16 i32)
+  (local $t|17 i32)
+  (local $r|18 i32)
+  (local $end|19 i32)
+  (local $num|20 i32)
+  (local $t|21 i32)
+  (local $r|22 i32)
+  (local $end|23 i32)
+  (local $num|24 i32)
+  (local $t|25 i32)
+  (local $r|26 i32)
+  (local $end|27 i32)
+  (local $num|28 i32)
+  (local $t|29 i32)
+  (local $r|30 i32)
+  (local $end|31 i32)
+  (local $num|32 i32)
+  (local $t|33 i32)
+  (local $r|34 i32)
+  (local $end|35 i32)
+  (local $num|36 i32)
+  (local $t|37 i32)
+  (local $r|38 i32)
+  (local $end|39 i32)
+  (local $num|40 i32)
+  local.get $value
+  i32.eqz
+  if
+   i32.const 336
+   return
+  end
+  local.get $value
+  call $~lib/util/number/decimalCount32
+  local.set $decimals
+  local.get $decimals
+  i32.const 1
+  call $~lib/rt/itcms/__new
+  local.set $out
+  local.get $out
+  local.get $decimals
+  i32.add
+  local.set $end
+  local.get $value
+  local.set $num
+  local.get $num
+  i32.const 10
+  i32.div_u
+  local.set $t
+  local.get $num
+  i32.const 10
+  i32.rem_u
+  local.set $r
+  local.get $end
+  i32.const 1
+  i32.sub
+  local.set $end
+  local.get $end
+  i32.const 48
+  local.get $r
+  i32.add
+  i32.store8 $0
+  local.get $t
+  if
+   local.get $end
+   local.set $end|7
+   local.get $t
+   local.set $num|8
+   local.get $num|8
+   i32.const 10
+   i32.div_u
+   local.set $t|9
+   local.get $num|8
+   i32.const 10
+   i32.rem_u
+   local.set $r|10
+   local.get $end|7
+   i32.const 1
+   i32.sub
+   local.set $end|7
+   local.get $end|7
+   i32.const 48
+   local.get $r|10
+   i32.add
+   i32.store8 $0
+   local.get $t|9
+   if
+    local.get $end|7
+    local.set $end|11
+    local.get $t|9
+    local.set $num|12
+    local.get $num|12
+    i32.const 10
+    i32.div_u
+    local.set $t|13
+    local.get $num|12
+    i32.const 10
+    i32.rem_u
+    local.set $r|14
+    local.get $end|11
+    i32.const 1
+    i32.sub
+    local.set $end|11
+    local.get $end|11
+    i32.const 48
+    local.get $r|14
+    i32.add
+    i32.store8 $0
+    local.get $t|13
+    if
+     local.get $end|11
+     local.set $end|15
+     local.get $t|13
+     local.set $num|16
+     local.get $num|16
+     i32.const 10
+     i32.div_u
+     local.set $t|17
+     local.get $num|16
+     i32.const 10
+     i32.rem_u
+     local.set $r|18
+     local.get $end|15
+     i32.const 1
+     i32.sub
+     local.set $end|15
+     local.get $end|15
+     i32.const 48
+     local.get $r|18
+     i32.add
+     i32.store8 $0
+     local.get $t|17
+     if
+      local.get $end|15
+      local.set $end|19
+      local.get $t|17
+      local.set $num|20
+      local.get $num|20
+      i32.const 10
+      i32.div_u
+      local.set $t|21
+      local.get $num|20
+      i32.const 10
+      i32.rem_u
+      local.set $r|22
+      local.get $end|19
+      i32.const 1
+      i32.sub
+      local.set $end|19
+      local.get $end|19
+      i32.const 48
+      local.get $r|22
+      i32.add
+      i32.store8 $0
+      local.get $t|21
+      if
+       local.get $end|19
+       local.set $end|23
+       local.get $t|21
+       local.set $num|24
+       local.get $num|24
+       i32.const 10
+       i32.div_u
+       local.set $t|25
+       local.get $num|24
+       i32.const 10
+       i32.rem_u
+       local.set $r|26
+       local.get $end|23
+       i32.const 1
+       i32.sub
+       local.set $end|23
+       local.get $end|23
+       i32.const 48
+       local.get $r|26
+       i32.add
+       i32.store8 $0
+       local.get $t|25
+       if
+        local.get $end|23
+        local.set $end|27
+        local.get $t|25
+        local.set $num|28
+        local.get $num|28
+        i32.const 10
+        i32.div_u
+        local.set $t|29
+        local.get $num|28
+        i32.const 10
+        i32.rem_u
+        local.set $r|30
+        local.get $end|27
+        i32.const 1
+        i32.sub
+        local.set $end|27
+        local.get $end|27
+        i32.const 48
+        local.get $r|30
+        i32.add
+        i32.store8 $0
+        local.get $t|29
+        if
+         local.get $end|27
+         local.set $end|31
+         local.get $t|29
+         local.set $num|32
+         local.get $num|32
+         i32.const 10
+         i32.div_u
+         local.set $t|33
+         local.get $num|32
+         i32.const 10
+         i32.rem_u
+         local.set $r|34
+         local.get $end|31
+         i32.const 1
+         i32.sub
+         local.set $end|31
+         local.get $end|31
+         i32.const 48
+         local.get $r|34
+         i32.add
+         i32.store8 $0
+         local.get $t|33
+         if
+          local.get $end|31
+          local.set $end|35
+          local.get $t|33
+          local.set $num|36
+          local.get $num|36
+          i32.const 10
+          i32.div_u
+          local.set $t|37
+          local.get $num|36
+          i32.const 10
+          i32.rem_u
+          local.set $r|38
+          local.get $end|35
+          i32.const 1
+          i32.sub
+          local.set $end|35
+          local.get $end|35
+          i32.const 48
+          local.get $r|38
+          i32.add
+          i32.store8 $0
+          local.get $t|37
+          if
+           local.get $end|35
+           local.set $end|39
+           local.get $t|37
+           local.set $num|40
+           local.get $end|39
+           i32.const 1
+           i32.sub
+           local.tee $end|39
+           i32.const 48
+           local.get $num|40
+           i32.add
+           i32.store8 $0
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+   end
+  end
+  local.get $out
+ )
+ (func $~lib/number/U32#toString (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
-  local.get $radix
-  call $~lib/util/number/utoa32
+  call $~lib/util/number/u32toa
  )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
@@ -3208,147 +3493,6 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
  )
- (func $~lib/util/number/utoa32 (type $i32_i32_=>_i32) (param $value i32) (param $radix i32) (result i32)
-  (local $out i32)
-  (local $decimals i32)
-  (local $buffer i32)
-  (local $num i32)
-  (local $offset i32)
-  (local $decimals|7 i32)
-  (local $buffer|8 i32)
-  (local $num|9 i32)
-  (local $offset|10 i32)
-  (local $decimals|11 i32)
-  (local $12 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $radix
-  i32.const 2
-  i32.lt_s
-  if (result i32)
-   i32.const 1
-  else
-   local.get $radix
-   i32.const 36
-   i32.gt_s
-  end
-  if
-   unreachable
-  end
-  local.get $value
-  i32.eqz
-  if
-   i32.const 336
-   local.set $12
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   local.get $12
-   return
-  end
-  local.get $radix
-  i32.const 10
-  i32.eq
-  if
-   local.get $value
-   call $~lib/util/number/decimalCount32
-   local.set $decimals
-   global.get $~lib/memory/__stack_pointer
-   local.get $decimals
-   i32.const 1
-   i32.shl
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.tee $out
-   i32.store $0
-   local.get $out
-   local.set $buffer
-   local.get $value
-   local.set $num
-   local.get $decimals
-   local.set $offset
-   i32.const 0
-   i32.const 1
-   i32.ge_s
-   drop
-   local.get $buffer
-   local.get $num
-   local.get $offset
-   call $~lib/util/number/utoa32_dec_lut
-  else
-   local.get $radix
-   i32.const 16
-   i32.eq
-   if
-    i32.const 31
-    local.get $value
-    i32.clz
-    i32.sub
-    i32.const 2
-    i32.shr_s
-    i32.const 1
-    i32.add
-    local.set $decimals|7
-    global.get $~lib/memory/__stack_pointer
-    local.get $decimals|7
-    i32.const 1
-    i32.shl
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.tee $out
-    i32.store $0
-    local.get $out
-    local.set $buffer|8
-    local.get $value
-    local.set $num|9
-    local.get $decimals|7
-    local.set $offset|10
-    i32.const 0
-    i32.const 1
-    i32.ge_s
-    drop
-    local.get $buffer|8
-    local.get $num|9
-    i64.extend_i32_u
-    local.get $offset|10
-    call $~lib/util/number/utoa_hex_lut
-   else
-    local.get $value
-    i64.extend_i32_u
-    local.get $radix
-    call $~lib/util/number/ulog_base
-    local.set $decimals|11
-    global.get $~lib/memory/__stack_pointer
-    local.get $decimals|11
-    i32.const 1
-    i32.shl
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.tee $out
-    i32.store $0
-    local.get $out
-    local.get $value
-    i64.extend_i32_u
-    local.get $decimals|11
-    local.get $radix
-    call $~lib/util/number/utoa64_any_core
-   end
-  end
-  local.get $out
-  local.set $12
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $12
- )
  (func $resolve-access/propertyAccess (type $none_=>_i32) (result i32)
   (local $container i32)
   (local $1 i32)
@@ -3370,7 +3514,6 @@
   call $resolve-access/Container#set:foo
   local.get $container
   call $resolve-access/Container#toU32
-  i32.const 10
   call $~lib/number/U32#toString
   local.set $1
   global.get $~lib/memory/__stack_pointer
