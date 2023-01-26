@@ -2,6 +2,7 @@
 
 import { idof } from "../builtins";
 import { CharCode } from "./string";
+import { __reversestoreupto10 } from "./reversestore";
 
 // @ts-ignore: decorator
 @inline
@@ -394,6 +395,19 @@ export function itoa32(value: i32, radix: i32): String {
   }
   if (sign) store<u16>(changetype<usize>(out), CharCode.MINUS);
   return out;
+}
+
+@global @inline
+export function i32toa(value: i32): String {
+  if (!value) return "0";
+
+  let sign = (value >>> 31);
+  if (sign) value = -value;
+  let decimals = decimalCount32(value);
+  let out = __new(sign + decimals, idof<String>());
+  __reversestoreupto10(out + sign + decimals, value);
+  if (sign) store<u8>(out, CharCode.MINUS);
+  return changetype<String>(out);
 }
 
 export function utoa64(value: u64, radix: i32): String {
