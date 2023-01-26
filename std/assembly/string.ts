@@ -57,14 +57,13 @@ import { Array } from "./array";
     return left.concat(right);
   }
 
+  @inline
   concat(other: String): String {
-    let thisSize: isize = this.length << 1;
-    let otherSize: isize = other.length << 1;
-    let outSize: usize = thisSize + otherSize;
+    let outSize: usize = this.length + other.length;
     if (outSize == 0) return changetype<String>("");
     let out = changetype<String>(__new(outSize, idof<String>()));
-    memory.copy(changetype<usize>(out), changetype<usize>(this), thisSize);
-    memory.copy(changetype<usize>(out) + thisSize, changetype<usize>(other), otherSize);
+    let dest = __copyupto64(changetype<usize>(out), this);
+    __copyupto64(dest, other);
     return out;
   }
 
@@ -634,8 +633,9 @@ export function newStringBuffer(size: usize): usize {
 }
 
 @global @inline
-export function convertStringBuffer(buf: usize, size: usize): string {
-  return changetype<string>(buf - size);
+export function convertStringBuffer(dest: usize, src: usize): string {
+  changetype<OBJECT>(src - TOTAL_OVERHEAD).rtSize = <u32>(dest - src);
+  return changetype<string>(src);
 }
 
 // Encoding helpers

@@ -100,6 +100,20 @@ b;
 a;
 2;
 b;
+`icodeGx`;
+0;
+0;
+17293822569102708735;
+0;
+0;
+3;
+4;
+5;
+c;
+6.7;
+d;
+a;
+b;
 // ERROR 1109: "Expression expected." in literals.ts(98,4+1)
 // ERROR 1351: "An identifier or keyword cannot immediately follow a numeric literal." in literals.ts(99,2+0)
 // ERROR 1351: "An identifier or keyword cannot immediately follow a numeric literal." in literals.ts(100,2+0)
@@ -107,14 +121,11 @@ b;
 // ERROR 6188: "Numeric separators are not allowed here." in literals.ts(103,2+0)
 // ERROR 1351: "An identifier or keyword cannot immediately follow a numeric literal." in literals.ts(104,3+0)
 // ERROR 1351: "An identifier or keyword cannot immediately follow a numeric literal." in literals.ts(105,4+0)
-// ERROR 1005: "':' expected." in literals.ts(106,7+1)
-// ERROR 1351: "An identifier or keyword cannot immediately follow a numeric literal." in literals.ts(107,5+0)
-// ERROR 1351: "An identifier or keyword cannot immediately follow a numeric literal." in literals.ts(108,5+0)
-// ERROR 1351: "An identifier or keyword cannot immediately follow a numeric literal." in literals.ts(108,13+0)
-// ERROR 1351: "An identifier or keyword cannot immediately follow a numeric literal." in literals.ts(109,5+0)
-// ERROR 1351: "An identifier or keyword cannot immediately follow a numeric literal." in literals.ts(109,14+0)
-// ERROR 1127: "Invalid character." in literals.ts(111,2+1)
-// ERROR 1127: "Invalid character." in literals.ts(111,10+1)
-// ERROR 1127: "Invalid character." in literals.ts(111,14+1)
-// ERROR 1127: "Invalid character." in literals.ts(111,16+1)
-// ERROR 1002: "Unterminated string literal." in literals.ts(111,18+289)
+// ERROR 1125: "Hexadecimal digit expected." in literals.ts(106,4+1)
+// ERROR 1125: "Hexadecimal digit expected." in literals.ts(106,12+1)
+// ERROR 1125: "Hexadecimal digit expected." in literals.ts(106,16+1)
+// ERROR 236: "Literal '18446744073709551616' does not fit into 'i64' or 'u64' types." in literals.ts(109,1+20)
+// ERROR 236: "Literal '0x10000000000000000' does not fit into 'i64' or 'u64' types." in literals.ts(110,1+19)
+// ERROR 236: "Literal '0xFFF000000000000FFF' does not fit into 'i64' or 'u64' types." in literals.ts(111,1+20)
+// ERROR 236: "Literal '0o2000000000000000000000' does not fit into 'i64' or 'u64' types." in literals.ts(112,1+24)
+// ERROR 236: "Literal '0b10000000000000000000000000000000000000000000000000000000000000000' does not fit into 'i64' or 'u64' types." in literals.ts(113,1+67)

@@ -7884,6 +7884,53 @@ export class Compiler extends DiagnosticEmitter {
     return this.ensureStaticString(expression.value);
   }
 
+  private locateFunctionInstance(
+    name: string,
+    range: Range
+  ): Function | null {
+    let flow = this.currentFlow;
+    let callIdent = Node.createIdentifierExpression(name, range);
+    let target = this.resolver.lookupExpression(callIdent, flow);
+    if (!target)
+      return null;
+
+    switch (target.kind) {
+      // direct call: concrete function
+      case ElementKind.FunctionPrototype: {
+        let functionPrototype = <FunctionPrototype>target;
+        assert(!functionPrototype.hasDecorator(DecoratorFlags.Builtin));
+        let functionInstance = this.resolver.maybeInferCall(callIdent, functionPrototype, flow);
+        if (!functionInstance) return null;
+        target = functionInstance;
+        // fall-through
+      }
+      case ElementKind.Function: {
+        let functionInstance = <Function>target;
+        assert(!functionInstance.is(CommonFlags.Instance));
+        return functionInstance;
+      }
+      default: {
+        return null;
+      }
+    }
+  }
+
+  private compileIntegerConstant(
+    value: i64,
+    range: Range
+  ): ExpressionRef {
+    let expr = Node.createIntegerLiteralExpression(value, range);
+    return this.compileLiteralExpression(expr, Type.auto, Constraints.None);
+  }
+
+  private compileStringConstant(
+    value: string,
+    range: Range
+  ): ExpressionRef {
+    let expr = Node.createStringLiteralExpression(value, range);
+    return this.compileLiteralExpression(expr, Type.auto, Constraints.None);
+  }
+
   private compileTemplateLiteral(
     expression: TemplateLiteralExpression,
     constraints: Constraints
@@ -7893,9 +7940,7 @@ export class Compiler extends DiagnosticEmitter {
     let numParts = parts.length;
     let expressions = expression.expressions;
     let numExpressions = expressions.length;
-    let exprLengths = expression.exprLengths;
     assert(numExpressions == numParts - 1);
-    assert(exprLengths.length == numExpressions);
 
     let module = this.module;
     let stringInstance = this.program.stringInstance;
@@ -7907,53 +7952,115 @@ export class Compiler extends DiagnosticEmitter {
         return this.ensureStaticString(parts[0]);
       }
 
-      // Compile to nested calls to __copy<n> in the general case
-      let totalLength = i64_new(0);
-      for (let i = 0; i < numParts; ++i) {
-        totalLength = i64_add(totalLength, parts[i].length);
-      }
-      for (let i = 0; i < numExpressions; ++i) {
-        totalLength = i64_add(totalLength, exprLengths[i]);
+      // Shortcut for `${expr}`  ->   expr.toString()
+      if (numParts == 2 && !parts[0].length && !parts[1].length) {
+        let expression = expressions[0];
+        return this.makeToString(
+          this.compileExpression(expression, stringType),
+          this.currentType, expression
+        );
       }
 
-      let callIdent = Node.createIdentifierExpression("newStringBuffer", expression.range);
-      let args = new Array<Expression>();
-      args.push(Node.createIntegerLiteralExpression(totalLength, expression.range));
-      let call = Node.createCallExpression(callIdent, null, args, expression.range);
+      // Shortcut for `${exprA}${exprB}`  ->  exprA.toString() + exprB.toString()
+      if (numParts == 3 && !parts[0].length && !parts[1].length && !parts[2].length) {
+        let exprA = expressions[0];
+        let exprB = expressions[1];
+
+        let lhs = this.makeToString(
+          this.compileExpression(exprA, stringType),
+          this.currentType, exprA
+        );
+        let rhs = this.makeToString(
+          this.compileExpression(exprB, stringType),
+          this.currentType, exprB
+        );
+        let concatMethod = assert(stringInstance.getMethod("concat"));
+        return this.makeCallDirect(concatMethod, [ lhs, rhs ], expression);
+      }
+
+      // In the general case, the template is converted to a local
+      // string buffer, which is filled by nested call to __copy<m>
+      // (for the fixed literals) and __copyupto<n> (for the
+      // expressions). n should be derived from the expression type,
+      // but currently only string is supported, with n=64.
+      let sizeType = this.options.usizeType;
+      let flow = this.currentFlow;
+      let tempBuffer = flow.getTempLocal(sizeType);
+      let callInst: Function | null = null;
+      let call = module.local_get(tempBuffer.index, sizeType.toRef());
       let literalSegment = parts[0];
       let curLength = literalSegment.length;
       if (curLength) {
-        callIdent = Node.createIdentifierExpression("__copy" + curLength.toString(), expression.range);
-        args = new Array<Expression>();
-        args.push(call);
-        args.push(Node.createStringLiteralExpression(literalSegment, expression.range));
-        call = Node.createCallExpression(callIdent, null, args, expression.range);
+        callInst = this.locateFunctionInstance("__copy" + curLength.toString(), expression.range);
+        if (!callInst)
+          return module.unreachable();
+
+        let args = new Array<ExpressionRef>(2);
+        args[0] = call;
+        args[1] = this.compileStringConstant(literalSegment, expression.range);
+        call = this.makeCallInline(callInst, args);
       }
 
+      let totalLength = curLength;
       for (let i = 1; i < numParts; ++i) {
-        curLength = i64_low(exprLengths[i - 1]);
-        callIdent = Node.createIdentifierExpression("__copy" + curLength.toString(), expression.range);
-        args = new Array<Expression>();
-        args.push(call);
-        args.push(expressions[i - 1]);
-        call = Node.createCallExpression(callIdent, null, args, expression.range);
+        let rawExpr = expressions[i - 1];
+        let curExpr = this.compileExpression(rawExpr, stringType);
+        let curType = this.currentType;
+        if (curType == stringType) {
+          curLength = 64;
+          callInst = this.locateFunctionInstance("__copyupto" + curLength.toString(), expression.range);
+        } else { // FIXME: add other types
+          this.error(
+            DiagnosticCode.Type_0_is_not_assignable_to_type_1,
+            rawExpr.range, curType.toString(), stringType.toString()
+          );
+          callInst = null;
+        }
+        if (!callInst)
+          return module.unreachable();
+
+        totalLength += curLength;
+        let args = new Array<ExpressionRef>(2);
+        args[0] = call;
+        args[1] = curExpr;
+        call = this.makeCallInline(callInst, args);
+
         literalSegment = parts[i];
         curLength = literalSegment.length;
         if (curLength) {
-          callIdent = Node.createIdentifierExpression("__copy" + curLength.toString(), expression.range);
-          args = new Array<Expression>();
-          args.push(call);
-          args.push(Node.createStringLiteralExpression(literalSegment, expression.range));
-          call = Node.createCallExpression(callIdent, null, args, expression.range);
+          callInst = this.locateFunctionInstance("__copy" + curLength.toString(), expression.range);
+          if (!callInst)
+            return module.unreachable();
+
+          args = new Array<ExpressionRef>(2);
+          args[0] = call;
+          args[1] = this.compileStringConstant(literalSegment, expression.range);
+          call = this.makeCallInline(callInst, args);
+          totalLength += curLength;
         }
       }
 
-      callIdent = Node.createIdentifierExpression("convertStringBuffer", expression.range);
-      args = new Array<Expression>();
-      args.push(call);
-      args.push(Node.createIntegerLiteralExpression(totalLength, expression.range));
-      call = Node.createCallExpression(callIdent, null, args, expression.range);
-      return this.compileCallExpression(call, stringType);
+      callInst = this.locateFunctionInstance("convertStringBuffer", expression.range);
+      if (!callInst)
+        return module.unreachable();
+
+      let args = new Array<ExpressionRef>(2);
+      args[0] = call;
+      args[1] = module.local_get(tempBuffer.index, sizeType.toRef());
+      call = this.makeCallInline(callInst, args);
+
+      callInst = this.locateFunctionInstance("newStringBuffer", expression.range);
+      if (!callInst)
+        return module.unreachable();
+
+      args = new Array<ExpressionRef>(1);
+      args[0] = this.compileIntegerConstant(i64_new(totalLength), expression.range);
+      let allocCall = this.makeCallInline(callInst, args);
+      let stmts = new Array<ExpressionRef>(2);
+      stmts[0] = module.local_set(tempBuffer.index, allocCall, false);
+      stmts[1] = call;
+      this.currentType = stringType;
+      return module.flatten(stmts, stringType.toRef());
     }
 
     // Try to find out whether the template function takes a full-blown TemplateStringsArray or if
