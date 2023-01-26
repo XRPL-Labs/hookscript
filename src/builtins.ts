@@ -815,7 +815,7 @@ let guard_id_counter: u32 = 1 << 31;
 const EMIT_BUFFER_SIZE_XRP_WITH_CBAK = 270;
 const EMIT_BUFFER_SIZE_XRP_NO_CBAK = 248;
 const EMIT_BUFFER_SIZE_OTHER_WITH_CBAK = 309;
-const EMIT_BUFFER_SIZE_OTHER_NO_CBAK = 287;
+const EMIT_BUFFER_SIZE_OTHER_NO_CBAK = 288;
 
 let emit_buffer_size_xrp = EMIT_BUFFER_SIZE_XRP_NO_CBAK;
 let emit_buffer_size_other = EMIT_BUFFER_SIZE_OTHER_NO_CBAK;
