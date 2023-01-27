@@ -2,6 +2,8 @@
 
 import { idof } from "../builtins";
 import { CharCode } from "./string";
+import { __reversestoreupto10 } from "./reversestore";
+import { __widereversestoreupto19, __widereversestoreupto20 } from "./widereversestore";
 
 // @ts-ignore: decorator
 @inline
@@ -368,6 +370,15 @@ export function utoa32(value: u32, radix: i32): String {
   return out;
 }
 
+export function u32toa(value: u32): String {
+  if (!value) return "0";
+
+  let decimals = decimalCount32(value);
+  let out = __new(decimals, idof<String>());
+  __reversestoreupto10(out + decimals, value);
+  return changetype<String>(out);
+}
+
 export function itoa32(value: i32, radix: i32): String {
   if (radix < 2 || radix > 36) {
     throw new RangeError("toString() radix argument must be between 2 and 36");
@@ -394,6 +405,19 @@ export function itoa32(value: i32, radix: i32): String {
   }
   if (sign) store<u16>(changetype<usize>(out), CharCode.MINUS);
   return out;
+}
+
+@global @inline
+export function i32toa(value: i32): String {
+  if (!value) return "0";
+
+  let sign = (value >>> 31);
+  if (sign) value = -value;
+  let decimals = decimalCount32(value);
+  let out = __new(sign + decimals, idof<String>());
+  __reversestoreupto10(out + sign + decimals, value);
+  if (sign) store<u8>(out, CharCode.MINUS);
+  return changetype<String>(out);
 }
 
 export function utoa64(value: u64, radix: i32): String {
@@ -424,6 +448,23 @@ export function utoa64(value: u64, radix: i32): String {
     utoa64_any_core(changetype<usize>(out), value, decimals, radix);
   }
   return out;
+}
+
+export function u64toa(value: u64): String {
+  if (!value) return "0";
+  let out: usize;
+
+  if (value <= u32.MAX_VALUE) {
+    let val32 = <u32>value;
+    let decimals = decimalCount32(val32);
+    out = __new(decimals, idof<String>());
+    __reversestoreupto10(out + decimals, val32);
+  } else {
+    let decimals = decimalCount64High(value);
+    out = __new(decimals, idof<String>());
+    __widereversestoreupto20(out + decimals, value);
+  }
+  return changetype<String>(out);
 }
 
 export function itoa64(value: i64, radix: i32): String {
@@ -458,6 +499,27 @@ export function itoa64(value: i64, radix: i32): String {
   }
   if (sign) store<u16>(changetype<usize>(out), CharCode.MINUS);
   return out;
+}
+
+export function i64toa(value: i64): String {
+  if (!value) return "0";
+
+  let sign = u32(value >>> 63);
+  if (sign) value = -value;
+  let out: usize;
+
+  if (<u64>value <= <u64>u32.MAX_VALUE) {
+    let val32 = <u32>value;
+    let decimals = decimalCount32(val32);
+    out = __new(sign + decimals, idof<String>());
+    __reversestoreupto10(out + sign + decimals, val32);
+  } else {
+    let decimals = decimalCount64High(value);
+    out = __new(sign + decimals, idof<String>());
+    __widereversestoreupto19(out + sign + decimals, value);
+  }
+  if (sign) store<u8>(out, CharCode.MINUS);
+  return changetype<String>(out);
 }
 
 // @ts-ignore: decorator

@@ -1,4 +1,4 @@
-import { itoa32, utoa32, itoa64, utoa64, dtoa } from "./util/number";
+import { i32toa, u32toa, i64toa, u64toa, dtoa } from "./util/number";
 import { strtol, strtod } from "./util/string";
 
 // @ts-ignore: decorator
@@ -33,8 +33,9 @@ export abstract class I8 {
     return <i8>strtol<i32>(value, radix);
   }
 
-  toString(this: i8, radix: i32 = 10): String {
-    return itoa32(this, radix);
+  @inline
+  toString(this: i8): String {
+    return i32toa(this);
   }
 }
 
@@ -54,8 +55,9 @@ export abstract class I16 {
     return <i16>strtol<i32>(value, radix);
   }
 
-  toString(this: i16, radix: i32 = 10): String {
-    return itoa32(this, radix);
+  @inline
+  toString(this: i16): String {
+    return i32toa(this);
   }
 }
 
@@ -75,8 +77,9 @@ export abstract class I32 {
     return <i32>strtol<i32>(value, radix);
   }
 
-  toString(this: i32, radix: i32 = 10): String {
-    return itoa32(this, radix);
+  @inline
+  toString(this: i32): String {
+    return i32toa(this);
   }
 }
 
@@ -96,8 +99,8 @@ export abstract class I64 {
     return strtol<i64>(value, radix);
   }
 
-  toString(this: i64, radix: i32 = 10): String {
-    return itoa64(this, radix);
+  toString(this: i64): String {
+    return i64toa(this);
   }
 }
 
@@ -117,11 +120,11 @@ export abstract class Isize {
     return <isize>strtol<i64>(value, radix);
   }
 
-  toString(this: isize, radix: i32 = 10): String {
+  toString(this: isize): String {
     if (sizeof<isize>() == 4) {
-      return itoa32(<i32>this, radix);
+      return i32toa(<i32>this);
     } else {
-      return itoa64(<i64>this, radix);
+      return i64toa(<i64>this);
     }
   }
 }
@@ -142,8 +145,8 @@ export abstract class U8 {
     return <u8>strtol<i32>(value, radix);
   }
 
-  toString(this: u8, radix: i32 = 10): String {
-    return utoa32(this, radix);
+  toString(this: u8): String {
+    return u32toa(this);
   }
 }
 
@@ -163,8 +166,8 @@ export abstract class U16 {
     return <u16>strtol<i32>(value, radix);
   }
 
-  toString(this: u16, radix: i32 = 10): String {
-    return utoa32(this, radix);
+  toString(this: u16): String {
+    return u32toa(this);
   }
 }
 
@@ -184,8 +187,8 @@ export abstract class U32 {
     return <u32>strtol<i32>(value, radix);
   }
 
-  toString(this: u32, radix: i32 = 10): String {
-    return utoa32(this, radix);
+  toString(this: u32): String {
+    return u32toa(this);
   }
 }
 
@@ -205,8 +208,8 @@ export abstract class U64 {
     return <u64>strtol<i64>(value, radix);
   }
 
-  toString(this: u64, radix: i32 = 10): String {
-    return utoa64(this, radix);
+  toString(this: u64): String {
+    return u64toa(this);
   }
 }
 
@@ -226,11 +229,11 @@ export abstract class Usize {
     return <usize>strtol<i64>(value, radix);
   }
 
-  toString(this: usize, radix: i32 = 10): String {
+  toString(this: usize): String {
     if (sizeof<usize>() == 4) {
-      return utoa32(<u32>this, radix);
+      return u32toa(<u32>this);
     } else {
-      return utoa64(<u64>this, radix);
+      return u64toa(<u64>this);
     }
   }
 }
