@@ -76,6 +76,7 @@ import { Array } from "./array";
     return !compareImpl(this, searchStart, search, 0, searchLength);
   }
 
+  @inline
   @operator("==") private static __eq(left: String | null, right: String | null): bool {
     if (changetype<usize>(left) == changetype<usize>(right)) return true;
     if (changetype<usize>(left) == 0 || changetype<usize>(right) == 0) return false;

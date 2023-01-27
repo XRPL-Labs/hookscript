@@ -10,6 +10,14 @@ import {
 } from "./number";
 
 import {
+  __compare128
+} from "./compare";
+
+import {
+  __compareupto127
+} from "./compareupto";
+
+import {
   ipow32
 } from "../math";
 
@@ -618,27 +626,14 @@ function stagedBinaryLookup(table: usize, c: u32): bool {
   return <bool>((load<u8>(table + (<u32>load<u8>(table + (c >>> 8)) << 5) + ((c & 255) >> 3)) >>> (c & 7)) & 1);
 }
 
+@inline
 export function compareImpl(str1: string, index1: usize, str2: string, index2: usize, len: usize): i32 {
-  let ptr1 = changetype<usize>(str1) + (index1 << 1);
-  let ptr2 = changetype<usize>(str2) + (index2 << 1);
-  if (ASC_SHRINK_LEVEL < 2) {
-    if (len >= 4 && !((ptr1 & 7) | (ptr2 & 7))) {
-      do {
-        if (load<u64>(ptr1) != load<u64>(ptr2)) break;
-        ptr1 += 8;
-        ptr2 += 8;
-        len  -= 4;
-      } while (len >= 4);
-    }
-  }
-  while (len--) {
-    let a = <i32>load<u16>(ptr1);
-    let b = <i32>load<u16>(ptr2);
-    if (a != b) return a - b;
-    ptr1 += 2;
-    ptr2 += 2;
-  }
-  return 0;
+  let ptr1 = changetype<usize>(str1) + index1;
+  let ptr2 = changetype<usize>(str2) + index2;
+  if (len >= 128)
+    return __compare128(ptr1, ptr2);
+  else
+    return __compareupto127(ptr1, ptr2, len);
 }
 
 // @ts-ignore: decorator
