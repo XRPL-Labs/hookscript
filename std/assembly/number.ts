@@ -1,4 +1,4 @@
-import { i32toa, u32toa, i64toa, utoa64, dtoa } from "./util/number";
+import { i32toa, u32toa, i64toa, u64toa, dtoa } from "./util/number";
 import { strtol, strtod } from "./util/string";
 
 // @ts-ignore: decorator
@@ -208,8 +208,8 @@ export abstract class U64 {
     return <u64>strtol<i64>(value, radix);
   }
 
-  toString(this: u64, radix: i32 = 10): String {
-    return utoa64(this, radix);
+  toString(this: u64): String {
+    return u64toa(this);
   }
 }
 
@@ -233,7 +233,7 @@ export abstract class Usize {
     if (sizeof<usize>() == 4) {
       return u32toa(<u32>this);
     } else {
-      return utoa64(<u64>this, 10);
+      return u64toa(<u64>this);
     }
   }
 }

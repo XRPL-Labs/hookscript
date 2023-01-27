@@ -100,3 +100,13 @@ export function __widereversestoreupto19(end: usize, num: u64): void {
   if (t)
     __widereversestoreupto18(end, t);
 }
+
+@inline
+export function __widereversestoreupto20(end: usize, num: u64): void {
+  let t = num / 10;
+  let r = <u32>(num % 10);
+  end--;
+  store<u8>(end, CharCode._0 + r);
+  if (t)
+    __widereversestoreupto19(end, t);
+}
