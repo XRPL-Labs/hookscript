@@ -100,7 +100,7 @@ class Dependee {
   constructor(
     public source: Source,
     public reportNode: Node
-  ) { }
+  ) {}
 }
 
 /** Parser interface. */
@@ -391,7 +391,7 @@ export class Parser extends DiagnosticEmitter {
             statement = this.parseExport(tn, startPos, (flags & CommonFlags.Declare) != 0);
           }
 
-          // handle non-declaration statements
+        // handle non-declaration statements
         } else {
           if (exportEnd) {
             this.error(
@@ -575,38 +575,38 @@ export class Parser extends DiagnosticEmitter {
         return null;
       }
 
-      // 'void'
+    // 'void'
     } else if (token == Token.Void) {
       type = Node.createNamedType(
         Node.createSimpleTypeName("void", tn.range()), [], false, tn.range(startPos, tn.pos)
       );
 
-      // 'this'
+    // 'this'
     } else if (token == Token.This) {
       type = Node.createNamedType(
         Node.createSimpleTypeName("this", tn.range()), [], false, tn.range(startPos, tn.pos)
       );
 
-      // 'true'
+    // 'true'
     } else if (token == Token.True || token == Token.False) {
       type = Node.createNamedType(
         Node.createSimpleTypeName("bool", tn.range()), [], false, tn.range(startPos, tn.pos)
       );
 
-      // 'null'
+    // 'null'
     } else if (token == Token.Null) {
       type = Node.createNamedType(
         Node.createSimpleTypeName("null", tn.range()), [], false, tn.range(startPos, tn.pos)
       );
 
-      // StringLiteral
+    // StringLiteral
     } else if (token == Token.StringLiteral) {
       tn.readString();
       type = Node.createNamedType(
         Node.createSimpleTypeName("string", tn.range()), [], false, tn.range(startPos, tn.pos)
       );
 
-      // Identifier
+    // Identifier
     } else if (token == Token.Identifier) {
       let name = this.parseTypeName(tn);
       if (!name) return null;
@@ -617,7 +617,7 @@ export class Parser extends DiagnosticEmitter {
         do {
           let parameter = this.parseType(tn, true, suppressErrors);
           if (!parameter) return null;
-          if (!parameters) parameters = [parameter];
+          if (!parameters) parameters = [ parameter ];
           else parameters.push(parameter);
         } while (tn.skip(Token.Comma));
         if (!tn.skip(Token.GreaterThan)) {
@@ -688,7 +688,7 @@ export class Parser extends DiagnosticEmitter {
       }
       type = Node.createNamedType(
         Node.createSimpleTypeName("Array", bracketRange),
-        [type],
+        [ type ],
         nullable,
         tn.range(startPos, tn.pos)
       );
@@ -777,7 +777,7 @@ export class Parser extends DiagnosticEmitter {
               return null;
             }
             let param = Node.createParameter(kind, name, type, null, tn.range(paramStart, tn.pos));
-            if (!parameters) parameters = [param];
+            if (!parameters) parameters = [ param ];
             else parameters.push(param);
           } else {
             if (!isSignature) {
@@ -788,7 +788,7 @@ export class Parser extends DiagnosticEmitter {
             }
             if (isSignature) {
               let param = Node.createParameter(kind, name, Node.createOmittedType(tn.range(tn.pos)), null, tn.range(paramStart, tn.pos));
-              if (!parameters) parameters = [param];
+              if (!parameters) parameters = [ param ];
               else parameters.push(param);
               this.error(
                 DiagnosticCode.Type_expected,
@@ -842,7 +842,7 @@ export class Parser extends DiagnosticEmitter {
             null,
             firstParamNameNoType.range
           );
-          if (!parameters) parameters = [param];
+          if (!parameters) parameters = [ param ];
           else parameters.push(param);
           this.error(
             DiagnosticCode.Type_expected,
@@ -2338,7 +2338,7 @@ export class Parser extends DiagnosticEmitter {
         name.range
       );
 
-      // field: (':' Type)? ('=' Expression)? ';'?
+    // field: (':' Type)? ('=' Expression)? ';'?
     } else {
       if (flags & CommonFlags.Declare) {
         this.error(
@@ -2617,7 +2617,7 @@ export class Parser extends DiagnosticEmitter {
           let internalPath = assert(ret.internalPath);
           let source = tn.source;
           let exportPaths = source.exportPaths;
-          if (!exportPaths) source.exportPaths = [internalPath];
+          if (!exportPaths) source.exportPaths = [ internalPath ];
           else if (!exportPaths.includes(internalPath)) exportPaths.push(internalPath);
           if (!this.seenlog.has(internalPath)) {
             this.dependees.set(internalPath, new Dependee(currentSource, path));
@@ -3355,7 +3355,7 @@ export class Parser extends DiagnosticEmitter {
 
     let startPos = tn.tokenPos;
     let statements: Statement[],
-      statement: Statement | null;
+        statement: Statement | null;
 
     // 'case' Expression ':' Statement*
 
@@ -4059,7 +4059,7 @@ export class Parser extends DiagnosticEmitter {
         tn.reset(state);
         return null;
       }
-      if (!typeArguments) typeArguments = [type];
+      if (!typeArguments) typeArguments = [ type ];
       else typeArguments.push(type);
     } while (tn.skip(Token.Comma));
     if (tn.skip(Token.GreaterThan)) {
@@ -4229,7 +4229,7 @@ export class Parser extends DiagnosticEmitter {
         }
         // CommaExpression
         case Token.Comma: {
-          let commaExprs: Expression[] = [expr];
+          let commaExprs: Expression[] = [ expr ];
           do {
             expr = this.parseExpression(tn, Precedence.Comma + 1);
             if (!expr) return null;
@@ -4493,13 +4493,13 @@ export class Parser extends DiagnosticEmitter {
           tn.readIdentifier();
           break;
         }
-        case Token.StringLiteral: {
+        case Token.StringLiteral:{
           tn.readString();
           break;
         }
         case Token.TemplateLiteral: {
           tn.readString();
-          while (tn.readingTemplateString) {
+          while(tn.readingTemplateString){
             this.skipBlock(tn);
             tn.readString(CharCode.Backtick);
           }

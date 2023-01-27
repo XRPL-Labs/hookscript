@@ -47,7 +47,7 @@ export class Range {
   source!: Source;
   debugInfoRef: usize = 0;
 
-  constructor(public start: i32, public end: i32) { }
+  constructor(public start: i32, public end: i32) {}
 
   static join(a: Range, b: Range): Range {
     if (a.source != b.source) throw new Error("source mismatch");
@@ -320,7 +320,7 @@ export abstract class DiagnosticEmitter {
   /** Diagnostic messages emitted so far. */
   diagnostics: DiagnosticMessage[];
   /** Diagnostic messages already seen, by range. */
-  private seen: Map<Source, Map<i32, DiagnosticMessage[]>> = new Map();
+  private seen: Map<Source,Map<i32,DiagnosticMessage[]>> = new Map();
 
   /** Initializes this diagnostic emitter. */
   protected constructor(diagnostics: DiagnosticMessage[] | null = null) {
@@ -345,11 +345,11 @@ export abstract class DiagnosticEmitter {
           }
           seenMessagesAtPos.push(message);
         } else {
-          seenInSource.set(range.start, [message]);
+          seenInSource.set(range.start, [ message ]);
         }
       } else {
-        let seenInSource = new Map<i32, DiagnosticMessage[]>();
-        seenInSource.set(range.start, [message]);
+        let seenInSource = new Map<i32,DiagnosticMessage[]>();
+        seenInSource.set(range.start, [ message ]);
         seen.set(range.source, seenInSource);
       }
     }
