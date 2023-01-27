@@ -19,7 +19,8 @@ export function inferBranchedSimple2() {
 }
 assert(inferBranchedSimple2() == 2);
 
-// Error: Return type 'f64' is not compatible with previously inferred return type 'i32'. Add an explicit return type annotation to the function declaration.
+// // Error: Return type 'f64' is not compatible with previously inferred return type 'i32'. Add an explicit return type annotation to the function declaration.
+// Error: Type f64 is not assignable to type i32.
 // Since `return 1.0` is compiled first, `return 2.0` wont work as the first return won't be implicitly be casted now.
 // TODO Maybe in future!
 // export function outOfScopeForNowInfer() {

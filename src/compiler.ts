@@ -3449,7 +3449,7 @@ export class Compiler extends DiagnosticEmitter {
       if (prevRet && this.currentType.isAssignableTo(prevRet)) {
         contextualType = prevRet;
       } else if (prevRet) {
-        this.errorText(`Return type '${this.currentType}' is not compatible with previously inferred return type '${prevRet}'. Add an explicit return type annotation to the function declaration.`, expression.range, flow.sourceFunction.identifierAndSignatureRange);
+        this.error(DiagnosticCode.Type_0_is_not_assignable_to_type_1, expression.range, this.currentType.toString(), prevRet.toString());
         return this.module.unreachable();
       } else if (this.currentType != Type.void) {
         contextualType = this.currentType;
