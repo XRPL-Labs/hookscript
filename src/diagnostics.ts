@@ -127,7 +127,7 @@ export class DiagnosticMessage {
   relatedRange: Range | null = null; // TODO: Make this a related message for chains?
 
   /** Constructs a new diagnostic message. */
-  constructor(code: i32, category: DiagnosticCategory, message: string) {
+  private constructor(code: i32, category: DiagnosticCategory, message: string) {
     this.code = code;
     this.category = category;
     this.message = message;
@@ -211,7 +211,7 @@ export function formatDiagnosticMessage(
   if (isColorsEnabled()) sb.push(diagnosticCategoryToColor(message.category));
   sb.push(diagnosticCategoryToString(message.category));
   if (isColorsEnabled()) sb.push(COLOR_RESET);
-  sb.push(message.code < 100 ? " HS" : message.code < 1000 ? " AS" : " TS");
+  sb.push(message.code < 1000 ? " AS" : " TS");
   sb.push(message.code.toString());
   sb.push(": ");
   sb.push(message.message);
@@ -328,8 +328,19 @@ export abstract class DiagnosticEmitter {
     this.diagnostics = diagnostics;
   }
 
-  emitDiagnosticWorker(message: DiagnosticMessage): void {
-    let range = message.range;
+  /** Emits a diagnostic message of the specified category. */
+  emitDiagnostic(
+    code: DiagnosticCode,
+    category: DiagnosticCategory,
+    range: Range | null,
+    relatedRange: Range | null,
+    arg0: string | null = null,
+    arg1: string | null = null,
+    arg2: string | null = null
+  ): void {
+    let message = DiagnosticMessage.create(code, category, arg0, arg1, arg2);
+    if (range) message = message.withRange(range);
+    if (relatedRange) message.relatedRange = relatedRange;
     // It is possible that the same diagnostic is emitted twice, for example
     // when compiling generics with different types or when recompiling a loop
     // because our initial assumptions didn't hold. It is even possible to get
@@ -354,22 +365,6 @@ export abstract class DiagnosticEmitter {
       }
     }
     this.diagnostics.push(message);
-  }
-
-  /** Emits a diagnostic message of the specified category. */
-  emitDiagnostic(
-    code: DiagnosticCode,
-    category: DiagnosticCategory,
-    range: Range | null,
-    relatedRange: Range | null,
-    arg0: string | null = null,
-    arg1: string | null = null,
-    arg2: string | null = null
-  ): void {
-    let message = DiagnosticMessage.create(code, category, arg0, arg1, arg2);
-    if (range) message = message.withRange(range);
-    if (relatedRange) message.relatedRange = relatedRange;
-    return this.emitDiagnosticWorker(message);
     // console.log(formatDiagnosticMessage(message, true, true) + "\n"); // temporary
     // console.log(<string>new Error("stack").stack);
   }
@@ -441,13 +436,6 @@ export abstract class DiagnosticEmitter {
     arg2: string | null = null
   ): void {
     this.emitDiagnostic(code, DiagnosticCategory.Warning, range, relatedRange, arg0, arg1, arg2);
-  }
-
-  errorText(text: string, range: Range | null = null, relatedRange: Range | null = null): void {
-    let message = new DiagnosticMessage(0, DiagnosticCategory.Error, text);
-    if (range) message = message.withRange(range);
-    if (relatedRange) message.relatedRange = relatedRange;
-    this.emitDiagnosticWorker(message);
   }
 
   /** Emits an error diagnostic message. */
