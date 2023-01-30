@@ -370,6 +370,7 @@ export function utoa32(value: u32, radix: i32): String {
   return out;
 }
 
+@global @inline
 export function u32toa(value: u32): String {
   if (!value) return "0";
 
@@ -450,6 +451,7 @@ export function utoa64(value: u64, radix: i32): String {
   return out;
 }
 
+@global @inline
 export function u64toa(value: u64): String {
   if (!value) return "0";
   let out: usize;
@@ -501,6 +503,7 @@ export function itoa64(value: i64, radix: i32): String {
   return out;
 }
 
+@global @inline
 export function i64toa(value: i64): String {
   if (!value) return "0";
 

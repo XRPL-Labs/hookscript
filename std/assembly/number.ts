@@ -99,6 +99,7 @@ export abstract class I64 {
     return strtol<i64>(value, radix);
   }
 
+  @inline
   toString(this: i64): String {
     return i64toa(this);
   }
@@ -120,6 +121,7 @@ export abstract class Isize {
     return <isize>strtol<i64>(value, radix);
   }
 
+  @inline
   toString(this: isize): String {
     if (sizeof<isize>() == 4) {
       return i32toa(<i32>this);
@@ -145,6 +147,7 @@ export abstract class U8 {
     return <u8>strtol<i32>(value, radix);
   }
 
+  @inline
   toString(this: u8): String {
     return u32toa(this);
   }
@@ -166,6 +169,7 @@ export abstract class U16 {
     return <u16>strtol<i32>(value, radix);
   }
 
+  @inline
   toString(this: u16): String {
     return u32toa(this);
   }
@@ -187,6 +191,7 @@ export abstract class U32 {
     return <u32>strtol<i32>(value, radix);
   }
 
+  @inline
   toString(this: u32): String {
     return u32toa(this);
   }
@@ -208,6 +213,7 @@ export abstract class U64 {
     return <u64>strtol<i64>(value, radix);
   }
 
+  @inline
   toString(this: u64): String {
     return u64toa(this);
   }
@@ -229,6 +235,7 @@ export abstract class Usize {
     return <usize>strtol<i64>(value, radix);
   }
 
+  @inline
   toString(this: usize): String {
     if (sizeof<usize>() == 4) {
       return u32toa(<u32>this);
@@ -249,6 +256,7 @@ export abstract class Bool {
   @lazy
   static readonly MAX_VALUE: bool = bool.MAX_VALUE;
 
+  @inline
   toString(this: bool, radix: i32 = 0): String {
     return this ? "true" : "false";
   }
