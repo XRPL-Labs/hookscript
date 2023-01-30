@@ -1370,8 +1370,6 @@
   (local $3 i32)
   (local $4 i32)
   (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 8
   i32.sub
@@ -1394,3072 +1392,507 @@
   end
   block $~lib/string/String.__eq|inlined.0 (result i32)
    global.get $~lib/memory/__stack_pointer
-   local.tee $3
+   local.tee $2
    local.get $0
    i32.load $0 offset=4
-   local.tee $1
+   local.tee $0
    i32.store $0
    i32.const 1056
-   local.set $2
-   local.get $3
+   local.set $1
+   local.get $2
    i32.const 1056
    i32.store $0 offset=4
    i32.const 1
-   local.get $1
+   local.get $0
    i32.const 1056
    i32.eq
    br_if $~lib/string/String.__eq|inlined.0
    drop
    i32.const 0
-   local.get $1
+   local.get $0
    i32.eqz
    br_if $~lib/string/String.__eq|inlined.0
    drop
    i32.const 0
-   local.get $1
+   local.get $0
    i32.const 20
    i32.sub
    i32.load $0 offset=16
-   local.tee $3
+   local.tee $2
    i32.const 1052
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.0
    drop
-   local.get $3
+   local.get $2
    i32.const 128
-   i32.ge_u
+   i32.ge_s
    if (result i32)
-    local.get $1
-    i32.load8_u $0
-    i32.const 1056
-    i32.load8_u $0
-    i32.sub
-    local.tee $0
-    i32.eqz
-    if
-     local.get $1
-     i32.load8_u $0 offset=1
-     i32.const 1057
-     i32.load8_u $0
-     i32.sub
-     local.set $0
-    end
-    local.get $0
-    i32.eqz
-    if
-     local.get $1
-     i32.const 2
-     i32.add
-     local.tee $0
-     i32.load8_u $0
-     i32.const 1058
-     i32.load8_u $0
-     i32.sub
-     local.tee $2
-     if (result i32)
-      local.get $2
-     else
-      local.get $0
-      i32.load8_u $0 offset=1
-      i32.const 1059
-      i32.load8_u $0
-      i32.sub
-     end
-     local.set $0
-    end
-    local.get $0
-    i32.eqz
-    if
-     local.get $1
-     i32.const 4
-     i32.add
-     local.tee $2
-     i32.load8_u $0
-     i32.const 1060
-     i32.load8_u $0
-     i32.sub
-     local.tee $0
-     i32.eqz
-     if
-      local.get $2
-      i32.load8_u $0 offset=1
-      i32.const 1061
-      i32.load8_u $0
-      i32.sub
-      local.set $0
-     end
+    block $~lib/util/raweq/__raweq128|inlined.0 (result i32)
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 2
-      i32.add
-      local.tee $0
-      i32.load8_u $0
-      i32.const 1062
-      i32.load8_u $0
-      i32.sub
-      local.tee $2
-      if (result i32)
-       local.get $2
-      else
-       local.get $0
-       i32.load8_u $0 offset=1
-       i32.const 1063
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $0
-     end
-    end
-    local.get $0
-    i32.eqz
-    if
-     local.get $1
+     i64.load $0
+     i32.const 1056
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
+     local.get $0
      i32.const 8
      i32.add
-     local.tee $2
-     i32.load8_u $0
+     local.tee $0
+     i64.load $0
      i32.const 1064
-     i32.load8_u $0
-     i32.sub
-     local.tee $0
-     i32.eqz
-     if
-      local.get $2
-      i32.load8_u $0 offset=1
-      i32.const 1065
-      i32.load8_u $0
-      i32.sub
-      local.set $0
-     end
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 2
-      i32.add
-      local.tee $0
-      i32.load8_u $0
-      i32.const 1066
-      i32.load8_u $0
-      i32.sub
-      local.tee $3
-      if (result i32)
-       local.get $3
-      else
-       local.get $0
-       i32.load8_u $0 offset=1
-       i32.const 1067
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $0
-     end
-     local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 4
-      i32.add
-      local.tee $2
-      i32.load8_u $0
-      i32.const 1068
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1069
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1070
-       i32.load8_u $0
-       i32.sub
-       local.tee $2
-       if (result i32)
-        local.get $2
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1071
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-     end
-    end
-    local.get $0
-    i32.eqz
-    if
-     local.get $1
-     i32.const 16
+     i32.const 8
      i32.add
-     local.tee $2
-     i32.load8_u $0
+     local.tee $0
+     i64.load $0
      i32.const 1072
-     i32.load8_u $0
-     i32.sub
-     local.tee $0
-     i32.eqz
-     if
-      local.get $2
-      i32.load8_u $0 offset=1
-      i32.const 1073
-      i32.load8_u $0
-      i32.sub
-      local.set $0
-     end
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 2
-      i32.add
-      local.tee $0
-      i32.load8_u $0
-      i32.const 1074
-      i32.load8_u $0
-      i32.sub
-      local.tee $3
-      if (result i32)
-       local.get $3
-      else
-       local.get $0
-       i32.load8_u $0 offset=1
-       i32.const 1075
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $0
-     end
-     local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 4
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1076
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1077
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1078
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1079
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-     end
-     local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 8
-      i32.add
-      local.tee $2
-      i32.load8_u $0
-      i32.const 1080
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1081
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1082
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1083
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1084
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1085
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1086
-        i32.load8_u $0
-        i32.sub
-        local.tee $2
-        if (result i32)
-         local.get $2
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1087
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-      end
-     end
-    end
-    local.get $0
-    i32.eqz
-    if
-     local.get $1
-     i32.const 32
+     i32.const 8
      i32.add
-     local.tee $2
-     i32.load8_u $0
+     local.tee $0
+     i64.load $0
+     i32.const 1080
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
      i32.const 1088
-     i32.load8_u $0
-     i32.sub
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
      local.tee $0
-     i32.eqz
-     if
-      local.get $2
-      i32.load8_u $0 offset=1
-      i32.const 1089
-      i32.load8_u $0
-      i32.sub
-      local.set $0
-     end
+     i64.load $0
+     i32.const 1096
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 2
-      i32.add
-      local.tee $0
-      i32.load8_u $0
-      i32.const 1090
-      i32.load8_u $0
-      i32.sub
-      local.tee $3
-      if (result i32)
-       local.get $3
-      else
-       local.get $0
-       i32.load8_u $0 offset=1
-       i32.const 1091
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $0
-     end
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1104
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 4
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1092
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1093
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1094
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1095
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1112
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 8
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1096
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1097
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1098
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1099
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1100
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1101
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1102
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1103
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-      end
-     end
-     local.get $0
-     i32.eqz
-     if
-      local.get $2
-      i32.const 16
-      i32.add
-      local.tee $2
-      i32.load8_u $0
-      i32.const 1104
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1105
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1106
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1107
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1108
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1109
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1110
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1111
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1112
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1113
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1114
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1115
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1116
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1117
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1118
-         i32.load8_u $0
-         i32.sub
-         local.tee $2
-         if (result i32)
-          local.get $2
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1119
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-       end
-      end
-     end
-    end
-    local.get $0
-    if (result i32)
-     local.get $0
-    else
-     local.get $1
-     i32.const -64
-     i32.sub
-     local.tee $1
-     i32.load8_u $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
      i32.const 1120
-     i32.load8_u $0
-     i32.sub
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
      local.tee $0
-     i32.eqz
-     if
-      local.get $1
-      i32.load8_u $0 offset=1
-      i32.const 1121
-      i32.load8_u $0
-      i32.sub
-      local.set $0
-     end
+     i64.load $0
+     i32.const 1128
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $1
-      i32.const 2
-      i32.add
-      local.tee $0
-      i32.load8_u $0
-      i32.const 1122
-      i32.load8_u $0
-      i32.sub
-      local.tee $2
-      if (result i32)
-       local.get $2
-      else
-       local.get $0
-       i32.load8_u $0 offset=1
-       i32.const 1123
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $0
-     end
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1136
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $1
-      i32.const 4
-      i32.add
-      local.tee $2
-      i32.load8_u $0
-      i32.const 1124
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1125
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1126
-       i32.load8_u $0
-       i32.sub
-       local.tee $2
-       if (result i32)
-        local.get $2
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1127
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1144
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $1
-      i32.const 8
-      i32.add
-      local.tee $2
-      i32.load8_u $0
-      i32.const 1128
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1129
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1130
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1131
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1132
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1133
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1134
-        i32.load8_u $0
-        i32.sub
-        local.tee $2
-        if (result i32)
-         local.get $2
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1135
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1152
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     i32.eqz
-     if
-      local.get $1
-      i32.const 16
-      i32.add
-      local.tee $2
-      i32.load8_u $0
-      i32.const 1136
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1137
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1138
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1139
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1140
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1141
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1142
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1143
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1144
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1145
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1146
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1147
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1148
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1149
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1150
-         i32.load8_u $0
-         i32.sub
-         local.tee $2
-         if (result i32)
-          local.get $2
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1151
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1160
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     i32.const 0
      local.get $0
-     if (result i32)
-      local.get $0
-     else
-      local.get $1
-      i32.const 32
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1152
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1153
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $1
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1154
-       i32.load8_u $0
-       i32.sub
-       local.tee $2
-       if (result i32)
-        local.get $2
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1155
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $1
-       i32.const 4
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1156
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1157
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1158
-        i32.load8_u $0
-        i32.sub
-        local.tee $2
-        if (result i32)
-         local.get $2
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1159
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $1
-       i32.const 8
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1160
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1161
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1162
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1163
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1164
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1165
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1166
-         i32.load8_u $0
-         i32.sub
-         local.tee $2
-         if (result i32)
-          local.get $2
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1167
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-       end
-      end
-      local.get $0
-      if (result i32)
-       local.get $0
-      else
-       local.get $1
-       i32.const 16
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1168
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1169
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $1
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1170
-        i32.load8_u $0
-        i32.sub
-        local.tee $2
-        if (result i32)
-         local.get $2
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1171
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $1
-        i32.const 4
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1172
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1173
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1174
-         i32.load8_u $0
-         i32.sub
-         local.tee $2
-         if (result i32)
-          local.get $2
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1175
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-       end
-       local.get $0
-       if (result i32)
-        local.get $0
-       else
-        local.get $1
-        i32.const 8
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1176
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1177
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $1
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1178
-         i32.load8_u $0
-         i32.sub
-         local.tee $2
-         if (result i32)
-          local.get $2
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1179
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-        local.get $0
-        if (result i32)
-         local.get $0
-        else
-         local.get $1
-         i32.const 4
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1180
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1181
-          i32.load8_u $0
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         if (result i32)
-          local.get $0
-         else
-          local.get $1
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          i32.const 1182
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          if (result i32)
-           local.get $1
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           i32.const 1183
-           i32.load8_u $0
-           i32.sub
-          end
-         end
-        end
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1168
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.0
+     drop
+     local.get $0
+     i64.load $0 offset=8
+     i32.const 1176
+     i64.load $0
+     i64.eq
     end
    else
-    block $~lib/util/compareupto/__compareupto127|inlined.0
-     local.get $3
+    block $~lib/util/equpto/__equpto127|inlined.0 (result i32)
+     local.get $2
      i32.const 64
      i32.ge_u
      if
-      local.get $1
-      i32.load8_u $0
-      i32.const 1056
-      i32.load8_u $0
-      i32.sub
-      local.tee $0
-      i32.eqz
-      if
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1057
-       i32.load8_u $0
-       i32.sub
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $1
-       i32.const 2
-       i32.add
-       local.tee $0
-       i32.load8_u $0
-       i32.const 1058
-       i32.load8_u $0
-       i32.sub
-       local.tee $2
-       if (result i32)
-        local.get $2
-       else
-        local.get $0
-        i32.load8_u $0 offset=1
-        i32.const 1059
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $0
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $1
-       i32.const 4
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1060
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1061
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
+      i32.const 0
+      block $~lib/util/raweq/__raweq64|inlined.0 (result i32)
+       i32.const 0
        local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1062
-        i32.load8_u $0
-        i32.sub
-        local.tee $2
-        if (result i32)
-         local.get $2
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1063
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-      end
-      local.get $0
-      i32.eqz
-      if
+       i64.load $0
+       i32.const 1056
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.0
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $1
+       i64.load $0
+       i32.const 1064
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.0
+       drop
+       i32.const 0
        local.get $1
        i32.const 8
        i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1064
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1065
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1066
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1067
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1068
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1069
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1070
-         i32.load8_u $0
-         i32.sub
-         local.tee $2
-         if (result i32)
-          local.get $2
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1071
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-       end
-      end
-      local.get $0
-      i32.eqz
-      if
-       local.get $1
-       i32.const 16
-       i32.add
-       local.tee $2
-       i32.load8_u $0
+       local.tee $1
+       i64.load $0
        i32.const 1072
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1073
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1074
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1075
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $4
-        i32.load8_u $0
-        i32.const 1076
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $4
-         i32.load8_u $0 offset=1
-         i32.const 1077
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1078
-         i32.load8_u $0
-         i32.sub
-         local.tee $4
-         if (result i32)
-          local.get $4
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1079
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 8
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1080
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1081
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1082
-         i32.load8_u $0
-         i32.sub
-         local.tee $4
-         if (result i32)
-          local.get $4
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1083
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 4
-         i32.add
-         local.tee $2
-         i32.load8_u $0
-         i32.const 1084
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $2
-          i32.load8_u $0 offset=1
-          i32.const 1085
-          i32.load8_u $0
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $2
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          i32.const 1086
-          i32.load8_u $0
-          i32.sub
-          local.tee $2
-          if (result i32)
-           local.get $2
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           i32.const 1087
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $0
-         end
-        end
-       end
-      end
-      local.get $0
-      i32.eqz
-      if
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.0
+       drop
+       i32.const 0
        local.get $1
-       i32.const 32
+       i32.const 8
        i32.add
-       local.tee $2
-       i32.load8_u $0
+       local.tee $1
+       i64.load $0
+       i32.const 1080
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.0
+       drop
+       i32.const 0
+       local.get $1
+       i32.const 8
+       i32.add
+       local.tee $1
+       i64.load $0
        i32.const 1088
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1089
-        i32.load8_u $0
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        i32.const 1090
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         i32.const 1091
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $4
-        i32.load8_u $0
-        i32.const 1092
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $4
-         i32.load8_u $0 offset=1
-         i32.const 1093
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1094
-         i32.load8_u $0
-         i32.sub
-         local.tee $4
-         if (result i32)
-          local.get $4
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1095
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 8
-        i32.add
-        local.tee $4
-        i32.load8_u $0
-        i32.const 1096
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $4
-         i32.load8_u $0 offset=1
-         i32.const 1097
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1098
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1099
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 4
-         i32.add
-         local.tee $4
-         i32.load8_u $0
-         i32.const 1100
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $4
-          i32.load8_u $0 offset=1
-          i32.const 1101
-          i32.load8_u $0
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $4
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          i32.const 1102
-          i32.load8_u $0
-          i32.sub
-          local.tee $4
-          if (result i32)
-           local.get $4
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           i32.const 1103
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $0
-         end
-        end
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $2
-        i32.const 16
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1104
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1105
-         i32.load8_u $0
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         i32.const 1106
-         i32.load8_u $0
-         i32.sub
-         local.tee $4
-         if (result i32)
-          local.get $4
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          i32.const 1107
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 4
-         i32.add
-         local.tee $4
-         i32.load8_u $0
-         i32.const 1108
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $4
-          i32.load8_u $0 offset=1
-          i32.const 1109
-          i32.load8_u $0
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $4
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          i32.const 1110
-          i32.load8_u $0
-          i32.sub
-          local.tee $4
-          if (result i32)
-           local.get $4
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           i32.const 1111
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $0
-         end
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $2
-         i32.const 8
-         i32.add
-         local.tee $2
-         i32.load8_u $0
-         i32.const 1112
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $2
-          i32.load8_u $0 offset=1
-          i32.const 1113
-          i32.load8_u $0
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $2
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          i32.const 1114
-          i32.load8_u $0
-          i32.sub
-          local.tee $4
-          if (result i32)
-           local.get $4
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           i32.const 1115
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $2
-          i32.const 4
-          i32.add
-          local.tee $2
-          i32.load8_u $0
-          i32.const 1116
-          i32.load8_u $0
-          i32.sub
-          local.tee $0
-          i32.eqz
-          if
-           local.get $2
-           i32.load8_u $0 offset=1
-           i32.const 1117
-           i32.load8_u $0
-           i32.sub
-           local.set $0
-          end
-          local.get $0
-          i32.eqz
-          if
-           local.get $2
-           i32.const 2
-           i32.add
-           local.tee $0
-           i32.load8_u $0
-           i32.const 1118
-           i32.load8_u $0
-           i32.sub
-           local.tee $2
-           if (result i32)
-            local.get $2
-           else
-            local.get $0
-            i32.load8_u $0 offset=1
-            i32.const 1119
-            i32.load8_u $0
-            i32.sub
-           end
-           local.set $0
-          end
-         end
-        end
-       end
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.0
+       drop
+       i32.const 0
+       local.get $1
+       i32.const 8
+       i32.add
+       local.tee $1
+       i64.load $0
+       i32.const 1096
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.0
+       drop
+       i32.const 0
+       local.get $1
+       i32.const 8
+       i32.add
+       local.tee $1
+       i64.load $0
+       i32.const 1104
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.0
+       drop
+       local.get $1
+       i64.load $0 offset=8
+       i32.const 1112
+       i64.load $0
+       i64.eq
       end
-      local.get $0
-      br_if $~lib/util/compareupto/__compareupto127|inlined.0
+      i32.eqz
+      br_if $~lib/util/equpto/__equpto127|inlined.0
+      drop
       i32.const 1120
-      local.set $2
-      local.get $3
+      local.set $1
+      local.get $2
       i32.const -64
       i32.add
-      local.set $3
-      local.get $1
+      local.set $2
+      local.get $0
       i32.const -64
       i32.sub
-      local.set $1
+      local.set $0
      end
-     block $~lib/util/compareupto/__compareupto63|inlined.0
-      local.get $3
+     block $~lib/util/equpto/__equpto63|inlined.0
+      local.get $2
       i32.const 32
       i32.ge_u
       if
-       local.get $1
-       i32.load8_u $0
-       local.get $2
-       i32.load8_u $0
-       i32.sub
-       local.tee $0
-       i32.eqz
-       if
-        local.get $1
-        i32.load8_u $0 offset=1
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.sub
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $1
-        i32.const 2
-        i32.add
-        local.tee $0
-        i32.load8_u $0
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $4
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $0
-         i32.load8_u $0 offset=1
-         local.get $4
-         i32.load8_u $0 offset=1
-         i32.sub
-        end
-        local.set $0
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $1
-        i32.const 4
-        i32.add
-        local.tee $4
-        i32.load8_u $0
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $4
-         i32.load8_u $0 offset=1
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $0
-        end
+       block $~lib/util/raweq/__raweq32|inlined.0 (result i32)
+        i32.const 0
         local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $4
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          local.get $4
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $0
-        end
-       end
-       local.get $0
-       i32.eqz
-       if
+        i64.load $0
         local.get $1
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.0
+        drop
+        i32.const 0
+        local.get $0
         i32.const 8
         i32.add
         local.tee $4
-        i32.load8_u $0
-        local.get $2
+        i64.load $0
+        local.get $1
         i32.const 8
         i32.add
         local.tee $5
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $4
-         i32.load8_u $0 offset=1
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $7
-         if (result i32)
-          local.get $7
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 4
-         i32.add
-         local.tee $4
-         i32.load8_u $0
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $4
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $4
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $4
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           local.get $4
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $0
-         end
-        end
-       end
-       local.get $0
-       i32.eqz
-       if
-        local.get $1
-        i32.const 16
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.0
+        drop
+        i32.const 0
+        local.get $4
+        i32.const 8
         i32.add
         local.tee $4
-        i32.load8_u $0
-        local.get $2
-        i32.const 16
+        i64.load $0
+        local.get $5
+        i32.const 8
         i32.add
         local.tee $5
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $4
-         i32.load8_u $0 offset=1
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $7
-         if (result i32)
-          local.get $7
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 4
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $6
-          i32.load8_u $0 offset=1
-          local.get $7
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          local.get $7
-          i32.const 2
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $7
-          if (result i32)
-           local.get $7
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $0
-         end
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $4
-         i32.const 8
-         i32.add
-         local.tee $4
-         i32.load8_u $0
-         local.get $5
-         i32.const 8
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $4
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $4
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $7
-          if (result i32)
-           local.get $7
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $4
-          i32.const 4
-          i32.add
-          local.tee $4
-          i32.load8_u $0
-          local.get $5
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $0
-          i32.eqz
-          if
-           local.get $4
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $0
-          end
-          local.get $0
-          i32.eqz
-          if
-           local.get $4
-           i32.const 2
-           i32.add
-           local.tee $0
-           i32.load8_u $0
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $4
-           i32.load8_u $0
-           i32.sub
-           local.tee $5
-           if (result i32)
-            local.get $5
-           else
-            local.get $0
-            i32.load8_u $0 offset=1
-            local.get $4
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $0
-          end
-         end
-        end
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.0
+        drop
+        local.get $4
+        i64.load $0 offset=8
+        local.get $5
+        i64.load $0 offset=8
+        i64.eq
        end
-       local.get $0
-       br_if $~lib/util/compareupto/__compareupto63|inlined.0
-       local.get $2
-       i32.const 32
-       i32.add
-       local.set $2
-       local.get $3
-       i32.const 32
-       i32.sub
-       local.set $3
+       i32.eqz
+       br_if $~lib/util/equpto/__equpto63|inlined.0
        local.get $1
        i32.const 32
        i32.add
        local.set $1
+       local.get $2
+       i32.const 32
+       i32.sub
+       local.set $2
+       local.get $0
+       i32.const 32
+       i32.add
+       local.set $0
       end
-      block $~lib/util/compareupto/__compareupto31|inlined.0
-       local.get $3
+      block $~lib/util/equpto/__equpto31|inlined.0
+       local.get $2
        i32.const 16
        i32.ge_u
        if
+        local.get $0
+        i64.load $0
         local.get $1
-        i32.load8_u $0
-        local.get $2
-        i32.load8_u $0
-        i32.sub
-        local.tee $0
-        i32.eqz
-        if
-         local.get $1
-         i32.load8_u $0 offset=1
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $1
-         i32.const 2
-         i32.add
-         local.tee $0
-         i32.load8_u $0
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $4
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $0
-          i32.load8_u $0 offset=1
-          local.get $4
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $0
-        end
-        local.get $0
-        i32.eqz
-        if
-         local.get $1
-         i32.const 4
-         i32.add
-         local.tee $4
-         i32.load8_u $0
-         local.get $2
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $4
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $0
-         end
+        i64.load $0
+        i64.ne
+        if (result i32)
+         i32.const 0
+        else
          local.get $0
-         i32.eqz
-         if
-          local.get $4
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $4
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           local.get $4
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $0
-         end
-        end
-        local.get $0
-        i32.eqz
-        if
+         i64.load $0 offset=8
          local.get $1
-         i32.const 8
-         i32.add
-         local.tee $4
-         i32.load8_u $0
-         local.get $2
-         i32.const 8
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $4
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $4
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $7
-          if (result i32)
-           local.get $7
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $4
-          i32.const 4
-          i32.add
-          local.tee $4
-          i32.load8_u $0
-          local.get $5
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $0
-          i32.eqz
-          if
-           local.get $4
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $0
-          end
-          local.get $0
-          i32.eqz
-          if
-           local.get $4
-           i32.const 2
-           i32.add
-           local.tee $0
-           i32.load8_u $0
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $4
-           i32.load8_u $0
-           i32.sub
-           local.tee $5
-           if (result i32)
-            local.get $5
-           else
-            local.get $0
-            i32.load8_u $0 offset=1
-            local.get $4
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $0
-          end
-         end
+         i64.load $0 offset=8
+         i64.eq
         end
-        local.get $0
-        br_if $~lib/util/compareupto/__compareupto31|inlined.0
-        local.get $2
-        i32.const 16
-        i32.add
-        local.set $2
-        local.get $3
-        i32.const 16
-        i32.sub
-        local.set $3
+        i32.eqz
+        br_if $~lib/util/equpto/__equpto31|inlined.0
         local.get $1
         i32.const 16
         i32.add
         local.set $1
+        local.get $2
+        i32.const 16
+        i32.sub
+        local.set $2
+        local.get $0
+        i32.const 16
+        i32.add
+        local.set $0
        end
-       block $~lib/util/compareupto/__compareupto15|inlined.0
-        local.get $3
+       block $~lib/util/equpto/__equpto15|inlined.0 (result i32)
+        local.get $2
         i32.const 8
         i32.ge_u
         if
+         i32.const 0
+         local.get $0
+         i64.load $0
          local.get $1
-         i32.load8_u $0
-         local.get $2
-         i32.load8_u $0
-         i32.sub
-         local.tee $0
-         i32.eqz
-         if
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $2
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $1
-          i32.const 2
-          i32.add
-          local.tee $0
-          i32.load8_u $0
-          local.get $2
-          i32.const 2
-          i32.add
-          local.tee $4
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $0
-           i32.load8_u $0 offset=1
-           local.get $4
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $0
-         end
-         local.get $0
-         i32.eqz
-         if
-          local.get $1
-          i32.const 4
-          i32.add
-          local.tee $4
-          i32.load8_u $0
-          local.get $2
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $0
-          i32.eqz
-          if
-           local.get $4
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $0
-          end
-          local.get $0
-          i32.eqz
-          if
-           local.get $4
-           i32.const 2
-           i32.add
-           local.tee $0
-           i32.load8_u $0
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $4
-           i32.load8_u $0
-           i32.sub
-           local.tee $5
-           if (result i32)
-            local.get $5
-           else
-            local.get $0
-            i32.load8_u $0 offset=1
-            local.get $4
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $0
-          end
-         end
-         local.get $0
-         br_if $~lib/util/compareupto/__compareupto15|inlined.0
-         local.get $2
-         i32.const 8
-         i32.add
-         local.set $2
-         local.get $3
-         i32.const 8
-         i32.sub
-         local.set $3
+         i64.load $0
+         i64.ne
+         br_if $~lib/util/equpto/__equpto15|inlined.0
+         drop
          local.get $1
          i32.const 8
          i32.add
          local.set $1
+         local.get $2
+         i32.const 8
+         i32.sub
+         local.set $2
+         local.get $0
+         i32.const 8
+         i32.add
+         local.set $0
         end
-        block $~lib/util/compareupto/__compareupto7|inlined.0
-         local.get $3
+        block $~lib/util/equpto/__equpto7|inlined.0 (result i32)
+         local.get $2
          i32.const 4
          i32.ge_u
          if
+          i32.const 0
+          local.get $0
+          i32.load $0
           local.get $1
-          i32.load8_u $0
-          local.get $2
-          i32.load8_u $0
-          i32.sub
-          local.tee $0
-          i32.eqz
-          if
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $2
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $0
-          end
-          local.get $0
-          i32.eqz
-          if
-           local.get $1
-           i32.const 2
-           i32.add
-           local.tee $0
-           i32.load8_u $0
-           local.get $2
-           i32.const 2
-           i32.add
-           local.tee $4
-           i32.load8_u $0
-           i32.sub
-           local.tee $5
-           if (result i32)
-            local.get $5
-           else
-            local.get $0
-            i32.load8_u $0 offset=1
-            local.get $4
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $0
-          end
-          local.get $0
-          br_if $~lib/util/compareupto/__compareupto7|inlined.0
-          local.get $2
-          i32.const 4
-          i32.add
-          local.set $2
-          local.get $3
-          i32.const 4
-          i32.sub
-          local.set $3
+          i32.load $0
+          i32.ne
+          br_if $~lib/util/equpto/__equpto7|inlined.0
+          drop
           local.get $1
           i32.const 4
           i32.add
           local.set $1
+          local.get $2
+          i32.const 4
+          i32.sub
+          local.set $2
+          local.get $0
+          i32.const 4
+          i32.add
+          local.set $0
          end
-         block $~lib/util/compareupto/__compareupto3|inlined.0
-          local.get $3
+         block $~lib/util/equpto/__equpto3|inlined.0 (result i32)
+          local.get $2
           i32.const 2
           i32.ge_u
           if
-           local.get $1
-           i32.load8_u $0
-           local.get $2
-           i32.load8_u $0
-           i32.sub
-           local.tee $0
-           i32.eqz
-           if
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $2
-            i32.load8_u $0 offset=1
-            i32.sub
-            local.set $0
-           end
+           i32.const 0
            local.get $0
-           br_if $~lib/util/compareupto/__compareupto3|inlined.0
-           local.get $2
-           i32.const 2
-           i32.add
-           local.set $2
-           local.get $3
-           i32.const 2
-           i32.sub
-           local.set $3
+           i32.load16_u $0
+           local.get $1
+           i32.load16_u $0
+           i32.ne
+           br_if $~lib/util/equpto/__equpto3|inlined.0
+           drop
            local.get $1
            i32.const 2
            i32.add
            local.set $1
+           local.get $2
+           i32.const 2
+           i32.sub
+           local.set $2
+           local.get $0
+           i32.const 2
+           i32.add
+           local.set $0
           end
-          local.get $3
+          local.get $2
           if (result i32)
+           local.get $0
+           i32.load8_u $0
            local.get $1
            i32.load8_u $0
-           local.get $2
-           i32.load8_u $0
-           i32.sub
+           i32.eq
           else
-           i32.const 0
+           i32.const 1
           end
-          local.set $0
          end
         end
        end
+       local.set $3
       end
      end
+     local.get $3
     end
-    local.get $0
    end
-   i32.eqz
   end
   i32.eqz
   if
@@ -4477,8 +1910,6 @@
   (local $4 i32)
   (local $5 i32)
   (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 8
   i32.sub
@@ -4497,31 +1928,30 @@
   if
    unreachable
   end
-  block $~lib/string/String.__eq|inlined.1 (result i32)
-   global.get $~lib/memory/__stack_pointer
-   local.tee $1
-   local.get $0
-   i32.load $0 offset=4
-   local.tee $2
-   i32.store $0
-   i32.const 1280
-   local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.tee $2
+  local.get $0
+  i32.load $0 offset=4
+  local.tee $1
+  i32.store $0
+  i32.const 1280
+  local.set $3
+  local.get $2
+  i32.const 1280
+  i32.store $0 offset=4
+  i32.const 1
+  local.set $2
+  block $~lib/string/String.__eq|inlined.1
    local.get $1
-   i32.const 1280
-   i32.store $0 offset=4
-   i32.const 1
-   local.get $2
    i32.const 1280
    i32.eq
    br_if $~lib/string/String.__eq|inlined.1
-   drop
    i32.const 0
-   local.get $2
+   local.set $2
+   local.get $1
    i32.eqz
    br_if $~lib/string/String.__eq|inlined.1
-   drop
-   i32.const 0
-   local.get $2
+   local.get $1
    i32.const 20
    i32.sub
    i32.load $0 offset=16
@@ -4530,2586 +1960,330 @@
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.1
-   drop
    local.get $4
    i32.const 128
-   i32.ge_u
-   if (result i32)
-    local.get $2
-    i32.load8_u $0
-    i32.const 1280
-    i32.load8_u $0
-    i32.sub
-    local.tee $1
-    i32.eqz
-    if
-     local.get $2
-     i32.load8_u $0 offset=1
-     i32.const 1281
-     i32.load8_u $0
-     i32.sub
-     local.set $1
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 2
-     i32.add
-     local.tee $1
-     i32.load8_u $0
-     i32.const 1282
-     i32.load8_u $0
-     i32.sub
-     local.tee $3
-     if (result i32)
-      local.get $3
-     else
-      local.get $1
-      i32.load8_u $0 offset=1
-      i32.const 1283
-      i32.load8_u $0
-      i32.sub
-     end
-     local.set $1
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 4
-     i32.add
-     local.tee $3
-     i32.load8_u $0
-     i32.const 1284
-     i32.load8_u $0
-     i32.sub
-     local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1285
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+   i32.ge_s
+   if
+    block $~lib/util/raweq/__raweq128|inlined.1 (result i32)
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1286
-      i32.load8_u $0
-      i32.sub
-      local.tee $3
-      if (result i32)
-       local.get $3
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1287
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
+     i64.load $0
+     i32.const 1280
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
+     local.get $1
      i32.const 8
      i32.add
-     local.tee $3
-     i32.load8_u $0
+     local.tee $1
+     i64.load $0
      i32.const 1288
-     i32.load8_u $0
-     i32.sub
-     local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1289
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1290
-      i32.load8_u $0
-      i32.sub
-      local.tee $4
-      if (result i32)
-       local.get $4
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1291
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 4
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1292
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1293
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1294
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1295
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 16
+     i32.const 8
      i32.add
-     local.tee $3
-     i32.load8_u $0
+     local.tee $1
+     i64.load $0
      i32.const 1296
-     i32.load8_u $0
-     i32.sub
-     local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1297
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1298
-      i32.load8_u $0
-      i32.sub
-      local.tee $4
-      if (result i32)
-       local.get $4
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1299
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 4
-      i32.add
-      local.tee $4
-      i32.load8_u $0
-      i32.const 1300
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $4
-       i32.load8_u $0 offset=1
-       i32.const 1301
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1302
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1303
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 8
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1304
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1305
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1306
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1307
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1308
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1309
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1310
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1311
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-     end
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 32
+     i32.const 8
      i32.add
-     local.tee $3
-     i32.load8_u $0
+     local.tee $1
+     i64.load $0
+     i32.const 1304
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
+     local.get $1
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
      i32.const 1312
-     i32.load8_u $0
-     i32.sub
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
+     local.get $1
+     i32.const 8
+     i32.add
      local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1313
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i32.const 1320
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1314
-      i32.load8_u $0
-      i32.sub
-      local.tee $4
-      if (result i32)
-       local.get $4
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1315
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1328
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 4
-      i32.add
-      local.tee $4
-      i32.load8_u $0
-      i32.const 1316
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $4
-       i32.load8_u $0 offset=1
-       i32.const 1317
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1318
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1319
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1336
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 8
-      i32.add
-      local.tee $4
-      i32.load8_u $0
-      i32.const 1320
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $4
-       i32.load8_u $0 offset=1
-       i32.const 1321
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1322
-       i32.load8_u $0
-       i32.sub
-       local.tee $5
-       if (result i32)
-        local.get $5
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1323
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 4
-       i32.add
-       local.tee $4
-       i32.load8_u $0
-       i32.const 1324
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $4
-        i32.load8_u $0 offset=1
-        i32.const 1325
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $4
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1326
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1327
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 16
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1328
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1329
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1330
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1331
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $4
-       i32.load8_u $0
-       i32.const 1332
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $4
-        i32.load8_u $0 offset=1
-        i32.const 1333
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $4
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1334
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1335
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1336
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1337
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1338
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1339
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1340
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1341
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1342
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1343
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-     end
-    end
-    local.get $1
-    if (result i32)
-     local.get $1
-    else
-     local.get $2
-     i32.const -64
-     i32.sub
-     local.tee $2
-     i32.load8_u $0
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
      i32.const 1344
-     i32.load8_u $0
-     i32.sub
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
+     local.get $1
+     i32.const 8
+     i32.add
      local.tee $1
-     i32.eqz
-     if
-      local.get $2
-      i32.load8_u $0 offset=1
-      i32.const 1345
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i32.const 1352
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1346
-      i32.load8_u $0
-      i32.sub
-      local.tee $3
-      if (result i32)
-       local.get $3
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1347
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1360
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 4
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1348
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1349
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1350
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1351
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1368
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 8
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1352
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1353
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1354
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1355
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1356
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1357
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1358
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1359
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1376
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 16
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1360
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1361
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1362
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1363
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $4
-       i32.load8_u $0
-       i32.const 1364
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $4
-        i32.load8_u $0 offset=1
-        i32.const 1365
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $4
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1366
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1367
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1368
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1369
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1370
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1371
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1372
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1373
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1374
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1375
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1384
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
      local.get $1
-     if (result i32)
-      local.get $1
-     else
-      local.get $2
-      i32.const 32
-      i32.add
-      local.tee $2
-      i32.load8_u $0
-      i32.const 1376
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1377
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1378
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1379
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1380
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1381
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1382
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1383
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1384
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1385
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1386
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1387
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1388
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1389
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1390
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1391
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-      local.get $1
-      if (result i32)
-       local.get $1
-      else
-       local.get $2
-       i32.const 16
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1392
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1393
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1394
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1395
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1396
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1397
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1398
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1399
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       if (result i32)
-        local.get $1
-       else
-        local.get $2
-        i32.const 8
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1400
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1401
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1402
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1403
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        if (result i32)
-         local.get $1
-        else
-         local.get $2
-         i32.const 4
-         i32.add
-         local.tee $2
-         i32.load8_u $0
-         i32.const 1404
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $2
-          i32.load8_u $0 offset=1
-          i32.const 1405
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         if (result i32)
-          local.get $1
-         else
-          local.get $2
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1406
-          i32.load8_u $0
-          i32.sub
-          local.tee $2
-          if (result i32)
-           local.get $2
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1407
-           i32.load8_u $0
-           i32.sub
-          end
-         end
-        end
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1392
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     local.get $1
+     i64.load $0 offset=8
+     i32.const 1400
+     i64.load $0
+     i64.eq
     end
+    local.set $2
    else
-    block $~lib/util/compareupto/__compareupto127|inlined.1
+    block $~lib/util/equpto/__equpto127|inlined.1
      local.get $4
      i32.const 64
      i32.ge_u
      if
-      local.get $2
-      i32.load8_u $0
-      i32.const 1280
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1281
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1282
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1283
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1284
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1285
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
+      block $~lib/util/raweq/__raweq64|inlined.1 (result i32)
+       i32.const 0
        local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1286
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1287
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
+       i64.load $0
+       i32.const 1280
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       i32.const 0
+       local.get $1
        i32.const 8
        i32.add
        local.tee $3
-       i32.load8_u $0
+       i64.load $0
        i32.const 1288
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1289
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1290
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1291
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1292
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1293
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1294
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1295
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 16
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
        i32.add
        local.tee $3
-       i32.load8_u $0
+       i64.load $0
        i32.const 1296
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1297
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1298
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1299
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.const 1300
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.const 1301
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1302
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1303
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 8
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1304
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1305
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1306
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1307
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 4
-         i32.add
-         local.tee $3
-         i32.load8_u $0
-         i32.const 1308
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $3
-          i32.load8_u $0 offset=1
-          i32.const 1309
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $3
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1310
-          i32.load8_u $0
-          i32.sub
-          local.tee $3
-          if (result i32)
-           local.get $3
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1311
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 32
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
        i32.add
        local.tee $3
-       i32.load8_u $0
+       i64.load $0
+       i32.const 1304
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
+       i32.add
+       local.tee $3
+       i64.load $0
        i32.const 1312
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1313
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1314
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1315
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.const 1316
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.const 1317
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1318
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1319
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 8
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.const 1320
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.const 1321
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1322
-         i32.load8_u $0
-         i32.sub
-         local.tee $6
-         if (result i32)
-          local.get $6
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1323
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.const 1324
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.const 1325
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1326
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1327
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 16
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1328
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1329
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1330
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1331
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.const 1332
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.const 1333
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1334
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1335
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 8
-         i32.add
-         local.tee $3
-         i32.load8_u $0
-         i32.const 1336
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $3
-          i32.load8_u $0 offset=1
-          i32.const 1337
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $3
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1338
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1339
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $3
-          i32.const 4
-          i32.add
-          local.tee $3
-          i32.load8_u $0
-          i32.const 1340
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $3
-           i32.load8_u $0 offset=1
-           i32.const 1341
-           i32.load8_u $0
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $3
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           i32.const 1342
-           i32.load8_u $0
-           i32.sub
-           local.tee $3
-           if (result i32)
-            local.get $3
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            i32.const 1343
-            i32.load8_u $0
-            i32.sub
-           end
-           local.set $1
-          end
-         end
-        end
-       end
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
+       i32.add
+       local.tee $3
+       i64.load $0
+       i32.const 1320
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
+       i32.add
+       local.tee $3
+       i64.load $0
+       i32.const 1328
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       local.get $3
+       i64.load $0 offset=8
+       i32.const 1336
+       i64.load $0
+       i64.eq
       end
-      local.get $1
-      br_if $~lib/util/compareupto/__compareupto127|inlined.1
+      i32.eqz
+      br_if $~lib/util/equpto/__equpto127|inlined.1
       i32.const 1344
       local.set $3
       local.get $4
       i32.const -64
       i32.add
       local.set $4
-      local.get $2
+      local.get $1
       i32.const -64
       i32.sub
-      local.set $2
+      local.set $1
      end
-     block $~lib/util/compareupto/__compareupto63|inlined.1
+     block $~lib/util/equpto/__equpto63|inlined.1
       local.get $4
       i32.const 32
       i32.ge_u
       if
-       local.get $2
-       i32.load8_u $0
-       local.get $3
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.sub
-        local.tee $6
-        if (result i32)
-         local.get $6
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $6
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         local.get $6
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
+       block $~lib/util/raweq/__raweq32|inlined.1 (result i32)
+        i32.const 0
         local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $6
-         i32.const 2
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $6
-         if (result i32)
-          local.get $6
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
+        i64.load $0
+        local.get $3
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.1
+        drop
+        i32.const 0
+        local.get $1
         i32.const 8
         i32.add
         local.tee $5
-        i32.load8_u $0
+        i64.load $0
         local.get $3
         i32.const 8
         i32.add
         local.tee $6
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         local.get $6
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $6
-         i32.const 2
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         i32.sub
-         local.tee $8
-         if (result i32)
-          local.get $8
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $7
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         local.get $6
-         i32.const 4
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $6
-          if (result i32)
-           local.get $6
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 16
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.1
+        drop
+        i32.const 0
+        local.get $5
+        i32.const 8
         i32.add
         local.tee $5
-        i32.load8_u $0
-        local.get $3
-        i32.const 16
+        i64.load $0
+        local.get $6
+        i32.const 8
         i32.add
         local.tee $6
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         local.get $6
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $6
-         i32.const 2
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         i32.sub
-         local.tee $8
-         if (result i32)
-          local.get $8
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $7
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         local.get $6
-         i32.const 4
-         i32.add
-         local.tee $8
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $7
-          i32.load8_u $0 offset=1
-          local.get $8
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $7
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $8
-          i32.const 2
-          i32.add
-          local.tee $7
-          i32.load8_u $0
-          i32.sub
-          local.tee $8
-          if (result i32)
-           local.get $8
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $7
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 8
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         local.get $6
-         i32.const 8
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $7
-          i32.load8_u $0
-          i32.sub
-          local.tee $8
-          if (result i32)
-           local.get $8
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $7
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          local.get $6
-          i32.const 4
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $5
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $6
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-         end
-        end
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.1
+        drop
+        local.get $5
+        i64.load $0 offset=8
+        local.get $6
+        i64.load $0 offset=8
+        i64.eq
        end
-       local.get $1
-       br_if $~lib/util/compareupto/__compareupto63|inlined.1
+       i32.eqz
+       br_if $~lib/util/equpto/__equpto63|inlined.1
        local.get $3
        i32.const 32
        i32.add
@@ -7118,212 +2292,32 @@
        i32.const 32
        i32.sub
        local.set $4
-       local.get $2
+       local.get $1
        i32.const 32
        i32.add
-       local.set $2
+       local.set $1
       end
-      block $~lib/util/compareupto/__compareupto31|inlined.1
+      block $~lib/util/equpto/__equpto31|inlined.1
        local.get $4
        i32.const 16
        i32.ge_u
        if
-        local.get $2
-        i32.load8_u $0
+        local.get $1
+        i64.load $0
         local.get $3
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $6
-         if (result i32)
-          local.get $6
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         local.get $3
-         i32.const 4
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
+        i64.load $0
+        i64.ne
+        if (result i32)
+         i32.const 0
+        else
          local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $6
-          if (result i32)
-           local.get $6
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 8
-         i32.add
-         local.tee $5
-         i32.load8_u $0
+         i64.load $0 offset=8
          local.get $3
-         i32.const 8
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $7
-          i32.load8_u $0
-          i32.sub
-          local.tee $8
-          if (result i32)
-           local.get $8
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $7
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          local.get $6
-          i32.const 4
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $5
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $6
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-         end
+         i64.load $0 offset=8
+         i64.eq
         end
-        local.get $1
-        br_if $~lib/util/compareupto/__compareupto31|inlined.1
+        i32.eqz
+        br_if $~lib/util/equpto/__equpto31|inlined.1
         local.get $3
         i32.const 16
         i32.add
@@ -7332,110 +2326,24 @@
         i32.const 16
         i32.sub
         local.set $4
-        local.get $2
+        local.get $1
         i32.const 16
         i32.add
-        local.set $2
+        local.set $1
        end
-       block $~lib/util/compareupto/__compareupto15|inlined.1
+       block $~lib/util/equpto/__equpto15|inlined.1 (result i32)
         local.get $4
         i32.const 8
         i32.ge_u
         if
-         local.get $2
-         i32.load8_u $0
+         i32.const 0
+         local.get $1
+         i64.load $0
          local.get $3
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $2
-          i32.load8_u $0 offset=1
-          local.get $3
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $2
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $3
-          i32.const 2
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $6
-          if (result i32)
-           local.get $6
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $2
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          local.get $3
-          i32.const 4
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $5
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $6
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-         end
-         local.get $1
-         br_if $~lib/util/compareupto/__compareupto15|inlined.1
+         i64.load $0
+         i64.ne
+         br_if $~lib/util/equpto/__equpto15|inlined.1
+         drop
          local.get $3
          i32.const 8
          i32.add
@@ -7444,59 +2352,24 @@
          i32.const 8
          i32.sub
          local.set $4
-         local.get $2
+         local.get $1
          i32.const 8
          i32.add
-         local.set $2
+         local.set $1
         end
-        block $~lib/util/compareupto/__compareupto7|inlined.1
+        block $~lib/util/equpto/__equpto7|inlined.1 (result i32)
          local.get $4
          i32.const 4
          i32.ge_u
          if
-          local.get $2
-          i32.load8_u $0
+          i32.const 0
+          local.get $1
+          i32.load $0
           local.get $3
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $2
-           i32.load8_u $0 offset=1
-           local.get $3
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $2
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $3
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-          local.get $1
-          br_if $~lib/util/compareupto/__compareupto7|inlined.1
+          i32.load $0
+          i32.ne
+          br_if $~lib/util/equpto/__equpto7|inlined.1
+          drop
           local.get $3
           i32.const 4
           i32.add
@@ -7505,33 +2378,24 @@
           i32.const 4
           i32.sub
           local.set $4
-          local.get $2
+          local.get $1
           i32.const 4
           i32.add
-          local.set $2
+          local.set $1
          end
-         block $~lib/util/compareupto/__compareupto3|inlined.1
+         block $~lib/util/equpto/__equpto3|inlined.1 (result i32)
           local.get $4
           i32.const 2
           i32.ge_u
           if
-           local.get $2
-           i32.load8_u $0
-           local.get $3
-           i32.load8_u $0
-           i32.sub
-           local.tee $1
-           i32.eqz
-           if
-            local.get $2
-            i32.load8_u $0 offset=1
-            local.get $3
-            i32.load8_u $0 offset=1
-            i32.sub
-            local.set $1
-           end
+           i32.const 0
            local.get $1
-           br_if $~lib/util/compareupto/__compareupto3|inlined.1
+           i32.load16_u $0
+           local.get $3
+           i32.load16_u $0
+           i32.ne
+           br_if $~lib/util/equpto/__equpto3|inlined.1
+           drop
            local.get $3
            i32.const 2
            i32.add
@@ -7540,32 +2404,31 @@
            i32.const 2
            i32.sub
            local.set $4
-           local.get $2
+           local.get $1
            i32.const 2
            i32.add
-           local.set $2
+           local.set $1
           end
           local.get $4
           if (result i32)
-           local.get $2
+           local.get $1
            i32.load8_u $0
            local.get $3
            i32.load8_u $0
-           i32.sub
+           i32.eq
           else
-           i32.const 0
+           i32.const 1
           end
-          local.set $1
          end
         end
        end
+       local.set $2
       end
      end
     end
-    local.get $1
    end
-   i32.eqz
   end
+  local.get $2
   i32.eqz
   if
    unreachable
@@ -7589,8 +2452,6 @@
   (local $4 i32)
   (local $5 i32)
   (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 40
   i32.sub
@@ -7602,34 +2463,34 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  local.tee $1
+  local.tee $4
   i32.const 0
   i32.const 40
   memory.fill $0
   block $~lib/string/String.__eq|inlined.2 (result i32)
-   local.get $1
+   local.get $4
    local.get $0
    i32.load $0
-   local.tee $2
+   local.tee $1
    i32.store $0
    i32.const 1312
    local.set $3
-   local.get $1
+   local.get $4
    i32.const 1312
    i32.store $0 offset=4
    i32.const 1
-   local.get $2
+   local.get $1
    i32.const 1312
    i32.eq
    br_if $~lib/string/String.__eq|inlined.2
    drop
    i32.const 0
-   local.get $2
+   local.get $1
    i32.eqz
    br_if $~lib/string/String.__eq|inlined.2
    drop
    i32.const 0
-   local.get $2
+   local.get $1
    i32.const 20
    i32.sub
    i32.load $0 offset=16
@@ -7641,2583 +2502,329 @@
    drop
    local.get $4
    i32.const 128
-   i32.ge_u
+   i32.ge_s
    if (result i32)
-    local.get $2
-    i32.load8_u $0
-    i32.const 1312
-    i32.load8_u $0
-    i32.sub
-    local.tee $1
-    i32.eqz
-    if
-     local.get $2
-     i32.load8_u $0 offset=1
-     i32.const 1313
-     i32.load8_u $0
-     i32.sub
-     local.set $1
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 2
-     i32.add
-     local.tee $1
-     i32.load8_u $0
-     i32.const 1314
-     i32.load8_u $0
-     i32.sub
-     local.tee $3
-     if (result i32)
-      local.get $3
-     else
-      local.get $1
-      i32.load8_u $0 offset=1
-      i32.const 1315
-      i32.load8_u $0
-      i32.sub
-     end
-     local.set $1
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 4
-     i32.add
-     local.tee $3
-     i32.load8_u $0
-     i32.const 1316
-     i32.load8_u $0
-     i32.sub
-     local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1317
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+    block $~lib/util/raweq/__raweq128|inlined.2 (result i32)
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1318
-      i32.load8_u $0
-      i32.sub
-      local.tee $3
-      if (result i32)
-       local.get $3
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1319
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
+     i64.load $0
+     i32.const 1312
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
+     local.get $1
      i32.const 8
      i32.add
-     local.tee $3
-     i32.load8_u $0
+     local.tee $1
+     i64.load $0
      i32.const 1320
-     i32.load8_u $0
-     i32.sub
-     local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1321
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1322
-      i32.load8_u $0
-      i32.sub
-      local.tee $4
-      if (result i32)
-       local.get $4
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1323
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 4
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1324
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1325
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1326
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1327
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 16
+     i32.const 8
      i32.add
-     local.tee $3
-     i32.load8_u $0
+     local.tee $1
+     i64.load $0
      i32.const 1328
-     i32.load8_u $0
-     i32.sub
-     local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1329
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1330
-      i32.load8_u $0
-      i32.sub
-      local.tee $4
-      if (result i32)
-       local.get $4
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1331
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 4
-      i32.add
-      local.tee $4
-      i32.load8_u $0
-      i32.const 1332
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $4
-       i32.load8_u $0 offset=1
-       i32.const 1333
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1334
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1335
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 8
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1336
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1337
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1338
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1339
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1340
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1341
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1342
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1343
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-     end
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 32
+     i32.const 8
      i32.add
-     local.tee $3
-     i32.load8_u $0
+     local.tee $1
+     i64.load $0
+     i32.const 1336
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
+     local.get $1
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
      i32.const 1344
-     i32.load8_u $0
-     i32.sub
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
+     local.get $1
+     i32.const 8
+     i32.add
      local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1345
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i32.const 1352
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1346
-      i32.load8_u $0
-      i32.sub
-      local.tee $4
-      if (result i32)
-       local.get $4
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1347
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1360
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 4
-      i32.add
-      local.tee $4
-      i32.load8_u $0
-      i32.const 1348
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $4
-       i32.load8_u $0 offset=1
-       i32.const 1349
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1350
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1351
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1368
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 8
-      i32.add
-      local.tee $4
-      i32.load8_u $0
-      i32.const 1352
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $4
-       i32.load8_u $0 offset=1
-       i32.const 1353
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1354
-       i32.load8_u $0
-       i32.sub
-       local.tee $5
-       if (result i32)
-        local.get $5
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1355
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 4
-       i32.add
-       local.tee $4
-       i32.load8_u $0
-       i32.const 1356
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $4
-        i32.load8_u $0 offset=1
-        i32.const 1357
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $4
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1358
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1359
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 16
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1360
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1361
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1362
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1363
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $4
-       i32.load8_u $0
-       i32.const 1364
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $4
-        i32.load8_u $0 offset=1
-        i32.const 1365
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $4
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1366
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1367
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1368
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1369
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1370
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1371
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1372
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1373
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1374
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1375
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-     end
-    end
-    local.get $1
-    if (result i32)
-     local.get $1
-    else
-     local.get $2
-     i32.const -64
-     i32.sub
-     local.tee $2
-     i32.load8_u $0
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
      i32.const 1376
-     i32.load8_u $0
-     i32.sub
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
+     local.get $1
+     i32.const 8
+     i32.add
      local.tee $1
-     i32.eqz
-     if
-      local.get $2
-      i32.load8_u $0 offset=1
-      i32.const 1377
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i32.const 1384
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1378
-      i32.load8_u $0
-      i32.sub
-      local.tee $3
-      if (result i32)
-       local.get $3
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1379
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1392
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 4
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1380
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1381
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1382
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1383
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1400
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 8
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1384
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1385
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1386
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1387
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1388
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1389
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1390
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1391
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1408
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 16
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1392
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1393
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1394
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1395
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $4
-       i32.load8_u $0
-       i32.const 1396
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $4
-        i32.load8_u $0 offset=1
-        i32.const 1397
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $4
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1398
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1399
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1400
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1401
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1402
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1403
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1404
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1405
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1406
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1407
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1416
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
      local.get $1
-     if (result i32)
-      local.get $1
-     else
-      local.get $2
-      i32.const 32
-      i32.add
-      local.tee $2
-      i32.load8_u $0
-      i32.const 1408
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1409
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1410
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1411
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1412
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1413
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1414
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1415
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1416
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1417
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1418
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1419
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1420
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1421
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1422
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1423
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-      local.get $1
-      if (result i32)
-       local.get $1
-      else
-       local.get $2
-       i32.const 16
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1424
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1425
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1426
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1427
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1428
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1429
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1430
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1431
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       if (result i32)
-        local.get $1
-       else
-        local.get $2
-        i32.const 8
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1432
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1433
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1434
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1435
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        if (result i32)
-         local.get $1
-        else
-         local.get $2
-         i32.const 4
-         i32.add
-         local.tee $2
-         i32.load8_u $0
-         i32.const 1436
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $2
-          i32.load8_u $0 offset=1
-          i32.const 1437
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         if (result i32)
-          local.get $1
-         else
-          local.get $2
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1438
-          i32.load8_u $0
-          i32.sub
-          local.tee $2
-          if (result i32)
-           local.get $2
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1439
-           i32.load8_u $0
-           i32.sub
-          end
-         end
-        end
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1424
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     local.get $1
+     i64.load $0 offset=8
+     i32.const 1432
+     i64.load $0
+     i64.eq
     end
    else
-    block $~lib/util/compareupto/__compareupto127|inlined.2
+    block $~lib/util/equpto/__equpto127|inlined.2 (result i32)
      local.get $4
      i32.const 64
      i32.ge_u
      if
-      local.get $2
-      i32.load8_u $0
-      i32.const 1312
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1313
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1314
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1315
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1316
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1317
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
+      i32.const 0
+      block $~lib/util/raweq/__raweq64|inlined.2 (result i32)
+       i32.const 0
        local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1318
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1319
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
+       i64.load $0
+       i32.const 1312
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       i32.const 0
+       local.get $1
        i32.const 8
        i32.add
        local.tee $3
-       i32.load8_u $0
+       i64.load $0
        i32.const 1320
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1321
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1322
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1323
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1324
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1325
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1326
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1327
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 16
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
        i32.add
        local.tee $3
-       i32.load8_u $0
+       i64.load $0
        i32.const 1328
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1329
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1330
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1331
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.const 1332
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.const 1333
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1334
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1335
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 8
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1336
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1337
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1338
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1339
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 4
-         i32.add
-         local.tee $3
-         i32.load8_u $0
-         i32.const 1340
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $3
-          i32.load8_u $0 offset=1
-          i32.const 1341
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $3
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1342
-          i32.load8_u $0
-          i32.sub
-          local.tee $3
-          if (result i32)
-           local.get $3
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1343
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 32
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
        i32.add
        local.tee $3
-       i32.load8_u $0
+       i64.load $0
+       i32.const 1336
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
+       i32.add
+       local.tee $3
+       i64.load $0
        i32.const 1344
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1345
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1346
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1347
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.const 1348
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.const 1349
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1350
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1351
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 8
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.const 1352
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.const 1353
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1354
-         i32.load8_u $0
-         i32.sub
-         local.tee $6
-         if (result i32)
-          local.get $6
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1355
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.const 1356
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.const 1357
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1358
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1359
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 16
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1360
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1361
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1362
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1363
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.const 1364
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.const 1365
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1366
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1367
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 8
-         i32.add
-         local.tee $3
-         i32.load8_u $0
-         i32.const 1368
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $3
-          i32.load8_u $0 offset=1
-          i32.const 1369
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $3
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1370
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1371
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $3
-          i32.const 4
-          i32.add
-          local.tee $3
-          i32.load8_u $0
-          i32.const 1372
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $3
-           i32.load8_u $0 offset=1
-           i32.const 1373
-           i32.load8_u $0
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $3
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           i32.const 1374
-           i32.load8_u $0
-           i32.sub
-           local.tee $3
-           if (result i32)
-            local.get $3
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            i32.const 1375
-            i32.load8_u $0
-            i32.sub
-           end
-           local.set $1
-          end
-         end
-        end
-       end
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
+       i32.add
+       local.tee $3
+       i64.load $0
+       i32.const 1352
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       i32.const 0
+       local.get $3
+       i32.const 8
+       i32.add
+       local.tee $3
+       i64.load $0
+       i32.const 1360
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       local.get $3
+       i64.load $0 offset=8
+       i32.const 1368
+       i64.load $0
+       i64.eq
       end
-      local.get $1
-      br_if $~lib/util/compareupto/__compareupto127|inlined.2
+      i32.eqz
+      br_if $~lib/util/equpto/__equpto127|inlined.2
+      drop
       i32.const 1376
       local.set $3
       local.get $4
       i32.const -64
       i32.add
       local.set $4
-      local.get $2
+      local.get $1
       i32.const -64
       i32.sub
-      local.set $2
+      local.set $1
      end
-     block $~lib/util/compareupto/__compareupto63|inlined.2
+     block $~lib/util/equpto/__equpto63|inlined.2
       local.get $4
       i32.const 32
       i32.ge_u
       if
-       local.get $2
-       i32.load8_u $0
-       local.get $3
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.sub
-        local.tee $6
-        if (result i32)
-         local.get $6
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $6
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         local.get $6
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
+       block $~lib/util/raweq/__raweq32|inlined.2 (result i32)
+        i32.const 0
         local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $6
-         i32.const 2
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $6
-         if (result i32)
-          local.get $6
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
+        i64.load $0
+        local.get $3
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.2
+        drop
+        i32.const 0
+        local.get $1
         i32.const 8
         i32.add
         local.tee $5
-        i32.load8_u $0
+        i64.load $0
         local.get $3
         i32.const 8
         i32.add
         local.tee $6
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         local.get $6
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $6
-         i32.const 2
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         i32.sub
-         local.tee $8
-         if (result i32)
-          local.get $8
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $7
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         local.get $6
-         i32.const 4
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $6
-          if (result i32)
-           local.get $6
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 16
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.2
+        drop
+        i32.const 0
+        local.get $5
+        i32.const 8
         i32.add
         local.tee $5
-        i32.load8_u $0
-        local.get $3
-        i32.const 16
+        i64.load $0
+        local.get $6
+        i32.const 8
         i32.add
         local.tee $6
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         local.get $6
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $6
-         i32.const 2
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         i32.sub
-         local.tee $8
-         if (result i32)
-          local.get $8
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $7
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         local.get $6
-         i32.const 4
-         i32.add
-         local.tee $8
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $7
-          i32.load8_u $0 offset=1
-          local.get $8
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $7
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $8
-          i32.const 2
-          i32.add
-          local.tee $7
-          i32.load8_u $0
-          i32.sub
-          local.tee $8
-          if (result i32)
-           local.get $8
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $7
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 8
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         local.get $6
-         i32.const 8
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $7
-          i32.load8_u $0
-          i32.sub
-          local.tee $8
-          if (result i32)
-           local.get $8
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $7
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          local.get $6
-          i32.const 4
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $5
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $6
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-         end
-        end
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.2
+        drop
+        local.get $5
+        i64.load $0 offset=8
+        local.get $6
+        i64.load $0 offset=8
+        i64.eq
        end
-       local.get $1
-       br_if $~lib/util/compareupto/__compareupto63|inlined.2
+       i32.eqz
+       br_if $~lib/util/equpto/__equpto63|inlined.2
        local.get $3
        i32.const 32
        i32.add
@@ -10226,212 +2833,32 @@
        i32.const 32
        i32.sub
        local.set $4
-       local.get $2
+       local.get $1
        i32.const 32
        i32.add
-       local.set $2
+       local.set $1
       end
-      block $~lib/util/compareupto/__compareupto31|inlined.2
+      block $~lib/util/equpto/__equpto31|inlined.2
        local.get $4
        i32.const 16
        i32.ge_u
        if
-        local.get $2
-        i32.load8_u $0
+        local.get $1
+        i64.load $0
         local.get $3
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $6
-         if (result i32)
-          local.get $6
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         local.get $3
-         i32.const 4
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
+        i64.load $0
+        i64.ne
+        if (result i32)
+         i32.const 0
+        else
          local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $6
-          if (result i32)
-           local.get $6
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 8
-         i32.add
-         local.tee $5
-         i32.load8_u $0
+         i64.load $0 offset=8
          local.get $3
-         i32.const 8
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $7
-          i32.load8_u $0
-          i32.sub
-          local.tee $8
-          if (result i32)
-           local.get $8
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $7
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          local.get $6
-          i32.const 4
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $5
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $6
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-         end
+         i64.load $0 offset=8
+         i64.eq
         end
-        local.get $1
-        br_if $~lib/util/compareupto/__compareupto31|inlined.2
+        i32.eqz
+        br_if $~lib/util/equpto/__equpto31|inlined.2
         local.get $3
         i32.const 16
         i32.add
@@ -10440,110 +2867,24 @@
         i32.const 16
         i32.sub
         local.set $4
-        local.get $2
+        local.get $1
         i32.const 16
         i32.add
-        local.set $2
+        local.set $1
        end
-       block $~lib/util/compareupto/__compareupto15|inlined.2
+       block $~lib/util/equpto/__equpto15|inlined.2 (result i32)
         local.get $4
         i32.const 8
         i32.ge_u
         if
-         local.get $2
-         i32.load8_u $0
+         i32.const 0
+         local.get $1
+         i64.load $0
          local.get $3
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $2
-          i32.load8_u $0 offset=1
-          local.get $3
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $2
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $3
-          i32.const 2
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $6
-          if (result i32)
-           local.get $6
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $2
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          local.get $3
-          i32.const 4
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $5
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $6
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-         end
-         local.get $1
-         br_if $~lib/util/compareupto/__compareupto15|inlined.2
+         i64.load $0
+         i64.ne
+         br_if $~lib/util/equpto/__equpto15|inlined.2
+         drop
          local.get $3
          i32.const 8
          i32.add
@@ -10552,59 +2893,24 @@
          i32.const 8
          i32.sub
          local.set $4
-         local.get $2
+         local.get $1
          i32.const 8
          i32.add
-         local.set $2
+         local.set $1
         end
-        block $~lib/util/compareupto/__compareupto7|inlined.2
+        block $~lib/util/equpto/__equpto7|inlined.2 (result i32)
          local.get $4
          i32.const 4
          i32.ge_u
          if
-          local.get $2
-          i32.load8_u $0
+          i32.const 0
+          local.get $1
+          i32.load $0
           local.get $3
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $2
-           i32.load8_u $0 offset=1
-           local.get $3
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $2
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $3
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-          local.get $1
-          br_if $~lib/util/compareupto/__compareupto7|inlined.2
+          i32.load $0
+          i32.ne
+          br_if $~lib/util/equpto/__equpto7|inlined.2
+          drop
           local.get $3
           i32.const 4
           i32.add
@@ -10613,33 +2919,24 @@
           i32.const 4
           i32.sub
           local.set $4
-          local.get $2
+          local.get $1
           i32.const 4
           i32.add
-          local.set $2
+          local.set $1
          end
-         block $~lib/util/compareupto/__compareupto3|inlined.2
+         block $~lib/util/equpto/__equpto3|inlined.2 (result i32)
           local.get $4
           i32.const 2
           i32.ge_u
           if
-           local.get $2
-           i32.load8_u $0
-           local.get $3
-           i32.load8_u $0
-           i32.sub
-           local.tee $1
-           i32.eqz
-           if
-            local.get $2
-            i32.load8_u $0 offset=1
-            local.get $3
-            i32.load8_u $0 offset=1
-            i32.sub
-            local.set $1
-           end
+           i32.const 0
            local.get $1
-           br_if $~lib/util/compareupto/__compareupto3|inlined.2
+           i32.load16_u $0
+           local.get $3
+           i32.load16_u $0
+           i32.ne
+           br_if $~lib/util/equpto/__equpto3|inlined.2
+           drop
            local.get $3
            i32.const 2
            i32.add
@@ -10648,31 +2945,30 @@
            i32.const 2
            i32.sub
            local.set $4
-           local.get $2
+           local.get $1
            i32.const 2
            i32.add
-           local.set $2
+           local.set $1
           end
           local.get $4
           if (result i32)
-           local.get $2
+           local.get $1
            i32.load8_u $0
            local.get $3
            i32.load8_u $0
-           i32.sub
+           i32.eq
           else
-           i32.const 0
+           i32.const 1
           end
-          local.set $1
          end
         end
        end
+       local.set $2
       end
      end
+     local.get $2
     end
-    local.get $1
    end
-   i32.eqz
   end
   i32.eqz
   if
@@ -10680,29 +2976,29 @@
   end
   block $~lib/string/String.__eq|inlined.3 (result i32)
    global.get $~lib/memory/__stack_pointer
-   local.tee $1
+   local.tee $2
    local.get $0
    i32.load $0 offset=4
-   local.tee $2
+   local.tee $1
    i32.store $0 offset=8
    i32.const 1344
    local.set $3
-   local.get $1
+   local.get $2
    i32.const 1344
    i32.store $0 offset=12
    i32.const 1
-   local.get $2
+   local.get $1
    i32.const 1344
    i32.eq
    br_if $~lib/string/String.__eq|inlined.3
    drop
    i32.const 0
-   local.get $2
+   local.get $1
    i32.eqz
    br_if $~lib/string/String.__eq|inlined.3
    drop
    i32.const 0
-   local.get $2
+   local.get $1
    i32.const 20
    i32.sub
    i32.load $0 offset=16
@@ -10714,2583 +3010,331 @@
    drop
    local.get $4
    i32.const 128
-   i32.ge_u
+   i32.ge_s
    if (result i32)
-    local.get $2
-    i32.load8_u $0
-    i32.const 1344
-    i32.load8_u $0
-    i32.sub
-    local.tee $1
-    i32.eqz
-    if
-     local.get $2
-     i32.load8_u $0 offset=1
-     i32.const 1345
-     i32.load8_u $0
-     i32.sub
-     local.set $1
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 2
-     i32.add
-     local.tee $1
-     i32.load8_u $0
-     i32.const 1346
-     i32.load8_u $0
-     i32.sub
-     local.tee $3
-     if (result i32)
-      local.get $3
-     else
-      local.get $1
-      i32.load8_u $0 offset=1
-      i32.const 1347
-      i32.load8_u $0
-      i32.sub
-     end
-     local.set $1
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 4
-     i32.add
-     local.tee $3
-     i32.load8_u $0
-     i32.const 1348
-     i32.load8_u $0
-     i32.sub
-     local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1349
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+    block $~lib/util/raweq/__raweq128|inlined.3 (result i32)
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1350
-      i32.load8_u $0
-      i32.sub
-      local.tee $3
-      if (result i32)
-       local.get $3
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1351
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
+     i64.load $0
+     i32.const 1344
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     local.get $1
      i32.const 8
      i32.add
-     local.tee $3
-     i32.load8_u $0
+     local.tee $1
+     i64.load $0
      i32.const 1352
-     i32.load8_u $0
-     i32.sub
-     local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1353
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1354
-      i32.load8_u $0
-      i32.sub
-      local.tee $4
-      if (result i32)
-       local.get $4
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1355
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 4
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1356
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1357
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1358
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1359
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 16
+     i32.const 8
      i32.add
-     local.tee $3
-     i32.load8_u $0
+     local.tee $1
+     i64.load $0
      i32.const 1360
-     i32.load8_u $0
-     i32.sub
-     local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1361
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1362
-      i32.load8_u $0
-      i32.sub
-      local.tee $4
-      if (result i32)
-       local.get $4
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1363
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 4
-      i32.add
-      local.tee $4
-      i32.load8_u $0
-      i32.const 1364
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $4
-       i32.load8_u $0 offset=1
-       i32.const 1365
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1366
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1367
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 8
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1368
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1369
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1370
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1371
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1372
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1373
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1374
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1375
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-     end
-    end
-    local.get $1
-    i32.eqz
-    if
-     local.get $2
-     i32.const 32
+     i32.const 8
      i32.add
-     local.tee $3
-     i32.load8_u $0
+     local.tee $1
+     i64.load $0
+     i32.const 1368
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     local.get $1
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
      i32.const 1376
-     i32.load8_u $0
-     i32.sub
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     local.get $1
+     i32.const 8
+     i32.add
      local.tee $1
-     i32.eqz
-     if
-      local.get $3
-      i32.load8_u $0 offset=1
-      i32.const 1377
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i32.const 1384
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1378
-      i32.load8_u $0
-      i32.sub
-      local.tee $4
-      if (result i32)
-       local.get $4
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1379
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1392
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 4
-      i32.add
-      local.tee $4
-      i32.load8_u $0
-      i32.const 1380
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $4
-       i32.load8_u $0 offset=1
-       i32.const 1381
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1382
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1383
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1400
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 8
-      i32.add
-      local.tee $4
-      i32.load8_u $0
-      i32.const 1384
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $4
-       i32.load8_u $0 offset=1
-       i32.const 1385
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1386
-       i32.load8_u $0
-       i32.sub
-       local.tee $5
-       if (result i32)
-        local.get $5
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1387
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $4
-       i32.const 4
-       i32.add
-       local.tee $4
-       i32.load8_u $0
-       i32.const 1388
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $4
-        i32.load8_u $0 offset=1
-        i32.const 1389
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $4
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1390
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1391
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-     end
-     local.get $1
-     i32.eqz
-     if
-      local.get $3
-      i32.const 16
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1392
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1393
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1394
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1395
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $4
-       i32.load8_u $0
-       i32.const 1396
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $4
-        i32.load8_u $0 offset=1
-        i32.const 1397
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $4
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1398
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1399
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1400
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1401
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1402
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1403
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1404
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1405
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1406
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1407
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-     end
-    end
-    local.get $1
-    if (result i32)
-     local.get $1
-    else
-     local.get $2
-     i32.const -64
-     i32.sub
-     local.tee $2
-     i32.load8_u $0
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
      i32.const 1408
-     i32.load8_u $0
-     i32.sub
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     local.get $1
+     i32.const 8
+     i32.add
      local.tee $1
-     i32.eqz
-     if
-      local.get $2
-      i32.load8_u $0 offset=1
-      i32.const 1409
-      i32.load8_u $0
-      i32.sub
-      local.set $1
-     end
+     i64.load $0
+     i32.const 1416
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 2
-      i32.add
-      local.tee $1
-      i32.load8_u $0
-      i32.const 1410
-      i32.load8_u $0
-      i32.sub
-      local.tee $3
-      if (result i32)
-       local.get $3
-      else
-       local.get $1
-       i32.load8_u $0 offset=1
-       i32.const 1411
-       i32.load8_u $0
-       i32.sub
-      end
-      local.set $1
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1424
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 4
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1412
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1413
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1414
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1415
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1432
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 8
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1416
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1417
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1418
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1419
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1420
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1421
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1422
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1423
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1440
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     i32.eqz
-     if
-      local.get $2
-      i32.const 16
-      i32.add
-      local.tee $3
-      i32.load8_u $0
-      i32.const 1424
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $3
-       i32.load8_u $0 offset=1
-       i32.const 1425
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1426
-       i32.load8_u $0
-       i32.sub
-       local.tee $4
-       if (result i32)
-        local.get $4
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1427
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 4
-       i32.add
-       local.tee $4
-       i32.load8_u $0
-       i32.const 1428
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $4
-        i32.load8_u $0 offset=1
-        i32.const 1429
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $4
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1430
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1431
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1432
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1433
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1434
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1435
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1436
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1437
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1438
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1439
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1448
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
      local.get $1
-     if (result i32)
-      local.get $1
-     else
-      local.get $2
-      i32.const 32
-      i32.add
-      local.tee $2
-      i32.load8_u $0
-      i32.const 1440
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1441
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1442
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1443
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1444
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1445
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1446
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1447
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1448
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1449
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1450
-        i32.load8_u $0
-        i32.sub
-        local.tee $4
-        if (result i32)
-         local.get $4
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1451
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1452
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1453
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1454
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1455
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-      local.get $1
-      if (result i32)
-       local.get $1
-      else
-       local.get $2
-       i32.const 16
-       i32.add
-       local.tee $2
-       i32.load8_u $0
-       i32.const 1456
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        i32.const 1457
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1458
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1459
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1460
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1461
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1462
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1463
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       if (result i32)
-        local.get $1
-       else
-        local.get $2
-        i32.const 8
-        i32.add
-        local.tee $2
-        i32.load8_u $0
-        i32.const 1464
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         i32.const 1465
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1466
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1467
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        if (result i32)
-         local.get $1
-        else
-         local.get $2
-         i32.const 4
-         i32.add
-         local.tee $2
-         i32.load8_u $0
-         i32.const 1468
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $2
-          i32.load8_u $0 offset=1
-          i32.const 1469
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         if (result i32)
-          local.get $1
-         else
-          local.get $2
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1470
-          i32.load8_u $0
-          i32.sub
-          local.tee $2
-          if (result i32)
-           local.get $2
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1471
-           i32.load8_u $0
-           i32.sub
-          end
-         end
-        end
-       end
-      end
-     end
+     i32.const 8
+     i32.add
+     local.tee $1
+     i64.load $0
+     i32.const 1456
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     local.get $1
+     i64.load $0 offset=8
+     i32.const 1464
+     i64.load $0
+     i64.eq
     end
    else
-    block $~lib/util/compareupto/__compareupto127|inlined.3
+    block $~lib/util/equpto/__equpto127|inlined.3 (result i32)
      local.get $4
      i32.const 64
      i32.ge_u
      if
-      local.get $2
-      i32.load8_u $0
-      i32.const 1344
-      i32.load8_u $0
-      i32.sub
-      local.tee $1
-      i32.eqz
-      if
-       local.get $2
-       i32.load8_u $0 offset=1
-       i32.const 1345
-       i32.load8_u $0
-       i32.sub
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 2
-       i32.add
-       local.tee $1
-       i32.load8_u $0
-       i32.const 1346
-       i32.load8_u $0
-       i32.sub
-       local.tee $3
-       if (result i32)
-        local.get $3
-       else
-        local.get $1
-        i32.load8_u $0 offset=1
-        i32.const 1347
-        i32.load8_u $0
-        i32.sub
-       end
-       local.set $1
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 4
-       i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1348
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1349
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
+      i32.const 0
+      block $~lib/util/raweq/__raweq64|inlined.3 (result i32)
+       i32.const 0
        local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1350
-        i32.load8_u $0
-        i32.sub
-        local.tee $3
-        if (result i32)
-         local.get $3
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1351
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
+       i64.load $0
+       i32.const 1344
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       local.get $1
+       i32.const 8
+       i32.add
+       local.tee $2
+       i64.load $0
+       i32.const 1352
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
        local.get $2
        i32.const 8
        i32.add
-       local.tee $3
-       i32.load8_u $0
-       i32.const 1352
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1353
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1354
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1355
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1356
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1357
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1358
-         i32.load8_u $0
-         i32.sub
-         local.tee $3
-         if (result i32)
-          local.get $3
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1359
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
-       local.get $2
-       i32.const 16
-       i32.add
-       local.tee $3
-       i32.load8_u $0
+       local.tee $2
+       i64.load $0
        i32.const 1360
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1361
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1362
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1363
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.const 1364
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.const 1365
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1366
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1367
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 8
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1368
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1369
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1370
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1371
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 4
-         i32.add
-         local.tee $3
-         i32.load8_u $0
-         i32.const 1372
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $3
-          i32.load8_u $0 offset=1
-          i32.const 1373
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $3
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1374
-          i32.load8_u $0
-          i32.sub
-          local.tee $3
-          if (result i32)
-           local.get $3
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1375
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-       end
-      end
-      local.get $1
-      i32.eqz
-      if
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
        local.get $2
-       i32.const 32
+       i32.const 8
        i32.add
-       local.tee $3
-       i32.load8_u $0
+       local.tee $2
+       i64.load $0
+       i32.const 1368
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       local.get $2
+       i32.const 8
+       i32.add
+       local.tee $2
+       i64.load $0
        i32.const 1376
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.const 1377
-        i32.load8_u $0
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        i32.const 1378
-        i32.load8_u $0
-        i32.sub
-        local.tee $5
-        if (result i32)
-         local.get $5
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         i32.const 1379
-         i32.load8_u $0
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.const 1380
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.const 1381
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1382
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1383
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 8
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.const 1384
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.const 1385
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1386
-         i32.load8_u $0
-         i32.sub
-         local.tee $6
-         if (result i32)
-          local.get $6
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1387
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.const 1388
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.const 1389
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1390
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1391
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $3
-        i32.const 16
-        i32.add
-        local.tee $3
-        i32.load8_u $0
-        i32.const 1392
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.const 1393
-         i32.load8_u $0
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         i32.const 1394
-         i32.load8_u $0
-         i32.sub
-         local.tee $5
-         if (result i32)
-          local.get $5
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          i32.const 1395
-          i32.load8_u $0
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.const 1396
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.const 1397
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1398
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1399
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $3
-         i32.const 8
-         i32.add
-         local.tee $3
-         i32.load8_u $0
-         i32.const 1400
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $3
-          i32.load8_u $0 offset=1
-          i32.const 1401
-          i32.load8_u $0
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $3
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          i32.const 1402
-          i32.load8_u $0
-          i32.sub
-          local.tee $5
-          if (result i32)
-           local.get $5
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           i32.const 1403
-           i32.load8_u $0
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $3
-          i32.const 4
-          i32.add
-          local.tee $3
-          i32.load8_u $0
-          i32.const 1404
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $3
-           i32.load8_u $0 offset=1
-           i32.const 1405
-           i32.load8_u $0
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $3
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           i32.const 1406
-           i32.load8_u $0
-           i32.sub
-           local.tee $3
-           if (result i32)
-            local.get $3
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            i32.const 1407
-            i32.load8_u $0
-            i32.sub
-           end
-           local.set $1
-          end
-         end
-        end
-       end
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       local.get $2
+       i32.const 8
+       i32.add
+       local.tee $2
+       i64.load $0
+       i32.const 1384
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       local.get $2
+       i32.const 8
+       i32.add
+       local.tee $2
+       i64.load $0
+       i32.const 1392
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       local.get $2
+       i64.load $0 offset=8
+       i32.const 1400
+       i64.load $0
+       i64.eq
       end
-      local.get $1
-      br_if $~lib/util/compareupto/__compareupto127|inlined.3
+      i32.eqz
+      br_if $~lib/util/equpto/__equpto127|inlined.3
+      drop
       i32.const 1408
       local.set $3
       local.get $4
       i32.const -64
       i32.add
       local.set $4
-      local.get $2
+      local.get $1
       i32.const -64
       i32.sub
-      local.set $2
+      local.set $1
      end
-     block $~lib/util/compareupto/__compareupto63|inlined.3
+     block $~lib/util/equpto/__equpto63|inlined.3
       local.get $4
       i32.const 32
       i32.ge_u
       if
-       local.get $2
-       i32.load8_u $0
-       local.get $3
-       i32.load8_u $0
-       i32.sub
-       local.tee $1
-       i32.eqz
-       if
-        local.get $2
-        i32.load8_u $0 offset=1
-        local.get $3
-        i32.load8_u $0 offset=1
-        i32.sub
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 2
-        i32.add
-        local.tee $1
-        i32.load8_u $0
-        local.get $3
-        i32.const 2
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        i32.sub
-        local.tee $6
-        if (result i32)
-         local.get $6
-        else
-         local.get $1
-         i32.load8_u $0 offset=1
-         local.get $5
-         i32.load8_u $0 offset=1
-         i32.sub
-        end
-        local.set $1
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 4
-        i32.add
-        local.tee $5
-        i32.load8_u $0
-        local.get $3
-        i32.const 4
-        i32.add
-        local.tee $6
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         local.get $6
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
+       i32.const 0
+       local.set $2
+       block $~lib/util/raweq/__raweq32|inlined.3 (result i32)
+        i32.const 0
         local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $6
-         i32.const 2
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $6
-         if (result i32)
-          local.get $6
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
+        i64.load $0
+        local.get $3
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.3
+        drop
+        i32.const 0
+        local.get $1
         i32.const 8
         i32.add
         local.tee $5
-        i32.load8_u $0
+        i64.load $0
         local.get $3
         i32.const 8
         i32.add
         local.tee $6
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         local.get $6
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $6
-         i32.const 2
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         i32.sub
-         local.tee $8
-         if (result i32)
-          local.get $8
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $7
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         local.get $6
-         i32.const 4
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $6
-          if (result i32)
-           local.get $6
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-       end
-       local.get $1
-       i32.eqz
-       if
-        local.get $2
-        i32.const 16
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.3
+        drop
+        i32.const 0
+        local.get $5
+        i32.const 8
         i32.add
         local.tee $5
-        i32.load8_u $0
-        local.get $3
-        i32.const 16
+        i64.load $0
+        local.get $6
+        i32.const 8
         i32.add
         local.tee $6
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $5
-         i32.load8_u $0 offset=1
-         local.get $6
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $6
-         i32.const 2
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         i32.sub
-         local.tee $8
-         if (result i32)
-          local.get $8
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $7
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 4
-         i32.add
-         local.tee $7
-         i32.load8_u $0
-         local.get $6
-         i32.const 4
-         i32.add
-         local.tee $8
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $7
-          i32.load8_u $0 offset=1
-          local.get $8
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $7
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $8
-          i32.const 2
-          i32.add
-          local.tee $7
-          i32.load8_u $0
-          i32.sub
-          local.tee $8
-          if (result i32)
-           local.get $8
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $7
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $5
-         i32.const 8
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         local.get $6
-         i32.const 8
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $7
-          i32.load8_u $0
-          i32.sub
-          local.tee $8
-          if (result i32)
-           local.get $8
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $7
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          local.get $6
-          i32.const 4
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $5
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $6
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-         end
-        end
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.3
+        drop
+        local.get $5
+        i64.load $0 offset=8
+        local.get $6
+        i64.load $0 offset=8
+        i64.eq
        end
-       local.get $1
-       br_if $~lib/util/compareupto/__compareupto63|inlined.3
+       i32.eqz
+       br_if $~lib/util/equpto/__equpto63|inlined.3
        local.get $3
        i32.const 32
        i32.add
@@ -13299,212 +3343,34 @@
        i32.const 32
        i32.sub
        local.set $4
-       local.get $2
+       local.get $1
        i32.const 32
        i32.add
-       local.set $2
+       local.set $1
       end
-      block $~lib/util/compareupto/__compareupto31|inlined.3
+      block $~lib/util/equpto/__equpto31|inlined.3
        local.get $4
        i32.const 16
        i32.ge_u
        if
-        local.get $2
-        i32.load8_u $0
+        i32.const 0
+        local.set $2
+        local.get $1
+        i64.load $0
         local.get $3
-        i32.load8_u $0
-        i32.sub
-        local.tee $1
-        i32.eqz
-        if
-         local.get $2
-         i32.load8_u $0 offset=1
-         local.get $3
-         i32.load8_u $0 offset=1
-         i32.sub
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 2
-         i32.add
-         local.tee $1
-         i32.load8_u $0
-         local.get $3
-         i32.const 2
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         i32.sub
-         local.tee $6
-         if (result i32)
-          local.get $6
-         else
-          local.get $1
-          i32.load8_u $0 offset=1
-          local.get $5
-          i32.load8_u $0 offset=1
-          i32.sub
-         end
-         local.set $1
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 4
-         i32.add
-         local.tee $5
-         i32.load8_u $0
-         local.get $3
-         i32.const 4
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
+        i64.load $0
+        i64.ne
+        if (result i32)
+         i32.const 0
+        else
          local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $6
-          if (result i32)
-           local.get $6
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-        end
-        local.get $1
-        i32.eqz
-        if
-         local.get $2
-         i32.const 8
-         i32.add
-         local.tee $5
-         i32.load8_u $0
+         i64.load $0 offset=8
          local.get $3
-         i32.const 8
-         i32.add
-         local.tee $6
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $5
-          i32.load8_u $0 offset=1
-          local.get $6
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $6
-          i32.const 2
-          i32.add
-          local.tee $7
-          i32.load8_u $0
-          i32.sub
-          local.tee $8
-          if (result i32)
-           local.get $8
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $7
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $5
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          local.get $6
-          i32.const 4
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $5
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $6
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-         end
+         i64.load $0 offset=8
+         i64.eq
         end
-        local.get $1
-        br_if $~lib/util/compareupto/__compareupto31|inlined.3
+        i32.eqz
+        br_if $~lib/util/equpto/__equpto31|inlined.3
         local.get $3
         i32.const 16
         i32.add
@@ -13513,110 +3379,24 @@
         i32.const 16
         i32.sub
         local.set $4
-        local.get $2
+        local.get $1
         i32.const 16
         i32.add
-        local.set $2
+        local.set $1
        end
-       block $~lib/util/compareupto/__compareupto15|inlined.3
+       block $~lib/util/equpto/__equpto15|inlined.3 (result i32)
         local.get $4
         i32.const 8
         i32.ge_u
         if
-         local.get $2
-         i32.load8_u $0
+         i32.const 0
+         local.get $1
+         i64.load $0
          local.get $3
-         i32.load8_u $0
-         i32.sub
-         local.tee $1
-         i32.eqz
-         if
-          local.get $2
-          i32.load8_u $0 offset=1
-          local.get $3
-          i32.load8_u $0 offset=1
-          i32.sub
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $2
-          i32.const 2
-          i32.add
-          local.tee $1
-          i32.load8_u $0
-          local.get $3
-          i32.const 2
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          i32.sub
-          local.tee $6
-          if (result i32)
-           local.get $6
-          else
-           local.get $1
-           i32.load8_u $0 offset=1
-           local.get $5
-           i32.load8_u $0 offset=1
-           i32.sub
-          end
-          local.set $1
-         end
-         local.get $1
-         i32.eqz
-         if
-          local.get $2
-          i32.const 4
-          i32.add
-          local.tee $5
-          i32.load8_u $0
-          local.get $3
-          i32.const 4
-          i32.add
-          local.tee $6
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $5
-           i32.load8_u $0 offset=1
-           local.get $6
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $5
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $6
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-         end
-         local.get $1
-         br_if $~lib/util/compareupto/__compareupto15|inlined.3
+         i64.load $0
+         i64.ne
+         br_if $~lib/util/equpto/__equpto15|inlined.3
+         drop
          local.get $3
          i32.const 8
          i32.add
@@ -13625,59 +3405,24 @@
          i32.const 8
          i32.sub
          local.set $4
-         local.get $2
+         local.get $1
          i32.const 8
          i32.add
-         local.set $2
+         local.set $1
         end
-        block $~lib/util/compareupto/__compareupto7|inlined.3
+        block $~lib/util/equpto/__equpto7|inlined.3 (result i32)
          local.get $4
          i32.const 4
          i32.ge_u
          if
-          local.get $2
-          i32.load8_u $0
+          i32.const 0
+          local.get $1
+          i32.load $0
           local.get $3
-          i32.load8_u $0
-          i32.sub
-          local.tee $1
-          i32.eqz
-          if
-           local.get $2
-           i32.load8_u $0 offset=1
-           local.get $3
-           i32.load8_u $0 offset=1
-           i32.sub
-           local.set $1
-          end
-          local.get $1
-          i32.eqz
-          if
-           local.get $2
-           i32.const 2
-           i32.add
-           local.tee $1
-           i32.load8_u $0
-           local.get $3
-           i32.const 2
-           i32.add
-           local.tee $5
-           i32.load8_u $0
-           i32.sub
-           local.tee $6
-           if (result i32)
-            local.get $6
-           else
-            local.get $1
-            i32.load8_u $0 offset=1
-            local.get $5
-            i32.load8_u $0 offset=1
-            i32.sub
-           end
-           local.set $1
-          end
-          local.get $1
-          br_if $~lib/util/compareupto/__compareupto7|inlined.3
+          i32.load $0
+          i32.ne
+          br_if $~lib/util/equpto/__equpto7|inlined.3
+          drop
           local.get $3
           i32.const 4
           i32.add
@@ -13686,33 +3431,24 @@
           i32.const 4
           i32.sub
           local.set $4
-          local.get $2
+          local.get $1
           i32.const 4
           i32.add
-          local.set $2
+          local.set $1
          end
-         block $~lib/util/compareupto/__compareupto3|inlined.3
+         block $~lib/util/equpto/__equpto3|inlined.3 (result i32)
           local.get $4
           i32.const 2
           i32.ge_u
           if
-           local.get $2
-           i32.load8_u $0
-           local.get $3
-           i32.load8_u $0
-           i32.sub
-           local.tee $1
-           i32.eqz
-           if
-            local.get $2
-            i32.load8_u $0 offset=1
-            local.get $3
-            i32.load8_u $0 offset=1
-            i32.sub
-            local.set $1
-           end
+           i32.const 0
            local.get $1
-           br_if $~lib/util/compareupto/__compareupto3|inlined.3
+           i32.load16_u $0
+           local.get $3
+           i32.load16_u $0
+           i32.ne
+           br_if $~lib/util/equpto/__equpto3|inlined.3
+           drop
            local.get $3
            i32.const 2
            i32.add
@@ -13721,31 +3457,30 @@
            i32.const 2
            i32.sub
            local.set $4
-           local.get $2
+           local.get $1
            i32.const 2
            i32.add
-           local.set $2
+           local.set $1
           end
           local.get $4
           if (result i32)
-           local.get $2
+           local.get $1
            i32.load8_u $0
            local.get $3
            i32.load8_u $0
-           i32.sub
+           i32.eq
           else
-           i32.const 0
+           i32.const 1
           end
-          local.set $1
          end
         end
        end
+       local.set $2
       end
      end
+     local.get $2
     end
-    local.get $1
    end
-   i32.eqz
   end
   i32.eqz
   if
