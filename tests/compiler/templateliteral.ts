@@ -1,13 +1,9 @@
-function convert(s: string): ByteView {
-  return new ByteView(changetype<ByteArray>(s), 0, s.length);
-}
-
 function test_string(): void {
   var a = "a";
   var b = "b";
-  assert(convert(`${a}`) == "a");
-  assert(convert(`${a}${b}`) == "ab");
-  assert(convert(`(A=${a}, B=${b})`) == "(A=a, B=b)");
+  assert(`${a}` == "a");
+  assert(`${a}${b}` == "ab");
+  assert(`(A=${a}, B=${b})` == "(A=a, B=b)");
 }
 test_string();
 

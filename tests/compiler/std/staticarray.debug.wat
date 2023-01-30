@@ -9,10 +9,10 @@
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
- (type $i32_i32_i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32 i32 i32) (result i32) func))
  (type $i32_i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32 i32) func))
  (type $i32_f64_i32_=>_i32 (func_subtype (param i32 f64 i32) (result i32) func))
  (type $i32_f32_i32_=>_i32 (func_subtype (param i32 f32 i32) (result i32) func))
+ (type $i32_i32_i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32 i32 i32) (result i32) func))
  (type $i32_i32_i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32 i32 i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
@@ -36,8 +36,8 @@
  (global $std/staticarray/arr4 (mut i32) (i32.const 0))
  (global $~lib/native/ASC_RUNTIME i32 (i32.const 2))
  (global $~lib/builtins/i32.MAX_VALUE i32 (i32.const 2147483647))
- (global $~lib/native/ASC_SHRINK_LEVEL i32 (i32.const 0))
  (global $~argumentsLength (mut i32) (i32.const 0))
+ (global $~lib/native/ASC_SHRINK_LEVEL i32 (i32.const 0))
  (global $std/staticarray/maxVal (mut i32) (i32.const 0))
  (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
  (global $~lib/rt/__rtti_base i32 (i32.const 1792))
@@ -2278,154 +2278,6 @@
   i32.const 20
   i32.sub
   i32.load $0 offset=16
- )
- (func $~lib/util/string/compareImpl (type $i32_i32_i32_i32_i32_=>_i32) (param $str1 i32) (param $index1 i32) (param $str2 i32) (param $index2 i32) (param $len i32) (result i32)
-  (local $ptr1 i32)
-  (local $ptr2 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $a i32)
-  (local $b i32)
-  local.get $str1
-  local.get $index1
-  i32.const 1
-  i32.shl
-  i32.add
-  local.set $ptr1
-  local.get $str2
-  local.get $index2
-  i32.const 1
-  i32.shl
-  i32.add
-  local.set $ptr2
-  i32.const 0
-  i32.const 2
-  i32.lt_s
-  drop
-  local.get $len
-  i32.const 4
-  i32.ge_u
-  if (result i32)
-   local.get $ptr1
-   i32.const 7
-   i32.and
-   local.get $ptr2
-   i32.const 7
-   i32.and
-   i32.or
-   i32.eqz
-  else
-   i32.const 0
-  end
-  if
-   block $do-break|0
-    loop $do-loop|0
-     local.get $ptr1
-     i64.load $0
-     local.get $ptr2
-     i64.load $0
-     i64.ne
-     if
-      br $do-break|0
-     end
-     local.get $ptr1
-     i32.const 8
-     i32.add
-     local.set $ptr1
-     local.get $ptr2
-     i32.const 8
-     i32.add
-     local.set $ptr2
-     local.get $len
-     i32.const 4
-     i32.sub
-     local.set $len
-     local.get $len
-     i32.const 4
-     i32.ge_u
-     br_if $do-loop|0
-    end
-   end
-  end
-  loop $while-continue|1
-   local.get $len
-   local.tee $7
-   i32.const 1
-   i32.sub
-   local.set $len
-   local.get $7
-   local.set $8
-   local.get $8
-   if
-    local.get $ptr1
-    i32.load16_u $0
-    local.set $a
-    local.get $ptr2
-    i32.load16_u $0
-    local.set $b
-    local.get $a
-    local.get $b
-    i32.ne
-    if
-     local.get $a
-     local.get $b
-     i32.sub
-     return
-    end
-    local.get $ptr1
-    i32.const 2
-    i32.add
-    local.set $ptr1
-    local.get $ptr2
-    i32.const 2
-    i32.add
-    local.set $ptr2
-    br $while-continue|1
-   end
-  end
-  i32.const 0
- )
- (func $~lib/string/String.__eq (type $i32_i32_=>_i32) (param $left i32) (param $right i32) (result i32)
-  (local $leftLength i32)
-  local.get $left
-  local.get $right
-  i32.eq
-  if
-   i32.const 1
-   return
-  end
-  local.get $left
-  i32.const 0
-  i32.eq
-  if (result i32)
-   i32.const 1
-  else
-   local.get $right
-   i32.const 0
-   i32.eq
-  end
-  if
-   i32.const 0
-   return
-  end
-  local.get $left
-  call $~lib/string/String#get:length
-  local.set $leftLength
-  local.get $leftLength
-  local.get $right
-  call $~lib/string/String#get:length
-  i32.ne
-  if
-   i32.const 0
-   return
-  end
-  local.get $left
-  i32.const 0
-  local.get $right
-  i32.const 0
-  local.get $leftLength
-  call $~lib/util/string/compareImpl
-  i32.eqz
  )
  (func $~lib/array/Array<~lib/string/String>#get:length (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
@@ -5056,104 +4908,6 @@
    unreachable
   end
  )
- (func $~lib/staticarray/StaticArray<~lib/string/String>#indexOf (type $i32_i32_i32_=>_i32) (param $this i32) (param $value i32) (param $fromIndex i32) (result i32)
-  (local $length i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  call $~lib/staticarray/StaticArray<~lib/string/String>#get:length
-  local.set $length
-  local.get $length
-  i32.const 0
-  i32.eq
-  if (result i32)
-   i32.const 1
-  else
-   local.get $fromIndex
-   local.get $length
-   i32.ge_s
-  end
-  if
-   i32.const -1
-   local.set $7
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   local.get $7
-   return
-  end
-  local.get $fromIndex
-  i32.const 0
-  i32.lt_s
-  if
-   local.get $length
-   local.get $fromIndex
-   i32.add
-   local.tee $4
-   i32.const 0
-   local.tee $5
-   local.get $4
-   local.get $5
-   i32.gt_s
-   select
-   local.set $fromIndex
-  end
-  loop $while-continue|0
-   local.get $fromIndex
-   local.get $length
-   i32.lt_s
-   local.set $6
-   local.get $6
-   if
-    local.get $this
-    local.get $fromIndex
-    i32.const 2
-    i32.shl
-    i32.add
-    i32.load $0
-    local.set $7
-    global.get $~lib/memory/__stack_pointer
-    local.get $7
-    i32.store $0
-    local.get $7
-    local.get $value
-    call $~lib/string/String.__eq
-    if
-     local.get $fromIndex
-     local.set $7
-     global.get $~lib/memory/__stack_pointer
-     i32.const 4
-     i32.add
-     global.set $~lib/memory/__stack_pointer
-     local.get $7
-     return
-    end
-    local.get $fromIndex
-    i32.const 1
-    i32.add
-    local.set $fromIndex
-    br $while-continue|0
-   end
-  end
-  i32.const -1
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $7
- )
  (func $start:std/staticarray (type $none_=>_none)
   (local $0 i32)
   (local $1 i32)
@@ -5209,21 +4963,521 @@
   (local $51 i32)
   (local $52 i32)
   (local $53 i32)
+  (local $54 i32)
+  (local $55 i32)
+  (local $56 i32)
+  (local $57 i32)
+  (local $58 i32)
+  (local $59 i32)
+  (local $60 i32)
+  (local $61 i32)
+  (local $62 i32)
+  (local $63 i32)
+  (local $64 i32)
+  (local $65 i32)
+  (local $66 i32)
+  (local $67 i32)
+  (local $68 i32)
+  (local $69 i32)
+  (local $70 i32)
+  (local $71 i32)
+  (local $72 i32)
+  (local $73 i32)
+  (local $74 i32)
+  (local $75 i32)
+  (local $76 i32)
+  (local $77 i32)
+  (local $78 i32)
+  (local $79 i32)
+  (local $80 i32)
+  (local $81 i32)
+  (local $82 i32)
+  (local $83 i32)
+  (local $84 i32)
+  (local $85 i32)
+  (local $86 i32)
+  (local $87 i32)
+  (local $88 i32)
+  (local $89 i32)
+  (local $90 i32)
+  (local $91 i32)
+  (local $92 i32)
+  (local $93 i32)
+  (local $94 i32)
+  (local $95 i32)
+  (local $96 i32)
+  (local $97 i32)
+  (local $98 i32)
+  (local $99 i32)
+  (local $100 i32)
+  (local $101 i32)
+  (local $102 i32)
+  (local $103 i32)
+  (local $104 i32)
+  (local $105 i32)
+  (local $106 i32)
+  (local $107 i32)
+  (local $108 i32)
+  (local $109 i32)
+  (local $110 i32)
+  (local $111 i32)
+  (local $112 i32)
+  (local $113 i32)
+  (local $114 i32)
+  (local $115 i32)
+  (local $116 i32)
+  (local $117 i32)
+  (local $118 i32)
+  (local $119 i32)
+  (local $120 i32)
+  (local $121 i32)
+  (local $122 i32)
+  (local $123 i32)
+  (local $124 i32)
+  (local $125 i32)
+  (local $126 i32)
+  (local $127 i32)
+  (local $128 i32)
+  (local $129 i32)
+  (local $130 i32)
+  (local $131 i32)
+  (local $132 i32)
+  (local $133 i32)
+  (local $134 i32)
+  (local $135 i32)
+  (local $136 i32)
+  (local $137 i32)
+  (local $138 i32)
+  (local $139 i32)
+  (local $140 i32)
+  (local $141 i32)
+  (local $142 i32)
+  (local $143 i32)
+  (local $144 i32)
+  (local $145 i32)
+  (local $146 i32)
+  (local $147 i32)
+  (local $148 i32)
+  (local $149 i32)
+  (local $150 i32)
+  (local $151 i32)
+  (local $152 i32)
+  (local $153 i32)
+  (local $154 i32)
+  (local $155 i32)
+  (local $156 i32)
+  (local $157 i32)
+  (local $158 i32)
+  (local $159 i32)
+  (local $160 i32)
+  (local $161 i32)
+  (local $162 i32)
+  (local $163 i32)
+  (local $164 i32)
+  (local $165 i32)
+  (local $166 i32)
+  (local $167 i32)
+  (local $168 i32)
+  (local $169 i32)
+  (local $170 i32)
+  (local $171 i32)
+  (local $172 i32)
+  (local $173 i32)
+  (local $174 i32)
+  (local $175 i32)
+  (local $176 i32)
+  (local $177 i32)
+  (local $178 i32)
+  (local $179 i32)
+  (local $180 i32)
+  (local $181 i32)
+  (local $182 i32)
+  (local $183 i32)
+  (local $184 i32)
+  (local $185 i32)
+  (local $186 i32)
+  (local $187 i32)
+  (local $188 i32)
+  (local $189 i32)
+  (local $190 i32)
+  (local $191 i32)
+  (local $192 i32)
+  (local $193 i32)
+  (local $194 i32)
+  (local $195 i32)
+  (local $196 i32)
+  (local $197 i32)
+  (local $198 i32)
+  (local $199 i32)
+  (local $200 i32)
+  (local $201 i32)
+  (local $202 i32)
+  (local $203 i32)
+  (local $204 i32)
+  (local $205 i32)
+  (local $206 i32)
+  (local $207 i32)
+  (local $208 i32)
+  (local $209 i32)
+  (local $210 i32)
+  (local $211 i32)
+  (local $212 i32)
+  (local $213 i32)
+  (local $214 i32)
+  (local $215 i32)
+  (local $216 i32)
+  (local $217 i32)
+  (local $218 i32)
+  (local $219 i32)
+  (local $220 i32)
+  (local $221 i32)
+  (local $222 i32)
+  (local $223 i32)
+  (local $224 i32)
+  (local $225 i32)
+  (local $226 i32)
+  (local $227 i32)
+  (local $228 i32)
+  (local $229 i32)
+  (local $230 i32)
+  (local $231 i32)
+  (local $232 i32)
+  (local $233 i32)
+  (local $234 i32)
+  (local $235 i32)
+  (local $236 i32)
+  (local $237 i32)
+  (local $238 i32)
+  (local $239 i32)
+  (local $240 i32)
+  (local $241 i32)
+  (local $242 i32)
+  (local $243 i32)
+  (local $244 i32)
+  (local $245 i32)
+  (local $246 i32)
+  (local $247 i32)
+  (local $248 i32)
+  (local $249 i32)
+  (local $250 i32)
+  (local $251 i32)
+  (local $252 i32)
+  (local $253 i32)
+  (local $254 i32)
+  (local $255 i32)
+  (local $256 i32)
+  (local $257 i32)
+  (local $258 i32)
+  (local $259 i32)
+  (local $260 i32)
+  (local $261 i32)
+  (local $262 i32)
+  (local $263 i32)
+  (local $264 i32)
+  (local $265 i32)
+  (local $266 i32)
+  (local $267 i32)
+  (local $268 i32)
+  (local $269 i32)
+  (local $270 i32)
+  (local $271 i32)
+  (local $272 i32)
+  (local $273 i32)
+  (local $274 i32)
+  (local $275 i32)
+  (local $276 i32)
+  (local $277 i32)
+  (local $278 i32)
+  (local $279 i32)
+  (local $280 i32)
+  (local $281 i32)
+  (local $282 i32)
+  (local $283 i32)
+  (local $284 i32)
+  (local $285 i32)
+  (local $286 i32)
+  (local $287 i32)
+  (local $288 i32)
+  (local $289 i32)
+  (local $290 i32)
+  (local $291 i32)
+  (local $292 i32)
+  (local $293 i32)
+  (local $294 i32)
+  (local $295 i32)
+  (local $296 i32)
+  (local $297 i32)
+  (local $298 i32)
+  (local $299 i32)
+  (local $300 i32)
+  (local $301 i32)
+  (local $302 i32)
+  (local $303 i32)
+  (local $304 i32)
+  (local $305 i32)
+  (local $306 i32)
+  (local $307 i32)
+  (local $308 i32)
+  (local $309 i32)
+  (local $310 i32)
+  (local $311 i32)
+  (local $312 i32)
+  (local $313 i32)
+  (local $314 i32)
+  (local $315 i32)
+  (local $316 i32)
+  (local $317 i32)
+  (local $318 i32)
+  (local $319 i32)
+  (local $320 i32)
+  (local $321 i32)
+  (local $322 i32)
+  (local $323 i32)
+  (local $324 i32)
+  (local $325 i32)
+  (local $326 i32)
+  (local $327 i32)
+  (local $328 i32)
+  (local $329 i32)
+  (local $330 i32)
+  (local $331 i32)
+  (local $332 i32)
+  (local $333 i32)
+  (local $334 i32)
+  (local $335 i32)
+  (local $336 i32)
+  (local $337 i32)
+  (local $338 i32)
+  (local $339 i32)
+  (local $340 i32)
+  (local $341 i32)
+  (local $342 i32)
+  (local $343 i32)
+  (local $344 i32)
+  (local $345 i32)
+  (local $346 i32)
+  (local $347 i32)
+  (local $348 i32)
+  (local $349 i32)
+  (local $350 i32)
+  (local $351 i32)
+  (local $352 i32)
+  (local $353 i32)
+  (local $354 i32)
+  (local $355 i32)
+  (local $356 i32)
+  (local $357 i32)
+  (local $358 i32)
+  (local $359 i32)
+  (local $360 i32)
+  (local $361 i32)
+  (local $362 i32)
+  (local $363 i32)
+  (local $364 i32)
+  (local $365 i32)
+  (local $366 i32)
+  (local $367 i32)
+  (local $368 i32)
+  (local $369 i32)
+  (local $370 i32)
+  (local $371 i32)
+  (local $372 i32)
+  (local $373 i32)
+  (local $374 i32)
+  (local $375 i32)
+  (local $376 i32)
+  (local $377 i32)
+  (local $378 i32)
+  (local $379 i32)
+  (local $380 i32)
+  (local $381 i32)
+  (local $382 i32)
+  (local $383 i32)
+  (local $384 i32)
+  (local $385 i32)
+  (local $386 i32)
+  (local $387 i32)
+  (local $388 i32)
+  (local $389 i32)
+  (local $390 i32)
+  (local $391 i32)
+  (local $392 i32)
+  (local $393 i32)
+  (local $394 i32)
+  (local $395 i32)
+  (local $396 i32)
+  (local $397 i32)
+  (local $398 i32)
+  (local $399 i32)
+  (local $400 i32)
+  (local $401 i32)
+  (local $402 i32)
+  (local $403 i32)
+  (local $404 i32)
+  (local $405 i32)
+  (local $406 i32)
+  (local $407 i32)
+  (local $408 i32)
+  (local $409 i32)
+  (local $410 i32)
+  (local $411 i32)
+  (local $412 i32)
+  (local $413 i32)
+  (local $414 i32)
+  (local $415 i32)
+  (local $416 i32)
+  (local $417 i32)
+  (local $418 i32)
+  (local $419 i32)
+  (local $420 i32)
+  (local $421 i32)
+  (local $422 i32)
+  (local $423 i32)
+  (local $424 i32)
+  (local $425 i32)
+  (local $426 i32)
+  (local $427 i32)
+  (local $428 i32)
+  (local $429 i32)
+  (local $430 i32)
+  (local $431 i32)
+  (local $432 i32)
+  (local $433 i32)
+  (local $434 i32)
+  (local $435 i32)
+  (local $436 i32)
+  (local $437 i32)
+  (local $438 i32)
+  (local $439 i32)
+  (local $440 i32)
+  (local $441 i32)
+  (local $442 i32)
+  (local $443 i32)
+  (local $444 i32)
+  (local $445 i32)
+  (local $446 i32)
+  (local $447 i32)
+  (local $448 i32)
+  (local $449 i32)
+  (local $450 i32)
+  (local $451 i32)
+  (local $452 i32)
+  (local $453 i32)
+  (local $454 i32)
+  (local $455 i32)
+  (local $456 i32)
+  (local $457 i32)
+  (local $458 i32)
+  (local $459 i32)
+  (local $460 i32)
+  (local $461 i32)
+  (local $462 i32)
+  (local $463 i32)
+  (local $464 i32)
+  (local $465 i32)
+  (local $466 i32)
+  (local $467 i32)
+  (local $468 i32)
+  (local $469 i32)
+  (local $470 i32)
+  (local $471 i32)
+  (local $472 i32)
+  (local $473 i32)
+  (local $474 i32)
+  (local $475 i32)
+  (local $476 i32)
+  (local $477 i32)
+  (local $478 i32)
+  (local $479 i32)
+  (local $480 i32)
+  (local $481 i32)
+  (local $482 i32)
+  (local $483 i32)
+  (local $484 i32)
+  (local $485 i32)
+  (local $486 i32)
+  (local $487 i32)
+  (local $488 i32)
+  (local $489 i32)
+  (local $490 i32)
+  (local $491 i32)
+  (local $492 i32)
+  (local $493 i32)
+  (local $494 i32)
+  (local $495 i32)
+  (local $496 i32)
+  (local $497 i32)
+  (local $498 i32)
+  (local $499 i32)
+  (local $500 i32)
+  (local $501 i32)
+  (local $502 i32)
+  (local $503 i32)
+  (local $504 i32)
+  (local $505 i32)
+  (local $506 i32)
+  (local $507 i32)
+  (local $508 i32)
+  (local $509 i32)
+  (local $510 i32)
+  (local $511 i32)
+  (local $512 i32)
+  (local $513 i32)
+  (local $514 i32)
+  (local $515 i32)
+  (local $516 i32)
+  (local $517 i32)
+  (local $518 i32)
+  (local $519 i32)
+  (local $520 i32)
+  (local $521 i32)
+  (local $522 i32)
+  (local $523 i32)
+  (local $524 i32)
+  (local $525 i32)
+  (local $526 i32)
+  (local $527 i32)
+  (local $528 i32)
+  (local $529 i32)
+  (local $530 i32)
+  (local $531 i32)
+  (local $532 i32)
+  (local $533 i32)
+  (local $534 i32)
+  (local $535 i32)
+  (local $536 i32)
+  (local $537 i32)
+  (local $538 i32)
+  (local $539 i32)
+  (local $540 i32)
+  (local $541 i32)
+  (local $542 i32)
+  (local $543 i32)
+  (local $544 i32)
+  (local $545 i32)
+  (local $546 i32)
+  (local $547 i32)
+  (local $548 i32)
+  (local $549 i32)
+  (local $550 i32)
+  (local $551 i32)
+  (local $552 i32)
+  (local $553 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 88
+  i32.const 128
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.const 88
+  i32.const 128
   memory.fill $0
   global.get $std/staticarray/arr1
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 2
@@ -5233,11 +5487,11 @@
    unreachable
   end
   global.get $std/staticarray/arr1
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#get:length
   i32.const 3
   i32.eq
@@ -5246,20 +5500,20 @@
    unreachable
   end
   global.get $std/staticarray/arr1
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   i32.const 4
   call $~lib/staticarray/StaticArray<i32>#__set
   global.get $std/staticarray/arr1
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 4
@@ -5279,11 +5533,11 @@
    unreachable
   end
   global.get $std/staticarray/arr2
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 2
@@ -5293,11 +5547,11 @@
    unreachable
   end
   global.get $std/staticarray/arr2
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#get:length
   i32.const 3
   i32.eq
@@ -5306,20 +5560,20 @@
    unreachable
   end
   global.get $std/staticarray/arr2
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   i32.const 4
   call $~lib/staticarray/StaticArray<i32>#__set
   global.get $std/staticarray/arr2
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 4
@@ -5348,11 +5602,11 @@
   call $std/staticarray/test
   global.set $std/staticarray/arr3
   global.get $std/staticarray/arr3
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 5
@@ -5362,11 +5616,11 @@
    unreachable
   end
   global.get $std/staticarray/arr3
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 6
@@ -5376,11 +5630,11 @@
    unreachable
   end
   global.get $std/staticarray/arr3
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 2
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 7
@@ -5390,11 +5644,11 @@
    unreachable
   end
   global.get $std/staticarray/arr3
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#get:length
   i32.const 3
   i32.eq
@@ -5403,20 +5657,20 @@
    unreachable
   end
   global.get $std/staticarray/arr3
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   i32.const 8
   call $~lib/staticarray/StaticArray<i32>#__set
   global.get $std/staticarray/arr3
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 8
@@ -5428,11 +5682,11 @@
   call $std/staticarray/test
   global.set $std/staticarray/arr3
   global.get $std/staticarray/arr3
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 6
@@ -5560,11 +5814,11 @@
   i32.const 6
   i32.const 416
   call $~lib/rt/__newArray
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray.fromArray<i32>
   local.tee $9
   i32.store $0 offset=16
@@ -5589,11 +5843,11 @@
   i32.const 3
   i32.const 480
   call $~lib/rt/__newBuffer
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#concat<~lib/staticarray/StaticArray<i32>>
   local.tee $17
   i32.store $0 offset=28
@@ -5611,11 +5865,11 @@
   i32.const 3
   i32.const 512
   call $~lib/rt/__newBuffer
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#concat<~lib/staticarray/StaticArray<i32>>
   local.tee $17
   i32.store $0 offset=28
@@ -5661,23 +5915,922 @@
    local.set $23
    local.get $23
    if
-    local.get $20
-    local.get $22
-    call $~lib/staticarray/StaticArray<~lib/string/String>#__get
-    local.set $53
-    global.get $~lib/memory/__stack_pointer
-    local.get $53
-    i32.store $0
-    local.get $53
-    local.get $21
-    local.get $22
-    call $~lib/staticarray/StaticArray<~lib/string/String>#__get
-    local.set $53
-    global.get $~lib/memory/__stack_pointer
-    local.get $53
-    i32.store $0 offset=24
-    local.get $53
-    call $~lib/string/String.__eq
+    block $~lib/string/String.__eq|inlined.0 (result i32)
+     global.get $~lib/memory/__stack_pointer
+     local.get $20
+     local.get $22
+     call $~lib/staticarray/StaticArray<~lib/string/String>#__get
+     local.tee $24
+     i32.store $0 offset=40
+     global.get $~lib/memory/__stack_pointer
+     local.get $21
+     local.get $22
+     call $~lib/staticarray/StaticArray<~lib/string/String>#__get
+     local.tee $25
+     i32.store $0 offset=44
+     local.get $24
+     local.set $26
+     local.get $25
+     local.set $27
+     local.get $26
+     local.get $27
+     i32.eq
+     if
+      i32.const 1
+      br $~lib/string/String.__eq|inlined.0
+     end
+     local.get $26
+     i32.const 0
+     i32.eq
+     if (result i32)
+      i32.const 1
+     else
+      local.get $27
+      i32.const 0
+      i32.eq
+     end
+     if
+      i32.const 0
+      br $~lib/string/String.__eq|inlined.0
+     end
+     local.get $24
+     call $~lib/string/String#get:length
+     local.set $28
+     local.get $28
+     local.get $25
+     call $~lib/string/String#get:length
+     i32.ne
+     if
+      i32.const 0
+      br $~lib/string/String.__eq|inlined.0
+     end
+     local.get $28
+     i32.const 128
+     i32.ge_s
+     if
+      block $~lib/util/raweq/__raweq128|inlined.0 (result i32)
+       local.get $26
+       local.set $29
+       local.get $27
+       local.set $30
+       local.get $29
+       local.set $31
+       local.get $30
+       local.set $32
+       local.get $31
+       i64.load $0
+       local.get $32
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $33
+       local.get $30
+       local.set $34
+       local.get $33
+       i64.load $0
+       local.get $34
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $35
+       local.get $30
+       local.set $36
+       local.get $35
+       i64.load $0
+       local.get $36
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $37
+       local.get $30
+       local.set $38
+       local.get $37
+       i64.load $0
+       local.get $38
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $39
+       local.get $30
+       local.set $40
+       local.get $39
+       i64.load $0
+       local.get $40
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $41
+       local.get $30
+       local.set $42
+       local.get $41
+       i64.load $0
+       local.get $42
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $43
+       local.get $30
+       local.set $44
+       local.get $43
+       i64.load $0
+       local.get $44
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $45
+       local.get $30
+       local.set $46
+       local.get $45
+       i64.load $0
+       local.get $46
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $47
+       local.get $30
+       local.set $48
+       local.get $47
+       i64.load $0
+       local.get $48
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $49
+       local.get $30
+       local.set $50
+       local.get $49
+       i64.load $0
+       local.get $50
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $51
+       local.get $30
+       local.set $52
+       local.get $51
+       i64.load $0
+       local.get $52
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $53
+       local.get $30
+       local.set $54
+       local.get $53
+       i64.load $0
+       local.get $54
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $55
+       local.get $30
+       local.set $56
+       local.get $55
+       i64.load $0
+       local.get $56
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $57
+       local.get $30
+       local.set $58
+       local.get $57
+       i64.load $0
+       local.get $58
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       local.set $59
+       local.get $30
+       local.set $60
+       local.get $59
+       i64.load $0
+       local.get $60
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.0
+       end
+       local.get $29
+       i32.const 8
+       i32.add
+       local.set $29
+       local.get $30
+       i32.const 8
+       i32.add
+       local.set $30
+       local.get $29
+       i64.load $0
+       local.get $30
+       i64.load $0
+       i64.eq
+      end
+      br $~lib/string/String.__eq|inlined.0
+     else
+      block $~lib/util/equpto/__equpto127|inlined.0 (result i32)
+       local.get $26
+       local.set $61
+       local.get $27
+       local.set $62
+       local.get $28
+       local.set $63
+       local.get $63
+       i32.const 64
+       i32.ge_u
+       if
+        block $~lib/util/raweq/__raweq64|inlined.0 (result i32)
+         local.get $61
+         local.set $64
+         local.get $62
+         local.set $65
+         local.get $64
+         local.set $66
+         local.get $65
+         local.set $67
+         local.get $66
+         i64.load $0
+         local.get $67
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.0
+         end
+         local.get $64
+         i32.const 8
+         i32.add
+         local.set $64
+         local.get $65
+         i32.const 8
+         i32.add
+         local.set $65
+         local.get $64
+         local.set $68
+         local.get $65
+         local.set $69
+         local.get $68
+         i64.load $0
+         local.get $69
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.0
+         end
+         local.get $64
+         i32.const 8
+         i32.add
+         local.set $64
+         local.get $65
+         i32.const 8
+         i32.add
+         local.set $65
+         local.get $64
+         local.set $70
+         local.get $65
+         local.set $71
+         local.get $70
+         i64.load $0
+         local.get $71
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.0
+         end
+         local.get $64
+         i32.const 8
+         i32.add
+         local.set $64
+         local.get $65
+         i32.const 8
+         i32.add
+         local.set $65
+         local.get $64
+         local.set $72
+         local.get $65
+         local.set $73
+         local.get $72
+         i64.load $0
+         local.get $73
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.0
+         end
+         local.get $64
+         i32.const 8
+         i32.add
+         local.set $64
+         local.get $65
+         i32.const 8
+         i32.add
+         local.set $65
+         local.get $64
+         local.set $74
+         local.get $65
+         local.set $75
+         local.get $74
+         i64.load $0
+         local.get $75
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.0
+         end
+         local.get $64
+         i32.const 8
+         i32.add
+         local.set $64
+         local.get $65
+         i32.const 8
+         i32.add
+         local.set $65
+         local.get $64
+         local.set $76
+         local.get $65
+         local.set $77
+         local.get $76
+         i64.load $0
+         local.get $77
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.0
+         end
+         local.get $64
+         i32.const 8
+         i32.add
+         local.set $64
+         local.get $65
+         i32.const 8
+         i32.add
+         local.set $65
+         local.get $64
+         local.set $78
+         local.get $65
+         local.set $79
+         local.get $78
+         i64.load $0
+         local.get $79
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.0
+         end
+         local.get $64
+         i32.const 8
+         i32.add
+         local.set $64
+         local.get $65
+         i32.const 8
+         i32.add
+         local.set $65
+         local.get $64
+         i64.load $0
+         local.get $65
+         i64.load $0
+         i64.eq
+        end
+        local.set $80
+        local.get $80
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/equpto/__equpto127|inlined.0
+        end
+        local.get $61
+        i32.const 64
+        i32.add
+        local.set $61
+        local.get $62
+        i32.const 64
+        i32.add
+        local.set $62
+        local.get $63
+        i32.const 64
+        i32.sub
+        local.set $63
+       end
+       block $~lib/util/equpto/__equpto63|inlined.0 (result i32)
+        local.get $61
+        local.set $81
+        local.get $62
+        local.set $82
+        local.get $63
+        local.set $83
+        local.get $83
+        i32.const 32
+        i32.ge_u
+        if
+         block $~lib/util/raweq/__raweq32|inlined.0 (result i32)
+          local.get $81
+          local.set $84
+          local.get $82
+          local.set $85
+          local.get $84
+          local.set $86
+          local.get $85
+          local.set $87
+          local.get $86
+          i64.load $0
+          local.get $87
+          i64.load $0
+          i64.eq
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/raweq/__raweq32|inlined.0
+          end
+          local.get $84
+          i32.const 8
+          i32.add
+          local.set $84
+          local.get $85
+          i32.const 8
+          i32.add
+          local.set $85
+          local.get $84
+          local.set $88
+          local.get $85
+          local.set $89
+          local.get $88
+          i64.load $0
+          local.get $89
+          i64.load $0
+          i64.eq
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/raweq/__raweq32|inlined.0
+          end
+          local.get $84
+          i32.const 8
+          i32.add
+          local.set $84
+          local.get $85
+          i32.const 8
+          i32.add
+          local.set $85
+          local.get $84
+          local.set $90
+          local.get $85
+          local.set $91
+          local.get $90
+          i64.load $0
+          local.get $91
+          i64.load $0
+          i64.eq
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/raweq/__raweq32|inlined.0
+          end
+          local.get $84
+          i32.const 8
+          i32.add
+          local.set $84
+          local.get $85
+          i32.const 8
+          i32.add
+          local.set $85
+          local.get $84
+          i64.load $0
+          local.get $85
+          i64.load $0
+          i64.eq
+         end
+         local.set $92
+         local.get $92
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/equpto/__equpto63|inlined.0
+         end
+         local.get $81
+         i32.const 32
+         i32.add
+         local.set $81
+         local.get $82
+         i32.const 32
+         i32.add
+         local.set $82
+         local.get $83
+         i32.const 32
+         i32.sub
+         local.set $83
+        end
+        block $~lib/util/equpto/__equpto31|inlined.0 (result i32)
+         local.get $81
+         local.set $93
+         local.get $82
+         local.set $94
+         local.get $83
+         local.set $95
+         local.get $95
+         i32.const 16
+         i32.ge_u
+         if
+          block $~lib/util/raweq/__raweq16|inlined.0 (result i32)
+           local.get $93
+           local.set $96
+           local.get $94
+           local.set $97
+           local.get $96
+           local.set $98
+           local.get $97
+           local.set $99
+           local.get $98
+           i64.load $0
+           local.get $99
+           i64.load $0
+           i64.eq
+           i32.eqz
+           if
+            i32.const 0
+            br $~lib/util/raweq/__raweq16|inlined.0
+           end
+           local.get $96
+           i32.const 8
+           i32.add
+           local.set $96
+           local.get $97
+           i32.const 8
+           i32.add
+           local.set $97
+           local.get $96
+           i64.load $0
+           local.get $97
+           i64.load $0
+           i64.eq
+          end
+          local.set $100
+          local.get $100
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/equpto/__equpto31|inlined.0
+          end
+          local.get $93
+          i32.const 16
+          i32.add
+          local.set $93
+          local.get $94
+          i32.const 16
+          i32.add
+          local.set $94
+          local.get $95
+          i32.const 16
+          i32.sub
+          local.set $95
+         end
+         block $~lib/util/equpto/__equpto15|inlined.0 (result i32)
+          local.get $93
+          local.set $101
+          local.get $94
+          local.set $102
+          local.get $95
+          local.set $103
+          local.get $103
+          i32.const 8
+          i32.ge_u
+          if
+           local.get $101
+           local.set $104
+           local.get $102
+           local.set $105
+           local.get $104
+           i64.load $0
+           local.get $105
+           i64.load $0
+           i64.eq
+           local.set $106
+           local.get $106
+           i32.eqz
+           if
+            i32.const 0
+            br $~lib/util/equpto/__equpto15|inlined.0
+           end
+           local.get $101
+           i32.const 8
+           i32.add
+           local.set $101
+           local.get $102
+           i32.const 8
+           i32.add
+           local.set $102
+           local.get $103
+           i32.const 8
+           i32.sub
+           local.set $103
+          end
+          block $~lib/util/equpto/__equpto7|inlined.0 (result i32)
+           local.get $101
+           local.set $107
+           local.get $102
+           local.set $108
+           local.get $103
+           local.set $109
+           local.get $109
+           i32.const 4
+           i32.ge_u
+           if
+            local.get $107
+            local.set $110
+            local.get $108
+            local.set $111
+            local.get $110
+            i32.load $0
+            local.get $111
+            i32.load $0
+            i32.eq
+            local.set $112
+            local.get $112
+            i32.eqz
+            if
+             i32.const 0
+             br $~lib/util/equpto/__equpto7|inlined.0
+            end
+            local.get $107
+            i32.const 4
+            i32.add
+            local.set $107
+            local.get $108
+            i32.const 4
+            i32.add
+            local.set $108
+            local.get $109
+            i32.const 4
+            i32.sub
+            local.set $109
+           end
+           block $~lib/util/equpto/__equpto3|inlined.0 (result i32)
+            local.get $107
+            local.set $113
+            local.get $108
+            local.set $114
+            local.get $109
+            local.set $115
+            local.get $115
+            i32.const 2
+            i32.ge_u
+            if
+             local.get $113
+             local.set $116
+             local.get $114
+             local.set $117
+             local.get $116
+             i32.load16_u $0
+             local.get $117
+             i32.load16_u $0
+             i32.eq
+             local.set $118
+             local.get $118
+             i32.eqz
+             if
+              i32.const 0
+              br $~lib/util/equpto/__equpto3|inlined.0
+             end
+             local.get $113
+             i32.const 2
+             i32.add
+             local.set $113
+             local.get $114
+             i32.const 2
+             i32.add
+             local.set $114
+             local.get $115
+             i32.const 2
+             i32.sub
+             local.set $115
+            end
+            local.get $113
+            local.set $119
+            local.get $114
+            local.set $120
+            local.get $115
+            local.set $121
+            local.get $121
+            if (result i32)
+             local.get $119
+             local.set $122
+             local.get $120
+             local.set $123
+             local.get $122
+             i32.load8_u $0
+             local.get $123
+             i32.load8_u $0
+             i32.eq
+            else
+             i32.const 1
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+      br $~lib/string/String.__eq|inlined.0
+     end
+     unreachable
+    end
+    i32.const 0
+    i32.ne
     i32.eqz
     if
      unreachable
@@ -5704,40 +6857,1838 @@
   if
    unreachable
   end
-  local.get $21
+  block $~lib/string/String.__eq|inlined.1 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.get $21
+   i32.const 0
+   call $~lib/staticarray/StaticArray<~lib/string/String>#__get
+   local.tee $124
+   i32.store $0 offset=48
+   global.get $~lib/memory/__stack_pointer
+   i32.const 576
+   local.tee $125
+   i32.store $0 offset=52
+   local.get $124
+   local.set $126
+   local.get $125
+   local.set $127
+   local.get $126
+   local.get $127
+   i32.eq
+   if
+    i32.const 1
+    br $~lib/string/String.__eq|inlined.1
+   end
+   local.get $126
+   i32.const 0
+   i32.eq
+   if (result i32)
+    i32.const 1
+   else
+    local.get $127
+    i32.const 0
+    i32.eq
+   end
+   if
+    i32.const 0
+    br $~lib/string/String.__eq|inlined.1
+   end
+   local.get $124
+   call $~lib/string/String#get:length
+   local.set $128
+   local.get $128
+   local.get $125
+   call $~lib/string/String#get:length
+   i32.ne
+   if
+    i32.const 0
+    br $~lib/string/String.__eq|inlined.1
+   end
+   local.get $128
+   i32.const 128
+   i32.ge_s
+   if
+    block $~lib/util/raweq/__raweq128|inlined.1 (result i32)
+     local.get $126
+     local.set $129
+     local.get $127
+     local.set $130
+     local.get $129
+     local.set $131
+     local.get $130
+     local.set $132
+     local.get $131
+     i64.load $0
+     local.get $132
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $133
+     local.get $130
+     local.set $134
+     local.get $133
+     i64.load $0
+     local.get $134
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $135
+     local.get $130
+     local.set $136
+     local.get $135
+     i64.load $0
+     local.get $136
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $137
+     local.get $130
+     local.set $138
+     local.get $137
+     i64.load $0
+     local.get $138
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $139
+     local.get $130
+     local.set $140
+     local.get $139
+     i64.load $0
+     local.get $140
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $141
+     local.get $130
+     local.set $142
+     local.get $141
+     i64.load $0
+     local.get $142
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $143
+     local.get $130
+     local.set $144
+     local.get $143
+     i64.load $0
+     local.get $144
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $145
+     local.get $130
+     local.set $146
+     local.get $145
+     i64.load $0
+     local.get $146
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $147
+     local.get $130
+     local.set $148
+     local.get $147
+     i64.load $0
+     local.get $148
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $149
+     local.get $130
+     local.set $150
+     local.get $149
+     i64.load $0
+     local.get $150
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $151
+     local.get $130
+     local.set $152
+     local.get $151
+     i64.load $0
+     local.get $152
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $153
+     local.get $130
+     local.set $154
+     local.get $153
+     i64.load $0
+     local.get $154
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $155
+     local.get $130
+     local.set $156
+     local.get $155
+     i64.load $0
+     local.get $156
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $157
+     local.get $130
+     local.set $158
+     local.get $157
+     i64.load $0
+     local.get $158
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     local.set $159
+     local.get $130
+     local.set $160
+     local.get $159
+     i64.load $0
+     local.get $160
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.1
+     end
+     local.get $129
+     i32.const 8
+     i32.add
+     local.set $129
+     local.get $130
+     i32.const 8
+     i32.add
+     local.set $130
+     local.get $129
+     i64.load $0
+     local.get $130
+     i64.load $0
+     i64.eq
+    end
+    br $~lib/string/String.__eq|inlined.1
+   else
+    block $~lib/util/equpto/__equpto127|inlined.1 (result i32)
+     local.get $126
+     local.set $161
+     local.get $127
+     local.set $162
+     local.get $128
+     local.set $163
+     local.get $163
+     i32.const 64
+     i32.ge_u
+     if
+      block $~lib/util/raweq/__raweq64|inlined.1 (result i32)
+       local.get $161
+       local.set $164
+       local.get $162
+       local.set $165
+       local.get $164
+       local.set $166
+       local.get $165
+       local.set $167
+       local.get $166
+       i64.load $0
+       local.get $167
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.1
+       end
+       local.get $164
+       i32.const 8
+       i32.add
+       local.set $164
+       local.get $165
+       i32.const 8
+       i32.add
+       local.set $165
+       local.get $164
+       local.set $168
+       local.get $165
+       local.set $169
+       local.get $168
+       i64.load $0
+       local.get $169
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.1
+       end
+       local.get $164
+       i32.const 8
+       i32.add
+       local.set $164
+       local.get $165
+       i32.const 8
+       i32.add
+       local.set $165
+       local.get $164
+       local.set $170
+       local.get $165
+       local.set $171
+       local.get $170
+       i64.load $0
+       local.get $171
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.1
+       end
+       local.get $164
+       i32.const 8
+       i32.add
+       local.set $164
+       local.get $165
+       i32.const 8
+       i32.add
+       local.set $165
+       local.get $164
+       local.set $172
+       local.get $165
+       local.set $173
+       local.get $172
+       i64.load $0
+       local.get $173
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.1
+       end
+       local.get $164
+       i32.const 8
+       i32.add
+       local.set $164
+       local.get $165
+       i32.const 8
+       i32.add
+       local.set $165
+       local.get $164
+       local.set $174
+       local.get $165
+       local.set $175
+       local.get $174
+       i64.load $0
+       local.get $175
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.1
+       end
+       local.get $164
+       i32.const 8
+       i32.add
+       local.set $164
+       local.get $165
+       i32.const 8
+       i32.add
+       local.set $165
+       local.get $164
+       local.set $176
+       local.get $165
+       local.set $177
+       local.get $176
+       i64.load $0
+       local.get $177
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.1
+       end
+       local.get $164
+       i32.const 8
+       i32.add
+       local.set $164
+       local.get $165
+       i32.const 8
+       i32.add
+       local.set $165
+       local.get $164
+       local.set $178
+       local.get $165
+       local.set $179
+       local.get $178
+       i64.load $0
+       local.get $179
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.1
+       end
+       local.get $164
+       i32.const 8
+       i32.add
+       local.set $164
+       local.get $165
+       i32.const 8
+       i32.add
+       local.set $165
+       local.get $164
+       i64.load $0
+       local.get $165
+       i64.load $0
+       i64.eq
+      end
+      local.set $180
+      local.get $180
+      i32.eqz
+      if
+       i32.const 0
+       br $~lib/util/equpto/__equpto127|inlined.1
+      end
+      local.get $161
+      i32.const 64
+      i32.add
+      local.set $161
+      local.get $162
+      i32.const 64
+      i32.add
+      local.set $162
+      local.get $163
+      i32.const 64
+      i32.sub
+      local.set $163
+     end
+     block $~lib/util/equpto/__equpto63|inlined.1 (result i32)
+      local.get $161
+      local.set $181
+      local.get $162
+      local.set $182
+      local.get $163
+      local.set $183
+      local.get $183
+      i32.const 32
+      i32.ge_u
+      if
+       block $~lib/util/raweq/__raweq32|inlined.1 (result i32)
+        local.get $181
+        local.set $184
+        local.get $182
+        local.set $185
+        local.get $184
+        local.set $186
+        local.get $185
+        local.set $187
+        local.get $186
+        i64.load $0
+        local.get $187
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.1
+        end
+        local.get $184
+        i32.const 8
+        i32.add
+        local.set $184
+        local.get $185
+        i32.const 8
+        i32.add
+        local.set $185
+        local.get $184
+        local.set $188
+        local.get $185
+        local.set $189
+        local.get $188
+        i64.load $0
+        local.get $189
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.1
+        end
+        local.get $184
+        i32.const 8
+        i32.add
+        local.set $184
+        local.get $185
+        i32.const 8
+        i32.add
+        local.set $185
+        local.get $184
+        local.set $190
+        local.get $185
+        local.set $191
+        local.get $190
+        i64.load $0
+        local.get $191
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.1
+        end
+        local.get $184
+        i32.const 8
+        i32.add
+        local.set $184
+        local.get $185
+        i32.const 8
+        i32.add
+        local.set $185
+        local.get $184
+        i64.load $0
+        local.get $185
+        i64.load $0
+        i64.eq
+       end
+       local.set $192
+       local.get $192
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/equpto/__equpto63|inlined.1
+       end
+       local.get $181
+       i32.const 32
+       i32.add
+       local.set $181
+       local.get $182
+       i32.const 32
+       i32.add
+       local.set $182
+       local.get $183
+       i32.const 32
+       i32.sub
+       local.set $183
+      end
+      block $~lib/util/equpto/__equpto31|inlined.1 (result i32)
+       local.get $181
+       local.set $193
+       local.get $182
+       local.set $194
+       local.get $183
+       local.set $195
+       local.get $195
+       i32.const 16
+       i32.ge_u
+       if
+        block $~lib/util/raweq/__raweq16|inlined.1 (result i32)
+         local.get $193
+         local.set $196
+         local.get $194
+         local.set $197
+         local.get $196
+         local.set $198
+         local.get $197
+         local.set $199
+         local.get $198
+         i64.load $0
+         local.get $199
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq16|inlined.1
+         end
+         local.get $196
+         i32.const 8
+         i32.add
+         local.set $196
+         local.get $197
+         i32.const 8
+         i32.add
+         local.set $197
+         local.get $196
+         i64.load $0
+         local.get $197
+         i64.load $0
+         i64.eq
+        end
+        local.set $200
+        local.get $200
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/equpto/__equpto31|inlined.1
+        end
+        local.get $193
+        i32.const 16
+        i32.add
+        local.set $193
+        local.get $194
+        i32.const 16
+        i32.add
+        local.set $194
+        local.get $195
+        i32.const 16
+        i32.sub
+        local.set $195
+       end
+       block $~lib/util/equpto/__equpto15|inlined.1 (result i32)
+        local.get $193
+        local.set $201
+        local.get $194
+        local.set $202
+        local.get $195
+        local.set $203
+        local.get $203
+        i32.const 8
+        i32.ge_u
+        if
+         local.get $201
+         local.set $204
+         local.get $202
+         local.set $205
+         local.get $204
+         i64.load $0
+         local.get $205
+         i64.load $0
+         i64.eq
+         local.set $206
+         local.get $206
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/equpto/__equpto15|inlined.1
+         end
+         local.get $201
+         i32.const 8
+         i32.add
+         local.set $201
+         local.get $202
+         i32.const 8
+         i32.add
+         local.set $202
+         local.get $203
+         i32.const 8
+         i32.sub
+         local.set $203
+        end
+        block $~lib/util/equpto/__equpto7|inlined.1 (result i32)
+         local.get $201
+         local.set $207
+         local.get $202
+         local.set $208
+         local.get $203
+         local.set $209
+         local.get $209
+         i32.const 4
+         i32.ge_u
+         if
+          local.get $207
+          local.set $210
+          local.get $208
+          local.set $211
+          local.get $210
+          i32.load $0
+          local.get $211
+          i32.load $0
+          i32.eq
+          local.set $212
+          local.get $212
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/equpto/__equpto7|inlined.1
+          end
+          local.get $207
+          i32.const 4
+          i32.add
+          local.set $207
+          local.get $208
+          i32.const 4
+          i32.add
+          local.set $208
+          local.get $209
+          i32.const 4
+          i32.sub
+          local.set $209
+         end
+         block $~lib/util/equpto/__equpto3|inlined.1 (result i32)
+          local.get $207
+          local.set $213
+          local.get $208
+          local.set $214
+          local.get $209
+          local.set $215
+          local.get $215
+          i32.const 2
+          i32.ge_u
+          if
+           local.get $213
+           local.set $216
+           local.get $214
+           local.set $217
+           local.get $216
+           i32.load16_u $0
+           local.get $217
+           i32.load16_u $0
+           i32.eq
+           local.set $218
+           local.get $218
+           i32.eqz
+           if
+            i32.const 0
+            br $~lib/util/equpto/__equpto3|inlined.1
+           end
+           local.get $213
+           i32.const 2
+           i32.add
+           local.set $213
+           local.get $214
+           i32.const 2
+           i32.add
+           local.set $214
+           local.get $215
+           i32.const 2
+           i32.sub
+           local.set $215
+          end
+          local.get $213
+          local.set $219
+          local.get $214
+          local.set $220
+          local.get $215
+          local.set $221
+          local.get $221
+          if (result i32)
+           local.get $219
+           local.set $222
+           local.get $220
+           local.set $223
+           local.get $222
+           i32.load8_u $0
+           local.get $223
+           i32.load8_u $0
+           i32.eq
+          else
+           i32.const 1
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    br $~lib/string/String.__eq|inlined.1
+   end
+   unreachable
+  end
   i32.const 0
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__get
-  local.set $53
-  global.get $~lib/memory/__stack_pointer
-  local.get $53
-  i32.store $0
-  local.get $53
-  i32.const 576
-  local.set $53
-  global.get $~lib/memory/__stack_pointer
-  local.get $53
-  i32.store $0 offset=24
-  local.get $53
-  call $~lib/string/String.__eq
+  i32.ne
   i32.eqz
   if
    unreachable
   end
-  local.get $21
-  i32.const 1
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__get
-  local.set $53
-  global.get $~lib/memory/__stack_pointer
-  local.get $53
-  i32.store $0
-  local.get $53
-  i32.const 608
-  local.set $53
-  global.get $~lib/memory/__stack_pointer
-  local.get $53
-  i32.store $0 offset=24
-  local.get $53
-  call $~lib/string/String.__eq
+  block $~lib/string/String.__eq|inlined.2 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.get $21
+   i32.const 1
+   call $~lib/staticarray/StaticArray<~lib/string/String>#__get
+   local.tee $224
+   i32.store $0 offset=56
+   global.get $~lib/memory/__stack_pointer
+   i32.const 608
+   local.tee $225
+   i32.store $0 offset=60
+   local.get $224
+   local.set $226
+   local.get $225
+   local.set $227
+   local.get $226
+   local.get $227
+   i32.eq
+   if
+    i32.const 1
+    br $~lib/string/String.__eq|inlined.2
+   end
+   local.get $226
+   i32.const 0
+   i32.eq
+   if (result i32)
+    i32.const 1
+   else
+    local.get $227
+    i32.const 0
+    i32.eq
+   end
+   if
+    i32.const 0
+    br $~lib/string/String.__eq|inlined.2
+   end
+   local.get $224
+   call $~lib/string/String#get:length
+   local.set $228
+   local.get $228
+   local.get $225
+   call $~lib/string/String#get:length
+   i32.ne
+   if
+    i32.const 0
+    br $~lib/string/String.__eq|inlined.2
+   end
+   local.get $228
+   i32.const 128
+   i32.ge_s
+   if
+    block $~lib/util/raweq/__raweq128|inlined.2 (result i32)
+     local.get $226
+     local.set $229
+     local.get $227
+     local.set $230
+     local.get $229
+     local.set $231
+     local.get $230
+     local.set $232
+     local.get $231
+     i64.load $0
+     local.get $232
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $233
+     local.get $230
+     local.set $234
+     local.get $233
+     i64.load $0
+     local.get $234
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $235
+     local.get $230
+     local.set $236
+     local.get $235
+     i64.load $0
+     local.get $236
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $237
+     local.get $230
+     local.set $238
+     local.get $237
+     i64.load $0
+     local.get $238
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $239
+     local.get $230
+     local.set $240
+     local.get $239
+     i64.load $0
+     local.get $240
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $241
+     local.get $230
+     local.set $242
+     local.get $241
+     i64.load $0
+     local.get $242
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $243
+     local.get $230
+     local.set $244
+     local.get $243
+     i64.load $0
+     local.get $244
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $245
+     local.get $230
+     local.set $246
+     local.get $245
+     i64.load $0
+     local.get $246
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $247
+     local.get $230
+     local.set $248
+     local.get $247
+     i64.load $0
+     local.get $248
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $249
+     local.get $230
+     local.set $250
+     local.get $249
+     i64.load $0
+     local.get $250
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $251
+     local.get $230
+     local.set $252
+     local.get $251
+     i64.load $0
+     local.get $252
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $253
+     local.get $230
+     local.set $254
+     local.get $253
+     i64.load $0
+     local.get $254
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $255
+     local.get $230
+     local.set $256
+     local.get $255
+     i64.load $0
+     local.get $256
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $257
+     local.get $230
+     local.set $258
+     local.get $257
+     i64.load $0
+     local.get $258
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     local.set $259
+     local.get $230
+     local.set $260
+     local.get $259
+     i64.load $0
+     local.get $260
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.2
+     end
+     local.get $229
+     i32.const 8
+     i32.add
+     local.set $229
+     local.get $230
+     i32.const 8
+     i32.add
+     local.set $230
+     local.get $229
+     i64.load $0
+     local.get $230
+     i64.load $0
+     i64.eq
+    end
+    br $~lib/string/String.__eq|inlined.2
+   else
+    block $~lib/util/equpto/__equpto127|inlined.2 (result i32)
+     local.get $226
+     local.set $261
+     local.get $227
+     local.set $262
+     local.get $228
+     local.set $263
+     local.get $263
+     i32.const 64
+     i32.ge_u
+     if
+      block $~lib/util/raweq/__raweq64|inlined.2 (result i32)
+       local.get $261
+       local.set $264
+       local.get $262
+       local.set $265
+       local.get $264
+       local.set $266
+       local.get $265
+       local.set $267
+       local.get $266
+       i64.load $0
+       local.get $267
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.2
+       end
+       local.get $264
+       i32.const 8
+       i32.add
+       local.set $264
+       local.get $265
+       i32.const 8
+       i32.add
+       local.set $265
+       local.get $264
+       local.set $268
+       local.get $265
+       local.set $269
+       local.get $268
+       i64.load $0
+       local.get $269
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.2
+       end
+       local.get $264
+       i32.const 8
+       i32.add
+       local.set $264
+       local.get $265
+       i32.const 8
+       i32.add
+       local.set $265
+       local.get $264
+       local.set $270
+       local.get $265
+       local.set $271
+       local.get $270
+       i64.load $0
+       local.get $271
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.2
+       end
+       local.get $264
+       i32.const 8
+       i32.add
+       local.set $264
+       local.get $265
+       i32.const 8
+       i32.add
+       local.set $265
+       local.get $264
+       local.set $272
+       local.get $265
+       local.set $273
+       local.get $272
+       i64.load $0
+       local.get $273
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.2
+       end
+       local.get $264
+       i32.const 8
+       i32.add
+       local.set $264
+       local.get $265
+       i32.const 8
+       i32.add
+       local.set $265
+       local.get $264
+       local.set $274
+       local.get $265
+       local.set $275
+       local.get $274
+       i64.load $0
+       local.get $275
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.2
+       end
+       local.get $264
+       i32.const 8
+       i32.add
+       local.set $264
+       local.get $265
+       i32.const 8
+       i32.add
+       local.set $265
+       local.get $264
+       local.set $276
+       local.get $265
+       local.set $277
+       local.get $276
+       i64.load $0
+       local.get $277
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.2
+       end
+       local.get $264
+       i32.const 8
+       i32.add
+       local.set $264
+       local.get $265
+       i32.const 8
+       i32.add
+       local.set $265
+       local.get $264
+       local.set $278
+       local.get $265
+       local.set $279
+       local.get $278
+       i64.load $0
+       local.get $279
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.2
+       end
+       local.get $264
+       i32.const 8
+       i32.add
+       local.set $264
+       local.get $265
+       i32.const 8
+       i32.add
+       local.set $265
+       local.get $264
+       i64.load $0
+       local.get $265
+       i64.load $0
+       i64.eq
+      end
+      local.set $280
+      local.get $280
+      i32.eqz
+      if
+       i32.const 0
+       br $~lib/util/equpto/__equpto127|inlined.2
+      end
+      local.get $261
+      i32.const 64
+      i32.add
+      local.set $261
+      local.get $262
+      i32.const 64
+      i32.add
+      local.set $262
+      local.get $263
+      i32.const 64
+      i32.sub
+      local.set $263
+     end
+     block $~lib/util/equpto/__equpto63|inlined.2 (result i32)
+      local.get $261
+      local.set $281
+      local.get $262
+      local.set $282
+      local.get $263
+      local.set $283
+      local.get $283
+      i32.const 32
+      i32.ge_u
+      if
+       block $~lib/util/raweq/__raweq32|inlined.2 (result i32)
+        local.get $281
+        local.set $284
+        local.get $282
+        local.set $285
+        local.get $284
+        local.set $286
+        local.get $285
+        local.set $287
+        local.get $286
+        i64.load $0
+        local.get $287
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.2
+        end
+        local.get $284
+        i32.const 8
+        i32.add
+        local.set $284
+        local.get $285
+        i32.const 8
+        i32.add
+        local.set $285
+        local.get $284
+        local.set $288
+        local.get $285
+        local.set $289
+        local.get $288
+        i64.load $0
+        local.get $289
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.2
+        end
+        local.get $284
+        i32.const 8
+        i32.add
+        local.set $284
+        local.get $285
+        i32.const 8
+        i32.add
+        local.set $285
+        local.get $284
+        local.set $290
+        local.get $285
+        local.set $291
+        local.get $290
+        i64.load $0
+        local.get $291
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.2
+        end
+        local.get $284
+        i32.const 8
+        i32.add
+        local.set $284
+        local.get $285
+        i32.const 8
+        i32.add
+        local.set $285
+        local.get $284
+        i64.load $0
+        local.get $285
+        i64.load $0
+        i64.eq
+       end
+       local.set $292
+       local.get $292
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/equpto/__equpto63|inlined.2
+       end
+       local.get $281
+       i32.const 32
+       i32.add
+       local.set $281
+       local.get $282
+       i32.const 32
+       i32.add
+       local.set $282
+       local.get $283
+       i32.const 32
+       i32.sub
+       local.set $283
+      end
+      block $~lib/util/equpto/__equpto31|inlined.2 (result i32)
+       local.get $281
+       local.set $293
+       local.get $282
+       local.set $294
+       local.get $283
+       local.set $295
+       local.get $295
+       i32.const 16
+       i32.ge_u
+       if
+        block $~lib/util/raweq/__raweq16|inlined.2 (result i32)
+         local.get $293
+         local.set $296
+         local.get $294
+         local.set $297
+         local.get $296
+         local.set $298
+         local.get $297
+         local.set $299
+         local.get $298
+         i64.load $0
+         local.get $299
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq16|inlined.2
+         end
+         local.get $296
+         i32.const 8
+         i32.add
+         local.set $296
+         local.get $297
+         i32.const 8
+         i32.add
+         local.set $297
+         local.get $296
+         i64.load $0
+         local.get $297
+         i64.load $0
+         i64.eq
+        end
+        local.set $300
+        local.get $300
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/equpto/__equpto31|inlined.2
+        end
+        local.get $293
+        i32.const 16
+        i32.add
+        local.set $293
+        local.get $294
+        i32.const 16
+        i32.add
+        local.set $294
+        local.get $295
+        i32.const 16
+        i32.sub
+        local.set $295
+       end
+       block $~lib/util/equpto/__equpto15|inlined.2 (result i32)
+        local.get $293
+        local.set $301
+        local.get $294
+        local.set $302
+        local.get $295
+        local.set $303
+        local.get $303
+        i32.const 8
+        i32.ge_u
+        if
+         local.get $301
+         local.set $304
+         local.get $302
+         local.set $305
+         local.get $304
+         i64.load $0
+         local.get $305
+         i64.load $0
+         i64.eq
+         local.set $306
+         local.get $306
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/equpto/__equpto15|inlined.2
+         end
+         local.get $301
+         i32.const 8
+         i32.add
+         local.set $301
+         local.get $302
+         i32.const 8
+         i32.add
+         local.set $302
+         local.get $303
+         i32.const 8
+         i32.sub
+         local.set $303
+        end
+        block $~lib/util/equpto/__equpto7|inlined.2 (result i32)
+         local.get $301
+         local.set $307
+         local.get $302
+         local.set $308
+         local.get $303
+         local.set $309
+         local.get $309
+         i32.const 4
+         i32.ge_u
+         if
+          local.get $307
+          local.set $310
+          local.get $308
+          local.set $311
+          local.get $310
+          i32.load $0
+          local.get $311
+          i32.load $0
+          i32.eq
+          local.set $312
+          local.get $312
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/equpto/__equpto7|inlined.2
+          end
+          local.get $307
+          i32.const 4
+          i32.add
+          local.set $307
+          local.get $308
+          i32.const 4
+          i32.add
+          local.set $308
+          local.get $309
+          i32.const 4
+          i32.sub
+          local.set $309
+         end
+         block $~lib/util/equpto/__equpto3|inlined.2 (result i32)
+          local.get $307
+          local.set $313
+          local.get $308
+          local.set $314
+          local.get $309
+          local.set $315
+          local.get $315
+          i32.const 2
+          i32.ge_u
+          if
+           local.get $313
+           local.set $316
+           local.get $314
+           local.set $317
+           local.get $316
+           i32.load16_u $0
+           local.get $317
+           i32.load16_u $0
+           i32.eq
+           local.set $318
+           local.get $318
+           i32.eqz
+           if
+            i32.const 0
+            br $~lib/util/equpto/__equpto3|inlined.2
+           end
+           local.get $313
+           i32.const 2
+           i32.add
+           local.set $313
+           local.get $314
+           i32.const 2
+           i32.add
+           local.set $314
+           local.get $315
+           i32.const 2
+           i32.sub
+           local.set $315
+          end
+          local.get $313
+          local.set $319
+          local.get $314
+          local.set $320
+          local.get $315
+          local.set $321
+          local.get $321
+          if (result i32)
+           local.get $319
+           local.set $322
+           local.get $320
+           local.set $323
+           local.get $322
+           i32.load8_u $0
+           local.get $323
+           i32.load8_u $0
+           i32.eq
+          else
+           i32.const 1
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    br $~lib/string/String.__eq|inlined.2
+   end
+   unreachable
+  end
+  i32.const 0
+  i32.ne
   i32.eqz
   if
    unreachable
@@ -5806,21 +8757,920 @@
   if
    unreachable
   end
-  local.get $21
+  block $~lib/string/String.__eq|inlined.3 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.get $21
+   i32.const 0
+   call $~lib/staticarray/StaticArray<~lib/string/String>#__get
+   local.tee $324
+   i32.store $0 offset=64
+   global.get $~lib/memory/__stack_pointer
+   i32.const 672
+   local.tee $325
+   i32.store $0 offset=68
+   local.get $324
+   local.set $326
+   local.get $325
+   local.set $327
+   local.get $326
+   local.get $327
+   i32.eq
+   if
+    i32.const 1
+    br $~lib/string/String.__eq|inlined.3
+   end
+   local.get $326
+   i32.const 0
+   i32.eq
+   if (result i32)
+    i32.const 1
+   else
+    local.get $327
+    i32.const 0
+    i32.eq
+   end
+   if
+    i32.const 0
+    br $~lib/string/String.__eq|inlined.3
+   end
+   local.get $324
+   call $~lib/string/String#get:length
+   local.set $328
+   local.get $328
+   local.get $325
+   call $~lib/string/String#get:length
+   i32.ne
+   if
+    i32.const 0
+    br $~lib/string/String.__eq|inlined.3
+   end
+   local.get $328
+   i32.const 128
+   i32.ge_s
+   if
+    block $~lib/util/raweq/__raweq128|inlined.3 (result i32)
+     local.get $326
+     local.set $329
+     local.get $327
+     local.set $330
+     local.get $329
+     local.set $331
+     local.get $330
+     local.set $332
+     local.get $331
+     i64.load $0
+     local.get $332
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $333
+     local.get $330
+     local.set $334
+     local.get $333
+     i64.load $0
+     local.get $334
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $335
+     local.get $330
+     local.set $336
+     local.get $335
+     i64.load $0
+     local.get $336
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $337
+     local.get $330
+     local.set $338
+     local.get $337
+     i64.load $0
+     local.get $338
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $339
+     local.get $330
+     local.set $340
+     local.get $339
+     i64.load $0
+     local.get $340
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $341
+     local.get $330
+     local.set $342
+     local.get $341
+     i64.load $0
+     local.get $342
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $343
+     local.get $330
+     local.set $344
+     local.get $343
+     i64.load $0
+     local.get $344
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $345
+     local.get $330
+     local.set $346
+     local.get $345
+     i64.load $0
+     local.get $346
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $347
+     local.get $330
+     local.set $348
+     local.get $347
+     i64.load $0
+     local.get $348
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $349
+     local.get $330
+     local.set $350
+     local.get $349
+     i64.load $0
+     local.get $350
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $351
+     local.get $330
+     local.set $352
+     local.get $351
+     i64.load $0
+     local.get $352
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $353
+     local.get $330
+     local.set $354
+     local.get $353
+     i64.load $0
+     local.get $354
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $355
+     local.get $330
+     local.set $356
+     local.get $355
+     i64.load $0
+     local.get $356
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $357
+     local.get $330
+     local.set $358
+     local.get $357
+     i64.load $0
+     local.get $358
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     local.set $359
+     local.get $330
+     local.set $360
+     local.get $359
+     i64.load $0
+     local.get $360
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.3
+     end
+     local.get $329
+     i32.const 8
+     i32.add
+     local.set $329
+     local.get $330
+     i32.const 8
+     i32.add
+     local.set $330
+     local.get $329
+     i64.load $0
+     local.get $330
+     i64.load $0
+     i64.eq
+    end
+    br $~lib/string/String.__eq|inlined.3
+   else
+    block $~lib/util/equpto/__equpto127|inlined.3 (result i32)
+     local.get $326
+     local.set $361
+     local.get $327
+     local.set $362
+     local.get $328
+     local.set $363
+     local.get $363
+     i32.const 64
+     i32.ge_u
+     if
+      block $~lib/util/raweq/__raweq64|inlined.3 (result i32)
+       local.get $361
+       local.set $364
+       local.get $362
+       local.set $365
+       local.get $364
+       local.set $366
+       local.get $365
+       local.set $367
+       local.get $366
+       i64.load $0
+       local.get $367
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.3
+       end
+       local.get $364
+       i32.const 8
+       i32.add
+       local.set $364
+       local.get $365
+       i32.const 8
+       i32.add
+       local.set $365
+       local.get $364
+       local.set $368
+       local.get $365
+       local.set $369
+       local.get $368
+       i64.load $0
+       local.get $369
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.3
+       end
+       local.get $364
+       i32.const 8
+       i32.add
+       local.set $364
+       local.get $365
+       i32.const 8
+       i32.add
+       local.set $365
+       local.get $364
+       local.set $370
+       local.get $365
+       local.set $371
+       local.get $370
+       i64.load $0
+       local.get $371
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.3
+       end
+       local.get $364
+       i32.const 8
+       i32.add
+       local.set $364
+       local.get $365
+       i32.const 8
+       i32.add
+       local.set $365
+       local.get $364
+       local.set $372
+       local.get $365
+       local.set $373
+       local.get $372
+       i64.load $0
+       local.get $373
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.3
+       end
+       local.get $364
+       i32.const 8
+       i32.add
+       local.set $364
+       local.get $365
+       i32.const 8
+       i32.add
+       local.set $365
+       local.get $364
+       local.set $374
+       local.get $365
+       local.set $375
+       local.get $374
+       i64.load $0
+       local.get $375
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.3
+       end
+       local.get $364
+       i32.const 8
+       i32.add
+       local.set $364
+       local.get $365
+       i32.const 8
+       i32.add
+       local.set $365
+       local.get $364
+       local.set $376
+       local.get $365
+       local.set $377
+       local.get $376
+       i64.load $0
+       local.get $377
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.3
+       end
+       local.get $364
+       i32.const 8
+       i32.add
+       local.set $364
+       local.get $365
+       i32.const 8
+       i32.add
+       local.set $365
+       local.get $364
+       local.set $378
+       local.get $365
+       local.set $379
+       local.get $378
+       i64.load $0
+       local.get $379
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.3
+       end
+       local.get $364
+       i32.const 8
+       i32.add
+       local.set $364
+       local.get $365
+       i32.const 8
+       i32.add
+       local.set $365
+       local.get $364
+       i64.load $0
+       local.get $365
+       i64.load $0
+       i64.eq
+      end
+      local.set $380
+      local.get $380
+      i32.eqz
+      if
+       i32.const 0
+       br $~lib/util/equpto/__equpto127|inlined.3
+      end
+      local.get $361
+      i32.const 64
+      i32.add
+      local.set $361
+      local.get $362
+      i32.const 64
+      i32.add
+      local.set $362
+      local.get $363
+      i32.const 64
+      i32.sub
+      local.set $363
+     end
+     block $~lib/util/equpto/__equpto63|inlined.3 (result i32)
+      local.get $361
+      local.set $381
+      local.get $362
+      local.set $382
+      local.get $363
+      local.set $383
+      local.get $383
+      i32.const 32
+      i32.ge_u
+      if
+       block $~lib/util/raweq/__raweq32|inlined.3 (result i32)
+        local.get $381
+        local.set $384
+        local.get $382
+        local.set $385
+        local.get $384
+        local.set $386
+        local.get $385
+        local.set $387
+        local.get $386
+        i64.load $0
+        local.get $387
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.3
+        end
+        local.get $384
+        i32.const 8
+        i32.add
+        local.set $384
+        local.get $385
+        i32.const 8
+        i32.add
+        local.set $385
+        local.get $384
+        local.set $388
+        local.get $385
+        local.set $389
+        local.get $388
+        i64.load $0
+        local.get $389
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.3
+        end
+        local.get $384
+        i32.const 8
+        i32.add
+        local.set $384
+        local.get $385
+        i32.const 8
+        i32.add
+        local.set $385
+        local.get $384
+        local.set $390
+        local.get $385
+        local.set $391
+        local.get $390
+        i64.load $0
+        local.get $391
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.3
+        end
+        local.get $384
+        i32.const 8
+        i32.add
+        local.set $384
+        local.get $385
+        i32.const 8
+        i32.add
+        local.set $385
+        local.get $384
+        i64.load $0
+        local.get $385
+        i64.load $0
+        i64.eq
+       end
+       local.set $392
+       local.get $392
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/equpto/__equpto63|inlined.3
+       end
+       local.get $381
+       i32.const 32
+       i32.add
+       local.set $381
+       local.get $382
+       i32.const 32
+       i32.add
+       local.set $382
+       local.get $383
+       i32.const 32
+       i32.sub
+       local.set $383
+      end
+      block $~lib/util/equpto/__equpto31|inlined.3 (result i32)
+       local.get $381
+       local.set $393
+       local.get $382
+       local.set $394
+       local.get $383
+       local.set $395
+       local.get $395
+       i32.const 16
+       i32.ge_u
+       if
+        block $~lib/util/raweq/__raweq16|inlined.3 (result i32)
+         local.get $393
+         local.set $396
+         local.get $394
+         local.set $397
+         local.get $396
+         local.set $398
+         local.get $397
+         local.set $399
+         local.get $398
+         i64.load $0
+         local.get $399
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq16|inlined.3
+         end
+         local.get $396
+         i32.const 8
+         i32.add
+         local.set $396
+         local.get $397
+         i32.const 8
+         i32.add
+         local.set $397
+         local.get $396
+         i64.load $0
+         local.get $397
+         i64.load $0
+         i64.eq
+        end
+        local.set $400
+        local.get $400
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/equpto/__equpto31|inlined.3
+        end
+        local.get $393
+        i32.const 16
+        i32.add
+        local.set $393
+        local.get $394
+        i32.const 16
+        i32.add
+        local.set $394
+        local.get $395
+        i32.const 16
+        i32.sub
+        local.set $395
+       end
+       block $~lib/util/equpto/__equpto15|inlined.3 (result i32)
+        local.get $393
+        local.set $401
+        local.get $394
+        local.set $402
+        local.get $395
+        local.set $403
+        local.get $403
+        i32.const 8
+        i32.ge_u
+        if
+         local.get $401
+         local.set $404
+         local.get $402
+         local.set $405
+         local.get $404
+         i64.load $0
+         local.get $405
+         i64.load $0
+         i64.eq
+         local.set $406
+         local.get $406
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/equpto/__equpto15|inlined.3
+         end
+         local.get $401
+         i32.const 8
+         i32.add
+         local.set $401
+         local.get $402
+         i32.const 8
+         i32.add
+         local.set $402
+         local.get $403
+         i32.const 8
+         i32.sub
+         local.set $403
+        end
+        block $~lib/util/equpto/__equpto7|inlined.3 (result i32)
+         local.get $401
+         local.set $407
+         local.get $402
+         local.set $408
+         local.get $403
+         local.set $409
+         local.get $409
+         i32.const 4
+         i32.ge_u
+         if
+          local.get $407
+          local.set $410
+          local.get $408
+          local.set $411
+          local.get $410
+          i32.load $0
+          local.get $411
+          i32.load $0
+          i32.eq
+          local.set $412
+          local.get $412
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/equpto/__equpto7|inlined.3
+          end
+          local.get $407
+          i32.const 4
+          i32.add
+          local.set $407
+          local.get $408
+          i32.const 4
+          i32.add
+          local.set $408
+          local.get $409
+          i32.const 4
+          i32.sub
+          local.set $409
+         end
+         block $~lib/util/equpto/__equpto3|inlined.3 (result i32)
+          local.get $407
+          local.set $413
+          local.get $408
+          local.set $414
+          local.get $409
+          local.set $415
+          local.get $415
+          i32.const 2
+          i32.ge_u
+          if
+           local.get $413
+           local.set $416
+           local.get $414
+           local.set $417
+           local.get $416
+           i32.load16_u $0
+           local.get $417
+           i32.load16_u $0
+           i32.eq
+           local.set $418
+           local.get $418
+           i32.eqz
+           if
+            i32.const 0
+            br $~lib/util/equpto/__equpto3|inlined.3
+           end
+           local.get $413
+           i32.const 2
+           i32.add
+           local.set $413
+           local.get $414
+           i32.const 2
+           i32.add
+           local.set $414
+           local.get $415
+           i32.const 2
+           i32.sub
+           local.set $415
+          end
+          local.get $413
+          local.set $419
+          local.get $414
+          local.set $420
+          local.get $415
+          local.set $421
+          local.get $421
+          if (result i32)
+           local.get $419
+           local.set $422
+           local.get $420
+           local.set $423
+           local.get $422
+           i32.load8_u $0
+           local.get $423
+           i32.load8_u $0
+           i32.eq
+          else
+           i32.const 1
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    br $~lib/string/String.__eq|inlined.3
+   end
+   unreachable
+  end
   i32.const 0
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__get
-  local.set $53
-  global.get $~lib/memory/__stack_pointer
-  local.get $53
-  i32.store $0
-  local.get $53
-  i32.const 672
-  local.set $53
-  global.get $~lib/memory/__stack_pointer
-  local.get $53
-  i32.store $0 offset=24
-  local.get $53
-  call $~lib/string/String.__eq
+  i32.ne
   i32.eqz
   if
    unreachable
@@ -5855,21 +9705,920 @@
   if
    unreachable
   end
-  local.get $21
+  block $~lib/string/String.__eq|inlined.4 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.get $21
+   i32.const 0
+   call $~lib/staticarray/StaticArray<~lib/string/String>#__get
+   local.tee $424
+   i32.store $0 offset=72
+   global.get $~lib/memory/__stack_pointer
+   i32.const 608
+   local.tee $425
+   i32.store $0 offset=76
+   local.get $424
+   local.set $426
+   local.get $425
+   local.set $427
+   local.get $426
+   local.get $427
+   i32.eq
+   if
+    i32.const 1
+    br $~lib/string/String.__eq|inlined.4
+   end
+   local.get $426
+   i32.const 0
+   i32.eq
+   if (result i32)
+    i32.const 1
+   else
+    local.get $427
+    i32.const 0
+    i32.eq
+   end
+   if
+    i32.const 0
+    br $~lib/string/String.__eq|inlined.4
+   end
+   local.get $424
+   call $~lib/string/String#get:length
+   local.set $428
+   local.get $428
+   local.get $425
+   call $~lib/string/String#get:length
+   i32.ne
+   if
+    i32.const 0
+    br $~lib/string/String.__eq|inlined.4
+   end
+   local.get $428
+   i32.const 128
+   i32.ge_s
+   if
+    block $~lib/util/raweq/__raweq128|inlined.4 (result i32)
+     local.get $426
+     local.set $429
+     local.get $427
+     local.set $430
+     local.get $429
+     local.set $431
+     local.get $430
+     local.set $432
+     local.get $431
+     i64.load $0
+     local.get $432
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $433
+     local.get $430
+     local.set $434
+     local.get $433
+     i64.load $0
+     local.get $434
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $435
+     local.get $430
+     local.set $436
+     local.get $435
+     i64.load $0
+     local.get $436
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $437
+     local.get $430
+     local.set $438
+     local.get $437
+     i64.load $0
+     local.get $438
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $439
+     local.get $430
+     local.set $440
+     local.get $439
+     i64.load $0
+     local.get $440
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $441
+     local.get $430
+     local.set $442
+     local.get $441
+     i64.load $0
+     local.get $442
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $443
+     local.get $430
+     local.set $444
+     local.get $443
+     i64.load $0
+     local.get $444
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $445
+     local.get $430
+     local.set $446
+     local.get $445
+     i64.load $0
+     local.get $446
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $447
+     local.get $430
+     local.set $448
+     local.get $447
+     i64.load $0
+     local.get $448
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $449
+     local.get $430
+     local.set $450
+     local.get $449
+     i64.load $0
+     local.get $450
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $451
+     local.get $430
+     local.set $452
+     local.get $451
+     i64.load $0
+     local.get $452
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $453
+     local.get $430
+     local.set $454
+     local.get $453
+     i64.load $0
+     local.get $454
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $455
+     local.get $430
+     local.set $456
+     local.get $455
+     i64.load $0
+     local.get $456
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $457
+     local.get $430
+     local.set $458
+     local.get $457
+     i64.load $0
+     local.get $458
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     local.set $459
+     local.get $430
+     local.set $460
+     local.get $459
+     i64.load $0
+     local.get $460
+     i64.load $0
+     i64.eq
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/raweq/__raweq128|inlined.4
+     end
+     local.get $429
+     i32.const 8
+     i32.add
+     local.set $429
+     local.get $430
+     i32.const 8
+     i32.add
+     local.set $430
+     local.get $429
+     i64.load $0
+     local.get $430
+     i64.load $0
+     i64.eq
+    end
+    br $~lib/string/String.__eq|inlined.4
+   else
+    block $~lib/util/equpto/__equpto127|inlined.4 (result i32)
+     local.get $426
+     local.set $461
+     local.get $427
+     local.set $462
+     local.get $428
+     local.set $463
+     local.get $463
+     i32.const 64
+     i32.ge_u
+     if
+      block $~lib/util/raweq/__raweq64|inlined.4 (result i32)
+       local.get $461
+       local.set $464
+       local.get $462
+       local.set $465
+       local.get $464
+       local.set $466
+       local.get $465
+       local.set $467
+       local.get $466
+       i64.load $0
+       local.get $467
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.4
+       end
+       local.get $464
+       i32.const 8
+       i32.add
+       local.set $464
+       local.get $465
+       i32.const 8
+       i32.add
+       local.set $465
+       local.get $464
+       local.set $468
+       local.get $465
+       local.set $469
+       local.get $468
+       i64.load $0
+       local.get $469
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.4
+       end
+       local.get $464
+       i32.const 8
+       i32.add
+       local.set $464
+       local.get $465
+       i32.const 8
+       i32.add
+       local.set $465
+       local.get $464
+       local.set $470
+       local.get $465
+       local.set $471
+       local.get $470
+       i64.load $0
+       local.get $471
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.4
+       end
+       local.get $464
+       i32.const 8
+       i32.add
+       local.set $464
+       local.get $465
+       i32.const 8
+       i32.add
+       local.set $465
+       local.get $464
+       local.set $472
+       local.get $465
+       local.set $473
+       local.get $472
+       i64.load $0
+       local.get $473
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.4
+       end
+       local.get $464
+       i32.const 8
+       i32.add
+       local.set $464
+       local.get $465
+       i32.const 8
+       i32.add
+       local.set $465
+       local.get $464
+       local.set $474
+       local.get $465
+       local.set $475
+       local.get $474
+       i64.load $0
+       local.get $475
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.4
+       end
+       local.get $464
+       i32.const 8
+       i32.add
+       local.set $464
+       local.get $465
+       i32.const 8
+       i32.add
+       local.set $465
+       local.get $464
+       local.set $476
+       local.get $465
+       local.set $477
+       local.get $476
+       i64.load $0
+       local.get $477
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.4
+       end
+       local.get $464
+       i32.const 8
+       i32.add
+       local.set $464
+       local.get $465
+       i32.const 8
+       i32.add
+       local.set $465
+       local.get $464
+       local.set $478
+       local.get $465
+       local.set $479
+       local.get $478
+       i64.load $0
+       local.get $479
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq64|inlined.4
+       end
+       local.get $464
+       i32.const 8
+       i32.add
+       local.set $464
+       local.get $465
+       i32.const 8
+       i32.add
+       local.set $465
+       local.get $464
+       i64.load $0
+       local.get $465
+       i64.load $0
+       i64.eq
+      end
+      local.set $480
+      local.get $480
+      i32.eqz
+      if
+       i32.const 0
+       br $~lib/util/equpto/__equpto127|inlined.4
+      end
+      local.get $461
+      i32.const 64
+      i32.add
+      local.set $461
+      local.get $462
+      i32.const 64
+      i32.add
+      local.set $462
+      local.get $463
+      i32.const 64
+      i32.sub
+      local.set $463
+     end
+     block $~lib/util/equpto/__equpto63|inlined.4 (result i32)
+      local.get $461
+      local.set $481
+      local.get $462
+      local.set $482
+      local.get $463
+      local.set $483
+      local.get $483
+      i32.const 32
+      i32.ge_u
+      if
+       block $~lib/util/raweq/__raweq32|inlined.4 (result i32)
+        local.get $481
+        local.set $484
+        local.get $482
+        local.set $485
+        local.get $484
+        local.set $486
+        local.get $485
+        local.set $487
+        local.get $486
+        i64.load $0
+        local.get $487
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.4
+        end
+        local.get $484
+        i32.const 8
+        i32.add
+        local.set $484
+        local.get $485
+        i32.const 8
+        i32.add
+        local.set $485
+        local.get $484
+        local.set $488
+        local.get $485
+        local.set $489
+        local.get $488
+        i64.load $0
+        local.get $489
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.4
+        end
+        local.get $484
+        i32.const 8
+        i32.add
+        local.set $484
+        local.get $485
+        i32.const 8
+        i32.add
+        local.set $485
+        local.get $484
+        local.set $490
+        local.get $485
+        local.set $491
+        local.get $490
+        i64.load $0
+        local.get $491
+        i64.load $0
+        i64.eq
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/raweq/__raweq32|inlined.4
+        end
+        local.get $484
+        i32.const 8
+        i32.add
+        local.set $484
+        local.get $485
+        i32.const 8
+        i32.add
+        local.set $485
+        local.get $484
+        i64.load $0
+        local.get $485
+        i64.load $0
+        i64.eq
+       end
+       local.set $492
+       local.get $492
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/equpto/__equpto63|inlined.4
+       end
+       local.get $481
+       i32.const 32
+       i32.add
+       local.set $481
+       local.get $482
+       i32.const 32
+       i32.add
+       local.set $482
+       local.get $483
+       i32.const 32
+       i32.sub
+       local.set $483
+      end
+      block $~lib/util/equpto/__equpto31|inlined.4 (result i32)
+       local.get $481
+       local.set $493
+       local.get $482
+       local.set $494
+       local.get $483
+       local.set $495
+       local.get $495
+       i32.const 16
+       i32.ge_u
+       if
+        block $~lib/util/raweq/__raweq16|inlined.4 (result i32)
+         local.get $493
+         local.set $496
+         local.get $494
+         local.set $497
+         local.get $496
+         local.set $498
+         local.get $497
+         local.set $499
+         local.get $498
+         i64.load $0
+         local.get $499
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq16|inlined.4
+         end
+         local.get $496
+         i32.const 8
+         i32.add
+         local.set $496
+         local.get $497
+         i32.const 8
+         i32.add
+         local.set $497
+         local.get $496
+         i64.load $0
+         local.get $497
+         i64.load $0
+         i64.eq
+        end
+        local.set $500
+        local.get $500
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/equpto/__equpto31|inlined.4
+        end
+        local.get $493
+        i32.const 16
+        i32.add
+        local.set $493
+        local.get $494
+        i32.const 16
+        i32.add
+        local.set $494
+        local.get $495
+        i32.const 16
+        i32.sub
+        local.set $495
+       end
+       block $~lib/util/equpto/__equpto15|inlined.4 (result i32)
+        local.get $493
+        local.set $501
+        local.get $494
+        local.set $502
+        local.get $495
+        local.set $503
+        local.get $503
+        i32.const 8
+        i32.ge_u
+        if
+         local.get $501
+         local.set $504
+         local.get $502
+         local.set $505
+         local.get $504
+         i64.load $0
+         local.get $505
+         i64.load $0
+         i64.eq
+         local.set $506
+         local.get $506
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/equpto/__equpto15|inlined.4
+         end
+         local.get $501
+         i32.const 8
+         i32.add
+         local.set $501
+         local.get $502
+         i32.const 8
+         i32.add
+         local.set $502
+         local.get $503
+         i32.const 8
+         i32.sub
+         local.set $503
+        end
+        block $~lib/util/equpto/__equpto7|inlined.4 (result i32)
+         local.get $501
+         local.set $507
+         local.get $502
+         local.set $508
+         local.get $503
+         local.set $509
+         local.get $509
+         i32.const 4
+         i32.ge_u
+         if
+          local.get $507
+          local.set $510
+          local.get $508
+          local.set $511
+          local.get $510
+          i32.load $0
+          local.get $511
+          i32.load $0
+          i32.eq
+          local.set $512
+          local.get $512
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/equpto/__equpto7|inlined.4
+          end
+          local.get $507
+          i32.const 4
+          i32.add
+          local.set $507
+          local.get $508
+          i32.const 4
+          i32.add
+          local.set $508
+          local.get $509
+          i32.const 4
+          i32.sub
+          local.set $509
+         end
+         block $~lib/util/equpto/__equpto3|inlined.4 (result i32)
+          local.get $507
+          local.set $513
+          local.get $508
+          local.set $514
+          local.get $509
+          local.set $515
+          local.get $515
+          i32.const 2
+          i32.ge_u
+          if
+           local.get $513
+           local.set $516
+           local.get $514
+           local.set $517
+           local.get $516
+           i32.load16_u $0
+           local.get $517
+           i32.load16_u $0
+           i32.eq
+           local.set $518
+           local.get $518
+           i32.eqz
+           if
+            i32.const 0
+            br $~lib/util/equpto/__equpto3|inlined.4
+           end
+           local.get $513
+           i32.const 2
+           i32.add
+           local.set $513
+           local.get $514
+           i32.const 2
+           i32.add
+           local.set $514
+           local.get $515
+           i32.const 2
+           i32.sub
+           local.set $515
+          end
+          local.get $513
+          local.set $519
+          local.get $514
+          local.set $520
+          local.get $515
+          local.set $521
+          local.get $521
+          if (result i32)
+           local.get $519
+           local.set $522
+           local.get $520
+           local.set $523
+           local.get $522
+           i32.load8_u $0
+           local.get $523
+           i32.load8_u $0
+           i32.eq
+          else
+           i32.const 1
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    br $~lib/string/String.__eq|inlined.4
+   end
+   unreachable
+  end
   i32.const 0
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__get
-  local.set $53
-  global.get $~lib/memory/__stack_pointer
-  local.get $53
-  i32.store $0
-  local.get $53
-  i32.const 608
-  local.set $53
-  global.get $~lib/memory/__stack_pointer
-  local.get $53
-  i32.store $0 offset=24
-  local.get $53
-  call $~lib/string/String.__eq
+  i32.ne
   i32.eqz
   if
    unreachable
@@ -5879,26 +10628,26 @@
   i32.const 7
   i32.const 832
   call $~lib/rt/__newBuffer
-  local.tee $25
-  i32.store $0 offset=40
+  local.tee $525
+  i32.store $0 offset=80
   global.get $~lib/memory/__stack_pointer
-  local.get $25
+  local.get $525
   i32.const 0
   i32.const 2
   i32.const 8
   i32.const 880
   call $~lib/rt/__newArray
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<~lib/string/String>#concat<~lib/array/Array<~lib/string/String>>
-  local.tee $28
-  i32.store $0 offset=44
-  local.get $28
+  local.tee $528
+  i32.store $0 offset=84
+  local.get $528
   call $~lib/array/Array<~lib/string/String>#get:length
-  local.get $25
+  local.get $525
   call $~lib/staticarray/StaticArray<~lib/string/String>#get:length
   i32.eq
   i32.eqz
@@ -5908,23 +10657,23 @@
   i32.const 1
   drop
   global.get $~lib/memory/__stack_pointer
-  local.get $25
+  local.get $525
   i32.const 1
   i32.const 2
   i32.const 8
   i32.const 944
   call $~lib/rt/__newArray
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<~lib/string/String>#concat<~lib/array/Array<~lib/string/String>>
-  local.tee $28
-  i32.store $0 offset=44
-  local.get $28
+  local.tee $528
+  i32.store $0 offset=84
+  local.get $528
   call $~lib/array/Array<~lib/string/String>#get:length
-  local.get $25
+  local.get $525
   call $~lib/staticarray/StaticArray<~lib/string/String>#get:length
   i32.const 1
   i32.add
@@ -5940,15 +10689,15 @@
   i32.const 7
   i32.const 976
   call $~lib/rt/__newBuffer
-  local.tee $32
-  i32.store $0 offset=48
-  local.get $32
+  local.tee $532
+  i32.store $0 offset=88
+  local.get $532
   i32.const 576
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   i32.const 0
   call $~lib/staticarray/StaticArray<~lib/string/String>#includes
   i32.const 1
@@ -5957,13 +10706,13 @@
   if
    unreachable
   end
-  local.get $32
+  local.get $532
   i32.const 912
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   i32.const 0
   call $~lib/staticarray/StaticArray<~lib/string/String>#includes
   i32.const 0
@@ -5972,13 +10721,13 @@
   if
    unreachable
   end
-  local.get $32
+  local.get $532
   i32.const 672
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   i32.const 5
   call $~lib/staticarray/StaticArray<~lib/string/String>#includes
   i32.const 0
@@ -5987,13 +10736,13 @@
   if
    unreachable
   end
-  local.get $32
+  local.get $532
   i32.const 672
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   i32.const -1
   call $~lib/staticarray/StaticArray<~lib/string/String>#includes
   i32.const 1
@@ -6006,11 +10755,11 @@
   i32.const 9
   i32.const 1024
   call $~lib/rt/__newBuffer
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   f64.const nan:0x8000000000000
   i32.const 0
   call $~lib/staticarray/StaticArray<f64>#includes
@@ -6024,11 +10773,11 @@
   i32.const 10
   i32.const 1056
   call $~lib/rt/__newBuffer
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0
-  local.get $53
+  local.get $553
   f32.const nan:0x400000
   i32.const 0
   call $~lib/staticarray/StaticArray<f32>#includes
@@ -6043,9 +10792,9 @@
   i32.const 3
   i32.const 1088
   call $~lib/rt/__newBuffer
-  local.tee $36
-  i32.store $0 offset=52
-  local.get $36
+  local.tee $536
+  i32.store $0 offset=92
+  local.get $536
   i32.const 2
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#indexOf
@@ -6055,7 +10804,7 @@
   if
    unreachable
   end
-  local.get $36
+  local.get $536
   i32.const 7
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#indexOf
@@ -6065,7 +10814,7 @@
   if
    unreachable
   end
-  local.get $36
+  local.get $536
   i32.const 9
   i32.const 2
   call $~lib/staticarray/StaticArray<i32>#indexOf
@@ -6075,7 +10824,7 @@
   if
    unreachable
   end
-  local.get $36
+  local.get $536
   i32.const 2
   i32.const -1
   call $~lib/staticarray/StaticArray<i32>#indexOf
@@ -6085,7 +10834,7 @@
   if
    unreachable
   end
-  local.get $36
+  local.get $536
   i32.const 2
   i32.const -3
   call $~lib/staticarray/StaticArray<i32>#indexOf
@@ -6100,9 +10849,9 @@
   i32.const 3
   i32.const 1120
   call $~lib/rt/__newBuffer
-  local.tee $38
-  i32.store $0 offset=56
-  local.get $38
+  local.tee $538
+  i32.store $0 offset=96
+  local.get $538
   i32.const 2
   i32.const 1
   global.set $~argumentsLength
@@ -6114,7 +10863,7 @@
   if
    unreachable
   end
-  local.get $38
+  local.get $538
   i32.const 7
   i32.const 1
   global.set $~argumentsLength
@@ -6126,7 +10875,7 @@
   if
    unreachable
   end
-  local.get $38
+  local.get $538
   i32.const 2
   i32.const 3
   call $~lib/staticarray/StaticArray<i32>#lastIndexOf
@@ -6136,7 +10885,7 @@
   if
    unreachable
   end
-  local.get $38
+  local.get $538
   i32.const 2
   i32.const 2
   call $~lib/staticarray/StaticArray<i32>#lastIndexOf
@@ -6146,7 +10895,7 @@
   if
    unreachable
   end
-  local.get $38
+  local.get $538
   i32.const 2
   i32.const -2
   call $~lib/staticarray/StaticArray<i32>#lastIndexOf
@@ -6156,7 +10905,7 @@
   if
    unreachable
   end
-  local.get $38
+  local.get $538
   i32.const 2
   i32.const -1
   call $~lib/staticarray/StaticArray<i32>#lastIndexOf
@@ -6171,15 +10920,15 @@
   i32.const 3
   i32.const 1168
   call $~lib/rt/__newBuffer
-  local.tee $40
-  i32.store $0 offset=60
-  local.get $40
+  local.tee $540
+  i32.store $0 offset=100
+  local.get $540
   i32.const 1
   i32.const 1
   global.get $~lib/builtins/i32.MAX_VALUE
   call $~lib/staticarray/StaticArray<i32>#fill
   drop
-  local.get $40
+  local.get $540
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 0
@@ -6188,7 +10937,7 @@
   if
    unreachable
   end
-  local.get $40
+  local.get $540
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 1
@@ -6202,12 +10951,12 @@
   i32.const 3
   i32.const 1200
   call $~lib/rt/__newBuffer
-  local.tee $42
-  i32.store $0 offset=64
-  local.get $42
+  local.tee $542
+  i32.store $0 offset=104
+  local.get $542
   call $~lib/staticarray/StaticArray<i32>#reverse
   drop
-  local.get $42
+  local.get $542
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 3
@@ -6216,7 +10965,7 @@
   if
    unreachable
   end
-  local.get $42
+  local.get $542
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 2
@@ -6225,7 +10974,7 @@
   if
    unreachable
   end
-  local.get $42
+  local.get $542
   i32.const 2
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 1
@@ -6239,15 +10988,15 @@
   i32.const 3
   i32.const 1232
   call $~lib/rt/__newBuffer
-  local.tee $44
-  i32.store $0 offset=68
-  local.get $44
+  local.tee $544
+  i32.store $0 offset=108
+  local.get $544
   i32.const 0
   i32.const 3
   global.get $~lib/builtins/i32.MAX_VALUE
   call $~lib/staticarray/StaticArray<i32>#copyWithin
   drop
-  local.get $44
+  local.get $544
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 4
@@ -6256,7 +11005,7 @@
   if
    unreachable
   end
-  local.get $44
+  local.get $544
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 5
@@ -6265,7 +11014,7 @@
   if
    unreachable
   end
-  local.get $44
+  local.get $544
   i32.const 2
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 3
@@ -6274,7 +11023,7 @@
   if
    unreachable
   end
-  local.get $44
+  local.get $544
   i32.const 3
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 4
@@ -6283,7 +11032,7 @@
   if
    unreachable
   end
-  local.get $44
+  local.get $544
   i32.const 4
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 5
@@ -6297,20 +11046,20 @@
   i32.const 3
   i32.const 1280
   call $~lib/rt/__newBuffer
-  local.tee $46
-  i32.store $0 offset=72
+  local.tee $546
+  i32.store $0 offset=112
   global.get $~lib/memory/__stack_pointer
-  local.get $46
+  local.get $546
   i32.const 1312
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#map<i32>
-  local.tee $47
-  i32.store $0 offset=76
-  local.get $47
+  local.tee $547
+  i32.store $0 offset=116
+  local.get $547
   i32.const 0
   call $~lib/array/Array<i32>#__get
   i32.const 2
@@ -6319,7 +11068,7 @@
   if
    unreachable
   end
-  local.get $47
+  local.get $547
   i32.const 1
   call $~lib/array/Array<i32>#__get
   i32.const 3
@@ -6328,7 +11077,7 @@
   if
    unreachable
   end
-  local.get $47
+  local.get $547
   i32.const 2
   call $~lib/array/Array<i32>#__get
   i32.const 4
@@ -6337,13 +11086,13 @@
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1344
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#forEach
   global.get $std/staticarray/maxVal
   i32.const 3
@@ -6353,17 +11102,17 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  local.get $46
+  local.get $546
   i32.const 1376
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#filter
-  local.tee $48
-  i32.store $0 offset=80
-  local.get $48
+  local.tee $548
+  i32.store $0 offset=120
+  local.get $548
   call $~lib/array/Array<i32>#get:length
   i32.const 2
   i32.eq
@@ -6371,7 +11120,7 @@
   if
    unreachable
   end
-  local.get $48
+  local.get $548
   i32.const 0
   call $~lib/array/Array<i32>#__get
   i32.const 2
@@ -6380,7 +11129,7 @@
   if
    unreachable
   end
-  local.get $48
+  local.get $548
   i32.const 1
   call $~lib/array/Array<i32>#__get
   i32.const 3
@@ -6389,97 +11138,97 @@
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1408
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#reduce<i32>
-  local.set $49
-  local.get $49
+  local.set $549
+  local.get $549
   i32.const 6
   i32.eq
   i32.eqz
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1440
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#reduceRight<i32>
-  local.set $50
-  local.get $50
+  local.set $550
+  local.get $550
   i32.const 6
   i32.eq
   i32.eqz
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1472
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#some
   i32.eqz
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1504
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#some
   i32.eqz
   i32.eqz
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1536
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#every
   i32.eqz
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1568
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#every
   i32.eqz
   i32.eqz
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1600
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#findIndex
   i32.const 1
   i32.eq
@@ -6487,13 +11236,13 @@
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1632
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#findIndex
   i32.const -1
   i32.eq
@@ -6501,13 +11250,13 @@
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1664
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#findLastIndex
   i32.const 1
   i32.eq
@@ -6515,13 +11264,13 @@
   if
    unreachable
   end
-  local.get $46
+  local.get $546
   i32.const 1696
-  local.set $53
+  local.set $553
   global.get $~lib/memory/__stack_pointer
-  local.get $53
+  local.get $553
   i32.store $0 offset=24
-  local.get $53
+  local.get $553
   call $~lib/staticarray/StaticArray<i32>#findLastIndex
   i32.const -1
   i32.eq
@@ -6534,15 +11283,15 @@
   i32.const 3
   i32.const 1728
   call $~lib/rt/__newBuffer
-  local.tee $52
-  i32.store $0 offset=84
-  local.get $52
+  local.tee $552
+  i32.store $0 offset=124
+  local.get $552
   i32.const 0
   global.set $~argumentsLength
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#sort@varargs
   drop
-  local.get $52
+  local.get $552
   i32.const 0
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 0
@@ -6551,7 +11300,7 @@
   if
    unreachable
   end
-  local.get $52
+  local.get $552
   i32.const 1
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 1
@@ -6560,7 +11309,7 @@
   if
    unreachable
   end
-  local.get $52
+  local.get $552
   i32.const 2
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 2
@@ -6569,7 +11318,7 @@
   if
    unreachable
   end
-  local.get $52
+  local.get $552
   i32.const 3
   call $~lib/staticarray/StaticArray<i32>#__get
   i32.const 3
@@ -6582,7 +11331,7 @@
   global.set $~lib/memory/__stack_pointer
   call $~lib/rt/itcms/__collect
   global.get $~lib/memory/__stack_pointer
-  i32.const 88
+  i32.const 128
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
@@ -7170,6 +11919,1104 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $17
+ )
+ (func $~lib/staticarray/StaticArray<~lib/string/String>#indexOf (type $i32_i32_i32_=>_i32) (param $this i32) (param $value i32) (param $fromIndex i32) (result i32)
+  (local $length i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $left i32)
+  (local $right i32)
+  (local $ptr1 i32)
+  (local $ptr2 i32)
+  (local $leftLength i32)
+  (local $ptr1|12 i32)
+  (local $ptr2|13 i32)
+  (local $ptr1|14 i32)
+  (local $ptr2|15 i32)
+  (local $ptr1|16 i32)
+  (local $ptr2|17 i32)
+  (local $ptr1|18 i32)
+  (local $ptr2|19 i32)
+  (local $ptr1|20 i32)
+  (local $ptr2|21 i32)
+  (local $ptr1|22 i32)
+  (local $ptr2|23 i32)
+  (local $ptr1|24 i32)
+  (local $ptr2|25 i32)
+  (local $ptr1|26 i32)
+  (local $ptr2|27 i32)
+  (local $ptr1|28 i32)
+  (local $ptr2|29 i32)
+  (local $ptr1|30 i32)
+  (local $ptr2|31 i32)
+  (local $ptr1|32 i32)
+  (local $ptr2|33 i32)
+  (local $ptr1|34 i32)
+  (local $ptr2|35 i32)
+  (local $ptr1|36 i32)
+  (local $ptr2|37 i32)
+  (local $ptr1|38 i32)
+  (local $ptr2|39 i32)
+  (local $ptr1|40 i32)
+  (local $ptr2|41 i32)
+  (local $ptr1|42 i32)
+  (local $ptr2|43 i32)
+  (local $ptr1|44 i32)
+  (local $ptr2|45 i32)
+  (local $len i32)
+  (local $ptr1|47 i32)
+  (local $ptr2|48 i32)
+  (local $ptr1|49 i32)
+  (local $ptr2|50 i32)
+  (local $ptr1|51 i32)
+  (local $ptr2|52 i32)
+  (local $ptr1|53 i32)
+  (local $ptr2|54 i32)
+  (local $ptr1|55 i32)
+  (local $ptr2|56 i32)
+  (local $ptr1|57 i32)
+  (local $ptr2|58 i32)
+  (local $ptr1|59 i32)
+  (local $ptr2|60 i32)
+  (local $ptr1|61 i32)
+  (local $ptr2|62 i32)
+  (local $r i32)
+  (local $ptr1|64 i32)
+  (local $ptr2|65 i32)
+  (local $len|66 i32)
+  (local $ptr1|67 i32)
+  (local $ptr2|68 i32)
+  (local $ptr1|69 i32)
+  (local $ptr2|70 i32)
+  (local $ptr1|71 i32)
+  (local $ptr2|72 i32)
+  (local $ptr1|73 i32)
+  (local $ptr2|74 i32)
+  (local $r|75 i32)
+  (local $ptr1|76 i32)
+  (local $ptr2|77 i32)
+  (local $len|78 i32)
+  (local $ptr1|79 i32)
+  (local $ptr2|80 i32)
+  (local $ptr1|81 i32)
+  (local $ptr2|82 i32)
+  (local $r|83 i32)
+  (local $ptr1|84 i32)
+  (local $ptr2|85 i32)
+  (local $len|86 i32)
+  (local $ptr1|87 i32)
+  (local $ptr2|88 i32)
+  (local $r|89 i32)
+  (local $ptr1|90 i32)
+  (local $ptr2|91 i32)
+  (local $len|92 i32)
+  (local $ptr1|93 i32)
+  (local $ptr2|94 i32)
+  (local $r|95 i32)
+  (local $ptr1|96 i32)
+  (local $ptr2|97 i32)
+  (local $len|98 i32)
+  (local $ptr1|99 i32)
+  (local $ptr2|100 i32)
+  (local $r|101 i32)
+  (local $ptr1|102 i32)
+  (local $ptr2|103 i32)
+  (local $len|104 i32)
+  (local $ptr1|105 i32)
+  (local $ptr2|106 i32)
+  (local $107 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  local.get $this
+  call $~lib/staticarray/StaticArray<~lib/string/String>#get:length
+  local.set $length
+  local.get $length
+  i32.const 0
+  i32.eq
+  if (result i32)
+   i32.const 1
+  else
+   local.get $fromIndex
+   local.get $length
+   i32.ge_s
+  end
+  if
+   i32.const -1
+   local.set $107
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $107
+   return
+  end
+  local.get $fromIndex
+  i32.const 0
+  i32.lt_s
+  if
+   local.get $length
+   local.get $fromIndex
+   i32.add
+   local.tee $4
+   i32.const 0
+   local.tee $5
+   local.get $4
+   local.get $5
+   i32.gt_s
+   select
+   local.set $fromIndex
+  end
+  loop $while-continue|0
+   local.get $fromIndex
+   local.get $length
+   i32.lt_s
+   local.set $6
+   local.get $6
+   if
+    block $~lib/string/String.__eq|inlined.5 (result i32)
+     global.get $~lib/memory/__stack_pointer
+     local.get $this
+     local.get $fromIndex
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load $0
+     local.tee $left
+     i32.store $0
+     local.get $value
+     local.set $right
+     local.get $left
+     local.set $ptr1
+     local.get $right
+     local.set $ptr2
+     local.get $ptr1
+     local.get $ptr2
+     i32.eq
+     if
+      i32.const 1
+      br $~lib/string/String.__eq|inlined.5
+     end
+     local.get $ptr1
+     i32.const 0
+     i32.eq
+     if (result i32)
+      i32.const 1
+     else
+      local.get $ptr2
+      i32.const 0
+      i32.eq
+     end
+     if
+      i32.const 0
+      br $~lib/string/String.__eq|inlined.5
+     end
+     local.get $left
+     call $~lib/string/String#get:length
+     local.set $leftLength
+     local.get $leftLength
+     local.get $right
+     call $~lib/string/String#get:length
+     i32.ne
+     if
+      i32.const 0
+      br $~lib/string/String.__eq|inlined.5
+     end
+     local.get $leftLength
+     i32.const 128
+     i32.ge_s
+     if
+      block $~lib/util/raweq/__raweq128|inlined.5 (result i32)
+       local.get $ptr1
+       local.set $ptr1|12
+       local.get $ptr2
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|14
+       local.get $ptr2|13
+       local.set $ptr2|15
+       local.get $ptr1|14
+       i64.load $0
+       local.get $ptr2|15
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|16
+       local.get $ptr2|13
+       local.set $ptr2|17
+       local.get $ptr1|16
+       i64.load $0
+       local.get $ptr2|17
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|18
+       local.get $ptr2|13
+       local.set $ptr2|19
+       local.get $ptr1|18
+       i64.load $0
+       local.get $ptr2|19
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|20
+       local.get $ptr2|13
+       local.set $ptr2|21
+       local.get $ptr1|20
+       i64.load $0
+       local.get $ptr2|21
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|22
+       local.get $ptr2|13
+       local.set $ptr2|23
+       local.get $ptr1|22
+       i64.load $0
+       local.get $ptr2|23
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|24
+       local.get $ptr2|13
+       local.set $ptr2|25
+       local.get $ptr1|24
+       i64.load $0
+       local.get $ptr2|25
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|26
+       local.get $ptr2|13
+       local.set $ptr2|27
+       local.get $ptr1|26
+       i64.load $0
+       local.get $ptr2|27
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|28
+       local.get $ptr2|13
+       local.set $ptr2|29
+       local.get $ptr1|28
+       i64.load $0
+       local.get $ptr2|29
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|30
+       local.get $ptr2|13
+       local.set $ptr2|31
+       local.get $ptr1|30
+       i64.load $0
+       local.get $ptr2|31
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|32
+       local.get $ptr2|13
+       local.set $ptr2|33
+       local.get $ptr1|32
+       i64.load $0
+       local.get $ptr2|33
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|34
+       local.get $ptr2|13
+       local.set $ptr2|35
+       local.get $ptr1|34
+       i64.load $0
+       local.get $ptr2|35
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|36
+       local.get $ptr2|13
+       local.set $ptr2|37
+       local.get $ptr1|36
+       i64.load $0
+       local.get $ptr2|37
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|38
+       local.get $ptr2|13
+       local.set $ptr2|39
+       local.get $ptr1|38
+       i64.load $0
+       local.get $ptr2|39
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|40
+       local.get $ptr2|13
+       local.set $ptr2|41
+       local.get $ptr1|40
+       i64.load $0
+       local.get $ptr2|41
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       local.set $ptr1|42
+       local.get $ptr2|13
+       local.set $ptr2|43
+       local.get $ptr1|42
+       i64.load $0
+       local.get $ptr2|43
+       i64.load $0
+       i64.eq
+       i32.eqz
+       if
+        i32.const 0
+        br $~lib/util/raweq/__raweq128|inlined.5
+       end
+       local.get $ptr1|12
+       i32.const 8
+       i32.add
+       local.set $ptr1|12
+       local.get $ptr2|13
+       i32.const 8
+       i32.add
+       local.set $ptr2|13
+       local.get $ptr1|12
+       i64.load $0
+       local.get $ptr2|13
+       i64.load $0
+       i64.eq
+      end
+      br $~lib/string/String.__eq|inlined.5
+     else
+      block $~lib/util/equpto/__equpto127|inlined.5 (result i32)
+       local.get $ptr1
+       local.set $ptr1|44
+       local.get $ptr2
+       local.set $ptr2|45
+       local.get $leftLength
+       local.set $len
+       local.get $len
+       i32.const 64
+       i32.ge_u
+       if
+        block $~lib/util/raweq/__raweq64|inlined.5 (result i32)
+         local.get $ptr1|44
+         local.set $ptr1|47
+         local.get $ptr2|45
+         local.set $ptr2|48
+         local.get $ptr1|47
+         local.set $ptr1|49
+         local.get $ptr2|48
+         local.set $ptr2|50
+         local.get $ptr1|49
+         i64.load $0
+         local.get $ptr2|50
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.5
+         end
+         local.get $ptr1|47
+         i32.const 8
+         i32.add
+         local.set $ptr1|47
+         local.get $ptr2|48
+         i32.const 8
+         i32.add
+         local.set $ptr2|48
+         local.get $ptr1|47
+         local.set $ptr1|51
+         local.get $ptr2|48
+         local.set $ptr2|52
+         local.get $ptr1|51
+         i64.load $0
+         local.get $ptr2|52
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.5
+         end
+         local.get $ptr1|47
+         i32.const 8
+         i32.add
+         local.set $ptr1|47
+         local.get $ptr2|48
+         i32.const 8
+         i32.add
+         local.set $ptr2|48
+         local.get $ptr1|47
+         local.set $ptr1|53
+         local.get $ptr2|48
+         local.set $ptr2|54
+         local.get $ptr1|53
+         i64.load $0
+         local.get $ptr2|54
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.5
+         end
+         local.get $ptr1|47
+         i32.const 8
+         i32.add
+         local.set $ptr1|47
+         local.get $ptr2|48
+         i32.const 8
+         i32.add
+         local.set $ptr2|48
+         local.get $ptr1|47
+         local.set $ptr1|55
+         local.get $ptr2|48
+         local.set $ptr2|56
+         local.get $ptr1|55
+         i64.load $0
+         local.get $ptr2|56
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.5
+         end
+         local.get $ptr1|47
+         i32.const 8
+         i32.add
+         local.set $ptr1|47
+         local.get $ptr2|48
+         i32.const 8
+         i32.add
+         local.set $ptr2|48
+         local.get $ptr1|47
+         local.set $ptr1|57
+         local.get $ptr2|48
+         local.set $ptr2|58
+         local.get $ptr1|57
+         i64.load $0
+         local.get $ptr2|58
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.5
+         end
+         local.get $ptr1|47
+         i32.const 8
+         i32.add
+         local.set $ptr1|47
+         local.get $ptr2|48
+         i32.const 8
+         i32.add
+         local.set $ptr2|48
+         local.get $ptr1|47
+         local.set $ptr1|59
+         local.get $ptr2|48
+         local.set $ptr2|60
+         local.get $ptr1|59
+         i64.load $0
+         local.get $ptr2|60
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.5
+         end
+         local.get $ptr1|47
+         i32.const 8
+         i32.add
+         local.set $ptr1|47
+         local.get $ptr2|48
+         i32.const 8
+         i32.add
+         local.set $ptr2|48
+         local.get $ptr1|47
+         local.set $ptr1|61
+         local.get $ptr2|48
+         local.set $ptr2|62
+         local.get $ptr1|61
+         i64.load $0
+         local.get $ptr2|62
+         i64.load $0
+         i64.eq
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/raweq/__raweq64|inlined.5
+         end
+         local.get $ptr1|47
+         i32.const 8
+         i32.add
+         local.set $ptr1|47
+         local.get $ptr2|48
+         i32.const 8
+         i32.add
+         local.set $ptr2|48
+         local.get $ptr1|47
+         i64.load $0
+         local.get $ptr2|48
+         i64.load $0
+         i64.eq
+        end
+        local.set $r
+        local.get $r
+        i32.eqz
+        if
+         i32.const 0
+         br $~lib/util/equpto/__equpto127|inlined.5
+        end
+        local.get $ptr1|44
+        i32.const 64
+        i32.add
+        local.set $ptr1|44
+        local.get $ptr2|45
+        i32.const 64
+        i32.add
+        local.set $ptr2|45
+        local.get $len
+        i32.const 64
+        i32.sub
+        local.set $len
+       end
+       block $~lib/util/equpto/__equpto63|inlined.5 (result i32)
+        local.get $ptr1|44
+        local.set $ptr1|64
+        local.get $ptr2|45
+        local.set $ptr2|65
+        local.get $len
+        local.set $len|66
+        local.get $len|66
+        i32.const 32
+        i32.ge_u
+        if
+         block $~lib/util/raweq/__raweq32|inlined.5 (result i32)
+          local.get $ptr1|64
+          local.set $ptr1|67
+          local.get $ptr2|65
+          local.set $ptr2|68
+          local.get $ptr1|67
+          local.set $ptr1|69
+          local.get $ptr2|68
+          local.set $ptr2|70
+          local.get $ptr1|69
+          i64.load $0
+          local.get $ptr2|70
+          i64.load $0
+          i64.eq
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/raweq/__raweq32|inlined.5
+          end
+          local.get $ptr1|67
+          i32.const 8
+          i32.add
+          local.set $ptr1|67
+          local.get $ptr2|68
+          i32.const 8
+          i32.add
+          local.set $ptr2|68
+          local.get $ptr1|67
+          local.set $ptr1|71
+          local.get $ptr2|68
+          local.set $ptr2|72
+          local.get $ptr1|71
+          i64.load $0
+          local.get $ptr2|72
+          i64.load $0
+          i64.eq
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/raweq/__raweq32|inlined.5
+          end
+          local.get $ptr1|67
+          i32.const 8
+          i32.add
+          local.set $ptr1|67
+          local.get $ptr2|68
+          i32.const 8
+          i32.add
+          local.set $ptr2|68
+          local.get $ptr1|67
+          local.set $ptr1|73
+          local.get $ptr2|68
+          local.set $ptr2|74
+          local.get $ptr1|73
+          i64.load $0
+          local.get $ptr2|74
+          i64.load $0
+          i64.eq
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/raweq/__raweq32|inlined.5
+          end
+          local.get $ptr1|67
+          i32.const 8
+          i32.add
+          local.set $ptr1|67
+          local.get $ptr2|68
+          i32.const 8
+          i32.add
+          local.set $ptr2|68
+          local.get $ptr1|67
+          i64.load $0
+          local.get $ptr2|68
+          i64.load $0
+          i64.eq
+         end
+         local.set $r|75
+         local.get $r|75
+         i32.eqz
+         if
+          i32.const 0
+          br $~lib/util/equpto/__equpto63|inlined.5
+         end
+         local.get $ptr1|64
+         i32.const 32
+         i32.add
+         local.set $ptr1|64
+         local.get $ptr2|65
+         i32.const 32
+         i32.add
+         local.set $ptr2|65
+         local.get $len|66
+         i32.const 32
+         i32.sub
+         local.set $len|66
+        end
+        block $~lib/util/equpto/__equpto31|inlined.5 (result i32)
+         local.get $ptr1|64
+         local.set $ptr1|76
+         local.get $ptr2|65
+         local.set $ptr2|77
+         local.get $len|66
+         local.set $len|78
+         local.get $len|78
+         i32.const 16
+         i32.ge_u
+         if
+          block $~lib/util/raweq/__raweq16|inlined.5 (result i32)
+           local.get $ptr1|76
+           local.set $ptr1|79
+           local.get $ptr2|77
+           local.set $ptr2|80
+           local.get $ptr1|79
+           local.set $ptr1|81
+           local.get $ptr2|80
+           local.set $ptr2|82
+           local.get $ptr1|81
+           i64.load $0
+           local.get $ptr2|82
+           i64.load $0
+           i64.eq
+           i32.eqz
+           if
+            i32.const 0
+            br $~lib/util/raweq/__raweq16|inlined.5
+           end
+           local.get $ptr1|79
+           i32.const 8
+           i32.add
+           local.set $ptr1|79
+           local.get $ptr2|80
+           i32.const 8
+           i32.add
+           local.set $ptr2|80
+           local.get $ptr1|79
+           i64.load $0
+           local.get $ptr2|80
+           i64.load $0
+           i64.eq
+          end
+          local.set $r|83
+          local.get $r|83
+          i32.eqz
+          if
+           i32.const 0
+           br $~lib/util/equpto/__equpto31|inlined.5
+          end
+          local.get $ptr1|76
+          i32.const 16
+          i32.add
+          local.set $ptr1|76
+          local.get $ptr2|77
+          i32.const 16
+          i32.add
+          local.set $ptr2|77
+          local.get $len|78
+          i32.const 16
+          i32.sub
+          local.set $len|78
+         end
+         block $~lib/util/equpto/__equpto15|inlined.5 (result i32)
+          local.get $ptr1|76
+          local.set $ptr1|84
+          local.get $ptr2|77
+          local.set $ptr2|85
+          local.get $len|78
+          local.set $len|86
+          local.get $len|86
+          i32.const 8
+          i32.ge_u
+          if
+           local.get $ptr1|84
+           local.set $ptr1|87
+           local.get $ptr2|85
+           local.set $ptr2|88
+           local.get $ptr1|87
+           i64.load $0
+           local.get $ptr2|88
+           i64.load $0
+           i64.eq
+           local.set $r|89
+           local.get $r|89
+           i32.eqz
+           if
+            i32.const 0
+            br $~lib/util/equpto/__equpto15|inlined.5
+           end
+           local.get $ptr1|84
+           i32.const 8
+           i32.add
+           local.set $ptr1|84
+           local.get $ptr2|85
+           i32.const 8
+           i32.add
+           local.set $ptr2|85
+           local.get $len|86
+           i32.const 8
+           i32.sub
+           local.set $len|86
+          end
+          block $~lib/util/equpto/__equpto7|inlined.5 (result i32)
+           local.get $ptr1|84
+           local.set $ptr1|90
+           local.get $ptr2|85
+           local.set $ptr2|91
+           local.get $len|86
+           local.set $len|92
+           local.get $len|92
+           i32.const 4
+           i32.ge_u
+           if
+            local.get $ptr1|90
+            local.set $ptr1|93
+            local.get $ptr2|91
+            local.set $ptr2|94
+            local.get $ptr1|93
+            i32.load $0
+            local.get $ptr2|94
+            i32.load $0
+            i32.eq
+            local.set $r|95
+            local.get $r|95
+            i32.eqz
+            if
+             i32.const 0
+             br $~lib/util/equpto/__equpto7|inlined.5
+            end
+            local.get $ptr1|90
+            i32.const 4
+            i32.add
+            local.set $ptr1|90
+            local.get $ptr2|91
+            i32.const 4
+            i32.add
+            local.set $ptr2|91
+            local.get $len|92
+            i32.const 4
+            i32.sub
+            local.set $len|92
+           end
+           block $~lib/util/equpto/__equpto3|inlined.5 (result i32)
+            local.get $ptr1|90
+            local.set $ptr1|96
+            local.get $ptr2|91
+            local.set $ptr2|97
+            local.get $len|92
+            local.set $len|98
+            local.get $len|98
+            i32.const 2
+            i32.ge_u
+            if
+             local.get $ptr1|96
+             local.set $ptr1|99
+             local.get $ptr2|97
+             local.set $ptr2|100
+             local.get $ptr1|99
+             i32.load16_u $0
+             local.get $ptr2|100
+             i32.load16_u $0
+             i32.eq
+             local.set $r|101
+             local.get $r|101
+             i32.eqz
+             if
+              i32.const 0
+              br $~lib/util/equpto/__equpto3|inlined.5
+             end
+             local.get $ptr1|96
+             i32.const 2
+             i32.add
+             local.set $ptr1|96
+             local.get $ptr2|97
+             i32.const 2
+             i32.add
+             local.set $ptr2|97
+             local.get $len|98
+             i32.const 2
+             i32.sub
+             local.set $len|98
+            end
+            local.get $ptr1|96
+            local.set $ptr1|102
+            local.get $ptr2|97
+            local.set $ptr2|103
+            local.get $len|98
+            local.set $len|104
+            local.get $len|104
+            if (result i32)
+             local.get $ptr1|102
+             local.set $ptr1|105
+             local.get $ptr2|103
+             local.set $ptr2|106
+             local.get $ptr1|105
+             i32.load8_u $0
+             local.get $ptr2|106
+             i32.load8_u $0
+             i32.eq
+            else
+             i32.const 1
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+      br $~lib/string/String.__eq|inlined.5
+     end
+     unreachable
+    end
+    if
+     local.get $fromIndex
+     local.set $107
+     global.get $~lib/memory/__stack_pointer
+     i32.const 4
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     local.get $107
+     return
+    end
+    local.get $fromIndex
+    i32.const 1
+    i32.add
+    local.set $fromIndex
+    br $while-continue|0
+   end
+  end
+  i32.const -1
+  local.set $107
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $107
  )
  (func $~lib/staticarray/StaticArray<i32>#map<i32> (type $i32_i32_=>_i32) (param $this i32) (param $fn i32) (result i32)
   (local $len i32)

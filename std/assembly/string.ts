@@ -1,6 +1,8 @@
 /// <reference path="./rt/index.d.ts" />
 
 import { OBJECT, BLOCK_MAXSIZE, TOTAL_OVERHEAD } from "./rt/common";
+import { __equpto127 } from "./util/equpto";
+import { __raweq128 } from "./util/raweq";
 import { compareImpl, strtol, strtod, isSpace, isAscii, isFinalSigma, toLower8, toUpper8 } from "./util/string";
 import { SPECIALS_UPPER, casemap, bsearch } from "./util/casemap";
 import { E_INDEXOUTOFRANGE, E_INVALIDLENGTH, E_UNPAIRED_SURROGATE } from "./util/error";
@@ -76,13 +78,18 @@ import { Array } from "./array";
     return !compareImpl(this, searchStart, search, 0, searchLength);
   }
 
+  @inline
   @operator("==") private static __eq(left: String | null, right: String | null): bool {
-    if (changetype<usize>(left) == changetype<usize>(right)) return true;
-    if (changetype<usize>(left) == 0 || changetype<usize>(right) == 0) return false;
+    let ptr1 = changetype<usize>(left);
+    let ptr2 = changetype<usize>(right);
+    if (ptr1 == ptr2) return true;
+    if (ptr1 == 0 || ptr2 == 0) return false;
     let leftLength = changetype<string>(left).length;
     if (leftLength != changetype<string>(right).length) return false;
-    // @ts-ignore: string <-> String
-    return !compareImpl(left, 0, right, 0, leftLength);
+    if (leftLength >= 128)
+      return __raweq128(ptr1, ptr2);
+    else
+      return __equpto127(ptr1, ptr2, leftLength);
   }
 
   @operator.prefix("!")
