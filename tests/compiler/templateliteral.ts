@@ -7,14 +7,40 @@ function test_string(): void {
 }
 test_string();
 
-// function test_integer(): void {
-//   var a = 1;
-//   var b = 2;
-//   assert(`${a}` == "1");
-//   assert(`${a}${b}` == "12");
-//   assert(`(A=${a}, B=${b})` == "(A=1, B=2)");
-// }
-// test_integer();
+function test_integer(): void {
+  var a = 1;
+  var b: isize = 2;
+  var c: i8 = 42;
+  var d: i16 = -1000;
+  var e: i64 = 12345;
+  assert(`${a}` == "1");
+  assert(`${a}${b}` == "12");
+  assert(`(A=${a}, B=${b})` == "(A=1, B=2)");
+  assert(`${c} ` == "42 ");
+  assert(`=${d}` == "=-1000");
+  assert(`${e}!` == "12345!");
+}
+test_integer();
+
+function test_unsigned(): void {
+  var a: u32 = 1;
+  var b: usize = 100000;
+  var c: u8 = 255;
+  var d: u16 = 0;
+  var e: u64 = u64.MAX_VALUE;
+  assert(`${a}${a}${a}` == "111");
+  assert(` ${b}` == " 100000");
+  assert(`${c} ` == "255 ");
+  assert(`=${d}` == "=0");
+  assert(`${e}!` == "18446744073709551615!");
+}
+test_unsigned();
+
+function test_bool(): void {
+  var a = true;
+  assert(`${a}!=${!a}` == "true!=false");
+}
+test_bool();
 
 // function test_float(): void {
 //   var a = 1.0;
@@ -25,18 +51,18 @@ test_string();
 // }
 // test_float();
 
-// function test_fast_paths_string(): void {
-//   var a = 2;
-//   var b = "b";
-//   assert(`${a}` == "2");
-//   assert(`${b}` == "b");
-//   assert(`pref${a}` == "pref2");
-//   assert(`pref${b}` == "prefb");
-//   assert(`${a}suff` == "2suff");
-//   assert(`${b}suff` == "bsuff");
-//   assert(`${a}${b}` == "2b");
-// }
-// test_fast_paths_string();
+function test_fast_paths_string(): void {
+  var a = 2;
+  var b = "b";
+  assert(`${a}` == "2");
+  assert(`${b}` == "b");
+  assert(`pref${a}` == "pref2");
+  assert(`pref${b}` == "prefb");
+  assert(`${a}suff` == "2suff");
+  assert(`${b}suff` == "bsuff");
+  assert(`${a}${b}` == "2b");
+}
+test_fast_paths_string();
 
 // class Ref {
 //   constructor(public value: i32) {}
