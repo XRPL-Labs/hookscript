@@ -210,9 +210,9 @@ export async function main(argv, options) {
   let configDir = path.dirname(configPath);
   let config = await getConfig(configFile, configDir, readFile);
   let configHasEntries = config != null && Array.isArray(config.entries) && config.entries.length;
-
+  let noCompile = !argv.length && !configHasEntries;
   // Print the help message if requested or no source files are provided
-  if (opts.help || (!argv.length && !configHasEntries)) {
+  if (opts.help || (noCompile && !opts.dumpLibrary)) {
     let out = opts.help ? stdout : stderr;
     let colors = opts.help ? stdoutColors : stderrColors;
     out.write([
@@ -948,6 +948,15 @@ export async function main(argv, options) {
           stderr.write(`Skipped source map (no output path)${EOL}`);
         }
       }
+    }
+
+    if (opts.dumpLibrary) {
+      for (let i = 0; i < program.filteredSourcePaths.length; ++i) {
+        stdout.write(`${i + 1}\t${program.filteredSourcePaths[i]}${EOL}`);
+      }
+
+      if (noCompile)
+        return prepareResult(null);
     }
 
     // Write text (also fallback)

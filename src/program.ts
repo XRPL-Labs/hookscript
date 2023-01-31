@@ -445,6 +445,19 @@ export class Program extends DiagnosticEmitter {
   resolver!: Resolver;
   /** Array of sources. */
   sources: Source[] = [];
+  _filteredSourcePaths: string[] | null = null;
+  get filteredSourcePaths(): string[] {
+    if (!this._filteredSourcePaths) {
+      this._filteredSourcePaths = [];
+      for (let i = 0; i < this.sources.length; ++i) {
+        let curSource = this.sources[i];
+        if ((curSource.sourceKind == SourceKind.Library) || (curSource.sourceKind == SourceKind.LibraryEntry))
+          this._filteredSourcePaths.push(curSource.normalizedPath);
+      }
+      this._filteredSourcePaths.sort();
+    }
+    return this._filteredSourcePaths;
+  }
   /** Diagnostic offset used where successively obtaining the next diagnostic. */
   diagnosticsOffset: i32 = 0;
   /** Special native code source. */
@@ -1534,6 +1547,9 @@ export class Program extends DiagnosticEmitter {
       }
       if (!globalAliases.has(CommonNames.rollback)) {
         globalAliases.set(CommonNames.rollback, BuiltinNames.rollback);
+      }
+      if (!globalAliases.has(CommonNames.pack_error_code)) {
+        globalAliases.set(CommonNames.pack_error_code, BuiltinNames.pack_error_code);
       }
       if (!globalAliases.has(CommonNames.slot)) {
         globalAliases.set(CommonNames.slot, BuiltinNames.slot);

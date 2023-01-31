@@ -267,6 +267,7 @@ export namespace CommonNames {
   export const otxn_field = "otxn_field";
   export const otxn_slot = "$otxn_slot";
   export const rollback = "$rollback";
+  export const pack_error_code = "pack_error_code";
   export const slot = "$slot";
   export const slot_count = "$slot_count";
   export const slot_float = "$slot_float";

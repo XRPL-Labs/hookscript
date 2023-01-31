@@ -2,7 +2,7 @@ export class PubKey {
   @inline
   constructor(public bytes: ByteView) {
     if (bytes.length != 33)
-      rollback("Public key wrong length.");
+      rollback("", pack_error_code(bytes.length));
   }
 
   @inline @operator("==")
@@ -30,14 +30,14 @@ export class PubKey {
 
   @inline
   verify(data: ByteView, sig: ByteView): void {
-    if (!$util_verify(
+    let r = $util_verify(
       changetype<u32>(data.underlying) + data.offset,
       data.length,
       changetype<u32>(sig.underlying) + sig.offset,
       sig.length,
       changetype<u32>(this.bytes.underlying) + this.bytes.offset,
-      this.bytes.length)) {
-      rollback("Invalid Signature.");
-    }
+      this.bytes.length);
+    if (r != 1)
+      rollback("", pack_error_code(r));
   }
 }

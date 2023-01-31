@@ -397,3 +397,8 @@ export abstract class F64 {
 }
 
 export { F64 as Number };
+
+@global @inline
+export function packErrorCode(failure: u64, file: u32, line: u32): u64 {
+  return (failure & 0xFF) | ((<u64>file) << 8) | ((<u64>line) << 24);
+}

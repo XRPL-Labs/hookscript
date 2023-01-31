@@ -2,7 +2,7 @@ export class Amount {
   @inline
   constructor(public bytes: ByteArray) {
     if ((bytes.length != 8) && (bytes.length != 48))
-      rollback("", bytes.length);
+      rollback("", pack_error_code(bytes.length));
   }
 
   @inline

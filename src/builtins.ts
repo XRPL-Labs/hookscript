@@ -150,6 +150,7 @@ export namespace BuiltinNames {
   export const otxn_field = "~lib/builtins/otxn_field";
   export const otxn_slot = "~lib/builtins/$otxn_slot";
   export const rollback = "~lib/builtins/$rollback";
+  export const pack_error_code = "~lib/builtins/pack_error_code";
   export const slot = "~lib/builtins/$slot";
   export const slot_count = "~lib/builtins/$slot_count";
   export const slot_float = "~lib/builtins/$slot_float";
@@ -3843,6 +3844,35 @@ function builtin_emit_buffer_size(ctx: BuiltinContext): ExpressionRef {
   return compiler.compileTernaryExpression(expr, Type.i32);
 }
 builtins.set(BuiltinNames.emit_buffer_size, builtin_emit_buffer_size);
+
+function builtin_pack_error_code(ctx: BuiltinContext): ExpressionRef {
+  let compiler = ctx.compiler;
+  let module = compiler.module;
+  if (
+    checkTypeAbsent(ctx) |
+    checkArgsRequired(ctx, 1)
+  ) return module.unreachable();
+  let program = compiler.program;
+  let failure = ctx.operands[0];
+  let range = ctx.reportNode.expression.range;
+  let source = range.source;
+  let line = source.lineAt(range.start);
+  let file = 0;
+  for (let i = 0; i < program.filteredSourcePaths.length; ++i) {
+    if (source.normalizedPath == program.filteredSourcePaths[i]) {
+        file = i + 1;
+        break;
+    }
+  }
+  let args = new Array<Expression>();
+  args.push(failure);
+  args.push(Node.createIntegerLiteralExpression(i64_new(file), range));
+  args.push(Node.createIntegerLiteralExpression(i64_new(line), range));
+  let name = Node.createIdentifierExpression("packErrorCode", range);
+  let call = Node.createCallExpression(name, null, args, range);
+  return compiler.compileCallExpression(call, Type.u64);
+}
+builtins.set(BuiltinNames.pack_error_code, builtin_pack_error_code);
 
 // === Portable type conversions ==============================================================
 

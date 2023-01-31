@@ -2525,6 +2525,9 @@ export declare function max_iterations(maxiter: i32): i32;
 @builtin
 export declare function emit_buffer_size(flag: i32): i32;
 
+@builtin
+export declare function pack_error_code(rv: u64): u64;
+
 // @ts-ignore: decorator
 @external("env", "accept")
 declare function $accept(

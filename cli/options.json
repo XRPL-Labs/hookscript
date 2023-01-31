@@ -104,6 +104,11 @@
     "type": "b",
     "default": false
   },
+  "dumpLibrary": {
+    "category": "Debugging",
+    "description": "Show list of library sources used for compilation.",
+    "type": "b"
+  },
 
   "importMemory": {
     "category": "Features",

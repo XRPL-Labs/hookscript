@@ -2,7 +2,7 @@ export class InvoiceID {
   @inline
   constructor(public bytes: ByteArray) {
     if (bytes.length != 32)
-      rollback("", bytes.length);
+      rollback("", pack_error_code(bytes.length));
   }
 
   @inline
