@@ -383,5 +383,11 @@
   "-O3z": { "value": { "optimizeLevel": 3, "shrinkLevel": 2 } },
   "-Ospeed": { "value": { "optimizeLevel": 3, "shrinkLevel": 0 } },
   "-Osize": { "value": { "optimizeLevel": 0, "shrinkLevel": 2, "converge": true } },
-  "--measure": { "value": { "stats": true } }
+  "--measure": { "value": { "stats": true } },
+  "topLevelToHook": {
+    "category": "General",
+    "description": "Converts top level expressions into the 'hook' function.",
+    "type": "b",
+    "default": false
+  }
 }

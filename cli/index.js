@@ -392,6 +392,7 @@ export async function main(argv, options) {
   optimizeLevel = Math.min(Math.max(optimizeLevel, 0), 3);
   shrinkLevel = Math.min(Math.max(shrinkLevel, 0), 2);
   assemblyscript.setOptimizeLevelHints(compilerOptions, optimizeLevel, shrinkLevel);
+  if (opts.topLevelToHook) assemblyscript.setOption(compilerOptions, "topLevelToHook", opts.topLevelToHook);
 
   // Initialize the program
   program = assemblyscript.newProgram(compilerOptions);

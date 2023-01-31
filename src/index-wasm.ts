@@ -48,6 +48,20 @@ export function newOptions(): Options {
   return new Options();
 }
 
+// https://stackoverflow.com/a/52473108
+type IfEquals<X, Y, A = X, B = never> =
+  (<T>() => T extends X ? 1 : 2) extends
+  (<T>() => T extends Y ? 1 : 2) ? A : B;
+
+type WritableKeys<T> = {
+  [P in keyof T]-?: IfEquals<{ [Q in P]: T[P] }, { -readonly [Q in P]: T[P] }, P>
+}[keyof T];
+
+// TODO Refactor: All set... functions below setting just one option should be using this instead.
+export function setOption<K extends WritableKeys<Options>>(options: Options, name: K, value: Options[K]): void {
+  options[name] = value;
+}
+
 /** Sets the `target` option. */
 export function setTarget(options: Options, target: Target): void {
   options.target = target;
