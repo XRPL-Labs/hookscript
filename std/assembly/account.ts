@@ -7,7 +7,7 @@ export class Account {
   @inline
   constructor(public bytes: ByteArray) {
     if (bytes.length != 20)
-      rollback("", bytes.length);
+      rollback("", pack_error_code(bytes.length));
   }
 
   compare(right: ByteArray): i32 {

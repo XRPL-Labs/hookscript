@@ -112,7 +112,7 @@ export class Tx {
     let a = new ByteArray(20);
     let r = otxn_field(changetype<u32>(a), 20, sfAccount);
     if (r != 20)
-      rollback("", r);
+      rollback("", pack_error_code(r));
 
     return new Account(a);
   }
@@ -124,7 +124,7 @@ export class Tx {
     if (r == 8)
       a.length = 8;
     else if (r != 48)
-      rollback("", r);
+      rollback("", pack_error_code(r));
 
     return new Amount(a);
   }

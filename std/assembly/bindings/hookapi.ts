@@ -55,7 +55,7 @@ export function emit(tx: EmitSpec): ByteArray {
   let emit_hash = new ByteArray(32);
   let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buf), buf.length);
   if (emit_result < 0)
-    rollback("", emit_result);
+    rollback("", pack_error_code(emit_result));
 
   return emit_hash;
 }
@@ -64,14 +64,14 @@ export function emit(tx: EmitSpec): ByteArray {
 export function etxn_details(target: ByteView): void {
   let r = $etxn_details(changetype<u32>(target.underlying) + target.offset, target.length);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 }
 
 @global @inline
 export function etxn_fee_base(source: ByteArray): u64 {
   let fee = $etxn_fee_base(changetype<u32>(source), source.length);
   if (fee < 0)
-    rollback("", fee);
+    rollback("", pack_error_code(fee));
 
   return fee;
 }
@@ -85,14 +85,14 @@ export function emit_sto(buffer: ByteArray): ByteArray {
   let buffer2 = new ByteArray(buffer.length + 13);
   let r = $sto_emplace(changetype<u32>(buffer2), buffer2.length, changetype<u32>(buffer), buffer.length, changetype<u32>(fee_buf), 9, sfFee);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   buffer2.length = <i32>r;
 
   let emit_hash = new ByteArray(32);
   let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buffer2), buffer2.length);
   if (emit_result < 0)
-    rollback("", emit_result);
+    rollback("", pack_error_code(emit_result));
 
   return emit_hash;
 }
@@ -101,14 +101,14 @@ export function emit_sto(buffer: ByteArray): ByteArray {
 export function etxn_reserve(count: u32): void {
   let r = $etxn_reserve(count);
   if (r != count)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 }
 
 @global @inline
 export function float_compare(float1: i64, float2: i64, mode: u32): i32 {
   let r = $float_compare(float1, float2, mode);
   if ((r < 0) || (r > 1))
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return <i32>r;
 }
@@ -117,7 +117,7 @@ export function float_compare(float1: i64, float2: i64, mode: u32): i32 {
 export function float_divide(float1: i64, float2: i64): i64 {
   let r = $float_divide(float1, float2);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return r;
 }
@@ -126,7 +126,7 @@ export function float_divide(float1: i64, float2: i64): i64 {
 export function float_int(float1: i64, dec: u32, abs: u32): i64 {
   let r = $float_int(float1, dec, abs);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return r;
 }
@@ -135,7 +135,7 @@ export function float_int(float1: i64, dec: u32, abs: u32): i64 {
 export function float_mulratio(float1: i64, round_up: u32, numerator: u32, denominator: u32): i64 {
   let r = $float_mulratio(float1, round_up, numerator, denominator);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return r;
 }
@@ -144,7 +144,7 @@ export function float_mulratio(float1: i64, round_up: u32, numerator: u32, denom
 export function float_multiply(float1: i64, float2: i64): i64 {
   let r = $float_multiply(float1, float2);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return r;
 }
@@ -153,7 +153,7 @@ export function float_multiply(float1: i64, float2: i64): i64 {
 export function float_negate(float1: i64): i64 {
   let r = $float_negate(float1);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return r;
 }
@@ -162,7 +162,7 @@ export function float_negate(float1: i64): i64 {
 export function float_set(exponent: i32, mantissa: i64): i64 {
   let r = $float_set(exponent, mantissa);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return r;
 }
@@ -177,7 +177,7 @@ export function float_sto(currency: ByteView, issuer: ByteView, float1: i64, fie
     float1,
     field);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return a;
 }
@@ -186,7 +186,7 @@ export function float_sto(currency: ByteView, issuer: ByteView, float1: i64, fie
 export function float_sto_set(data: ByteView): i64 {
   let r = $float_sto_set(changetype<u32>(data.underlying) + data.offset, data.length);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return r;
 }
@@ -195,7 +195,7 @@ export function float_sto_set(data: ByteView): i64 {
 export function float_sum(float1: i64, float2: i64): i64 {
   let r = $float_sum(float1, float2);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return r;
 }
@@ -205,7 +205,7 @@ export function hook_account(): ByteArray {
   let a = new ByteArray(20);
   let r = $hook_account(changetype<u32>(a), 20);
   if (r != 20)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return a;
 }
@@ -225,7 +225,7 @@ export function hook_param(name: string): ByteArray {
 export function otxn_slot(sn: i32): i32 {
   let r = $otxn_slot(sn);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return <i32>r;
 }
@@ -241,7 +241,7 @@ export function slot(sn: i32, el: i32 = 64): ByteArray {
   let a = new ByteArray(el);
   let r = $slot(changetype<u32>(a), <u32>el, <u32>sn);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return a;
 }
@@ -250,7 +250,7 @@ export function slot(sn: i32, el: i32 = 64): ByteArray {
 export function slot_count(sn: i32): i32 {
   let r = $slot_count(<u32>sn);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return <i32>r;
 }
@@ -259,7 +259,7 @@ export function slot_count(sn: i32): i32 {
 export function slot_float(sn: i32): i64 {
   let r = $slot_float(<u32>sn);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return r;
 }
@@ -268,7 +268,7 @@ export function slot_float(sn: i32): i64 {
 export function slot_set(keylet: ByteArray, sn: i32): i32 {
   let r = $slot_set(changetype<u32>(keylet), <u32>(keylet.length), <u32>sn);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return <i32>r;
 }
@@ -277,7 +277,7 @@ export function slot_set(keylet: ByteArray, sn: i32): i32 {
 export function slot_subarray(parent: i32, idx: i32, target: i32): i32 {
   let r = $slot_subarray(<u32>parent, <u32>idx, <u32>target);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return <i32>r;
 }
@@ -286,7 +286,7 @@ export function slot_subarray(parent: i32, idx: i32, target: i32): i32 {
 export function slot_subfield(parent: i32, field: i32, target: i32): i32 {
   let r = $slot_subfield(<u32>parent, <u32>field, <u32>target);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return <i32>r;
 }
@@ -295,7 +295,7 @@ export function slot_subfield(parent: i32, field: i32, target: i32): i32 {
 export function slot_type(sn: u32, flags: u32): i32 {
   let r = $slot_type(sn, flags);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return <i32>r;
 }
@@ -326,7 +326,7 @@ export function state_foreign(key: ByteArray, ns: ByteArray, acc: ByteArray, el:
 export function state_set(key: ByteArray, data: ByteView): void {
   let r = $state_set(changetype<u32>(data.underlying) + data.offset, data.length, changetype<u32>(key), key.length);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 }
 
 @global @inline
@@ -334,7 +334,7 @@ export function sto_emplace(obj: ByteView, field: ByteView, fid: i32): ByteArray
   let a = new ByteArray(obj.length + field.length + 4);
   let r = $sto_emplace(changetype<u32>(a), a.length, changetype<u32>(obj.underlying) + obj.offset, obj.length, changetype<u32>(field.underlying) + field.offset, field.length, fid);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   a.length = <i32>r;
   return a;
@@ -349,7 +349,7 @@ export function sto_erase(obj: ByteView, fid: i32): ByteView {
   }
 
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return new ByteView(a, 0, <i32>r);
 }
@@ -358,7 +358,7 @@ export function sto_erase(obj: ByteView, fid: i32): ByteView {
 export function sto_subarray(array: ByteView, index: i32): ByteView {
   let r = $sto_subarray(changetype<u32>(array.underlying) + array.offset, <u32>(array.length), <u32>index);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   let offset = <i32>(r >> 32);
   let length = <i32>(r & 0xFFFFFFFF);
@@ -369,7 +369,7 @@ export function sto_subarray(array: ByteView, index: i32): ByteView {
 export function sto_subfield(obj: ByteView, fid: i32): ByteView {
   let r = $sto_subfield(changetype<u32>(obj.underlying) + obj.offset, <u32>(obj.length), <u32>fid);
   if (r < 0)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   let offset = <i32>(r >> 32);
   let length = <i32>(r & 0xFFFFFFFF);
@@ -392,7 +392,7 @@ export function util_accid(raddr: string): ByteArray {
   let a = new ByteArray(20);
   let r = $util_accid(changetype<u32>(a), 20, changetype<u32>(raddr), raddr.length);
   if (r < 20)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return a;
 }
@@ -402,7 +402,7 @@ export function util_sha512h(data: ByteView): ByteArray {
   let a = new ByteArray(32);
   let r = $util_sha512h(changetype<u32>(a), 32, changetype<u32>(data.underlying) + data.offset, data.length);
   if (r < 32)
-    rollback("", r);
+    rollback("", pack_error_code(r));
 
   return a;
 }

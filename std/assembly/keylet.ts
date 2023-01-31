@@ -13,7 +13,7 @@ export class Keylet {
     let b = acc.bytes;
     let r = $util_keylet(changetype<u32>(a), 34, KEYLET_SIGNERS, changetype<u32>(b), 20, 0, 0, 0, 0);
     if (r != 34)
-      rollback("", r);
+      rollback("", pack_error_code(r));
 
     return a;
   }
@@ -23,7 +23,7 @@ export class Keylet {
     let res = new ByteArray(34);
     let r = $util_keylet(changetype<u32>(res), 34, KEYLET_LINE, changetype<u32>(high.bytes), 20, changetype<u32>(low.bytes), 20, changetype<u32>(currency), currency.length);
     if (r != 34)
-      rollback("", r);
+      rollback("", pack_error_code(r));
 
     return res;
   }
