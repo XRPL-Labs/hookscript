@@ -9,10 +9,11 @@ import {
   Node,
   Range,
   ParameterKind,
+  SourceKind,
 } from ".";
 
 export function transformHookScript(source: Source, program: Program): void {
-  if (source.isLibrary) return;
+  if (source.sourceKind !== SourceKind.UserEntry) return;
 
   if (program.options.topLevelToHook) {
     maybeConvertTopLevelExpressionsToHook(source, program);
@@ -33,6 +34,7 @@ function maybeConvertTopLevelExpressionsToHook(source: Source, program: Program)
     NodeKind.TypeDeclaration,
     NodeKind.VariableDeclaration,
     NodeKind.NamespaceDeclaration,
+    NodeKind.EnumDeclaration,
     NodeKind.Import,
     NodeKind.Export,
     NodeKind.ExportDefault,
