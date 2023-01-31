@@ -257,7 +257,7 @@ export abstract class Bool {
   static readonly MAX_VALUE: bool = bool.MAX_VALUE;
 
   @inline
-  toString(this: bool, radix: i32 = 0): String {
+  toString(this: bool): String {
     return this ? "true" : "false";
   }
 }

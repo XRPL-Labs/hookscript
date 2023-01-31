@@ -7981,8 +7981,7 @@ export class Compiler extends DiagnosticEmitter {
       // In the general case, the template is converted to a local
       // string buffer, which is filled by nested call to __copy<m>
       // (for the fixed literals) and __copyupto<n> (for the
-      // expressions). n should be derived from the expression type,
-      // but currently only string is supported, with n=64.
+      // expressions). n is derived from the expression type.
       let sizeType = this.options.usizeType;
       let flow = this.currentFlow;
       let tempBuffer = flow.getTempLocal(sizeType);
@@ -8008,14 +8007,32 @@ export class Compiler extends DiagnosticEmitter {
         let curType = this.currentType;
         if (curType == stringType) {
           curLength = 64;
-          callInst = this.locateFunctionInstance("__copyupto" + curLength.toString(), expression.range);
-        } else { // FIXME: add other types
+        } else if ((curType == Type.i32) || (curType == Type.isize32)) {
+          curLength = 11;
+        } else if ((curType == Type.u32) || (curType == Type.usize32)) {
+          curLength = 10;
+        } else if (curType == Type.i8) {
+          curLength = 4;
+        } else if (curType == Type.i16) {
+          curLength = 6;
+        } else if ((curType == Type.i64) || (curType == Type.isize64) || (curType == Type.u64) || (curType == Type.usize64)) {
+          curLength = 20;
+        } else if (curType == Type.u8) {
+          curLength = 3;
+        } else if ((curType == Type.u16) || (curType == Type.bool)) {
+          curLength = 5;
+        } else {
           this.error(
             DiagnosticCode.Type_0_is_not_assignable_to_type_1,
             rawExpr.range, curType.toString(), stringType.toString()
           );
-          callInst = null;
+          curLength = 0;
         }
+        if (!curLength)
+          return module.unreachable();
+
+        curExpr = this.makeToString(curExpr, curType, rawExpr);
+        callInst = this.locateFunctionInstance("__copyupto" + curLength.toString(), expression.range);
         if (!callInst)
           return module.unreachable();
 
