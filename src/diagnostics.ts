@@ -211,7 +211,7 @@ export function formatDiagnosticMessage(
   if (isColorsEnabled()) sb.push(diagnosticCategoryToColor(message.category));
   sb.push(diagnosticCategoryToString(message.category));
   if (isColorsEnabled()) sb.push(COLOR_RESET);
-  sb.push(message.code < 1000 ? " AS" : " TS");
+  sb.push(message.code < 100 ? " HS": message.code < 1000 ? " AS" : " TS");
   sb.push(message.code.toString());
   sb.push(": ");
   sb.push(message.message);

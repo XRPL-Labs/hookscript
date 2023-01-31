@@ -148,6 +148,7 @@ import {
 import {
   BuiltinNames
 } from "./builtins";
+import { transformHookScript } from './transforms';
 
 // Memory manager constants
 const AL_SIZE = 16;
@@ -977,6 +978,8 @@ export class Program extends DiagnosticEmitter {
   initialize(): void {
     if (this.initialized) return;
     this.initialized = true;
+    // Apply transforms first.
+    this.applyTransforms();
 
     let options = this.options;
 
@@ -1636,6 +1639,15 @@ export class Program extends DiagnosticEmitter {
       let file = unchecked(_values[i]);
       if (file.source.sourceKind == SourceKind.UserEntry) {
         this.markModuleExports(file);
+      }
+    }
+  }
+
+  applyTransforms(): void {
+    let transforms = [transformHookScript];
+    for (let source of this.sources) {
+      for (let transform of transforms) {
+        transform(source, this);
       }
     }
   }

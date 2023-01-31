@@ -286,6 +286,8 @@ export class Options {
   basenameHint: string = "output";
   /** Hinted bindings generation. */
   bindingsHint: bool = false;
+  /** Whether to convert top level statements into hook function. */
+  topLevelToHook: bool = false;
 
   /** Tests if the target is WASM64 or, otherwise, WASM32. */
   get isWasm64(): bool {
