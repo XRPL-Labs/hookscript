@@ -172,6 +172,7 @@ export namespace BuiltinNames {
   export const util_keylet = "~lib/builtins/$util_keylet";
   export const util_sha512h = "~lib/builtins/$util_sha512h";
   export const util_verify = "~lib/builtins/$util_verify";
+  export const data_size = "~lib/builtins/data_size";
   export const seed = "~lib/builtins/seed";
 
   export const isBoolean = "~lib/builtins/isBoolean";
@@ -3873,6 +3874,47 @@ function builtin_pack_error_code(ctx: BuiltinContext): ExpressionRef {
   return compiler.compileCallExpression(call, Type.u64);
 }
 builtins.set(BuiltinNames.pack_error_code, builtin_pack_error_code);
+
+function builtin_data_size(ctx: BuiltinContext): ExpressionRef {
+  let compiler = ctx.compiler;
+  let module = compiler.module;
+  compiler.currentType = compiler.options.usizeType;
+  if (
+    checkTypeRequired(ctx) |
+    checkArgsRequired(ctx, 0)
+  ) return module.unreachable();
+  let options = compiler.program.options;
+  let type = ctx.typeArguments![0];
+  // FIXME: special-case integers
+  let cls = type.getClass();
+  if (!cls || !cls.prototype) {
+    compiler.error(
+      DiagnosticCode.Operation_0_cannot_be_applied_to_type_1,
+      ctx.reportNode.typeArgumentsRange, "data_size", type.toString()
+    );
+    return module.unreachable();
+  }
+  let elem = cls.prototype.getMember("dataSize", false);
+  if (!elem || (elem.kind != ElementKind.Global)) {
+    compiler.error(
+      DiagnosticCode.Element_0_not_found,
+      ctx.reportNode.typeArgumentsRange, "dataSize"
+    );
+    return module.unreachable();
+  }
+  let decl = <Global>elem.declaration;
+  if (!decl || !decl.initializer) {
+    compiler.error(
+      DiagnosticCode.Declaration_expected,
+      ctx.reportNode.typeArgumentsRange
+    );
+    return module.unreachable();
+  }
+  // usize might be semantically more correct, but Hook API expects 32
+  // bits, and passing usize there just generates useless warnings...
+  return compiler.compileExpression(decl.initializer, Type.u32);
+}
+builtins.set(BuiltinNames.data_size, builtin_data_size);
 
 // === Portable type conversions ==============================================================
 

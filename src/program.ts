@@ -1614,6 +1614,9 @@ export class Program extends DiagnosticEmitter {
       if (!globalAliases.has(CommonNames.util_verify)) {
         globalAliases.set(CommonNames.util_verify, BuiltinNames.util_verify);
       }
+      if (!globalAliases.has(CommonNames.data_size)) {
+        globalAliases.set(CommonNames.data_size, BuiltinNames.data_size);
+      }
       if (!globalAliases.has(CommonNames.seed)) {
         globalAliases.set(CommonNames.seed, BuiltinNames.seed);
       }
