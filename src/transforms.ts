@@ -27,7 +27,7 @@ function maybeConvertTopLevelExpressionsToHook(source: Source, program: Program)
       s.kind === NodeKind.FunctionDeclaration &&
       (s as FunctionDeclaration).name.text === "hook"
   ) as FunctionDeclaration | undefined;
-  const declarationKinds = [
+  let declarationKinds = [
     NodeKind.FunctionDeclaration,
     NodeKind.ClassDeclaration,
     NodeKind.InterfaceDeclaration,
@@ -44,6 +44,7 @@ function maybeConvertTopLevelExpressionsToHook(source: Source, program: Program)
   let topLevelExpressions = source.statements.filter(
     s => !declarationKinds.includes(s.kind)
   );
+
   if (hookFunction && topLevelExpressions.length) {
     program.errorRelated(
       DiagnosticCode.User_defined_hook_function_and_Top_level_expressions_cannot_be_used_simultaneously,
@@ -56,7 +57,7 @@ function maybeConvertTopLevelExpressionsToHook(source: Source, program: Program)
     return;
   }
 
-  const range0 = new Range(0, 0);
+  let range0 = new Range(0, 0);
   range0.source = source;
   let parameter = Node.createParameter(
     ParameterKind.Default,
@@ -87,7 +88,7 @@ function maybeConvertTopLevelExpressionsToHook(source: Source, program: Program)
     range0
   );
   let hook = Node.createFunctionDeclaration(
-    Node.createIdentifierExpression("hook", new Range(0, 0)),
+    Node.createIdentifierExpression("hook", range0),
     [],
     CommonFlags.Export,
     null,
@@ -96,6 +97,7 @@ function maybeConvertTopLevelExpressionsToHook(source: Source, program: Program)
     ArrowKind.None,
     range0
   );
+
   source.statements = source.statements.filter(
     s => !topLevelExpressions.includes(s)
   );
