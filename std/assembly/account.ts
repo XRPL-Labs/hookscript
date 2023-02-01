@@ -4,9 +4,11 @@
 import { accept } from "./bindings/hookapi";
 
 export class Account {
+  static readonly dataSize: u32 = 20;
+
   @inline
   constructor(public bytes: ByteArray) {
-    if (bytes.length != 20)
+    if (bytes.length != Account.dataSize)
       rollback("", pack_error_code(bytes.length));
   }
 
@@ -15,7 +17,7 @@ export class Account {
     let ptr2 = changetype<usize>(right);
     if (ptr1 == ptr2) return 0;
 
-    for (let i = 0; max_iterations(20), i < 20; ++i) {
+    for (let i = 0; max_iterations(20), i < Account.dataSize; ++i) {
       let a = load<u8>(ptr1);
       let b = load<u8>(ptr2);
       if (a > b)
