@@ -4,6 +4,8 @@
 import { accept } from "./bindings/hookapi";
 
 export class Account {
+  // @ts-ignore: decorator
+  @lazy
   static readonly dataSize: u32 = 20;
 
   @inline
