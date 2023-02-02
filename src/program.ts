@@ -433,7 +433,7 @@ export class Program extends DiagnosticEmitter {
     super(diagnostics);
     let nativeSource = new Source(SourceKind.LibraryEntry, LIBRARY_PREFIX + "native.ts", "[native code]");
     this.nativeSource = nativeSource;
-    this.parser = new Parser(this.diagnostics, this.sources);
+    this.parser = new Parser(this.diagnostics, this.sources, options);
     this.resolver = new Resolver(this);
     let nativeFile = new File(this, nativeSource);
     this.nativeFile = nativeFile;

@@ -94,6 +94,7 @@ import {
 
   mangleInternalPath
 } from "./ast";
+import { Options } from './index-js';
 
 /** Represents a dependee. */
 class Dependee {
@@ -123,13 +124,18 @@ export class Parser extends DiagnosticEmitter {
   /** Current overridden module name. */
   currentModuleName: string | null = null;
 
+  /* Compiler options. */
+  options?: Options;
+
   /** Constructs a new parser. */
   constructor(
     diagnostics: DiagnosticMessage[] | null = null,
-    sources: Source[] = []
+    sources: Source[] = [],
+    options?: Options
   ) {
     super(diagnostics);
     this.sources = sources;
+    this.options = options;
   }
 
   /** Parses a file and adds its definitions to the program. */
@@ -2943,7 +2949,7 @@ export class Parser extends DiagnosticEmitter {
         break;
       }
       case Token.Return: {
-        if (topLevel) {
+        if (topLevel && !this.options?.topLevelToHook) {
           this.error(
             DiagnosticCode.A_return_statement_can_only_be_used_within_a_function_body,
             tn.range()
