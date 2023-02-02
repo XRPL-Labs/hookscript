@@ -289,6 +289,7 @@ export namespace CommonNames {
   export const util_keylet = "$util_keylet";
   export const util_sha512h = "$util_sha512h";
   export const util_verify = "$util_verify";
+  export const data_size = "data_size";
   export const seed = "seed";
   export const pow = "pow";
   export const ipow32 = "ipow32";
