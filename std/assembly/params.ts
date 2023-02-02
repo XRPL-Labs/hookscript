@@ -8,17 +8,20 @@ export class HookParam<T> {
 
   @inline
   constructor(ps: HookParamSpec) {
-    this.name = ps.name
+    this.name = ps.name;
   }
 
   @inline
-  get(): T {
+  get(dflt: T | null = null): T {
     let a = new ByteArray(data_size<T>());
     let r = $hook_param(changetype<u32>(a), data_size<T>(), changetype<u32>(this.name), this.name.length);
-    if (r != data_size<T>())
+    if (r == data_size<T>())
+      return instantiate<T>(a);
+
+    if (!dflt)
       rollback("", pack_error_code(r));
 
-    return instantiate<T>(a);
+    return dflt!;
   }
 };
 
