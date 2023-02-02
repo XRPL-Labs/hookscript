@@ -23,6 +23,16 @@ export class HookParam<T> {
 
     return dflt!;
   }
+
+  @inline
+  value(dflt: T): T {
+    let a = new ByteArray(sizeof<T>());
+    let r = $hook_param(changetype<u32>(a), sizeof<T>(), changetype<u32>(this.name), this.name.length);
+    if (r == sizeof<T>())
+      return load<T>(changetype<u32>(a));
+
+    return dflt;
+  }
 };
 
 export namespace Params {
