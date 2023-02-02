@@ -2840,23 +2840,16 @@ export class Resolver extends DiagnosticEmitter {
       returnType = classInstance!.type; // not annotated
     } else {
       let typeNode = signatureNode.returnType;
-      if (isTypeOmitted(typeNode)) {
-        if (reportMode == ReportMode.Report) {
-          this.error(
-            DiagnosticCode.Type_expected,
-            typeNode.range
-          );
-        }
-        return null;
+      if (!isTypeOmitted(typeNode)) {
+        let type = this.resolveType(
+          typeNode,
+          prototype.parent, // relative to function
+          ctxTypes,
+          reportMode
+        );
+        if (!type) return null;
+        returnType = type;
       }
-      let type = this.resolveType(
-        typeNode,
-        prototype.parent, // relative to function
-        ctxTypes,
-        reportMode
-      );
-      if (!type) return null;
-      returnType = type;
     }
 
     let signature = new Signature(this.program, parameterTypes, returnType, thisType);

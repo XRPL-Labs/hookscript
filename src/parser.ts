@@ -1506,13 +1506,13 @@ export class Parser extends DiagnosticEmitter {
     }
 
     if (!returnType) {
-      if (isSetter) {
-        returnType = Node.createOmittedType(
-          tn.range(tn.pos)
-        );
-      } else {
+      if (name.text === 'hook' || name.text === 'cbak') {
         returnType = Node.createNamedType(
           Node.createSimpleTypeName("i64", tn.range()), [], false, tn.range(tn.pos)
+        );
+      } else {
+        returnType = Node.createOmittedType(
+          tn.range(tn.pos)
         );
       }
     }
@@ -2275,12 +2275,6 @@ export class Parser extends DiagnosticEmitter {
         if (!returnType) return null;
       } else {
         returnType = Node.createOmittedType(tn.range(tn.pos));
-        if (!isSetter && name.kind != NodeKind.Constructor) {
-          this.error(
-            DiagnosticCode.Type_expected,
-            returnType.range
-          ); // recoverable
-        }
       }
 
       let signature = Node.createFunctionType(
