@@ -1,4 +1,5 @@
 import { E_INVALIDDATE } from "util/error";
+import { __repeatupto7 } from "./util/repeatupto";
 import { Date as Date_binding } from "./bindings/dom";
 
 // @ts-ignore: decorator
@@ -94,6 +95,7 @@ export class Date {
     return new Date(epochMillis(year, month, day, hour, min, sec, ms));
   }
 
+  @inline
   constructor(private epochMillis: i64) {
     // this differs from JavaScript which prefer return NaN or "Invalid Date" string
     // instead throwing exception.
@@ -135,19 +137,19 @@ export class Date {
     return dayOfWeek(this.year, this.month, this.day);
   }
 
-  getUTCHours(): i32 {
+  @inline getUTCHours(): i32 {
     return i32(euclidRem(this.epochMillis, MILLIS_PER_DAY)) / MILLIS_PER_HOUR;
   }
 
-  getUTCMinutes(): i32 {
+  @inline getUTCMinutes(): i32 {
     return i32(euclidRem(this.epochMillis, MILLIS_PER_HOUR)) / MILLIS_PER_MINUTE;
   }
 
-  getUTCSeconds(): i32 {
+  @inline getUTCSeconds(): i32 {
     return i32(euclidRem(this.epochMillis, MILLIS_PER_MINUTE)) / MILLIS_PER_SECOND;
   }
 
-  getUTCMilliseconds(): i32 {
+  @inline getUTCMilliseconds(): i32 {
     return i32(euclidRem(this.epochMillis, MILLIS_PER_SECOND));
   }
 
@@ -182,13 +184,13 @@ export class Date {
     this.setTime(join(year, this.month, this.day, this.epochMillis));
   }
 
-  toISOString(): string {
+  @inline toISOString(): string {
     // TODO: add more low-level helper which combine toString and padStart without extra allocation
 
     let yr = this.year;
     let isNeg = yr < 0;
     let year = (isNeg || yr >= 10000)
-      ? (isNeg ? "-" : "+") + stringify(abs(yr), 6)
+      ? (isNeg ? "-" : "+").concat(stringify(abs(yr), 6))
       : stringify(yr, 4);
     let month = stringify(this.month, 2);
     let day = stringify(this.day);
@@ -293,14 +295,16 @@ function epochMillis(
   return m + (m < 0 ? b : 0) as T;
 }
 
-function invalidDate(millis: i64): bool {
+// @ts-ignore: decorator
+@inline function invalidDate(millis: i64): bool {
   // @ts-ignore
   return (millis < -MILLIS_LIMIT) | (millis > MILLIS_LIMIT);
 }
 
 // Based on "Euclidean Affine Functions and Applications to Calendar Algorithms"
 // Paper: https://arxiv.org/pdf/2102.06959.pdf
-function dateFromEpoch(ms: i64): i32 {
+// @ts-ignore: decorator
+@inline function dateFromEpoch(ms: i64): i32 {
   let da = (<i32>floorDiv(ms, MILLIS_PER_DAY) * 4 + EPOCH_OFFSET * 4) | 3;
   let q0 = floorDiv(da, DAYS_PER_EPOCH); // [0, 146096]
   let r1 = <u32>da - q0 * DAYS_PER_EPOCH;
@@ -335,8 +339,19 @@ function dayOfWeek(year: i32, month: i32, day: i32): i32 {
   return euclidRem(year + month + day, 7);
 }
 
-function stringify(value: i32, padding: i32 = 2): string {
-  return value.toString().padStart(padding, "0");
+// @ts-ignore: decorator
+@inline function stringify(value: i32, padding: i32 = 2): string {
+  let s = value.toString();
+  let pad = "0";
+  // String.padStart, simplified for 1-byte pad
+  let inSize = <usize>s.length;
+  let targetSize = <usize>padding;
+  if (targetSize <= inSize) return s;
+  let prependSize = targetSize - inSize;
+  let out = __new(targetSize, idof<String>());
+  __repeatupto7(out, changetype<usize>(pad), 1, <i32>prependSize);
+  __rawcopyupto15(out + prependSize, changetype<usize>(s), <i32>inSize);
+  return changetype<string>(out);
 }
 
 function join(year: i32, month: i32, day: i32, ms: i64): i64 {
