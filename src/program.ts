@@ -148,6 +148,7 @@ import {
 import {
   BuiltinNames
 } from "./builtins";
+import { transformHookScript } from './transforms';
 
 // Memory manager constants
 const AL_SIZE = 16;
@@ -432,7 +433,7 @@ export class Program extends DiagnosticEmitter {
     super(diagnostics);
     let nativeSource = new Source(SourceKind.LibraryEntry, LIBRARY_PREFIX + "native.ts", "[native code]");
     this.nativeSource = nativeSource;
-    this.parser = new Parser(this.diagnostics, this.sources);
+    this.parser = new Parser(this.diagnostics, this.sources, options);
     this.resolver = new Resolver(this);
     let nativeFile = new File(this, nativeSource);
     this.nativeFile = nativeFile;
@@ -990,6 +991,8 @@ export class Program extends DiagnosticEmitter {
   initialize(): void {
     if (this.initialized) return;
     this.initialized = true;
+    // Apply transforms first.
+    this.applyTransforms();
 
     let options = this.options;
 
@@ -1655,6 +1658,15 @@ export class Program extends DiagnosticEmitter {
       let file = unchecked(_values[i]);
       if (file.source.sourceKind == SourceKind.UserEntry) {
         this.markModuleExports(file);
+      }
+    }
+  }
+
+  applyTransforms(): void {
+    let transforms = [transformHookScript];
+    for (let source of this.sources) {
+      for (let transform of transforms) {
+        transform(source, this);
       }
     }
   }

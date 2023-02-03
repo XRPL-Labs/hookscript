@@ -23,7 +23,12 @@
     "type": "s",
     "cliOnly": true
   },
-
+  "topLevelToHook": {
+    "category": "General",
+    "description": "Converts top level expressions into the 'hook' function.",
+    "type": "b",
+    "default": false
+  },
   "optimize": {
     "category": "Optimization",
     "description": [
