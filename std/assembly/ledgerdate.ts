@@ -22,4 +22,39 @@ export class LedgerDate {
     this.unixDate.setTime(1000 * (ledgerTime + 946684800));
     return ledgerTime;
   }
+
+  @inline
+  getUTCFullYear(): i32 {
+    return this.unixDate.getUTCFullYear();
+  }
+
+  @inline
+  getUTCMonth(): i32 {
+    return this.unixDate.getUTCMonth();
+  }
+
+  @inline
+  getUTCDate(): i32 {
+    return this.unixDate.getUTCDate();
+  }
+
+  @inline
+  getUTCDay(): i32 {
+    return this.unixDate.getUTCDay();
+  }
+
+  @inline
+  getUTCHours(): i32 {
+    return this.unixDate.getUTCHours();
+  }
+
+  @inline
+  getUTCMinutes(): i32 {
+    return this.unixDate.getUTCMinutes();
+  }
+
+  @inline
+  getUTCSeconds(): i32 {
+    return this.unixDate.getUTCSeconds();
+  }
 }
