@@ -264,6 +264,7 @@ export namespace CommonNames {
   export const hook_account = "$hook_account";
   export const hook_param = "$hook_param";
   export const ledger_seq = "ledger_seq";
+  export const ledger_last_time = "ledger_last_time";
   export const otxn_field = "otxn_field";
   export const otxn_slot = "$otxn_slot";
   export const rollback = "$rollback";

@@ -146,6 +146,7 @@ export namespace BuiltinNames {
   export const float_sum = "~lib/builtins/$float_sum";
   export const hook_account = "~lib/builtins/$hook_account";
   export const hook_param = "~lib/builtins/$hook_param";
+  export const ledger_last_time = "~lib/builtins/ledger_last_time";
   export const ledger_seq = "~lib/builtins/ledger_seq";
   export const otxn_field = "~lib/builtins/otxn_field";
   export const otxn_slot = "~lib/builtins/$otxn_slot";

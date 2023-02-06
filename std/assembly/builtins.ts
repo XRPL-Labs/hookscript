@@ -2668,6 +2668,11 @@ declare function $hook_param(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "ledger_last_time")
+declare function ledger_last_time(
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "ledger_seq")
 declare function ledger_seq(
 ): i64;

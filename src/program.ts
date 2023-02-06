@@ -1539,6 +1539,9 @@ export class Program extends DiagnosticEmitter {
       if (!globalAliases.has(CommonNames.hook_param)) {
         globalAliases.set(CommonNames.hook_param, BuiltinNames.hook_param);
       }
+      if (!globalAliases.has(CommonNames.ledger_last_time)) {
+        globalAliases.set(CommonNames.ledger_last_time, BuiltinNames.ledger_last_time);
+      }
       if (!globalAliases.has(CommonNames.ledger_seq)) {
         globalAliases.set(CommonNames.ledger_seq, BuiltinNames.ledger_seq);
       }
