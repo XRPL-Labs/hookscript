@@ -110,7 +110,7 @@ export class Date {
     return this.epochMillis;
   }
 
-  setTime(time: i64): i64 {
+  @inline setTime(time: i64): i64 {
     if (invalidDate(time)) throw new RangeError(E_INVALIDDATE);
 
     this.epochMillis = time;

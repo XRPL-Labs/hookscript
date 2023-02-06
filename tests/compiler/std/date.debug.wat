@@ -11,7 +11,6 @@
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i64_=>_none (func_subtype (param i32 i64) func))
- (type $i32_i64_=>_i64 (func_subtype (param i32 i64) (result i64) func))
  (type $i32_i32_i32_i64_=>_i64 (func_subtype (param i32 i32 i32 i64) (result i64) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
@@ -2168,14 +2167,20 @@
   local.get $1
   i64.store $0 offset=16
  )
- (func $~lib/date/Date#setTime (type $i32_i64_=>_i64) (param $this i32) (param $time i64) (result i64)
-  (local $millis i64)
-  (local $ms i64)
+ (func $~lib/date/Date#setUTCMilliseconds (type $i32_i32_=>_none) (param $this i32) (param $millis i32)
+  (local $this|2 i32)
   (local $a i64)
   (local $b i64)
+  (local $m i64)
+  (local $this|6 i32)
+  (local $time i64)
+  (local $millis|8 i64)
+  (local $ms i64)
+  (local $a|10 i64)
+  (local $b|11 i64)
   (local $da i32)
-  (local $a|7 i32)
-  (local $b|8 i32)
+  (local $a|13 i32)
+  (local $b|14 i32)
   (local $q0 i32)
   (local $r1 i32)
   (local $u1 i64)
@@ -2183,44 +2188,76 @@
   (local $n1 i32)
   (local $year i32)
   (local $mo i32)
-  local.get $time
-  local.set $millis
+  local.get $this
+  local.set $this|6
+  local.get $this
+  i64.load $0 offset=16
   local.get $millis
+  local.get $this
+  local.set $this|2
+  local.get $this|2
+  i64.load $0 offset=16
+  local.set $a
+  i32.const 1000
+  i64.extend_i32_s
+  local.set $b
+  local.get $a
+  local.get $b
+  i64.rem_s
+  local.set $m
+  local.get $m
+  local.get $m
+  i64.const 0
+  i64.lt_s
+  if (result i64)
+   local.get $b
+  else
+   i64.const 0
+  end
+  i64.add
+  i32.wrap_i64
+  i32.sub
+  i64.extend_i32_s
+  i64.add
+  local.set $time
+  local.get $time
+  local.set $millis|8
+  local.get $millis|8
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis
+  local.get $millis|8
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this
+  local.get $this|6
   local.get $time
   call $~lib/date/Date#set:epochMillis
-  local.get $this
+  local.get $this|6
   local.get $time
   local.set $ms
   local.get $ms
-  local.set $a
+  local.set $a|10
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b
-  local.get $a
-  local.get $a
+  local.set $b|11
+  local.get $a|10
+  local.get $a|10
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b
+   local.get $b|11
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b
+  local.get $b|11
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -2233,22 +2270,22 @@
   i32.or
   local.set $da
   local.get $da
-  local.set $a|7
+  local.set $a|13
   i32.const 146097
-  local.set $b|8
-  local.get $a|7
-  local.get $a|7
+  local.set $b|14
+  local.get $a|13
+  local.get $a|13
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|8
+   local.get $b|14
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|8
+  local.get $b|14
   i32.div_s
   local.set $q0
   local.get $da
@@ -2313,50 +2350,13 @@
   global.set $~lib/date/_month
   local.get $year
   call $~lib/date/Date#set:year
-  local.get $this
+  local.get $this|6
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this
+  local.get $this|6
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $time
- )
- (func $~lib/date/Date#setUTCMilliseconds (type $i32_i32_=>_none) (param $this i32) (param $millis i32)
-  (local $this|2 i32)
-  (local $a i64)
-  (local $b i64)
-  (local $m i64)
-  local.get $this
-  local.get $this
-  i64.load $0 offset=16
-  local.get $millis
-  local.get $this
-  local.set $this|2
-  local.get $this|2
-  i64.load $0 offset=16
-  local.set $a
-  i32.const 1000
-  i64.extend_i32_s
-  local.set $b
-  local.get $a
-  local.get $b
-  i64.rem_s
-  local.set $m
-  local.get $m
-  local.get $m
-  i64.const 0
-  i64.lt_s
-  if (result i64)
-   local.get $b
-  else
-   i64.const 0
-  end
-  i64.add
-  i32.wrap_i64
-  i32.sub
-  i64.extend_i32_s
-  i64.add
-  call $~lib/date/Date#setTime
   drop
  )
  (func $~lib/date/Date#setUTCSeconds (type $i32_i32_=>_none) (param $this i32) (param $seconds i32)
@@ -2364,7 +2364,24 @@
   (local $a i64)
   (local $b i64)
   (local $m i64)
+  (local $this|6 i32)
+  (local $time i64)
+  (local $millis i64)
+  (local $ms i64)
+  (local $a|10 i64)
+  (local $b|11 i64)
+  (local $da i32)
+  (local $a|13 i32)
+  (local $b|14 i32)
+  (local $q0 i32)
+  (local $r1 i32)
+  (local $u1 i64)
+  (local $dm1 i32)
+  (local $n1 i32)
+  (local $year i32)
+  (local $mo i32)
   local.get $this
+  local.set $this|6
   local.get $this
   i64.load $0 offset=16
   local.get $seconds
@@ -2398,7 +2415,144 @@
   i32.mul
   i64.extend_i32_s
   i64.add
-  call $~lib/date/Date#setTime
+  local.set $time
+  local.get $time
+  local.set $millis
+  local.get $millis
+  i64.const 0
+  i64.const 8640000000000000
+  i64.sub
+  i64.lt_s
+  local.get $millis
+  i64.const 8640000000000000
+  i64.gt_s
+  i32.or
+  if
+   unreachable
+  end
+  local.get $this|6
+  local.get $time
+  call $~lib/date/Date#set:epochMillis
+  local.get $this|6
+  local.get $time
+  local.set $ms
+  local.get $ms
+  local.set $a|10
+  i32.const 86400000
+  i64.extend_i32_s
+  local.set $b|11
+  local.get $a|10
+  local.get $a|10
+  i64.const 0
+  i64.lt_s
+  if (result i64)
+   local.get $b|11
+   i64.const 1
+   i64.sub
+  else
+   i64.const 0
+  end
+  i64.sub
+  local.get $b|11
+  i64.div_s
+  i32.wrap_i64
+  i32.const 4
+  i32.mul
+  i32.const 719468
+  i32.const 4
+  i32.mul
+  i32.add
+  i32.const 3
+  i32.or
+  local.set $da
+  local.get $da
+  local.set $a|13
+  i32.const 146097
+  local.set $b|14
+  local.get $a|13
+  local.get $a|13
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $b|14
+   i32.const 1
+   i32.sub
+  else
+   i32.const 0
+  end
+  i32.sub
+  local.get $b|14
+  i32.div_s
+  local.set $q0
+  local.get $da
+  local.get $q0
+  i32.const 146097
+  i32.mul
+  i32.sub
+  local.set $r1
+  local.get $r1
+  i32.const 3
+  i32.or
+  i64.extend_i32_u
+  i64.const 2939745
+  i64.mul
+  local.set $u1
+  local.get $u1
+  i32.wrap_i64
+  i32.const 11758980
+  i32.div_u
+  local.set $dm1
+  i32.const 2141
+  local.get $dm1
+  i32.mul
+  i32.const 197913
+  i32.add
+  local.set $n1
+  i32.const 100
+  local.get $q0
+  i32.mul
+  local.get $u1
+  i64.const 32
+  i64.shr_u
+  i32.wrap_i64
+  i32.add
+  local.set $year
+  local.get $n1
+  i32.const 16
+  i32.shr_u
+  local.set $mo
+  local.get $n1
+  i32.const 65535
+  i32.and
+  i32.const 2141
+  i32.div_s
+  i32.const 1
+  i32.add
+  global.set $~lib/date/_day
+  local.get $dm1
+  i32.const 306
+  i32.ge_u
+  if
+   local.get $mo
+   i32.const 12
+   i32.sub
+   local.set $mo
+   local.get $year
+   i32.const 1
+   i32.add
+   local.set $year
+  end
+  local.get $mo
+  global.set $~lib/date/_month
+  local.get $year
+  call $~lib/date/Date#set:year
+  local.get $this|6
+  global.get $~lib/date/_month
+  call $~lib/date/Date#set:month
+  local.get $this|6
+  global.get $~lib/date/_day
+  call $~lib/date/Date#set:day
+  local.get $time
   drop
  )
  (func $~lib/date/Date#setUTCMinutes (type $i32_i32_=>_none) (param $this i32) (param $minutes i32)
@@ -2406,7 +2560,24 @@
   (local $a i64)
   (local $b i64)
   (local $m i64)
+  (local $this|6 i32)
+  (local $time i64)
+  (local $millis i64)
+  (local $ms i64)
+  (local $a|10 i64)
+  (local $b|11 i64)
+  (local $da i32)
+  (local $a|13 i32)
+  (local $b|14 i32)
+  (local $q0 i32)
+  (local $r1 i32)
+  (local $u1 i64)
+  (local $dm1 i32)
+  (local $n1 i32)
+  (local $year i32)
+  (local $mo i32)
   local.get $this
+  local.set $this|6
   local.get $this
   i64.load $0 offset=16
   local.get $minutes
@@ -2440,7 +2611,144 @@
   i32.mul
   i64.extend_i32_s
   i64.add
-  call $~lib/date/Date#setTime
+  local.set $time
+  local.get $time
+  local.set $millis
+  local.get $millis
+  i64.const 0
+  i64.const 8640000000000000
+  i64.sub
+  i64.lt_s
+  local.get $millis
+  i64.const 8640000000000000
+  i64.gt_s
+  i32.or
+  if
+   unreachable
+  end
+  local.get $this|6
+  local.get $time
+  call $~lib/date/Date#set:epochMillis
+  local.get $this|6
+  local.get $time
+  local.set $ms
+  local.get $ms
+  local.set $a|10
+  i32.const 86400000
+  i64.extend_i32_s
+  local.set $b|11
+  local.get $a|10
+  local.get $a|10
+  i64.const 0
+  i64.lt_s
+  if (result i64)
+   local.get $b|11
+   i64.const 1
+   i64.sub
+  else
+   i64.const 0
+  end
+  i64.sub
+  local.get $b|11
+  i64.div_s
+  i32.wrap_i64
+  i32.const 4
+  i32.mul
+  i32.const 719468
+  i32.const 4
+  i32.mul
+  i32.add
+  i32.const 3
+  i32.or
+  local.set $da
+  local.get $da
+  local.set $a|13
+  i32.const 146097
+  local.set $b|14
+  local.get $a|13
+  local.get $a|13
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $b|14
+   i32.const 1
+   i32.sub
+  else
+   i32.const 0
+  end
+  i32.sub
+  local.get $b|14
+  i32.div_s
+  local.set $q0
+  local.get $da
+  local.get $q0
+  i32.const 146097
+  i32.mul
+  i32.sub
+  local.set $r1
+  local.get $r1
+  i32.const 3
+  i32.or
+  i64.extend_i32_u
+  i64.const 2939745
+  i64.mul
+  local.set $u1
+  local.get $u1
+  i32.wrap_i64
+  i32.const 11758980
+  i32.div_u
+  local.set $dm1
+  i32.const 2141
+  local.get $dm1
+  i32.mul
+  i32.const 197913
+  i32.add
+  local.set $n1
+  i32.const 100
+  local.get $q0
+  i32.mul
+  local.get $u1
+  i64.const 32
+  i64.shr_u
+  i32.wrap_i64
+  i32.add
+  local.set $year
+  local.get $n1
+  i32.const 16
+  i32.shr_u
+  local.set $mo
+  local.get $n1
+  i32.const 65535
+  i32.and
+  i32.const 2141
+  i32.div_s
+  i32.const 1
+  i32.add
+  global.set $~lib/date/_day
+  local.get $dm1
+  i32.const 306
+  i32.ge_u
+  if
+   local.get $mo
+   i32.const 12
+   i32.sub
+   local.set $mo
+   local.get $year
+   i32.const 1
+   i32.add
+   local.set $year
+  end
+  local.get $mo
+  global.set $~lib/date/_month
+  local.get $year
+  call $~lib/date/Date#set:year
+  local.get $this|6
+  global.get $~lib/date/_month
+  call $~lib/date/Date#set:month
+  local.get $this|6
+  global.get $~lib/date/_day
+  call $~lib/date/Date#set:day
+  local.get $time
   drop
  )
  (func $~lib/date/Date#setUTCHours (type $i32_i32_=>_none) (param $this i32) (param $hours i32)
@@ -2448,7 +2756,24 @@
   (local $a i64)
   (local $b i64)
   (local $m i64)
+  (local $this|6 i32)
+  (local $time i64)
+  (local $millis i64)
+  (local $ms i64)
+  (local $a|10 i64)
+  (local $b|11 i64)
+  (local $da i32)
+  (local $a|13 i32)
+  (local $b|14 i32)
+  (local $q0 i32)
+  (local $r1 i32)
+  (local $u1 i64)
+  (local $dm1 i32)
+  (local $n1 i32)
+  (local $year i32)
+  (local $mo i32)
   local.get $this
+  local.set $this|6
   local.get $this
   i64.load $0 offset=16
   local.get $hours
@@ -2482,7 +2807,144 @@
   i32.mul
   i64.extend_i32_s
   i64.add
-  call $~lib/date/Date#setTime
+  local.set $time
+  local.get $time
+  local.set $millis
+  local.get $millis
+  i64.const 0
+  i64.const 8640000000000000
+  i64.sub
+  i64.lt_s
+  local.get $millis
+  i64.const 8640000000000000
+  i64.gt_s
+  i32.or
+  if
+   unreachable
+  end
+  local.get $this|6
+  local.get $time
+  call $~lib/date/Date#set:epochMillis
+  local.get $this|6
+  local.get $time
+  local.set $ms
+  local.get $ms
+  local.set $a|10
+  i32.const 86400000
+  i64.extend_i32_s
+  local.set $b|11
+  local.get $a|10
+  local.get $a|10
+  i64.const 0
+  i64.lt_s
+  if (result i64)
+   local.get $b|11
+   i64.const 1
+   i64.sub
+  else
+   i64.const 0
+  end
+  i64.sub
+  local.get $b|11
+  i64.div_s
+  i32.wrap_i64
+  i32.const 4
+  i32.mul
+  i32.const 719468
+  i32.const 4
+  i32.mul
+  i32.add
+  i32.const 3
+  i32.or
+  local.set $da
+  local.get $da
+  local.set $a|13
+  i32.const 146097
+  local.set $b|14
+  local.get $a|13
+  local.get $a|13
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $b|14
+   i32.const 1
+   i32.sub
+  else
+   i32.const 0
+  end
+  i32.sub
+  local.get $b|14
+  i32.div_s
+  local.set $q0
+  local.get $da
+  local.get $q0
+  i32.const 146097
+  i32.mul
+  i32.sub
+  local.set $r1
+  local.get $r1
+  i32.const 3
+  i32.or
+  i64.extend_i32_u
+  i64.const 2939745
+  i64.mul
+  local.set $u1
+  local.get $u1
+  i32.wrap_i64
+  i32.const 11758980
+  i32.div_u
+  local.set $dm1
+  i32.const 2141
+  local.get $dm1
+  i32.mul
+  i32.const 197913
+  i32.add
+  local.set $n1
+  i32.const 100
+  local.get $q0
+  i32.mul
+  local.get $u1
+  i64.const 32
+  i64.shr_u
+  i32.wrap_i64
+  i32.add
+  local.set $year
+  local.get $n1
+  i32.const 16
+  i32.shr_u
+  local.set $mo
+  local.get $n1
+  i32.const 65535
+  i32.and
+  i32.const 2141
+  i32.div_s
+  i32.const 1
+  i32.add
+  global.set $~lib/date/_day
+  local.get $dm1
+  i32.const 306
+  i32.ge_u
+  if
+   local.get $mo
+   i32.const 12
+   i32.sub
+   local.set $mo
+   local.get $year
+   i32.const 1
+   i32.add
+   local.set $year
+  end
+  local.get $mo
+  global.set $~lib/date/_month
+  local.get $year
+  call $~lib/date/Date#set:year
+  local.get $this|6
+  global.get $~lib/date/_month
+  call $~lib/date/Date#set:month
+  local.get $this|6
+  global.get $~lib/date/_day
+  call $~lib/date/Date#set:day
+  local.get $time
   drop
  )
  (func $~lib/date/join (type $i32_i32_i32_i64_=>_i64) (param $year i32) (param $month i32) (param $day i32) (param $ms i64) (result i64)
@@ -2518,6 +2980,22 @@
   i64.add
  )
  (func $~lib/date/Date#setUTCDate (type $i32_i32_=>_none) (param $this i32) (param $day i32)
+  (local $this|2 i32)
+  (local $time i64)
+  (local $millis i64)
+  (local $ms i64)
+  (local $a i64)
+  (local $b i64)
+  (local $da i32)
+  (local $a|9 i32)
+  (local $b|10 i32)
+  (local $q0 i32)
+  (local $r1 i32)
+  (local $u1 i64)
+  (local $dm1 i32)
+  (local $n1 i32)
+  (local $year i32)
+  (local $mo i32)
   local.get $this
   i32.load $0 offset=8
   local.get $day
@@ -2526,6 +3004,7 @@
    return
   end
   local.get $this
+  local.set $this|2
   local.get $this
   i32.load $0
   local.get $this
@@ -2534,10 +3013,163 @@
   local.get $this
   i64.load $0 offset=16
   call $~lib/date/join
-  call $~lib/date/Date#setTime
+  local.set $time
+  local.get $time
+  local.set $millis
+  local.get $millis
+  i64.const 0
+  i64.const 8640000000000000
+  i64.sub
+  i64.lt_s
+  local.get $millis
+  i64.const 8640000000000000
+  i64.gt_s
+  i32.or
+  if
+   unreachable
+  end
+  local.get $this|2
+  local.get $time
+  call $~lib/date/Date#set:epochMillis
+  local.get $this|2
+  local.get $time
+  local.set $ms
+  local.get $ms
+  local.set $a
+  i32.const 86400000
+  i64.extend_i32_s
+  local.set $b
+  local.get $a
+  local.get $a
+  i64.const 0
+  i64.lt_s
+  if (result i64)
+   local.get $b
+   i64.const 1
+   i64.sub
+  else
+   i64.const 0
+  end
+  i64.sub
+  local.get $b
+  i64.div_s
+  i32.wrap_i64
+  i32.const 4
+  i32.mul
+  i32.const 719468
+  i32.const 4
+  i32.mul
+  i32.add
+  i32.const 3
+  i32.or
+  local.set $da
+  local.get $da
+  local.set $a|9
+  i32.const 146097
+  local.set $b|10
+  local.get $a|9
+  local.get $a|9
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $b|10
+   i32.const 1
+   i32.sub
+  else
+   i32.const 0
+  end
+  i32.sub
+  local.get $b|10
+  i32.div_s
+  local.set $q0
+  local.get $da
+  local.get $q0
+  i32.const 146097
+  i32.mul
+  i32.sub
+  local.set $r1
+  local.get $r1
+  i32.const 3
+  i32.or
+  i64.extend_i32_u
+  i64.const 2939745
+  i64.mul
+  local.set $u1
+  local.get $u1
+  i32.wrap_i64
+  i32.const 11758980
+  i32.div_u
+  local.set $dm1
+  i32.const 2141
+  local.get $dm1
+  i32.mul
+  i32.const 197913
+  i32.add
+  local.set $n1
+  i32.const 100
+  local.get $q0
+  i32.mul
+  local.get $u1
+  i64.const 32
+  i64.shr_u
+  i32.wrap_i64
+  i32.add
+  local.set $year
+  local.get $n1
+  i32.const 16
+  i32.shr_u
+  local.set $mo
+  local.get $n1
+  i32.const 65535
+  i32.and
+  i32.const 2141
+  i32.div_s
+  i32.const 1
+  i32.add
+  global.set $~lib/date/_day
+  local.get $dm1
+  i32.const 306
+  i32.ge_u
+  if
+   local.get $mo
+   i32.const 12
+   i32.sub
+   local.set $mo
+   local.get $year
+   i32.const 1
+   i32.add
+   local.set $year
+  end
+  local.get $mo
+  global.set $~lib/date/_month
+  local.get $year
+  call $~lib/date/Date#set:year
+  local.get $this|2
+  global.get $~lib/date/_month
+  call $~lib/date/Date#set:month
+  local.get $this|2
+  global.get $~lib/date/_day
+  call $~lib/date/Date#set:day
+  local.get $time
   drop
  )
  (func $~lib/date/Date#setUTCMonth (type $i32_i32_i32_=>_none) (param $this i32) (param $month i32) (param $day i32)
+  (local $this|3 i32)
+  (local $time i64)
+  (local $millis i64)
+  (local $ms i64)
+  (local $a i64)
+  (local $b i64)
+  (local $da i32)
+  (local $a|10 i32)
+  (local $b|11 i32)
+  (local $q0 i32)
+  (local $r1 i32)
+  (local $u1 i64)
+  (local $dm1 i32)
+  (local $n1 i32)
+  (local $year i32)
+  (local $mo i32)
   local.get $this
   i32.load $0 offset=4
   local.get $month
@@ -2548,6 +3180,7 @@
    return
   end
   local.get $this
+  local.set $this|3
   local.get $this
   i32.load $0
   local.get $month
@@ -2557,7 +3190,144 @@
   local.get $this
   i64.load $0 offset=16
   call $~lib/date/join
-  call $~lib/date/Date#setTime
+  local.set $time
+  local.get $time
+  local.set $millis
+  local.get $millis
+  i64.const 0
+  i64.const 8640000000000000
+  i64.sub
+  i64.lt_s
+  local.get $millis
+  i64.const 8640000000000000
+  i64.gt_s
+  i32.or
+  if
+   unreachable
+  end
+  local.get $this|3
+  local.get $time
+  call $~lib/date/Date#set:epochMillis
+  local.get $this|3
+  local.get $time
+  local.set $ms
+  local.get $ms
+  local.set $a
+  i32.const 86400000
+  i64.extend_i32_s
+  local.set $b
+  local.get $a
+  local.get $a
+  i64.const 0
+  i64.lt_s
+  if (result i64)
+   local.get $b
+   i64.const 1
+   i64.sub
+  else
+   i64.const 0
+  end
+  i64.sub
+  local.get $b
+  i64.div_s
+  i32.wrap_i64
+  i32.const 4
+  i32.mul
+  i32.const 719468
+  i32.const 4
+  i32.mul
+  i32.add
+  i32.const 3
+  i32.or
+  local.set $da
+  local.get $da
+  local.set $a|10
+  i32.const 146097
+  local.set $b|11
+  local.get $a|10
+  local.get $a|10
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $b|11
+   i32.const 1
+   i32.sub
+  else
+   i32.const 0
+  end
+  i32.sub
+  local.get $b|11
+  i32.div_s
+  local.set $q0
+  local.get $da
+  local.get $q0
+  i32.const 146097
+  i32.mul
+  i32.sub
+  local.set $r1
+  local.get $r1
+  i32.const 3
+  i32.or
+  i64.extend_i32_u
+  i64.const 2939745
+  i64.mul
+  local.set $u1
+  local.get $u1
+  i32.wrap_i64
+  i32.const 11758980
+  i32.div_u
+  local.set $dm1
+  i32.const 2141
+  local.get $dm1
+  i32.mul
+  i32.const 197913
+  i32.add
+  local.set $n1
+  i32.const 100
+  local.get $q0
+  i32.mul
+  local.get $u1
+  i64.const 32
+  i64.shr_u
+  i32.wrap_i64
+  i32.add
+  local.set $year
+  local.get $n1
+  i32.const 16
+  i32.shr_u
+  local.set $mo
+  local.get $n1
+  i32.const 65535
+  i32.and
+  i32.const 2141
+  i32.div_s
+  i32.const 1
+  i32.add
+  global.set $~lib/date/_day
+  local.get $dm1
+  i32.const 306
+  i32.ge_u
+  if
+   local.get $mo
+   i32.const 12
+   i32.sub
+   local.set $mo
+   local.get $year
+   i32.const 1
+   i32.add
+   local.set $year
+  end
+  local.get $mo
+  global.set $~lib/date/_month
+  local.get $year
+  call $~lib/date/Date#set:year
+  local.get $this|3
+  global.get $~lib/date/_month
+  call $~lib/date/Date#set:month
+  local.get $this|3
+  global.get $~lib/date/_day
+  call $~lib/date/Date#set:day
+  local.get $time
   drop
  )
  (func $~lib/date/Date#setUTCMonth@varargs (type $i32_i32_i32_=>_none) (param $this i32) (param $month i32) (param $day i32)
@@ -2581,6 +3351,22 @@
   call $~lib/date/Date#setUTCMonth
  )
  (func $~lib/date/Date#setUTCFullYear (type $i32_i32_=>_none) (param $this i32) (param $year i32)
+  (local $this|2 i32)
+  (local $time i64)
+  (local $millis i64)
+  (local $ms i64)
+  (local $a i64)
+  (local $b i64)
+  (local $da i32)
+  (local $a|9 i32)
+  (local $b|10 i32)
+  (local $q0 i32)
+  (local $r1 i32)
+  (local $u1 i64)
+  (local $dm1 i32)
+  (local $n1 i32)
+  (local $year|16 i32)
+  (local $mo i32)
   local.get $this
   i32.load $0
   local.get $year
@@ -2589,6 +3375,7 @@
    return
   end
   local.get $this
+  local.set $this|2
   local.get $year
   local.get $this
   i32.load $0 offset=4
@@ -2597,7 +3384,144 @@
   local.get $this
   i64.load $0 offset=16
   call $~lib/date/join
-  call $~lib/date/Date#setTime
+  local.set $time
+  local.get $time
+  local.set $millis
+  local.get $millis
+  i64.const 0
+  i64.const 8640000000000000
+  i64.sub
+  i64.lt_s
+  local.get $millis
+  i64.const 8640000000000000
+  i64.gt_s
+  i32.or
+  if
+   unreachable
+  end
+  local.get $this|2
+  local.get $time
+  call $~lib/date/Date#set:epochMillis
+  local.get $this|2
+  local.get $time
+  local.set $ms
+  local.get $ms
+  local.set $a
+  i32.const 86400000
+  i64.extend_i32_s
+  local.set $b
+  local.get $a
+  local.get $a
+  i64.const 0
+  i64.lt_s
+  if (result i64)
+   local.get $b
+   i64.const 1
+   i64.sub
+  else
+   i64.const 0
+  end
+  i64.sub
+  local.get $b
+  i64.div_s
+  i32.wrap_i64
+  i32.const 4
+  i32.mul
+  i32.const 719468
+  i32.const 4
+  i32.mul
+  i32.add
+  i32.const 3
+  i32.or
+  local.set $da
+  local.get $da
+  local.set $a|9
+  i32.const 146097
+  local.set $b|10
+  local.get $a|9
+  local.get $a|9
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $b|10
+   i32.const 1
+   i32.sub
+  else
+   i32.const 0
+  end
+  i32.sub
+  local.get $b|10
+  i32.div_s
+  local.set $q0
+  local.get $da
+  local.get $q0
+  i32.const 146097
+  i32.mul
+  i32.sub
+  local.set $r1
+  local.get $r1
+  i32.const 3
+  i32.or
+  i64.extend_i32_u
+  i64.const 2939745
+  i64.mul
+  local.set $u1
+  local.get $u1
+  i32.wrap_i64
+  i32.const 11758980
+  i32.div_u
+  local.set $dm1
+  i32.const 2141
+  local.get $dm1
+  i32.mul
+  i32.const 197913
+  i32.add
+  local.set $n1
+  i32.const 100
+  local.get $q0
+  i32.mul
+  local.get $u1
+  i64.const 32
+  i64.shr_u
+  i32.wrap_i64
+  i32.add
+  local.set $year|16
+  local.get $n1
+  i32.const 16
+  i32.shr_u
+  local.set $mo
+  local.get $n1
+  i32.const 65535
+  i32.and
+  i32.const 2141
+  i32.div_s
+  i32.const 1
+  i32.add
+  global.set $~lib/date/_day
+  local.get $dm1
+  i32.const 306
+  i32.ge_u
+  if
+   local.get $mo
+   i32.const 12
+   i32.sub
+   local.set $mo
+   local.get $year|16
+   i32.const 1
+   i32.add
+   local.set $year|16
+  end
+  local.get $mo
+  global.set $~lib/date/_month
+  local.get $year|16
+  call $~lib/date/Date#set:year
+  local.get $this|2
+  global.get $~lib/date/_month
+  call $~lib/date/Date#set:month
+  local.get $this|2
+  global.get $~lib/date/_day
+  call $~lib/date/Date#set:day
+  local.get $time
   drop
  )
  (func $~lib/date/dayOfWeek (type $i32_i32_i32_=>_i32) (param $year i32) (param $month i32) (param $day i32) (result i32)
@@ -2789,584 +3713,600 @@
   (local $date i32)
   (local $this|81 i32)
   (local $this|82 i32)
-  (local $this|83 i32)
-  (local $epochMillis|84 i64)
-  (local $millis|85 i64)
-  (local $ms|86 i64)
-  (local $a|87 i64)
-  (local $b|88 i64)
-  (local $da|89 i32)
-  (local $a|90 i32)
-  (local $b|91 i32)
-  (local $q0|92 i32)
-  (local $r1|93 i32)
-  (local $u1|94 i64)
-  (local $dm1|95 i32)
-  (local $n1|96 i32)
-  (local $year|97 i32)
-  (local $mo|98 i32)
-  (local $date|99 i32)
-  (local $this|100 i32)
-  (local $this|101 i32)
-  (local $this|102 i32)
-  (local $this|103 i32)
-  (local $a|104 i64)
-  (local $b|105 i64)
-  (local $m i64)
-  (local $this|107 i32)
-  (local $a|108 i64)
-  (local $b|109 i64)
-  (local $m|110 i64)
-  (local $this|111 i32)
-  (local $a|112 i64)
-  (local $b|113 i64)
-  (local $m|114 i64)
-  (local $this|115 i32)
-  (local $a|116 i64)
-  (local $b|117 i64)
-  (local $m|118 i64)
+  (local $time i64)
+  (local $millis|84 i64)
+  (local $ms|85 i64)
+  (local $a|86 i64)
+  (local $b|87 i64)
+  (local $da|88 i32)
+  (local $a|89 i32)
+  (local $b|90 i32)
+  (local $q0|91 i32)
+  (local $r1|92 i32)
+  (local $u1|93 i64)
+  (local $dm1|94 i32)
+  (local $n1|95 i32)
+  (local $year|96 i32)
+  (local $mo|97 i32)
+  (local $this|98 i32)
+  (local $this|99 i32)
+  (local $epochMillis|100 i64)
+  (local $millis|101 i64)
+  (local $ms|102 i64)
+  (local $a|103 i64)
+  (local $b|104 i64)
+  (local $da|105 i32)
+  (local $a|106 i32)
+  (local $b|107 i32)
+  (local $q0|108 i32)
+  (local $r1|109 i32)
+  (local $u1|110 i64)
+  (local $dm1|111 i32)
+  (local $n1|112 i32)
+  (local $year|113 i32)
+  (local $mo|114 i32)
+  (local $date|115 i32)
+  (local $this|116 i32)
+  (local $this|117 i32)
+  (local $this|118 i32)
   (local $this|119 i32)
-  (local $epochMillis|120 i64)
-  (local $millis|121 i64)
-  (local $ms|122 i64)
-  (local $a|123 i64)
-  (local $b|124 i64)
-  (local $da|125 i32)
-  (local $a|126 i32)
-  (local $b|127 i32)
-  (local $q0|128 i32)
-  (local $r1|129 i32)
-  (local $u1|130 i64)
-  (local $dm1|131 i32)
-  (local $n1|132 i32)
-  (local $year|133 i32)
-  (local $mo|134 i32)
-  (local $date|135 i32)
-  (local $this|136 i32)
-  (local $this|137 i32)
-  (local $this|138 i32)
-  (local $this|139 i32)
-  (local $a|140 i64)
-  (local $b|141 i64)
-  (local $m|142 i64)
-  (local $this|143 i32)
-  (local $a|144 i64)
-  (local $b|145 i64)
-  (local $m|146 i64)
-  (local $this|147 i32)
-  (local $a|148 i64)
-  (local $b|149 i64)
-  (local $m|150 i64)
-  (local $this|151 i32)
-  (local $a|152 i64)
-  (local $b|153 i64)
-  (local $m|154 i64)
+  (local $a|120 i64)
+  (local $b|121 i64)
+  (local $m i64)
+  (local $this|123 i32)
+  (local $a|124 i64)
+  (local $b|125 i64)
+  (local $m|126 i64)
+  (local $this|127 i32)
+  (local $a|128 i64)
+  (local $b|129 i64)
+  (local $m|130 i64)
+  (local $this|131 i32)
+  (local $a|132 i64)
+  (local $b|133 i64)
+  (local $m|134 i64)
+  (local $this|135 i32)
+  (local $epochMillis|136 i64)
+  (local $millis|137 i64)
+  (local $ms|138 i64)
+  (local $a|139 i64)
+  (local $b|140 i64)
+  (local $da|141 i32)
+  (local $a|142 i32)
+  (local $b|143 i32)
+  (local $q0|144 i32)
+  (local $r1|145 i32)
+  (local $u1|146 i64)
+  (local $dm1|147 i32)
+  (local $n1|148 i32)
+  (local $year|149 i32)
+  (local $mo|150 i32)
+  (local $date|151 i32)
+  (local $this|152 i32)
+  (local $this|153 i32)
+  (local $this|154 i32)
   (local $this|155 i32)
-  (local $epochMillis|156 i64)
-  (local $millis|157 i64)
-  (local $ms|158 i64)
-  (local $a|159 i64)
-  (local $b|160 i64)
-  (local $da|161 i32)
-  (local $a|162 i32)
-  (local $b|163 i32)
-  (local $q0|164 i32)
-  (local $r1|165 i32)
-  (local $u1|166 i64)
-  (local $dm1|167 i32)
-  (local $n1|168 i32)
-  (local $year|169 i32)
-  (local $mo|170 i32)
-  (local $date|171 i32)
-  (local $this|172 i32)
-  (local $a|173 i64)
-  (local $b|174 i64)
-  (local $m|175 i64)
-  (local $this|176 i32)
-  (local $a|177 i64)
-  (local $b|178 i64)
-  (local $m|179 i64)
-  (local $this|180 i32)
-  (local $a|181 i64)
-  (local $b|182 i64)
-  (local $m|183 i64)
-  (local $this|184 i32)
-  (local $this|185 i32)
-  (local $this|186 i32)
-  (local $a|187 i64)
-  (local $b|188 i64)
-  (local $m|189 i64)
-  (local $this|190 i32)
-  (local $this|191 i32)
-  (local $a|192 i64)
-  (local $b|193 i64)
-  (local $m|194 i64)
-  (local $this|195 i32)
+  (local $a|156 i64)
+  (local $b|157 i64)
+  (local $m|158 i64)
+  (local $this|159 i32)
+  (local $a|160 i64)
+  (local $b|161 i64)
+  (local $m|162 i64)
+  (local $this|163 i32)
+  (local $a|164 i64)
+  (local $b|165 i64)
+  (local $m|166 i64)
+  (local $this|167 i32)
+  (local $a|168 i64)
+  (local $b|169 i64)
+  (local $m|170 i64)
+  (local $this|171 i32)
+  (local $epochMillis|172 i64)
+  (local $millis|173 i64)
+  (local $ms|174 i64)
+  (local $a|175 i64)
+  (local $b|176 i64)
+  (local $da|177 i32)
+  (local $a|178 i32)
+  (local $b|179 i32)
+  (local $q0|180 i32)
+  (local $r1|181 i32)
+  (local $u1|182 i64)
+  (local $dm1|183 i32)
+  (local $n1|184 i32)
+  (local $year|185 i32)
+  (local $mo|186 i32)
+  (local $date|187 i32)
+  (local $this|188 i32)
+  (local $a|189 i64)
+  (local $b|190 i64)
+  (local $m|191 i64)
+  (local $this|192 i32)
+  (local $a|193 i64)
+  (local $b|194 i64)
+  (local $m|195 i64)
   (local $this|196 i32)
-  (local $epochMillis|197 i64)
-  (local $millis|198 i64)
-  (local $ms|199 i64)
-  (local $a|200 i64)
-  (local $b|201 i64)
-  (local $da|202 i32)
-  (local $a|203 i32)
-  (local $b|204 i32)
-  (local $q0|205 i32)
-  (local $r1|206 i32)
-  (local $u1|207 i64)
-  (local $dm1|208 i32)
-  (local $n1|209 i32)
-  (local $year|210 i32)
-  (local $mo|211 i32)
-  (local $date|212 i32)
-  (local $this|213 i32)
-  (local $a|214 i64)
-  (local $b|215 i64)
-  (local $m|216 i64)
-  (local $this|217 i32)
-  (local $a|218 i64)
-  (local $b|219 i64)
-  (local $m|220 i64)
-  (local $this|221 i32)
-  (local $a|222 i64)
-  (local $b|223 i64)
-  (local $m|224 i64)
-  (local $this|225 i32)
-  (local $this|226 i32)
-  (local $this|227 i32)
-  (local $epochMillis|228 i64)
-  (local $millis|229 i64)
-  (local $ms|230 i64)
-  (local $a|231 i64)
-  (local $b|232 i64)
-  (local $da|233 i32)
-  (local $a|234 i32)
-  (local $b|235 i32)
-  (local $q0|236 i32)
-  (local $r1|237 i32)
-  (local $u1|238 i64)
-  (local $dm1|239 i32)
-  (local $n1|240 i32)
-  (local $year|241 i32)
-  (local $mo|242 i32)
-  (local $date|243 i32)
-  (local $this|244 i32)
-  (local $a|245 i64)
-  (local $b|246 i64)
-  (local $m|247 i64)
-  (local $this|248 i32)
-  (local $a|249 i64)
-  (local $b|250 i64)
-  (local $m|251 i64)
-  (local $this|252 i32)
-  (local $a|253 i64)
-  (local $b|254 i64)
-  (local $m|255 i64)
-  (local $this|256 i32)
-  (local $this|257 i32)
-  (local $this|258 i32)
-  (local $epochMillis|259 i64)
-  (local $millis|260 i64)
-  (local $ms|261 i64)
-  (local $a|262 i64)
-  (local $b|263 i64)
-  (local $da|264 i32)
-  (local $a|265 i32)
-  (local $b|266 i32)
-  (local $q0|267 i32)
-  (local $r1|268 i32)
-  (local $u1|269 i64)
-  (local $dm1|270 i32)
-  (local $n1|271 i32)
-  (local $year|272 i32)
-  (local $mo|273 i32)
-  (local $date|274 i32)
-  (local $this|275 i32)
-  (local $a|276 i64)
-  (local $b|277 i64)
-  (local $m|278 i64)
-  (local $this|279 i32)
-  (local $a|280 i64)
-  (local $b|281 i64)
-  (local $m|282 i64)
-  (local $this|283 i32)
-  (local $a|284 i64)
-  (local $b|285 i64)
-  (local $m|286 i64)
-  (local $this|287 i32)
-  (local $this|288 i32)
-  (local $this|289 i32)
-  (local $epochMillis|290 i64)
-  (local $millis|291 i64)
-  (local $ms|292 i64)
-  (local $a|293 i64)
-  (local $b|294 i64)
-  (local $da|295 i32)
-  (local $a|296 i32)
-  (local $b|297 i32)
-  (local $q0|298 i32)
-  (local $r1|299 i32)
-  (local $u1|300 i64)
-  (local $dm1|301 i32)
-  (local $n1|302 i32)
-  (local $year|303 i32)
-  (local $mo|304 i32)
-  (local $date|305 i32)
-  (local $this|306 i32)
-  (local $this|307 i32)
-  (local $this|308 i32)
-  (local $this|309 i32)
-  (local $this|310 i32)
-  (local $this|311 i32)
-  (local $this|312 i32)
-  (local $this|313 i32)
-  (local $this|314 i32)
-  (local $a|315 i64)
-  (local $b|316 i64)
-  (local $m|317 i64)
-  (local $this|318 i32)
-  (local $a|319 i64)
-  (local $b|320 i64)
-  (local $m|321 i64)
+  (local $a|197 i64)
+  (local $b|198 i64)
+  (local $m|199 i64)
+  (local $this|200 i32)
+  (local $this|201 i32)
+  (local $this|202 i32)
+  (local $a|203 i64)
+  (local $b|204 i64)
+  (local $m|205 i64)
+  (local $this|206 i32)
+  (local $this|207 i32)
+  (local $a|208 i64)
+  (local $b|209 i64)
+  (local $m|210 i64)
+  (local $this|211 i32)
+  (local $this|212 i32)
+  (local $epochMillis|213 i64)
+  (local $millis|214 i64)
+  (local $ms|215 i64)
+  (local $a|216 i64)
+  (local $b|217 i64)
+  (local $da|218 i32)
+  (local $a|219 i32)
+  (local $b|220 i32)
+  (local $q0|221 i32)
+  (local $r1|222 i32)
+  (local $u1|223 i64)
+  (local $dm1|224 i32)
+  (local $n1|225 i32)
+  (local $year|226 i32)
+  (local $mo|227 i32)
+  (local $date|228 i32)
+  (local $this|229 i32)
+  (local $a|230 i64)
+  (local $b|231 i64)
+  (local $m|232 i64)
+  (local $this|233 i32)
+  (local $a|234 i64)
+  (local $b|235 i64)
+  (local $m|236 i64)
+  (local $this|237 i32)
+  (local $a|238 i64)
+  (local $b|239 i64)
+  (local $m|240 i64)
+  (local $this|241 i32)
+  (local $this|242 i32)
+  (local $this|243 i32)
+  (local $epochMillis|244 i64)
+  (local $millis|245 i64)
+  (local $ms|246 i64)
+  (local $a|247 i64)
+  (local $b|248 i64)
+  (local $da|249 i32)
+  (local $a|250 i32)
+  (local $b|251 i32)
+  (local $q0|252 i32)
+  (local $r1|253 i32)
+  (local $u1|254 i64)
+  (local $dm1|255 i32)
+  (local $n1|256 i32)
+  (local $year|257 i32)
+  (local $mo|258 i32)
+  (local $date|259 i32)
+  (local $this|260 i32)
+  (local $a|261 i64)
+  (local $b|262 i64)
+  (local $m|263 i64)
+  (local $this|264 i32)
+  (local $a|265 i64)
+  (local $b|266 i64)
+  (local $m|267 i64)
+  (local $this|268 i32)
+  (local $a|269 i64)
+  (local $b|270 i64)
+  (local $m|271 i64)
+  (local $this|272 i32)
+  (local $this|273 i32)
+  (local $this|274 i32)
+  (local $epochMillis|275 i64)
+  (local $millis|276 i64)
+  (local $ms|277 i64)
+  (local $a|278 i64)
+  (local $b|279 i64)
+  (local $da|280 i32)
+  (local $a|281 i32)
+  (local $b|282 i32)
+  (local $q0|283 i32)
+  (local $r1|284 i32)
+  (local $u1|285 i64)
+  (local $dm1|286 i32)
+  (local $n1|287 i32)
+  (local $year|288 i32)
+  (local $mo|289 i32)
+  (local $date|290 i32)
+  (local $this|291 i32)
+  (local $a|292 i64)
+  (local $b|293 i64)
+  (local $m|294 i64)
+  (local $this|295 i32)
+  (local $a|296 i64)
+  (local $b|297 i64)
+  (local $m|298 i64)
+  (local $this|299 i32)
+  (local $a|300 i64)
+  (local $b|301 i64)
+  (local $m|302 i64)
+  (local $this|303 i32)
+  (local $this|304 i32)
+  (local $this|305 i32)
+  (local $epochMillis|306 i64)
+  (local $millis|307 i64)
+  (local $ms|308 i64)
+  (local $a|309 i64)
+  (local $b|310 i64)
+  (local $da|311 i32)
+  (local $a|312 i32)
+  (local $b|313 i32)
+  (local $q0|314 i32)
+  (local $r1|315 i32)
+  (local $u1|316 i64)
+  (local $dm1|317 i32)
+  (local $n1|318 i32)
+  (local $year|319 i32)
+  (local $mo|320 i32)
+  (local $date|321 i32)
   (local $this|322 i32)
-  (local $a|323 i64)
-  (local $b|324 i64)
-  (local $m|325 i64)
+  (local $this|323 i32)
+  (local $this|324 i32)
+  (local $this|325 i32)
   (local $this|326 i32)
-  (local $epochMillis|327 i64)
-  (local $millis|328 i64)
-  (local $ms|329 i64)
-  (local $a|330 i64)
-  (local $b|331 i64)
-  (local $da|332 i32)
-  (local $a|333 i32)
-  (local $b|334 i32)
-  (local $q0|335 i32)
-  (local $r1|336 i32)
-  (local $u1|337 i64)
-  (local $dm1|338 i32)
-  (local $n1|339 i32)
-  (local $year|340 i32)
-  (local $mo|341 i32)
+  (local $this|327 i32)
+  (local $this|328 i32)
+  (local $this|329 i32)
+  (local $this|330 i32)
+  (local $a|331 i64)
+  (local $b|332 i64)
+  (local $m|333 i64)
+  (local $this|334 i32)
+  (local $a|335 i64)
+  (local $b|336 i64)
+  (local $m|337 i64)
+  (local $this|338 i32)
+  (local $a|339 i64)
+  (local $b|340 i64)
+  (local $m|341 i64)
   (local $this|342 i32)
-  (local $this|343 i32)
-  (local $this|344 i32)
-  (local $this|345 i32)
-  (local $this|346 i32)
-  (local $this|347 i32)
-  (local $this|348 i32)
-  (local $epochMillis|349 i64)
-  (local $millis|350 i64)
-  (local $ms|351 i64)
-  (local $a|352 i64)
-  (local $b|353 i64)
-  (local $da|354 i32)
-  (local $a|355 i32)
-  (local $b|356 i32)
-  (local $q0|357 i32)
-  (local $r1|358 i32)
-  (local $u1|359 i64)
-  (local $dm1|360 i32)
-  (local $n1|361 i32)
-  (local $year|362 i32)
-  (local $mo|363 i32)
+  (local $epochMillis|343 i64)
+  (local $millis|344 i64)
+  (local $ms|345 i64)
+  (local $a|346 i64)
+  (local $b|347 i64)
+  (local $da|348 i32)
+  (local $a|349 i32)
+  (local $b|350 i32)
+  (local $q0|351 i32)
+  (local $r1|352 i32)
+  (local $u1|353 i64)
+  (local $dm1|354 i32)
+  (local $n1|355 i32)
+  (local $year|356 i32)
+  (local $mo|357 i32)
+  (local $this|358 i32)
+  (local $this|359 i32)
+  (local $this|360 i32)
+  (local $this|361 i32)
+  (local $this|362 i32)
+  (local $this|363 i32)
   (local $this|364 i32)
-  (local $this|365 i32)
-  (local $epochMillis|366 i64)
-  (local $millis|367 i64)
-  (local $ms|368 i64)
-  (local $a|369 i64)
-  (local $b|370 i64)
-  (local $da|371 i32)
-  (local $a|372 i32)
-  (local $b|373 i32)
-  (local $q0|374 i32)
-  (local $r1|375 i32)
-  (local $u1|376 i64)
-  (local $dm1|377 i32)
-  (local $n1|378 i32)
-  (local $year|379 i32)
-  (local $mo|380 i32)
+  (local $epochMillis|365 i64)
+  (local $millis|366 i64)
+  (local $ms|367 i64)
+  (local $a|368 i64)
+  (local $b|369 i64)
+  (local $da|370 i32)
+  (local $a|371 i32)
+  (local $b|372 i32)
+  (local $q0|373 i32)
+  (local $r1|374 i32)
+  (local $u1|375 i64)
+  (local $dm1|376 i32)
+  (local $n1|377 i32)
+  (local $year|378 i32)
+  (local $mo|379 i32)
+  (local $this|380 i32)
   (local $this|381 i32)
-  (local $this|382 i32)
-  (local $epochMillis|383 i64)
-  (local $millis|384 i64)
-  (local $ms|385 i64)
-  (local $a|386 i64)
-  (local $b|387 i64)
-  (local $da|388 i32)
-  (local $a|389 i32)
-  (local $b|390 i32)
-  (local $q0|391 i32)
-  (local $r1|392 i32)
-  (local $u1|393 i64)
-  (local $dm1|394 i32)
-  (local $n1|395 i32)
-  (local $year|396 i32)
-  (local $mo|397 i32)
+  (local $epochMillis|382 i64)
+  (local $millis|383 i64)
+  (local $ms|384 i64)
+  (local $a|385 i64)
+  (local $b|386 i64)
+  (local $da|387 i32)
+  (local $a|388 i32)
+  (local $b|389 i32)
+  (local $q0|390 i32)
+  (local $r1|391 i32)
+  (local $u1|392 i64)
+  (local $dm1|393 i32)
+  (local $n1|394 i32)
+  (local $year|395 i32)
+  (local $mo|396 i32)
+  (local $this|397 i32)
   (local $this|398 i32)
-  (local $this|399 i32)
-  (local $epochMillis|400 i64)
-  (local $millis|401 i64)
-  (local $ms|402 i64)
-  (local $a|403 i64)
-  (local $b|404 i64)
-  (local $da|405 i32)
-  (local $a|406 i32)
-  (local $b|407 i32)
-  (local $q0|408 i32)
-  (local $r1|409 i32)
-  (local $u1|410 i64)
-  (local $dm1|411 i32)
-  (local $n1|412 i32)
-  (local $year|413 i32)
-  (local $mo|414 i32)
+  (local $epochMillis|399 i64)
+  (local $millis|400 i64)
+  (local $ms|401 i64)
+  (local $a|402 i64)
+  (local $b|403 i64)
+  (local $da|404 i32)
+  (local $a|405 i32)
+  (local $b|406 i32)
+  (local $q0|407 i32)
+  (local $r1|408 i32)
+  (local $u1|409 i64)
+  (local $dm1|410 i32)
+  (local $n1|411 i32)
+  (local $year|412 i32)
+  (local $mo|413 i32)
+  (local $this|414 i32)
   (local $this|415 i32)
-  (local $this|416 i32)
-  (local $epochMillis|417 i64)
-  (local $millis|418 i64)
-  (local $ms|419 i64)
-  (local $a|420 i64)
-  (local $b|421 i64)
-  (local $da|422 i32)
-  (local $a|423 i32)
-  (local $b|424 i32)
-  (local $q0|425 i32)
-  (local $r1|426 i32)
-  (local $u1|427 i64)
-  (local $dm1|428 i32)
-  (local $n1|429 i32)
-  (local $year|430 i32)
-  (local $mo|431 i32)
+  (local $epochMillis|416 i64)
+  (local $millis|417 i64)
+  (local $ms|418 i64)
+  (local $a|419 i64)
+  (local $b|420 i64)
+  (local $da|421 i32)
+  (local $a|422 i32)
+  (local $b|423 i32)
+  (local $q0|424 i32)
+  (local $r1|425 i32)
+  (local $u1|426 i64)
+  (local $dm1|427 i32)
+  (local $n1|428 i32)
+  (local $year|429 i32)
+  (local $mo|430 i32)
+  (local $this|431 i32)
   (local $this|432 i32)
-  (local $this|433 i32)
-  (local $epochMillis|434 i64)
-  (local $millis|435 i64)
-  (local $ms|436 i64)
-  (local $a|437 i64)
-  (local $b|438 i64)
-  (local $da|439 i32)
-  (local $a|440 i32)
-  (local $b|441 i32)
-  (local $q0|442 i32)
-  (local $r1|443 i32)
-  (local $u1|444 i64)
-  (local $dm1|445 i32)
-  (local $n1|446 i32)
-  (local $year|447 i32)
-  (local $mo|448 i32)
+  (local $epochMillis|433 i64)
+  (local $millis|434 i64)
+  (local $ms|435 i64)
+  (local $a|436 i64)
+  (local $b|437 i64)
+  (local $da|438 i32)
+  (local $a|439 i32)
+  (local $b|440 i32)
+  (local $q0|441 i32)
+  (local $r1|442 i32)
+  (local $u1|443 i64)
+  (local $dm1|444 i32)
+  (local $n1|445 i32)
+  (local $year|446 i32)
+  (local $mo|447 i32)
+  (local $this|448 i32)
   (local $this|449 i32)
-  (local $this|450 i32)
-  (local $epochMillis|451 i64)
-  (local $millis|452 i64)
-  (local $ms|453 i64)
-  (local $a|454 i64)
-  (local $b|455 i64)
-  (local $da|456 i32)
-  (local $a|457 i32)
-  (local $b|458 i32)
-  (local $q0|459 i32)
-  (local $r1|460 i32)
-  (local $u1|461 i64)
-  (local $dm1|462 i32)
-  (local $n1|463 i32)
-  (local $year|464 i32)
-  (local $mo|465 i32)
+  (local $epochMillis|450 i64)
+  (local $millis|451 i64)
+  (local $ms|452 i64)
+  (local $a|453 i64)
+  (local $b|454 i64)
+  (local $da|455 i32)
+  (local $a|456 i32)
+  (local $b|457 i32)
+  (local $q0|458 i32)
+  (local $r1|459 i32)
+  (local $u1|460 i64)
+  (local $dm1|461 i32)
+  (local $n1|462 i32)
+  (local $year|463 i32)
+  (local $mo|464 i32)
+  (local $this|465 i32)
   (local $this|466 i32)
-  (local $this|467 i32)
-  (local $epochMillis|468 i64)
-  (local $millis|469 i64)
-  (local $ms|470 i64)
-  (local $a|471 i64)
-  (local $b|472 i64)
-  (local $da|473 i32)
-  (local $a|474 i32)
-  (local $b|475 i32)
-  (local $q0|476 i32)
-  (local $r1|477 i32)
-  (local $u1|478 i64)
-  (local $dm1|479 i32)
-  (local $n1|480 i32)
-  (local $year|481 i32)
-  (local $mo|482 i32)
+  (local $epochMillis|467 i64)
+  (local $millis|468 i64)
+  (local $ms|469 i64)
+  (local $a|470 i64)
+  (local $b|471 i64)
+  (local $da|472 i32)
+  (local $a|473 i32)
+  (local $b|474 i32)
+  (local $q0|475 i32)
+  (local $r1|476 i32)
+  (local $u1|477 i64)
+  (local $dm1|478 i32)
+  (local $n1|479 i32)
+  (local $year|480 i32)
+  (local $mo|481 i32)
+  (local $this|482 i32)
   (local $this|483 i32)
-  (local $this|484 i32)
-  (local $epochMillis|485 i64)
-  (local $millis|486 i64)
-  (local $ms|487 i64)
-  (local $a|488 i64)
-  (local $b|489 i64)
-  (local $da|490 i32)
-  (local $a|491 i32)
-  (local $b|492 i32)
-  (local $q0|493 i32)
-  (local $r1|494 i32)
-  (local $u1|495 i64)
-  (local $dm1|496 i32)
-  (local $n1|497 i32)
-  (local $year|498 i32)
-  (local $mo|499 i32)
+  (local $epochMillis|484 i64)
+  (local $millis|485 i64)
+  (local $ms|486 i64)
+  (local $a|487 i64)
+  (local $b|488 i64)
+  (local $da|489 i32)
+  (local $a|490 i32)
+  (local $b|491 i32)
+  (local $q0|492 i32)
+  (local $r1|493 i32)
+  (local $u1|494 i64)
+  (local $dm1|495 i32)
+  (local $n1|496 i32)
+  (local $year|497 i32)
+  (local $mo|498 i32)
+  (local $this|499 i32)
   (local $this|500 i32)
-  (local $this|501 i32)
-  (local $epochMillis|502 i64)
-  (local $millis|503 i64)
-  (local $ms|504 i64)
-  (local $a|505 i64)
-  (local $b|506 i64)
-  (local $da|507 i32)
-  (local $a|508 i32)
-  (local $b|509 i32)
-  (local $q0|510 i32)
-  (local $r1|511 i32)
-  (local $u1|512 i64)
-  (local $dm1|513 i32)
-  (local $n1|514 i32)
-  (local $year|515 i32)
-  (local $mo|516 i32)
+  (local $epochMillis|501 i64)
+  (local $millis|502 i64)
+  (local $ms|503 i64)
+  (local $a|504 i64)
+  (local $b|505 i64)
+  (local $da|506 i32)
+  (local $a|507 i32)
+  (local $b|508 i32)
+  (local $q0|509 i32)
+  (local $r1|510 i32)
+  (local $u1|511 i64)
+  (local $dm1|512 i32)
+  (local $n1|513 i32)
+  (local $year|514 i32)
+  (local $mo|515 i32)
+  (local $this|516 i32)
   (local $this|517 i32)
-  (local $this|518 i32)
-  (local $epochMillis|519 i64)
-  (local $millis|520 i64)
-  (local $ms|521 i64)
-  (local $a|522 i64)
-  (local $b|523 i64)
-  (local $da|524 i32)
-  (local $a|525 i32)
-  (local $b|526 i32)
-  (local $q0|527 i32)
-  (local $r1|528 i32)
-  (local $u1|529 i64)
-  (local $dm1|530 i32)
-  (local $n1|531 i32)
-  (local $year|532 i32)
-  (local $mo|533 i32)
-  (local $date|534 i32)
-  (local $this|535 i32)
-  (local $this|536 i32)
-  (local $this|537 i32)
-  (local $this|538 i32)
-  (local $this|539 i32)
-  (local $this|540 i32)
-  (local $this|541 i32)
-  (local $this|542 i32)
-  (local $this|543 i32)
-  (local $this|544 i32)
-  (local $this|545 i32)
-  (local $epochMillis|546 i64)
-  (local $millis|547 i64)
-  (local $ms|548 i64)
-  (local $a|549 i64)
-  (local $b|550 i64)
-  (local $da|551 i32)
-  (local $a|552 i32)
-  (local $b|553 i32)
-  (local $q0|554 i32)
-  (local $r1|555 i32)
-  (local $u1|556 i64)
-  (local $dm1|557 i32)
-  (local $n1|558 i32)
-  (local $year|559 i32)
-  (local $mo|560 i32)
-  (local $date|561 i32)
-  (local $this|562 i32)
-  (local $this|563 i32)
-  (local $this|564 i32)
-  (local $this|565 i32)
-  (local $this|566 i32)
-  (local $epochMillis|567 i64)
-  (local $millis|568 i64)
-  (local $ms|569 i64)
-  (local $a|570 i64)
-  (local $b|571 i64)
-  (local $da|572 i32)
-  (local $a|573 i32)
-  (local $b|574 i32)
-  (local $q0|575 i32)
-  (local $r1|576 i32)
-  (local $u1|577 i64)
-  (local $dm1|578 i32)
-  (local $n1|579 i32)
-  (local $year|580 i32)
-  (local $mo|581 i32)
+  (local $epochMillis|518 i64)
+  (local $millis|519 i64)
+  (local $ms|520 i64)
+  (local $a|521 i64)
+  (local $b|522 i64)
+  (local $da|523 i32)
+  (local $a|524 i32)
+  (local $b|525 i32)
+  (local $q0|526 i32)
+  (local $r1|527 i32)
+  (local $u1|528 i64)
+  (local $dm1|529 i32)
+  (local $n1|530 i32)
+  (local $year|531 i32)
+  (local $mo|532 i32)
+  (local $this|533 i32)
+  (local $this|534 i32)
+  (local $epochMillis|535 i64)
+  (local $millis|536 i64)
+  (local $ms|537 i64)
+  (local $a|538 i64)
+  (local $b|539 i64)
+  (local $da|540 i32)
+  (local $a|541 i32)
+  (local $b|542 i32)
+  (local $q0|543 i32)
+  (local $r1|544 i32)
+  (local $u1|545 i64)
+  (local $dm1|546 i32)
+  (local $n1|547 i32)
+  (local $year|548 i32)
+  (local $mo|549 i32)
+  (local $date|550 i32)
+  (local $this|551 i32)
+  (local $this|552 i32)
+  (local $this|553 i32)
+  (local $this|554 i32)
+  (local $this|555 i32)
+  (local $this|556 i32)
+  (local $this|557 i32)
+  (local $this|558 i32)
+  (local $this|559 i32)
+  (local $this|560 i32)
+  (local $this|561 i32)
+  (local $epochMillis|562 i64)
+  (local $millis|563 i64)
+  (local $ms|564 i64)
+  (local $a|565 i64)
+  (local $b|566 i64)
+  (local $da|567 i32)
+  (local $a|568 i32)
+  (local $b|569 i32)
+  (local $q0|570 i32)
+  (local $r1|571 i32)
+  (local $u1|572 i64)
+  (local $dm1|573 i32)
+  (local $n1|574 i32)
+  (local $year|575 i32)
+  (local $mo|576 i32)
+  (local $date|577 i32)
+  (local $this|578 i32)
+  (local $this|579 i32)
+  (local $this|580 i32)
+  (local $this|581 i32)
+  (local $this|582 i32)
+  (local $epochMillis|583 i64)
+  (local $millis|584 i64)
+  (local $ms|585 i64)
+  (local $a|586 i64)
+  (local $b|587 i64)
+  (local $da|588 i32)
+  (local $a|589 i32)
+  (local $b|590 i32)
+  (local $q0|591 i32)
+  (local $r1|592 i32)
+  (local $u1|593 i64)
+  (local $dm1|594 i32)
+  (local $n1|595 i32)
+  (local $year|596 i32)
+  (local $mo|597 i32)
   (local $minDate i32)
-  (local $this|583 i32)
-  (local $epochMillis|584 i64)
-  (local $millis|585 i64)
-  (local $ms|586 i64)
-  (local $a|587 i64)
-  (local $b|588 i64)
-  (local $da|589 i32)
-  (local $a|590 i32)
-  (local $b|591 i32)
-  (local $q0|592 i32)
-  (local $r1|593 i32)
-  (local $u1|594 i64)
-  (local $dm1|595 i32)
-  (local $n1|596 i32)
-  (local $year|597 i32)
-  (local $mo|598 i32)
+  (local $this|599 i32)
+  (local $epochMillis|600 i64)
+  (local $millis|601 i64)
+  (local $ms|602 i64)
+  (local $a|603 i64)
+  (local $b|604 i64)
+  (local $da|605 i32)
+  (local $a|606 i32)
+  (local $b|607 i32)
+  (local $q0|608 i32)
+  (local $r1|609 i32)
+  (local $u1|610 i64)
+  (local $dm1|611 i32)
+  (local $n1|612 i32)
+  (local $year|613 i32)
+  (local $mo|614 i32)
   (local $maxDate i32)
-  (local $this|600 i32)
-  (local $this|601 i32)
-  (local $this|602 i32)
-  (local $this|603 i32)
-  (local $this|604 i32)
-  (local $this|605 i32)
-  (local $this|606 i32)
-  (local $this|607 i32)
-  (local $this|608 i32)
-  (local $epochMillis|609 i64)
-  (local $millis|610 i64)
-  (local $ms|611 i64)
-  (local $a|612 i64)
-  (local $b|613 i64)
-  (local $da|614 i32)
-  (local $a|615 i32)
-  (local $b|616 i32)
-  (local $q0|617 i32)
-  (local $r1|618 i32)
-  (local $u1|619 i64)
-  (local $dm1|620 i32)
-  (local $n1|621 i32)
-  (local $year|622 i32)
-  (local $mo|623 i32)
+  (local $this|616 i32)
+  (local $this|617 i32)
+  (local $this|618 i32)
+  (local $this|619 i32)
+  (local $this|620 i32)
+  (local $this|621 i32)
+  (local $this|622 i32)
+  (local $this|623 i32)
+  (local $this|624 i32)
+  (local $epochMillis|625 i64)
+  (local $millis|626 i64)
+  (local $ms|627 i64)
+  (local $a|628 i64)
+  (local $b|629 i64)
+  (local $da|630 i32)
+  (local $a|631 i32)
+  (local $b|632 i32)
+  (local $q0|633 i32)
+  (local $r1|634 i32)
+  (local $u1|635 i64)
+  (local $dm1|636 i32)
+  (local $n1|637 i32)
+  (local $year|638 i32)
+  (local $mo|639 i32)
   (local $maxDateDec i32)
-  (local $this|625 i32)
-  (local $epochMillis|626 i64)
-  (local $millis|627 i64)
-  (local $ms|628 i64)
-  (local $a|629 i64)
-  (local $b|630 i64)
-  (local $da|631 i32)
-  (local $a|632 i32)
-  (local $b|633 i32)
-  (local $q0|634 i32)
-  (local $r1|635 i32)
-  (local $u1|636 i64)
-  (local $dm1|637 i32)
-  (local $n1|638 i32)
-  (local $year|639 i32)
-  (local $mo|640 i32)
+  (local $this|641 i32)
+  (local $epochMillis|642 i64)
+  (local $millis|643 i64)
+  (local $ms|644 i64)
+  (local $a|645 i64)
+  (local $b|646 i64)
+  (local $da|647 i32)
+  (local $a|648 i32)
+  (local $b|649 i32)
+  (local $q0|650 i32)
+  (local $r1|651 i32)
+  (local $u1|652 i64)
+  (local $dm1|653 i32)
+  (local $n1|654 i32)
+  (local $year|655 i32)
+  (local $mo|656 i32)
   (local $minDateInc i32)
-  (local $this|642 i32)
-  (local $this|643 i32)
-  (local $this|644 i32)
-  (local $this|645 i32)
-  (local $a|646 i64)
-  (local $b|647 i64)
-  (local $m|648 i64)
-  (local $this|649 i32)
-  (local $a|650 i64)
-  (local $b|651 i64)
-  (local $m|652 i64)
-  (local $this|653 i32)
-  (local $a|654 i64)
-  (local $b|655 i64)
-  (local $m|656 i64)
-  (local $this|657 i32)
-  (local $a|658 i64)
-  (local $b|659 i64)
-  (local $m|660 i64)
+  (local $this|658 i32)
+  (local $this|659 i32)
+  (local $this|660 i32)
+  (local $this|661 i32)
+  (local $a|662 i64)
+  (local $b|663 i64)
+  (local $m|664 i64)
+  (local $this|665 i32)
+  (local $a|666 i64)
+  (local $b|667 i64)
+  (local $m|668 i64)
+  (local $this|669 i32)
+  (local $a|670 i64)
+  (local $b|671 i64)
+  (local $m|672 i64)
+  (local $this|673 i32)
+  (local $a|674 i64)
+  (local $b|675 i64)
+  (local $m|676 i64)
   global.get $~lib/memory/__stack_pointer
   i32.const 188
   i32.sub
@@ -4003,14 +4943,152 @@
    unreachable
   end
   local.get $date
+  local.set $this|82
   local.get $creationTime
   i64.const 1
   i64.add
-  call $~lib/date/Date#setTime
+  local.set $time
+  local.get $time
+  local.set $millis|84
+  local.get $millis|84
+  i64.const 0
+  i64.const 8640000000000000
+  i64.sub
+  i64.lt_s
+  local.get $millis|84
+  i64.const 8640000000000000
+  i64.gt_s
+  i32.or
+  if
+   unreachable
+  end
+  local.get $this|82
+  local.get $time
+  call $~lib/date/Date#set:epochMillis
+  local.get $this|82
+  local.get $time
+  local.set $ms|85
+  local.get $ms|85
+  local.set $a|86
+  i32.const 86400000
+  i64.extend_i32_s
+  local.set $b|87
+  local.get $a|86
+  local.get $a|86
+  i64.const 0
+  i64.lt_s
+  if (result i64)
+   local.get $b|87
+   i64.const 1
+   i64.sub
+  else
+   i64.const 0
+  end
+  i64.sub
+  local.get $b|87
+  i64.div_s
+  i32.wrap_i64
+  i32.const 4
+  i32.mul
+  i32.const 719468
+  i32.const 4
+  i32.mul
+  i32.add
+  i32.const 3
+  i32.or
+  local.set $da|88
+  local.get $da|88
+  local.set $a|89
+  i32.const 146097
+  local.set $b|90
+  local.get $a|89
+  local.get $a|89
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $b|90
+   i32.const 1
+   i32.sub
+  else
+   i32.const 0
+  end
+  i32.sub
+  local.get $b|90
+  i32.div_s
+  local.set $q0|91
+  local.get $da|88
+  local.get $q0|91
+  i32.const 146097
+  i32.mul
+  i32.sub
+  local.set $r1|92
+  local.get $r1|92
+  i32.const 3
+  i32.or
+  i64.extend_i32_u
+  i64.const 2939745
+  i64.mul
+  local.set $u1|93
+  local.get $u1|93
+  i32.wrap_i64
+  i32.const 11758980
+  i32.div_u
+  local.set $dm1|94
+  i32.const 2141
+  local.get $dm1|94
+  i32.mul
+  i32.const 197913
+  i32.add
+  local.set $n1|95
+  i32.const 100
+  local.get $q0|91
+  i32.mul
+  local.get $u1|93
+  i64.const 32
+  i64.shr_u
+  i32.wrap_i64
+  i32.add
+  local.set $year|96
+  local.get $n1|95
+  i32.const 16
+  i32.shr_u
+  local.set $mo|97
+  local.get $n1|95
+  i32.const 65535
+  i32.and
+  i32.const 2141
+  i32.div_s
+  i32.const 1
+  i32.add
+  global.set $~lib/date/_day
+  local.get $dm1|94
+  i32.const 306
+  i32.ge_u
+  if
+   local.get $mo|97
+   i32.const 12
+   i32.sub
+   local.set $mo|97
+   local.get $year|96
+   i32.const 1
+   i32.add
+   local.set $year|96
+  end
+  local.get $mo|97
+  global.set $~lib/date/_month
+  local.get $year|96
+  call $~lib/date/Date#set:year
+  local.get $this|82
+  global.get $~lib/date/_month
+  call $~lib/date/Date#set:month
+  local.get $this|82
+  global.get $~lib/date/_day
+  call $~lib/date/Date#set:day
+  local.get $time
   drop
   local.get $date
-  local.set $this|82
-  local.get $this|82
+  local.set $this|98
+  local.get $this|98
   i64.load $0 offset=16
   local.get $creationTime
   i64.const 1
@@ -4022,66 +5100,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|83
+  local.set $this|99
   i64.const 5918283958183706
-  local.set $epochMillis|84
-  local.get $this|83
+  local.set $epochMillis|100
+  local.get $this|99
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|83
+   local.tee $this|99
    i32.store $0 offset=8
   end
-  local.get $this|83
-  local.get $epochMillis|84
+  local.get $this|99
+  local.get $epochMillis|100
   call $~lib/date/Date#set:epochMillis
-  local.get $this|83
+  local.get $this|99
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|83
+  local.get $this|99
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|83
+  local.get $this|99
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|84
-  local.set $millis|85
-  local.get $millis|85
+  local.get $epochMillis|100
+  local.set $millis|101
+  local.get $millis|101
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|85
+  local.get $millis|101
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|83
-  local.get $epochMillis|84
-  local.set $ms|86
-  local.get $ms|86
-  local.set $a|87
+  local.get $this|99
+  local.get $epochMillis|100
+  local.set $ms|102
+  local.get $ms|102
+  local.set $a|103
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|88
-  local.get $a|87
-  local.get $a|87
+  local.set $b|104
+  local.get $a|103
+  local.get $a|103
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|88
+   local.get $b|104
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|88
+  local.get $b|104
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -4092,64 +5170,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|89
-  local.get $da|89
-  local.set $a|90
+  local.set $da|105
+  local.get $da|105
+  local.set $a|106
   i32.const 146097
-  local.set $b|91
-  local.get $a|90
-  local.get $a|90
+  local.set $b|107
+  local.get $a|106
+  local.get $a|106
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|91
+   local.get $b|107
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|91
+  local.get $b|107
   i32.div_s
-  local.set $q0|92
-  local.get $da|89
-  local.get $q0|92
+  local.set $q0|108
+  local.get $da|105
+  local.get $q0|108
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|93
-  local.get $r1|93
+  local.set $r1|109
+  local.get $r1|109
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|94
-  local.get $u1|94
+  local.set $u1|110
+  local.get $u1|110
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|95
+  local.set $dm1|111
   i32.const 2141
-  local.get $dm1|95
+  local.get $dm1|111
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|96
+  local.set $n1|112
   i32.const 100
-  local.get $q0|92
+  local.get $q0|108
   i32.mul
-  local.get $u1|94
+  local.get $u1|110
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|97
-  local.get $n1|96
+  local.set $year|113
+  local.get $n1|112
   i32.const 16
   i32.shr_u
-  local.set $mo|98
-  local.get $n1|96
+  local.set $mo|114
+  local.get $n1|112
   i32.const 65535
   i32.and
   i32.const 2141
@@ -4157,35 +5235,35 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|95
+  local.get $dm1|111
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|98
+   local.get $mo|114
    i32.const 12
    i32.sub
-   local.set $mo|98
-   local.get $year|97
+   local.set $mo|114
+   local.get $year|113
    i32.const 1
    i32.add
-   local.set $year|97
+   local.set $year|113
   end
-  local.get $mo|98
+  local.get $mo|114
   global.set $~lib/date/_month
-  local.get $year|97
+  local.get $year|113
   call $~lib/date/Date#set:year
-  local.get $this|83
+  local.get $this|99
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|83
+  local.get $this|99
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|83
-  local.tee $date|99
+  local.get $this|99
+  local.tee $date|115
   i32.store $0 offset=12
-  local.get $date|99
-  local.set $this|100
-  local.get $this|100
+  local.get $date|115
+  local.set $this|116
+  local.get $this|116
   i32.load $0
   i32.const 189512
   i32.eq
@@ -4193,9 +5271,9 @@
   if
    unreachable
   end
-  local.get $date|99
-  local.set $this|101
-  local.get $this|101
+  local.get $date|115
+  local.set $this|117
+  local.get $this|117
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -4205,9 +5283,9 @@
   if
    unreachable
   end
-  local.get $date|99
-  local.set $this|102
-  local.get $this|102
+  local.get $date|115
+  local.set $this|118
+  local.get $this|118
   i32.load $0 offset=8
   i32.const 14
   i32.eq
@@ -4215,16 +5293,16 @@
   if
    unreachable
   end
-  local.get $date|99
-  local.set $this|103
-  local.get $this|103
+  local.get $date|115
+  local.set $this|119
+  local.get $this|119
   i64.load $0 offset=16
-  local.set $a|104
+  local.set $a|120
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|105
-  local.get $a|104
-  local.get $b|105
+  local.set $b|121
+  local.get $a|120
+  local.get $b|121
   i64.rem_s
   local.set $m
   local.get $m
@@ -4232,7 +5310,7 @@
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|105
+   local.get $b|121
   else
    i64.const 0
   end
@@ -4246,24 +5324,24 @@
   if
    unreachable
   end
-  local.get $date|99
-  local.set $this|107
-  local.get $this|107
+  local.get $date|115
+  local.set $this|123
+  local.get $this|123
   i64.load $0 offset=16
-  local.set $a|108
+  local.set $a|124
   i32.const 3600000
   i64.extend_i32_s
-  local.set $b|109
-  local.get $a|108
-  local.get $b|109
+  local.set $b|125
+  local.get $a|124
+  local.get $b|125
   i64.rem_s
-  local.set $m|110
-  local.get $m|110
-  local.get $m|110
+  local.set $m|126
+  local.get $m|126
+  local.get $m|126
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|109
+   local.get $b|125
   else
    i64.const 0
   end
@@ -4277,24 +5355,24 @@
   if
    unreachable
   end
-  local.get $date|99
-  local.set $this|111
-  local.get $this|111
+  local.get $date|115
+  local.set $this|127
+  local.get $this|127
   i64.load $0 offset=16
-  local.set $a|112
+  local.set $a|128
   i32.const 60000
   i64.extend_i32_s
-  local.set $b|113
-  local.get $a|112
-  local.get $b|113
+  local.set $b|129
+  local.get $a|128
+  local.get $b|129
   i64.rem_s
-  local.set $m|114
-  local.get $m|114
-  local.get $m|114
+  local.set $m|130
+  local.get $m|130
+  local.get $m|130
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|113
+   local.get $b|129
   else
    i64.const 0
   end
@@ -4308,24 +5386,24 @@
   if
    unreachable
   end
-  local.get $date|99
-  local.set $this|115
-  local.get $this|115
+  local.get $date|115
+  local.set $this|131
+  local.get $this|131
   i64.load $0 offset=16
-  local.set $a|116
+  local.set $a|132
   i32.const 1000
   i64.extend_i32_s
-  local.set $b|117
-  local.get $a|116
-  local.get $b|117
+  local.set $b|133
+  local.get $a|132
+  local.get $b|133
   i64.rem_s
-  local.set $m|118
-  local.get $m|118
-  local.get $m|118
+  local.set $m|134
+  local.get $m|134
+  local.get $m|134
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|117
+   local.get $b|133
   else
    i64.const 0
   end
@@ -4339,66 +5417,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|119
+  local.set $this|135
   i64.const 123814991274
-  local.set $epochMillis|120
-  local.get $this|119
+  local.set $epochMillis|136
+  local.get $this|135
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|119
+   local.tee $this|135
    i32.store $0 offset=16
   end
-  local.get $this|119
-  local.get $epochMillis|120
+  local.get $this|135
+  local.get $epochMillis|136
   call $~lib/date/Date#set:epochMillis
-  local.get $this|119
+  local.get $this|135
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|119
+  local.get $this|135
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|119
+  local.get $this|135
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|120
-  local.set $millis|121
-  local.get $millis|121
+  local.get $epochMillis|136
+  local.set $millis|137
+  local.get $millis|137
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|121
+  local.get $millis|137
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|119
-  local.get $epochMillis|120
-  local.set $ms|122
-  local.get $ms|122
-  local.set $a|123
+  local.get $this|135
+  local.get $epochMillis|136
+  local.set $ms|138
+  local.get $ms|138
+  local.set $a|139
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|124
-  local.get $a|123
-  local.get $a|123
+  local.set $b|140
+  local.get $a|139
+  local.get $a|139
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|124
+   local.get $b|140
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|124
+  local.get $b|140
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -4409,64 +5487,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|125
-  local.get $da|125
-  local.set $a|126
+  local.set $da|141
+  local.get $da|141
+  local.set $a|142
   i32.const 146097
-  local.set $b|127
-  local.get $a|126
-  local.get $a|126
+  local.set $b|143
+  local.get $a|142
+  local.get $a|142
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|127
+   local.get $b|143
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|127
+  local.get $b|143
   i32.div_s
-  local.set $q0|128
-  local.get $da|125
-  local.get $q0|128
+  local.set $q0|144
+  local.get $da|141
+  local.get $q0|144
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|129
-  local.get $r1|129
+  local.set $r1|145
+  local.get $r1|145
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|130
-  local.get $u1|130
+  local.set $u1|146
+  local.get $u1|146
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|131
+  local.set $dm1|147
   i32.const 2141
-  local.get $dm1|131
+  local.get $dm1|147
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|132
+  local.set $n1|148
   i32.const 100
-  local.get $q0|128
+  local.get $q0|144
   i32.mul
-  local.get $u1|130
+  local.get $u1|146
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|133
-  local.get $n1|132
+  local.set $year|149
+  local.get $n1|148
   i32.const 16
   i32.shr_u
-  local.set $mo|134
-  local.get $n1|132
+  local.set $mo|150
+  local.get $n1|148
   i32.const 65535
   i32.and
   i32.const 2141
@@ -4474,35 +5552,35 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|131
+  local.get $dm1|147
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|134
+   local.get $mo|150
    i32.const 12
    i32.sub
-   local.set $mo|134
-   local.get $year|133
+   local.set $mo|150
+   local.get $year|149
    i32.const 1
    i32.add
-   local.set $year|133
+   local.set $year|149
   end
-  local.get $mo|134
+  local.get $mo|150
   global.set $~lib/date/_month
-  local.get $year|133
+  local.get $year|149
   call $~lib/date/Date#set:year
-  local.get $this|119
+  local.get $this|135
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|119
+  local.get $this|135
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|119
-  local.tee $date|135
+  local.get $this|135
+  local.tee $date|151
   i32.store $0 offset=20
-  local.get $date|135
-  local.set $this|136
-  local.get $this|136
+  local.get $date|151
+  local.set $this|152
+  local.get $this|152
   i32.load $0
   i32.const 1973
   i32.eq
@@ -4510,9 +5588,9 @@
   if
    unreachable
   end
-  local.get $date|135
-  local.set $this|137
-  local.get $this|137
+  local.get $date|151
+  local.set $this|153
+  local.get $this|153
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -4522,9 +5600,9 @@
   if
    unreachable
   end
-  local.get $date|135
-  local.set $this|138
-  local.get $this|138
+  local.get $date|151
+  local.set $this|154
+  local.get $this|154
   i32.load $0 offset=8
   i32.const 4
   i32.eq
@@ -4532,24 +5610,24 @@
   if
    unreachable
   end
-  local.get $date|135
-  local.set $this|139
-  local.get $this|139
+  local.get $date|151
+  local.set $this|155
+  local.get $this|155
   i64.load $0 offset=16
-  local.set $a|140
+  local.set $a|156
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|141
-  local.get $a|140
-  local.get $b|141
+  local.set $b|157
+  local.get $a|156
+  local.get $b|157
   i64.rem_s
-  local.set $m|142
-  local.get $m|142
-  local.get $m|142
+  local.set $m|158
+  local.get $m|158
+  local.get $m|158
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|141
+   local.get $b|157
   else
    i64.const 0
   end
@@ -4563,24 +5641,24 @@
   if
    unreachable
   end
-  local.get $date|135
-  local.set $this|143
-  local.get $this|143
+  local.get $date|151
+  local.set $this|159
+  local.get $this|159
   i64.load $0 offset=16
-  local.set $a|144
+  local.set $a|160
   i32.const 3600000
   i64.extend_i32_s
-  local.set $b|145
-  local.get $a|144
-  local.get $b|145
+  local.set $b|161
+  local.get $a|160
+  local.get $b|161
   i64.rem_s
-  local.set $m|146
-  local.get $m|146
-  local.get $m|146
+  local.set $m|162
+  local.get $m|162
+  local.get $m|162
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|145
+   local.get $b|161
   else
    i64.const 0
   end
@@ -4594,24 +5672,24 @@
   if
    unreachable
   end
-  local.get $date|135
-  local.set $this|147
-  local.get $this|147
+  local.get $date|151
+  local.set $this|163
+  local.get $this|163
   i64.load $0 offset=16
-  local.set $a|148
+  local.set $a|164
   i32.const 60000
   i64.extend_i32_s
-  local.set $b|149
-  local.get $a|148
-  local.get $b|149
+  local.set $b|165
+  local.get $a|164
+  local.get $b|165
   i64.rem_s
-  local.set $m|150
-  local.get $m|150
-  local.get $m|150
+  local.set $m|166
+  local.get $m|166
+  local.get $m|166
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|149
+   local.get $b|165
   else
    i64.const 0
   end
@@ -4625,24 +5703,24 @@
   if
    unreachable
   end
-  local.get $date|135
-  local.set $this|151
-  local.get $this|151
+  local.get $date|151
+  local.set $this|167
+  local.get $this|167
   i64.load $0 offset=16
-  local.set $a|152
+  local.set $a|168
   i32.const 1000
   i64.extend_i32_s
-  local.set $b|153
-  local.get $a|152
-  local.get $b|153
+  local.set $b|169
+  local.get $a|168
+  local.get $b|169
   i64.rem_s
-  local.set $m|154
-  local.get $m|154
-  local.get $m|154
+  local.set $m|170
+  local.get $m|170
+  local.get $m|170
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|153
+   local.get $b|169
   else
    i64.const 0
   end
@@ -4656,66 +5734,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|155
+  local.set $this|171
   i64.const 399464523963984
-  local.set $epochMillis|156
-  local.get $this|155
+  local.set $epochMillis|172
+  local.get $this|171
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|155
+   local.tee $this|171
    i32.store $0 offset=24
   end
-  local.get $this|155
-  local.get $epochMillis|156
+  local.get $this|171
+  local.get $epochMillis|172
   call $~lib/date/Date#set:epochMillis
-  local.get $this|155
+  local.get $this|171
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|155
+  local.get $this|171
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|155
+  local.get $this|171
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|156
-  local.set $millis|157
-  local.get $millis|157
+  local.get $epochMillis|172
+  local.set $millis|173
+  local.get $millis|173
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|157
+  local.get $millis|173
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|155
-  local.get $epochMillis|156
-  local.set $ms|158
-  local.get $ms|158
-  local.set $a|159
+  local.get $this|171
+  local.get $epochMillis|172
+  local.set $ms|174
+  local.get $ms|174
+  local.set $a|175
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|160
-  local.get $a|159
-  local.get $a|159
+  local.set $b|176
+  local.get $a|175
+  local.get $a|175
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|160
+   local.get $b|176
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|160
+  local.get $b|176
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -4726,64 +5804,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|161
-  local.get $da|161
-  local.set $a|162
+  local.set $da|177
+  local.get $da|177
+  local.set $a|178
   i32.const 146097
-  local.set $b|163
-  local.get $a|162
-  local.get $a|162
+  local.set $b|179
+  local.get $a|178
+  local.get $a|178
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|163
+   local.get $b|179
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|163
+  local.get $b|179
   i32.div_s
-  local.set $q0|164
-  local.get $da|161
-  local.get $q0|164
+  local.set $q0|180
+  local.get $da|177
+  local.get $q0|180
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|165
-  local.get $r1|165
+  local.set $r1|181
+  local.get $r1|181
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|166
-  local.get $u1|166
+  local.set $u1|182
+  local.get $u1|182
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|167
+  local.set $dm1|183
   i32.const 2141
-  local.get $dm1|167
+  local.get $dm1|183
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|168
+  local.set $n1|184
   i32.const 100
-  local.get $q0|164
+  local.get $q0|180
   i32.mul
-  local.get $u1|166
+  local.get $u1|182
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|169
-  local.get $n1|168
+  local.set $year|185
+  local.get $n1|184
   i32.const 16
   i32.shr_u
-  local.set $mo|170
-  local.get $n1|168
+  local.set $mo|186
+  local.get $n1|184
   i32.const 65535
   i32.and
   i32.const 2141
@@ -4791,50 +5869,50 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|167
+  local.get $dm1|183
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|170
+   local.get $mo|186
    i32.const 12
    i32.sub
-   local.set $mo|170
-   local.get $year|169
+   local.set $mo|186
+   local.get $year|185
    i32.const 1
    i32.add
-   local.set $year|169
+   local.set $year|185
   end
-  local.get $mo|170
+  local.get $mo|186
   global.set $~lib/date/_month
-  local.get $year|169
+  local.get $year|185
   call $~lib/date/Date#set:year
-  local.get $this|155
+  local.get $this|171
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|155
+  local.get $this|171
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|155
-  local.tee $date|171
+  local.get $this|171
+  local.tee $date|187
   i32.store $0 offset=28
-  local.get $date|171
-  local.set $this|172
-  local.get $this|172
+  local.get $date|187
+  local.set $this|188
+  local.get $this|188
   i64.load $0 offset=16
-  local.set $a|173
+  local.set $a|189
   i32.const 1000
   i64.extend_i32_s
-  local.set $b|174
-  local.get $a|173
-  local.get $b|174
+  local.set $b|190
+  local.get $a|189
+  local.get $b|190
   i64.rem_s
-  local.set $m|175
-  local.get $m|175
-  local.get $m|175
+  local.set $m|191
+  local.get $m|191
+  local.get $m|191
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|174
+   local.get $b|190
   else
    i64.const 0
   end
@@ -4846,27 +5924,27 @@
   if
    unreachable
   end
-  local.get $date|171
+  local.get $date|187
   i32.const 12
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|171
-  local.set $this|176
-  local.get $this|176
+  local.get $date|187
+  local.set $this|192
+  local.get $this|192
   i64.load $0 offset=16
-  local.set $a|177
+  local.set $a|193
   i32.const 1000
   i64.extend_i32_s
-  local.set $b|178
-  local.get $a|177
-  local.get $b|178
+  local.set $b|194
+  local.get $a|193
+  local.get $b|194
   i64.rem_s
-  local.set $m|179
-  local.get $m|179
-  local.get $m|179
+  local.set $m|195
+  local.get $m|195
+  local.get $m|195
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|178
+   local.get $b|194
   else
    i64.const 0
   end
@@ -4878,27 +5956,27 @@
   if
    unreachable
   end
-  local.get $date|171
+  local.get $date|187
   i32.const 568
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|171
-  local.set $this|180
-  local.get $this|180
+  local.get $date|187
+  local.set $this|196
+  local.get $this|196
   i64.load $0 offset=16
-  local.set $a|181
+  local.set $a|197
   i32.const 1000
   i64.extend_i32_s
-  local.set $b|182
-  local.get $a|181
-  local.get $b|182
+  local.set $b|198
+  local.get $a|197
+  local.get $b|198
   i64.rem_s
-  local.set $m|183
-  local.get $m|183
-  local.get $m|183
+  local.set $m|199
+  local.get $m|199
+  local.get $m|199
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|182
+   local.get $b|198
   else
    i64.const 0
   end
@@ -4910,12 +5988,12 @@
   if
    unreachable
   end
-  local.get $date|171
+  local.get $date|187
   i32.const 0
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|171
-  local.set $this|184
-  local.get $this|184
+  local.get $date|187
+  local.set $this|200
+  local.get $this|200
   i64.load $0 offset=16
   i64.const 399464523963000
   i64.eq
@@ -4923,12 +6001,12 @@
   if
    unreachable
   end
-  local.get $date|171
+  local.get $date|187
   i32.const 999
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|171
-  local.set $this|185
-  local.get $this|185
+  local.get $date|187
+  local.set $this|201
+  local.get $this|201
   i64.load $0 offset=16
   i64.const 399464523963999
   i64.eq
@@ -4936,27 +6014,27 @@
   if
    unreachable
   end
-  local.get $date|171
+  local.get $date|187
   i32.const 2000
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|171
-  local.set $this|186
-  local.get $this|186
+  local.get $date|187
+  local.set $this|202
+  local.get $this|202
   i64.load $0 offset=16
-  local.set $a|187
+  local.set $a|203
   i32.const 1000
   i64.extend_i32_s
-  local.set $b|188
-  local.get $a|187
-  local.get $b|188
+  local.set $b|204
+  local.get $a|203
+  local.get $b|204
   i64.rem_s
-  local.set $m|189
-  local.get $m|189
-  local.get $m|189
+  local.set $m|205
+  local.get $m|205
+  local.get $m|205
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|188
+   local.get $b|204
   else
    i64.const 0
   end
@@ -4968,9 +6046,9 @@
   if
    unreachable
   end
-  local.get $date|171
-  local.set $this|190
-  local.get $this|190
+  local.get $date|187
+  local.set $this|206
+  local.get $this|206
   i64.load $0 offset=16
   i64.const 399464523965000
   i64.eq
@@ -4978,27 +6056,27 @@
   if
    unreachable
   end
-  local.get $date|171
+  local.get $date|187
   i32.const -2000
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|171
-  local.set $this|191
-  local.get $this|191
+  local.get $date|187
+  local.set $this|207
+  local.get $this|207
   i64.load $0 offset=16
-  local.set $a|192
+  local.set $a|208
   i32.const 1000
   i64.extend_i32_s
-  local.set $b|193
-  local.get $a|192
-  local.get $b|193
+  local.set $b|209
+  local.get $a|208
+  local.get $b|209
   i64.rem_s
-  local.set $m|194
-  local.get $m|194
-  local.get $m|194
+  local.set $m|210
+  local.get $m|210
+  local.get $m|210
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|193
+   local.get $b|209
   else
    i64.const 0
   end
@@ -5010,9 +6088,9 @@
   if
    unreachable
   end
-  local.get $date|171
-  local.set $this|195
-  local.get $this|195
+  local.get $date|187
+  local.set $this|211
+  local.get $this|211
   i64.load $0 offset=16
   i64.const 399464523963000
   i64.eq
@@ -5022,66 +6100,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|196
+  local.set $this|212
   i64.const 372027318331986
-  local.set $epochMillis|197
-  local.get $this|196
+  local.set $epochMillis|213
+  local.get $this|212
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|196
+   local.tee $this|212
    i32.store $0 offset=32
   end
-  local.get $this|196
-  local.get $epochMillis|197
+  local.get $this|212
+  local.get $epochMillis|213
   call $~lib/date/Date#set:epochMillis
-  local.get $this|196
+  local.get $this|212
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|196
+  local.get $this|212
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|196
+  local.get $this|212
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|197
-  local.set $millis|198
-  local.get $millis|198
+  local.get $epochMillis|213
+  local.set $millis|214
+  local.get $millis|214
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|198
+  local.get $millis|214
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|196
-  local.get $epochMillis|197
-  local.set $ms|199
-  local.get $ms|199
-  local.set $a|200
+  local.get $this|212
+  local.get $epochMillis|213
+  local.set $ms|215
+  local.get $ms|215
+  local.set $a|216
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|201
-  local.get $a|200
-  local.get $a|200
+  local.set $b|217
+  local.get $a|216
+  local.get $a|216
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|201
+   local.get $b|217
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|201
+  local.get $b|217
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -5092,64 +6170,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|202
-  local.get $da|202
-  local.set $a|203
+  local.set $da|218
+  local.get $da|218
+  local.set $a|219
   i32.const 146097
-  local.set $b|204
-  local.get $a|203
-  local.get $a|203
+  local.set $b|220
+  local.get $a|219
+  local.get $a|219
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|204
+   local.get $b|220
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|204
+  local.get $b|220
   i32.div_s
-  local.set $q0|205
-  local.get $da|202
-  local.get $q0|205
+  local.set $q0|221
+  local.get $da|218
+  local.get $q0|221
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|206
-  local.get $r1|206
+  local.set $r1|222
+  local.get $r1|222
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|207
-  local.get $u1|207
+  local.set $u1|223
+  local.get $u1|223
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|208
+  local.set $dm1|224
   i32.const 2141
-  local.get $dm1|208
+  local.get $dm1|224
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|209
+  local.set $n1|225
   i32.const 100
-  local.get $q0|205
+  local.get $q0|221
   i32.mul
-  local.get $u1|207
+  local.get $u1|223
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|210
-  local.get $n1|209
+  local.set $year|226
+  local.get $n1|225
   i32.const 16
   i32.shr_u
-  local.set $mo|211
-  local.get $n1|209
+  local.set $mo|227
+  local.get $n1|225
   i32.const 65535
   i32.and
   i32.const 2141
@@ -5157,50 +6235,50 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|208
+  local.get $dm1|224
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|211
+   local.get $mo|227
    i32.const 12
    i32.sub
-   local.set $mo|211
-   local.get $year|210
+   local.set $mo|227
+   local.get $year|226
    i32.const 1
    i32.add
-   local.set $year|210
+   local.set $year|226
   end
-  local.get $mo|211
+  local.get $mo|227
   global.set $~lib/date/_month
-  local.get $year|210
+  local.get $year|226
   call $~lib/date/Date#set:year
-  local.get $this|196
+  local.get $this|212
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|196
+  local.get $this|212
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|196
-  local.tee $date|212
+  local.get $this|212
+  local.tee $date|228
   i32.store $0 offset=36
-  local.get $date|212
-  local.set $this|213
-  local.get $this|213
+  local.get $date|228
+  local.set $this|229
+  local.get $this|229
   i64.load $0 offset=16
-  local.set $a|214
+  local.set $a|230
   i32.const 60000
   i64.extend_i32_s
-  local.set $b|215
-  local.get $a|214
-  local.get $b|215
+  local.set $b|231
+  local.get $a|230
+  local.get $b|231
   i64.rem_s
-  local.set $m|216
-  local.get $m|216
-  local.get $m|216
+  local.set $m|232
+  local.get $m|232
+  local.get $m|232
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|215
+   local.get $b|231
   else
    i64.const 0
   end
@@ -5214,27 +6292,27 @@
   if
    unreachable
   end
-  local.get $date|212
+  local.get $date|228
   i32.const 12
   call $~lib/date/Date#setUTCSeconds
-  local.get $date|212
-  local.set $this|217
-  local.get $this|217
+  local.get $date|228
+  local.set $this|233
+  local.get $this|233
   i64.load $0 offset=16
-  local.set $a|218
+  local.set $a|234
   i32.const 60000
   i64.extend_i32_s
-  local.set $b|219
-  local.get $a|218
-  local.get $b|219
+  local.set $b|235
+  local.get $a|234
+  local.get $b|235
   i64.rem_s
-  local.set $m|220
-  local.get $m|220
-  local.get $m|220
+  local.set $m|236
+  local.get $m|236
+  local.get $m|236
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|219
+   local.get $b|235
   else
    i64.const 0
   end
@@ -5248,27 +6326,27 @@
   if
    unreachable
   end
-  local.get $date|212
+  local.get $date|228
   i32.const 50
   call $~lib/date/Date#setUTCSeconds
-  local.get $date|212
-  local.set $this|221
-  local.get $this|221
+  local.get $date|228
+  local.set $this|237
+  local.get $this|237
   i64.load $0 offset=16
-  local.set $a|222
+  local.set $a|238
   i32.const 60000
   i64.extend_i32_s
-  local.set $b|223
-  local.get $a|222
-  local.get $b|223
+  local.set $b|239
+  local.get $a|238
+  local.get $b|239
   i64.rem_s
-  local.set $m|224
-  local.get $m|224
-  local.get $m|224
+  local.set $m|240
+  local.get $m|240
+  local.get $m|240
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|223
+   local.get $b|239
   else
    i64.const 0
   end
@@ -5282,12 +6360,12 @@
   if
    unreachable
   end
-  local.get $date|212
+  local.get $date|228
   i32.const 0
   call $~lib/date/Date#setUTCSeconds
-  local.get $date|212
-  local.set $this|225
-  local.get $this|225
+  local.get $date|228
+  local.set $this|241
+  local.get $this|241
   i64.load $0 offset=16
   i64.const 372027318300986
   i64.eq
@@ -5295,12 +6373,12 @@
   if
    unreachable
   end
-  local.get $date|212
+  local.get $date|228
   i32.const 59
   call $~lib/date/Date#setUTCSeconds
-  local.get $date|212
-  local.set $this|226
-  local.get $this|226
+  local.get $date|228
+  local.set $this|242
+  local.get $this|242
   i64.load $0 offset=16
   i64.const 372027318359986
   i64.eq
@@ -5310,66 +6388,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|227
+  local.set $this|243
   i64.const 372027318331986
-  local.set $epochMillis|228
-  local.get $this|227
+  local.set $epochMillis|244
+  local.get $this|243
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|227
+   local.tee $this|243
    i32.store $0 offset=40
   end
-  local.get $this|227
-  local.get $epochMillis|228
+  local.get $this|243
+  local.get $epochMillis|244
   call $~lib/date/Date#set:epochMillis
-  local.get $this|227
+  local.get $this|243
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|227
+  local.get $this|243
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|227
+  local.get $this|243
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|228
-  local.set $millis|229
-  local.get $millis|229
+  local.get $epochMillis|244
+  local.set $millis|245
+  local.get $millis|245
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|229
+  local.get $millis|245
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|227
-  local.get $epochMillis|228
-  local.set $ms|230
-  local.get $ms|230
-  local.set $a|231
+  local.get $this|243
+  local.get $epochMillis|244
+  local.set $ms|246
+  local.get $ms|246
+  local.set $a|247
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|232
-  local.get $a|231
-  local.get $a|231
+  local.set $b|248
+  local.get $a|247
+  local.get $a|247
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|232
+   local.get $b|248
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|232
+  local.get $b|248
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -5380,64 +6458,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|233
-  local.get $da|233
-  local.set $a|234
+  local.set $da|249
+  local.get $da|249
+  local.set $a|250
   i32.const 146097
-  local.set $b|235
-  local.get $a|234
-  local.get $a|234
+  local.set $b|251
+  local.get $a|250
+  local.get $a|250
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|235
+   local.get $b|251
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|235
+  local.get $b|251
   i32.div_s
-  local.set $q0|236
-  local.get $da|233
-  local.get $q0|236
+  local.set $q0|252
+  local.get $da|249
+  local.get $q0|252
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|237
-  local.get $r1|237
+  local.set $r1|253
+  local.get $r1|253
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|238
-  local.get $u1|238
+  local.set $u1|254
+  local.get $u1|254
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|239
+  local.set $dm1|255
   i32.const 2141
-  local.get $dm1|239
+  local.get $dm1|255
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|240
+  local.set $n1|256
   i32.const 100
-  local.get $q0|236
+  local.get $q0|252
   i32.mul
-  local.get $u1|238
+  local.get $u1|254
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|241
-  local.get $n1|240
+  local.set $year|257
+  local.get $n1|256
   i32.const 16
   i32.shr_u
-  local.set $mo|242
-  local.get $n1|240
+  local.set $mo|258
+  local.get $n1|256
   i32.const 65535
   i32.and
   i32.const 2141
@@ -5445,50 +6523,50 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|239
+  local.get $dm1|255
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|242
+   local.get $mo|258
    i32.const 12
    i32.sub
-   local.set $mo|242
-   local.get $year|241
+   local.set $mo|258
+   local.get $year|257
    i32.const 1
    i32.add
-   local.set $year|241
+   local.set $year|257
   end
-  local.get $mo|242
+  local.get $mo|258
   global.set $~lib/date/_month
-  local.get $year|241
+  local.get $year|257
   call $~lib/date/Date#set:year
-  local.get $this|227
+  local.get $this|243
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|227
+  local.get $this|243
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|227
-  local.tee $date|243
+  local.get $this|243
+  local.tee $date|259
   i32.store $0 offset=44
-  local.get $date|243
-  local.set $this|244
-  local.get $this|244
+  local.get $date|259
+  local.set $this|260
+  local.get $this|260
   i64.load $0 offset=16
-  local.set $a|245
+  local.set $a|261
   i32.const 3600000
   i64.extend_i32_s
-  local.set $b|246
-  local.get $a|245
-  local.get $b|246
+  local.set $b|262
+  local.get $a|261
+  local.get $b|262
   i64.rem_s
-  local.set $m|247
-  local.get $m|247
-  local.get $m|247
+  local.set $m|263
+  local.get $m|263
+  local.get $m|263
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|246
+   local.get $b|262
   else
    i64.const 0
   end
@@ -5502,27 +6580,27 @@
   if
    unreachable
   end
-  local.get $date|243
+  local.get $date|259
   i32.const 12
   call $~lib/date/Date#setUTCMinutes
-  local.get $date|243
-  local.set $this|248
-  local.get $this|248
+  local.get $date|259
+  local.set $this|264
+  local.get $this|264
   i64.load $0 offset=16
-  local.set $a|249
+  local.set $a|265
   i32.const 3600000
   i64.extend_i32_s
-  local.set $b|250
-  local.get $a|249
-  local.get $b|250
+  local.set $b|266
+  local.get $a|265
+  local.get $b|266
   i64.rem_s
-  local.set $m|251
-  local.get $m|251
-  local.get $m|251
+  local.set $m|267
+  local.get $m|267
+  local.get $m|267
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|250
+   local.get $b|266
   else
    i64.const 0
   end
@@ -5536,27 +6614,27 @@
   if
    unreachable
   end
-  local.get $date|243
+  local.get $date|259
   i32.const 50
   call $~lib/date/Date#setUTCMinutes
-  local.get $date|243
-  local.set $this|252
-  local.get $this|252
+  local.get $date|259
+  local.set $this|268
+  local.get $this|268
   i64.load $0 offset=16
-  local.set $a|253
+  local.set $a|269
   i32.const 3600000
   i64.extend_i32_s
-  local.set $b|254
-  local.get $a|253
-  local.get $b|254
+  local.set $b|270
+  local.get $a|269
+  local.get $b|270
   i64.rem_s
-  local.set $m|255
-  local.get $m|255
-  local.get $m|255
+  local.set $m|271
+  local.get $m|271
+  local.get $m|271
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|254
+   local.get $b|270
   else
    i64.const 0
   end
@@ -5570,12 +6648,12 @@
   if
    unreachable
   end
-  local.get $date|243
+  local.get $date|259
   i32.const 0
   call $~lib/date/Date#setUTCMinutes
-  local.get $date|243
-  local.set $this|256
-  local.get $this|256
+  local.get $date|259
+  local.set $this|272
+  local.get $this|272
   i64.load $0 offset=16
   i64.const 372027315631986
   i64.eq
@@ -5583,12 +6661,12 @@
   if
    unreachable
   end
-  local.get $date|243
+  local.get $date|259
   i32.const 59
   call $~lib/date/Date#setUTCMinutes
-  local.get $date|243
-  local.set $this|257
-  local.get $this|257
+  local.get $date|259
+  local.set $this|273
+  local.get $this|273
   i64.load $0 offset=16
   i64.const 372027319171986
   i64.eq
@@ -5598,66 +6676,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|258
+  local.set $this|274
   i64.const 372027318331986
-  local.set $epochMillis|259
-  local.get $this|258
+  local.set $epochMillis|275
+  local.get $this|274
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|258
+   local.tee $this|274
    i32.store $0 offset=48
   end
-  local.get $this|258
-  local.get $epochMillis|259
+  local.get $this|274
+  local.get $epochMillis|275
   call $~lib/date/Date#set:epochMillis
-  local.get $this|258
+  local.get $this|274
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|258
+  local.get $this|274
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|258
+  local.get $this|274
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|259
-  local.set $millis|260
-  local.get $millis|260
+  local.get $epochMillis|275
+  local.set $millis|276
+  local.get $millis|276
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|260
+  local.get $millis|276
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|258
-  local.get $epochMillis|259
-  local.set $ms|261
-  local.get $ms|261
-  local.set $a|262
+  local.get $this|274
+  local.get $epochMillis|275
+  local.set $ms|277
+  local.get $ms|277
+  local.set $a|278
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|263
-  local.get $a|262
-  local.get $a|262
+  local.set $b|279
+  local.get $a|278
+  local.get $a|278
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|263
+   local.get $b|279
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|263
+  local.get $b|279
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -5668,64 +6746,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|264
-  local.get $da|264
-  local.set $a|265
+  local.set $da|280
+  local.get $da|280
+  local.set $a|281
   i32.const 146097
-  local.set $b|266
-  local.get $a|265
-  local.get $a|265
+  local.set $b|282
+  local.get $a|281
+  local.get $a|281
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|266
+   local.get $b|282
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|266
+  local.get $b|282
   i32.div_s
-  local.set $q0|267
-  local.get $da|264
-  local.get $q0|267
+  local.set $q0|283
+  local.get $da|280
+  local.get $q0|283
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|268
-  local.get $r1|268
+  local.set $r1|284
+  local.get $r1|284
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|269
-  local.get $u1|269
+  local.set $u1|285
+  local.get $u1|285
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|270
+  local.set $dm1|286
   i32.const 2141
-  local.get $dm1|270
+  local.get $dm1|286
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|271
+  local.set $n1|287
   i32.const 100
-  local.get $q0|267
+  local.get $q0|283
   i32.mul
-  local.get $u1|269
+  local.get $u1|285
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|272
-  local.get $n1|271
+  local.set $year|288
+  local.get $n1|287
   i32.const 16
   i32.shr_u
-  local.set $mo|273
-  local.get $n1|271
+  local.set $mo|289
+  local.get $n1|287
   i32.const 65535
   i32.and
   i32.const 2141
@@ -5733,50 +6811,50 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|270
+  local.get $dm1|286
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|273
+   local.get $mo|289
    i32.const 12
    i32.sub
-   local.set $mo|273
-   local.get $year|272
+   local.set $mo|289
+   local.get $year|288
    i32.const 1
    i32.add
-   local.set $year|272
+   local.set $year|288
   end
-  local.get $mo|273
+  local.get $mo|289
   global.set $~lib/date/_month
-  local.get $year|272
+  local.get $year|288
   call $~lib/date/Date#set:year
-  local.get $this|258
+  local.get $this|274
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|258
+  local.get $this|274
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|258
-  local.tee $date|274
+  local.get $this|274
+  local.tee $date|290
   i32.store $0 offset=52
-  local.get $date|274
-  local.set $this|275
-  local.get $this|275
+  local.get $date|290
+  local.set $this|291
+  local.get $this|291
   i64.load $0 offset=16
-  local.set $a|276
+  local.set $a|292
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|277
-  local.get $a|276
-  local.get $b|277
+  local.set $b|293
+  local.get $a|292
+  local.get $b|293
   i64.rem_s
-  local.set $m|278
-  local.get $m|278
-  local.get $m|278
+  local.set $m|294
+  local.get $m|294
+  local.get $m|294
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|277
+   local.get $b|293
   else
    i64.const 0
   end
@@ -5790,27 +6868,27 @@
   if
    unreachable
   end
-  local.get $date|274
+  local.get $date|290
   i32.const 12
   call $~lib/date/Date#setUTCHours
-  local.get $date|274
-  local.set $this|279
-  local.get $this|279
+  local.get $date|290
+  local.set $this|295
+  local.get $this|295
   i64.load $0 offset=16
-  local.set $a|280
+  local.set $a|296
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|281
-  local.get $a|280
-  local.get $b|281
+  local.set $b|297
+  local.get $a|296
+  local.get $b|297
   i64.rem_s
-  local.set $m|282
-  local.get $m|282
-  local.get $m|282
+  local.set $m|298
+  local.get $m|298
+  local.get $m|298
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|281
+   local.get $b|297
   else
    i64.const 0
   end
@@ -5824,27 +6902,27 @@
   if
    unreachable
   end
-  local.get $date|274
+  local.get $date|290
   i32.const 2
   call $~lib/date/Date#setUTCHours
-  local.get $date|274
-  local.set $this|283
-  local.get $this|283
+  local.get $date|290
+  local.set $this|299
+  local.get $this|299
   i64.load $0 offset=16
-  local.set $a|284
+  local.set $a|300
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|285
-  local.get $a|284
-  local.get $b|285
+  local.set $b|301
+  local.get $a|300
+  local.get $b|301
   i64.rem_s
-  local.set $m|286
-  local.get $m|286
-  local.get $m|286
+  local.set $m|302
+  local.get $m|302
+  local.get $m|302
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|285
+   local.get $b|301
   else
    i64.const 0
   end
@@ -5858,12 +6936,12 @@
   if
    unreachable
   end
-  local.get $date|274
+  local.get $date|290
   i32.const 0
   call $~lib/date/Date#setUTCHours
-  local.get $date|274
-  local.set $this|287
-  local.get $this|287
+  local.get $date|290
+  local.set $this|303
+  local.get $this|303
   i64.load $0 offset=16
   i64.const 372027257131986
   i64.eq
@@ -5871,12 +6949,12 @@
   if
    unreachable
   end
-  local.get $date|274
+  local.get $date|290
   i32.const 23
   call $~lib/date/Date#setUTCHours
-  local.get $date|274
-  local.set $this|288
-  local.get $this|288
+  local.get $date|290
+  local.set $this|304
+  local.get $this|304
   i64.load $0 offset=16
   i64.const 372027339931986
   i64.eq
@@ -5886,66 +6964,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|289
+  local.set $this|305
   i64.const 123814991274
-  local.set $epochMillis|290
-  local.get $this|289
+  local.set $epochMillis|306
+  local.get $this|305
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|289
+   local.tee $this|305
    i32.store $0 offset=56
   end
-  local.get $this|289
-  local.get $epochMillis|290
+  local.get $this|305
+  local.get $epochMillis|306
   call $~lib/date/Date#set:epochMillis
-  local.get $this|289
+  local.get $this|305
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|289
+  local.get $this|305
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|289
+  local.get $this|305
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|290
-  local.set $millis|291
-  local.get $millis|291
+  local.get $epochMillis|306
+  local.set $millis|307
+  local.get $millis|307
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|291
+  local.get $millis|307
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|289
-  local.get $epochMillis|290
-  local.set $ms|292
-  local.get $ms|292
-  local.set $a|293
+  local.get $this|305
+  local.get $epochMillis|306
+  local.set $ms|308
+  local.get $ms|308
+  local.set $a|309
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|294
-  local.get $a|293
-  local.get $a|293
+  local.set $b|310
+  local.get $a|309
+  local.get $a|309
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|294
+   local.get $b|310
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|294
+  local.get $b|310
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -5956,64 +7034,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|295
-  local.get $da|295
-  local.set $a|296
+  local.set $da|311
+  local.get $da|311
+  local.set $a|312
   i32.const 146097
-  local.set $b|297
-  local.get $a|296
-  local.get $a|296
+  local.set $b|313
+  local.get $a|312
+  local.get $a|312
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|297
+   local.get $b|313
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|297
+  local.get $b|313
   i32.div_s
-  local.set $q0|298
-  local.get $da|295
-  local.get $q0|298
+  local.set $q0|314
+  local.get $da|311
+  local.get $q0|314
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|299
-  local.get $r1|299
+  local.set $r1|315
+  local.get $r1|315
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|300
-  local.get $u1|300
+  local.set $u1|316
+  local.get $u1|316
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|301
+  local.set $dm1|317
   i32.const 2141
-  local.get $dm1|301
+  local.get $dm1|317
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|302
+  local.set $n1|318
   i32.const 100
-  local.get $q0|298
+  local.get $q0|314
   i32.mul
-  local.get $u1|300
+  local.get $u1|316
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|303
-  local.get $n1|302
+  local.set $year|319
+  local.get $n1|318
   i32.const 16
   i32.shr_u
-  local.set $mo|304
-  local.get $n1|302
+  local.set $mo|320
+  local.get $n1|318
   i32.const 65535
   i32.and
   i32.const 2141
@@ -6021,35 +7099,35 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|301
+  local.get $dm1|317
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|304
+   local.get $mo|320
    i32.const 12
    i32.sub
-   local.set $mo|304
-   local.get $year|303
+   local.set $mo|320
+   local.get $year|319
    i32.const 1
    i32.add
-   local.set $year|303
+   local.set $year|319
   end
-  local.get $mo|304
+  local.get $mo|320
   global.set $~lib/date/_month
-  local.get $year|303
+  local.get $year|319
   call $~lib/date/Date#set:year
-  local.get $this|289
+  local.get $this|305
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|289
+  local.get $this|305
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|289
-  local.tee $date|305
+  local.get $this|305
+  local.tee $date|321
   i32.store $0 offset=60
-  local.get $date|305
-  local.set $this|306
-  local.get $this|306
+  local.get $date|321
+  local.set $this|322
+  local.get $this|322
   i32.load $0
   i32.const 1973
   i32.eq
@@ -6057,9 +7135,9 @@
   if
    unreachable
   end
-  local.get $date|305
-  local.set $this|307
-  local.get $this|307
+  local.get $date|321
+  local.set $this|323
+  local.get $this|323
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -6069,12 +7147,12 @@
   if
    unreachable
   end
-  local.get $date|305
+  local.get $date|321
   i32.const 12
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
-  local.set $this|308
-  local.get $this|308
+  local.get $date|321
+  local.set $this|324
+  local.get $this|324
   i32.load $0 offset=8
   i32.const 12
   i32.eq
@@ -6082,12 +7160,12 @@
   if
    unreachable
   end
-  local.get $date|305
+  local.get $date|321
   i32.const 2
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
-  local.set $this|309
-  local.get $this|309
+  local.get $date|321
+  local.set $this|325
+  local.get $this|325
   i32.load $0 offset=8
   i32.const 2
   i32.eq
@@ -6095,36 +7173,36 @@
   if
    unreachable
   end
-  local.get $date|305
+  local.get $date|321
   i32.const 1
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
+  local.get $date|321
   i32.const 30
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
+  local.get $date|321
   i32.const 0
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
   call $~lib/date/Date#setUTCMonth@varargs
-  local.get $date|305
+  local.get $date|321
   i32.const 1
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
+  local.get $date|321
   i32.const 31
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
+  local.get $date|321
   i32.const 2024
   call $~lib/date/Date#setUTCFullYear
-  local.get $date|305
+  local.get $date|321
   i32.const 1
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
   call $~lib/date/Date#setUTCMonth@varargs
-  local.get $date|305
-  local.set $this|310
-  local.get $this|310
+  local.get $date|321
+  local.set $this|326
+  local.get $this|326
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -6134,21 +7212,21 @@
   if
    unreachable
   end
-  local.get $date|305
+  local.get $date|321
   i32.const 1
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
+  local.get $date|321
   i32.const 29
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
+  local.get $date|321
   i32.const 1
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
   call $~lib/date/Date#setUTCMonth@varargs
-  local.get $date|305
-  local.set $this|311
-  local.get $this|311
+  local.get $date|321
+  local.set $this|327
+  local.get $this|327
   i64.load $0 offset=16
   i64.const 1709168591274
   i64.eq
@@ -6156,9 +7234,9 @@
   if
    unreachable
   end
-  local.get $date|305
-  local.set $this|312
-  local.get $this|312
+  local.get $date|321
+  local.set $this|328
+  local.get $this|328
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -6168,9 +7246,9 @@
   if
    unreachable
   end
-  local.get $date|305
-  local.set $this|313
-  local.get $this|313
+  local.get $date|321
+  local.set $this|329
+  local.get $this|329
   i32.load $0 offset=8
   i32.const 29
   i32.eq
@@ -6178,24 +7256,24 @@
   if
    unreachable
   end
-  local.get $date|305
-  local.set $this|314
-  local.get $this|314
+  local.get $date|321
+  local.set $this|330
+  local.get $this|330
   i64.load $0 offset=16
-  local.set $a|315
+  local.set $a|331
   i32.const 3600000
   i64.extend_i32_s
-  local.set $b|316
-  local.get $a|315
-  local.get $b|316
+  local.set $b|332
+  local.get $a|331
+  local.get $b|332
   i64.rem_s
-  local.set $m|317
-  local.get $m|317
-  local.get $m|317
+  local.set $m|333
+  local.get $m|333
+  local.get $m|333
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|316
+   local.get $b|332
   else
    i64.const 0
   end
@@ -6209,24 +7287,24 @@
   if
    unreachable
   end
-  local.get $date|305
-  local.set $this|318
-  local.get $this|318
+  local.get $date|321
+  local.set $this|334
+  local.get $this|334
   i64.load $0 offset=16
-  local.set $a|319
+  local.set $a|335
   i32.const 60000
   i64.extend_i32_s
-  local.set $b|320
-  local.get $a|319
-  local.get $b|320
+  local.set $b|336
+  local.get $a|335
+  local.get $b|336
   i64.rem_s
-  local.set $m|321
-  local.get $m|321
-  local.get $m|321
+  local.set $m|337
+  local.get $m|337
+  local.get $m|337
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|320
+   local.get $b|336
   else
    i64.const 0
   end
@@ -6240,24 +7318,24 @@
   if
    unreachable
   end
-  local.get $date|305
-  local.set $this|322
-  local.get $this|322
+  local.get $date|321
+  local.set $this|338
+  local.get $this|338
   i64.load $0 offset=16
-  local.set $a|323
+  local.set $a|339
   i32.const 1000
   i64.extend_i32_s
-  local.set $b|324
-  local.get $a|323
-  local.get $b|324
+  local.set $b|340
+  local.get $a|339
+  local.get $b|340
   i64.rem_s
-  local.set $m|325
-  local.get $m|325
-  local.get $m|325
+  local.set $m|341
+  local.get $m|341
+  local.get $m|341
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|324
+   local.get $b|340
   else
    i64.const 0
   end
@@ -6271,66 +7349,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|326
+  local.set $this|342
   i64.const 1362106799999
-  local.set $epochMillis|327
-  local.get $this|326
+  local.set $epochMillis|343
+  local.get $this|342
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|326
+   local.tee $this|342
    i32.store $0 offset=64
   end
-  local.get $this|326
-  local.get $epochMillis|327
+  local.get $this|342
+  local.get $epochMillis|343
   call $~lib/date/Date#set:epochMillis
-  local.get $this|326
+  local.get $this|342
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|326
+  local.get $this|342
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|326
+  local.get $this|342
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|327
-  local.set $millis|328
-  local.get $millis|328
+  local.get $epochMillis|343
+  local.set $millis|344
+  local.get $millis|344
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|328
+  local.get $millis|344
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|326
-  local.get $epochMillis|327
-  local.set $ms|329
-  local.get $ms|329
-  local.set $a|330
+  local.get $this|342
+  local.get $epochMillis|343
+  local.set $ms|345
+  local.get $ms|345
+  local.set $a|346
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|331
-  local.get $a|330
-  local.get $a|330
+  local.set $b|347
+  local.get $a|346
+  local.get $a|346
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|331
+   local.get $b|347
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|331
+  local.get $b|347
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -6341,64 +7419,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|332
-  local.get $da|332
-  local.set $a|333
+  local.set $da|348
+  local.get $da|348
+  local.set $a|349
   i32.const 146097
-  local.set $b|334
-  local.get $a|333
-  local.get $a|333
+  local.set $b|350
+  local.get $a|349
+  local.get $a|349
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|334
+   local.get $b|350
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|334
+  local.get $b|350
   i32.div_s
-  local.set $q0|335
-  local.get $da|332
-  local.get $q0|335
+  local.set $q0|351
+  local.get $da|348
+  local.get $q0|351
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|336
-  local.get $r1|336
+  local.set $r1|352
+  local.get $r1|352
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|337
-  local.get $u1|337
+  local.set $u1|353
+  local.get $u1|353
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|338
+  local.set $dm1|354
   i32.const 2141
-  local.get $dm1|338
+  local.get $dm1|354
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|339
+  local.set $n1|355
   i32.const 100
-  local.get $q0|335
+  local.get $q0|351
   i32.mul
-  local.get $u1|337
+  local.get $u1|353
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|340
-  local.get $n1|339
+  local.set $year|356
+  local.get $n1|355
   i32.const 16
   i32.shr_u
-  local.set $mo|341
-  local.get $n1|339
+  local.set $mo|357
+  local.get $n1|355
   i32.const 65535
   i32.and
   i32.const 2141
@@ -6406,38 +7484,38 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|338
+  local.get $dm1|354
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|341
+   local.get $mo|357
    i32.const 12
    i32.sub
-   local.set $mo|341
-   local.get $year|340
+   local.set $mo|357
+   local.get $year|356
    i32.const 1
    i32.add
-   local.set $year|340
+   local.set $year|356
   end
-  local.get $mo|341
+  local.get $mo|357
   global.set $~lib/date/_month
-  local.get $year|340
+  local.get $year|356
   call $~lib/date/Date#set:year
-  local.get $this|326
+  local.get $this|342
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|326
+  local.get $this|342
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|326
-  local.tee $date|305
+  local.get $this|342
+  local.tee $date|321
   i32.store $0 offset=60
-  local.get $date|305
+  local.get $date|321
   i32.const 20
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
-  local.set $this|342
-  local.get $this|342
+  local.get $date|321
+  local.set $this|358
+  local.get $this|358
   i64.load $0 offset=16
   i64.const 1363748399999
   i64.eq
@@ -6445,12 +7523,12 @@
   if
    unreachable
   end
-  local.get $date|305
+  local.get $date|321
   i32.const 1
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
-  local.set $this|343
-  local.get $this|343
+  local.get $date|321
+  local.set $this|359
+  local.get $this|359
   i64.load $0 offset=16
   i64.const 1362106799999
   i64.eq
@@ -6458,12 +7536,12 @@
   if
    unreachable
   end
-  local.get $date|305
+  local.get $date|321
   i32.const 1000
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|305
-  local.set $this|344
-  local.get $this|344
+  local.get $date|321
+  local.set $this|360
+  local.get $this|360
   i64.load $0 offset=16
   i64.const 1362106800000
   i64.eq
@@ -6471,16 +7549,16 @@
   if
    unreachable
   end
-  local.get $date|305
+  local.get $date|321
   i32.const 60
   i32.const 60
   i32.mul
   i32.const 1000
   i32.mul
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|305
-  local.set $this|345
-  local.get $this|345
+  local.get $date|321
+  local.set $this|361
+  local.get $this|361
   i64.load $0 offset=16
   i64.const 1362110400000
   i64.eq
@@ -6488,7 +7566,7 @@
   if
    unreachable
   end
-  local.get $date|305
+  local.get $date|321
   i32.const 60
   i32.const 60
   i32.mul
@@ -6497,9 +7575,9 @@
   i32.const 1
   i32.add
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|305
-  local.set $this|346
-  local.get $this|346
+  local.get $date|321
+  local.set $this|362
+  local.get $this|362
   i64.load $0 offset=16
   i64.const 1362114000001
   i64.eq
@@ -6507,7 +7585,7 @@
   if
    unreachable
   end
-  local.get $date|305
+  local.get $date|321
   i32.const 60
   i32.const 60
   i32.mul
@@ -6516,9 +7594,9 @@
   i32.const 1
   i32.add
   call $~lib/date/Date#setUTCMilliseconds
-  local.get $date|305
-  local.set $this|347
-  local.get $this|347
+  local.get $date|321
+  local.set $this|363
+  local.get $this|363
   i64.load $0 offset=16
   i64.const 1362117600001
   i64.eq
@@ -6528,66 +7606,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|348
+  local.set $this|364
   i64.const 123814991274
-  local.set $epochMillis|349
-  local.get $this|348
+  local.set $epochMillis|365
+  local.get $this|364
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|348
+   local.tee $this|364
    i32.store $0 offset=68
   end
-  local.get $this|348
-  local.get $epochMillis|349
+  local.get $this|364
+  local.get $epochMillis|365
   call $~lib/date/Date#set:epochMillis
-  local.get $this|348
+  local.get $this|364
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|348
+  local.get $this|364
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|348
+  local.get $this|364
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|349
-  local.set $millis|350
-  local.get $millis|350
+  local.get $epochMillis|365
+  local.set $millis|366
+  local.get $millis|366
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|350
+  local.get $millis|366
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|348
-  local.get $epochMillis|349
-  local.set $ms|351
-  local.get $ms|351
-  local.set $a|352
+  local.get $this|364
+  local.get $epochMillis|365
+  local.set $ms|367
+  local.get $ms|367
+  local.set $a|368
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|353
-  local.get $a|352
-  local.get $a|352
+  local.set $b|369
+  local.get $a|368
+  local.get $a|368
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|353
+   local.get $b|369
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|353
+  local.get $b|369
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -6598,64 +7676,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|354
-  local.get $da|354
-  local.set $a|355
+  local.set $da|370
+  local.get $da|370
+  local.set $a|371
   i32.const 146097
-  local.set $b|356
-  local.get $a|355
-  local.get $a|355
+  local.set $b|372
+  local.get $a|371
+  local.get $a|371
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|356
+   local.get $b|372
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|356
+  local.get $b|372
   i32.div_s
-  local.set $q0|357
-  local.get $da|354
-  local.get $q0|357
+  local.set $q0|373
+  local.get $da|370
+  local.get $q0|373
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|358
-  local.get $r1|358
+  local.set $r1|374
+  local.get $r1|374
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|359
-  local.get $u1|359
+  local.set $u1|375
+  local.get $u1|375
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|360
+  local.set $dm1|376
   i32.const 2141
-  local.get $dm1|360
+  local.get $dm1|376
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|361
+  local.set $n1|377
   i32.const 100
-  local.get $q0|357
+  local.get $q0|373
   i32.mul
-  local.get $u1|359
+  local.get $u1|375
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|362
-  local.get $n1|361
+  local.set $year|378
+  local.get $n1|377
   i32.const 16
   i32.shr_u
-  local.set $mo|363
-  local.get $n1|361
+  local.set $mo|379
+  local.get $n1|377
   i32.const 65535
   i32.and
   i32.const 2141
@@ -6663,38 +7741,38 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|360
+  local.get $dm1|376
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|363
+   local.get $mo|379
    i32.const 12
    i32.sub
-   local.set $mo|363
-   local.get $year|362
+   local.set $mo|379
+   local.get $year|378
    i32.const 1
    i32.add
-   local.set $year|362
+   local.set $year|378
   end
-  local.get $mo|363
+  local.get $mo|379
   global.set $~lib/date/_month
-  local.get $year|362
+  local.get $year|378
   call $~lib/date/Date#set:year
-  local.get $this|348
+  local.get $this|364
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|348
+  local.get $this|364
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|348
-  local.tee $date|305
+  local.get $this|364
+  local.tee $date|321
   i32.store $0 offset=60
-  local.get $date|305
+  local.get $date|321
   i32.const -2208
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
-  local.set $this|364
-  local.get $this|364
+  local.get $date|321
+  local.set $this|380
+  local.get $this|380
   i64.load $0 offset=16
   i64.const -67301808726
   i64.eq
@@ -6704,66 +7782,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|365
+  local.set $this|381
   i64.const 123814991274
-  local.set $epochMillis|366
-  local.get $this|365
+  local.set $epochMillis|382
+  local.get $this|381
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|365
+   local.tee $this|381
    i32.store $0 offset=72
   end
-  local.get $this|365
-  local.get $epochMillis|366
+  local.get $this|381
+  local.get $epochMillis|382
   call $~lib/date/Date#set:epochMillis
-  local.get $this|365
+  local.get $this|381
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|365
+  local.get $this|381
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|365
+  local.get $this|381
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|366
-  local.set $millis|367
-  local.get $millis|367
+  local.get $epochMillis|382
+  local.set $millis|383
+  local.get $millis|383
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|367
+  local.get $millis|383
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|365
-  local.get $epochMillis|366
-  local.set $ms|368
-  local.get $ms|368
-  local.set $a|369
+  local.get $this|381
+  local.get $epochMillis|382
+  local.set $ms|384
+  local.get $ms|384
+  local.set $a|385
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|370
-  local.get $a|369
-  local.get $a|369
+  local.set $b|386
+  local.get $a|385
+  local.get $a|385
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|370
+   local.get $b|386
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|370
+  local.get $b|386
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -6774,64 +7852,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|371
-  local.get $da|371
-  local.set $a|372
+  local.set $da|387
+  local.get $da|387
+  local.set $a|388
   i32.const 146097
-  local.set $b|373
-  local.get $a|372
-  local.get $a|372
+  local.set $b|389
+  local.get $a|388
+  local.get $a|388
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|373
+   local.get $b|389
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|373
+  local.get $b|389
   i32.div_s
-  local.set $q0|374
-  local.get $da|371
-  local.get $q0|374
+  local.set $q0|390
+  local.get $da|387
+  local.get $q0|390
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|375
-  local.get $r1|375
+  local.set $r1|391
+  local.get $r1|391
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|376
-  local.get $u1|376
+  local.set $u1|392
+  local.get $u1|392
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|377
+  local.set $dm1|393
   i32.const 2141
-  local.get $dm1|377
+  local.get $dm1|393
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|378
+  local.set $n1|394
   i32.const 100
-  local.get $q0|374
+  local.get $q0|390
   i32.mul
-  local.get $u1|376
+  local.get $u1|392
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|379
-  local.get $n1|378
+  local.set $year|395
+  local.get $n1|394
   i32.const 16
   i32.shr_u
-  local.set $mo|380
-  local.get $n1|378
+  local.set $mo|396
+  local.get $n1|394
   i32.const 65535
   i32.and
   i32.const 2141
@@ -6839,38 +7917,38 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|377
+  local.get $dm1|393
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|380
+   local.get $mo|396
    i32.const 12
    i32.sub
-   local.set $mo|380
-   local.get $year|379
+   local.set $mo|396
+   local.get $year|395
    i32.const 1
    i32.add
-   local.set $year|379
+   local.set $year|395
   end
-  local.get $mo|380
+  local.get $mo|396
   global.set $~lib/date/_month
-  local.get $year|379
+  local.get $year|395
   call $~lib/date/Date#set:year
-  local.get $this|365
+  local.get $this|381
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|365
+  local.get $this|381
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|365
-  local.tee $date|305
+  local.get $this|381
+  local.tee $date|321
   i32.store $0 offset=60
-  local.get $date|305
+  local.get $date|321
   i32.const 2208
   call $~lib/date/Date#setUTCDate
-  local.get $date|305
-  local.set $this|381
-  local.get $this|381
+  local.get $date|321
+  local.set $this|397
+  local.get $this|397
   i64.load $0 offset=16
   i64.const 314240591274
   i64.eq
@@ -6880,66 +7958,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|382
+  local.set $this|398
   i64.const 1467763200000
-  local.set $epochMillis|383
-  local.get $this|382
+  local.set $epochMillis|399
+  local.get $this|398
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|382
+   local.tee $this|398
    i32.store $0 offset=76
   end
-  local.get $this|382
-  local.get $epochMillis|383
+  local.get $this|398
+  local.get $epochMillis|399
   call $~lib/date/Date#set:epochMillis
-  local.get $this|382
+  local.get $this|398
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|382
+  local.get $this|398
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|382
+  local.get $this|398
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|383
-  local.set $millis|384
-  local.get $millis|384
+  local.get $epochMillis|399
+  local.set $millis|400
+  local.get $millis|400
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|384
+  local.get $millis|400
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|382
-  local.get $epochMillis|383
-  local.set $ms|385
-  local.get $ms|385
-  local.set $a|386
+  local.get $this|398
+  local.get $epochMillis|399
+  local.set $ms|401
+  local.get $ms|401
+  local.set $a|402
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|387
-  local.get $a|386
-  local.get $a|386
+  local.set $b|403
+  local.get $a|402
+  local.get $a|402
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|387
+   local.get $b|403
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|387
+  local.get $b|403
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -6950,64 +8028,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|388
-  local.get $da|388
-  local.set $a|389
+  local.set $da|404
+  local.get $da|404
+  local.set $a|405
   i32.const 146097
-  local.set $b|390
-  local.get $a|389
-  local.get $a|389
+  local.set $b|406
+  local.get $a|405
+  local.get $a|405
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|390
+   local.get $b|406
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|390
+  local.get $b|406
   i32.div_s
-  local.set $q0|391
-  local.get $da|388
-  local.get $q0|391
+  local.set $q0|407
+  local.get $da|404
+  local.get $q0|407
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|392
-  local.get $r1|392
+  local.set $r1|408
+  local.get $r1|408
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|393
-  local.get $u1|393
+  local.set $u1|409
+  local.get $u1|409
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|394
+  local.set $dm1|410
   i32.const 2141
-  local.get $dm1|394
+  local.get $dm1|410
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|395
+  local.set $n1|411
   i32.const 100
-  local.get $q0|391
+  local.get $q0|407
   i32.mul
-  local.get $u1|393
+  local.get $u1|409
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|396
-  local.get $n1|395
+  local.set $year|412
+  local.get $n1|411
   i32.const 16
   i32.shr_u
-  local.set $mo|397
-  local.get $n1|395
+  local.set $mo|413
+  local.get $n1|411
   i32.const 65535
   i32.and
   i32.const 2141
@@ -7015,37 +8093,37 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|394
+  local.get $dm1|410
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|397
+   local.get $mo|413
    i32.const 12
    i32.sub
-   local.set $mo|397
-   local.get $year|396
+   local.set $mo|413
+   local.get $year|412
    i32.const 1
    i32.add
-   local.set $year|396
+   local.set $year|412
   end
-  local.get $mo|397
+  local.get $mo|413
   global.set $~lib/date/_month
-  local.get $year|396
+  local.get $year|412
   call $~lib/date/Date#set:year
-  local.get $this|382
+  local.get $this|398
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|382
+  local.get $this|398
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|382
-  local.tee $this|398
+  local.get $this|398
+  local.tee $this|414
   i32.store $0 offset=80
-  local.get $this|398
+  local.get $this|414
   i32.load $0
-  local.get $this|398
+  local.get $this|414
   i32.load $0 offset=4
-  local.get $this|398
+  local.get $this|414
   i32.load $0 offset=8
   call $~lib/date/dayOfWeek
   i32.const 3
@@ -7056,68 +8134,68 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|399
+  local.set $this|415
   i64.const 1467763200000
   i64.const 1
   i64.sub
-  local.set $epochMillis|400
-  local.get $this|399
+  local.set $epochMillis|416
+  local.get $this|415
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|399
+   local.tee $this|415
    i32.store $0 offset=84
   end
-  local.get $this|399
-  local.get $epochMillis|400
+  local.get $this|415
+  local.get $epochMillis|416
   call $~lib/date/Date#set:epochMillis
-  local.get $this|399
+  local.get $this|415
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|399
+  local.get $this|415
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|399
+  local.get $this|415
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|400
-  local.set $millis|401
-  local.get $millis|401
+  local.get $epochMillis|416
+  local.set $millis|417
+  local.get $millis|417
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|401
+  local.get $millis|417
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|399
-  local.get $epochMillis|400
-  local.set $ms|402
-  local.get $ms|402
-  local.set $a|403
+  local.get $this|415
+  local.get $epochMillis|416
+  local.set $ms|418
+  local.get $ms|418
+  local.set $a|419
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|404
-  local.get $a|403
-  local.get $a|403
+  local.set $b|420
+  local.get $a|419
+  local.get $a|419
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|404
+   local.get $b|420
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|404
+  local.get $b|420
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -7128,64 +8206,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|405
-  local.get $da|405
-  local.set $a|406
+  local.set $da|421
+  local.get $da|421
+  local.set $a|422
   i32.const 146097
-  local.set $b|407
-  local.get $a|406
-  local.get $a|406
+  local.set $b|423
+  local.get $a|422
+  local.get $a|422
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|407
+   local.get $b|423
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|407
+  local.get $b|423
   i32.div_s
-  local.set $q0|408
-  local.get $da|405
-  local.get $q0|408
+  local.set $q0|424
+  local.get $da|421
+  local.get $q0|424
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|409
-  local.get $r1|409
+  local.set $r1|425
+  local.get $r1|425
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|410
-  local.get $u1|410
+  local.set $u1|426
+  local.get $u1|426
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|411
+  local.set $dm1|427
   i32.const 2141
-  local.get $dm1|411
+  local.get $dm1|427
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|412
+  local.set $n1|428
   i32.const 100
-  local.get $q0|408
+  local.get $q0|424
   i32.mul
-  local.get $u1|410
+  local.get $u1|426
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|413
-  local.get $n1|412
+  local.set $year|429
+  local.get $n1|428
   i32.const 16
   i32.shr_u
-  local.set $mo|414
-  local.get $n1|412
+  local.set $mo|430
+  local.get $n1|428
   i32.const 65535
   i32.and
   i32.const 2141
@@ -7193,37 +8271,37 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|411
+  local.get $dm1|427
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|414
+   local.get $mo|430
    i32.const 12
    i32.sub
-   local.set $mo|414
-   local.get $year|413
+   local.set $mo|430
+   local.get $year|429
    i32.const 1
    i32.add
-   local.set $year|413
+   local.set $year|429
   end
-  local.get $mo|414
+  local.get $mo|430
   global.set $~lib/date/_month
-  local.get $year|413
+  local.get $year|429
   call $~lib/date/Date#set:year
-  local.get $this|399
+  local.get $this|415
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|399
+  local.get $this|415
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|399
-  local.tee $this|415
+  local.get $this|415
+  local.tee $this|431
   i32.store $0 offset=88
-  local.get $this|415
+  local.get $this|431
   i32.load $0
-  local.get $this|415
+  local.get $this|431
   i32.load $0 offset=4
-  local.get $this|415
+  local.get $this|431
   i32.load $0 offset=8
   call $~lib/date/dayOfWeek
   i32.const 2
@@ -7234,70 +8312,70 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|416
+  local.set $this|432
   i64.const 1467763200000
   i64.const 86400000
   i64.add
   i64.const 1
   i64.sub
-  local.set $epochMillis|417
-  local.get $this|416
+  local.set $epochMillis|433
+  local.get $this|432
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|416
+   local.tee $this|432
    i32.store $0 offset=92
   end
-  local.get $this|416
-  local.get $epochMillis|417
+  local.get $this|432
+  local.get $epochMillis|433
   call $~lib/date/Date#set:epochMillis
-  local.get $this|416
+  local.get $this|432
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|416
+  local.get $this|432
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|416
+  local.get $this|432
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|417
-  local.set $millis|418
-  local.get $millis|418
+  local.get $epochMillis|433
+  local.set $millis|434
+  local.get $millis|434
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|418
+  local.get $millis|434
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|416
-  local.get $epochMillis|417
-  local.set $ms|419
-  local.get $ms|419
-  local.set $a|420
+  local.get $this|432
+  local.get $epochMillis|433
+  local.set $ms|435
+  local.get $ms|435
+  local.set $a|436
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|421
-  local.get $a|420
-  local.get $a|420
+  local.set $b|437
+  local.get $a|436
+  local.get $a|436
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|421
+   local.get $b|437
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|421
+  local.get $b|437
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -7308,64 +8386,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|422
-  local.get $da|422
-  local.set $a|423
+  local.set $da|438
+  local.get $da|438
+  local.set $a|439
   i32.const 146097
-  local.set $b|424
-  local.get $a|423
-  local.get $a|423
+  local.set $b|440
+  local.get $a|439
+  local.get $a|439
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|424
+   local.get $b|440
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|424
+  local.get $b|440
   i32.div_s
-  local.set $q0|425
-  local.get $da|422
-  local.get $q0|425
+  local.set $q0|441
+  local.get $da|438
+  local.get $q0|441
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|426
-  local.get $r1|426
+  local.set $r1|442
+  local.get $r1|442
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|427
-  local.get $u1|427
+  local.set $u1|443
+  local.get $u1|443
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|428
+  local.set $dm1|444
   i32.const 2141
-  local.get $dm1|428
+  local.get $dm1|444
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|429
+  local.set $n1|445
   i32.const 100
-  local.get $q0|425
+  local.get $q0|441
   i32.mul
-  local.get $u1|427
+  local.get $u1|443
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|430
-  local.get $n1|429
+  local.set $year|446
+  local.get $n1|445
   i32.const 16
   i32.shr_u
-  local.set $mo|431
-  local.get $n1|429
+  local.set $mo|447
+  local.get $n1|445
   i32.const 65535
   i32.and
   i32.const 2141
@@ -7373,37 +8451,37 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|428
+  local.get $dm1|444
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|431
+   local.get $mo|447
    i32.const 12
    i32.sub
-   local.set $mo|431
-   local.get $year|430
+   local.set $mo|447
+   local.get $year|446
    i32.const 1
    i32.add
-   local.set $year|430
+   local.set $year|446
   end
-  local.get $mo|431
+  local.get $mo|447
   global.set $~lib/date/_month
-  local.get $year|430
+  local.get $year|446
   call $~lib/date/Date#set:year
-  local.get $this|416
+  local.get $this|432
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|416
+  local.get $this|432
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|416
-  local.tee $this|432
+  local.get $this|432
+  local.tee $this|448
   i32.store $0 offset=96
-  local.get $this|432
+  local.get $this|448
   i32.load $0
-  local.get $this|432
+  local.get $this|448
   i32.load $0 offset=4
-  local.get $this|432
+  local.get $this|448
   i32.load $0 offset=8
   call $~lib/date/dayOfWeek
   i32.const 3
@@ -7414,68 +8492,68 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|433
+  local.set $this|449
   i64.const 1467763200000
   i64.const 86400000
   i64.add
-  local.set $epochMillis|434
-  local.get $this|433
+  local.set $epochMillis|450
+  local.get $this|449
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|433
+   local.tee $this|449
    i32.store $0 offset=100
   end
-  local.get $this|433
-  local.get $epochMillis|434
+  local.get $this|449
+  local.get $epochMillis|450
   call $~lib/date/Date#set:epochMillis
-  local.get $this|433
+  local.get $this|449
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|433
+  local.get $this|449
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|433
+  local.get $this|449
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|434
-  local.set $millis|435
-  local.get $millis|435
+  local.get $epochMillis|450
+  local.set $millis|451
+  local.get $millis|451
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|435
+  local.get $millis|451
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|433
-  local.get $epochMillis|434
-  local.set $ms|436
-  local.get $ms|436
-  local.set $a|437
+  local.get $this|449
+  local.get $epochMillis|450
+  local.set $ms|452
+  local.get $ms|452
+  local.set $a|453
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|438
-  local.get $a|437
-  local.get $a|437
+  local.set $b|454
+  local.get $a|453
+  local.get $a|453
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|438
+   local.get $b|454
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|438
+  local.get $b|454
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -7486,64 +8564,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|439
-  local.get $da|439
-  local.set $a|440
+  local.set $da|455
+  local.get $da|455
+  local.set $a|456
   i32.const 146097
-  local.set $b|441
-  local.get $a|440
-  local.get $a|440
+  local.set $b|457
+  local.get $a|456
+  local.get $a|456
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|441
+   local.get $b|457
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|441
+  local.get $b|457
   i32.div_s
-  local.set $q0|442
-  local.get $da|439
-  local.get $q0|442
+  local.set $q0|458
+  local.get $da|455
+  local.get $q0|458
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|443
-  local.get $r1|443
+  local.set $r1|459
+  local.get $r1|459
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|444
-  local.get $u1|444
+  local.set $u1|460
+  local.get $u1|460
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|445
+  local.set $dm1|461
   i32.const 2141
-  local.get $dm1|445
+  local.get $dm1|461
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|446
+  local.set $n1|462
   i32.const 100
-  local.get $q0|442
+  local.get $q0|458
   i32.mul
-  local.get $u1|444
+  local.get $u1|460
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|447
-  local.get $n1|446
+  local.set $year|463
+  local.get $n1|462
   i32.const 16
   i32.shr_u
-  local.set $mo|448
-  local.get $n1|446
+  local.set $mo|464
+  local.get $n1|462
   i32.const 65535
   i32.and
   i32.const 2141
@@ -7551,37 +8629,37 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|445
+  local.get $dm1|461
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|448
+   local.get $mo|464
    i32.const 12
    i32.sub
-   local.set $mo|448
-   local.get $year|447
+   local.set $mo|464
+   local.get $year|463
    i32.const 1
    i32.add
-   local.set $year|447
+   local.set $year|463
   end
-  local.get $mo|448
+  local.get $mo|464
   global.set $~lib/date/_month
-  local.get $year|447
+  local.get $year|463
   call $~lib/date/Date#set:year
-  local.get $this|433
+  local.get $this|449
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|433
+  local.get $this|449
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|433
-  local.tee $this|449
+  local.get $this|449
+  local.tee $this|465
   i32.store $0 offset=104
-  local.get $this|449
+  local.get $this|465
   i32.load $0
-  local.get $this|449
+  local.get $this|465
   i32.load $0 offset=4
-  local.get $this|449
+  local.get $this|465
   i32.load $0 offset=8
   call $~lib/date/dayOfWeek
   i32.const 4
@@ -7592,66 +8670,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|450
+  local.set $this|466
   i64.const 1468022400000
-  local.set $epochMillis|451
-  local.get $this|450
+  local.set $epochMillis|467
+  local.get $this|466
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|450
+   local.tee $this|466
    i32.store $0 offset=108
   end
-  local.get $this|450
-  local.get $epochMillis|451
+  local.get $this|466
+  local.get $epochMillis|467
   call $~lib/date/Date#set:epochMillis
-  local.get $this|450
+  local.get $this|466
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|450
+  local.get $this|466
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|450
+  local.get $this|466
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|451
-  local.set $millis|452
-  local.get $millis|452
+  local.get $epochMillis|467
+  local.set $millis|468
+  local.get $millis|468
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|452
+  local.get $millis|468
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|450
-  local.get $epochMillis|451
-  local.set $ms|453
-  local.get $ms|453
-  local.set $a|454
+  local.get $this|466
+  local.get $epochMillis|467
+  local.set $ms|469
+  local.get $ms|469
+  local.set $a|470
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|455
-  local.get $a|454
-  local.get $a|454
+  local.set $b|471
+  local.get $a|470
+  local.get $a|470
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|455
+   local.get $b|471
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|455
+  local.get $b|471
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -7662,64 +8740,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|456
-  local.get $da|456
-  local.set $a|457
+  local.set $da|472
+  local.get $da|472
+  local.set $a|473
   i32.const 146097
-  local.set $b|458
-  local.get $a|457
-  local.get $a|457
+  local.set $b|474
+  local.get $a|473
+  local.get $a|473
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|458
+   local.get $b|474
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|458
+  local.get $b|474
   i32.div_s
-  local.set $q0|459
-  local.get $da|456
-  local.get $q0|459
+  local.set $q0|475
+  local.get $da|472
+  local.get $q0|475
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|460
-  local.get $r1|460
+  local.set $r1|476
+  local.get $r1|476
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|461
-  local.get $u1|461
+  local.set $u1|477
+  local.get $u1|477
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|462
+  local.set $dm1|478
   i32.const 2141
-  local.get $dm1|462
+  local.get $dm1|478
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|463
+  local.set $n1|479
   i32.const 100
-  local.get $q0|459
+  local.get $q0|475
   i32.mul
-  local.get $u1|461
+  local.get $u1|477
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|464
-  local.get $n1|463
+  local.set $year|480
+  local.get $n1|479
   i32.const 16
   i32.shr_u
-  local.set $mo|465
-  local.get $n1|463
+  local.set $mo|481
+  local.get $n1|479
   i32.const 65535
   i32.and
   i32.const 2141
@@ -7727,37 +8805,37 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|462
+  local.get $dm1|478
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|465
+   local.get $mo|481
    i32.const 12
    i32.sub
-   local.set $mo|465
-   local.get $year|464
+   local.set $mo|481
+   local.get $year|480
    i32.const 1
    i32.add
-   local.set $year|464
+   local.set $year|480
   end
-  local.get $mo|465
+  local.get $mo|481
   global.set $~lib/date/_month
-  local.get $year|464
+  local.get $year|480
   call $~lib/date/Date#set:year
-  local.get $this|450
+  local.get $this|466
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|450
+  local.get $this|466
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|450
-  local.tee $this|466
+  local.get $this|466
+  local.tee $this|482
   i32.store $0 offset=112
-  local.get $this|466
+  local.get $this|482
   i32.load $0
-  local.get $this|466
+  local.get $this|482
   i32.load $0 offset=4
-  local.get $this|466
+  local.get $this|482
   i32.load $0 offset=8
   call $~lib/date/dayOfWeek
   i32.const 6
@@ -7768,68 +8846,68 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|467
+  local.set $this|483
   i64.const 1468022400000
   i64.const 1
   i64.sub
-  local.set $epochMillis|468
-  local.get $this|467
+  local.set $epochMillis|484
+  local.get $this|483
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|467
+   local.tee $this|483
    i32.store $0 offset=116
   end
-  local.get $this|467
-  local.get $epochMillis|468
+  local.get $this|483
+  local.get $epochMillis|484
   call $~lib/date/Date#set:epochMillis
-  local.get $this|467
+  local.get $this|483
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|467
+  local.get $this|483
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|467
+  local.get $this|483
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|468
-  local.set $millis|469
-  local.get $millis|469
+  local.get $epochMillis|484
+  local.set $millis|485
+  local.get $millis|485
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|469
+  local.get $millis|485
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|467
-  local.get $epochMillis|468
-  local.set $ms|470
-  local.get $ms|470
-  local.set $a|471
+  local.get $this|483
+  local.get $epochMillis|484
+  local.set $ms|486
+  local.get $ms|486
+  local.set $a|487
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|472
-  local.get $a|471
-  local.get $a|471
+  local.set $b|488
+  local.get $a|487
+  local.get $a|487
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|472
+   local.get $b|488
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|472
+  local.get $b|488
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -7840,64 +8918,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|473
-  local.get $da|473
-  local.set $a|474
+  local.set $da|489
+  local.get $da|489
+  local.set $a|490
   i32.const 146097
-  local.set $b|475
-  local.get $a|474
-  local.get $a|474
+  local.set $b|491
+  local.get $a|490
+  local.get $a|490
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|475
+   local.get $b|491
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|475
+  local.get $b|491
   i32.div_s
-  local.set $q0|476
-  local.get $da|473
-  local.get $q0|476
+  local.set $q0|492
+  local.get $da|489
+  local.get $q0|492
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|477
-  local.get $r1|477
+  local.set $r1|493
+  local.get $r1|493
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|478
-  local.get $u1|478
+  local.set $u1|494
+  local.get $u1|494
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|479
+  local.set $dm1|495
   i32.const 2141
-  local.get $dm1|479
+  local.get $dm1|495
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|480
+  local.set $n1|496
   i32.const 100
-  local.get $q0|476
+  local.get $q0|492
   i32.mul
-  local.get $u1|478
+  local.get $u1|494
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|481
-  local.get $n1|480
+  local.set $year|497
+  local.get $n1|496
   i32.const 16
   i32.shr_u
-  local.set $mo|482
-  local.get $n1|480
+  local.set $mo|498
+  local.get $n1|496
   i32.const 65535
   i32.and
   i32.const 2141
@@ -7905,37 +8983,37 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|479
+  local.get $dm1|495
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|482
+   local.get $mo|498
    i32.const 12
    i32.sub
-   local.set $mo|482
-   local.get $year|481
+   local.set $mo|498
+   local.get $year|497
    i32.const 1
    i32.add
-   local.set $year|481
+   local.set $year|497
   end
-  local.get $mo|482
+  local.get $mo|498
   global.set $~lib/date/_month
-  local.get $year|481
+  local.get $year|497
   call $~lib/date/Date#set:year
-  local.get $this|467
+  local.get $this|483
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|467
+  local.get $this|483
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|467
-  local.tee $this|483
+  local.get $this|483
+  local.tee $this|499
   i32.store $0 offset=120
-  local.get $this|483
+  local.get $this|499
   i32.load $0
-  local.get $this|483
+  local.get $this|499
   i32.load $0 offset=4
-  local.get $this|483
+  local.get $this|499
   i32.load $0 offset=8
   call $~lib/date/dayOfWeek
   i32.const 5
@@ -7946,70 +9024,70 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|484
+  local.set $this|500
   i64.const 1468022400000
   i64.const 86400000
   i64.add
   i64.const 1
   i64.sub
-  local.set $epochMillis|485
-  local.get $this|484
+  local.set $epochMillis|501
+  local.get $this|500
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|484
+   local.tee $this|500
    i32.store $0 offset=124
   end
-  local.get $this|484
-  local.get $epochMillis|485
+  local.get $this|500
+  local.get $epochMillis|501
   call $~lib/date/Date#set:epochMillis
-  local.get $this|484
+  local.get $this|500
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|484
+  local.get $this|500
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|484
+  local.get $this|500
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|485
-  local.set $millis|486
-  local.get $millis|486
+  local.get $epochMillis|501
+  local.set $millis|502
+  local.get $millis|502
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|486
+  local.get $millis|502
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|484
-  local.get $epochMillis|485
-  local.set $ms|487
-  local.get $ms|487
-  local.set $a|488
+  local.get $this|500
+  local.get $epochMillis|501
+  local.set $ms|503
+  local.get $ms|503
+  local.set $a|504
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|489
-  local.get $a|488
-  local.get $a|488
+  local.set $b|505
+  local.get $a|504
+  local.get $a|504
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|489
+   local.get $b|505
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|489
+  local.get $b|505
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -8020,64 +9098,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|490
-  local.get $da|490
-  local.set $a|491
+  local.set $da|506
+  local.get $da|506
+  local.set $a|507
   i32.const 146097
-  local.set $b|492
-  local.get $a|491
-  local.get $a|491
+  local.set $b|508
+  local.get $a|507
+  local.get $a|507
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|492
+   local.get $b|508
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|492
+  local.get $b|508
   i32.div_s
-  local.set $q0|493
-  local.get $da|490
-  local.get $q0|493
+  local.set $q0|509
+  local.get $da|506
+  local.get $q0|509
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|494
-  local.get $r1|494
+  local.set $r1|510
+  local.get $r1|510
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|495
-  local.get $u1|495
+  local.set $u1|511
+  local.get $u1|511
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|496
+  local.set $dm1|512
   i32.const 2141
-  local.get $dm1|496
+  local.get $dm1|512
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|497
+  local.set $n1|513
   i32.const 100
-  local.get $q0|493
+  local.get $q0|509
   i32.mul
-  local.get $u1|495
+  local.get $u1|511
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|498
-  local.get $n1|497
+  local.set $year|514
+  local.get $n1|513
   i32.const 16
   i32.shr_u
-  local.set $mo|499
-  local.get $n1|497
+  local.set $mo|515
+  local.get $n1|513
   i32.const 65535
   i32.and
   i32.const 2141
@@ -8085,37 +9163,37 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|496
+  local.get $dm1|512
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|499
+   local.get $mo|515
    i32.const 12
    i32.sub
-   local.set $mo|499
-   local.get $year|498
+   local.set $mo|515
+   local.get $year|514
    i32.const 1
    i32.add
-   local.set $year|498
+   local.set $year|514
   end
-  local.get $mo|499
+  local.get $mo|515
   global.set $~lib/date/_month
-  local.get $year|498
+  local.get $year|514
   call $~lib/date/Date#set:year
-  local.get $this|484
+  local.get $this|500
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|484
+  local.get $this|500
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|484
-  local.tee $this|500
+  local.get $this|500
+  local.tee $this|516
   i32.store $0 offset=128
-  local.get $this|500
+  local.get $this|516
   i32.load $0
-  local.get $this|500
+  local.get $this|516
   i32.load $0 offset=4
-  local.get $this|500
+  local.get $this|516
   i32.load $0 offset=8
   call $~lib/date/dayOfWeek
   i32.const 6
@@ -8126,68 +9204,68 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|501
+  local.set $this|517
   i64.const 1468022400000
   i64.const 86400000
   i64.add
-  local.set $epochMillis|502
-  local.get $this|501
+  local.set $epochMillis|518
+  local.get $this|517
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|501
+   local.tee $this|517
    i32.store $0 offset=132
   end
-  local.get $this|501
-  local.get $epochMillis|502
+  local.get $this|517
+  local.get $epochMillis|518
   call $~lib/date/Date#set:epochMillis
-  local.get $this|501
+  local.get $this|517
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|501
+  local.get $this|517
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|501
+  local.get $this|517
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|502
-  local.set $millis|503
-  local.get $millis|503
+  local.get $epochMillis|518
+  local.set $millis|519
+  local.get $millis|519
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|503
+  local.get $millis|519
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|501
-  local.get $epochMillis|502
-  local.set $ms|504
-  local.get $ms|504
-  local.set $a|505
+  local.get $this|517
+  local.get $epochMillis|518
+  local.set $ms|520
+  local.get $ms|520
+  local.set $a|521
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|506
-  local.get $a|505
-  local.get $a|505
+  local.set $b|522
+  local.get $a|521
+  local.get $a|521
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|506
+   local.get $b|522
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|506
+  local.get $b|522
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -8198,64 +9276,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|507
-  local.get $da|507
-  local.set $a|508
+  local.set $da|523
+  local.get $da|523
+  local.set $a|524
   i32.const 146097
-  local.set $b|509
-  local.get $a|508
-  local.get $a|508
+  local.set $b|525
+  local.get $a|524
+  local.get $a|524
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|509
+   local.get $b|525
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|509
+  local.get $b|525
   i32.div_s
-  local.set $q0|510
-  local.get $da|507
-  local.get $q0|510
+  local.set $q0|526
+  local.get $da|523
+  local.get $q0|526
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|511
-  local.get $r1|511
+  local.set $r1|527
+  local.get $r1|527
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|512
-  local.get $u1|512
+  local.set $u1|528
+  local.get $u1|528
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|513
+  local.set $dm1|529
   i32.const 2141
-  local.get $dm1|513
+  local.get $dm1|529
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|514
+  local.set $n1|530
   i32.const 100
-  local.get $q0|510
+  local.get $q0|526
   i32.mul
-  local.get $u1|512
+  local.get $u1|528
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|515
-  local.get $n1|514
+  local.set $year|531
+  local.get $n1|530
   i32.const 16
   i32.shr_u
-  local.set $mo|516
-  local.get $n1|514
+  local.set $mo|532
+  local.get $n1|530
   i32.const 65535
   i32.and
   i32.const 2141
@@ -8263,37 +9341,37 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|513
+  local.get $dm1|529
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|516
+   local.get $mo|532
    i32.const 12
    i32.sub
-   local.set $mo|516
-   local.get $year|515
+   local.set $mo|532
+   local.get $year|531
    i32.const 1
    i32.add
-   local.set $year|515
+   local.set $year|531
   end
-  local.get $mo|516
+  local.get $mo|532
   global.set $~lib/date/_month
-  local.get $year|515
+  local.get $year|531
   call $~lib/date/Date#set:year
-  local.get $this|501
+  local.get $this|517
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|501
+  local.get $this|517
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|501
-  local.tee $this|517
+  local.get $this|517
+  local.tee $this|533
   i32.store $0 offset=136
-  local.get $this|517
+  local.get $this|533
   i32.load $0
-  local.get $this|517
+  local.get $this|533
   i32.load $0 offset=4
-  local.get $this|517
+  local.get $this|533
   i32.load $0 offset=8
   call $~lib/date/dayOfWeek
   i32.const 0
@@ -8304,66 +9382,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|518
+  local.set $this|534
   i64.const 7899943856218720
-  local.set $epochMillis|519
-  local.get $this|518
+  local.set $epochMillis|535
+  local.get $this|534
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|518
+   local.tee $this|534
    i32.store $0 offset=140
   end
-  local.get $this|518
-  local.get $epochMillis|519
+  local.get $this|534
+  local.get $epochMillis|535
   call $~lib/date/Date#set:epochMillis
-  local.get $this|518
+  local.get $this|534
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|518
+  local.get $this|534
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|518
+  local.get $this|534
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|519
-  local.set $millis|520
-  local.get $millis|520
+  local.get $epochMillis|535
+  local.set $millis|536
+  local.get $millis|536
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|520
+  local.get $millis|536
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|518
-  local.get $epochMillis|519
-  local.set $ms|521
-  local.get $ms|521
-  local.set $a|522
+  local.get $this|534
+  local.get $epochMillis|535
+  local.set $ms|537
+  local.get $ms|537
+  local.set $a|538
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|523
-  local.get $a|522
-  local.get $a|522
+  local.set $b|539
+  local.get $a|538
+  local.get $a|538
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|523
+   local.get $b|539
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|523
+  local.get $b|539
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -8374,64 +9452,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|524
-  local.get $da|524
-  local.set $a|525
+  local.set $da|540
+  local.get $da|540
+  local.set $a|541
   i32.const 146097
-  local.set $b|526
-  local.get $a|525
-  local.get $a|525
+  local.set $b|542
+  local.get $a|541
+  local.get $a|541
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|526
+   local.get $b|542
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|526
+  local.get $b|542
   i32.div_s
-  local.set $q0|527
-  local.get $da|524
-  local.get $q0|527
+  local.set $q0|543
+  local.get $da|540
+  local.get $q0|543
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|528
-  local.get $r1|528
+  local.set $r1|544
+  local.get $r1|544
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|529
-  local.get $u1|529
+  local.set $u1|545
+  local.get $u1|545
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|530
+  local.set $dm1|546
   i32.const 2141
-  local.get $dm1|530
+  local.get $dm1|546
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|531
+  local.set $n1|547
   i32.const 100
-  local.get $q0|527
+  local.get $q0|543
   i32.mul
-  local.get $u1|529
+  local.get $u1|545
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|532
-  local.get $n1|531
+  local.set $year|548
+  local.get $n1|547
   i32.const 16
   i32.shr_u
-  local.set $mo|533
-  local.get $n1|531
+  local.set $mo|549
+  local.get $n1|547
   i32.const 65535
   i32.and
   i32.const 2141
@@ -8439,35 +9517,35 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|530
+  local.get $dm1|546
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|533
+   local.get $mo|549
    i32.const 12
    i32.sub
-   local.set $mo|533
-   local.get $year|532
+   local.set $mo|549
+   local.get $year|548
    i32.const 1
    i32.add
-   local.set $year|532
+   local.set $year|548
   end
-  local.get $mo|533
+  local.get $mo|549
   global.set $~lib/date/_month
-  local.get $year|532
+  local.get $year|548
   call $~lib/date/Date#set:year
-  local.get $this|518
+  local.get $this|534
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|518
+  local.get $this|534
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|518
-  local.tee $date|534
+  local.get $this|534
+  local.tee $date|550
   i32.store $0 offset=144
-  local.get $date|534
-  local.set $this|535
-  local.get $this|535
+  local.get $date|550
+  local.set $this|551
+  local.get $this|551
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -8477,15 +9555,15 @@
   if
    unreachable
   end
-  local.get $date|534
+  local.get $date|550
   i32.const 10
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
   call $~lib/date/Date#setUTCMonth@varargs
-  local.get $date|534
-  local.set $this|536
-  local.get $this|536
+  local.get $date|550
+  local.set $this|552
+  local.get $this|552
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -8495,15 +9573,15 @@
   if
    unreachable
   end
-  local.get $date|534
+  local.get $date|550
   i32.const 2
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
   call $~lib/date/Date#setUTCMonth@varargs
-  local.get $date|534
-  local.set $this|537
-  local.get $this|537
+  local.get $date|550
+  local.set $this|553
+  local.get $this|553
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -8513,9 +9591,9 @@
   if
    unreachable
   end
-  local.get $date|534
-  local.set $this|538
-  local.get $this|538
+  local.get $date|550
+  local.set $this|554
+  local.get $this|554
   i64.load $0 offset=16
   i64.const 7899941177818720
   i64.eq
@@ -8523,15 +9601,15 @@
   if
    unreachable
   end
-  local.get $date|534
+  local.get $date|550
   i32.const 0
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
   call $~lib/date/Date#setUTCMonth@varargs
-  local.get $date|534
-  local.set $this|539
-  local.get $this|539
+  local.get $date|550
+  local.set $this|555
+  local.get $this|555
   i64.load $0 offset=16
   i64.const 7899936080218720
   i64.eq
@@ -8539,15 +9617,15 @@
   if
    unreachable
   end
-  local.get $date|534
+  local.get $date|550
   i32.const 11
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
   call $~lib/date/Date#setUTCMonth@varargs
-  local.get $date|534
-  local.set $this|540
-  local.get $this|540
+  local.get $date|550
+  local.set $this|556
+  local.get $this|556
   i64.load $0 offset=16
   i64.const 7899964937818720
   i64.eq
@@ -8555,15 +9633,15 @@
   if
    unreachable
   end
-  local.get $date|534
+  local.get $date|550
   i32.const -1
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
   call $~lib/date/Date#setUTCMonth@varargs
-  local.get $date|534
-  local.set $this|541
-  local.get $this|541
+  local.get $date|550
+  local.set $this|557
+  local.get $this|557
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -8573,9 +9651,9 @@
   if
    unreachable
   end
-  local.get $date|534
-  local.set $this|542
-  local.get $this|542
+  local.get $date|550
+  local.set $this|558
+  local.get $this|558
   i64.load $0 offset=16
   i64.const 7899933401818720
   i64.eq
@@ -8583,15 +9661,15 @@
   if
    unreachable
   end
-  local.get $date|534
+  local.get $date|550
   i32.const 12
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
   call $~lib/date/Date#setUTCMonth@varargs
-  local.get $date|534
-  local.set $this|543
-  local.get $this|543
+  local.get $date|550
+  local.set $this|559
+  local.get $this|559
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -8601,9 +9679,9 @@
   if
    unreachable
   end
-  local.get $date|534
-  local.set $this|544
-  local.get $this|544
+  local.get $date|550
+  local.set $this|560
+  local.get $this|560
   i64.load $0 offset=16
   i64.const 7899936080218720
   i64.eq
@@ -8613,66 +9691,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|545
+  local.set $this|561
   i64.const 7941202527925698
-  local.set $epochMillis|546
-  local.get $this|545
+  local.set $epochMillis|562
+  local.get $this|561
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|545
+   local.tee $this|561
    i32.store $0 offset=148
   end
-  local.get $this|545
-  local.get $epochMillis|546
+  local.get $this|561
+  local.get $epochMillis|562
   call $~lib/date/Date#set:epochMillis
-  local.get $this|545
+  local.get $this|561
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|545
+  local.get $this|561
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|545
+  local.get $this|561
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|546
-  local.set $millis|547
-  local.get $millis|547
+  local.get $epochMillis|562
+  local.set $millis|563
+  local.get $millis|563
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|547
+  local.get $millis|563
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|545
-  local.get $epochMillis|546
-  local.set $ms|548
-  local.get $ms|548
-  local.set $a|549
+  local.get $this|561
+  local.get $epochMillis|562
+  local.set $ms|564
+  local.get $ms|564
+  local.set $a|565
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|550
-  local.get $a|549
-  local.get $a|549
+  local.set $b|566
+  local.get $a|565
+  local.get $a|565
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|550
+   local.get $b|566
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|550
+  local.get $b|566
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -8683,64 +9761,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|551
-  local.get $da|551
-  local.set $a|552
+  local.set $da|567
+  local.get $da|567
+  local.set $a|568
   i32.const 146097
-  local.set $b|553
-  local.get $a|552
-  local.get $a|552
+  local.set $b|569
+  local.get $a|568
+  local.get $a|568
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|553
+   local.get $b|569
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|553
+  local.get $b|569
   i32.div_s
-  local.set $q0|554
-  local.get $da|551
-  local.get $q0|554
+  local.set $q0|570
+  local.get $da|567
+  local.get $q0|570
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|555
-  local.get $r1|555
+  local.set $r1|571
+  local.get $r1|571
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|556
-  local.get $u1|556
+  local.set $u1|572
+  local.get $u1|572
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|557
+  local.set $dm1|573
   i32.const 2141
-  local.get $dm1|557
+  local.get $dm1|573
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|558
+  local.set $n1|574
   i32.const 100
-  local.get $q0|554
+  local.get $q0|570
   i32.mul
-  local.get $u1|556
+  local.get $u1|572
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|559
-  local.get $n1|558
+  local.set $year|575
+  local.get $n1|574
   i32.const 16
   i32.shr_u
-  local.set $mo|560
-  local.get $n1|558
+  local.set $mo|576
+  local.get $n1|574
   i32.const 65535
   i32.and
   i32.const 2141
@@ -8748,35 +9826,35 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|557
+  local.get $dm1|573
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|560
+   local.get $mo|576
    i32.const 12
    i32.sub
-   local.set $mo|560
-   local.get $year|559
+   local.set $mo|576
+   local.get $year|575
    i32.const 1
    i32.add
-   local.set $year|559
+   local.set $year|575
   end
-  local.get $mo|560
+  local.get $mo|576
   global.set $~lib/date/_month
-  local.get $year|559
+  local.get $year|575
   call $~lib/date/Date#set:year
-  local.get $this|545
+  local.get $this|561
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|545
+  local.get $this|561
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|545
-  local.tee $date|561
+  local.get $this|561
+  local.tee $date|577
   i32.store $0 offset=152
-  local.get $date|561
-  local.set $this|562
-  local.get $this|562
+  local.get $date|577
+  local.set $this|578
+  local.get $this|578
   i32.load $0
   i32.const 253616
   i32.eq
@@ -8784,12 +9862,12 @@
   if
    unreachable
   end
-  local.get $date|561
+  local.get $date|577
   i32.const 1976
   call $~lib/date/Date#setUTCFullYear
-  local.get $date|561
-  local.set $this|563
-  local.get $this|563
+  local.get $date|577
+  local.set $this|579
+  local.get $this|579
   i32.load $0
   i32.const 1976
   i32.eq
@@ -8797,12 +9875,12 @@
   if
    unreachable
   end
-  local.get $date|561
+  local.get $date|577
   i32.const 20212
   call $~lib/date/Date#setUTCFullYear
-  local.get $date|561
-  local.set $this|564
-  local.get $this|564
+  local.get $date|577
+  local.set $this|580
+  local.get $this|580
   i32.load $0
   i32.const 20212
   i32.eq
@@ -8810,12 +9888,12 @@
   if
    unreachable
   end
-  local.get $date|561
+  local.get $date|577
   i32.const 71
   call $~lib/date/Date#setUTCFullYear
-  local.get $date|561
-  local.set $this|565
-  local.get $this|565
+  local.get $date|577
+  local.set $this|581
+  local.get $this|581
   i32.load $0
   i32.const 71
   i32.eq
@@ -8825,66 +9903,66 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|566
+  local.set $this|582
   i64.const -8640000000000000
-  local.set $epochMillis|567
-  local.get $this|566
+  local.set $epochMillis|583
+  local.get $this|582
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|566
+   local.tee $this|582
    i32.store $0 offset=156
   end
-  local.get $this|566
-  local.get $epochMillis|567
+  local.get $this|582
+  local.get $epochMillis|583
   call $~lib/date/Date#set:epochMillis
-  local.get $this|566
+  local.get $this|582
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|566
+  local.get $this|582
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|566
+  local.get $this|582
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|567
-  local.set $millis|568
-  local.get $millis|568
+  local.get $epochMillis|583
+  local.set $millis|584
+  local.get $millis|584
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|568
+  local.get $millis|584
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|566
-  local.get $epochMillis|567
-  local.set $ms|569
-  local.get $ms|569
-  local.set $a|570
+  local.get $this|582
+  local.get $epochMillis|583
+  local.set $ms|585
+  local.get $ms|585
+  local.set $a|586
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|571
-  local.get $a|570
-  local.get $a|570
+  local.set $b|587
+  local.get $a|586
+  local.get $a|586
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|571
+   local.get $b|587
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|571
+  local.get $b|587
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -8895,64 +9973,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|572
-  local.get $da|572
-  local.set $a|573
+  local.set $da|588
+  local.get $da|588
+  local.set $a|589
   i32.const 146097
-  local.set $b|574
-  local.get $a|573
-  local.get $a|573
+  local.set $b|590
+  local.get $a|589
+  local.get $a|589
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|574
+   local.get $b|590
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|574
+  local.get $b|590
   i32.div_s
-  local.set $q0|575
-  local.get $da|572
-  local.get $q0|575
+  local.set $q0|591
+  local.get $da|588
+  local.get $q0|591
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|576
-  local.get $r1|576
+  local.set $r1|592
+  local.get $r1|592
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|577
-  local.get $u1|577
+  local.set $u1|593
+  local.get $u1|593
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|578
+  local.set $dm1|594
   i32.const 2141
-  local.get $dm1|578
+  local.get $dm1|594
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|579
+  local.set $n1|595
   i32.const 100
-  local.get $q0|575
+  local.get $q0|591
   i32.mul
-  local.get $u1|577
+  local.get $u1|593
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|580
-  local.get $n1|579
+  local.set $year|596
+  local.get $n1|595
   i32.const 16
   i32.shr_u
-  local.set $mo|581
-  local.get $n1|579
+  local.set $mo|597
+  local.get $n1|595
   i32.const 65535
   i32.and
   i32.const 2141
@@ -8960,94 +10038,94 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|578
+  local.get $dm1|594
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|581
+   local.get $mo|597
    i32.const 12
    i32.sub
-   local.set $mo|581
-   local.get $year|580
+   local.set $mo|597
+   local.get $year|596
    i32.const 1
    i32.add
-   local.set $year|580
+   local.set $year|596
   end
-  local.get $mo|581
+  local.get $mo|597
   global.set $~lib/date/_month
-  local.get $year|580
+  local.get $year|596
   call $~lib/date/Date#set:year
-  local.get $this|566
+  local.get $this|582
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|566
+  local.get $this|582
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|566
+  local.get $this|582
   local.tee $minDate
   i32.store $0 offset=160
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|583
+  local.set $this|599
   i64.const 8640000000000000
-  local.set $epochMillis|584
-  local.get $this|583
+  local.set $epochMillis|600
+  local.get $this|599
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|583
+   local.tee $this|599
    i32.store $0 offset=164
   end
-  local.get $this|583
-  local.get $epochMillis|584
+  local.get $this|599
+  local.get $epochMillis|600
   call $~lib/date/Date#set:epochMillis
-  local.get $this|583
+  local.get $this|599
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|583
+  local.get $this|599
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|583
+  local.get $this|599
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|584
-  local.set $millis|585
-  local.get $millis|585
+  local.get $epochMillis|600
+  local.set $millis|601
+  local.get $millis|601
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|585
+  local.get $millis|601
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|583
-  local.get $epochMillis|584
-  local.set $ms|586
-  local.get $ms|586
-  local.set $a|587
+  local.get $this|599
+  local.get $epochMillis|600
+  local.set $ms|602
+  local.get $ms|602
+  local.set $a|603
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|588
-  local.get $a|587
-  local.get $a|587
+  local.set $b|604
+  local.get $a|603
+  local.get $a|603
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|588
+   local.get $b|604
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|588
+  local.get $b|604
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -9058,64 +10136,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|589
-  local.get $da|589
-  local.set $a|590
+  local.set $da|605
+  local.get $da|605
+  local.set $a|606
   i32.const 146097
-  local.set $b|591
-  local.get $a|590
-  local.get $a|590
+  local.set $b|607
+  local.get $a|606
+  local.get $a|606
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|591
+   local.get $b|607
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|591
+  local.get $b|607
   i32.div_s
-  local.set $q0|592
-  local.get $da|589
-  local.get $q0|592
+  local.set $q0|608
+  local.get $da|605
+  local.get $q0|608
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|593
-  local.get $r1|593
+  local.set $r1|609
+  local.get $r1|609
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|594
-  local.get $u1|594
+  local.set $u1|610
+  local.get $u1|610
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|595
+  local.set $dm1|611
   i32.const 2141
-  local.get $dm1|595
+  local.get $dm1|611
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|596
+  local.set $n1|612
   i32.const 100
-  local.get $q0|592
+  local.get $q0|608
   i32.mul
-  local.get $u1|594
+  local.get $u1|610
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|597
-  local.get $n1|596
+  local.set $year|613
+  local.get $n1|612
   i32.const 16
   i32.shr_u
-  local.set $mo|598
-  local.get $n1|596
+  local.set $mo|614
+  local.get $n1|612
   i32.const 65535
   i32.and
   i32.const 2141
@@ -9123,35 +10201,35 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|595
+  local.get $dm1|611
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|598
+   local.get $mo|614
    i32.const 12
    i32.sub
-   local.set $mo|598
-   local.get $year|597
+   local.set $mo|614
+   local.get $year|613
    i32.const 1
    i32.add
-   local.set $year|597
+   local.set $year|613
   end
-  local.get $mo|598
+  local.get $mo|614
   global.set $~lib/date/_month
-  local.get $year|597
+  local.get $year|613
   call $~lib/date/Date#set:year
-  local.get $this|583
+  local.get $this|599
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|583
+  local.get $this|599
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|583
+  local.get $this|599
   local.tee $maxDate
   i32.store $0 offset=168
   local.get $minDate
-  local.set $this|600
-  local.get $this|600
+  local.set $this|616
+  local.get $this|616
   i64.load $0 offset=16
   i64.const -8640000000000000
   i64.eq
@@ -9160,8 +10238,8 @@
    unreachable
   end
   local.get $maxDate
-  local.set $this|601
-  local.get $this|601
+  local.set $this|617
+  local.get $this|617
   i64.load $0 offset=16
   i64.const 8640000000000000
   i64.eq
@@ -9170,8 +10248,8 @@
    unreachable
   end
   local.get $minDate
-  local.set $this|602
-  local.get $this|602
+  local.set $this|618
+  local.get $this|618
   i32.load $0
   i32.const -271821
   i32.eq
@@ -9180,8 +10258,8 @@
    unreachable
   end
   local.get $maxDate
-  local.set $this|603
-  local.get $this|603
+  local.set $this|619
+  local.get $this|619
   i32.load $0
   i32.const 275760
   i32.eq
@@ -9190,8 +10268,8 @@
    unreachable
   end
   local.get $minDate
-  local.set $this|604
-  local.get $this|604
+  local.set $this|620
+  local.get $this|620
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -9202,8 +10280,8 @@
    unreachable
   end
   local.get $maxDate
-  local.set $this|605
-  local.get $this|605
+  local.set $this|621
+  local.get $this|621
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -9214,8 +10292,8 @@
    unreachable
   end
   local.get $minDate
-  local.set $this|606
-  local.get $this|606
+  local.set $this|622
+  local.get $this|622
   i32.load $0 offset=8
   i32.const 20
   i32.eq
@@ -9224,8 +10302,8 @@
    unreachable
   end
   local.get $maxDate
-  local.set $this|607
-  local.get $this|607
+  local.set $this|623
+  local.get $this|623
   i32.load $0 offset=8
   i32.const 13
   i32.eq
@@ -9235,68 +10313,68 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|608
+  local.set $this|624
   i64.const 8640000000000000
   i64.const 1
   i64.sub
-  local.set $epochMillis|609
-  local.get $this|608
+  local.set $epochMillis|625
+  local.get $this|624
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|608
+   local.tee $this|624
    i32.store $0 offset=172
   end
-  local.get $this|608
-  local.get $epochMillis|609
+  local.get $this|624
+  local.get $epochMillis|625
   call $~lib/date/Date#set:epochMillis
-  local.get $this|608
+  local.get $this|624
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|608
+  local.get $this|624
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|608
+  local.get $this|624
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|609
-  local.set $millis|610
-  local.get $millis|610
+  local.get $epochMillis|625
+  local.set $millis|626
+  local.get $millis|626
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|610
+  local.get $millis|626
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|608
-  local.get $epochMillis|609
-  local.set $ms|611
-  local.get $ms|611
-  local.set $a|612
+  local.get $this|624
+  local.get $epochMillis|625
+  local.set $ms|627
+  local.get $ms|627
+  local.set $a|628
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|613
-  local.get $a|612
-  local.get $a|612
+  local.set $b|629
+  local.get $a|628
+  local.get $a|628
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|613
+   local.get $b|629
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|613
+  local.get $b|629
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -9307,64 +10385,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|614
-  local.get $da|614
-  local.set $a|615
+  local.set $da|630
+  local.get $da|630
+  local.set $a|631
   i32.const 146097
-  local.set $b|616
-  local.get $a|615
-  local.get $a|615
+  local.set $b|632
+  local.get $a|631
+  local.get $a|631
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|616
+   local.get $b|632
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|616
+  local.get $b|632
   i32.div_s
-  local.set $q0|617
-  local.get $da|614
-  local.get $q0|617
+  local.set $q0|633
+  local.get $da|630
+  local.get $q0|633
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|618
-  local.get $r1|618
+  local.set $r1|634
+  local.get $r1|634
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|619
-  local.get $u1|619
+  local.set $u1|635
+  local.get $u1|635
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|620
+  local.set $dm1|636
   i32.const 2141
-  local.get $dm1|620
+  local.get $dm1|636
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|621
+  local.set $n1|637
   i32.const 100
-  local.get $q0|617
+  local.get $q0|633
   i32.mul
-  local.get $u1|619
+  local.get $u1|635
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|622
-  local.get $n1|621
+  local.set $year|638
+  local.get $n1|637
   i32.const 16
   i32.shr_u
-  local.set $mo|623
-  local.get $n1|621
+  local.set $mo|639
+  local.get $n1|637
   i32.const 65535
   i32.and
   i32.const 2141
@@ -9372,96 +10450,96 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|620
+  local.get $dm1|636
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|623
+   local.get $mo|639
    i32.const 12
    i32.sub
-   local.set $mo|623
-   local.get $year|622
+   local.set $mo|639
+   local.get $year|638
    i32.const 1
    i32.add
-   local.set $year|622
+   local.set $year|638
   end
-  local.get $mo|623
+  local.get $mo|639
   global.set $~lib/date/_month
-  local.get $year|622
+  local.get $year|638
   call $~lib/date/Date#set:year
-  local.get $this|608
+  local.get $this|624
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|608
+  local.get $this|624
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|608
+  local.get $this|624
   local.tee $maxDateDec
   i32.store $0 offset=176
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this|625
+  local.set $this|641
   i64.const -8640000000000000
   i64.const 1
   i64.add
-  local.set $epochMillis|626
-  local.get $this|625
+  local.set $epochMillis|642
+  local.get $this|641
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
    call $~lib/rt/itcms/__new
-   local.tee $this|625
+   local.tee $this|641
    i32.store $0 offset=180
   end
-  local.get $this|625
-  local.get $epochMillis|626
+  local.get $this|641
+  local.get $epochMillis|642
   call $~lib/date/Date#set:epochMillis
-  local.get $this|625
+  local.get $this|641
   i32.const 0
   call $~lib/date/Date#set:year
-  local.get $this|625
+  local.get $this|641
   i32.const 0
   call $~lib/date/Date#set:month
-  local.get $this|625
+  local.get $this|641
   i32.const 0
   call $~lib/date/Date#set:day
-  local.get $epochMillis|626
-  local.set $millis|627
-  local.get $millis|627
+  local.get $epochMillis|642
+  local.set $millis|643
+  local.get $millis|643
   i64.const 0
   i64.const 8640000000000000
   i64.sub
   i64.lt_s
-  local.get $millis|627
+  local.get $millis|643
   i64.const 8640000000000000
   i64.gt_s
   i32.or
   if
    unreachable
   end
-  local.get $this|625
-  local.get $epochMillis|626
-  local.set $ms|628
-  local.get $ms|628
-  local.set $a|629
+  local.get $this|641
+  local.get $epochMillis|642
+  local.set $ms|644
+  local.get $ms|644
+  local.set $a|645
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|630
-  local.get $a|629
-  local.get $a|629
+  local.set $b|646
+  local.get $a|645
+  local.get $a|645
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|630
+   local.get $b|646
    i64.const 1
    i64.sub
   else
    i64.const 0
   end
   i64.sub
-  local.get $b|630
+  local.get $b|646
   i64.div_s
   i32.wrap_i64
   i32.const 4
@@ -9472,64 +10550,64 @@
   i32.add
   i32.const 3
   i32.or
-  local.set $da|631
-  local.get $da|631
-  local.set $a|632
+  local.set $da|647
+  local.get $da|647
+  local.set $a|648
   i32.const 146097
-  local.set $b|633
-  local.get $a|632
-  local.get $a|632
+  local.set $b|649
+  local.get $a|648
+  local.get $a|648
   i32.const 0
   i32.lt_s
   if (result i32)
-   local.get $b|633
+   local.get $b|649
    i32.const 1
    i32.sub
   else
    i32.const 0
   end
   i32.sub
-  local.get $b|633
+  local.get $b|649
   i32.div_s
-  local.set $q0|634
-  local.get $da|631
-  local.get $q0|634
+  local.set $q0|650
+  local.get $da|647
+  local.get $q0|650
   i32.const 146097
   i32.mul
   i32.sub
-  local.set $r1|635
-  local.get $r1|635
+  local.set $r1|651
+  local.get $r1|651
   i32.const 3
   i32.or
   i64.extend_i32_u
   i64.const 2939745
   i64.mul
-  local.set $u1|636
-  local.get $u1|636
+  local.set $u1|652
+  local.get $u1|652
   i32.wrap_i64
   i32.const 11758980
   i32.div_u
-  local.set $dm1|637
+  local.set $dm1|653
   i32.const 2141
-  local.get $dm1|637
+  local.get $dm1|653
   i32.mul
   i32.const 197913
   i32.add
-  local.set $n1|638
+  local.set $n1|654
   i32.const 100
-  local.get $q0|634
+  local.get $q0|650
   i32.mul
-  local.get $u1|636
+  local.get $u1|652
   i64.const 32
   i64.shr_u
   i32.wrap_i64
   i32.add
-  local.set $year|639
-  local.get $n1|638
+  local.set $year|655
+  local.get $n1|654
   i32.const 16
   i32.shr_u
-  local.set $mo|640
-  local.get $n1|638
+  local.set $mo|656
+  local.get $n1|654
   i32.const 65535
   i32.and
   i32.const 2141
@@ -9537,35 +10615,35 @@
   i32.const 1
   i32.add
   global.set $~lib/date/_day
-  local.get $dm1|637
+  local.get $dm1|653
   i32.const 306
   i32.ge_u
   if
-   local.get $mo|640
+   local.get $mo|656
    i32.const 12
    i32.sub
-   local.set $mo|640
-   local.get $year|639
+   local.set $mo|656
+   local.get $year|655
    i32.const 1
    i32.add
-   local.set $year|639
+   local.set $year|655
   end
-  local.get $mo|640
+  local.get $mo|656
   global.set $~lib/date/_month
-  local.get $year|639
+  local.get $year|655
   call $~lib/date/Date#set:year
-  local.get $this|625
+  local.get $this|641
   global.get $~lib/date/_month
   call $~lib/date/Date#set:month
-  local.get $this|625
+  local.get $this|641
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
-  local.get $this|625
+  local.get $this|641
   local.tee $minDateInc
   i32.store $0 offset=184
   local.get $minDateInc
-  local.set $this|642
-  local.get $this|642
+  local.set $this|658
+  local.get $this|658
   i32.load $0
   i32.const -271821
   i32.eq
@@ -9574,8 +10652,8 @@
    unreachable
   end
   local.get $minDateInc
-  local.set $this|643
-  local.get $this|643
+  local.set $this|659
+  local.get $this|659
   i32.load $0 offset=4
   i32.const 1
   i32.sub
@@ -9586,8 +10664,8 @@
    unreachable
   end
   local.get $minDateInc
-  local.set $this|644
-  local.get $this|644
+  local.set $this|660
+  local.get $this|660
   i32.load $0 offset=8
   i32.const 20
   i32.eq
@@ -9596,23 +10674,23 @@
    unreachable
   end
   local.get $minDateInc
-  local.set $this|645
-  local.get $this|645
+  local.set $this|661
+  local.get $this|661
   i64.load $0 offset=16
-  local.set $a|646
+  local.set $a|662
   i32.const 86400000
   i64.extend_i32_s
-  local.set $b|647
-  local.get $a|646
-  local.get $b|647
+  local.set $b|663
+  local.get $a|662
+  local.get $b|663
   i64.rem_s
-  local.set $m|648
-  local.get $m|648
-  local.get $m|648
+  local.set $m|664
+  local.get $m|664
+  local.get $m|664
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|647
+   local.get $b|663
   else
    i64.const 0
   end
@@ -9627,23 +10705,23 @@
    unreachable
   end
   local.get $minDateInc
-  local.set $this|649
-  local.get $this|649
+  local.set $this|665
+  local.get $this|665
   i64.load $0 offset=16
-  local.set $a|650
+  local.set $a|666
   i32.const 3600000
   i64.extend_i32_s
-  local.set $b|651
-  local.get $a|650
-  local.get $b|651
+  local.set $b|667
+  local.get $a|666
+  local.get $b|667
   i64.rem_s
-  local.set $m|652
-  local.get $m|652
-  local.get $m|652
+  local.set $m|668
+  local.get $m|668
+  local.get $m|668
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|651
+   local.get $b|667
   else
    i64.const 0
   end
@@ -9658,23 +10736,23 @@
    unreachable
   end
   local.get $minDateInc
-  local.set $this|653
-  local.get $this|653
+  local.set $this|669
+  local.get $this|669
   i64.load $0 offset=16
-  local.set $a|654
+  local.set $a|670
   i32.const 60000
   i64.extend_i32_s
-  local.set $b|655
-  local.get $a|654
-  local.get $b|655
+  local.set $b|671
+  local.get $a|670
+  local.get $b|671
   i64.rem_s
-  local.set $m|656
-  local.get $m|656
-  local.get $m|656
+  local.set $m|672
+  local.get $m|672
+  local.get $m|672
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|655
+   local.get $b|671
   else
    i64.const 0
   end
@@ -9689,23 +10767,23 @@
    unreachable
   end
   local.get $minDateInc
-  local.set $this|657
-  local.get $this|657
+  local.set $this|673
+  local.get $this|673
   i64.load $0 offset=16
-  local.set $a|658
+  local.set $a|674
   i32.const 1000
   i64.extend_i32_s
-  local.set $b|659
-  local.get $a|658
-  local.get $b|659
+  local.set $b|675
+  local.get $a|674
+  local.get $b|675
   i64.rem_s
-  local.set $m|660
-  local.get $m|660
-  local.get $m|660
+  local.set $m|676
+  local.get $m|676
+  local.get $m|676
   i64.const 0
   i64.lt_s
   if (result i64)
-   local.get $b|659
+   local.get $b|675
   else
    i64.const 0
   end

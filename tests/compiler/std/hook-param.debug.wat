@@ -541,7 +541,7 @@
     local.set $msg|42
     local.get $r|29
     local.set $failure|39
-    i32.const 30
+    i32.const 31
     local.set $file|40
     i32.const 22
     local.set $line|41
