@@ -1,31 +1,27 @@
-import {
-  __repeat1,
-  __repeat2,
-  __repeat4
-} from "./repeat";
-
 @inline
-export function __repeatupto1(dest: usize, ptr: usize, len: usize, count: usize): void {
+export function __repeatupto1(dest: usize, value: u8, count: usize): void {
   if (count)
-    __repeat1(dest, ptr, len);
+    store<u8>(dest, value);
 }
 
 @inline
-export function __repeatupto3(dest: usize, ptr: usize, len: usize, count: usize): void {
+export function __repeatupto3(dest: usize, value: u8, count: usize): void {
   if (count >= 2) {
-    __repeat2(dest, ptr, len);
-    dest += 2 * len;
+    store<u8>(dest++, value);
+    store<u8>(dest++, value);
     count -= 2;
   }
-  __repeatupto1(dest, ptr, len, count);
+  __repeatupto1(dest, value, count);
 }
 
 @inline
-export function __repeatupto7(dest: usize, ptr: usize, len: usize, count: usize): void {
+export function __repeatupto7(dest: usize, value: u8, count: usize): void {
   if (count >= 4) {
-    __repeat4(dest, ptr, len);
-    dest += 4 * len;
+    store<u8>(dest++, value);
+    store<u8>(dest++, value);
+    store<u8>(dest++, value);
+    store<u8>(dest++, value);
     count -= 4;
   }
-  __repeatupto3(dest, ptr, len, count);
+  __repeatupto3(dest, value, count);
 }

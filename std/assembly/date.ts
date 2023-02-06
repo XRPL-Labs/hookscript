@@ -342,14 +342,13 @@ function dayOfWeek(year: i32, month: i32, day: i32): i32 {
 // @ts-ignore: decorator
 @inline function stringify(value: i32, padding: i32 = 2): string {
   let s = value.toString();
-  let pad = "0";
   // String.padStart, simplified for 1-byte pad
   let inSize = <usize>s.length;
   let targetSize = <usize>padding;
   if (targetSize <= inSize) return s;
   let prependSize = targetSize - inSize;
   let out = __new(targetSize, idof<String>());
-  __repeatupto7(out, changetype<usize>(pad), 1, <i32>prependSize);
+  __repeatupto7(out, 48, <i32>prependSize);
   __rawcopyupto15(out + prependSize, changetype<usize>(s), <i32>inSize);
   return changetype<string>(out);
 }
