@@ -19,7 +19,7 @@ export class Account {
     let ptr2 = changetype<usize>(right);
     if (ptr1 == ptr2) return 0;
 
-    for (let i = 0; max_iterations(20), i < Account.dataSize; ++i) {
+    for (let i: u32 = 0; max_iterations(20), i < Account.dataSize; ++i) {
       let a = load<u8>(ptr1);
       let b = load<u8>(ptr2);
       if (a > b)
