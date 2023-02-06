@@ -232,35 +232,35 @@
 }
 
 // Date#toDateString ///////////////////////////////////////////////////////////////////////////////
-// {
-//   let date = new Date(-61536067200000);
-//   assert(date.toDateString() == "Wed Jan 01 0020");
-//   date = new Date(1580601600000);
-//   assert(date.toDateString() == "Sun Feb 02 2020");
-//   // negative year
-//   date = new Date(-62183116800000); // '-000001-07-01T00:00Z'
-//   assert(date.toDateString() == "Thu Jul 01 -0001");
-// }
+{
+  let date = new Date(-61536067200000);
+  assert(date.toDateString() == "Wed Jan 01 0020");
+  date = new Date(1580601600000);
+  assert(date.toDateString() == "Sun Feb 02 2020");
+  // negative year
+  date = new Date(-62183116800000); // '-000001-07-01T00:00Z'
+  assert(date.toDateString() == "Thu Jul 01 -0001");
+}
 
 // Date#toTimeString ///////////////////////////////////////////////////////////////////////////////
-// {
-//   let date = new Date(-61536067200000);
-//   assert(date.toTimeString() == "00:00:00"); // use UTC time instead local
+{
+  let date = new Date(-61536067200000);
+  assert(date.toTimeString() == "00:00:00"); // use UTC time instead local
 
-//   date = new Date(253402300799999);
-//   assert(date.toTimeString() == "23:59:59"); // use UTC time instead local
-// }
+  date = new Date(253402300799999);
+  assert(date.toTimeString() == "23:59:59"); // use UTC time instead local
+}
 
 // Date#toUTCString ///////////////////////////////////////////////////////////////////////////////
-// {
-//   let date = new Date(-61536067200000);
-//   assert(date.toUTCString() == "Wed, 01 Jan 0020 00:00:00 GMT");
-//   date = new Date(1580741613467);
-//   assert(date.toUTCString() == "Mon, 03 Feb 2020 14:53:33 GMT");
-//   // negative year
-//   date = new Date(-62183116800000); // '-000001-07-01T00:00Z'
-//   assert(date.toUTCString() == "Thu, 01 Jul -0001 00:00:00 GMT");
-// }
+{
+  let date = new Date(-61536067200000);
+  assert(date.toUTCString() == "Wed, 01 Jan 0020 00:00:00 GMT");
+  date = new Date(1580741613467);
+  assert(date.toUTCString() == "Mon, 03 Feb 2020 14:53:33 GMT");
+  // negative year
+  date = new Date(-62183116800000); // '-000001-07-01T00:00Z'
+  assert(date.toUTCString() == "Thu, 01 Jul -0001 00:00:00 GMT");
+}
 
 // Date#fromString /////////////////////////////////////////////////////////////////////////////////
 {
