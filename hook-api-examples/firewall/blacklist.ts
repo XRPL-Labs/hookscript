@@ -1,4 +1,4 @@
-export function hook(reserved: i32)
+function hook(reserved: i32)
 {
     // check for the presence of a memo
     const memos = Tx.Memos
@@ -76,6 +76,6 @@ export function hook(reserved: i32)
             trace("Blacklist: Failed to update state for the following account.", 60, changetype<u32>(lookup_acc.underlying) + lookup_acc.offset, 20, 1)
     }
 
-    let msg = `Blacklist: Processed ${flags ? '+' : '-':1} ${String.fromChar(<u8>(48 + processed_count)):1}`
+    let msg = `Blacklist: Processed ${flags ? '+' : '-'} ${processed_count}`
     accept(msg)
 }
