@@ -1,7 +1,7 @@
 const MAX_MEMO_SIZE = 4096
 const MINIMUM_FUTURE_LEDGER = 60
 
-export function hook(reserved: i32): i64
+function hook(reserved: i32): i64
 {
     etxn_reserve(1)
 
@@ -152,7 +152,7 @@ export function hook(reserved: i32): i64
     if (total < signer_quorum)
     {
         let invoice = new InvoiceID(invoice_id)
-        let msg = `Notary: Accepted waiting for other signers...: ${invoice.toHex():64}`
+        let msg = `Notary: Accepted waiting for other signers...: ${invoice.toHex()}`
         accept(msg)
     }
 
