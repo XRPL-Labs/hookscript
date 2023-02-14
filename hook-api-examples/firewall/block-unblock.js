@@ -22,7 +22,7 @@ const suspect_account = process.argv[4];
 
 const flag = (process.argv[5] == "block") ? 1 : 0;
 
-const client = new XrplClient('wss://hooks-testnet-v2.xrpl-labs.com');
+const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
 const main = async () => {
     let blacklist_instruction = bin.encode(
@@ -33,13 +33,15 @@ const main = async () => {
 	    {
 		Account: suspect_account
 	    }
-	]
+	],
+	NetworkID: '21338'
     });
 
     let tx = {
 	Account: blacklist_account,
 	TransactionType: 'AccountSet',
 	Fee: '0',
+	NetworkID: '21338',
 	SigningPubKey: '',
 	Sequence: 0,
 	Memos: [
