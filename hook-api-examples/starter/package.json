@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "description": "Starter is the simplest possible hook: it just accepts all transactions and logs that it is running.",
   "scripts": {
-    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub starter.ts -O3 -o starter.wasm && hook-cleaner starter.wasm"
+    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub starter.ts -O3 -o starter.wasm && hook-cleaner starter.wasm",
+    "postinstall": "patch-package"
   },
   "author": "Equilibrium - https://equilibrium.co",
   "license": "Public Domain",
   "dependencies": {
-    "ripple-binary-codec": "^1.6.0-beta.0",
-    "ripple-keypairs": "^1.1.4",
+    "patch-package": "^6.4.7",
     "xrpl-accountlib": "^1.6.1",
     "xrpl-client": "^2.0.1"
+  },
+  "resolutions": {
+    "ripple-binary-codec": "=1.4.2"
   }
 }
