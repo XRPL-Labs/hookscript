@@ -64,7 +64,7 @@
     "asinit": "./bin/asinit.js"
   },
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build && npm test",
     "check": "npm run check:config && npm run check:import && npm run lint",
     "check:config": "tsc --noEmit -p src --diagnostics --listFiles",
     "check:import": "tsc --noEmit --target ESNEXT --module es6 --experimentalDecorators tests/import/index",
