@@ -170,10 +170,13 @@ export function float_set(exponent: i32, mantissa: i64): i64 {
 @global @inline
 export function float_sto(currency: ByteView, issuer: ByteView, float1: i64, field: i32, el: i32 = 8): ByteArray {
   let a = new ByteArray(el);
+  // currency & issuer are optional
+  let co = currency.length ? changetype<u32>(currency.underlying) + currency.offset : 0;
+  let io = issuer.length ? changetype<u32>(issuer.underlying) + issuer.offset : 0;
   let r = $float_sto(
     changetype<u32>(a), el,
-    changetype<u32>(currency.underlying) + currency.offset, currency.length,
-    changetype<u32>(issuer.underlying) + issuer.offset, issuer.length,
+    co, currency.length,
+    io, issuer.length,
     float1,
     field);
   if (r < 0)
