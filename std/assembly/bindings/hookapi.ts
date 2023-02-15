@@ -12,9 +12,12 @@ import {
   _07_03_ENCODE_SIGNING_PUBKEY_NULL,
   _08_01_ENCODE_ACCOUNT_SRC,
   _08_03_ENCODE_ACCOUNT_DST,
-  tfCANONICAL,
-  ttPAYMENT
+  tfCANONICAL
 } from "./encode";
+
+import {
+  ttPAYMENT
+} from "./transactiontype";
 
 @global @inline
 export function accept(msg: string = "", err: i64 = 0): void {

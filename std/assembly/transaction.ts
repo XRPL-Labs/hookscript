@@ -1,3 +1,7 @@
+import {
+  ttPAYMENT
+} from "./bindings/transactiontype";
+
 // @ts-ignore: decorator
 @lazy
 export const COMPARE_EQUAL = 1;
@@ -105,6 +109,10 @@ export const sfTemplate = ((15 << 16) + 5);
 // @ts-ignore: decorator
 @lazy
 export const sfMemos = ((15 << 16) + 9);
+
+export const enum TransactionType {
+  Payment = ttPAYMENT
+}
 
 export class Tx {
   @inline

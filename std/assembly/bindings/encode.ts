@@ -1,9 +1,5 @@
 // @ts-ignore: decorator
 @lazy
-export const ttPAYMENT: u8 = 0;
-
-// @ts-ignore: decorator
-@lazy
 export const tfCANONICAL: u32 = 0x80000000;
 
 // @ts-ignore: decorator
