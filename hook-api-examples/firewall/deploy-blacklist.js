@@ -15,7 +15,7 @@ const admin_key = process.argv[3];
 const keypair = lib.derive.familySeed(secret);
 const address = keypairs.deriveAddress(keypair.keypair.publicKey);
 
-const client = new XrplClient('wss://hooks-testnet-v2.xrpl-labs.com');
+const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
 const main = async () => {
     const binary = fs.readFileSync('blacklist.wasm');
@@ -24,13 +24,14 @@ const main = async () => {
 	Account: address,
 	TransactionType: 'SetHook',
 	Fee: '0',
+	NetworkID: '21338',
 	SigningPubKey: '',
 	Sequence: 0,
 	Hooks: [
 	    {
 		Hook: {
 		    CreateCode: binary.toString('hex').toUpperCase(),
-		    HookOn: '000000003e3ff5b6', // ttPAYMENT + ttACCOUNT_SET
+		    HookOn: '3e3ff5b6'.padStart(64, '0'), // ttPAYMENT + ttACCOUNT_SET
 		    HookNamespace: '3333333333333333333333333333333333333333333333333333333333333333',
 		    HookApiVersion: 0,
 		    Flags: 1,
