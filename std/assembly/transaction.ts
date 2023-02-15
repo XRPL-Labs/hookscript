@@ -1,5 +1,35 @@
 import {
-  ttPAYMENT
+  ttPAYMENT,
+  ttESCROW_CREATE,
+  ttESCROW_FINISH,
+  ttACCOUNT_SET,
+  ttESCROW_CANCEL,
+  ttREGULAR_KEY_SET,
+  ttOFFER_CREATE,
+  ttOFFER_CANCEL,
+  ttTICKET_CREATE,
+  ttSIGNER_LIST_SET,
+  ttPAYCHAN_CREATE,
+  ttPAYCHAN_FUND,
+  ttPAYCHAN_CLAIM,
+  ttCHECK_CREATE,
+  ttCHECK_CASH,
+  ttCHECK_CANCEL,
+  ttDEPOSIT_PREAUTH,
+  ttTRUST_SET,
+  ttACCOUNT_DELETE,
+  ttHOOK_SET,
+  ttNFTOKEN_MINT,
+  ttNFTOKEN_BURN,
+  ttNFTOKEN_CREATE_OFFER,
+  ttNFTOKEN_CANCEL_OFFER,
+  ttNFTOKEN_ACCEPT_OFFER,
+  ttCLAIM_REWARD,
+  ttINVOKE,
+  ttAMENDMENT,
+  ttFEE,
+  ttUNL_MODIFY,
+  ttEMIT_FAILURE
 } from "./bindings/transactiontype";
 
 // @ts-ignore: decorator
@@ -111,7 +141,37 @@ export const sfTemplate = ((15 << 16) + 5);
 export const sfMemos = ((15 << 16) + 9);
 
 export const enum TransactionType {
-  Payment = ttPAYMENT
+  AccountDelete = ttACCOUNT_DELETE,
+  AccountSet = ttACCOUNT_SET,
+  Amendment = ttAMENDMENT,
+  CheckCancel = ttCHECK_CANCEL,
+  CheckCash = ttCHECK_CASH,
+  CheckCreate = ttCHECK_CREATE,
+  ClaimReward = ttCLAIM_REWARD,
+  DepositPreauth = ttDEPOSIT_PREAUTH,
+  EmitFailure = ttEMIT_FAILURE,
+  EscrowCancel = ttESCROW_CANCEL,
+  EscrowCreate = ttESCROW_CREATE,
+  EscrowFinish = ttESCROW_FINISH,
+  Fee = ttFEE,
+  HookSet = ttHOOK_SET,
+  Invoke = ttINVOKE,
+  NFTokenMint = ttNFTOKEN_MINT,
+  NFTokenBurn = ttNFTOKEN_BURN,
+  NFTokenAcceptOffer = ttNFTOKEN_ACCEPT_OFFER,
+  NFTokenCancelOffer = ttNFTOKEN_CANCEL_OFFER,
+  NFTokenCreateOffer = ttNFTOKEN_CREATE_OFFER,
+  OfferCancel = ttOFFER_CANCEL,
+  OfferCreate = ttOFFER_CREATE,
+  Payment = ttPAYMENT,
+  PaymentChannelClaim = ttPAYCHAN_CLAIM,
+  PaymentChannelCreate = ttPAYCHAN_CREATE,
+  PaymentChannelFund = ttPAYCHAN_FUND,
+  SetRegularKey = ttREGULAR_KEY_SET,
+  SignerListSet = ttSIGNER_LIST_SET,
+  TicketCreate = ttTICKET_CREATE,
+  TrustSet = ttTRUST_SET,
+  UNLModify = ttUNL_MODIFY
 }
 
 export class Tx {
