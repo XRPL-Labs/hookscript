@@ -36,7 +36,8 @@ import {
   sfAccount,
   sfAmount,
   sfInvoiceID,
-  sfMemos
+  sfMemos,
+  sfTransactionType
 } from "./bindings/sfcodes";
 
 // @ts-ignore: decorator
@@ -128,6 +129,16 @@ export class Tx {
 
     a.length = <i32>r;
     return a;
+  }
+
+  @inline
+  static get TransactionType(): TransactionType {
+    let a = new ByteArray(32);
+    let r = otxn_field(changetype<u32>(a), 32, sfTransactionType);
+    if (r != 2)
+      rollback("", pack_error_code(r));
+
+    return <TransactionType>(a.toUShort());
   }
 }
 
