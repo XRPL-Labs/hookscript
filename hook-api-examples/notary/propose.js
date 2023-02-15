@@ -14,7 +14,7 @@ const proposer_secret = process.argv[3];
 const proposer_keypair = lib.derive.familySeed(proposer_secret);
 const proposer_account = keypairs.deriveAddress(proposer_keypair.keypair.publicKey);
 
-const client = new XrplClient('wss://hooks-testnet-v2.xrpl-labs.com');
+const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
 const main = async () => {
     console.log('notary_account', notary_account);
@@ -26,6 +26,7 @@ const main = async () => {
 	DestinationTag: '42',
 	LastLedgerSequence: '4000000000',
 	Fee: '0',
+	NetworkID: '21338',
 	Sequence: 0
     };
 
@@ -37,6 +38,7 @@ const main = async () => {
 	Amount: '1',
 	Destination: notary_account,
 	Fee: '0',
+	NetworkID: '21338',
 	SigningPubKey: '',
 	Sequence: 0,
 	Memos: [
