@@ -15,7 +15,7 @@ const approver_keypair = lib.derive.familySeed(approver_secret);
 const approver_account = keypairs.deriveAddress(approver_keypair.keypair.publicKey);
 const invoice_id = process.argv[4];
 
-const client = new XrplClient('wss://hooks-testnet-v2.xrpl-labs.com');
+const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
 const main = async (proposal) => {
     const tx = {
@@ -25,6 +25,7 @@ const main = async (proposal) => {
 	Destination: notary_account,
 	InvoiceID: proposal,
 	Fee: '0',
+	NetworkID: '21338',
 	SigningPubKey: '',
 	Sequence: 0
     };

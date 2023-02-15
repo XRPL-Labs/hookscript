@@ -15,13 +15,14 @@ const address = keypairs.deriveAddress(keypair.keypair.publicKey);
 const amount = BigInt(process.argv[3]) * 1000000n
 const dest = process.argv[4];
 
-const client = new XrplClient('wss://hooks-testnet-v2.xrpl-labs.com');
+const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
 const main = async () => {
     let tx = {
 	Account: address,
 	TransactionType: 'Payment',
 	Fee: '0',
+	NetworkID: '21338',
 	SigningPubKey: '',
 	Sequence: 0,
 	Amount: '' + amount,

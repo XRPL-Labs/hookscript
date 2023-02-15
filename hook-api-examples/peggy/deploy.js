@@ -16,7 +16,7 @@ const oracle_hi = process.argv[4];
 const keypair = lib.derive.familySeed(secret);
 const address = keypairs.deriveAddress(keypair.keypair.publicKey);
 
-const client = new XrplClient('wss://hooks-testnet-v2.xrpl-labs.com');
+const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
 const main = async () => {
     const binary = fs.readFileSync('peggy.wasm');
@@ -25,13 +25,14 @@ const main = async () => {
 	Account: address,
 	TransactionType: 'SetHook',
 	Fee: '0',
+	NetworkID: '21338',
 	SigningPubKey: '',
 	Sequence: 0,
 	Hooks: [
 	    {
 		Hook: {
 		    CreateCode: binary.toString('hex').toUpperCase(),
-		    HookOn: '000000003e3ff5be', // ttPAYMENT
+		    HookOn: '3e3ff5be'.padStart(64, '0'), // ttPAYMENT
 		    HookNamespace: '6666666666666666666666666666666666666666666666666666666666666666',
 		    HookApiVersion: 0,
 		    Flags: 1,

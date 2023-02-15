@@ -184,12 +184,7 @@ export function hook(reserved: i32)
         state_set(vault_key, new ByteView(vault, 0, 16))
 
         // we need to dump the iou amount into a buffer
-        let amt_out = float_sto(
-            new ByteView(currency, 0, currency.length),
-            new ByteView(hook_accid, 0, hook_accid.length),
-            pusd_to_send,
-            -1,
-            48)
+        let amt_out = float_sto(empty_view, empty_view, pusd_to_send, -1, 48)
 
         // set the currency code and source in the amount field
         for (let i = 0; max_iterations(20), i < 20; ++i) {

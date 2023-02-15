@@ -23,13 +23,14 @@ for (let i = 3; i < process.argv.length; ++i) {
     });
 }
 
-const client = new XrplClient('wss://hooks-testnet-v2.xrpl-labs.com');
+const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
 const main = async () => {
     let tx = {
 	Account: address,
 	TransactionType: 'SignerListSet',
 	Fee: '0',
+	NetworkID: '21338',
 	SigningPubKey: '',
 	Sequence: 0,
 	SignerQuorum: entries.length,
