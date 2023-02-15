@@ -15,7 +15,7 @@ const amount = BigInt(process.argv[4]) * 1000000n
 const user_keypair = lib.derive.familySeed(user_secret);
 const user_account = keypairs.deriveAddress(user_keypair.keypair.publicKey);
 
-const client = new XrplClient('wss://hooks-testnet-v2.xrpl-labs.com');
+const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
 const main = async () => {
     let tx = {
@@ -23,6 +23,7 @@ const main = async () => {
 	Account: user_account,
 	Destination: hook_account,
 	Fee: '0',
+	NetworkID: '21338',
 	SigningPubKey: '',
 	Sequence: 0,
 	Flags: 2147483648,

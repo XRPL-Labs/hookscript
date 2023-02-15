@@ -14,13 +14,14 @@ const user_keypair = lib.derive.familySeed(user_secret);
 const user_account = keypairs.deriveAddress(user_keypair.keypair.publicKey);
 const hook_account = process.argv[3];
 
-const client = new XrplClient('wss://hooks-testnet-v2.xrpl-labs.com');
+const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
 const main = async () => {
     let tx = {
 	TransactionType: 'TrustSet',
 	Account: user_account,
 	Fee: '0',
+	NetworkID: '21338',
 	SigningPubKey: '',
 	Sequence: 0,
 	Flags: 262144,
