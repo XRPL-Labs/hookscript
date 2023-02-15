@@ -156,7 +156,8 @@ export function _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf: u32): u32 {
   store<u64>(buf + 2, 0);
   store<u64>(buf + 10, 0);
   store<u64>(buf + 18, 0);
-  store<u64>(buf + 25, 0);
+  store<u64>(buf + 26, 0);
+  store<u8>(buf + 34, 0);
   return buf + 35;
 }
 
