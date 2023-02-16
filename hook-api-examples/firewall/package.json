@@ -1,9 +1,9 @@
 {
   "name": "firewall",
   "version": "1.0.0",
-  "description": "Firewall is an example of cooperating hooks: firewall hook instances filter incoming payments, based on shared state maintained by blacklist hook.",
+  "description": "Firewall hook helps to avoid being spammed with low value transactions.",
   "scripts": {
-    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub blacklist.ts -O3 -o blacklist.wasm && hook-cleaner blacklist.wasm && ../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub firewall.ts -O3 -o firewall.wasm && hook-cleaner firewall.wasm",
+    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub firewall.ts -O3 -o firewall.wasm && hook-cleaner firewall.wasm",
     "postinstall": "patch-package"
   },
   "author": "Equilibrium - https://equilibrium.co",
