@@ -5,36 +5,34 @@ on:
     branches:
       - main
 
-
 jobs:
   release-alpha-version:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with:
-        ref: main
-    - uses: actions/setup-node@v3
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - name: Prepare release
-      run: |
-        # Get the current version from package.json
-        CURRENT_VERSION=$(node -p "require('./package.json').version")
-        # Remove the alpha tag if present
-        CURRENT_VERSION=$(echo $CURRENT_VERSION | sed 's/-alpha.*//')
-        # Get the current timestamp
-        TIMESTAMP=$(date +%s)
-        # Create the alpha version with timestamp appended
-        ALPHA_VERSION="${CURRENT_VERSION}-alpha.${TIMESTAMP}"
-        # Set the alpha version as the new version in package.json
-        npm version $ALPHA_VERSION --no-git-tag-version --allow-same-version
-        echo "Publishing alpha release: $ALPHA_VERSION"
-    - name: Publish packages
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        npm publish --access public --tag alpha
-
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npm ci
+      - name: Prepare release
+        run: |
+          # Get the current version from package.json
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          # Remove the alpha tag if present
+          CURRENT_VERSION=$(echo $CURRENT_VERSION | sed 's/-alpha.*//')
+          # Get the current timestamp
+          TIMESTAMP=$(date +%s)
+          # Create the alpha version with timestamp appended
+          ALPHA_VERSION="${CURRENT_VERSION}-alpha.${TIMESTAMP}"
+          # Set the alpha version as the new version in package.json
+          npm version $ALPHA_VERSION --no-git-tag-version --allow-same-version
+          echo "Publishing alpha release: $ALPHA_VERSION"
+      - name: Publish packages
+        run: |
+          npm publish --access public --tag alpha
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
