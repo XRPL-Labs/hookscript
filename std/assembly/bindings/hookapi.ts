@@ -224,6 +224,22 @@ export function hook_param(name: string): ByteArray {
 }
 
 @global @inline
+export function otxn_field_fits(fid: u32, sn: i32): bool {
+  let a = new ByteArray(sn);
+  let r = otxn_field(changetype<u32>(a), sn, fid);
+  if (r == -4) // TOO_SMALL
+    return false;
+
+  if (r == -5) // DOESNT_EXIST
+    return true;
+
+  if (r < 0)
+    rollback("", pack_error_code(r));
+
+  return true;
+}
+
+@global @inline
 export function otxn_slot(sn: i32): i32 {
   let r = $otxn_slot(sn);
   if (r < 0)
