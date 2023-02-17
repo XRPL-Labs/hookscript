@@ -27,10 +27,6 @@ function hook(reserved: i32)
         name: side_name
     })
 
-    const threshold = new HookParam<u32>({
-        name: "min_incoming"
-    })
-
     const allow_all = new ByteArray(32)
     for (let i = 0; i < allow_all.length; ++i) {
         max_iterations(32)
@@ -39,19 +35,38 @@ function hook(reserved: i32)
 
     const filter = side.get(new ByteSet(allow_all))
 
+    const transaction_type = <u8>Tx.TransactionType
+    if (filter.has(transaction_type))
+        rollback(`Firewall: Blocking ${side_name} transaction of type ${transaction_type}.`)
+
+    const amount = Tx.Amount
+    const xrp_flag = amount.isXrp()
+    let threshold_name: ByteView
+    if (xrp_flag) {
+        const xrp_threshold_name = [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 88, 82, 80, 0,0,0,0,0 ] // "XRP"
+        threshold_name = new ByteView(xrp_threshold_name, 0, xrp_threshold_name.length)
+    } else {
+        threshold_name = amount.currencyCode
+    }
+
+    const threshold = new HookParam<u32>({
+        name: threshold_name.toString()
+    })
+
     let min_incoming = 0
     if (!outgoing_flag)
         min_incoming = threshold.value(0)
 
-    const transaction_type = <u8>Tx.TransactionType
-    if (filter.has(transaction_type))
-        rollback(`Firewall: Blocking ${side_name} transaction of type ${transaction_type}`)
-
-    const amount = Tx.Amount
-    if (amount.isXrp()) {
-        let otxn_drops: i64 = amount.drops
-        if ((min_incoming > 0) && (otxn_drops < min_incoming))
-            rollback(`Firewall: Blocking ${<u32>otxn_drops} drops as too small`)
+    if (min_incoming > 0) {
+        if (xrp_flag) {
+            let otxn_drops = amount.drops
+            if (otxn_drops < min_incoming)
+                rollback(`Firewall: Blocking ${<u32>otxn_drops} drops as too small.`)
+        } else {
+            let otxn_tokens = float_int(amount.tokenAmount, 0, 0)
+            if (otxn_tokens < min_incoming)
+                rollback(`Firewall: Blocking ${<u32>otxn_tokens} tokens as too small.`)
+        }
     }
 
     accept("Firewall: Allowing transaction.")
