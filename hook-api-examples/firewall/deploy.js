@@ -33,6 +33,12 @@ if (outgoing) {
 	}
     });
 }
+hook_parameters.push({
+    HookParameter: {
+	HookParameterName: '0000000000000000000000005852500000000000',
+	HookParameterValue: '80841E00' // 2000000 Little-Endian
+    }
+});
 
 const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
@@ -43,7 +49,7 @@ function toHex(str) {
     }
     return result.toUpperCase()
 }
-			 
+
 const main = async () => {
     const binary = fs.readFileSync('firewall.wasm');
 
