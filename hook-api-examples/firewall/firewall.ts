@@ -69,5 +69,12 @@ function hook(reserved: i32)
         }
     }
 
+    const limit = new HookParam<u32>({
+        name: "memo-max"
+    })
+    let max_memo = limit.value(0)
+    if ((max_memo > 0) && !otxn_field_fits(sfMemo, max_memo))
+        rollback(`Firewall: Blocking transaction with memo larger than ${max_memo}.`)
+
     accept("Firewall: Allowing transaction.")
 }
