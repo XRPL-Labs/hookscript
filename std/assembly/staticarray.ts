@@ -488,6 +488,22 @@ export class ByteView {
   }
 
   @inline
+  toString(): string {
+    if (!this.length)
+      return "";
+
+    let ptr = changetype<usize>(this.underlying) + this.offset;
+    let len = (this.length <= 64) ? this.length : 64;
+    let out = __new(len, idof<String>());
+    if (len == 64)
+      __rawcopy64(out, ptr);
+    else
+      __rawcopyupto63(out, ptr, len);
+
+    return changetype<string>(out);
+  }
+
+  @inline
   toUInt(): u32 {
     return (<u32>(this[0]) << 24) + (<u32>(this[1]) << 16) + (<u32>(this[2]) << 8) + <u32>(this[3]);
   }

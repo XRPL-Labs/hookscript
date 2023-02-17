@@ -16,9 +16,11 @@ export class Amount {
   }
 
   @inline
-  get drops(): u64 {
-    if (!this.isXrp()) unreachable();
-    if (<u64>(this.bytes[0]) >> 7) unreachable();
+  get drops(): i64 {
+    if (!this.isXrp())
+      rollback("", pack_error_code(0));
+    if (<u64>(this.bytes[0]) >> 7)
+      rollback("", pack_error_code(this.bytes[0]));
 
     return ((<u64>(this.bytes[0]) & 0xb00111111) << 56) +
       (<u64>(this.bytes[1]) << 48) +
@@ -28,6 +30,26 @@ export class Amount {
       (<u64>(this.bytes[5]) << 16) +
       (<u64>(this.bytes[6]) << 8) +
       <u64>(this.bytes[7]);
+  }
+
+  @inline
+  get tokenAmount(): i64 {
+    if (this.isXrp())
+      rollback("", pack_error_code(0));
+
+    let r = $float_sto_set(changetype<u32>(this.bytes), 8);
+    if (r < 0)
+      rollback("", pack_error_code(r));
+
+    return r;
+  }
+
+  @inline
+  get currencyCode(): ByteView {
+    if (this.isXrp())
+      rollback("", pack_error_code(0));
+
+    return new ByteView(this.bytes, 8, 20);
   }
 
   @inline
