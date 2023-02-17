@@ -15,10 +15,6 @@ import {
   tfCANONICAL
 } from "./encode";
 
-import {
-  ttPAYMENT
-} from "./transactiontype";
-
 @global @inline
 export function accept(msg: string = "", err: i64 = 0): void {
   $accept(msg, msg.length, err);
