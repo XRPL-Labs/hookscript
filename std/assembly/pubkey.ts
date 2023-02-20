@@ -41,3 +41,15 @@ export class PubKey {
       rollback("", pack_error_code(r));
   }
 }
+
+export class PubKeyParam {
+  // @ts-ignore: decorator
+  @lazy
+  static readonly dataSize: u32 = 33;
+
+  @inline
+  constructor(public bytes: ByteArray) {
+    if (bytes.length != PubKeyParam.dataSize)
+      rollback("", pack_error_code(bytes.length));
+  }
+}
