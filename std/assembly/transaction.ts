@@ -57,6 +57,16 @@ export class Tx {
   }
 
   @inline
+  static get DestinationAccount(): Account {
+    let a = new ByteArray(20);
+    let r = otxn_field(changetype<u32>(a), 20, sfDestination);
+    if (r != 20)
+      rollback("", pack_error_code(r));
+
+    return new Account(a);
+  }
+
+  @inline
   static get Amount(): Amount {
     let a = new ByteArray(48);
     let r = otxn_field(changetype<u32>(a), 48, sfAmount);
