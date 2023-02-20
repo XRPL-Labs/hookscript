@@ -4,21 +4,54 @@ const { XrplClient } = require('xrpl-client')
 const keypairs = require('ripple-keypairs');
 const fs = require('fs');
 
-if (process.argv.length < 4)
+if ((process.argv.length < 3) || (process.argv.length > 5))
 {
-    console.log("Usage: node deploy-blacklist <account secret> <admin pubkey>")
+    console.log("Usage: node deploy <account secret> [ forbidden-incoming [ forbidden-outgoing ] ]")
     process.exit(1);
 }
 
 const secret = process.argv[2];
-const admin_key = process.argv[3];
+const incoming = (process.argv.length >= 4) ? process.argv[3] : null;
+const outgoing = (process.argv.length >= 5) ? process.argv[4] : null;
 const keypair = lib.derive.familySeed(secret);
 const address = keypairs.deriveAddress(keypair.keypair.publicKey);
 
+var hook_parameters = [];
+if (incoming) {
+    hook_parameters.push({
+	HookParameter: {
+	    HookParameterName: toHex('incoming'),
+	    HookParameterValue: incoming.padStart(64, '0')
+	}
+    });
+}
+if (outgoing) {
+    hook_parameters.push({
+	HookParameter: {
+	    HookParameterName: toHex('outgoing'),
+	    HookParameterValue: outgoing.padStart(64, '0')
+	}
+    });
+}
+hook_parameters.push({
+    HookParameter: {
+	HookParameterName: '0000000000000000000000005852500000000000',
+	HookParameterValue: '80841E00' // 2000000 Little-Endian
+    }
+});
+
 const client = new XrplClient('wss://hooks-testnet-v3.xrpl-labs.com');
 
+function toHex(str) {
+    var result = ''
+    for (let i = 0; i < str.length; i++) {
+	result += str.charCodeAt(i).toString(16)
+    }
+    return result.toUpperCase()
+}
+
 const main = async () => {
-    const binary = fs.readFileSync('blacklist.wasm');
+    const binary = fs.readFileSync('firewall.wasm');
 
     let tx = {
 	Account: address,
@@ -31,18 +64,11 @@ const main = async () => {
 	    {
 		Hook: {
 		    CreateCode: binary.toString('hex').toUpperCase(),
-		    HookOn: '3e3ff5b6'.padStart(64, '0'), // ttPAYMENT + ttACCOUNT_SET
-		    HookNamespace: '3333333333333333333333333333333333333333333333333333333333333333',
+		    HookOn: '0'.padStart(64, '0'), // everything except ttHOOK_SET
+		    HookNamespace: '8888888888888888888888888888888888888888888888888888888888888888',
 		    HookApiVersion: 0,
 		    Flags: 1,
-		    HookParameters: [
-			{
-			    HookParameter: {
-				HookParameterName: toHex('admin'),
-				HookParameterValue: admin_key
-			    }
-			}
-		    ]
+		    HookParameters: hook_parameters
 		}
 	    }
 	]
@@ -77,13 +103,5 @@ const main = async () => {
     console.log('Shutting down...');
     client.close();
 };
-
-function toHex(str) {
-    var result = ''
-    for (let i = 0; i < str.length; i++) {
-	result += str.charCodeAt(i).toString(16)
-    }
-    return result.toUpperCase()
-}
 
 main();
