@@ -341,6 +341,13 @@ export function state_foreign(key: ByteArray, ns: ByteArray, acc: ByteArray, el:
 }
 
 @global @inline
+export function state_foreign_set(key: ByteArray, ns: ByteArray, acc: ByteArray, data: ByteView): void {
+  let r = $state_foreign_set(changetype<u32>(data.underlying) + data.offset, data.length, changetype<u32>(key), key.length, changetype<u32>(ns), ns.length, changetype<u32>(acc), acc.length);
+  if (r < 0)
+    rollback("", pack_error_code(r));
+}
+
+@global @inline
 export function state_set(key: ByteArray, data: ByteView): void {
   let r = $state_set(changetype<u32>(data.underlying) + data.offset, data.length, changetype<u32>(key), key.length);
   if (r < 0)

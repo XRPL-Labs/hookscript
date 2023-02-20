@@ -278,6 +278,7 @@ export namespace CommonNames {
   export const slot_type = "$slot_type";
   export const state = "$state";
   export const state_foreign = "$state_foreign";
+  export const state_foreign_set = "$state_foreign_set";
   export const state_set = "$state_set";
   export const sto_emplace = "$sto_emplace";
   export const sto_erase = "$sto_erase";

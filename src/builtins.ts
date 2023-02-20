@@ -161,6 +161,7 @@ export namespace BuiltinNames {
   export const slot_type = "~lib/builtins/$slot_type";
   export const state = "~lib/builtins/$state";
   export const state_foreign = "~lib/builtins/$state_foreign";
+  export const state_foreign_set = "~lib/builtins/$state_foreign_set";
   export const state_set = "~lib/builtins/$state_set";
   export const sto_emplace = "~lib/builtins/$sto_emplace";
   export const sto_erase = "~lib/builtins/$sto_erase";

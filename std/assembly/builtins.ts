@@ -2773,6 +2773,19 @@ declare function $state_foreign(
 ): i64;
 
 // @ts-ignore: decorator
+@external("env", "state_foreign_set")
+declare function $state_foreign_set(
+  read_ptr: u32,
+  read_len: u32,
+  kread_ptr: u32,
+  kread_len: u32,
+  nread_ptr: u32,
+  nread_len: u32,
+  aread_ptr: u32,
+  aread_len: u32
+): i64;
+
+// @ts-ignore: decorator
 @external("env", "state_set")
 declare function $state_set(
   read_ptr: u32,

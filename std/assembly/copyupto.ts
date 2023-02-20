@@ -89,6 +89,17 @@ export function __copyupto20(dest: usize, src: string): usize {
 }
 
 @global @inline
+export function __copyupto32(dest: usize, src: string): usize {
+  let l = src.length;
+  if (l == 32) {
+    __rawcopy32(dest, changetype<usize>(src));
+    return dest + 32;
+  }
+  __rawcopyupto31(dest, changetype<usize>(src), l);
+  return dest + l;
+}
+
+@global @inline
 export function __copyupto64(dest: usize, src: string): usize {
   let l = src.length;
   if (l >= 64) { // silently truncating to the first 64 bytes
