@@ -40,7 +40,7 @@ function hook(reserved: i32)
         accept("Savings: non-xrp transaction detected, not sending")
 
     let otxn_drops = amount.drops;
-    if (otxn_drops < threshold)
+    if (otxn_drops < <i32>threshold)
         accept(`Savings: ${<u32>otxn_drops} too small, not sending`)
 
     let drops_to_send = <i32>((otxn_drops * percentage) / 100)
