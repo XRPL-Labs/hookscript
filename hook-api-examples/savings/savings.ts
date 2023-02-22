@@ -20,7 +20,7 @@ function hook(reserved: i32)
     const threshold = orig_threshold.value(0)
 
     const activation_flags = new HookParam<u8>({
-        name: "emit_percentage"
+        name: "activation_flags"
     })
     // 1 on incoming, 2 on outgoing
     const act_flags = activation_flags.value(3)
