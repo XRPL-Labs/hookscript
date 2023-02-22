@@ -25,6 +25,13 @@ export class HookParam<T> {
   }
 
   @inline
+  getOpt(): T | null {
+    let a = new ByteArray(data_size<T>());
+    let r = $hook_param(changetype<u32>(a), data_size<T>(), changetype<u32>(this.name), this.name.length);
+    return (r == data_size<T>()) ? instantiate<T>(a) : null;
+  }
+
+  @inline
   value(dflt: T): T {
     let a = new ByteArray(sizeof<T>());
     let r = $hook_param(changetype<u32>(a), sizeof<T>(), changetype<u32>(this.name), this.name.length);

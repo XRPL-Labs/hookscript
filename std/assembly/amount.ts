@@ -66,4 +66,15 @@ export class Amount {
 
     return new Amount(buf);
   }
+
+  @inline
+  static fromView(view: ByteView): Amount {
+    let buf = new ByteArray(view.length);
+    if (view.length == 8)
+      __rawcopy8(changetype<usize>(buf), changetype<usize>(view.underlying) + view.offset);
+    else if (view.length == 48)
+      __rawcopy48(changetype<usize>(buf), changetype<usize>(view.underlying) + view.offset);
+
+    return new Amount(buf);
+  }
 };
