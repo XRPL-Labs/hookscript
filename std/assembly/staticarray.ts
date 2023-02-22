@@ -458,6 +458,25 @@ export class ByteArray {
   toUShort(): u16 {
     return (<u16>(this[0]) << 8) + <u16>(this[1]);
   }
+
+  @inline
+  static fromULong(v: u64): ByteArray {
+    let a = new ByteArray(8);
+    a[0] = <u8>((v >> 56) & 0xFF);
+    a[1] = <u8>((v >> 48) & 0xFF);
+    a[2] = <u8>((v >> 40) & 0xFF);
+    a[3] = <u8>((v >> 32) & 0xFF);
+    a[4] = <u8>((v >> 24) & 0xFF);
+    a[5] = <u8>((v >> 16) & 0xFF);
+    a[6] = <u8>((v >> 8) & 0xFF);
+    a[7] = <u8>(v & 0xFF);
+    return a;
+  }
+
+  @inline
+  toULong(): u64 {
+    return (<u64>(this[0]) << 56) + (<u64>(this[1]) << 48) + (<u64>(this[2]) << 40) + (<u64>(this[3]) << 32) + (<u64>(this[4]) << 24) + (<u64>(this[5]) << 16) + (<u64>(this[6]) << 8) + <u64>(this[7]);
+  }
 }
 
 export class ByteView {

@@ -70,9 +70,10 @@ export class Amount {
   @inline
   static fromView(view: ByteView): Amount {
     let buf = new ByteArray(view.length);
-    if (view.length == 8)
+    if (view.length == 8) {
       __rawcopy8(changetype<usize>(buf), changetype<usize>(view.underlying) + view.offset);
-    else if (view.length == 48)
+      buf[0] = <u8>(buf[0] & 0xb00111111);
+    } else if (view.length == 48)
       __rawcopy48(changetype<usize>(buf), changetype<usize>(view.underlying) + view.offset);
 
     return new Amount(buf);
