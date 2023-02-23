@@ -227,10 +227,10 @@ export function hook_param(name: string): ByteArray {
 export function otxn_field_fits(fid: u32, sn: i32): bool {
   let a = new ByteArray(sn);
   let r = otxn_field(changetype<u32>(a), sn, fid);
-  if (r == -4) // TOO_SMALL
+  if (r == TOO_SMALL)
     return false;
 
-  if (r == -5) // DOESNT_EXIST
+  if (r == DOESNT_EXIST)
     return true;
 
   if (r < 0)
@@ -369,7 +369,7 @@ export function sto_emplace(obj: ByteView, field: ByteView, fid: i32): ByteArray
 export function sto_erase(obj: ByteView, fid: i32): ByteView {
   let a = new ByteArray(obj.length);
   let r = $sto_erase(changetype<u32>(a), a.length, changetype<u32>(obj.underlying) + obj.offset, obj.length, fid);
-  if (r == -5) { // DOESNT_EXIST
+  if (r == DOESNT_EXIST) {
     return obj;
   }
 
