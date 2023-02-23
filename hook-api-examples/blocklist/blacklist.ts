@@ -5,16 +5,16 @@ function hook(reserved: i32)
     if (!memos)
         accept("Blacklist: Passing non-memo transaction.")
 
-    let memos_view = new ByteView(memos, 0, memos.length)
+    let memos_array = SerializedArrayView.fromByteArray(memos)
     let payload_view: ByteView | null = null
     let signature_view: ByteView | null = null
     let publickey_view: ByteView | null = null
     for (let i = 0; max_iterations(3), i < 3; ++i)
     {
-        const outer_lookup = sto_subarray(memos_view, i)
-        const inner_lookup = sto_subfield(outer_lookup, sfMemo)
-        const data_lookup = sto_subfield(inner_lookup, sfMemoData)
-        const format_lookup = sto_subfield(inner_lookup, sfMemoFormat)
+        const memo_wrapper = new SerializedObjectView<ObjectField>(memos_array[i])
+        const memo_object = new SerializedObjectView<MemoField>(memo_wrapper[ObjectField.Memo])
+        const data_lookup = memo_object[MemoField.MemoData]
+        const format_lookup = memo_object[MemoField.MemoFormat]
 
         if (format_lookup == "signed/payload+1")
             payload_view = data_lookup
@@ -37,9 +37,10 @@ function hook(reserved: i32)
 
     publickey.verify(payload_view!, signature_view!)
 
-    let lookup_flags = sto_subfield(payload_view!, sfFlags)
-    let lookup_seq = sto_subfield(payload_view!, sfSequence)
-    let lookup_array = sto_subfield(payload_view!, sfTemplate)
+    const payload_object = new SerializedObjectView<CommonTransactionField>(payload_view!)
+    let lookup_flags = payload_object[CommonTransactionField.Flags]
+    let lookup_seq = payload_object[CommonTransactionField.Sequence]
+    let payload_array = new SerializedArrayView(payload_object[CommonTransactionField.Template])
 
     let seq = lookup_seq.toUInt()
     let flags = lookup_flags.toUInt()
@@ -62,14 +63,12 @@ function hook(reserved: i32)
     let value_view = new ByteView(buffer, 0, flags ? 1 : 0)
     for (let i = 0; max_iterations(5), i < 5; ++i)
     {
-        let lookup_array_result = $sto_subarray(changetype<u32>(lookup_array.underlying) + lookup_array.offset, <u32>(lookup_array.length), <u32>i)
-        if (lookup_array_result < 0)
+        let array_lookup_result = payload_array.getOpt(i)
+        if (!array_lookup_result)
             break // ran out of array entries to process
 
-        let lookup_array_offset = <i32>(lookup_array_result >> 32)
-        let lookup_array_length = <i32>(lookup_array_result & 0xFFFFFFFF)
-        let array_entry = new ByteView(lookup_array.underlying, lookup_array.offset + lookup_array_offset, lookup_array_length)
-        let lookup_acc = sto_subfield(array_entry, sfAccount)
+        let array_entry = new SerializedObjectView<CommonTransactionField>(array_lookup_result)
+        let lookup_acc = array_entry[CommonTransactionField.Account]
         if (lookup_acc.length != 20)
             rollback("Blacklist: Invalid sfAccount, expecting length = 20.", 90)
 
