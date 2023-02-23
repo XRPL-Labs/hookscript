@@ -1,0 +1,19 @@
+{
+  "name": "direct-debit",
+  "version": "1.0.0",
+  "description": "Direct Debit hook allows trusted third parties to pull funds from your account.",
+  "scripts": {
+    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub direct-debit.ts -O3 -o direct-debit.wasm && hook-cleaner direct-debit.wasm",
+    "postinstall": "patch-package"
+  },
+  "author": "Equilibrium - https://equilibrium.co",
+  "license": "Public Domain",
+  "dependencies": {
+    "patch-package": "^6.4.7",
+    "xrpl-accountlib": "^1.6.1",
+    "xrpl-client": "^2.0.1"
+  },
+  "resolutions": {
+    "ripple-binary-codec": "=1.4.2"
+  }
+}
