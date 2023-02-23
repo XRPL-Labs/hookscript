@@ -25,6 +25,14 @@ export class LocalState {
   }
 
   @inline
+  static removeItem(name: string): void {
+    let k = LocalState.extendName(name);
+    let r = $state_set(0, 0, changetype<u32>(k), 32);
+    if ((r < 0) && (r != DOESNT_EXIST))
+      rollback("", pack_error_code(r));
+  }
+
+  @inline
   private static extendName(name: string): ByteArray {
     let len = name.length;
     if (len > 32)
@@ -73,6 +81,17 @@ export class ForeignState {
         changetype<u32>(this.ns.bytes), HookNamespace.dataSize,
         changetype<u32>(this.account.bytes), Account.dataSize);
     if (r != value.length)
+      rollback("", pack_error_code(r));
+  }
+
+  @inline
+  static removeItem(name: string): void {
+    let k = LocalState.extendName(name);
+    let r = $state_foreign_set(0, 0,
+        changetype<u32>(k), 32,
+        changetype<u32>(this.ns.bytes), HookNamespace.dataSize,
+        changetype<u32>(this.account.bytes), Account.dataSize);
+    if ((r < 0) && (r != DOESNT_EXIST))
       rollback("", pack_error_code(r));
   }
 }
