@@ -26,6 +26,19 @@ export class SerializedArrayView {
   }
 
   @inline
+  private getOpt(index: i32): ByteView | null {
+    let r = $sto_subarray(changetype<u32>(this.bytes.underlying) + this.bytes.offset, this.bytes.length, index);
+    if (r == DOESNT_EXIST)
+      return null;
+    else if (r < 0)
+      rollback("", pack_error_code(r));
+
+    let offset = <i32>(r >> 32);
+    let length = <i32>(r & 0xFFFFFFFF);
+    return new ByteView(this.bytes.underlying, this.bytes.offset + offset, length);
+  }
+
+  @inline
   static fromByteArray(arr: ByteArray): SerializedArrayView {
     return new SerializedArrayView(new ByteView(arr, 0, arr.length))
   }
