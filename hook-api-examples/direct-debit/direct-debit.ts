@@ -3,24 +3,25 @@ function hook(reserved: i32)
     etxn_reserve(1)
 
     const puller = Tx.Account
-    if (puller == hook_account())
-        accept("Outgoing transaction")
+    const outgoing_flag = puller == hook_account()
 
-    for (let i = 0; max_iterations(5), i < 5; ++i)
-    {
-        let trusted_account_param = new HookParam<Account>({
-            name: `trusted_account${i}`
-        })
-        let account = trusted_account_param.getOpt()
-        if (!account) // all out of possible matches
-            accept("Sender not trusted to run direct debit")
-        else if (puller == account.bytes) // OK, sender is trusted
-            break
+    if (!outgoing_flag) {
+        for (let i = 0; max_iterations(5), i < 5; ++i)
+        {
+            let trusted_account_param = new HookParam<Account>({
+                name: `trusted_account${i}`
+            })
+            let account = trusted_account_param.getOpt()
+            if (!account) // all out of possible matches
+                accept("Sender not trusted to run direct debit")
+            else if (puller == account.bytes) // OK, sender is trusted
+                break
+        }
     }
-  
+
     const memos = Tx.Memos
     if (!memos)
-        accept("Incoming txn with no memo")
+        accept("Transaction has no memo")
 
     let memos_view = new ByteView(memos, 0, memos.length)
     let memo_lookup = sto_subarray(memos_view, 0)
@@ -47,6 +48,11 @@ function hook(reserved: i32)
     const limit = new HookParam<i32>({
         name: currency_name
     })
+
+    if (outgoing_flag) {
+        LocalState.removeItem(currency_name)
+        accept('Direct debit state reset')
+    }
 
     const max_outgoing = limit.value(0)
   
