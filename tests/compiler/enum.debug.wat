@@ -1,6 +1,5 @@
 (module
  (type $none_=>_none (func_subtype func))
- (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $enum/Implicit.ZERO i32 (i32.const 0))
@@ -27,8 +26,8 @@
  (global $enum/MixedConst.ONE i32 (i32.const 1))
  (global $enum/MixedConst.THREE i32 (i32.const 3))
  (global $enum/MixedConst.FOUR i32 (i32.const 4))
- (global $enum/NonConstant.ZERO (mut i32) (i32.const 0))
- (global $enum/NonConstant.ONE (mut i32) (i32.const 0))
+ (global $enum/NonConstant.ZERO i32 (i32.const 0))
+ (global $enum/NonConstant.ONE i32 (i32.const 1))
  (global $enum/SelfReference.ZERO i32 (i32.const 0))
  (global $enum/SelfReference.ONE i32 (i32.const 1))
  (global $enum/SelfReferenceConst.ZERO i32 (i32.const 0))
@@ -70,16 +69,7 @@
  (export "SelfReferenceConst.ONE" (global $enum/SelfReferenceConst.ONE))
  (export "memory" (memory $0))
  (start $~start)
- (func $enum/getZero (type $none_=>_i32) (result i32)
-  i32.const 0
- )
  (func $start:enum (type $none_=>_none)
-  call $enum/getZero
-  global.set $enum/NonConstant.ZERO
-  call $enum/getZero
-  i32.const 1
-  i32.add
-  global.set $enum/NonConstant.ONE
   global.get $enum/NonConstant.ZERO
   drop
   global.get $enum/NonConstant.ONE

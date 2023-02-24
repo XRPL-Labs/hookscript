@@ -9,8 +9,12 @@
  (memory $0 1)
  (data (i32.const 1036) ",")
  (data (i32.const 1048) "\01\00\00\00\14\00\00\00Allocation too large")
+ (export "test" (func $retain-i32/test))
  (export "memory" (memory $0))
  (start $~start)
+ (func $retain-i32/test (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  nop
+ )
  (func $~lib/rt/tlsf/removeBlock (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)

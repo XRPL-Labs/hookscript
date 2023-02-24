@@ -1259,7 +1259,7 @@
   (local $0 i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 80
+  i32.const 84
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -1270,7 +1270,7 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.const 80
+  i32.const 84
   memory.fill $0
   global.get $resolve-unary/a
   i32.const 1
@@ -1584,9 +1584,9 @@
   drop
   local.get $0
   i32.const 1568
-  i32.store $0
+  i32.store $0 offset=80
   local.get $0
-  i32.const 80
+  i32.const 84
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

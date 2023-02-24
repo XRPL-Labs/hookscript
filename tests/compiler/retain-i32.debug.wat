@@ -29,6 +29,7 @@
  (data (i32.const 12) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00Allocation too large\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "test" (func $retain-i32/test))
  (export "memory" (memory $0))
  (start $~start)
  (func $retain-i32/test (type $i32_i32_=>_none) (param $a i32) (param $b i32)
@@ -1553,18 +1554,10 @@
   i32.const 4
   i32.add
  )
- (func $retain-i32/testLocalRetain (type $none_=>_none)
-  (local $ri i32)
-  i32.const 1
-  call $~lib/rt/tlsf/__alloc
-  i32.load8_s $0
-  local.set $ri
-  i32.const 1
-  drop
- )
  (func $start:retain-i32 (type $none_=>_none)
   (local $i i32)
   (local $1 i32)
+  (local $ri i32)
   i32.const 0
   global.get $~lib/builtins/i8.MAX_VALUE
   call $retain-i32/test
@@ -1913,7 +1906,12 @@
   global.set $retain-i32/ri
   i32.const 1
   drop
-  call $retain-i32/testLocalRetain
+  i32.const 1
+  call $~lib/rt/tlsf/__alloc
+  i32.load8_s $0
+  local.set $ri
+  i32.const 1
+  drop
  )
  (func $~start (type $none_=>_none)
   call $start:retain-i32

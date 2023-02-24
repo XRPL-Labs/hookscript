@@ -16,11 +16,7 @@
  (export "memory" (memory $0))
  (export "testVoidReturnFunction" (func $export:return/testVoidReturnFunction))
  (start $~start)
- (func $return/nop (type $none_=>_none)
-  nop
- )
  (func $start:return~anonymous|0 (type $none_=>_none)
-  call $return/nop
  )
  (func $return/testVoidReturnFunction (type $i32_i32_=>_none) (param $cond i32) (param $fn i32)
   local.get $cond
@@ -41,10 +37,8 @@
  (func $return/testVoidReturn (type $i32_=>_none) (param $cond i32)
   local.get $cond
   if
-   call $return/nop
    return
   end
-  call $return/nop
  )
  (func $~start (type $none_=>_none)
   call $start:return

@@ -10,6 +10,7 @@ import {
   Range,
   ParameterKind,
   SourceKind,
+  DecoratorKind,
 } from ".";
 
 export function transformHookScript(source: Source, program: Program): void {
@@ -17,6 +18,10 @@ export function transformHookScript(source: Source, program: Program): void {
 
   if (program.options.topLevelToHook) {
     maybeConvertTopLevelExpressionsToHook(source, program);
+  }
+
+  if (program.options.inlineLocals) {
+    inlineLocalsFunctions(source, program);
   }
 
 }
@@ -35,6 +40,7 @@ function maybeConvertTopLevelExpressionsToHook(source: Source, program: Program)
     NodeKind.VariableDeclaration,
     NodeKind.NamespaceDeclaration,
     NodeKind.EnumDeclaration,
+    NodeKind.Variable,
     NodeKind.Import,
     NodeKind.Export,
     NodeKind.ExportDefault,
@@ -102,4 +108,24 @@ function maybeConvertTopLevelExpressionsToHook(source: Source, program: Program)
     s => !topLevelExpressions.includes(s)
   );
   source.statements.push(hook);
+}
+
+function inlineLocalsFunctions(source: Source, program: Program): void {
+  let ignoredDecoratorKinds = [DecoratorKind.External, DecoratorKind.ExternalJs];
+  let ignoredCommonFlags = CommonFlags.Export | CommonFlags.Ambient;
+
+  let locals = (source.statements.filter(
+    s => s.kind === NodeKind.FunctionDeclaration
+  ) as FunctionDeclaration[])
+    .filter(f => (f.flags & ignoredCommonFlags) === 0)
+    .filter(f => !f.decorators?.find(d => ignoredDecoratorKinds.includes(d.decoratorKind)));
+  // `hook` and `cbak` are not specially handled above cuz they are not supposed to be locals.
+
+  locals.forEach(l => {
+    if (l.decorators?.find(d => d.decoratorKind === DecoratorKind.External)) return;
+    if (!l.decorators?.find(d => d.decoratorKind === DecoratorKind.Inline)) {
+      l.decorators = l.decorators || [];
+      l.decorators.push(Node.createDecorator(Node.createIdentifierExpression("inline", l.name.range), [], l.signature.range));
+    }
+  });
 }

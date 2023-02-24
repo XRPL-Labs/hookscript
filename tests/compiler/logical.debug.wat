@@ -4,7 +4,6 @@
  (type $i32_=>_none (func_subtype (param i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
- (type $i64_i32_=>_i32 (func_subtype (param i64 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
@@ -44,26 +43,6 @@
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
  (start $~start)
- (func $logical/testShortcutAnd (type $i64_i32_=>_i32) (param $a i64) (param $b i32) (result i32)
-  local.get $a
-  i64.const 0
-  i64.ne
-  if (result i32)
-   local.get $b
-  else
-   i32.const 0
-  end
- )
- (func $logical/testShortcutOr (type $i64_i32_=>_i32) (param $a i64) (param $b i32) (result i32)
-  local.get $a
-  i64.const 0
-  i64.ne
-  if (result i32)
-   i32.const 1
-  else
-   local.get $b
-  end
- )
  (func $~lib/rt/itcms/Object#set:nextWithColor (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -2053,22 +2032,6 @@
   memory.fill $0
   local.get $ptr
  )
- (func $logical/testContextualBoolAnd (type $i32_i32_=>_i32) (param $someObj i32) (param $someInt i32) (result i32)
-  local.get $someObj
-  if (result i32)
-   local.get $someInt
-  else
-   i32.const 0
-  end
- )
- (func $logical/testContextualBoolOr (type $i32_i32_=>_i32) (param $someObj i32) (param $someInt i32) (result i32)
-  local.get $someObj
-  if (result i32)
-   i32.const 1
-  else
-   local.get $someInt
-  end
- )
  (func $~lib/rt/itcms/__collect (type $none_=>_none)
   (local $0 i32)
   (local $1 i32)
@@ -2121,76 +2084,27 @@
   i32.const 0
   drop
  )
- (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
-  (local $1 i32)
-  i32.const 144
-  local.get $0
-  call $~lib/rt/itcms/__visit
-  i32.const 32
-  local.get $0
-  call $~lib/rt/itcms/__visit
- )
- (func $~lib/arraybuffer/ArrayBufferView~visit (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  local.get $0
-  i32.load $0
-  local.tee $2
-  if
-   local.get $2
-   local.get $1
-   call $~lib/rt/itcms/__visit
-  end
- )
- (func $~lib/rt/__visit_members (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  block $invalid
-   block $logical/Obj
-    block $~lib/arraybuffer/ArrayBufferView
-     block $~lib/string/String
-      block $~lib/arraybuffer/ArrayBuffer
-       local.get $0
-       i32.const 8
-       i32.sub
-       i32.load $0
-       br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $logical/Obj $invalid
-      end
-      return
-     end
-     return
-    end
-    local.get $0
-    local.get $1
-    call $~lib/arraybuffer/ArrayBufferView~visit
-    return
-   end
-   return
-  end
-  unreachable
- )
- (func $~start (type $none_=>_none)
-  call $start:logical
- )
- (func $~stack_check (type $none_=>_none)
-  global.get $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__data_end
-  i32.lt_s
-  if
-   unreachable
-  end
- )
  (func $start:logical (type $none_=>_none)
   (local $0 f32)
   (local $1 f32)
   (local $2 f64)
   (local $3 f64)
-  (local $4 i32)
+  (local $a i64)
+  (local $b i32)
+  (local $a|6 i64)
+  (local $b|7 i32)
+  (local $someObj i32)
+  (local $someInt i32)
+  (local $someObj|10 i32)
+  (local $someInt|11 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 8
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
+  i64.const 0
+  i64.store $0
   i32.const 0
   drop
   f64.const 0
@@ -2558,23 +2472,35 @@
    unreachable
   end
   i64.const 1
+  local.set $a
   i32.const 1
-  call $logical/testShortcutAnd
-  i32.const 0
-  i32.ne
-  i32.eqz
-  if
-   unreachable
-  end
+  local.set $b
+  local.get $a
   i64.const 0
-  i32.const 1
-  call $logical/testShortcutOr
+  i64.ne
+  if (result i32)
+   local.get $b
+  else
+   i32.const 0
+  end
   i32.const 0
   i32.ne
-  i32.eqz
-  if
-   unreachable
+  drop
+  i64.const 0
+  local.set $a|6
+  i32.const 1
+  local.set $b|7
+  local.get $a|6
+  i64.const 0
+  i64.ne
+  if (result i32)
+   i32.const 1
+  else
+   local.get $b|7
   end
+  i32.const 0
+  i32.ne
+  drop
   memory.size $0
   i32.const 16
   i32.shl
@@ -2592,30 +2518,38 @@
   i32.const 176
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/fromSpace
+  global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $logical/Obj#constructor
-  local.set $4
-  global.get $~lib/memory/__stack_pointer
-  local.get $4
+  local.tee $someObj
   i32.store $0
-  local.get $4
   i32.const 1
-  call $logical/testContextualBoolAnd
+  local.set $someInt
+  local.get $someObj
+  if (result i32)
+   local.get $someInt
+  else
+   i32.const 0
+  end
   i32.const 0
   i32.ne
   i32.eqz
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $logical/Obj#constructor
-  local.set $4
-  global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store $0
-  local.get $4
+  local.tee $someObj|10
+  i32.store $0 offset=4
   i32.const 0
-  call $logical/testContextualBoolOr
+  local.set $someInt|11
+  local.get $someObj|10
+  if (result i32)
+   i32.const 1
+  else
+   local.get $someInt|11
+  end
   i32.const 0
   i32.ne
   i32.eqz
@@ -2626,9 +2560,65 @@
   global.set $~lib/memory/__stack_pointer
   call $~lib/rt/itcms/__collect
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 8
   i32.add
   global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
+  (local $1 i32)
+  i32.const 144
+  local.get $0
+  call $~lib/rt/itcms/__visit
+  i32.const 32
+  local.get $0
+  call $~lib/rt/itcms/__visit
+ )
+ (func $~lib/arraybuffer/ArrayBufferView~visit (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  i32.load $0
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/rt/__visit_members (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  block $invalid
+   block $logical/Obj
+    block $~lib/arraybuffer/ArrayBufferView
+     block $~lib/string/String
+      block $~lib/arraybuffer/ArrayBuffer
+       local.get $0
+       i32.const 8
+       i32.sub
+       i32.load $0
+       br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $logical/Obj $invalid
+      end
+      return
+     end
+     return
+    end
+    local.get $0
+    local.get $1
+    call $~lib/arraybuffer/ArrayBufferView~visit
+    return
+   end
+   return
+  end
+  unreachable
+ )
+ (func $~start (type $none_=>_none)
+  call $start:logical
+ )
+ (func $~stack_check (type $none_=>_none)
+  global.get $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__data_end
+  i32.lt_s
+  if
+   unreachable
+  end
  )
  (func $logical/Obj#constructor (type $i32_=>_i32) (param $this i32) (result i32)
   (local $1 i32)

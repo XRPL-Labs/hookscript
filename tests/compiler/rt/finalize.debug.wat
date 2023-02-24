@@ -333,17 +333,6 @@
   i32.and
   i32.add
  )
- (func $rt/finalize/__finalize (type $i32_=>_none) (param $ptr i32)
-  local.get $ptr
-  global.get $rt/finalize/expect
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 1
-  global.set $rt/finalize/ran
- )
  (func $~lib/rt/tlsf/Root#set:flMap (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -1258,6 +1247,7 @@
   call $~lib/rt/tlsf/freeBlock
  )
  (func $~lib/rt/itcms/free (type $i32_=>_none) (param $obj i32)
+  (local $ptr i32)
   local.get $obj
   global.get $~lib/memory/__heap_base
   i32.lt_u
@@ -1279,7 +1269,16 @@
    local.get $obj
    i32.const 20
    i32.add
-   call $rt/finalize/__finalize
+   local.set $ptr
+   local.get $ptr
+   global.get $rt/finalize/expect
+   i32.eq
+   i32.eqz
+   if
+    unreachable
+   end
+   i32.const 1
+   global.set $rt/finalize/ran
    local.get $obj
    i32.const 4
    i32.add

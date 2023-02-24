@@ -1,9 +1,8 @@
 (module
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
- (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
- (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $function-inline-regressions/struct i32 (i32.const 0))
  (global $~lib/memory/__data_end i32 (i32.const 8))
@@ -21,18 +20,6 @@
    unreachable
   end
  )
- (func $function-inline-regressions/loadX (type $i32_i32_=>_i32) (param $a i32) (param $b i32) (result i32)
-  i32.const 2
-  local.get $a
-  i32.mul
-  local.get $b
-  i32.add
-  i32.load $0
- )
- (func $function-inline-regressions/loadZ (type $none_=>_i32) (result i32)
-  i32.const 16
-  i32.load $0
- )
  (func $function-inline-regressions/Struct#set:v0 (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -49,18 +36,37 @@
   i32.store $0 offset=8
  )
  (func $function-inline-regressions/foo (type $i32_i32_i32_=>_i32) (param $v0 i32) (param $v1 i32) (param $v2 i32) (result i32)
+  (local $a i32)
+  (local $b i32)
   (local $x i32)
+  (local $a|6 i32)
+  (local $b|7 i32)
   (local $y i32)
   (local $z i32)
   local.get $v0
+  local.set $a
   i32.const 0
-  call $function-inline-regressions/loadX
+  local.set $b
+  i32.const 2
+  local.get $a
+  i32.mul
+  local.get $b
+  i32.add
+  i32.load $0
   local.set $x
   local.get $v0
+  local.set $a|6
   i32.const 1
-  call $function-inline-regressions/loadX
+  local.set $b|7
+  i32.const 2
+  local.get $a|6
+  i32.mul
+  local.get $b|7
+  i32.add
+  i32.load $0
   local.set $y
-  call $function-inline-regressions/loadZ
+  i32.const 16
+  i32.load $0
   local.set $z
   local.get $z
   local.get $x

@@ -1,7 +1,7 @@
 (module
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
- (type $i32_=>_none (func_subtype (param i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
+ (type $i32_=>_none (func_subtype (param i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
@@ -47,105 +47,6 @@
  (export "doThrow" (func $throw/doThrow))
  (export "memory" (memory $0))
  (start $~start)
- (func $throw/doThrowIf (type $i32_=>_none) (param $cond i32)
-  (local $a i32)
-  (local $b i32)
-  (local $c i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 12
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0 offset=8
-  global.get $~lib/memory/__stack_pointer
-  i32.const 32
-  local.tee $a
-  i32.store $0
-  local.get $cond
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 64
-   local.tee $b
-   i32.store $0 offset=4
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 128
-  local.tee $c
-  i32.store $0 offset=8
-  global.get $~lib/memory/__stack_pointer
-  i32.const 12
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $throw/doThrowIfLoop (type $i32_=>_none) (param $max i32)
-  (local $a i32)
-  (local $i i32)
-  (local $3 i32)
-  (local $b i32)
-  (local $c i32)
-  (local $d i32)
-  (local $e i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 20
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 20
-  memory.fill $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 32
-  local.tee $a
-  i32.store $0
-  i32.const 0
-  local.set $i
-  loop $while-continue|0
-   local.get $i
-   i32.const 1
-   i32.add
-   local.tee $i
-   local.get $max
-   i32.lt_s
-   local.set $3
-   local.get $3
-   if
-    global.get $~lib/memory/__stack_pointer
-    i32.const 64
-    local.tee $b
-    i32.store $0 offset=4
-    local.get $i
-    local.get $max
-    i32.gt_s
-    if
-     global.get $~lib/memory/__stack_pointer
-     i32.const 128
-     local.tee $c
-     i32.store $0 offset=8
-     unreachable
-    end
-    global.get $~lib/memory/__stack_pointer
-    i32.const 208
-    local.tee $d
-    i32.store $0 offset=12
-    br $while-continue|0
-   end
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 240
-  local.tee $e
-  i32.store $0 offset=16
-  global.get $~lib/memory/__stack_pointer
-  i32.const 20
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
  (func $~lib/rt/itcms/Object#set:nextWithColor (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -1608,10 +1509,88 @@
   drop
  )
  (func $start:throw (type $none_=>_none)
+  (local $cond i32)
+  (local $a i32)
+  (local $b i32)
+  (local $c i32)
+  (local $max i32)
+  (local $a|5 i32)
+  (local $i i32)
+  (local $7 i32)
+  (local $b|8 i32)
+  (local $c|9 i32)
+  (local $d i32)
+  (local $e i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 32
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
   i32.const 0
-  call $throw/doThrowIf
+  i32.const 32
+  memory.fill $0
+  i32.const 0
+  local.set $cond
+  global.get $~lib/memory/__stack_pointer
+  i32.const 32
+  local.tee $a
+  i32.store $0
+  local.get $cond
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 64
+   local.tee $b
+   i32.store $0 offset=4
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 128
+  local.tee $c
+  i32.store $0 offset=8
   i32.const 10
-  call $throw/doThrowIfLoop
+  local.set $max
+  global.get $~lib/memory/__stack_pointer
+  i32.const 32
+  local.tee $a|5
+  i32.store $0 offset=12
+  i32.const 0
+  local.set $i
+  loop $while-continue|0
+   local.get $i
+   i32.const 1
+   i32.add
+   local.tee $i
+   local.get $max
+   i32.lt_s
+   local.set $7
+   local.get $7
+   if
+    global.get $~lib/memory/__stack_pointer
+    i32.const 64
+    local.tee $b|8
+    i32.store $0 offset=16
+    local.get $i
+    local.get $max
+    i32.gt_s
+    if
+     global.get $~lib/memory/__stack_pointer
+     i32.const 128
+     local.tee $c|9
+     i32.store $0 offset=20
+     unreachable
+    end
+    global.get $~lib/memory/__stack_pointer
+    i32.const 208
+    local.tee $d
+    i32.store $0 offset=24
+    br $while-continue|0
+   end
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 240
+  local.tee $e
+  i32.store $0 offset=28
   i32.const 256
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/pinSpace
@@ -1630,6 +1609,10 @@
   i32.shr_u
   global.set $~lib/rt/itcms/threshold
   call $~lib/rt/itcms/__collect
+  global.get $~lib/memory/__stack_pointer
+  i32.const 32
+  i32.add
+  global.set $~lib/memory/__stack_pointer
  )
  (func $throw/doThrow (type $none_=>_none)
   (local $a i32)

@@ -11,12 +11,11 @@
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
  (export "test" (func $export:resolve-localortype/test))
- (func $resolve-localortype/foo<~lib/string/String> (type $i32_=>_i32) (param $s i32) (result i32)
-  local.get $s
- )
  (func $resolve-localortype/test (type $i32_=>_i32) (param $string i32) (result i32)
+  (local $s i32)
   local.get $string
-  call $resolve-localortype/foo<~lib/string/String>
+  local.set $s
+  local.get $s
  )
  (func $~stack_check (type $none_=>_none)
   global.get $~lib/memory/__stack_pointer

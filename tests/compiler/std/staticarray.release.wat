@@ -25,7 +25,7 @@
  (global $std/staticarray/arr4 (mut i32) (i32.const 0))
  (global $~argumentsLength (mut i32) (i32.const 0))
  (global $std/staticarray/maxVal (mut i32) (i32.const 0))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 35716))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 35748))
  (memory $0 1)
  (data (i32.const 1036) "\1c")
  (data (i32.const 1048) "\03\00\00\00\0c\00\00\00\01\00\00\00\02\00\00\00\03")
@@ -37,89 +37,91 @@
  (data (i32.const 1160) "\03\00\00\00\0c\00\00\00\05\00\00\00\06\00\00\00\07")
  (data (i32.const 1180) ",")
  (data (i32.const 1192) "\01\00\00\00\14\00\00\00Allocation too large")
- (data (i32.const 1324) ",")
- (data (i32.const 1336) "\01\00\00\00\0e\00\00\00Invalid length")
- (data (i32.const 1372) ",")
- (data (i32.const 1388) "\18\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00\03\00\00\00\05")
- (data (i32.const 1420) "\1c")
+ (data (i32.const 1324) "\1c")
+ (data (i32.const 1336) "\03\00\00\00\0c\00\00\00\05\00\00\00\06\00\00\00\07")
+ (data (i32.const 1356) ",")
+ (data (i32.const 1368) "\01\00\00\00\0e\00\00\00Invalid length")
+ (data (i32.const 1404) ",")
+ (data (i32.const 1420) "\18\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00\02\00\00\00\03\00\00\00\05")
  (data (i32.const 1452) "\1c")
- (data (i32.const 1464) "\03\00\00\00\08\00\00\00\01\00\00\00\02")
  (data (i32.const 1484) "\1c")
- (data (i32.const 1496) "\03\00\00\00\04\00\00\00\01")
+ (data (i32.const 1496) "\03\00\00\00\08\00\00\00\01\00\00\00\02")
  (data (i32.const 1516) "\1c")
- (data (i32.const 1528) "\03")
+ (data (i32.const 1528) "\03\00\00\00\04\00\00\00\01")
  (data (i32.const 1548) "\1c")
- (data (i32.const 1560) "\01\00\00\00\03\00\00\00ant")
+ (data (i32.const 1560) "\03")
  (data (i32.const 1580) "\1c")
- (data (i32.const 1592) "\01\00\00\00\05\00\00\00bison")
+ (data (i32.const 1592) "\01\00\00\00\03\00\00\00ant")
  (data (i32.const 1612) "\1c")
- (data (i32.const 1624) "\01\00\00\00\05\00\00\00camel")
+ (data (i32.const 1624) "\01\00\00\00\05\00\00\00bison")
  (data (i32.const 1644) "\1c")
- (data (i32.const 1656) "\01\00\00\00\04\00\00\00duck")
+ (data (i32.const 1656) "\01\00\00\00\05\00\00\00camel")
  (data (i32.const 1676) "\1c")
- (data (i32.const 1688) "\01\00\00\00\08\00\00\00elephant")
- (data (i32.const 1708) ",")
- (data (i32.const 1720) "\07\00\00\00\14\00\00\00 \06\00\00@\06\00\00`\06\00\00\80\06\00\00\a0\06")
- (data (i32.const 1756) "L")
- (data (i32.const 1768) "\01\00\00\00/\00\00\00Element type must be nullable if array is holey")
- (data (i32.const 1836) ",")
- (data (i32.const 1848) "\07\00\00\00\14\00\00\00 \06\00\00@\06\00\00`\06\00\00\80\06\00\00\a0\06")
- (data (i32.const 1884) "\1c")
+ (data (i32.const 1688) "\01\00\00\00\04\00\00\00duck")
+ (data (i32.const 1708) "\1c")
+ (data (i32.const 1720) "\01\00\00\00\08\00\00\00elephant")
+ (data (i32.const 1740) ",")
+ (data (i32.const 1752) "\07\00\00\00\14\00\00\00@\06\00\00`\06\00\00\80\06\00\00\a0\06\00\00\c0\06")
+ (data (i32.const 1788) "L")
+ (data (i32.const 1800) "\01\00\00\00/\00\00\00Element type must be nullable if array is holey")
+ (data (i32.const 1868) ",")
+ (data (i32.const 1880) "\07\00\00\00\14\00\00\00@\06\00\00`\06\00\00\80\06\00\00\a0\06\00\00\c0\06")
  (data (i32.const 1916) "\1c")
- (data (i32.const 1928) "\01\00\00\00\03\00\00\00foo")
  (data (i32.const 1948) "\1c")
- (data (i32.const 1964) "\04\00\00\00\90\07")
- (data (i32.const 1980) ",")
- (data (i32.const 1992) "\07\00\00\00\14\00\00\00 \06\00\00@\06\00\00`\06\00\00\80\06\00\00\a0\06")
- (data (i32.const 2028) "\1c")
- (data (i32.const 2040) "\t\00\00\00\08")
- (data (i32.const 2054) "\f8\7f")
+ (data (i32.const 1960) "\01\00\00\00\03\00\00\00foo")
+ (data (i32.const 1980) "\1c")
+ (data (i32.const 1996) "\04\00\00\00\b0\07")
+ (data (i32.const 2012) ",")
+ (data (i32.const 2024) "\07\00\00\00\14\00\00\00@\06\00\00`\06\00\00\80\06\00\00\a0\06\00\00\c0\06")
  (data (i32.const 2060) "\1c")
- (data (i32.const 2072) "\n\00\00\00\04\00\00\00\00\00\c0\7f")
+ (data (i32.const 2072) "\t\00\00\00\08")
+ (data (i32.const 2086) "\f8\7f")
  (data (i32.const 2092) "\1c")
- (data (i32.const 2104) "\03\00\00\00\0c\00\00\00\02\00\00\00\t\00\00\00\t")
- (data (i32.const 2124) ",")
- (data (i32.const 2136) "\03\00\00\00\10\00\00\00\02\00\00\00\05\00\00\00\t\00\00\00\02")
- (data (i32.const 2172) "\1c")
- (data (i32.const 2184) "\03\00\00\00\08")
+ (data (i32.const 2104) "\n\00\00\00\04\00\00\00\00\00\c0\7f")
+ (data (i32.const 2124) "\1c")
+ (data (i32.const 2136) "\03\00\00\00\0c\00\00\00\02\00\00\00\t\00\00\00\t")
+ (data (i32.const 2156) ",")
+ (data (i32.const 2168) "\03\00\00\00\10\00\00\00\02\00\00\00\05\00\00\00\t\00\00\00\02")
  (data (i32.const 2204) "\1c")
- (data (i32.const 2216) "\03\00\00\00\0c\00\00\00\01\00\00\00\02\00\00\00\03")
- (data (i32.const 2236) ",")
- (data (i32.const 2248) "\03\00\00\00\14\00\00\00\01\00\00\00\02\00\00\00\03\00\00\00\04\00\00\00\05")
- (data (i32.const 2284) "\1c")
- (data (i32.const 2296) "\03\00\00\00\0c\00\00\00\01\00\00\00\02\00\00\00\03")
+ (data (i32.const 2216) "\03\00\00\00\08")
+ (data (i32.const 2236) "\1c")
+ (data (i32.const 2248) "\03\00\00\00\0c\00\00\00\01\00\00\00\02\00\00\00\03")
+ (data (i32.const 2268) ",")
+ (data (i32.const 2280) "\03\00\00\00\14\00\00\00\01\00\00\00\02\00\00\00\03\00\00\00\04\00\00\00\05")
  (data (i32.const 2316) "\1c")
- (data (i32.const 2328) "\0b\00\00\00\08\00\00\00\01")
+ (data (i32.const 2328) "\03\00\00\00\0c\00\00\00\01\00\00\00\02\00\00\00\03")
  (data (i32.const 2348) "\1c")
- (data (i32.const 2360) "\0c\00\00\00\08\00\00\00\02")
+ (data (i32.const 2360) "\0b\00\00\00\08\00\00\00\01")
  (data (i32.const 2380) "\1c")
- (data (i32.const 2392) "\r\00\00\00\08\00\00\00\03")
+ (data (i32.const 2392) "\0c\00\00\00\08\00\00\00\02")
  (data (i32.const 2412) "\1c")
- (data (i32.const 2424) "\0e\00\00\00\08\00\00\00\04")
+ (data (i32.const 2424) "\r\00\00\00\08\00\00\00\03")
  (data (i32.const 2444) "\1c")
- (data (i32.const 2456) "\0e\00\00\00\08\00\00\00\05")
+ (data (i32.const 2456) "\0e\00\00\00\08\00\00\00\04")
  (data (i32.const 2476) "\1c")
- (data (i32.const 2488) "\r\00\00\00\08\00\00\00\06")
+ (data (i32.const 2488) "\0e\00\00\00\08\00\00\00\05")
  (data (i32.const 2508) "\1c")
- (data (i32.const 2520) "\r\00\00\00\08\00\00\00\07")
+ (data (i32.const 2520) "\r\00\00\00\08\00\00\00\06")
  (data (i32.const 2540) "\1c")
- (data (i32.const 2552) "\r\00\00\00\08\00\00\00\08")
+ (data (i32.const 2552) "\r\00\00\00\08\00\00\00\07")
  (data (i32.const 2572) "\1c")
- (data (i32.const 2584) "\r\00\00\00\08\00\00\00\t")
+ (data (i32.const 2584) "\r\00\00\00\08\00\00\00\08")
  (data (i32.const 2604) "\1c")
- (data (i32.const 2616) "\r\00\00\00\08\00\00\00\n")
+ (data (i32.const 2616) "\r\00\00\00\08\00\00\00\t")
  (data (i32.const 2636) "\1c")
- (data (i32.const 2648) "\r\00\00\00\08\00\00\00\0b")
+ (data (i32.const 2648) "\r\00\00\00\08\00\00\00\n")
  (data (i32.const 2668) "\1c")
- (data (i32.const 2680) "\r\00\00\00\08\00\00\00\0c")
+ (data (i32.const 2680) "\r\00\00\00\08\00\00\00\0b")
  (data (i32.const 2700) "\1c")
- (data (i32.const 2712) "\r\00\00\00\08\00\00\00\r")
- (data (i32.const 2732) ",")
- (data (i32.const 2744) "\03\00\00\00\10\00\00\00\00\00\00\00\03\00\00\00\02\00\00\00\01")
- (data (i32.const 2780) "\1c")
- (data (i32.const 2792) "\0f\00\00\00\08\00\00\00\0e")
- (data (i32.const 2816) "\10\00\00\00 \00\00\00\00\00\00\00 ")
- (data (i32.const 2844) "$\t\00\00\00\00\00\00 \00\00\00\00\00\00\00\04A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\04A\00\00\00\00\00\00\02A\00\00\00\00\00\00$\1a\00\00\00\00\00\00$\19")
+ (data (i32.const 2712) "\r\00\00\00\08\00\00\00\0c")
+ (data (i32.const 2732) "\1c")
+ (data (i32.const 2744) "\r\00\00\00\08\00\00\00\r")
+ (data (i32.const 2764) ",")
+ (data (i32.const 2776) "\03\00\00\00\10\00\00\00\00\00\00\00\03\00\00\00\02\00\00\00\01")
+ (data (i32.const 2812) "\1c")
+ (data (i32.const 2824) "\0f\00\00\00\08\00\00\00\0e")
+ (data (i32.const 2848) "\10\00\00\00 \00\00\00\00\00\00\00 ")
+ (data (i32.const 2876) "$\t\00\00\00\00\00\00 \00\00\00\00\00\00\00\04A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\04A\00\00\00\00\00\00\02A\00\00\00\00\00\00$\1a\00\00\00\00\00\00$\19")
  (table $0 15 15 funcref)
  (elem $0 (i32.const 1) $start:std/staticarray~anonymous|0 $start:std/staticarray~anonymous|1 $start:std/staticarray~anonymous|2 $start:std/staticarray~anonymous|3 $start:std/staticarray~anonymous|3 $start:std/staticarray~anonymous|5 $start:std/staticarray~anonymous|6 $start:std/staticarray~anonymous|7 $start:std/staticarray~anonymous|8 $start:std/staticarray~anonymous|5 $start:std/staticarray~anonymous|6 $start:std/staticarray~anonymous|5 $start:std/staticarray~anonymous|6 $~lib/util/sort/COMPARATOR<i32>~anonymous|0)
  (export "memory" (memory $0))
@@ -145,9 +147,9 @@
   end
   i32.const 1088
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
-  i32.const 1344
+  i32.const 1376
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
-  i32.const 1776
+  i32.const 1808
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
   i32.const 1200
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
@@ -214,7 +216,7 @@
     i32.load $0 offset=8
     i32.eqz
     local.get $0
-    i32.const 35716
+    i32.const 35748
     i32.lt_u
     i32.and
     i32.eqz
@@ -259,7 +261,7 @@
    i32.const 1
   else
    local.get $3
-   i32.const 2816
+   i32.const 2848
    i32.load $0
    i32.gt_u
    if
@@ -268,7 +270,7 @@
    local.get $3
    i32.const 3
    i32.shl
-   i32.const 2820
+   i32.const 2852
    i32.add
    i32.load $0
    i32.const 32
@@ -764,10 +766,10 @@
   if
    unreachable
   end
-  i32.const 35728
+  i32.const 35760
   i32.const 0
   i32.store $0
-  i32.const 37296
+  i32.const 37328
   i32.const 0
   i32.store $0
   loop $for-loop|0
@@ -778,7 +780,7 @@
     local.get $0
     i32.const 2
     i32.shl
-    i32.const 35728
+    i32.const 35760
     i32.add
     i32.const 0
     i32.store $0 offset=4
@@ -796,7 +798,7 @@
       i32.add
       i32.const 2
       i32.shl
-      i32.const 35728
+      i32.const 35760
       i32.add
       i32.const 0
       i32.store $0 offset=96
@@ -814,19 +816,19 @@
     br $for-loop|0
    end
   end
-  i32.const 35728
-  i32.const 37300
+  i32.const 35760
+  i32.const 37332
   memory.size $0
   i32.const 16
   i32.shl
   call $~lib/rt/tlsf/addMemory
-  i32.const 35728
+  i32.const 35760
   global.set $~lib/rt/tlsf/ROOT
  )
  (func $~lib/rt/tlsf/__free (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
   local.get $0
-  i32.const 35716
+  i32.const 35748
   i32.lt_u
   if
    return
@@ -949,7 +951,7 @@
      local.set $0
      loop $while-continue|0
       local.get $0
-      i32.const 35716
+      i32.const 35748
       i32.lt_u
       if
        local.get $0
@@ -1044,7 +1046,7 @@
      unreachable
     end
     local.get $0
-    i32.const 35716
+    i32.const 35748
     i32.lt_u
     if
      local.get $0
@@ -2511,7 +2513,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -2661,7 +2663,7 @@
   memory.size $0
   i32.const 16
   i32.shl
-  i32.const 35716
+  i32.const 35748
   i32.sub
   i32.const 1
   i32.shr_u
@@ -2823,7 +2825,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $0
-  i32.const 1168
+  i32.const 1344
   i32.const 12
   memory.copy $0 $0
   local.get $0
@@ -2876,7 +2878,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -2949,7 +2951,7 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 6
   i32.const 6
-  i32.const 1392
+  i32.const 1424
   call $~lib/rt/__newArray
   local.tee $0
   i32.store $0 offset=12
@@ -3023,7 +3025,7 @@
   local.set $0
   i32.const 0
   i32.const 6
-  i32.const 1440
+  i32.const 1472
   call $~lib/rt/__newArray
   local.set $2
   global.get $~lib/memory/__stack_pointer
@@ -3049,7 +3051,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $2
-  i32.const 1472
+  i32.const 1504
   i64.load $0 align=1
   i64.store $0 align=1
   local.get $0
@@ -3061,7 +3063,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $3
-  i32.const 1504
+  i32.const 1536
   i32.load $0 align=1
   i32.store $0 align=1
   global.get $~lib/memory/__stack_pointer
@@ -3090,7 +3092,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $3
-  i32.const 1536
+  i32.const 1568
   i32.const 0
   memory.copy $0 $0
   global.get $~lib/memory/__stack_pointer
@@ -3124,7 +3126,7 @@
   i32.const 7
   call $~lib/rt/itcms/__new
   local.tee $7
-  i32.const 1728
+  i32.const 1760
   i32.const 20
   memory.copy $0 $0
   local.get $0
@@ -3170,7 +3172,7 @@
      i32.sub
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
-     i32.const 2948
+     i32.const 2980
      i32.lt_s
      if
       unreachable
@@ -3217,7 +3219,7 @@
      i32.sub
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
-     i32.const 2948
+     i32.const 2980
      i32.lt_s
      if
       unreachable
@@ -3850,7 +3852,7 @@
    i32.sub
    global.set $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
-   i32.const 2948
+   i32.const 2980
    i32.lt_s
    if
     unreachable
@@ -3885,14 +3887,14 @@
    local.get $1
    local.get $0
    i32.store $0 offset=48
-   i32.const 1600
+   i32.const 1632
    local.set $3
    global.get $~lib/memory/__stack_pointer
-   i32.const 1600
+   i32.const 1632
    i32.store $0 offset=52
    i32.const 1
    local.get $0
-   i32.const 1600
+   i32.const 1632
    i32.eq
    br_if $~lib/string/String.__eq|inlined.1
    drop
@@ -3907,7 +3909,7 @@
    i32.sub
    i32.load $0 offset=16
    local.tee $1
-   i32.const 1596
+   i32.const 1628
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.1
@@ -3919,50 +3921,6 @@
     block $~lib/util/raweq/__raweq128|inlined.1 (result i32)
      i32.const 0
      local.get $0
-     i64.load $0
-     i32.const 1600
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.1
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1608
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.1
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1616
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.1
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1624
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.1
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
      i64.load $0
      i32.const 1632
      i64.load $0
@@ -4072,15 +4030,59 @@
      local.get $0
      i32.const 8
      i32.add
+     local.tee $0
      i64.load $0
      i32.const 1712
      i64.load $0
      i64.ne
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1720
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1728
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1736
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     i64.load $0
+     i32.const 1744
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.1
+     drop
      local.get $0
      i64.load $0 offset=16
-     i32.const 1720
+     i32.const 1752
      i64.load $0
      i64.eq
     end
@@ -4095,57 +4097,13 @@
        i32.const 0
        local.get $0
        i64.load $0
-       i32.const 1600
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.1
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $2
-       i64.load $0
-       i32.const 1608
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.1
-       drop
-       i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
-       i64.load $0
-       i32.const 1616
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.1
-       drop
-       i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
-       i64.load $0
-       i32.const 1624
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.1
-       drop
-       i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
-       i64.load $0
        i32.const 1632
        i64.load $0
        i64.ne
        br_if $~lib/util/raweq/__raweq64|inlined.1
        drop
        i32.const 0
-       local.get $2
+       local.get $0
        i32.const 8
        i32.add
        local.tee $2
@@ -4159,22 +4117,66 @@
        local.get $2
        i32.const 8
        i32.add
+       local.tee $2
        i64.load $0
        i32.const 1648
        i64.load $0
        i64.ne
        br_if $~lib/util/raweq/__raweq64|inlined.1
        drop
+       i32.const 0
+       local.get $2
+       i32.const 8
+       i32.add
+       local.tee $2
+       i64.load $0
+       i32.const 1656
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       i32.const 0
+       local.get $2
+       i32.const 8
+       i32.add
+       local.tee $2
+       i64.load $0
+       i32.const 1664
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       i32.const 0
+       local.get $2
+       i32.const 8
+       i32.add
+       local.tee $2
+       i64.load $0
+       i32.const 1672
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
+       i32.const 0
+       local.get $2
+       i32.const 8
+       i32.add
+       i64.load $0
+       i32.const 1680
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.1
+       drop
        local.get $2
        i64.load $0 offset=16
-       i32.const 1656
+       i32.const 1688
        i64.load $0
        i64.eq
       end
       i32.eqz
       br_if $~lib/util/equpto/__equpto127|inlined.1
       drop
-      i32.const 1664
+      i32.const 1696
       local.set $3
       local.get $1
       i32.const -64
@@ -4392,7 +4394,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -4429,13 +4431,13 @@
   local.get $2
   i32.store $0 offset=56
   global.get $~lib/memory/__stack_pointer
-  i32.const 1632
+  i32.const 1664
   i32.store $0 offset=60
   i32.const 1
   local.set $1
   block $~lib/string/String.__eq|inlined.2
    local.get $2
-   i32.const 1632
+   i32.const 1664
    i32.eq
    br_if $~lib/string/String.__eq|inlined.2
    i32.const 0
@@ -4448,7 +4450,7 @@
    i32.sub
    i32.load $0 offset=16
    local.tee $3
-   i32.const 1628
+   i32.const 1660
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.2
@@ -4460,57 +4462,13 @@
      i32.const 0
      local.get $2
      i64.load $0
-     i32.const 1632
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.2
-     drop
-     i32.const 0
-     local.get $2
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1640
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.2
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1648
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.2
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1656
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.2
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
      i32.const 1664
      i64.load $0
      i64.ne
      br_if $~lib/util/raweq/__raweq128|inlined.2
      drop
      i32.const 0
-     local.get $0
+     local.get $2
      i32.const 8
      i32.add
      local.tee $0
@@ -4612,15 +4570,59 @@
      local.get $0
      i32.const 8
      i32.add
+     local.tee $0
      i64.load $0
      i32.const 1744
      i64.load $0
      i64.ne
      br_if $~lib/util/raweq/__raweq128|inlined.2
      drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1752
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1760
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1768
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     i64.load $0
+     i32.const 1776
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.2
+     drop
      local.get $0
      i64.load $0 offset=16
-     i32.const 1752
+     i32.const 1784
      i64.load $0
      i64.eq
     end
@@ -4635,57 +4637,13 @@
        i32.const 0
        local.get $2
        i64.load $0
-       i32.const 1632
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.2
-       drop
-       i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
-       i32.const 1640
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.2
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
-       i32.const 1648
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.2
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
-       i32.const 1656
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.2
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
        i32.const 1664
        i64.load $0
        i64.ne
        br_if $~lib/util/raweq/__raweq64|inlined.2
        drop
        i32.const 0
-       local.get $0
+       local.get $2
        i32.const 8
        i32.add
        local.tee $0
@@ -4699,15 +4657,59 @@
        local.get $0
        i32.const 8
        i32.add
+       local.tee $0
        i64.load $0
        i32.const 1680
        i64.load $0
        i64.ne
        br_if $~lib/util/raweq/__raweq64|inlined.2
        drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $0
+       i64.load $0
+       i32.const 1688
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $0
+       i64.load $0
+       i32.const 1696
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $0
+       i64.load $0
+       i32.const 1704
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       i64.load $0
+       i32.const 1712
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.2
+       drop
        local.get $0
        i64.load $0 offset=16
-       i32.const 1688
+       i32.const 1720
        i64.load $0
        i64.eq
       end
@@ -4721,9 +4723,9 @@
       i32.const -64
       i32.sub
       local.set $2
-      i32.const 1696
+      i32.const 1728
      else
-      i32.const 1632
+      i32.const 1664
      end
      local.set $0
      block $~lib/util/equpto/__equpto63|inlined.2
@@ -5011,7 +5013,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -5047,13 +5049,13 @@
   local.get $2
   i32.store $0 offset=64
   global.get $~lib/memory/__stack_pointer
-  i32.const 1696
+  i32.const 1728
   i32.store $0 offset=68
   i32.const 1
   local.set $1
   block $~lib/string/String.__eq|inlined.3
    local.get $2
-   i32.const 1696
+   i32.const 1728
    i32.eq
    br_if $~lib/string/String.__eq|inlined.3
    i32.const 0
@@ -5066,7 +5068,7 @@
    i32.sub
    i32.load $0 offset=16
    local.tee $3
-   i32.const 1692
+   i32.const 1724
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.3
@@ -5078,57 +5080,13 @@
      i32.const 0
      local.get $2
      i64.load $0
-     i32.const 1696
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.3
-     drop
-     i32.const 0
-     local.get $2
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1704
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.3
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1712
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.3
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1720
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.3
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
      i32.const 1728
      i64.load $0
      i64.ne
      br_if $~lib/util/raweq/__raweq128|inlined.3
      drop
      i32.const 0
-     local.get $0
+     local.get $2
      i32.const 8
      i32.add
      local.tee $0
@@ -5230,15 +5188,59 @@
      local.get $0
      i32.const 8
      i32.add
+     local.tee $0
      i64.load $0
      i32.const 1808
      i64.load $0
      i64.ne
      br_if $~lib/util/raweq/__raweq128|inlined.3
      drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1816
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1824
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1832
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     i64.load $0
+     i32.const 1840
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
      local.get $0
      i64.load $0 offset=16
-     i32.const 1816
+     i32.const 1848
      i64.load $0
      i64.eq
     end
@@ -5253,57 +5255,13 @@
        i32.const 0
        local.get $2
        i64.load $0
-       i32.const 1696
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.3
-       drop
-       i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
-       i32.const 1704
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.3
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
-       i32.const 1712
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.3
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
-       i32.const 1720
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.3
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
        i32.const 1728
        i64.load $0
        i64.ne
        br_if $~lib/util/raweq/__raweq64|inlined.3
        drop
        i32.const 0
-       local.get $0
+       local.get $2
        i32.const 8
        i32.add
        local.tee $0
@@ -5317,15 +5275,59 @@
        local.get $0
        i32.const 8
        i32.add
+       local.tee $0
        i64.load $0
        i32.const 1744
        i64.load $0
        i64.ne
        br_if $~lib/util/raweq/__raweq64|inlined.3
        drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $0
+       i64.load $0
+       i32.const 1752
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $0
+       i64.load $0
+       i32.const 1760
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $0
+       i64.load $0
+       i32.const 1768
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       i64.load $0
+       i32.const 1776
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
        local.get $0
        i64.load $0 offset=16
-       i32.const 1752
+       i32.const 1784
        i64.load $0
        i64.eq
       end
@@ -5339,9 +5341,9 @@
       i32.const -64
       i32.sub
       local.set $2
-      i32.const 1760
+      i32.const 1792
      else
-      i32.const 1696
+      i32.const 1728
      end
      local.set $0
      block $~lib/util/equpto/__equpto63|inlined.3
@@ -5581,7 +5583,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -5617,13 +5619,13 @@
   local.get $2
   i32.store $0 offset=72
   global.get $~lib/memory/__stack_pointer
-  i32.const 1632
+  i32.const 1664
   i32.store $0 offset=76
   i32.const 1
   local.set $1
   block $~lib/string/String.__eq|inlined.4
    local.get $2
-   i32.const 1632
+   i32.const 1664
    i32.eq
    br_if $~lib/string/String.__eq|inlined.4
    i32.const 0
@@ -5636,7 +5638,7 @@
    i32.sub
    i32.load $0 offset=16
    local.tee $3
-   i32.const 1628
+   i32.const 1660
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.4
@@ -5648,57 +5650,13 @@
      i32.const 0
      local.get $2
      i64.load $0
-     i32.const 1632
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.4
-     drop
-     i32.const 0
-     local.get $2
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1640
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.4
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1648
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.4
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
-     i32.const 1656
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.4
-     drop
-     i32.const 0
-     local.get $0
-     i32.const 8
-     i32.add
-     local.tee $0
-     i64.load $0
      i32.const 1664
      i64.load $0
      i64.ne
      br_if $~lib/util/raweq/__raweq128|inlined.4
      drop
      i32.const 0
-     local.get $0
+     local.get $2
      i32.const 8
      i32.add
      local.tee $0
@@ -5800,15 +5758,59 @@
      local.get $0
      i32.const 8
      i32.add
+     local.tee $0
      i64.load $0
      i32.const 1744
      i64.load $0
      i64.ne
      br_if $~lib/util/raweq/__raweq128|inlined.4
      drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1752
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.4
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1760
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.4
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     local.tee $0
+     i64.load $0
+     i32.const 1768
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.4
+     drop
+     i32.const 0
+     local.get $0
+     i32.const 8
+     i32.add
+     i64.load $0
+     i32.const 1776
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.4
+     drop
      local.get $0
      i64.load $0 offset=16
-     i32.const 1752
+     i32.const 1784
      i64.load $0
      i64.eq
     end
@@ -5823,57 +5825,13 @@
        i32.const 0
        local.get $2
        i64.load $0
-       i32.const 1632
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.4
-       drop
-       i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
-       i32.const 1640
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.4
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
-       i32.const 1648
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.4
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
-       i32.const 1656
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.4
-       drop
-       i32.const 0
-       local.get $0
-       i32.const 8
-       i32.add
-       local.tee $0
-       i64.load $0
        i32.const 1664
        i64.load $0
        i64.ne
        br_if $~lib/util/raweq/__raweq64|inlined.4
        drop
        i32.const 0
-       local.get $0
+       local.get $2
        i32.const 8
        i32.add
        local.tee $0
@@ -5887,15 +5845,59 @@
        local.get $0
        i32.const 8
        i32.add
+       local.tee $0
        i64.load $0
        i32.const 1680
        i64.load $0
        i64.ne
        br_if $~lib/util/raweq/__raweq64|inlined.4
        drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $0
+       i64.load $0
+       i32.const 1688
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.4
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $0
+       i64.load $0
+       i32.const 1696
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.4
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       local.tee $0
+       i64.load $0
+       i32.const 1704
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.4
+       drop
+       i32.const 0
+       local.get $0
+       i32.const 8
+       i32.add
+       i64.load $0
+       i32.const 1712
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.4
+       drop
        local.get $0
        i64.load $0 offset=16
-       i32.const 1688
+       i32.const 1720
        i64.load $0
        i64.eq
       end
@@ -5909,9 +5911,9 @@
       i32.const -64
       i32.sub
       local.set $2
-      i32.const 1696
+      i32.const 1728
      else
-      i32.const 1632
+      i32.const 1664
      end
      local.set $0
      block $~lib/util/equpto/__equpto63|inlined.4
@@ -6117,7 +6119,7 @@
   i32.const 7
   call $~lib/rt/itcms/__new
   local.tee $1
-  i32.const 1856
+  i32.const 1888
   i32.const 20
   memory.copy $0 $0
   local.get $0
@@ -6127,7 +6129,7 @@
   local.set $0
   i32.const 0
   i32.const 8
-  i32.const 1904
+  i32.const 1936
   call $~lib/rt/__newArray
   local.set $2
   global.get $~lib/memory/__stack_pointer
@@ -6155,7 +6157,7 @@
   local.set $0
   i32.const 1
   i32.const 8
-  i32.const 1968
+  i32.const 2000
   call $~lib/rt/__newArray
   local.set $2
   global.get $~lib/memory/__stack_pointer
@@ -6187,17 +6189,17 @@
   i32.const 7
   call $~lib/rt/itcms/__new
   local.tee $1
-  i32.const 2000
+  i32.const 2032
   i32.const 20
   memory.copy $0 $0
   local.get $0
   local.get $1
   i32.store $0 offset=88
   global.get $~lib/memory/__stack_pointer
-  i32.const 1600
+  i32.const 1632
   i32.store $0 offset=24
   local.get $1
-  i32.const 1600
+  i32.const 1632
   i32.const 0
   call $~lib/staticarray/StaticArray<~lib/string/String>#indexOf
   i32.const 0
@@ -6206,10 +6208,10 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 1936
+  i32.const 1968
   i32.store $0 offset=24
   local.get $1
-  i32.const 1936
+  i32.const 1968
   i32.const 0
   call $~lib/staticarray/StaticArray<~lib/string/String>#indexOf
   i32.const 0
@@ -6218,10 +6220,10 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 1696
+  i32.const 1728
   i32.store $0 offset=24
   local.get $1
-  i32.const 1696
+  i32.const 1728
   i32.const 5
   call $~lib/staticarray/StaticArray<~lib/string/String>#indexOf
   i32.const 0
@@ -6230,10 +6232,10 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 1696
+  i32.const 1728
   i32.store $0 offset=24
   local.get $1
-  i32.const 1696
+  i32.const 1728
   i32.const -1
   call $~lib/staticarray/StaticArray<~lib/string/String>#indexOf
   i32.const 0
@@ -6246,7 +6248,7 @@
    i32.const 9
    call $~lib/rt/itcms/__new
    local.tee $0
-   i32.const 2048
+   i32.const 2080
    i64.load $0 align=1
    i64.store $0 align=1
    global.get $~lib/memory/__stack_pointer
@@ -6303,7 +6305,7 @@
    i32.const 10
    call $~lib/rt/itcms/__new
    local.tee $0
-   i32.const 2080
+   i32.const 2112
    i32.load $0 align=1
    i32.store $0 align=1
    global.get $~lib/memory/__stack_pointer
@@ -6361,7 +6363,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $2
-  i32.const 2112
+  i32.const 2144
   i32.const 12
   memory.copy $0 $0
   local.get $0
@@ -6618,7 +6620,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $1
-  i32.const 2144
+  i32.const 2176
   i32.const 16
   memory.copy $0 $0
   local.get $0
@@ -6945,7 +6947,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $1
-  i32.const 2192
+  i32.const 2224
   i64.load $0 align=1
   i64.store $0 align=1
   local.get $0
@@ -7022,7 +7024,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $1
-  i32.const 2224
+  i32.const 2256
   i32.const 12
   memory.copy $0 $0
   local.get $0
@@ -7142,7 +7144,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $1
-  i32.const 2256
+  i32.const 2288
   i32.const 20
   memory.copy $0 $0
   local.get $0
@@ -7273,7 +7275,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $9
-  i32.const 2304
+  i32.const 2336
   i32.const 12
   memory.copy $0 $0
   local.get $0
@@ -7281,14 +7283,14 @@
   i32.store $0 offset=112
   global.get $~lib/memory/__stack_pointer
   local.tee $1
-  i32.const 2336
+  i32.const 2368
   i32.store $0 offset=24
   local.get $1
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -7315,7 +7317,7 @@
   local.set $4
   i32.const 0
   local.set $0
-  loop $for-loop|053
+  loop $for-loop|055
    local.get $0
    local.get $2
    i32.lt_s
@@ -7336,7 +7338,7 @@
     local.get $8
     local.get $0
     local.get $9
-    i32.const 2336
+    i32.const 2368
     i32.load $0
     call_indirect $0 (type $i32_i32_i32_=>_i32)
     i32.store $0
@@ -7344,7 +7346,7 @@
     i32.const 1
     i32.add
     local.set $0
-    br $for-loop|053
+    br $for-loop|055
    end
   end
   global.get $~lib/memory/__stack_pointer
@@ -7399,7 +7401,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 2368
+  i32.const 2400
   i32.store $0 offset=24
   i32.const 0
   local.set $0
@@ -7427,7 +7429,7 @@
     local.get $2
     local.get $0
     local.get $9
-    i32.const 2368
+    i32.const 2400
     i32.load $0
     call_indirect $0 (type $i32_i32_i32_=>_none)
     local.get $0
@@ -7445,14 +7447,14 @@
   end
   global.get $~lib/memory/__stack_pointer
   local.tee $3
-  i32.const 2400
+  i32.const 2432
   i32.store $0 offset=24
   local.get $3
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -7477,7 +7479,7 @@
   i32.const 2
   i32.shr_u
   local.set $10
-  loop $for-loop|059
+  loop $for-loop|061
    local.get $0
    local.get $10
    i32.lt_s
@@ -7494,7 +7496,7 @@
     local.get $11
     local.get $0
     local.get $9
-    i32.const 2400
+    i32.const 2432
     i32.load $0
     call_indirect $0 (type $i32_i32_i32_=>_i32)
     if
@@ -7618,7 +7620,7 @@
     i32.const 1
     i32.add
     local.set $0
-    br $for-loop|059
+    br $for-loop|061
    end
   end
   global.get $~lib/memory/__stack_pointer
@@ -7665,7 +7667,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 2432
+  i32.const 2464
   i32.store $0 offset=24
   i32.const 0
   local.set $3
@@ -7696,7 +7698,7 @@
     local.get $2
     local.get $0
     local.get $9
-    i32.const 2432
+    i32.const 2464
     i32.load $0
     call_indirect $0 (type $i32_i32_i32_i32_=>_i32)
     local.set $3
@@ -7714,7 +7716,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 2464
+  i32.const 2496
   i32.store $0 offset=24
   i32.const 0
   local.set $3
@@ -7745,7 +7747,7 @@
     local.get $1
     local.get $0
     local.get $9
-    i32.const 2464
+    i32.const 2496
     i32.load $0
     call_indirect $0 (type $i32_i32_i32_i32_=>_i32)
     local.set $3
@@ -7764,7 +7766,7 @@
   end
   block $__inlined_func$~lib/staticarray/StaticArray<i32>#some (result i32)
    global.get $~lib/memory/__stack_pointer
-   i32.const 2496
+   i32.const 2528
    i32.store $0 offset=24
    i32.const 0
    local.set $0
@@ -7793,7 +7795,7 @@
      local.get $2
      local.get $0
      local.get $9
-     i32.const 2496
+     i32.const 2528
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      br_if $__inlined_func$~lib/staticarray/StaticArray<i32>#some
@@ -7813,7 +7815,7 @@
   end
   block $__inlined_func$~lib/staticarray/StaticArray<i32>#some146 (result i32)
    global.get $~lib/memory/__stack_pointer
-   i32.const 2528
+   i32.const 2560
    i32.store $0 offset=24
    i32.const 0
    local.set $0
@@ -7842,7 +7844,7 @@
      local.get $2
      local.get $0
      local.get $9
-     i32.const 2528
+     i32.const 2560
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      br_if $__inlined_func$~lib/staticarray/StaticArray<i32>#some146
@@ -7861,7 +7863,7 @@
   end
   block $__inlined_func$~lib/staticarray/StaticArray<i32>#every (result i32)
    global.get $~lib/memory/__stack_pointer
-   i32.const 2560
+   i32.const 2592
    i32.store $0 offset=24
    i32.const 0
    local.set $0
@@ -7890,7 +7892,7 @@
      local.get $2
      local.get $0
      local.get $9
-     i32.const 2560
+     i32.const 2592
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      i32.eqz
@@ -7911,7 +7913,7 @@
   end
   block $__inlined_func$~lib/staticarray/StaticArray<i32>#every155 (result i32)
    global.get $~lib/memory/__stack_pointer
-   i32.const 2592
+   i32.const 2624
    i32.store $0 offset=24
    i32.const 0
    local.set $0
@@ -7940,7 +7942,7 @@
      local.get $2
      local.get $0
      local.get $9
-     i32.const 2592
+     i32.const 2624
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      i32.eqz
@@ -7959,7 +7961,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 2624
+  i32.const 2656
   i32.store $0 offset=24
   i32.const 0
   local.set $0
@@ -7988,7 +7990,7 @@
      local.get $2
      local.get $0
      local.get $9
-     i32.const 2624
+     i32.const 2656
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      br_if $__inlined_func$~lib/staticarray/StaticArray<i32>#findIndex
@@ -8009,7 +8011,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 2656
+  i32.const 2688
   i32.store $0 offset=24
   i32.const 0
   local.set $0
@@ -8038,7 +8040,7 @@
      local.get $2
      local.get $0
      local.get $9
-     i32.const 2656
+     i32.const 2688
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      br_if $__inlined_func$~lib/staticarray/StaticArray<i32>#findIndex164
@@ -8059,7 +8061,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 2688
+  i32.const 2720
   i32.store $0 offset=24
   local.get $9
   i32.const 20
@@ -8088,7 +8090,7 @@
      local.get $1
      local.get $0
      local.get $9
-     i32.const 2688
+     i32.const 2720
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      br_if $__inlined_func$~lib/staticarray/StaticArray<i32>#findLastIndex
@@ -8109,7 +8111,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 2720
+  i32.const 2752
   i32.store $0 offset=24
   local.get $9
   i32.const 20
@@ -8138,7 +8140,7 @@
      local.get $1
      local.get $0
      local.get $9
-     i32.const 2720
+     i32.const 2752
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      br_if $__inlined_func$~lib/staticarray/StaticArray<i32>#findLastIndex173
@@ -8164,7 +8166,7 @@
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $1
-  i32.const 2752
+  i32.const 2784
   i32.const 16
   memory.copy $0 $0
   local.get $0
@@ -8179,7 +8181,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -8195,10 +8197,10 @@
     end
     unreachable
    end
-   i32.const 2800
+   i32.const 2832
    local.set $3
    global.get $~lib/memory/__stack_pointer
-   i32.const 2800
+   i32.const 2832
    i32.store $0
   end
   local.get $1
@@ -8283,7 +8285,7 @@
   if
    unreachable
   end
-  i32.const 35716
+  i32.const 35748
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/rt/itcms/state
   i32.const 0
@@ -8330,7 +8332,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -8360,7 +8362,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -8422,7 +8424,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -8461,7 +8463,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -8527,7 +8529,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -8654,7 +8656,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable
@@ -8783,7 +8785,7 @@
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
-  i32.const 2948
+  i32.const 2980
   i32.lt_s
   if
    unreachable

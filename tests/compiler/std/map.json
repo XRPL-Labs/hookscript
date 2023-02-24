@@ -1,5 +1,6 @@
 {
   "asc_flags": [
+    "--noInlineLocals"
   ],
   "asc_rtrace": true
 }

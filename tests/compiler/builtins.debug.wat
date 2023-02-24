@@ -2,7 +2,6 @@
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
- (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
@@ -136,124 +135,6 @@
  )
  (func $start:builtins~anonymous|2 (type $i32_i32_i32_i32_=>_none) (param $a i32) (param $b i32) (param $c i32) (param $d i32)
   nop
- )
- (func $builtins/max3 (type $i32_i32_i32_=>_i32) (param $a i32) (param $b i32) (param $c i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  local.get $a
-  local.tee $5
-  local.get $b
-  local.tee $3
-  local.get $c
-  local.tee $4
-  local.get $3
-  local.get $4
-  i32.gt_s
-  select
-  local.tee $6
-  local.get $5
-  local.get $6
-  i32.gt_s
-  select
- )
- (func $builtins/min3 (type $i32_i32_i32_=>_i32) (param $a i32) (param $b i32) (param $c i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  local.get $a
-  local.tee $5
-  local.get $b
-  local.tee $3
-  local.get $c
-  local.tee $4
-  local.get $3
-  local.get $4
-  i32.lt_s
-  select
-  local.tee $6
-  local.get $5
-  local.get $6
-  i32.lt_s
-  select
- )
- (func $builtins/rotl3 (type $i32_i32_i32_=>_i32) (param $a i32) (param $b i32) (param $c i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  local.get $a
-  i32.extend8_s
-  local.tee $5
-  local.get $b
-  i32.extend8_s
-  local.tee $3
-  local.get $c
-  local.tee $4
-  i32.const 7
-  i32.and
-  i32.shl
-  local.get $3
-  i32.const 0
-  local.get $4
-  i32.sub
-  i32.const 7
-  i32.and
-  i32.shr_u
-  i32.or
-  local.tee $6
-  i32.const 7
-  i32.and
-  i32.shl
-  local.get $5
-  i32.const 0
-  local.get $6
-  i32.sub
-  i32.const 7
-  i32.and
-  i32.shr_u
-  i32.or
-  i32.extend8_s
- )
- (func $builtins/rotr3 (type $i32_i32_i32_=>_i32) (param $a i32) (param $b i32) (param $c i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  local.get $a
-  i32.extend8_s
-  local.tee $5
-  local.get $b
-  i32.extend8_s
-  local.tee $3
-  local.get $c
-  local.tee $4
-  i32.const 7
-  i32.and
-  i32.shr_u
-  local.get $3
-  i32.const 0
-  local.get $4
-  i32.sub
-  i32.const 7
-  i32.and
-  i32.shl
-  i32.or
-  local.tee $6
-  i32.const 7
-  i32.and
-  i32.shr_u
-  local.get $5
-  i32.const 0
-  local.get $6
-  i32.sub
-  i32.const 7
-  i32.and
-  i32.shl
-  i32.or
-  i32.extend8_s
  )
  (func $builtins/test (type $none_=>_none)
   nop
@@ -2527,13 +2408,41 @@
   (local $2254 i32)
   (local $2255 i32)
   (local $2256 i32)
-  (local $2257 i64)
-  (local $2258 i64)
-  (local $2259 i64)
-  (local $2260 i64)
+  (local $2257 i32)
+  (local $2258 i32)
+  (local $2259 i32)
+  (local $2260 i32)
   (local $2261 i32)
   (local $2262 i32)
   (local $2263 i32)
+  (local $2264 i32)
+  (local $2265 i32)
+  (local $2266 i32)
+  (local $2267 i32)
+  (local $2268 i32)
+  (local $2269 i32)
+  (local $2270 i32)
+  (local $2271 i32)
+  (local $2272 i32)
+  (local $2273 i32)
+  (local $2274 i32)
+  (local $2275 i32)
+  (local $2276 i32)
+  (local $2277 i32)
+  (local $2278 i32)
+  (local $2279 i32)
+  (local $2280 i32)
+  (local $2281 i32)
+  (local $2282 i32)
+  (local $2283 i32)
+  (local $2284 i32)
+  (local $2285 i64)
+  (local $2286 i64)
+  (local $2287 i64)
+  (local $2288 i64)
+  (local $2289 i32)
+  (local $2290 i32)
+  (local $2291 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 180
   i32.sub
@@ -4234,11 +4143,11 @@
   i32.const 2
   i32.const 3
   global.get $builtins/fn
-  local.set $2263
+  local.set $2291
   global.get $~lib/memory/__stack_pointer
-  local.get $2263
+  local.get $2291
   i32.store $0
-  local.get $2263
+  local.get $2291
   call $~lib/function/Function<%28i32%2Ci32%29=>i32>#get:index
   call_indirect $0 (type $i32_i32_=>_i32)
   i32.eq
@@ -4249,11 +4158,11 @@
   block $~lib/string/String.__eq|inlined.0 (result i32)
    global.get $~lib/memory/__stack_pointer
    global.get $builtins/fn
-   local.set $2263
+   local.set $2291
    global.get $~lib/memory/__stack_pointer
-   local.get $2263
+   local.get $2291
    i32.store $0
-   local.get $2263
+   local.get $2291
    call $~lib/function/Function<%28i32%2Ci32%29=>i32>#get:name
    local.tee $40
    i32.store $0 offset=4
@@ -5169,11 +5078,11 @@
    unreachable
   end
   global.get $builtins/fn
-  local.set $2263
+  local.set $2291
   global.get $~lib/memory/__stack_pointer
-  local.get $2263
+  local.get $2291
   i32.store $0
-  local.get $2263
+  local.get $2291
   call $~lib/function/Function<%28i32%2Ci32%29=>i32>#get:length
   i32.const 2
   i32.eq
@@ -5182,11 +5091,11 @@
    unreachable
   end
   global.get $builtins/fn
-  local.set $2263
+  local.set $2291
   global.get $~lib/memory/__stack_pointer
-  local.get $2263
+  local.get $2291
   i32.store $0
-  local.get $2263
+  local.get $2291
   call $~lib/function/Function<%28i32%2Ci32%29=>i32>#get:length
   i32.const 2
   i32.eq
@@ -5197,11 +5106,11 @@
   block $~lib/string/String.__eq|inlined.1 (result i32)
    global.get $~lib/memory/__stack_pointer
    global.get $builtins/fn
-   local.set $2263
+   local.set $2291
    global.get $~lib/memory/__stack_pointer
-   local.get $2263
+   local.get $2291
    i32.store $0
-   local.get $2263
+   local.get $2291
    call $~lib/function/Function<%28i32%2Ci32%29=>i32>#toString
    local.tee $140
    i32.store $0 offset=12
@@ -25126,45 +25035,131 @@
   i32.const 1
   drop
   i32.const 3
+  local.set $2253
   i32.const 2
+  local.set $2254
   i32.const 1
-  call $builtins/max3
+  local.set $2255
+  local.get $2253
+  local.tee $2258
+  local.get $2254
+  local.tee $2256
+  local.get $2255
+  local.tee $2257
+  local.get $2256
+  local.get $2257
+  i32.gt_s
+  select
+  local.tee $2259
+  local.get $2258
+  local.get $2259
+  i32.gt_s
+  select
   i32.const 3
   i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
+  drop
   i32.const 1
+  local.set $2260
   i32.const 2
+  local.set $2261
   i32.const 3
-  call $builtins/min3
+  local.set $2262
+  local.get $2260
+  local.tee $2265
+  local.get $2261
+  local.tee $2263
+  local.get $2262
+  local.tee $2264
+  local.get $2263
+  local.get $2264
+  i32.lt_s
+  select
+  local.tee $2266
+  local.get $2265
+  local.get $2266
+  i32.lt_s
+  select
   i32.const 1
   i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
+  drop
   i32.const 3
+  local.set $2267
   i32.const 2
+  local.set $2268
   i32.const 1
-  call $builtins/rotl3
+  local.set $2269
+  local.get $2267
+  local.tee $2272
+  local.get $2268
+  local.tee $2270
+  local.get $2269
+  local.tee $2271
+  i32.const 7
+  i32.and
+  i32.shl
+  local.get $2270
+  i32.const 0
+  local.get $2271
+  i32.sub
+  i32.const 7
+  i32.and
+  i32.shr_u
+  i32.or
+  local.tee $2273
+  i32.const 7
+  i32.and
+  i32.shl
+  local.get $2272
+  i32.const 0
+  local.get $2273
+  i32.sub
+  i32.const 7
+  i32.and
+  i32.shr_u
+  i32.or
+  i32.extend8_s
   i32.const 48
   i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
+  drop
   i32.const 48
+  local.set $2274
   i32.const 8
+  local.set $2275
   i32.const 1
-  call $builtins/rotr3
+  local.set $2276
+  local.get $2274
+  local.tee $2279
+  local.get $2275
+  local.tee $2277
+  local.get $2276
+  local.tee $2278
+  i32.const 7
+  i32.and
+  i32.shr_u
+  local.get $2277
+  i32.const 0
+  local.get $2278
+  i32.sub
+  i32.const 7
+  i32.and
+  i32.shl
+  i32.or
+  local.tee $2280
+  i32.const 7
+  i32.and
+  i32.shr_u
+  local.get $2279
+  i32.const 0
+  local.get $2280
+  i32.sub
+  i32.const 7
+  i32.and
+  i32.shl
+  i32.or
+  i32.extend8_s
   i32.const 3
   i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
+  drop
   i32.const 170
   i32.const 170
   i32.eq
@@ -25177,10 +25172,10 @@
   i32.eq
   drop
   i32.const 43707
-  local.tee $2253
+  local.tee $2281
   i32.const 8
   i32.shl
-  local.get $2253
+  local.get $2281
   i32.const 8
   i32.shr_u
   i32.or
@@ -25193,10 +25188,10 @@
   i32.extend16_s
   i32.const 65535
   i32.and
-  local.tee $2254
+  local.tee $2282
   i32.const 8
   i32.shl
-  local.get $2254
+  local.get $2282
   i32.const 8
   i32.shr_u
   i32.or
@@ -25206,12 +25201,12 @@
   i32.eq
   drop
   i32.const -1430532899
-  local.tee $2255
+  local.tee $2283
   i32.const -16711936
   i32.and
   i32.const 8
   i32.rotl
-  local.get $2255
+  local.get $2283
   i32.const 16711935
   i32.and
   i32.const 8
@@ -25221,12 +25216,12 @@
   i32.eq
   drop
   i32.const -1430532899
-  local.tee $2256
+  local.tee $2284
   i32.const -16711936
   i32.and
   i32.const 8
   i32.rotl
-  local.get $2256
+  local.get $2284
   i32.const 16711935
   i32.and
   i32.const 8
@@ -25236,23 +25231,23 @@
   i32.eq
   drop
   i64.const 4822679907192029
-  local.tee $2257
+  local.tee $2285
   i64.const 8
   i64.shr_u
   i64.const 71777214294589695
   i64.and
-  local.get $2257
+  local.get $2285
   i64.const 71777214294589695
   i64.and
   i64.const 8
   i64.shl
   i64.or
-  local.tee $2258
+  local.tee $2286
   i64.const 16
   i64.shr_u
   i64.const 281470681808895
   i64.and
-  local.get $2258
+  local.get $2286
   i64.const 281470681808895
   i64.and
   i64.const 16
@@ -25264,23 +25259,23 @@
   i64.eq
   drop
   i64.const 4822679907192029
-  local.tee $2259
+  local.tee $2287
   i64.const 8
   i64.shr_u
   i64.const 71777214294589695
   i64.and
-  local.get $2259
+  local.get $2287
   i64.const 71777214294589695
   i64.and
   i64.const 8
   i64.shl
   i64.or
-  local.tee $2260
+  local.tee $2288
   i64.const 16
   i64.shr_u
   i64.const 281470681808895
   i64.and
-  local.get $2260
+  local.get $2288
   i64.const 281470681808895
   i64.and
   i64.const 16
@@ -25292,12 +25287,12 @@
   i64.eq
   drop
   i32.const -1430532899
-  local.tee $2261
+  local.tee $2289
   i32.const -16711936
   i32.and
   i32.const 8
   i32.rotl
-  local.get $2261
+  local.get $2289
   i32.const 16711935
   i32.and
   i32.const 8
@@ -25307,12 +25302,12 @@
   i32.eq
   drop
   i32.const -1430532899
-  local.tee $2262
+  local.tee $2290
   i32.const -16711936
   i32.and
   i32.const 8
   i32.rotl
-  local.get $2262
+  local.get $2290
   i32.const 16711935
   i32.and
   i32.const 8

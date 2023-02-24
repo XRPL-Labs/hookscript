@@ -7,10 +7,9 @@
  (type $i32_f32_i32_i32_=>_i32 (func_subtype (param i32 f32 i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
- (type $f32_=>_f32 (func_subtype (param f32) (result f32) func))
- (type $f64_f64_=>_i32 (func_subtype (param f64 f64) (result i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
+ (type $f32_=>_f32 (func_subtype (param f32) (result f32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $infer-generic/arr i32 (i32.const 64))
@@ -53,11 +52,6 @@
  (export "test5" (func $export:infer-generic/test5))
  (export "inferAssert" (func $export:infer-generic/inferAssert))
  (start $~start)
- (func $infer-generic/inferCompatible<f64> (type $f64_f64_=>_i32) (param $a f64) (param $b f64) (result i32)
-  local.get $a
-  local.get $b
-  f64.eq
- )
  (func $start:infer-generic~anonymous|0 (type $i32_f32_i32_i32_=>_i32) (param $acc i32) (param $cur f32) (param $$2 i32) (param $$3 i32) (result i32)
   local.get $acc
   if (result i32)
@@ -121,9 +115,6 @@
    end
   end
   local.get $acc
- )
- (func $infer-generic/inferDefault<i32> (type $i32_=>_i32) (param $a i32) (result i32)
-  local.get $a
  )
  (func $infer-generic/Ref#set:x (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
@@ -2119,43 +2110,35 @@
   memory.fill $0
   local.get $ptr
  )
- (func $infer-generic/inferDefault<infer-generic/Ref> (type $i32_=>_i32) (param $a i32) (result i32)
-  local.get $a
- )
- (func $infer-generic/inferPlain<f32> (type $f32_=>_f32) (param $arr f32) (result f32)
-  local.get $arr
- )
  (func $infer-generic/test1 (type $f32_=>_f32) (param $arr f32) (result f32)
+  (local $arr|1 f32)
   local.get $arr
-  call $infer-generic/inferPlain<f32>
- )
- (func $infer-generic/inferEncapsulatedClass<f32> (type $i32_=>_i32) (param $arr i32) (result i32)
-  local.get $arr
+  local.set $arr|1
+  local.get $arr|1
  )
  (func $infer-generic/test2 (type $i32_=>_i32) (param $arr i32) (result i32)
+  (local $arr|1 i32)
   local.get $arr
-  call $infer-generic/inferEncapsulatedClass<f32>
- )
- (func $infer-generic/inferEncapsulatedFunctionNull<f64> (type $i32_=>_i32) (param $fn i32) (result i32)
-  local.get $fn
+  local.set $arr|1
+  local.get $arr|1
  )
  (func $infer-generic/test3 (type $i32_=>_i32) (param $fn i32) (result i32)
+  (local $fn|1 i32)
   local.get $fn
-  call $infer-generic/inferEncapsulatedFunctionNull<f64>
- )
- (func $infer-generic/inferEncapsulatedFunction<f32,f64> (type $i32_=>_i32) (param $fn i32) (result i32)
-  local.get $fn
+  local.set $fn|1
+  local.get $fn|1
  )
  (func $infer-generic/test4 (type $i32_=>_i32) (param $fn i32) (result i32)
+  (local $fn|1 i32)
   local.get $fn
-  call $infer-generic/inferEncapsulatedFunction<f32,f64>
- )
- (func $infer-generic/inferEncapsulatedFunctionMixed<f32,f64> (type $i32_=>_i32) (param $fn i32) (result i32)
-  local.get $fn
+  local.set $fn|1
+  local.get $fn|1
  )
  (func $infer-generic/test5 (type $i32_=>_i32) (param $fn i32) (result i32)
+  (local $fn|1 i32)
   local.get $fn
-  call $infer-generic/inferEncapsulatedFunctionMixed<f32,f64>
+  local.set $fn|1
+  local.get $fn|1
  )
  (func $infer-generic/inferAssert (type $i32_=>_none) (param $v i32)
   (local $1 i32)
@@ -2321,12 +2304,16 @@
   end
  )
  (func $start:infer-generic (type $none_=>_none)
-  (local $0 i32)
-  (local $1 i32)
+  (local $0 f64)
+  (local $1 f64)
   (local $2 i32)
   (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 16
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
@@ -2334,38 +2321,39 @@
   i64.const 0
   i64.store $0
   global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store $0 offset=8
+  f64.const 1
+  local.set $0
+  f64.const 1
+  local.set $1
+  local.get $0
+  local.get $1
+  f64.eq
   i32.const 0
-  i32.store $0 offset=8
-  f64.const 1
-  f64.const 1
-  call $infer-generic/inferCompatible<f64>
-  i32.eqz
-  if
-   unreachable
-  end
+  i32.ne
+  drop
   global.get $infer-generic/arr
-  local.set $3
+  local.set $7
   global.get $~lib/memory/__stack_pointer
-  local.get $3
+  local.get $7
   i32.store $0
-  local.get $3
+  local.get $7
   i32.const 112
-  local.set $3
+  local.set $7
   global.get $~lib/memory/__stack_pointer
-  local.get $3
+  local.get $7
   i32.store $0 offset=4
-  local.get $3
+  local.get $7
   i32.const 0
   call $~lib/array/Array<f32>#reduce<bool>
   drop
   i32.const 1
-  call $infer-generic/inferDefault<i32>
+  local.set $4
+  local.get $4
   i32.const 1
   i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
+  drop
   memory.size $0
   i32.const 16
   i32.shl
@@ -2384,20 +2372,18 @@
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/fromSpace
   global.get $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $infer-generic/Ref#constructor
-  local.tee $2
+  local.tee $5
   i32.store $0 offset=8
-  local.get $2
+  local.get $5
   i32.const 2
   call $infer-generic/Ref#set:x
-  local.get $2
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store $0
-  local.get $3
-  call $infer-generic/inferDefault<infer-generic/Ref>
+  local.get $5
+  local.tee $6
+  i32.store $0 offset=12
+  local.get $6
   drop
   i32.const 1
   i32.eqz
@@ -2405,7 +2391,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 16
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

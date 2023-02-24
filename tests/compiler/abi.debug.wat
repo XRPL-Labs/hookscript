@@ -18,16 +18,13 @@
  (export "exportedInternal" (func $abi/exportedInternal))
  (export "memory" (memory $0))
  (start $~start)
- (func $abi/internal (type $none_=>_i32) (result i32)
-  i32.const 128
- )
  (func $start:abi (type $none_=>_none)
   (local $x i32)
   (local $x|1 i32)
   (local $x|2 i32)
   (local $b i32)
   (local $x|4 i32)
-  call $abi/internal
+  i32.const 128
   drop
   i32.const 0
   i32.eqz
@@ -141,7 +138,7 @@
   call $abi/exported
  )
  (func $abi/exportedInternal (type $none_=>_i32) (result i32)
-  call $abi/internal
+  i32.const 128
   i32.extend8_s
  )
  (func $~start (type $none_=>_none)

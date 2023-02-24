@@ -393,7 +393,8 @@ export async function main(argv, options) {
   shrinkLevel = Math.min(Math.max(shrinkLevel, 0), 2);
   assemblyscript.setOptimizeLevelHints(compilerOptions, optimizeLevel, shrinkLevel);
   if (opts.topLevelToHook) assemblyscript.setOption(compilerOptions, "topLevelToHook", opts.topLevelToHook);
-
+  if (opts.noInlineLocals) assemblyscript.setOption(compilerOptions, "inlineLocals", !opts.noInlineLocals);
+  
   // Initialize the program
   program = assemblyscript.newProgram(compilerOptions);
 

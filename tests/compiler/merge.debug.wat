@@ -26,12 +26,6 @@
  (func $merge/typeNamespace.test (type $none_=>_none)
   nop
  )
- (func $merge/functionType (type $none_=>_none)
-  nop
- )
- (func $merge/typeFunction (type $none_=>_none)
-  nop
- )
  (func $merge/classNamespace.test1 (type $none_=>_none)
   nop
  )
@@ -44,16 +38,10 @@
  (func $merge/namespaceClass.test2 (type $none_=>_none)
   nop
  )
- (func $merge/functionNamespace (type $none_=>_none)
-  nop
- )
  (func $merge/functionNamespace.test (type $none_=>_none)
   nop
  )
  (func $merge/namespaceFunction.test (type $none_=>_none)
-  nop
- )
- (func $merge/namespaceFunction (type $none_=>_none)
   nop
  )
  (func $merge/enumNamespace.test (type $none_=>_none)
@@ -75,16 +63,12 @@
   drop
   call $merge/namespaceType.test
   call $merge/typeNamespace.test
-  call $merge/functionType
-  call $merge/typeFunction
   call $merge/classNamespace.test1
   call $merge/classNamespace.test2
   call $merge/namespaceClass.test1
   call $merge/namespaceClass.test2
-  call $merge/functionNamespace
   call $merge/functionNamespace.test
   call $merge/namespaceFunction.test
-  call $merge/namespaceFunction
   global.get $merge/enumNamespace.val
   drop
   call $merge/enumNamespace.test

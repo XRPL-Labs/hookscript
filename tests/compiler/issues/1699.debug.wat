@@ -3,8 +3,8 @@
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
- (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
+ (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
@@ -2309,26 +2309,6 @@
   local.get $this
   i32.load $0 offset=12
  )
- (func $start:issues/1699 (type $none_=>_none)
-  memory.size $0
-  i32.const 16
-  i32.shl
-  global.get $~lib/memory/__heap_base
-  i32.sub
-  i32.const 1
-  i32.shr_u
-  global.set $~lib/rt/itcms/threshold
-  i32.const 112
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/pinSpace
-  i32.const 144
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/toSpace
-  i32.const 224
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/fromSpace
-  call $issues/1699/test
- )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
   i32.const 192
@@ -2447,13 +2427,13 @@
    unreachable
   end
  )
- (func $issues/1699/test (type $none_=>_none)
-  (local $testinstances i32)
+ (func $start:issues/1699 (type $none_=>_none)
+  (local $0 i32)
   (local $1 i32)
   (local $2 i32)
-  (local $n i32)
+  (local $3 i32)
   (local $4 i32)
-  (local $testinstance i32)
+  (local $5 i32)
   (local $6 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 16
@@ -2466,15 +2446,32 @@
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store $0 offset=8
+  memory.size $0
+  i32.const 16
+  i32.shl
+  global.get $~lib/memory/__heap_base
+  i32.sub
+  i32.const 1
+  i32.shr_u
+  global.set $~lib/rt/itcms/threshold
+  i32.const 112
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/pinSpace
+  i32.const 144
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/toSpace
+  i32.const 224
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/fromSpace
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   i32.const 3
   call $~lib/array/Array<issues/1699/MultiAssignmentTest>#constructor
-  local.tee $testinstances
+  local.tee $0
   i32.store $0
-  local.get $testinstances
+  local.get $0
   i32.const 0
-  local.get $testinstances
+  local.get $0
   local.tee $1
   i32.const 1
   local.tee $2
@@ -2496,10 +2493,10 @@
   local.get $6
   call $~lib/array/Array<issues/1699/MultiAssignmentTest>#__set
   i32.const 0
-  local.set $n
+  local.set $3
   loop $for-loop|0
-   local.get $n
-   local.get $testinstances
+   local.get $3
+   local.get $0
    call $~lib/array/Array<issues/1699/MultiAssignmentTest>#get:length
    i32.lt_s
    local.set $4
@@ -2508,28 +2505,28 @@
     global.get $~lib/memory/__stack_pointer
     i32.const 0
     call $issues/1699/MultiAssignmentTest#constructor
-    local.tee $testinstance
+    local.tee $5
     i32.store $0 offset=12
-    local.get $n
+    local.get $3
     i32.const 1
     i32.gt_s
     if
-     local.get $testinstances
-     local.get $n
-     local.get $testinstance
+     local.get $0
+     local.get $3
+     local.get $5
      call $~lib/array/Array<issues/1699/MultiAssignmentTest>#__set
     end
-    local.get $n
+    local.get $3
     i32.const 1
     i32.add
-    local.set $n
+    local.set $3
     br $for-loop|0
    end
   end
-  local.get $testinstances
+  local.get $0
   i32.const 0
   call $~lib/array/Array<issues/1699/MultiAssignmentTest>#__get
-  local.get $testinstances
+  local.get $0
   i32.const 1
   call $~lib/array/Array<issues/1699/MultiAssignmentTest>#__get
   i32.eq
@@ -2537,10 +2534,10 @@
   if
    unreachable
   end
-  local.get $testinstances
+  local.get $0
   i32.const 2
   call $~lib/array/Array<issues/1699/MultiAssignmentTest>#__get
-  local.get $testinstances
+  local.get $0
   i32.const 1
   call $~lib/array/Array<issues/1699/MultiAssignmentTest>#__get
   i32.ne

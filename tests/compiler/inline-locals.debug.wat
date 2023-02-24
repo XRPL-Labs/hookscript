@@ -1,28 +1,20 @@
 (module
- (type $none_=>_none (func_subtype func))
+ (type $i32_=>_i64 (func_subtype (param i32) (result i64) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
- (global $void/u8Val1 (mut i32) (i32.const 1))
- (global $void/u8Val2 (mut i32) (i32.const 255))
  (global $~lib/memory/__data_end i32 (i32.const 8))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32776))
  (global $~lib/memory/__heap_base i32 (i32.const 32776))
  (memory $0 0)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "hook" (func $inline-locals/hook))
  (export "memory" (memory $0))
- (start $~start)
- (func $start:void (type $none_=>_none)
-  i32.const 1
-  drop
-  i32.const 2
-  drop
-  global.get $void/u8Val1
-  global.get $void/u8Val2
-  i32.add
-  drop
- )
- (func $~start (type $none_=>_none)
-  call $start:void
+ (func $inline-locals/hook (type $i32_=>_i64) (param $reserved i32) (result i64)
+  (local $prop i64)
+  i64.const 0
+  local.set $prop
+  local.get $prop
+  return
  )
 )

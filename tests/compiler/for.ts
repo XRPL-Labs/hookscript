@@ -1,8 +1,7 @@
 var ran: bool;
 
 function testInitExpression(): void {
-  var i: i32;
-  for (i = 0; i < 10; ++i) {
+  for (var i = 0; i < 10; ++i) {
     ;
   }
   assert(i == 10);
@@ -76,7 +75,8 @@ testAlwaysFalse();
 assert(ran);
 
 function testAlwaysContinues(): void {
-  for (var k = 0; k < 10; ++k) continue;
+  var k: i32;
+  for (k = 0; k < 10; ++k) continue;
   assert(k == 10);
   ran = true;
 }
@@ -85,7 +85,8 @@ testAlwaysContinues();
 assert(ran);
 
 function testAlwaysBreaks(): void {
-  for (var k = 0; k < 10; ++k) break;
+  var k: i32;
+  for (k = 0; k < 10; ++k) break;
   assert(k == 0);
   ran = true;
 }

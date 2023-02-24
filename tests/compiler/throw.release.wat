@@ -879,7 +879,7 @@
   (local $0 i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 32
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -890,11 +890,9 @@
   end
   global.get $~lib/memory/__stack_pointer
   local.tee $1
-  i64.const 0
-  i64.store $0
-  local.get $1
   i32.const 0
-  i32.store $0 offset=8
+  i32.const 32
+  memory.fill $0
   local.get $1
   i32.const 1056
   i32.store $0
@@ -902,27 +900,8 @@
   i32.const 1152
   i32.store $0 offset=8
   local.get $1
-  i32.const 12
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 20
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1484
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i32.const 0
-  i32.const 20
-  memory.fill $0
-  local.get $1
   i32.const 1056
-  i32.store $0
+  i32.store $0 offset=12
   loop $while-continue|0
    local.get $0
    i32.const 1
@@ -933,30 +912,25 @@
    if
     global.get $~lib/memory/__stack_pointer
     i32.const 1088
-    i32.store $0 offset=4
+    i32.store $0 offset=16
     local.get $0
     i32.const 10
     i32.gt_s
     if
      global.get $~lib/memory/__stack_pointer
      i32.const 1152
-     i32.store $0 offset=8
+     i32.store $0 offset=20
      unreachable
     end
     global.get $~lib/memory/__stack_pointer
     i32.const 1232
-    i32.store $0 offset=12
+    i32.store $0 offset=24
     br $while-continue|0
    end
   end
   global.get $~lib/memory/__stack_pointer
-  local.tee $0
   i32.const 1264
-  i32.store $0 offset=16
-  local.get $0
-  i32.const 20
-  i32.add
-  global.set $~lib/memory/__stack_pointer
+  i32.store $0 offset=28
   i32.const 1284
   i32.const 1280
   i32.store $0
@@ -987,11 +961,11 @@
   i32.const 0
   i32.gt_s
   if
-   loop $while-continue|08
+   loop $while-continue|01
     global.get $~lib/rt/itcms/state
     if
      call $~lib/rt/itcms/step
-     br $while-continue|08
+     br $while-continue|01
     end
    end
   end
@@ -1003,6 +977,10 @@
     br $while-continue|1
    end
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 32
+  i32.add
+  global.set $~lib/memory/__stack_pointer
  )
  (func $byn-split-outlined-A$~lib/rt/itcms/__visit (type $i32_=>_none) (param $0 i32)
   (local $1 i32)

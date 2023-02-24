@@ -1247,66 +1247,25 @@
   memory.fill $0
   local.get $1
  )
- (func $~lib/rt/__visit_members (type $i32_=>_none) (param $0 i32)
-  block $invalid
-   block $call-super/I
-    block $call-super/J
-     block $call-super/G
-      block $call-super/H
-       block $call-super/E
-        block $call-super/F
-         block $call-super/C
-          block $call-super/D
-           block $call-super/A
-            block $call-super/B
-             block $~lib/arraybuffer/ArrayBufferView
-              block $~lib/string/String
-               block $~lib/arraybuffer/ArrayBuffer
-                local.get $0
-                i32.const 8
-                i32.sub
-                i32.load $0
-                br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $call-super/B $call-super/A $call-super/D $call-super/C $call-super/F $call-super/E $call-super/H $call-super/G $call-super/J $call-super/I $invalid
-               end
-               return
-              end
-              return
-             end
-             local.get $0
-             i32.load $0
-             local.tee $0
-             if
-              local.get $0
-              call $byn-split-outlined-A$~lib/rt/itcms/__visit
-             end
-             return
-            end
-            return
-           end
-           return
-          end
-          return
-         end
-         return
-        end
-        return
-       end
-       return
-      end
-      return
-     end
-     return
-    end
-    return
-   end
-   return
-  end
-  unreachable
- )
- (func $~start (type $none_=>_none)
+ (func $start:call-super (type $none_=>_none)
   (local $0 i32)
   (local $1 i32)
   (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1340
+  i32.lt_s
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  i32.const 0
+  i32.const 20
+  memory.fill $0
   memory.size $0
   i32.const 16
   i32.shl
@@ -1339,20 +1298,6 @@
   i32.store $0
   i32.const 1200
   global.set $~lib/rt/itcms/fromSpace
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1340
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i32.const 0
-  i32.store $0
   local.get $1
   i32.const 4
   i32.sub
@@ -1453,24 +1398,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1340
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
   local.tee $1
-  i32.const 0
-  i32.store $0
-  local.get $1
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
@@ -1547,7 +1475,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
   local.get $0
-  i32.store $0
+  i32.store $0 offset=4
   local.get $0
   i32.load $0
   i32.const 1
@@ -1563,24 +1491,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1340
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
   local.tee $1
-  i32.const 0
-  i32.store $0
-  local.get $1
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
@@ -1650,7 +1561,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
   local.get $0
-  i32.store $0
+  i32.store $0 offset=8
   local.get $0
   i32.load $0
   i32.const 1
@@ -1666,24 +1577,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1340
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
   local.tee $1
-  i32.const 0
-  i32.store $0
-  local.get $1
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
@@ -1746,7 +1640,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
   local.get $0
-  i32.store $0
+  i32.store $0 offset=12
   local.get $0
   i32.load $0
   i32.const 1
@@ -1762,24 +1656,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1340
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
   local.tee $1
-  i32.const 0
-  i32.store $0
-  local.get $1
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
@@ -1842,7 +1719,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
   local.get $0
-  i32.store $0
+  i32.store $0 offset=16
   local.get $0
   i32.load $0
   i32.const 1
@@ -1858,9 +1735,68 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 20
   i32.add
   global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/rt/__visit_members (type $i32_=>_none) (param $0 i32)
+  block $invalid
+   block $call-super/I
+    block $call-super/J
+     block $call-super/G
+      block $call-super/H
+       block $call-super/E
+        block $call-super/F
+         block $call-super/C
+          block $call-super/D
+           block $call-super/A
+            block $call-super/B
+             block $~lib/arraybuffer/ArrayBufferView
+              block $~lib/string/String
+               block $~lib/arraybuffer/ArrayBuffer
+                local.get $0
+                i32.const 8
+                i32.sub
+                i32.load $0
+                br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $call-super/B $call-super/A $call-super/D $call-super/C $call-super/F $call-super/E $call-super/H $call-super/G $call-super/J $call-super/I $invalid
+               end
+               return
+              end
+              return
+             end
+             local.get $0
+             i32.load $0
+             local.tee $0
+             if
+              local.get $0
+              call $byn-split-outlined-A$~lib/rt/itcms/__visit
+             end
+             return
+            end
+            return
+           end
+           return
+          end
+          return
+         end
+         return
+        end
+        return
+       end
+       return
+      end
+      return
+     end
+     return
+    end
+    return
+   end
+   return
+  end
+  unreachable
+ )
+ (func $~start (type $none_=>_none)
+  call $start:call-super
  )
  (func $byn-split-outlined-A$~lib/rt/itcms/__visit (type $i32_=>_none) (param $0 i32)
   (local $1 i32)

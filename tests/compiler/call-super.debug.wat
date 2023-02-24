@@ -1,8 +1,8 @@
 (module
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
- (type $none_=>_none (func_subtype func))
  (type $i32_=>_none (func_subtype (param i32) func))
+ (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
@@ -2038,16 +2038,78 @@
   local.get $1
   i32.store $0 offset=4
  )
- (func $call-super/test1 (type $none_=>_none)
+ (func $call-super/C#set:a (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store $0
+ )
+ (func $call-super/D#set:b (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store $0 offset=4
+ )
+ (func $call-super/E#set:a (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store $0
+ )
+ (func $call-super/F#set:b (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store $0 offset=4
+ )
+ (func $call-super/G#set:a (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store $0
+ )
+ (func $call-super/H#set:b (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store $0 offset=4
+ )
+ (func $call-super/I#set:a (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store $0
+ )
+ (func $call-super/J#set:b (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store $0 offset=4
+ )
+ (func $start:call-super (type $none_=>_none)
   (local $b i32)
+  (local $d i32)
+  (local $f i32)
+  (local $h i32)
+  (local $h|4 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 20
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.store $0
+  i32.const 20
+  memory.fill $0
+  memory.size $0
+  i32.const 16
+  i32.shl
+  global.get $~lib/memory/__heap_base
+  i32.sub
+  i32.const 1
+  i32.shr_u
+  global.set $~lib/rt/itcms/threshold
+  i32.const 64
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/pinSpace
+  i32.const 96
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/toSpace
+  i32.const 176
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/fromSpace
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $call-super/B#constructor
@@ -2070,35 +2132,10 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $call-super/C#set:a (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0
- )
- (func $call-super/D#set:b (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
- )
- (func $call-super/test2 (type $none_=>_none)
-  (local $d i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $call-super/D#constructor
   local.tee $d
-  i32.store $0
+  i32.store $0 offset=4
   local.get $d
   i32.load $0
   i32.const 1
@@ -2115,36 +2152,11 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $call-super/E#set:a (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0
- )
- (func $call-super/F#set:b (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
- )
- (func $call-super/test3 (type $none_=>_none)
-  (local $f i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $call-super/F#constructor
   local.tee $f
-  i32.store $0
+  i32.store $0 offset=8
   local.get $f
   i32.load $0
   i32.const 1
@@ -2161,36 +2173,11 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $call-super/G#set:a (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0
- )
- (func $call-super/H#set:b (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
- )
- (func $call-super/test4 (type $none_=>_none)
-  (local $h i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $call-super/H#constructor
   local.tee $h
-  i32.store $0
+  i32.store $0 offset=12
   local.get $h
   i32.load $0
   i32.const 1
@@ -2207,37 +2194,12 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $call-super/I#set:a (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0
- )
- (func $call-super/J#set:b (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
- )
- (func $call-super/test5 (type $none_=>_none)
-  (local $h i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $call-super/J#constructor
-  local.tee $h
-  i32.store $0
-  local.get $h
+  local.tee $h|4
+  i32.store $0 offset=16
+  local.get $h|4
   i32.load $0
   i32.const 1
   i32.eq
@@ -2245,7 +2207,7 @@
   if
    unreachable
   end
-  local.get $h
+  local.get $h|4
   i32.load $0 offset=4
   i32.const 2
   i32.eq
@@ -2254,33 +2216,9 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 20
   i32.add
   global.set $~lib/memory/__stack_pointer
- )
- (func $start:call-super (type $none_=>_none)
-  memory.size $0
-  i32.const 16
-  i32.shl
-  global.get $~lib/memory/__heap_base
-  i32.sub
-  i32.const 1
-  i32.shr_u
-  global.set $~lib/rt/itcms/threshold
-  i32.const 64
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/pinSpace
-  i32.const 96
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/toSpace
-  i32.const 176
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/fromSpace
-  call $call-super/test1
-  call $call-super/test2
-  call $call-super/test3
-  call $call-super/test4
-  call $call-super/test5
  )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)

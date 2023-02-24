@@ -1651,7 +1651,7 @@ export class Source extends Node {
 
   /** Checks if this source represents native code. */
   get isNative(): bool {
-    return this.internalPath == LIBRARY_SUBST;
+    return this.internalPath.startsWith(LIBRARY_SUBST);
   }
 
   /** Checks if this source is part of the (standard) library. */

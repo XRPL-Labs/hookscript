@@ -1,7 +1,6 @@
 (module
  (type $i32_=>_none (func_subtype (param i32) func))
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
- (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
@@ -175,27 +174,28 @@
    end
   end
  )
- (func $possibly-null/requireNonNull (type $i32_=>_i32) (param $a i32) (result i32)
-  local.get $a
- )
  (func $possibly-null/testLogicalAnd (type $i32_=>_none) (param $a i32)
+  (local $a|1 i32)
   local.get $a
   if (result i32)
    local.get $a
-   call $possibly-null/requireNonNull
+   local.set $a|1
+   local.get $a|1
   else
    i32.const 0
   end
   drop
  )
  (func $possibly-null/testLogicalOr (type $i32_=>_none) (param $a i32)
+  (local $a|1 i32)
   local.get $a
   i32.eqz
   if (result i32)
    i32.const 1
   else
    local.get $a
-   call $possibly-null/requireNonNull
+   local.set $a|1
+   local.get $a|1
    i32.const 0
    i32.ne
   end

@@ -16,7 +16,7 @@
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
  (start $~start)
- (func $inlining-blocklocals/test (type $none_=>_none)
+ (func $start:inlining-blocklocals (type $none_=>_none)
   (local $a i32)
   (local $1 i32)
   (local $2 i32)
@@ -78,9 +78,6 @@
   if
    unreachable
   end
- )
- (func $start:inlining-blocklocals (type $none_=>_none)
-  call $inlining-blocklocals/test
  )
  (func $~start (type $none_=>_none)
   call $start:inlining-blocklocals

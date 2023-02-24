@@ -1,14 +1,13 @@
 (module
- (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
+ (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_v128 (func_subtype (param i32 i32 i32) (result v128) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
- (type $none_=>_v128 (func_subtype (result v128) func))
  (type $v128_=>_v128 (func_subtype (param v128) (result v128) func))
  (type $i32_i32_i32_i32_i32_i32_i32_i32_i32_i32_i32_i32_i32_i32_i32_i32_=>_v128 (func_subtype (param i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32) (result v128) func))
  (type $i32_i32_i32_i32_i32_i32_i32_i32_=>_v128 (func_subtype (param i32 i32 i32 i32 i32 i32 i32 i32) (result v128) func))
@@ -1432,7 +1431,7 @@
   call $~lib/rt/tlsf/checkUsedBlock
   call $~lib/rt/tlsf/freeBlock
  )
- (func $simd/test_v128 (type $none_=>_none)
+ (func $start:simd (type $none_=>_none)
   (local $ptr i32)
   (local $ptr|1 i32)
   (local $ptr|2 i32)
@@ -1448,6 +1447,70 @@
   (local $v|12 v128)
   (local $v|13 v128)
   (local $v|14 v128)
+  (local $a v128)
+  (local $b v128)
+  (local $c v128)
+  (local $one v128)
+  (local $negOne v128)
+  (local $only1st v128)
+  (local $excl1st v128)
+  (local $a|22 v128)
+  (local $b|23 v128)
+  (local $c|24 v128)
+  (local $a|25 v128)
+  (local $b|26 v128)
+  (local $c|27 v128)
+  (local $one|28 v128)
+  (local $negOne|29 v128)
+  (local $only1st|30 v128)
+  (local $excl1st|31 v128)
+  (local $ptr|32 i32)
+  (local $a|33 v128)
+  (local $b|34 v128)
+  (local $c|35 v128)
+  (local $one|36 v128)
+  (local $negOne|37 v128)
+  (local $only1st|38 v128)
+  (local $excl1st|39 v128)
+  (local $ptr|40 i32)
+  (local $a|41 v128)
+  (local $b|42 v128)
+  (local $c|43 v128)
+  (local $ptr|44 i32)
+  (local $a|45 v128)
+  (local $b|46 v128)
+  (local $c|47 v128)
+  (local $d v128)
+  (local $one|49 v128)
+  (local $negOne|50 v128)
+  (local $only1st|51 v128)
+  (local $excl1st|52 v128)
+  (local $v|53 v128)
+  (local $v|54 v128)
+  (local $a|55 v128)
+  (local $b|56 v128)
+  (local $c|57 v128)
+  (local $d|58 v128)
+  (local $one|59 v128)
+  (local $negOne|60 v128)
+  (local $only1st|61 v128)
+  (local $excl1st|62 v128)
+  (local $v|63 v128)
+  (local $v|64 v128)
+  (local $one|65 v128)
+  i32.const 1
+  i32x4.splat
+  global.set $simd/vec
+  i32.const 1
+  drop
+  i32.const 0
+  i32.eqz
+  drop
+  i32.const 1
+  drop
+  i32.const 0
+  i32.eqz
+  drop
   v128.const i32x4 0x00000001 0x00000000 0x00000000 0x00000000
   v128.any_true
   i32.const 0
@@ -1939,18 +2002,6 @@
   i32.const 1
   i32.eq
   drop
- )
- (func $simd/test_i8x16 (type $none_=>_none)
-  (local $a v128)
-  (local $b v128)
-  (local $c v128)
-  (local $one v128)
-  (local $negOne v128)
-  (local $only1st v128)
-  (local $excl1st v128)
-  (local $a|7 v128)
-  (local $b|8 v128)
-  (local $c|9 v128)
   v128.const i32x4 0x04030201 0x08070605 0x0c0b0a09 0x7f0f0e0d
   local.set $a
   local.get $a
@@ -2362,11 +2413,11 @@
   i32.ne
   drop
   v128.const i32x4 0x03020100 0x07060504 0x0b0a0908 0x0f0e0d0c
-  local.set $a|7
+  local.set $a|22
   v128.const i32x4 0x13121110 0x17161514 0x1b1a1918 0x1f1e1d1c
-  local.set $b|8
-  local.get $a|7
-  local.get $b|8
+  local.set $b|23
+  local.get $a|22
+  local.get $b|23
   i8x16.shuffle 0 17 2 19 4 21 6 23 8 25 10 27 12 29 14 31
   v128.const i32x4 0x13021100 0x17061504 0x1b0a1908 0x1f0e1d0c
   i8x16.eq
@@ -2378,9 +2429,9 @@
    unreachable
   end
   v128.const i32x4 0x0c0d0e10 0x08090a0b 0x04050607 0x00010203
-  local.set $c|9
-  local.get $a|7
-  local.get $c|9
+  local.set $c|24
+  local.get $a|22
+  local.get $c|24
   i8x16.swizzle
   v128.const i32x4 0x0c0d0e00 0x08090a0b 0x04050607 0x00010203
   i8x16.eq
@@ -2391,7 +2442,7 @@
   if
    unreachable
   end
-  local.get $a|7
+  local.get $a|22
   i8x16.popcnt
   v128.const i32x4 0x02010100 0x03020201 0x03020201 0x04030302
   i8x16.eq
@@ -2444,19 +2495,9 @@
   i32.const 1
   i32.eq
   drop
- )
- (func $simd/test_i16x8 (type $none_=>_none)
-  (local $a v128)
-  (local $b v128)
-  (local $c v128)
-  (local $one v128)
-  (local $negOne v128)
-  (local $only1st v128)
-  (local $excl1st v128)
-  (local $ptr i32)
   v128.const i32x4 0x00020001 0x00040003 0x00060005 0x7fff0007
-  local.set $a
-  local.get $a
+  local.set $a|25
+  local.get $a|25
   v128.const i32x4 0x00020001 0x00040003 0x00060005 0x7fff0007
   i8x16.eq
   i8x16.all_true
@@ -2468,8 +2509,8 @@
   end
   i32.const 1
   i16x8.splat
-  local.set $b
-  local.get $b
+  local.set $b|26
+  local.get $b|26
   v128.const i32x4 0x00010001 0x00010001 0x00010001 0x00010001
   i8x16.eq
   i8x16.all_true
@@ -2479,11 +2520,11 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|25
+  local.get $b|26
   i16x8.add
-  local.set $c
-  local.get $c
+  local.set $c|27
+  local.get $c|27
   v128.const i32x4 0x00030002 0x00050004 0x00070006 0x80000008
   i8x16.eq
   i8x16.all_true
@@ -2493,10 +2534,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|27
+  local.get $b|26
   i16x8.sub
-  local.get $a
+  local.get $a|25
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2505,10 +2546,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|27
+  local.get $b|26
   i16x8.mul
-  local.get $c
+  local.get $c|27
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2562,7 +2603,7 @@
   i32.const 0
   i32.ne
   drop
-  local.get $a
+  local.get $a|25
   i16x8.neg
   v128.const i32x4 0xfffeffff 0xfffcfffd 0xfffafffb 0x8001fff9
   i8x16.eq
@@ -2573,7 +2614,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|27
   i16x8.extract_lane_s 0
   i32.extend16_s
   i32.const 2
@@ -2582,7 +2623,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|27
   i16x8.extract_lane_s 7
   i32.extend16_s
   i32.const -32768
@@ -2591,7 +2632,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|27
   i16x8.extract_lane_u 7
   i32.const 65535
   i32.and
@@ -2601,7 +2642,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|27
   i32.const 9
   i16x8.replace_lane 7
   v128.const i32x4 0x00030002 0x00050004 0x00070006 0x00090008
@@ -2613,8 +2654,8 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|25
+  local.get $b|26
   i8x16.shuffle 0 1 2 3 4 5 6 7 24 25 26 27 28 29 30 31
   v128.const i32x4 0x00020001 0x00040003 0x00010001 0x00010001
   i8x16.eq
@@ -2721,21 +2762,21 @@
   i16x8.splat
   i32.const 1
   i16x8.replace_lane 0
-  local.set $one
+  local.set $one|28
   i32.const 0
   i16x8.splat
   i32.const -1
   i16x8.replace_lane 0
-  local.set $negOne
-  local.get $negOne
-  local.set $only1st
-  local.get $negOne
+  local.set $negOne|29
+  local.get $negOne|29
+  local.set $only1st|30
+  local.get $negOne|29
   v128.not
-  local.set $excl1st
-  local.get $negOne
-  local.get $one
+  local.set $excl1st|31
+  local.get $negOne|29
+  local.get $one|28
   i16x8.eq
-  local.get $excl1st
+  local.get $excl1st|31
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2744,10 +2785,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|29
+  local.get $one|28
   i16x8.ne
-  local.get $only1st
+  local.get $only1st|30
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2756,10 +2797,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|29
+  local.get $one|28
   i16x8.lt_s
-  local.get $only1st
+  local.get $only1st|30
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2768,10 +2809,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|28
+  local.get $negOne|29
   i16x8.lt_u
-  local.get $only1st
+  local.get $only1st|30
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2780,10 +2821,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|28
+  local.get $negOne|29
   i16x8.le_s
-  local.get $excl1st
+  local.get $excl1st|31
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2792,10 +2833,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|29
+  local.get $one|28
   i16x8.le_u
-  local.get $excl1st
+  local.get $excl1st|31
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2804,10 +2845,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|28
+  local.get $negOne|29
   i16x8.gt_s
-  local.get $only1st
+  local.get $only1st|30
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2816,10 +2857,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|29
+  local.get $one|28
   i16x8.gt_u
-  local.get $only1st
+  local.get $only1st|30
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2828,10 +2869,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|29
+  local.get $one|28
   i16x8.ge_s
-  local.get $excl1st
+  local.get $excl1st|31
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2840,10 +2881,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|28
+  local.get $negOne|29
   i16x8.ge_u
-  local.get $excl1st
+  local.get $excl1st|31
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -2924,11 +2965,11 @@
   i32.const 0
   i32.ne
   drop
-  local.get $a
-  local.get $b
+  local.get $a|25
+  local.get $b|26
   i8x16.shuffle 0 1 2 3 4 5 6 7 24 25 26 27 28 29 30 31
-  local.get $a
-  local.get $b
+  local.get $a|25
+  local.get $b|26
   i8x16.shuffle 0 1 2 3 4 5 6 7 24 25 26 27 28 29 30 31
   i8x16.eq
   i8x16.all_true
@@ -2938,11 +2979,11 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|25
+  local.get $b|26
   i8x16.swizzle
-  local.get $a
-  local.get $b
+  local.get $a|25
+  local.get $b|26
   i8x16.swizzle
   i8x16.eq
   i8x16.all_true
@@ -2954,32 +2995,32 @@
   end
   i32.const 16
   call $~lib/rt/tlsf/__alloc
-  local.set $ptr
-  local.get $ptr
+  local.set $ptr|32
+  local.get $ptr|32
   i32.const 1
   i32.store8 $0
-  local.get $ptr
+  local.get $ptr|32
   i32.const 2
   i32.store8 $0 offset=1
-  local.get $ptr
+  local.get $ptr|32
   i32.const 3
   i32.store8 $0 offset=2
-  local.get $ptr
+  local.get $ptr|32
   i32.const 4
   i32.store8 $0 offset=3
-  local.get $ptr
+  local.get $ptr|32
   i32.const 5
   i32.store8 $0 offset=4
-  local.get $ptr
+  local.get $ptr|32
   i32.const 6
   i32.store8 $0 offset=5
-  local.get $ptr
+  local.get $ptr|32
   i32.const 7
   i32.store8 $0 offset=6
-  local.get $ptr
+  local.get $ptr|32
   i32.const -1
   i32.store8 $0 offset=7
-  local.get $ptr
+  local.get $ptr|32
   v128.load8x8_s $0 align=1
   v128.const i32x4 0x00020001 0x00040003 0x00060005 0xffff0007
   i8x16.eq
@@ -2990,7 +3031,7 @@
   if
    unreachable
   end
-  local.get $ptr
+  local.get $ptr|32
   v128.load8x8_u $0 align=1
   v128.const i32x4 0x00020001 0x00040003 0x00060005 0x00ff0007
   i8x16.eq
@@ -3001,7 +3042,7 @@
   if
    unreachable
   end
-  local.get $ptr
+  local.get $ptr|32
   call $~lib/rt/tlsf/__free
   v128.const i32x4 0xc001ffff 0xffff7ffd 0xffff8000 0x8000bfff
   v128.const i32x4 0xc000ffff 0x80000001 0x00018000 0xfff6c000
@@ -3012,26 +3053,26 @@
   i32.const 0
   i32.ne
   drop
-  local.get $a
+  local.get $a|25
   i16x8.extadd_pairwise_i8x16_s
   drop
-  local.get $a
+  local.get $a|25
   i16x8.extadd_pairwise_i8x16_u
   drop
-  local.get $a
-  local.get $a
+  local.get $a|25
+  local.get $a|25
   i16x8.extmul_low_i8x16_s
   drop
-  local.get $a
-  local.get $a
+  local.get $a|25
+  local.get $a|25
   i16x8.extmul_low_i8x16_u
   drop
-  local.get $a
-  local.get $a
+  local.get $a|25
+  local.get $a|25
   i16x8.extmul_high_i8x16_s
   drop
-  local.get $a
-  local.get $a
+  local.get $a|25
+  local.get $a|25
   i16x8.extmul_high_i8x16_u
   drop
   v128.const i32x4 0x00010001 0x00010001 0x00010001 0x00010001
@@ -3076,19 +3117,9 @@
   i32.const 1
   i32.eq
   drop
- )
- (func $simd/test_i32x4 (type $none_=>_none)
-  (local $a v128)
-  (local $b v128)
-  (local $c v128)
-  (local $one v128)
-  (local $negOne v128)
-  (local $only1st v128)
-  (local $excl1st v128)
-  (local $ptr i32)
   v128.const i32x4 0x00000001 0x00000002 0x00000003 0x7fffffff
-  local.set $a
-  local.get $a
+  local.set $a|33
+  local.get $a|33
   v128.const i32x4 0x00000001 0x00000002 0x00000003 0x7fffffff
   i8x16.eq
   i8x16.all_true
@@ -3100,8 +3131,8 @@
   end
   i32.const 1
   i32x4.splat
-  local.set $b
-  local.get $b
+  local.set $b|34
+  local.get $b|34
   v128.const i32x4 0x00000001 0x00000001 0x00000001 0x00000001
   i8x16.eq
   i8x16.all_true
@@ -3111,11 +3142,11 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|33
+  local.get $b|34
   i32x4.add
-  local.set $c
-  local.get $c
+  local.set $c|35
+  local.get $c|35
   v128.const i32x4 0x00000002 0x00000003 0x00000004 0x80000000
   i8x16.eq
   i8x16.all_true
@@ -3125,10 +3156,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|35
+  local.get $b|34
   i32x4.sub
-  local.get $a
+  local.get $a|33
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3137,10 +3168,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|35
+  local.get $b|34
   i32x4.mul
-  local.get $c
+  local.get $c|35
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3194,7 +3225,7 @@
   i32.const 0
   i32.ne
   drop
-  local.get $a
+  local.get $a|33
   i32x4.neg
   v128.const i32x4 0xffffffff 0xfffffffe 0xfffffffd 0x80000001
   i8x16.eq
@@ -3205,7 +3236,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|35
   i32x4.extract_lane 0
   i32.const 2
   i32.eq
@@ -3213,7 +3244,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|35
   i32x4.extract_lane 3
   i32.const -2147483648
   i32.eq
@@ -3221,7 +3252,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|35
   i32.const 5
   i32x4.replace_lane 3
   v128.const i32x4 0x00000002 0x00000003 0x00000004 0x00000005
@@ -3233,8 +3264,8 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|33
+  local.get $b|34
   i8x16.shuffle 0 1 2 3 4 5 6 7 24 25 26 27 28 29 30 31
   v128.const i32x4 0x00000001 0x00000002 0x00000001 0x00000001
   i8x16.eq
@@ -3297,21 +3328,21 @@
   i32x4.splat
   i32.const 1
   i32x4.replace_lane 0
-  local.set $one
+  local.set $one|36
   i32.const 0
   i32x4.splat
   i32.const -1
   i32x4.replace_lane 0
-  local.set $negOne
-  local.get $negOne
-  local.set $only1st
-  local.get $negOne
+  local.set $negOne|37
+  local.get $negOne|37
+  local.set $only1st|38
+  local.get $negOne|37
   v128.not
-  local.set $excl1st
-  local.get $negOne
-  local.get $one
+  local.set $excl1st|39
+  local.get $negOne|37
+  local.get $one|36
   i32x4.eq
-  local.get $excl1st
+  local.get $excl1st|39
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3320,10 +3351,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|37
+  local.get $one|36
   i32x4.ne
-  local.get $only1st
+  local.get $only1st|38
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3332,10 +3363,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|37
+  local.get $one|36
   i32x4.lt_s
-  local.get $only1st
+  local.get $only1st|38
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3344,10 +3375,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|36
+  local.get $negOne|37
   i32x4.lt_u
-  local.get $only1st
+  local.get $only1st|38
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3356,10 +3387,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|36
+  local.get $negOne|37
   i32x4.le_s
-  local.get $excl1st
+  local.get $excl1st|39
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3368,10 +3399,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|37
+  local.get $one|36
   i32x4.le_u
-  local.get $excl1st
+  local.get $excl1st|39
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3380,10 +3411,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|36
+  local.get $negOne|37
   i32x4.gt_s
-  local.get $only1st
+  local.get $only1st|38
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3392,10 +3423,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|37
+  local.get $one|36
   i32x4.gt_u
-  local.get $only1st
+  local.get $only1st|38
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3404,10 +3435,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|37
+  local.get $one|36
   i32x4.ge_s
-  local.get $excl1st
+  local.get $excl1st|39
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3416,10 +3447,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|36
+  local.get $negOne|37
   i32x4.ge_u
-  local.get $excl1st
+  local.get $excl1st|39
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3496,11 +3527,11 @@
   i32.const 0
   i32.ne
   drop
-  local.get $a
-  local.get $b
+  local.get $a|33
+  local.get $b|34
   i8x16.shuffle 0 1 2 3 4 5 6 7 24 25 26 27 28 29 30 31
-  local.get $a
-  local.get $b
+  local.get $a|33
+  local.get $b|34
   i8x16.shuffle 0 1 2 3 4 5 6 7 24 25 26 27 28 29 30 31
   i8x16.eq
   i8x16.all_true
@@ -3512,20 +3543,20 @@
   end
   i32.const 16
   call $~lib/rt/tlsf/__alloc
-  local.set $ptr
-  local.get $ptr
+  local.set $ptr|40
+  local.get $ptr|40
   i32.const 1
   i32.store16 $0
-  local.get $ptr
+  local.get $ptr|40
   i32.const 2
   i32.store16 $0 offset=2
-  local.get $ptr
+  local.get $ptr|40
   i32.const 3
   i32.store16 $0 offset=4
-  local.get $ptr
+  local.get $ptr|40
   i32.const -1
   i32.store16 $0 offset=6
-  local.get $ptr
+  local.get $ptr|40
   v128.load16x4_s $0 align=2
   v128.const i32x4 0x00000001 0x00000002 0x00000003 0xffffffff
   i8x16.eq
@@ -3536,7 +3567,7 @@
   if
    unreachable
   end
-  local.get $ptr
+  local.get $ptr|40
   v128.load16x4_u $0 align=2
   v128.const i32x4 0x00000001 0x00000002 0x00000003 0x0000ffff
   i8x16.eq
@@ -3547,34 +3578,34 @@
   if
    unreachable
   end
-  local.get $ptr
+  local.get $ptr|40
   call $~lib/rt/tlsf/__free
-  local.get $a
+  local.get $a|33
   i32x4.extadd_pairwise_i16x8_s
   drop
-  local.get $a
+  local.get $a|33
   i32x4.extadd_pairwise_i16x8_u
   drop
-  local.get $a
+  local.get $a|33
   i32x4.trunc_sat_f64x2_s_zero
   drop
-  local.get $a
+  local.get $a|33
   i32x4.trunc_sat_f64x2_u_zero
   drop
-  local.get $a
-  local.get $a
+  local.get $a|33
+  local.get $a|33
   i32x4.extmul_low_i16x8_s
   drop
-  local.get $a
-  local.get $a
+  local.get $a|33
+  local.get $a|33
   i32x4.extmul_low_i16x8_u
   drop
-  local.get $a
-  local.get $a
+  local.get $a|33
+  local.get $a|33
   i32x4.extmul_high_i16x8_s
   drop
-  local.get $a
-  local.get $a
+  local.get $a|33
+  local.get $a|33
   i32x4.extmul_high_i16x8_u
   drop
   v128.const i32x4 0x00000001 0x00000001 0x00000001 0x00000001
@@ -3624,15 +3655,9 @@
   i32.const 1
   i32.eq
   drop
- )
- (func $simd/test_i64x2 (type $none_=>_none)
-  (local $a v128)
-  (local $b v128)
-  (local $c v128)
-  (local $ptr i32)
   v128.const i32x4 0x00000001 0x00000000 0xffffffff 0x7fffffff
-  local.set $a
-  local.get $a
+  local.set $a|41
+  local.get $a|41
   v128.const i32x4 0x00000001 0x00000000 0xffffffff 0x7fffffff
   i8x16.eq
   i8x16.all_true
@@ -3644,8 +3669,8 @@
   end
   i64.const 1
   i64x2.splat
-  local.set $b
-  local.get $b
+  local.set $b|42
+  local.get $b|42
   v128.const i32x4 0x00000001 0x00000000 0x00000001 0x00000000
   i8x16.eq
   i8x16.all_true
@@ -3655,11 +3680,11 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|41
+  local.get $b|42
   i64x2.add
-  local.set $c
-  local.get $c
+  local.set $c|43
+  local.get $c|43
   v128.const i32x4 0x00000002 0x00000000 0x00000000 0x80000000
   i8x16.eq
   i8x16.all_true
@@ -3669,10 +3694,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|43
+  local.get $b|42
   i64x2.sub
-  local.get $a
+  local.get $a|41
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3681,10 +3706,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|43
+  local.get $b|42
   i64x2.mul
-  local.get $c
+  local.get $c|43
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -3693,7 +3718,7 @@
   if
    unreachable
   end
-  local.get $a
+  local.get $a|41
   i64x2.neg
   v128.const i32x4 0xffffffff 0xffffffff 0x00000001 0x80000000
   i8x16.eq
@@ -3704,7 +3729,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|43
   i64x2.extract_lane 0
   i64.const 2
   i64.eq
@@ -3712,7 +3737,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|43
   i64x2.extract_lane 1
   i64.const -9223372036854775808
   i64.eq
@@ -3720,7 +3745,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|43
   i64.const 3
   i64x2.replace_lane 1
   v128.const i32x4 0x00000002 0x00000000 0x00000003 0x00000000
@@ -3732,8 +3757,8 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|41
+  local.get $b|42
   i8x16.shuffle 0 1 2 3 4 5 6 7 24 25 26 27 28 29 30 31
   v128.const i32x4 0x00000001 0x00000000 0x00000001 0x00000000
   i8x16.eq
@@ -3794,14 +3819,14 @@
   drop
   i32.const 16
   call $~lib/rt/tlsf/__alloc
-  local.set $ptr
-  local.get $ptr
+  local.set $ptr|44
+  local.get $ptr|44
   i32.const 1
   i32.store $0
-  local.get $ptr
+  local.get $ptr|44
   i32.const -1
   i32.store $0 offset=4
-  local.get $ptr
+  local.get $ptr|44
   v128.load32x2_s $0 align=4
   v128.const i32x4 0x00000001 0x00000000 0xffffffff 0xffffffff
   i8x16.eq
@@ -3812,7 +3837,7 @@
   if
    unreachable
   end
-  local.get $ptr
+  local.get $ptr|44
   v128.load32x2_u $0 align=4
   v128.const i32x4 0x00000001 0x00000000 0xffffffff 0x00000000
   i8x16.eq
@@ -3823,22 +3848,22 @@
   if
    unreachable
   end
-  local.get $ptr
+  local.get $ptr|44
   call $~lib/rt/tlsf/__free
-  local.get $a
-  local.get $a
+  local.get $a|41
+  local.get $a|41
   i64x2.extmul_low_i32x4_s
   drop
-  local.get $a
-  local.get $a
+  local.get $a|41
+  local.get $a|41
   i64x2.extmul_low_i32x4_u
   drop
-  local.get $a
-  local.get $a
+  local.get $a|41
+  local.get $a|41
   i64x2.extmul_high_i32x4_s
   drop
-  local.get $a
-  local.get $a
+  local.get $a|41
+  local.get $a|41
   i64x2.extmul_high_i32x4_u
   drop
   v128.const i32x4 0x0000000c 0x00000000 0x0000000c 0x00000000
@@ -4175,21 +4200,9 @@
   i32.const 1
   i32.eq
   drop
- )
- (func $simd/test_f32x4 (type $none_=>_none)
-  (local $a v128)
-  (local $b v128)
-  (local $c v128)
-  (local $d v128)
-  (local $one v128)
-  (local $negOne v128)
-  (local $only1st v128)
-  (local $excl1st v128)
-  (local $v v128)
-  (local $v|9 v128)
   v128.const i32x4 0x3fc00000 0x40200000 0x40600000 0x40900000
-  local.set $a
-  local.get $a
+  local.set $a|45
+  local.get $a|45
   v128.const i32x4 0x3fc00000 0x40200000 0x40600000 0x40900000
   i8x16.eq
   i8x16.all_true
@@ -4201,8 +4214,8 @@
   end
   f32.const 1
   f32x4.splat
-  local.set $b
-  local.get $b
+  local.set $b|46
+  local.get $b|46
   v128.const i32x4 0x3f800000 0x3f800000 0x3f800000 0x3f800000
   i8x16.eq
   i8x16.all_true
@@ -4212,11 +4225,11 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|45
+  local.get $b|46
   f32x4.add
-  local.set $c
-  local.get $c
+  local.set $c|47
+  local.get $c|47
   v128.const i32x4 0x40200000 0x40600000 0x40900000 0x40b00000
   i8x16.eq
   i8x16.all_true
@@ -4226,10 +4239,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|47
+  local.get $b|46
   f32x4.sub
-  local.get $a
+  local.get $a|45
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4238,10 +4251,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|47
+  local.get $b|46
   f32x4.mul
-  local.get $c
+  local.get $c|47
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4250,14 +4263,14 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $a
+  local.get $a|45
+  local.get $a|45
   f32x4.mul
   local.set $d
   local.get $d
-  local.get $a
+  local.get $a|45
   f32x4.div
-  local.get $a
+  local.get $a|45
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4267,9 +4280,9 @@
    unreachable
   end
   local.get $d
-  local.get $a
+  local.get $a|45
   f32x4.mul
-  local.get $a
+  local.get $a|45
   i8x16.ne
   v128.any_true
   i32.const 0
@@ -4278,7 +4291,7 @@
   if
    unreachable
   end
-  local.get $a
+  local.get $a|45
   f32x4.neg
   v128.const i32x4 0xbfc00000 0xc0200000 0xc0600000 0xc0900000
   i8x16.eq
@@ -4289,7 +4302,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|47
   f32x4.extract_lane 0
   f32.const 2.5
   f32.eq
@@ -4297,7 +4310,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|47
   f32x4.extract_lane 3
   f32.const 5.5
   f32.eq
@@ -4305,7 +4318,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|47
   f32.const 6.5
   f32x4.replace_lane 3
   v128.const i32x4 0x40200000 0x40600000 0x40900000 0x40d00000
@@ -4317,8 +4330,8 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|45
+  local.get $b|46
   i8x16.shuffle 0 1 2 3 4 5 6 7 24 25 26 27 28 29 30 31
   v128.const i32x4 0x3fc00000 0x40200000 0x3f800000 0x3f800000
   i8x16.eq
@@ -4333,20 +4346,20 @@
   f32x4.splat
   f32.const 1
   f32x4.replace_lane 0
-  local.set $one
+  local.set $one|49
   f32.const 0
   f32x4.splat
   f32.const -1
   f32x4.replace_lane 0
-  local.set $negOne
+  local.set $negOne|50
   v128.const i32x4 0xffffffff 0x00000000 0x00000000 0x00000000
-  local.set $only1st
+  local.set $only1st|51
   v128.const i32x4 0x00000000 0xffffffff 0xffffffff 0xffffffff
-  local.set $excl1st
-  local.get $negOne
-  local.get $one
+  local.set $excl1st|52
+  local.get $negOne|50
+  local.get $one|49
   f32x4.eq
-  local.get $excl1st
+  local.get $excl1st|52
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4355,10 +4368,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|50
+  local.get $one|49
   f32x4.ne
-  local.get $only1st
+  local.get $only1st|51
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4367,10 +4380,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|50
+  local.get $one|49
   f32x4.lt
-  local.get $only1st
+  local.get $only1st|51
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4379,10 +4392,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|49
+  local.get $negOne|50
   f32x4.le
-  local.get $excl1st
+  local.get $excl1st|52
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4391,10 +4404,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|49
+  local.get $negOne|50
   f32x4.gt
-  local.get $only1st
+  local.get $only1st|51
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4403,10 +4416,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|50
+  local.get $one|49
   f32x4.ge
-  local.get $excl1st
+  local.get $excl1st|52
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4415,10 +4428,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|50
+  local.get $one|49
   f32x4.min
-  local.get $negOne
+  local.get $negOne|50
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4427,10 +4440,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|50
+  local.get $one|49
   f32x4.max
-  local.get $one
+  local.get $one|49
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4439,9 +4452,9 @@
   if
    unreachable
   end
-  local.get $negOne
+  local.get $negOne|50
   f32x4.abs
-  local.get $one
+  local.get $one|49
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4478,7 +4491,7 @@
   i32.const 0
   i32.ne
   drop
-  local.get $a
+  local.get $a|45
   f32x4.demote_f64x2_zero
   drop
   v128.const i32x4 0x3f800000 0xbf800000 0x3f800000 0xbf800000
@@ -4501,8 +4514,8 @@
   drop
   v128.const i32x4 0x3f8ccccd 0xbe800000 0x428c051f 0x40800000
   f32x4.ceil
-  local.set $v
-  local.get $v
+  local.set $v|53
+  local.get $v|53
   v128.const i32x4 0x40000000 0x80000000 0x428e0000 0x40800000
   i8x16.eq
   i8x16.all_true
@@ -4514,8 +4527,8 @@
   end
   v128.const i32x4 0x3f8ccccd 0xbe800000 0x428c051f 0x40800000
   f32x4.floor
-  local.set $v|9
-  local.get $v|9
+  local.set $v|54
+  local.get $v|54
   v128.const i32x4 0x3f800000 0xbf800000 0x428c0000 0x40800000
   i8x16.eq
   i8x16.all_true
@@ -4541,21 +4554,9 @@
   i32.const 0
   i32.ne
   drop
- )
- (func $simd/test_f64x2 (type $none_=>_none)
-  (local $a v128)
-  (local $b v128)
-  (local $c v128)
-  (local $d v128)
-  (local $one v128)
-  (local $negOne v128)
-  (local $only1st v128)
-  (local $excl1st v128)
-  (local $v v128)
-  (local $v|9 v128)
   v128.const i32x4 0x00000000 0x3ff80000 0x00000000 0x40040000
-  local.set $a
-  local.get $a
+  local.set $a|55
+  local.get $a|55
   v128.const i32x4 0x00000000 0x3ff80000 0x00000000 0x40040000
   i8x16.eq
   i8x16.all_true
@@ -4567,8 +4568,8 @@
   end
   f64.const 1
   f64x2.splat
-  local.set $b
-  local.get $b
+  local.set $b|56
+  local.get $b|56
   v128.const i32x4 0x00000000 0x3ff00000 0x00000000 0x3ff00000
   i8x16.eq
   i8x16.all_true
@@ -4578,11 +4579,11 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|55
+  local.get $b|56
   f64x2.add
-  local.set $c
-  local.get $c
+  local.set $c|57
+  local.get $c|57
   v128.const i32x4 0x00000000 0x40040000 0x00000000 0x400c0000
   i8x16.eq
   i8x16.all_true
@@ -4592,10 +4593,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|57
+  local.get $b|56
   f64x2.sub
-  local.get $a
+  local.get $a|55
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4604,10 +4605,10 @@
   if
    unreachable
   end
-  local.get $c
-  local.get $b
+  local.get $c|57
+  local.get $b|56
   f64x2.mul
-  local.get $c
+  local.get $c|57
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4616,14 +4617,14 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $a
+  local.get $a|55
+  local.get $a|55
   f64x2.mul
-  local.set $d
-  local.get $d
-  local.get $a
+  local.set $d|58
+  local.get $d|58
+  local.get $a|55
   f64x2.div
-  local.get $a
+  local.get $a|55
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4632,10 +4633,10 @@
   if
    unreachable
   end
-  local.get $d
-  local.get $a
+  local.get $d|58
+  local.get $a|55
   f64x2.mul
-  local.get $a
+  local.get $a|55
   i8x16.ne
   v128.any_true
   i32.const 0
@@ -4644,7 +4645,7 @@
   if
    unreachable
   end
-  local.get $a
+  local.get $a|55
   f64x2.neg
   v128.const i32x4 0x00000000 0xbff80000 0x00000000 0xc0040000
   i8x16.eq
@@ -4655,7 +4656,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|57
   f64x2.extract_lane 0
   f64.const 2.5
   f64.eq
@@ -4663,7 +4664,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|57
   f64x2.extract_lane 1
   f64.const 3.5
   f64.eq
@@ -4671,7 +4672,7 @@
   if
    unreachable
   end
-  local.get $c
+  local.get $c|57
   f64.const 4.5
   f64x2.replace_lane 1
   v128.const i32x4 0x00000000 0x40040000 0x00000000 0x40120000
@@ -4683,8 +4684,8 @@
   if
    unreachable
   end
-  local.get $a
-  local.get $b
+  local.get $a|55
+  local.get $b|56
   i8x16.shuffle 0 1 2 3 4 5 6 7 24 25 26 27 28 29 30 31
   v128.const i32x4 0x00000000 0x3ff80000 0x00000000 0x3ff00000
   i8x16.eq
@@ -4699,20 +4700,20 @@
   f64x2.splat
   f64.const 1
   f64x2.replace_lane 0
-  local.set $one
+  local.set $one|59
   f64.const 0
   f64x2.splat
   f64.const -1
   f64x2.replace_lane 0
-  local.set $negOne
+  local.set $negOne|60
   v128.const i32x4 0xffffffff 0xffffffff 0x00000000 0x00000000
-  local.set $only1st
+  local.set $only1st|61
   v128.const i32x4 0x00000000 0x00000000 0xffffffff 0xffffffff
-  local.set $excl1st
-  local.get $negOne
-  local.get $one
+  local.set $excl1st|62
+  local.get $negOne|60
+  local.get $one|59
   f64x2.eq
-  local.get $excl1st
+  local.get $excl1st|62
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4721,10 +4722,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|60
+  local.get $one|59
   f64x2.ne
-  local.get $only1st
+  local.get $only1st|61
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4733,10 +4734,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|60
+  local.get $one|59
   f64x2.lt
-  local.get $only1st
+  local.get $only1st|61
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4745,10 +4746,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|59
+  local.get $negOne|60
   f64x2.le
-  local.get $excl1st
+  local.get $excl1st|62
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4757,10 +4758,10 @@
   if
    unreachable
   end
-  local.get $one
-  local.get $negOne
+  local.get $one|59
+  local.get $negOne|60
   f64x2.gt
-  local.get $only1st
+  local.get $only1st|61
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4769,10 +4770,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|60
+  local.get $one|59
   f64x2.ge
-  local.get $excl1st
+  local.get $excl1st|62
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4781,10 +4782,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|60
+  local.get $one|59
   f64x2.min
-  local.get $negOne
+  local.get $negOne|60
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4793,10 +4794,10 @@
   if
    unreachable
   end
-  local.get $negOne
-  local.get $one
+  local.get $negOne|60
+  local.get $one|59
   f64x2.max
-  local.get $one
+  local.get $one|59
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4805,9 +4806,9 @@
   if
    unreachable
   end
-  local.get $negOne
+  local.get $negOne|60
   f64x2.abs
-  local.get $one
+  local.get $one|59
   i8x16.eq
   i8x16.all_true
   i32.const 0
@@ -4824,13 +4825,13 @@
   i32.const 0
   i32.ne
   drop
-  local.get $a
+  local.get $a|55
   f64x2.convert_low_i32x4_s
   drop
-  local.get $a
+  local.get $a|55
   f64x2.convert_low_i32x4_u
   drop
-  local.get $a
+  local.get $a|55
   f64x2.promote_low_f32x4
   drop
   v128.const i32x4 0x00000000 0x3ff00000 0x00000000 0xbff00000
@@ -4853,8 +4854,8 @@
   drop
   v128.const i32x4 0x9999999a 0x3ff19999 0x00000000 0xbfd00000
   f64x2.ceil
-  local.set $v
-  local.get $v
+  local.set $v|63
+  local.get $v|63
   v128.const i32x4 0x00000000 0x40000000 0x00000000 0x80000000
   i8x16.eq
   i8x16.all_true
@@ -4866,8 +4867,8 @@
   end
   v128.const i32x4 0x9999999a 0x3ff19999 0x00000000 0xbfd00000
   f64x2.floor
-  local.set $v|9
-  local.get $v|9
+  local.set $v|64
+  local.get $v|64
   v128.const i32x4 0x00000000 0x3ff00000 0x00000000 0xbff00000
   i8x16.eq
   i8x16.all_true
@@ -4893,35 +4894,9 @@
   i32.const 0
   i32.ne
   drop
- )
- (func $simd/test_const (type $none_=>_v128) (result v128)
-  (local $one v128)
   v128.const i32x4 0x00000001 0x00000001 0x00000001 0x00000001
-  local.set $one
-  local.get $one
- )
- (func $start:simd (type $none_=>_none)
-  i32.const 1
-  i32x4.splat
-  global.set $simd/vec
-  i32.const 1
-  drop
-  i32.const 0
-  i32.eqz
-  drop
-  i32.const 1
-  drop
-  i32.const 0
-  i32.eqz
-  drop
-  call $simd/test_v128
-  call $simd/test_i8x16
-  call $simd/test_i16x8
-  call $simd/test_i32x4
-  call $simd/test_i64x2
-  call $simd/test_f32x4
-  call $simd/test_f64x2
-  call $simd/test_const
+  local.set $one|65
+  local.get $one|65
   drop
  )
  (func $simd/reexport (type $v128_=>_v128) (param $a v128) (result v128)

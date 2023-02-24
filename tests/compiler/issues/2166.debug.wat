@@ -5176,11 +5176,11 @@
    unreachable
   end
  )
- (func $issues/2166/testfunc2166<i64> (type $none_=>_none)
-  (local $a i32)
+ (func $start:issues/2166 (type $none_=>_none)
+  (local $0 i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 12
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
@@ -5189,33 +5189,7 @@
   i64.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  call $issues/2166/Test2166Ref1<~lib/string/String>#constructor
-  local.tee $a
-  i32.store $0
-  local.get $a
-  i32.const 224
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0 offset=4
-  local.get $1
-  i32.const 1
-  call $issues/2166/Test2166Ref1<~lib/string/String>#fn<i32>
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $start:issues/2166 (type $none_=>_none)
-  (local $0 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
+  i32.store $0 offset=8
   memory.size $0
   i32.const 16
   i32.shl
@@ -5233,23 +5207,36 @@
   i32.const 176
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/fromSpace
-  call $issues/2166/testfunc2166<i64>
-  i32.const 0
-  call $issues/2166/Test2166Ref2<i32>#constructor
-  local.set $0
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  i32.const 0
+  call $issues/2166/Test2166Ref1<~lib/string/String>#constructor
+  local.tee $0
   i32.store $0
   local.get $0
-  i32.const 320
-  local.set $0
+  i32.const 224
+  local.set $1
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  local.get $1
   i32.store $0 offset=4
-  local.get $0
+  local.get $1
+  i32.const 1
+  call $issues/2166/Test2166Ref1<~lib/string/String>#fn<i32>
+  i32.const 0
+  call $issues/2166/Test2166Ref2<i32>#constructor
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0 offset=8
+  local.get $1
+  i32.const 320
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0 offset=4
+  local.get $1
   call $issues/2166/Test2166Ref2<i32>#bar<~lib/string/String>
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

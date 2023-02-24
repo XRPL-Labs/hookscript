@@ -2094,9 +2094,6 @@
  (func $start:resolve-unary~anonymous|0 (type $none_=>_none)
   nop
  )
- (func $resolve-unary/generic<~lib/string/String> (type $i32_=>_none) (param $v i32)
-  nop
- )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
   global.get $resolve-unary/foo
@@ -2995,14 +2992,15 @@
   (local $804 i32)
   (local $805 i32)
   (local $806 i32)
+  (local $807 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 80
+  i32.const 84
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.const 80
+  i32.const 84
   memory.fill $0
   i32.const -1
   i32.const -1
@@ -3104,11 +3102,11 @@
   block $~lib/string/String.__eq|inlined.0 (result i32)
    global.get $~lib/memory/__stack_pointer
    global.get $resolve-unary/foo
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0
-   local.get $806
+   local.get $807
    call $resolve-unary/Foo#plus
    local.tee $2
    i32.store $0 offset=4
@@ -4026,11 +4024,11 @@
   block $~lib/string/String.__eq|inlined.1 (result i32)
    global.get $~lib/memory/__stack_pointer
    global.get $resolve-unary/foo
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0
-   local.get $806
+   local.get $807
    call $resolve-unary/Foo#minus
    local.tee $102
    i32.store $0 offset=12
@@ -4946,19 +4944,19 @@
    unreachable
   end
   global.get $resolve-unary/foo
-  local.set $806
+  local.set $807
   global.get $~lib/memory/__stack_pointer
-  local.get $806
+  local.get $807
   i32.store $0 offset=20
-  local.get $806
+  local.get $807
   call $resolve-unary/Foo#prefix_inc
   global.set $resolve-unary/foo
   global.get $resolve-unary/foo
-  local.set $806
+  local.set $807
   global.get $~lib/memory/__stack_pointer
-  local.get $806
+  local.get $807
   i32.store $0
-  local.get $806
+  local.get $807
   call $resolve-unary/Foo#self
   global.get $resolve-unary/foo
   i32.eq
@@ -4967,19 +4965,19 @@
    unreachable
   end
   global.get $resolve-unary/foo
-  local.set $806
+  local.set $807
   global.get $~lib/memory/__stack_pointer
-  local.get $806
+  local.get $807
   i32.store $0 offset=20
-  local.get $806
+  local.get $807
   call $resolve-unary/Foo#prefix_dec
   global.set $resolve-unary/foo
   global.get $resolve-unary/foo
-  local.set $806
+  local.set $807
   global.get $~lib/memory/__stack_pointer
-  local.get $806
+  local.get $807
   i32.store $0
-  local.get $806
+  local.get $807
   call $resolve-unary/Foo#self
   global.get $resolve-unary/foo
   i32.eq
@@ -4990,11 +4988,11 @@
   block $~lib/string/String.__eq|inlined.2 (result i32)
    global.get $~lib/memory/__stack_pointer
    global.get $resolve-unary/foo
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0
-   local.get $806
+   local.get $807
    call $resolve-unary/Foo#not
    local.tee $202
    i32.store $0 offset=24
@@ -5912,11 +5910,11 @@
   block $~lib/string/String.__eq|inlined.3 (result i32)
    global.get $~lib/memory/__stack_pointer
    global.get $resolve-unary/foo
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0
-   local.get $806
+   local.get $807
    call $resolve-unary/Foo#bitwise_not
    local.tee $302
    i32.store $0 offset=32
@@ -6839,11 +6837,11 @@
   call $resolve-unary/Foo#postfix_inc
   global.set $resolve-unary/foo
   local.get $402
-  local.set $806
+  local.set $807
   global.get $~lib/memory/__stack_pointer
-  local.get $806
+  local.get $807
   i32.store $0
-  local.get $806
+  local.get $807
   call $resolve-unary/Foo#self
   global.get $resolve-unary/foo
   i32.eq
@@ -6859,11 +6857,11 @@
   call $resolve-unary/Foo#postfix_dec
   global.set $resolve-unary/foo
   local.get $403
-  local.set $806
+  local.set $807
   global.get $~lib/memory/__stack_pointer
-  local.get $806
+  local.get $807
   i32.store $0
-  local.get $806
+  local.get $807
   call $resolve-unary/Foo#self
   global.get $resolve-unary/foo
   i32.eq
@@ -6877,17 +6875,17 @@
   block $~lib/string/String.__eq|inlined.4 (result i32)
    global.get $~lib/memory/__stack_pointer
    global.get $resolve-unary/bar
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0 offset=20
-   local.get $806
+   local.get $807
    call $resolve-unary/Bar.prefix_inc
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0
-   local.get $806
+   local.get $807
    call $~lib/string/String#toString
    local.tee $404
    i32.store $0 offset=48
@@ -7805,17 +7803,17 @@
   block $~lib/string/String.__eq|inlined.5 (result i32)
    global.get $~lib/memory/__stack_pointer
    global.get $resolve-unary/bar
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0 offset=20
-   local.get $806
+   local.get $807
    call $resolve-unary/Bar.prefix_dec
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0
-   local.get $806
+   local.get $807
    call $~lib/string/String#toString
    local.tee $504
    i32.store $0 offset=56
@@ -8734,18 +8732,18 @@
    global.get $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
    global.get $resolve-unary/bar
-   local.tee $806
+   local.tee $807
    i32.store $0
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0 offset=20
-   local.get $806
+   local.get $807
    call $resolve-unary/Bar.postfix_inc
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0
-   local.get $806
+   local.get $807
    call $~lib/string/String#toString
    local.tee $605
    i32.store $0 offset=64
@@ -9664,18 +9662,18 @@
    global.get $~lib/memory/__stack_pointer
    global.get $~lib/memory/__stack_pointer
    global.get $resolve-unary/bar
-   local.tee $806
+   local.tee $807
    i32.store $0
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0 offset=20
-   local.get $806
+   local.get $807
    call $resolve-unary/Bar.postfix_dec
-   local.set $806
+   local.set $807
    global.get $~lib/memory/__stack_pointer
-   local.get $806
+   local.get $807
    i32.store $0
-   local.get $806
+   local.get $807
    call $~lib/string/String#toString
    local.tee $706
    i32.store $0 offset=72
@@ -10593,24 +10591,21 @@
   i32.const 1
   drop
   i32.const 480
-  local.set $806
+  local.set $807
   global.get $~lib/memory/__stack_pointer
-  local.get $806
+  local.get $807
   i32.store $0
-  local.get $806
+  local.get $807
   call $~lib/string/String#get:length
   drop
+  global.get $~lib/memory/__stack_pointer
   i32.const 512
   drop
   i32.const 544
-  local.set $806
+  local.tee $806
+  i32.store $0 offset=80
   global.get $~lib/memory/__stack_pointer
-  local.get $806
-  i32.store $0
-  local.get $806
-  call $resolve-unary/generic<~lib/string/String>
-  global.get $~lib/memory/__stack_pointer
-  i32.const 80
+  i32.const 84
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

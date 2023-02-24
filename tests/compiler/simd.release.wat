@@ -900,9 +900,11 @@
   local.get $1
   call $~lib/rt/tlsf/insertBlock
  )
- (func $simd/test_v128 (type $none_=>_none)
+ (func $start:simd (type $none_=>_none)
   (local $0 i32)
   (local $1 v128)
+  v128.const i32x4 0x00000001 0x00000001 0x00000001 0x00000001
+  global.set $simd/vec
   global.get $~lib/rt/tlsf/ROOT
   i32.eqz
   if
@@ -1157,6 +1159,138 @@
   end
   local.get $0
   call $~lib/rt/tlsf/__free
+  global.get $~lib/rt/tlsf/ROOT
+  i32.eqz
+  if
+   call $~lib/rt/tlsf/initialize
+  end
+  global.get $~lib/rt/tlsf/ROOT
+  i32.const 16
+  call $~lib/rt/tlsf/allocateBlock
+  i32.const 4
+  i32.add
+  local.tee $0
+  i32.const 1
+  i32.store8 $0
+  local.get $0
+  i32.const 2
+  i32.store8 $0 offset=1
+  local.get $0
+  i32.const 3
+  i32.store8 $0 offset=2
+  local.get $0
+  i32.const 4
+  i32.store8 $0 offset=3
+  local.get $0
+  i32.const 5
+  i32.store8 $0 offset=4
+  local.get $0
+  i32.const 6
+  i32.store8 $0 offset=5
+  local.get $0
+  i32.const 7
+  i32.store8 $0 offset=6
+  local.get $0
+  i32.const 255
+  i32.store8 $0 offset=7
+  local.get $0
+  v128.load8x8_s $0 align=1
+  v128.const i32x4 0x00020001 0x00040003 0x00060005 0xffff0007
+  i8x16.eq
+  i8x16.all_true
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  v128.load8x8_u $0 align=1
+  v128.const i32x4 0x00020001 0x00040003 0x00060005 0x00ff0007
+  i8x16.eq
+  i8x16.all_true
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  call $~lib/rt/tlsf/__free
+  global.get $~lib/rt/tlsf/ROOT
+  i32.eqz
+  if
+   call $~lib/rt/tlsf/initialize
+  end
+  global.get $~lib/rt/tlsf/ROOT
+  i32.const 16
+  call $~lib/rt/tlsf/allocateBlock
+  i32.const 4
+  i32.add
+  local.tee $0
+  i32.const 1
+  i32.store16 $0
+  local.get $0
+  i32.const 2
+  i32.store16 $0 offset=2
+  local.get $0
+  i32.const 3
+  i32.store16 $0 offset=4
+  local.get $0
+  i32.const 65535
+  i32.store16 $0 offset=6
+  local.get $0
+  v128.load16x4_s $0 align=2
+  v128.const i32x4 0x00000001 0x00000002 0x00000003 0xffffffff
+  i8x16.eq
+  i8x16.all_true
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  v128.load16x4_u $0 align=2
+  v128.const i32x4 0x00000001 0x00000002 0x00000003 0x0000ffff
+  i8x16.eq
+  i8x16.all_true
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  call $~lib/rt/tlsf/__free
+  global.get $~lib/rt/tlsf/ROOT
+  i32.eqz
+  if
+   call $~lib/rt/tlsf/initialize
+  end
+  global.get $~lib/rt/tlsf/ROOT
+  i32.const 16
+  call $~lib/rt/tlsf/allocateBlock
+  i32.const 4
+  i32.add
+  local.tee $0
+  i32.const 1
+  i32.store $0
+  local.get $0
+  i32.const -1
+  i32.store $0 offset=4
+  local.get $0
+  v128.load32x2_s $0 align=4
+  v128.const i32x4 0x00000001 0x00000000 0xffffffff 0xffffffff
+  i8x16.eq
+  i8x16.all_true
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  v128.load32x2_u $0 align=4
+  v128.const i32x4 0x00000001 0x00000000 0xffffffff 0x00000000
+  i8x16.eq
+  i8x16.all_true
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  call $~lib/rt/tlsf/__free
  )
  (func $simd/reexport (type $v128_=>_v128) (param $0 v128) (result v128)
   local.get $0
@@ -1294,141 +1428,6 @@
   f64x2.replace_lane 1
  )
  (func $~start (type $none_=>_none)
-  (local $0 i32)
-  v128.const i32x4 0x00000001 0x00000001 0x00000001 0x00000001
-  global.set $simd/vec
-  call $simd/test_v128
-  global.get $~lib/rt/tlsf/ROOT
-  i32.eqz
-  if
-   call $~lib/rt/tlsf/initialize
-  end
-  global.get $~lib/rt/tlsf/ROOT
-  i32.const 16
-  call $~lib/rt/tlsf/allocateBlock
-  i32.const 4
-  i32.add
-  local.tee $0
-  i32.const 1
-  i32.store8 $0
-  local.get $0
-  i32.const 2
-  i32.store8 $0 offset=1
-  local.get $0
-  i32.const 3
-  i32.store8 $0 offset=2
-  local.get $0
-  i32.const 4
-  i32.store8 $0 offset=3
-  local.get $0
-  i32.const 5
-  i32.store8 $0 offset=4
-  local.get $0
-  i32.const 6
-  i32.store8 $0 offset=5
-  local.get $0
-  i32.const 7
-  i32.store8 $0 offset=6
-  local.get $0
-  i32.const 255
-  i32.store8 $0 offset=7
-  local.get $0
-  v128.load8x8_s $0 align=1
-  v128.const i32x4 0x00020001 0x00040003 0x00060005 0xffff0007
-  i8x16.eq
-  i8x16.all_true
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $0
-  v128.load8x8_u $0 align=1
-  v128.const i32x4 0x00020001 0x00040003 0x00060005 0x00ff0007
-  i8x16.eq
-  i8x16.all_true
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $0
-  call $~lib/rt/tlsf/__free
-  global.get $~lib/rt/tlsf/ROOT
-  i32.eqz
-  if
-   call $~lib/rt/tlsf/initialize
-  end
-  global.get $~lib/rt/tlsf/ROOT
-  i32.const 16
-  call $~lib/rt/tlsf/allocateBlock
-  i32.const 4
-  i32.add
-  local.tee $0
-  i32.const 1
-  i32.store16 $0
-  local.get $0
-  i32.const 2
-  i32.store16 $0 offset=2
-  local.get $0
-  i32.const 3
-  i32.store16 $0 offset=4
-  local.get $0
-  i32.const 65535
-  i32.store16 $0 offset=6
-  local.get $0
-  v128.load16x4_s $0 align=2
-  v128.const i32x4 0x00000001 0x00000002 0x00000003 0xffffffff
-  i8x16.eq
-  i8x16.all_true
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $0
-  v128.load16x4_u $0 align=2
-  v128.const i32x4 0x00000001 0x00000002 0x00000003 0x0000ffff
-  i8x16.eq
-  i8x16.all_true
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $0
-  call $~lib/rt/tlsf/__free
-  global.get $~lib/rt/tlsf/ROOT
-  i32.eqz
-  if
-   call $~lib/rt/tlsf/initialize
-  end
-  global.get $~lib/rt/tlsf/ROOT
-  i32.const 16
-  call $~lib/rt/tlsf/allocateBlock
-  i32.const 4
-  i32.add
-  local.tee $0
-  i32.const 1
-  i32.store $0
-  local.get $0
-  i32.const -1
-  i32.store $0 offset=4
-  local.get $0
-  v128.load32x2_s $0 align=4
-  v128.const i32x4 0x00000001 0x00000000 0xffffffff 0xffffffff
-  i8x16.eq
-  i8x16.all_true
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $0
-  v128.load32x2_u $0 align=4
-  v128.const i32x4 0x00000001 0x00000000 0xffffffff 0x00000000
-  i8x16.eq
-  i8x16.all_true
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $0
-  call $~lib/rt/tlsf/__free
+  call $start:simd
  )
 )

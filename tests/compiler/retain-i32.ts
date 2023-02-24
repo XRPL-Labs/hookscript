@@ -1,4 +1,5 @@
-function test(a: u32, b: u32): void {
+// Export only used to avoid auto-inlining.
+export function test(a: u32, b: u32): void {
 
   // signed
   assert(<i8>(a + b) == <i8>(<i8>a + <i8>b));

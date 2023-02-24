@@ -44,12 +44,6 @@
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
  (start $~start)
- (func $optional-typeparameters/testConcrete<i32,i32> (type $i32_=>_i32) (param $a i32) (result i32)
-  local.get $a
- )
- (func $optional-typeparameters/testDerived<i32,i32> (type $i32_=>_i32) (param $a i32) (result i32)
-  local.get $a
- )
  (func $~lib/rt/itcms/Object#set:nextWithColor (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -2210,6 +2204,8 @@
  )
  (func $start:optional-typeparameters (type $none_=>_none)
   (local $0 i32)
+  (local $1 i32)
+  (local $2 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 8
   i32.sub
@@ -2219,10 +2215,12 @@
   i64.const 0
   i64.store $0
   i32.const 1
-  call $optional-typeparameters/testConcrete<i32,i32>
+  local.set $0
+  local.get $0
   drop
   i32.const 2
-  call $optional-typeparameters/testDerived<i32,i32>
+  local.set $1
+  local.get $1
   drop
   memory.size $0
   i32.const 16
@@ -2245,11 +2243,11 @@
   call $optional-typeparameters/TestConcrete<i32,i32>#constructor
   global.set $optional-typeparameters/tConcrete
   global.get $optional-typeparameters/tConcrete
-  local.set $0
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  local.get $2
   i32.store $0
-  local.get $0
+  local.get $2
   i32.const 1
   i32.const 2
   call $optional-typeparameters/TestConcrete<i32,i32>#test<i32>
@@ -2258,11 +2256,11 @@
   call $optional-typeparameters/TestDerived<f64,f64>#constructor
   global.set $optional-typeparameters/tDerived
   global.get $optional-typeparameters/tDerived
-  local.set $0
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  local.get $2
   i32.store $0
-  local.get $0
+  local.get $2
   f64.const 1
   f64.const 2
   call $optional-typeparameters/TestDerived<f64,f64>#test<f64>
@@ -2271,27 +2269,27 @@
   call $optional-typeparameters/TestMethodDerived<~lib/string/String>#constructor
   global.set $optional-typeparameters/tMethodDerived
   global.get $optional-typeparameters/tMethodDerived
-  local.set $0
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  local.get $2
   i32.store $0
-  local.get $0
+  local.get $2
   call $optional-typeparameters/TestMethodDerived<~lib/string/String>#test<~lib/array/Array<~lib/string/String>>
   i32.const 0
   call $optional-typeparameters/TestMethodDerived2<f64>#constructor
   global.set $optional-typeparameters/tMethodDerived2
   global.get $optional-typeparameters/tMethodDerived2
-  local.set $0
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  local.get $2
   i32.store $0
-  local.get $0
+  local.get $2
   global.get $optional-typeparameters/tMethodDerived
-  local.set $0
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  local.get $2
   i32.store $0 offset=4
-  local.get $0
+  local.get $2
   call $optional-typeparameters/TestMethodDerived2<f64>#foo
   global.get $~lib/memory/__stack_pointer
   i32.const 8

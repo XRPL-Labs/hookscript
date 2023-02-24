@@ -1,8 +1,6 @@
 (module
- (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
- (type $f64_=>_i32 (func_subtype (param f64) (result i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
@@ -21,31 +19,11 @@
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
  (start $~start)
- (func $instanceof/isI32<i32> (type $i32_=>_i32) (param $v i32) (result i32)
-  i32.const 1
-  drop
-  i32.const 1
-  return
- )
- (func $instanceof/isI32<f64> (type $f64_=>_i32) (param $v f64) (result i32)
-  i32.const 0
-  drop
-  i32.const 0
-  return
- )
- (func $instanceof/isI32<u32> (type $i32_=>_i32) (param $v i32) (result i32)
-  i32.const 0
-  drop
-  i32.const 0
-  return
- )
- (func $instanceof/isI32<u16> (type $i32_=>_i32) (param $v i32) (result i32)
-  i32.const 0
-  drop
-  i32.const 0
-  return
- )
  (func $start:instanceof (type $none_=>_none)
+  (local $v i32)
+  (local $v|1 f64)
+  (local $v|2 i32)
+  (local $v|3 i32)
   i32.const 1
   drop
   i32.const 1
@@ -144,33 +122,47 @@
   drop
   i32.const 1
   drop
-  i32.const 0
-  call $instanceof/isI32<i32>
-  i32.eqz
-  if
-   unreachable
-  end
-  f64.const 0
-  call $instanceof/isI32<f64>
-  i32.eqz
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 0
-  call $instanceof/isI32<u32>
-  i32.eqz
-  i32.eqz
-  if
-   unreachable
+  block $instanceof/isI32<i32>|inlined.0 (result i32)
+   i32.const 0
+   local.set $v
+   i32.const 1
+   drop
+   i32.const 1
+   br $instanceof/isI32<i32>|inlined.0
   end
   i32.const 0
-  call $instanceof/isI32<u16>
-  i32.eqz
-  i32.eqz
-  if
-   unreachable
+  i32.ne
+  drop
+  block $instanceof/isI32<f64>|inlined.0 (result i32)
+   f64.const 0
+   local.set $v|1
+   i32.const 0
+   drop
+   i32.const 0
+   br $instanceof/isI32<f64>|inlined.0
   end
+  i32.eqz
+  drop
+  block $instanceof/isI32<u32>|inlined.0 (result i32)
+   i32.const 0
+   local.set $v|2
+   i32.const 0
+   drop
+   i32.const 0
+   br $instanceof/isI32<u32>|inlined.0
+  end
+  i32.eqz
+  drop
+  block $instanceof/isI32<u16>|inlined.0 (result i32)
+   i32.const 0
+   local.set $v|3
+   i32.const 0
+   drop
+   i32.const 0
+   br $instanceof/isI32<u16>|inlined.0
+  end
+  i32.eqz
+  drop
   global.get $instanceof/an
   i32.const 0
   i32.ne

@@ -19,7 +19,7 @@
  (func $~start (type $none_=>_none)
   (local $0 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 32
+  i32.const 36
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -31,7 +31,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 0
-  i32.const 32
+  i32.const 36
   memory.fill $0
   local.get $0
   i32.const 1056
@@ -53,15 +53,15 @@
   i32.store $0 offset=20
   local.get $0
   i32.const 1168
+  i32.store $0 offset=24
+  local.get $0
+  i32.const 1168
   i32.store $0 offset=28
   local.get $0
   i32.const 1168
-  i32.store $0 offset=24
+  i32.store $0 offset=32
   local.get $0
-  i32.const 1168
-  i32.store $0 offset=24
-  local.get $0
-  i32.const 32
+  i32.const 36
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

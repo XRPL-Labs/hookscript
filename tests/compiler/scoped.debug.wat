@@ -1,6 +1,5 @@
 (module
  (type $none_=>_none (func_subtype func))
- (type $i32_=>_none (func_subtype (param i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $scoped/aGlobal (mut i32) (i32.const 1))
@@ -14,14 +13,6 @@
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
  (start $~start)
- (func $scoped/fn (type $i32_=>_none) (param $c i32)
-  (local $a i32)
-  (local $b i32)
-  i32.const 0
-  local.set $a
-  local.get $c
-  local.set $b
- )
  (func $start:scoped (type $none_=>_none)
   (local $anotherStartFunctionLocal i32)
   (local $1 i32)
@@ -29,6 +20,9 @@
   (local $3 i32)
   (local $aConstant i64)
   (local $aConstant|5 f32)
+  (local $c i32)
+  (local $a i32)
+  (local $b i32)
   i32.const 0
   local.set $anotherStartFunctionLocal
   loop $for-loop|0
@@ -69,7 +63,11 @@
   f32.const 10
   local.set $aConstant|5
   i32.const 42
-  call $scoped/fn
+  local.set $c
+  i32.const 0
+  local.set $a
+  local.get $c
+  local.set $b
  )
  (func $~start (type $none_=>_none)
   call $start:scoped

@@ -94,7 +94,12 @@
     "type": "S",
     "alias": "b"
   },
-
+  "noInlineLocals": {
+    "category": "Debugging",
+    "description": "Inlines local functions.",
+    "type": "b",
+    "default": false
+  },
   "sourceMap": {
     "category": "Debugging",
     "description": [

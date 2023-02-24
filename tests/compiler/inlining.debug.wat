@@ -1,8 +1,8 @@
 (module
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
- (type $none_=>_none (func_subtype func))
  (type $i32_=>_none (func_subtype (param i32) func))
+ (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
@@ -50,213 +50,6 @@
  )
  (func $inlining/func_fe~anonymous|0 (type $i32_=>_i32) (param $a i32) (result i32)
   local.get $a
- )
- (func $inlining/test_funcs (type $none_=>_none)
-  (local $a f32)
-  (local $b f64)
-  (local $a|2 i32)
-  (local $a|3 i32)
-  (local $a|4 i32)
-  (local $a|5 i32)
-  (local $a|6 i32)
-  (local $a|7 i32)
-  (local $a|8 i32)
-  (local $a|9 i32)
-  (local $b|10 i32)
-  (local $e i32)
-  (local $c i32)
-  (local $d i32)
-  (local $a|14 i32)
-  (local $b|15 i32)
-  (local $e|16 i32)
-  (local $c|17 i32)
-  (local $d|18 i32)
-  (local $a|19 i32)
-  (local $a|20 i32)
-  (local $b|21 i32)
-  (local $foo i32)
-  (local $this i32)
-  (local $a|24 i32)
-  (local $b|25 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  f32.const -1
-  local.set $a
-  f64.const -2
-  local.set $b
-  block $inlining/func_ii|inlined.0 (result i32)
-   i32.const 42
-   local.set $a|2
-   local.get $a|2
-   i32.const 42
-   i32.eq
-   if
-    i32.const 1
-    br $inlining/func_ii|inlined.0
-   end
-   local.get $a|2
-   i32.const 42
-   i32.lt_s
-   if (result i32)
-    i32.const 2
-   else
-    i32.const 3
-   end
-  end
-  i32.const 1
-  i32.eq
-  drop
-  block $inlining/func_ii|inlined.1 (result i32)
-   i32.const 41
-   local.set $a|3
-   local.get $a|3
-   i32.const 42
-   i32.eq
-   if
-    i32.const 1
-    br $inlining/func_ii|inlined.1
-   end
-   local.get $a|3
-   i32.const 42
-   i32.lt_s
-   if (result i32)
-    i32.const 2
-   else
-    i32.const 3
-   end
-  end
-  i32.const 2
-  i32.eq
-  drop
-  block $inlining/func_ii|inlined.2 (result i32)
-   i32.const 43
-   local.set $a|4
-   local.get $a|4
-   i32.const 42
-   i32.eq
-   if
-    i32.const 1
-    br $inlining/func_ii|inlined.2
-   end
-   local.get $a|4
-   i32.const 42
-   i32.lt_s
-   if (result i32)
-    i32.const 2
-   else
-    i32.const 3
-   end
-  end
-  i32.const 3
-  i32.eq
-  drop
-  i32.const 0
-  local.set $a|5
-  local.get $a|5
-  i32.const 0
-  i32.eq
-  drop
-  i32.const 1
-  local.set $a|6
-  local.get $a|6
-  i32.const 1
-  i32.eq
-  drop
-  i32.const 1
-  local.set $a|7
-  local.get $a|7
-  local.set $a|8
-  local.get $a|8
-  i32.const 1
-  i32.eq
-  drop
-  i32.const 2
-  local.set $a|9
-  local.get $a|9
-  local.set $b|10
-  i32.const 1
-  drop
-  local.get $b|10
-  local.set $c
-  local.get $c
-  local.set $d
-  local.get $d
-  i32.const 1
-  i32.add
-  local.set $e
-  local.get $e
-  i32.const 3
-  i32.eq
-  drop
-  i32.const 3
-  local.set $a|14
-  local.get $a|14
-  local.set $b|15
-  i32.const 1
-  drop
-  local.get $b|15
-  local.set $c|17
-  local.get $c|17
-  local.set $d|18
-  local.get $d|18
-  i32.const 1
-  i32.add
-  local.set $e|16
-  local.get $e|16
-  i32.const 4
-  i32.eq
-  drop
-  i32.const 0
-  local.set $a|19
-  i32.const 2
-  i32.const 1
-  global.set $~argumentsLength
-  i32.const 32
-  i32.load $0
-  call_indirect $0 (type $i32_=>_i32)
-  i32.const 2
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 42
-  local.set $a|20
-  i32.const 2
-  local.set $b|21
-  local.get $a|20
-  local.get $b|21
-  i32.add
-  i32.const 44
-  i32.eq
-  drop
-  global.get $~lib/memory/__stack_pointer
-  i32.const 123
-  local.tee $foo
-  i32.store $0
-  local.get $foo
-  local.set $this
-  i32.const 43
-  local.set $a|24
-  i32.const 3
-  local.set $b|25
-  local.get $this
-  i32.const 123
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
  )
  (func $inlining/Baz#set:b (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
@@ -2267,14 +2060,40 @@
   local.get $1
   i32.store $0 offset=8
  )
- (func $inlining/test_ctor (type $none_=>_none)
-  (local $this i32)
-  (local $f i32)
-  (local $this|2 i32)
+ (func $start:inlining (type $none_=>_none)
+  (local $a f32)
+  (local $b f64)
+  (local $a|2 i32)
+  (local $a|3 i32)
+  (local $a|4 i32)
+  (local $a|5 i32)
+  (local $a|6 i32)
+  (local $a|7 i32)
+  (local $a|8 i32)
+  (local $a|9 i32)
+  (local $b|10 i32)
+  (local $e i32)
   (local $c i32)
+  (local $d i32)
+  (local $a|14 i32)
+  (local $b|15 i32)
+  (local $e|16 i32)
+  (local $c|17 i32)
+  (local $d|18 i32)
+  (local $a|19 i32)
+  (local $a|20 i32)
+  (local $b|21 i32)
+  (local $foo i32)
+  (local $this i32)
+  (local $a|24 i32)
+  (local $b|25 i32)
+  (local $this|26 i32)
+  (local $f i32)
+  (local $this|28 i32)
+  (local $c|29 i32)
   (local $bar i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 16
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
@@ -2282,62 +2101,253 @@
   i64.const 0
   i64.store $0
   global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store $0 offset=8
+  call $inlining/test
+  i32.const 3
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  f32.const -1
+  local.set $a
+  f64.const -2
+  local.set $b
+  block $inlining/func_ii|inlined.0 (result i32)
+   i32.const 42
+   local.set $a|2
+   local.get $a|2
+   i32.const 42
+   i32.eq
+   if
+    i32.const 1
+    br $inlining/func_ii|inlined.0
+   end
+   local.get $a|2
+   i32.const 42
+   i32.lt_s
+   if (result i32)
+    i32.const 2
+   else
+    i32.const 3
+   end
+  end
+  i32.const 1
+  i32.eq
+  drop
+  block $inlining/func_ii|inlined.1 (result i32)
+   i32.const 41
+   local.set $a|3
+   local.get $a|3
+   i32.const 42
+   i32.eq
+   if
+    i32.const 1
+    br $inlining/func_ii|inlined.1
+   end
+   local.get $a|3
+   i32.const 42
+   i32.lt_s
+   if (result i32)
+    i32.const 2
+   else
+    i32.const 3
+   end
+  end
+  i32.const 2
+  i32.eq
+  drop
+  block $inlining/func_ii|inlined.2 (result i32)
+   i32.const 43
+   local.set $a|4
+   local.get $a|4
+   i32.const 42
+   i32.eq
+   if
+    i32.const 1
+    br $inlining/func_ii|inlined.2
+   end
+   local.get $a|4
+   i32.const 42
+   i32.lt_s
+   if (result i32)
+    i32.const 2
+   else
+    i32.const 3
+   end
+  end
+  i32.const 3
+  i32.eq
+  drop
   i32.const 0
-  i32.store $0 offset=8
+  local.set $a|5
+  local.get $a|5
+  i32.const 0
+  i32.eq
+  drop
+  i32.const 1
+  local.set $a|6
+  local.get $a|6
+  i32.const 1
+  i32.eq
+  drop
+  i32.const 1
+  local.set $a|7
+  local.get $a|7
+  local.set $a|8
+  local.get $a|8
+  i32.const 1
+  i32.eq
+  drop
+  i32.const 2
+  local.set $a|9
+  local.get $a|9
+  local.set $b|10
+  i32.const 1
+  drop
+  local.get $b|10
+  local.set $c
+  local.get $c
+  local.set $d
+  local.get $d
+  i32.const 1
+  i32.add
+  local.set $e
+  local.get $e
+  i32.const 3
+  i32.eq
+  drop
+  i32.const 3
+  local.set $a|14
+  local.get $a|14
+  local.set $b|15
+  i32.const 1
+  drop
+  local.get $b|15
+  local.set $c|17
+  local.get $c|17
+  local.set $d|18
+  local.get $d|18
+  i32.const 1
+  i32.add
+  local.set $e|16
+  local.get $e|16
+  i32.const 4
+  i32.eq
+  drop
+  i32.const 0
+  local.set $a|19
+  i32.const 2
+  i32.const 1
+  global.set $~argumentsLength
+  i32.const 32
+  i32.load $0
+  call_indirect $0 (type $i32_=>_i32)
+  i32.const 2
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  i32.const 42
+  local.set $a|20
+  i32.const 2
+  local.set $b|21
+  local.get $a|20
+  local.get $b|21
+  i32.add
+  i32.const 44
+  i32.eq
+  drop
+  global.get $~lib/memory/__stack_pointer
+  i32.const 123
+  local.tee $foo
+  i32.store $0
+  local.get $foo
+  local.set $this
+  i32.const 43
+  local.set $a|24
+  i32.const 3
+  local.set $b|25
+  local.get $this
+  i32.const 123
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  memory.size $0
+  i32.const 16
+  i32.shl
+  global.get $~lib/memory/__heap_base
+  i32.sub
+  i32.const 1
+  i32.shr_u
+  global.set $~lib/rt/itcms/threshold
+  i32.const 96
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/pinSpace
+  i32.const 128
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/toSpace
+  i32.const 208
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/fromSpace
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  local.set $this
+  local.set $this|26
   i32.const 4
   local.set $f
-  local.get $this
+  local.get $this|26
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 16
    i32.const 5
    call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
+   local.tee $this|26
+   i32.store $0 offset=4
   end
-  local.get $this
+  local.get $this|26
   i32.const 3
   call $inlining/Bar#set:d
-  local.get $this
+  local.get $this|26
   i32.const 0
   call $inlining/Bar#set:e
   global.get $~lib/memory/__stack_pointer
-  local.get $this
-  local.set $this|2
+  local.get $this|26
+  local.set $this|28
   i32.const 2
-  local.set $c
-  local.get $this|2
+  local.set $c|29
+  local.get $this|28
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 8
    i32.const 6
    call $~lib/rt/itcms/__new
-   local.tee $this|2
-   i32.store $0 offset=4
+   local.tee $this|28
+   i32.store $0 offset=8
   end
-  local.get $this|2
+  local.get $this|28
   i32.const 1
   call $inlining/Baz#set:a
-  local.get $this|2
+  local.get $this|28
   i32.const 0
   call $inlining/Baz#set:b
-  local.get $this|2
-  local.get $c
+  local.get $this|28
+  local.get $c|29
   call $inlining/Baz#set:b
-  local.get $this|2
-  local.tee $this
-  i32.store $0
-  local.get $this
+  local.get $this|28
+  local.tee $this|26
+  i32.store $0 offset=4
+  local.get $this|26
   local.get $f
   call $inlining/Bar#set:e
-  local.get $this
+  local.get $this|26
   local.tee $bar
-  i32.store $0 offset=8
+  i32.store $0 offset=12
   local.get $bar
   i32.load $0
   i32.const 1
@@ -2371,37 +2381,9 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 12
+  i32.const 16
   i32.add
   global.set $~lib/memory/__stack_pointer
- )
- (func $start:inlining (type $none_=>_none)
-  call $inlining/test
-  i32.const 3
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  call $inlining/test_funcs
-  memory.size $0
-  i32.const 16
-  i32.shl
-  global.get $~lib/memory/__heap_base
-  i32.sub
-  i32.const 1
-  i32.shr_u
-  global.set $~lib/rt/itcms/threshold
-  i32.const 96
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/pinSpace
-  i32.const 128
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/toSpace
-  i32.const 208
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/fromSpace
-  call $inlining/test_ctor
  )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)

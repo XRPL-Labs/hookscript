@@ -1,8 +1,7 @@
 (module
- (type $none_=>_i32 (func_subtype (result i32) func))
  (type $none_=>_none (func_subtype func))
- (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
+ (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
@@ -18,27 +17,6 @@
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
  (start $~start)
- (func $issues/1714/a_i64_i32<i64,i32> (type $none_=>_i32) (result i32)
-  i32.const 8
-  i32.const 4
-  i32.eq
- )
- (func $issues/1714/foo<i32,i64> (type $none_=>_i32) (result i32)
-  call $issues/1714/a_i64_i32<i64,i32>
-  i32.const 1
-  i32.eq
- )
- (func $issues/1714/bar<i32,f64> (type $none_=>_i32) (result i32)
-  i32.const 0
-  drop
-  i32.const 32
- )
- (func $issues/1714/bar<f64,i32> (type $none_=>_i32) (result i32)
-  i32.const 1
-  drop
-  call $issues/1714/bar<i32,f64>
-  return
- )
  (func $~lib/string/String#get:length (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
   i32.const 20
@@ -154,16 +132,28 @@
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store $0
-  call $issues/1714/foo<i32,i64>
+  i32.const 8
+  i32.const 4
+  i32.eq
+  i32.const 0
+  i32.ne
+  i32.const 1
+  i32.eq
+  i32.const 0
+  i32.ne
   i32.const 0
   i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
+  drop
   block $~lib/string/String.__eq|inlined.0 (result i32)
    global.get $~lib/memory/__stack_pointer
-   call $issues/1714/bar<f64,i32>
+   block $issues/1714/bar<f64,i32>|inlined.0 (result i32)
+    i32.const 1
+    drop
+    i32.const 0
+    drop
+    i32.const 32
+    br $issues/1714/bar<f64,i32>|inlined.0
+   end
    local.tee $left
    i32.store $0
    global.get $~lib/memory/__stack_pointer

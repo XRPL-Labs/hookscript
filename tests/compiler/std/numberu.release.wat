@@ -64,54 +64,55 @@
   (local $4 i32)
   i32.const 1980
   global.set $~lib/rt/stub/offset
-  i32.const 1052
-  i32.load $0
-  local.set $0
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.const 2012
-  i32.lt_u
-  if
-   unreachable
-  end
-  i32.const 2012
-  global.set $~lib/rt/stub/offset
-  i32.const 1980
-  i32.const 28
-  i32.store $0
-  i32.const 1984
-  i32.const 0
-  i32.store $0
-  i32.const 1988
-  i32.const 0
-  i32.store $0
-  i32.const 1992
-  i32.const 3
-  i32.store $0
-  i32.const 1996
-  i32.const 12
-  i32.store $0
-  i32.const 2000
-  i32.const 1056
-  i32.store $0
-  i32.const 2004
-  i32.const 0
-  i32.store $0
-  i32.const 2008
-  local.get $0
-  i32.store $0
-  i32.const 2008
-  i32.load $0
-  i32.const 1
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq1|inlined.0 (result i32)
+   i32.const 1052
+   i32.load $0
+   local.set $0
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.const 2012
+   i32.lt_u
+   if
+    unreachable
+   end
+   i32.const 2012
+   global.set $~lib/rt/stub/offset
+   i32.const 1980
+   i32.const 28
+   i32.store $0
+   i32.const 1984
    i32.const 0
-  else
+   i32.store $0
+   i32.const 1988
+   i32.const 0
+   i32.store $0
+   i32.const 1992
+   i32.const 3
+   i32.store $0
+   i32.const 1996
+   i32.const 12
+   i32.store $0
+   i32.const 2000
+   i32.const 1056
+   i32.store $0
+   i32.const 2004
+   i32.const 0
+   i32.store $0
+   i32.const 2008
+   local.get $0
+   i32.store $0
+   i32.const 0
+   i32.const 2008
+   i32.load $0
+   i32.const 1
+   i32.ne
+   br_if $~lib/eq/__eq1|inlined.0
+   drop
    i32.const 2000
    i32.load $0
    i32.const 2004
@@ -126,113 +127,114 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 1
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq1|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 1
+   i32.ne
+   br_if $~lib/eq/__eq1|inlined.1
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -247,121 +249,122 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 2
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 1
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 2
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq2|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 2
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 1
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 2
+   i32.ne
+   br_if $~lib/eq/__eq2|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -376,121 +379,122 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 2
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 1
-  i32.add
-  local.tee $1
-  i32.const 50
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 2
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq2|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 2
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 1
+   i32.add
+   local.tee $1
+   i32.const 50
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 2
+   i32.ne
+   br_if $~lib/eq/__eq2|inlined.1
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -505,127 +509,128 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 2
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 3
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq3|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 3
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 2
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 3
+   i32.ne
+   br_if $~lib/eq/__eq3|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -650,127 +655,128 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 2
-  i32.add
-  local.tee $1
-  i32.const 51
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 50
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 3
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq3|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 3
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 2
+   i32.add
+   local.tee $1
+   i32.const 51
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 50
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 3
+   i32.ne
+   br_if $~lib/eq/__eq3|inlined.1
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -795,133 +801,134 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 4
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 3
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 4
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq4|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 4
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 3
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 4
+   i32.ne
+   br_if $~lib/eq/__eq4|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -936,139 +943,140 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 5
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 5
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq5|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 5
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 5
+   i32.ne
+   br_if $~lib/eq/__eq5|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -1093,145 +1101,146 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 6
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 5
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 6
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq6|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 6
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 5
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 6
+   i32.ne
+   br_if $~lib/eq/__eq6|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -1256,158 +1265,158 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 7
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 6
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 7
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq7|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 7
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 6
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 7
+   i32.ne
+   br_if $~lib/eq/__eq7|inlined.0
+   drop
    block $~lib/util/raweq/__raweq7|inlined.0 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i32.load $0
@@ -1437,157 +1446,158 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 8
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 7
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 8
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq8|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 8
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 7
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 8
+   i32.ne
+   br_if $~lib/eq/__eq8|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -1602,163 +1612,164 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 9
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 8
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 9
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq9|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 9
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 8
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 9
+   i32.ne
+   br_if $~lib/eq/__eq9|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -1783,169 +1794,170 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 10
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 9
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 10
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq10|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 10
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 9
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 10
+   i32.ne
+   br_if $~lib/eq/__eq10|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -1970,169 +1982,170 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 10
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 9
-  i32.add
-  local.tee $1
-  i32.const 53
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 57
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 50
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 55
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 54
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 57
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 52
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 57
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 50
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 52
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 10
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq10|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 10
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 9
+   i32.add
+   local.tee $1
+   i32.const 53
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 57
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 50
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 55
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 54
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 57
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 52
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 57
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 50
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 52
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 10
+   i32.ne
+   br_if $~lib/eq/__eq10|inlined.1
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -2157,182 +2170,182 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 11
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 10
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 11
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq11|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 11
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 10
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 11
+   i32.ne
+   br_if $~lib/eq/__eq11|inlined.0
+   drop
    block $~lib/util/raweq/__raweq11|inlined.0 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i64.load $0
@@ -2362,181 +2375,182 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 28
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 28
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 11
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 12
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq12|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 28
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 28
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 11
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 12
+   i32.ne
+   br_if $~lib/eq/__eq12|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -2561,194 +2575,194 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 44
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 44
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 13
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 12
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 13
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq13|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 44
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 44
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 13
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 12
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 13
+   i32.ne
+   br_if $~lib/eq/__eq13|inlined.0
+   drop
    block $~lib/util/raweq/__raweq13|inlined.0 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i64.load $0
@@ -2778,200 +2792,200 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 44
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 44
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 14
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 13
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 14
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq14|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 44
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 44
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 14
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 13
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 14
+   i32.ne
+   br_if $~lib/eq/__eq14|inlined.0
+   drop
    block $~lib/util/raweq/__raweq14|inlined.0 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i64.load $0
@@ -3001,206 +3015,206 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 44
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 44
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 15
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 14
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 15
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq15|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 44
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 44
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 15
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 14
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 15
+   i32.ne
+   br_if $~lib/eq/__eq15|inlined.0
+   drop
    block $~lib/util/raweq/__raweq15|inlined.0 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i64.load $0
@@ -3241,205 +3255,206 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 44
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 44
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 16
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 15
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.get $0
-  i32.store $0
-  local.get $3
-  i32.const 0
-  i32.store $0 offset=20
-  local.get $3
-  local.get $1
-  i32.store $0 offset=24
-  local.get $3
-  i32.load $0 offset=24
-  i32.const 16
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq16|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 44
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 44
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 16
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 15
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 16
+   i32.ne
+   br_if $~lib/eq/__eq16|inlined.0
+   drop
    local.get $3
    i32.load $0 offset=16
    local.get $3
@@ -3464,218 +3479,218 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 44
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 44
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 17
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 16
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 17
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq17|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 44
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 44
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 17
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 16
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 17
+   i32.ne
+   br_if $~lib/eq/__eq17|inlined.0
+   drop
    block $~lib/util/raweq/__raweq17|inlined.0 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i64.load $0
@@ -3705,224 +3720,224 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 44
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 44
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 18
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 17
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 18
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq18|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 44
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 44
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 18
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 17
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 18
+   i32.ne
+   br_if $~lib/eq/__eq18|inlined.0
+   drop
    block $~lib/util/raweq/__raweq18|inlined.0 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i64.load $0
@@ -3952,230 +3967,230 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 44
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 44
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 19
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 18
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 19
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq19|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 44
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 44
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 19
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 18
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 19
+   i32.ne
+   br_if $~lib/eq/__eq19|inlined.0
+   drop
    block $~lib/util/raweq/__raweq19|inlined.0 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i64.load $0
@@ -4216,236 +4231,236 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 44
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 44
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 20
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 19
-  i32.add
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 20
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq20|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 44
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 44
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 20
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 19
+   i32.add
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 20
+   i32.ne
+   br_if $~lib/eq/__eq20|inlined.0
+   drop
    block $~lib/util/raweq/__raweq20|inlined.0 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i64.load $0
@@ -4475,236 +4490,236 @@
   if
    unreachable
   end
-  global.get $~lib/rt/stub/offset
-  local.tee $0
-  i32.const 4
-  i32.add
-  local.tee $1
-  i32.const 44
-  i32.add
-  local.tee $2
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $2
-  global.set $~lib/rt/stub/offset
-  local.get $0
-  i32.const 44
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  local.tee $0
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 1
-  i32.store $0 offset=12
-  local.get $0
-  i32.const 20
-  i32.store $0 offset=16
-  local.get $1
-  i32.const 16
-  i32.add
-  local.tee $0
-  i32.const 19
-  i32.add
-  local.tee $1
-  i32.const 53
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 49
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 54
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 49
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 53
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 53
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 57
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 55
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 51
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 55
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 48
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 52
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 52
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 55
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 54
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 52
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 52
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  local.tee $1
-  i32.const 56
-  i32.store8 $0
-  local.get $1
-  i32.const 1
-  i32.sub
-  i32.const 49
-  i32.store8 $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $1
-  global.get $~lib/rt/stub/offset
-  local.tee $2
-  i32.const 4
-  i32.add
-  local.tee $3
-  i32.const 28
-  i32.add
-  local.tee $4
-  memory.size $0
-  i32.const 16
-  i32.shl
-  i32.const 15
-  i32.add
-  i32.const -16
-  i32.and
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $4
-  global.set $~lib/rt/stub/offset
-  local.get $2
-  i32.const 28
-  i32.store $0
-  local.get $3
-  i32.const 4
-  i32.sub
-  local.tee $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $2
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $2
-  i32.const 12
-  i32.store $0 offset=16
-  local.get $3
-  i32.const 16
-  i32.add
-  local.tee $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  i32.const 0
-  i32.store $0 offset=4
-  local.get $2
-  local.get $1
-  i32.store $0 offset=8
-  local.get $2
-  i32.load $0 offset=8
-  i32.const 20
-  i32.ne
-  if (result i32)
+  block $~lib/eq/__eq20|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   local.tee $0
+   i32.const 4
+   i32.add
+   local.tee $1
+   i32.const 44
+   i32.add
+   local.tee $2
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $2
+   global.set $~lib/rt/stub/offset
+   local.get $0
+   i32.const 44
+   i32.store $0
+   local.get $1
+   i32.const 4
+   i32.sub
+   local.tee $0
    i32.const 0
-  else
+   i32.store $0 offset=4
+   local.get $0
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $0
+   i32.const 1
+   i32.store $0 offset=12
+   local.get $0
+   i32.const 20
+   i32.store $0 offset=16
+   local.get $1
+   i32.const 16
+   i32.add
+   local.tee $0
+   i32.const 19
+   i32.add
+   local.tee $1
+   i32.const 53
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 49
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 54
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 49
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 53
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 53
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 57
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 55
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 51
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 55
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 48
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 52
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 52
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 55
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 54
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 52
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 52
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   local.tee $1
+   i32.const 56
+   i32.store8 $0
+   local.get $1
+   i32.const 1
+   i32.sub
+   i32.const 49
+   i32.store8 $0
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=16
+   local.set $1
+   global.get $~lib/rt/stub/offset
+   local.tee $2
+   i32.const 4
+   i32.add
+   local.tee $3
+   i32.const 28
+   i32.add
+   local.tee $4
+   memory.size $0
+   i32.const 16
+   i32.shl
+   i32.const 15
+   i32.add
+   i32.const -16
+   i32.and
+   i32.gt_u
+   if
+    unreachable
+   end
+   local.get $4
+   global.set $~lib/rt/stub/offset
+   local.get $2
+   i32.const 28
+   i32.store $0
+   local.get $3
+   i32.const 4
+   i32.sub
+   local.tee $2
+   i32.const 0
+   i32.store $0 offset=4
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   i32.const 3
+   i32.store $0 offset=12
+   local.get $2
+   i32.const 12
+   i32.store $0 offset=16
+   local.get $3
+   i32.const 16
+   i32.add
+   local.get $0
+   i32.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=20
+   local.get $3
+   local.get $1
+   i32.store $0 offset=24
+   i32.const 0
+   local.get $3
+   i32.load $0 offset=24
+   i32.const 20
+   i32.ne
+   br_if $~lib/eq/__eq20|inlined.1
+   drop
    block $~lib/util/raweq/__raweq20|inlined.1 (result i32)
     i32.const 0
-    local.get $2
-    i32.load $0
-    local.get $2
-    i32.load $0 offset=4
+    local.get $3
+    i32.load $0 offset=16
+    local.get $3
+    i32.load $0 offset=20
     i32.add
     local.tee $0
     i64.load $0

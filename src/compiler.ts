@@ -288,6 +288,9 @@ export class Options {
   bindingsHint: bool = false;
   /** Whether to convert top level statements into hook function. */
   topLevelToHook: bool = false;
+  /** Whether to treat all local functions as inline only */
+  inlineLocals: bool = true;
+
 
   /** Tests if the target is WASM64 or, otherwise, WASM32. */
   get isWasm64(): bool {
@@ -6543,6 +6546,16 @@ export class Compiler extends DiagnosticEmitter {
     for (let i = 0; i < numArguments; ++i) {
       let paramExpr = operands![i];
       let paramType = parameterTypes[i];
+      let scopedLocals = flow.scopedLocals;
+      let param = instance.prototype.functionTypeNode.parameters[i].name;
+      if (scopedLocals && scopedLocals.has(instance.getParameterName(i))) {
+        this.error(
+          DiagnosticCode.Duplicate_identifier_0,
+          param.range,
+          param.text
+        );
+        return module.unreachable();
+      }
       let argumentLocal = flow.addScopedLocal(instance.getParameterName(i), paramType);
       // inlining is aware of wrap/nonnull states:
       if (!previousFlow.canOverflow(paramExpr, paramType)) flow.setLocalFlag(argumentLocal.index, LocalFlags.Wrapped);
