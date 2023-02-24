@@ -1,0 +1,19 @@
+{
+  "name": "high-value-payment",
+  "version": "1.0.0",
+  "description": "High-value payment hook requires high-valued payments to be preceded by a notification.",
+  "scripts": {
+    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub high-value-payment.ts -O3 -o high-value-payment.wasm && hook-cleaner high-value-payment.wasm",
+    "postinstall": "patch-package"
+  },
+  "author": "Equilibrium - https://equilibrium.co",
+  "license": "Public Domain",
+  "dependencies": {
+    "patch-package": "^6.4.7",
+    "xrpl-accountlib": "^1.6.1",
+    "xrpl-client": "^2.0.1"
+  },
+  "resolutions": {
+    "ripple-binary-codec": "=1.4.2"
+  }
+}
