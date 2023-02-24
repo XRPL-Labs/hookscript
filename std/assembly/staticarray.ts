@@ -432,6 +432,22 @@ export class ByteArray {
   }
 
   @inline
+  toString(): string {
+    if (!this.length)
+      return "";
+
+    let ptr = changetype<usize>(this);
+    let len = (this.length <= 64) ? this.length : 64;
+    let out = __new(len, idof<String>());
+    if (len == 64)
+      __rawcopy64(out, ptr);
+    else
+      __rawcopyupto63(out, ptr, len);
+
+    return changetype<string>(out);
+  }
+
+  @inline
   static fromUInt(v: u32): ByteArray {
     let a = new ByteArray(4);
     a[0] = <u8>((v >> 24) & 0xFF);

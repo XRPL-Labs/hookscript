@@ -14,6 +14,12 @@ export class Account {
       rollback("", pack_error_code(bytes.length));
   }
 
+  @inline
+  toString(): string {
+    return this.bytes.toString();
+  }
+
+  @inline
   compare(right: ByteArray): i32 {
     let ptr1 = changetype<usize>(this.bytes);
     let ptr2 = changetype<usize>(right);
