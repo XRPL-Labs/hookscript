@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Firewall hook helps to avoid being spammed with low value transactions.",
   "scripts": {
-    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub firewall.ts -O3 -o firewall.wasm && hook-cleaner firewall.wasm",
+    "compile": "./node_modules/.bin/asc --disable=bulk-memory --runtime=stub firewall.ts -O3 -o firewall.wasm && hook-cleaner firewall.wasm",
     "postinstall": "patch-package"
   },
   "author": "Equilibrium - https://equilibrium.co",
   "license": "Public Domain",
   "dependencies": {
+    "@eqlabs/assemblyscript": "^0.0.0-alpha.1677245718",
     "patch-package": "^6.4.7",
     "xrpl-accountlib": "^1.6.1",
     "xrpl-client": "^2.0.1"
