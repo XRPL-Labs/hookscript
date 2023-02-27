@@ -83,11 +83,7 @@ The full process is documented as part of the repository:
 This repo contains examples of XRPL Hooks written in <a href="https://github.com/xrpl-labs/hookscript">HookScript</a>, plus scripts needed to compile, deploy and test them.
 
 ## Compiler
-The HookScript compiler should be obtained from the git repo by
-
-	git clone https://github.com/eqlabs/assemblyscript
-
-and compiled as documented there.
+The HookScript compiler is now installed from NPM.
 
 For post-processing, it is also necessary to install <a href="https://github.com/XRPLF/hook-cleaner-c">Hook Cleaner</a> from
 
