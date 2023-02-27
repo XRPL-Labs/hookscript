@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Blocklist hook filters outgoing and incoming payments against a known list of scam accounts.",
   "scripts": {
-    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub blacklist.ts -O3 -o blacklist.wasm && hook-cleaner blacklist.wasm && ../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub blocklist.ts -O3 -o blocklist.wasm && hook-cleaner blocklist.wasm",
+    "compile": "./node_modules/.bin/asc --disable=bulk-memory --runtime=stub blacklist.ts -O3 -o blacklist.wasm && hook-cleaner blacklist.wasm && ./node_modules/.bin/asc --disable=bulk-memory --runtime=stub blocklist.ts -O3 -o blocklist.wasm && hook-cleaner blocklist.wasm",
     "postinstall": "patch-package"
   },
   "author": "Equilibrium - https://equilibrium.co",
   "license": "Public Domain",
   "dependencies": {
+    "@eqlabs/assemblyscript": "^0.0.0-alpha.1677245718",
     "patch-package": "^6.4.7",
     "xrpl-accountlib": "^1.6.1",
     "xrpl-client": "^2.0.1"
