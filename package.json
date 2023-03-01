@@ -73,6 +73,7 @@
     "lkg": "node scripts/lkg",
     "watch": "node scripts/build --watch",
     "coverage": "npx c8 -- npm test",
+    "pretest": "npm run build",
     "test": "npm run test:parser && npm run test:compiler -- --parallel && npm run test:browser && npm run test:transform",
     "test:parser": "node --enable-source-maps tests/parser",
     "test:compiler": "node --enable-source-maps --no-warnings tests/compiler",
