@@ -23,18 +23,18 @@ function hook(reserved: i32)
     if (!memos)
         accept("Transaction has no memo")
 
-    let memos_view = new ByteView(memos, 0, memos.length)
-    let memo_lookup = sto_subarray(memos_view, 0)
-    memo_lookup = sto_subfield(memo_lookup, sfMemo)
+    const memos_array = SerializedArrayView.fromByteArray(memos)
+    const memo_wrapper = new SerializedObjectView<ObjectField>(memos_array[0])
+    const memo_object = new SerializedObjectView<MemoField>(memo_wrapper[ObjectField.Memo])
 
-    let format_lookup = sto_subfield(memo_lookup, sfMemoFormat)
+    const format_lookup = memo_object[MemoField.MemoFormat]
     if (format_lookup != "unsigned/payload+1")
         accept("Memo is an invalid format")
 
-    let data_lookup = sto_subfield(memo_lookup, sfMemoData)
-    let amount_view = sto_subfield(data_lookup, sfAmount)
-  
-    let amount = Amount.fromView(amount_view)
+    const data_lookup = new SerializedObjectView<PaymentField>(memo_object[MemoField.MemoData])
+    const amount_view = data_lookup[PaymentField.Amount]
+
+    const amount = Amount.fromView(amount_view)
     const xrp_flag = amount.isXrp()
     let limit_name: ByteView
     if (xrp_flag) {
