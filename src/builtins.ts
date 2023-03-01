@@ -35,6 +35,10 @@ import {
 } from "./diagnostics";
 
 import {
+  Token
+} from "./tokenizer";
+
+import {
   Expression,
   LiteralKind,
   IntegerLiteralExpression,
@@ -816,13 +820,7 @@ export const function_builtins = new Map<string,(ctx: BuiltinContext) => Express
 
 let guard_id_counter: u32 = 1 << 31;
 
-const EMIT_BUFFER_SIZE_XRP_WITH_CBAK = 270;
-const EMIT_BUFFER_SIZE_XRP_NO_CBAK = 248;
-const EMIT_BUFFER_SIZE_OTHER_WITH_CBAK = 309;
-const EMIT_BUFFER_SIZE_OTHER_NO_CBAK = 288;
-
-let emit_buffer_size_xrp = EMIT_BUFFER_SIZE_XRP_NO_CBAK;
-let emit_buffer_size_other = EMIT_BUFFER_SIZE_OTHER_NO_CBAK;
+let emit_buffer_size_has_cbak = false;
 
 // === Static type evaluation =================================================================
 
@@ -3839,12 +3837,14 @@ function builtin_emit_buffer_size(ctx: BuiltinContext): ExpressionRef {
     checkTypeAbsent(ctx) |
     checkArgsRequired(ctx, 1)
   ) return module.unreachable();
-  let xrpFlag = ctx.operands[0];
+  let baseSize = ctx.operands[0];
+  if (!emit_buffer_size_has_cbak)
+    return compiler.compileExpression(baseSize, Type.i32);
+
   let range = ctx.reportNode.expression.range;
-  let xrpSize = Node.createIntegerLiteralExpression(i64_new(emit_buffer_size_xrp), range);
-  let otherSize = Node.createIntegerLiteralExpression(i64_new(emit_buffer_size_other), range);
-  let expr = Node.createTernaryExpression(xrpFlag, xrpSize, otherSize, range);
-  return compiler.compileTernaryExpression(expr, Type.i32);
+  let cbakDelta = Node.createIntegerLiteralExpression(i64_new(22), range);
+  let expr = Node.createBinaryExpression(Token.Plus, baseSize, cbakDelta, range);
+  return compiler.compileBinaryExpression(expr, Type.i32);
 }
 builtins.set(BuiltinNames.emit_buffer_size, builtin_emit_buffer_size);
 
@@ -10576,8 +10576,7 @@ function typeToRuntimeFlags(type: Type): TypeinfoFlags {
 /** Increases buffer sizes used by emit_buffer_size. Must be called
  * before compiling it. */
 export function setEmitBufferSizeWithCbak() {
-  emit_buffer_size_xrp = EMIT_BUFFER_SIZE_XRP_WITH_CBAK;
-  emit_buffer_size_other = EMIT_BUFFER_SIZE_OTHER_WITH_CBAK;
+  emit_buffer_size_has_cbak = true;
 }
 
 /** Compiles runtime type information for use by stdlib. */

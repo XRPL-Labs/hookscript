@@ -23,7 +23,7 @@ export function accept(msg: string = "", err: i64 = 0): void {
 
 @global @inline
 export function emit(tx: EmitSpec): ByteArray {
-  let buf = new ByteArray(emit_buffer_size(tx.amount.isXrp()));
+  let buf = new ByteArray(emit_buffer_size(tx.amount.isXrp() ? 248 : 288));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
