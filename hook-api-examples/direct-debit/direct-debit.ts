@@ -82,7 +82,7 @@ function hook(reserved: i32)
     LocalState.setItem(currency_name, new ByteView(last_time_buffer, 0, last_time_buffer.length))
 
     emit({
-        account: puller,
+        destination: puller,
         amount: amount
     })
 

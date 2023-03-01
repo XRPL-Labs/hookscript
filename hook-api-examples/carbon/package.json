@@ -9,7 +9,7 @@
   "author": "Equilibrium - https://equilibrium.co",
   "license": "Public Domain",
   "dependencies": {
-    "@eqlabs/assemblyscript": "^0.0.0-alpha.1677245718",
+    "@eqlabs/assemblyscript": "^0.0.0-alpha.1677675681",
     "patch-package": "^6.4.7",
     "xrpl-accountlib": "^1.6.1",
     "xrpl-client": "^2.0.1"

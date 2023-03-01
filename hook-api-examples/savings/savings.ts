@@ -46,7 +46,7 @@ function hook(reserved: i32)
     let drops_to_send = <i32>((otxn_drops * percentage) / 100)
 
     emit({
-        account: dest_accid,
+        destination: dest_accid,
         amount: Amount.fromDrops(drops_to_send)
     })
 

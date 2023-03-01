@@ -193,7 +193,7 @@ export function hook(reserved: i32)
         }
 
         emit({
-            account: otxn_account,
+            destination: otxn_account,
             amount: new Amount(amt_out),
             sourceTag: <u32>source_tag,
             destinationTag: <u32>source_tag
@@ -303,7 +303,7 @@ export function hook(reserved: i32)
         // RH TODO: check the balance of the hook account
 
         emit({
-            account: otxn_account,
+            destination: otxn_account,
             amount: Amount.fromDrops(<u64>float_int(xrp_to_send, 6, 0)),
             sourceTag: <u32>source_tag,
             destinationTag: <u32>source_tag

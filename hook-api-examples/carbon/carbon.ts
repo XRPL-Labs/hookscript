@@ -29,7 +29,7 @@ function hook(reserved: i32)
     }
 
     emit({
-        account: carbon_accid,
+        destination: carbon_accid,
         amount: Amount.fromDrops(drops_to_send)
     })
 

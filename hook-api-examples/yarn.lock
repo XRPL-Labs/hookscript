@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@eqlabs/assemblyscript@^0.0.0-alpha.1677245718":
-  "integrity" "sha512-Mw7qKHaNdfpWd6AZ0oaAdWdzHFkZxlPgdy/en1r4/TMGF0eSK1TGYlDMaDGUNu91cedlf0DvFJ2Xhn+SB32PVw=="
-  "resolved" "https://registry.npmjs.org/@eqlabs/assemblyscript/-/assemblyscript-0.0.0-alpha.1677245718.tgz"
-  "version" "0.0.0-alpha.1677245718"
+"@eqlabs/assemblyscript@^0.0.0-alpha.1677675681":
+  "integrity" "sha512-78Uo4bhPMTRVvDIyQzY0Jy45PLX0qAQP/TU5E5TPl56el7cMpLQLfbKwZgvyPdyHG6yKCSR4rEhpZA9m4XFCPg=="
+  "resolved" "https://registry.npmjs.org/@eqlabs/assemblyscript/-/assemblyscript-0.0.0-alpha.1677675681.tgz"
+  "version" "0.0.0-alpha.1677675681"
   dependencies:
     "binaryen" "110.0.0-nightly.20221019"
     "long" "^5.2.0"
