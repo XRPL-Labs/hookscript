@@ -1,10 +1,10 @@
 (module
- (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
- (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
+ (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/rt/itcms/total (mut i32) (i32.const 0))
@@ -1424,538 +1424,6 @@
   end
   local.get $2
  )
- (func $std/operator-overloading/TesterElementAccess#__set (type $i32_i32_i32_=>_none) (param $0 i32) (param $1 i32) (param $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1356
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $4
-  i32.const 0
-  i32.store $0
-  block $~lib/string/String.__eq|inlined.0 (result i32)
-   i32.const 1248
-   local.set $3
-   local.get $4
-   i32.const 1248
-   i32.store $0
-   i32.const 1
-   local.get $1
-   i32.const 1248
-   i32.eq
-   br_if $~lib/string/String.__eq|inlined.0
-   drop
-   i32.const 0
-   local.get $1
-   i32.eqz
-   br_if $~lib/string/String.__eq|inlined.0
-   drop
-   i32.const 0
-   local.get $1
-   i32.const 20
-   i32.sub
-   i32.load $0 offset=16
-   local.tee $4
-   i32.const 1244
-   i32.load $0
-   i32.ne
-   br_if $~lib/string/String.__eq|inlined.0
-   drop
-   local.get $4
-   i32.const 128
-   i32.ge_s
-   if (result i32)
-    block $~lib/util/raweq/__raweq128|inlined.0 (result i32)
-     i32.const 0
-     local.get $1
-     i64.load $0
-     i32.const 1248
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1256
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1264
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1272
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1280
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1288
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1296
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1304
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1312
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1320
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1328
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1336
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1344
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1352
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
-     i64.load $0
-     i32.const 1360
-     i64.load $0
-     i64.ne
-     br_if $~lib/util/raweq/__raweq128|inlined.0
-     drop
-     local.get $1
-     i64.load $0 offset=8
-     i32.const 1368
-     i64.load $0
-     i64.eq
-    end
-   else
-    block $~lib/util/equpto/__equpto127|inlined.0 (result i32)
-     local.get $4
-     i32.const 64
-     i32.ge_u
-     if
-      i32.const 0
-      block $~lib/util/raweq/__raweq64|inlined.0 (result i32)
-       i32.const 0
-       local.get $1
-       i64.load $0
-       i32.const 1248
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.0
-       drop
-       i32.const 0
-       local.get $1
-       i32.const 8
-       i32.add
-       local.tee $3
-       i64.load $0
-       i32.const 1256
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.0
-       drop
-       i32.const 0
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i64.load $0
-       i32.const 1264
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.0
-       drop
-       i32.const 0
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i64.load $0
-       i32.const 1272
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.0
-       drop
-       i32.const 0
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i64.load $0
-       i32.const 1280
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.0
-       drop
-       i32.const 0
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i64.load $0
-       i32.const 1288
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.0
-       drop
-       i32.const 0
-       local.get $3
-       i32.const 8
-       i32.add
-       local.tee $3
-       i64.load $0
-       i32.const 1296
-       i64.load $0
-       i64.ne
-       br_if $~lib/util/raweq/__raweq64|inlined.0
-       drop
-       local.get $3
-       i64.load $0 offset=8
-       i32.const 1304
-       i64.load $0
-       i64.eq
-      end
-      i32.eqz
-      br_if $~lib/util/equpto/__equpto127|inlined.0
-      drop
-      i32.const 1312
-      local.set $3
-      local.get $4
-      i32.const -64
-      i32.add
-      local.set $4
-      local.get $1
-      i32.const -64
-      i32.sub
-      local.set $1
-     end
-     block $~lib/util/equpto/__equpto63|inlined.0
-      local.get $4
-      i32.const 32
-      i32.ge_u
-      if
-       block $~lib/util/raweq/__raweq32|inlined.0 (result i32)
-        i32.const 0
-        local.get $1
-        i64.load $0
-        local.get $3
-        i64.load $0
-        i64.ne
-        br_if $~lib/util/raweq/__raweq32|inlined.0
-        drop
-        i32.const 0
-        local.get $1
-        i32.const 8
-        i32.add
-        local.tee $6
-        i64.load $0
-        local.get $3
-        i32.const 8
-        i32.add
-        local.tee $7
-        i64.load $0
-        i64.ne
-        br_if $~lib/util/raweq/__raweq32|inlined.0
-        drop
-        i32.const 0
-        local.get $6
-        i32.const 8
-        i32.add
-        local.tee $6
-        i64.load $0
-        local.get $7
-        i32.const 8
-        i32.add
-        local.tee $7
-        i64.load $0
-        i64.ne
-        br_if $~lib/util/raweq/__raweq32|inlined.0
-        drop
-        local.get $6
-        i64.load $0 offset=8
-        local.get $7
-        i64.load $0 offset=8
-        i64.eq
-       end
-       i32.eqz
-       br_if $~lib/util/equpto/__equpto63|inlined.0
-       local.get $3
-       i32.const 32
-       i32.add
-       local.set $3
-       local.get $4
-       i32.const 32
-       i32.sub
-       local.set $4
-       local.get $1
-       i32.const 32
-       i32.add
-       local.set $1
-      end
-      block $~lib/util/equpto/__equpto31|inlined.0
-       local.get $4
-       i32.const 16
-       i32.ge_u
-       if
-        local.get $1
-        i64.load $0
-        local.get $3
-        i64.load $0
-        i64.ne
-        if (result i32)
-         i32.const 0
-        else
-         local.get $1
-         i64.load $0 offset=8
-         local.get $3
-         i64.load $0 offset=8
-         i64.eq
-        end
-        i32.eqz
-        br_if $~lib/util/equpto/__equpto31|inlined.0
-        local.get $3
-        i32.const 16
-        i32.add
-        local.set $3
-        local.get $4
-        i32.const 16
-        i32.sub
-        local.set $4
-        local.get $1
-        i32.const 16
-        i32.add
-        local.set $1
-       end
-       block $~lib/util/equpto/__equpto15|inlined.0 (result i32)
-        local.get $4
-        i32.const 8
-        i32.ge_u
-        if
-         i32.const 0
-         local.get $1
-         i64.load $0
-         local.get $3
-         i64.load $0
-         i64.ne
-         br_if $~lib/util/equpto/__equpto15|inlined.0
-         drop
-         local.get $3
-         i32.const 8
-         i32.add
-         local.set $3
-         local.get $4
-         i32.const 8
-         i32.sub
-         local.set $4
-         local.get $1
-         i32.const 8
-         i32.add
-         local.set $1
-        end
-        block $~lib/util/equpto/__equpto7|inlined.0 (result i32)
-         local.get $4
-         i32.const 4
-         i32.ge_u
-         if
-          i32.const 0
-          local.get $1
-          i32.load $0
-          local.get $3
-          i32.load $0
-          i32.ne
-          br_if $~lib/util/equpto/__equpto7|inlined.0
-          drop
-          local.get $3
-          i32.const 4
-          i32.add
-          local.set $3
-          local.get $4
-          i32.const 4
-          i32.sub
-          local.set $4
-          local.get $1
-          i32.const 4
-          i32.add
-          local.set $1
-         end
-         block $~lib/util/equpto/__equpto3|inlined.0 (result i32)
-          local.get $4
-          i32.const 2
-          i32.ge_u
-          if
-           i32.const 0
-           local.get $1
-           i32.load16_u $0
-           local.get $3
-           i32.load16_u $0
-           i32.ne
-           br_if $~lib/util/equpto/__equpto3|inlined.0
-           drop
-           local.get $3
-           i32.const 2
-           i32.add
-           local.set $3
-           local.get $4
-           i32.const 2
-           i32.sub
-           local.set $4
-           local.get $1
-           i32.const 2
-           i32.add
-           local.set $1
-          end
-          local.get $4
-          if (result i32)
-           local.get $1
-           i32.load8_u $0
-           local.get $3
-           i32.load8_u $0
-           i32.eq
-          else
-           i32.const 1
-          end
-         end
-        end
-       end
-       local.set $5
-      end
-     end
-     local.get $5
-    end
-   end
-  end
-  if
-   local.get $0
-   local.get $2
-   i32.store $0
-  else
-   local.get $0
-   local.get $2
-   i32.store $0 offset=4
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
  (func $~lib/rt/__visit_globals (type $none_=>_none)
   (local $0 i32)
   global.get $std/operator-overloading/a1
@@ -2367,8 +1835,14 @@
  (func $start:std/operator-overloading (type $none_=>_none)
   (local $0 i32)
   (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 48
+  i32.const 596
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -2378,8 +1852,9 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
+  local.tee $0
   i32.const 0
-  i32.const 48
+  i32.const 596
   memory.fill $0
   memory.size $0
   i32.const 16
@@ -2413,33 +1888,65 @@
   i32.store $0
   i32.const 1200
   global.set $~lib/rt/itcms/fromSpace
-  i32.const 1
-  i32.const 2
-  call $std/operator-overloading/Tester#constructor
-  global.set $std/operator-overloading/a1
-  i32.const 2
+  local.get $0
   i32.const 3
-  call $std/operator-overloading/Tester#constructor
-  global.set $std/operator-overloading/a2
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/a1
+  call $~lib/rt/itcms/__new
   local.tee $0
   i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/a2
-  local.tee $1
+  local.get $0
+  i32.const 1
+  i32.store $0
+  local.get $0
+  i32.const 2
   i32.store $0 offset=4
   local.get $0
+  global.set $std/operator-overloading/a1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=4
+  local.get $0
+  i32.const 2
+  i32.store $0
+  local.get $0
+  i32.const 3
+  i32.store $0 offset=4
+  local.get $0
+  global.set $std/operator-overloading/a2
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  global.get $std/operator-overloading/a1
+  local.tee $2
+  i32.store $0 offset=8
+  local.get $0
+  global.get $std/operator-overloading/a2
+  local.tee $0
+  i32.store $0 offset=12
+  local.get $2
   i32.load $0
-  local.get $1
+  local.get $0
   i32.load $0
   i32.add
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
   local.get $0
   i32.load $0 offset=4
-  local.get $1
-  i32.load $0 offset=4
   i32.add
-  call $std/operator-overloading/Tester#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=16
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
+  i32.store $0 offset=4
+  local.get $2
   global.set $std/operator-overloading/a
   global.get $std/operator-overloading/a
   i32.load $0
@@ -2457,34 +1964,65 @@
   if
    unreachable
   end
-  i32.const 2
+  global.get $~lib/memory/__stack_pointer
   i32.const 3
-  call $std/operator-overloading/Tester#constructor
-  global.set $std/operator-overloading/s1
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=20
+  local.get $0
   i32.const 2
+  i32.store $0
+  local.get $0
+  i32.const 3
+  i32.store $0 offset=4
+  local.get $0
+  global.set $std/operator-overloading/s1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=24
+  local.get $0
+  i32.const 2
+  i32.store $0
+  local.get $0
   i32.const -3
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/s2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/s1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=28
   local.get $0
   global.get $std/operator-overloading/s2
   local.tee $0
+  i32.store $0 offset=32
+  local.get $2
+  i32.load $0
+  local.get $0
+  i32.load $0
+  i32.sub
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
+  local.get $0
+  i32.load $0 offset=4
+  i32.sub
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=36
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
   i32.store $0 offset=4
-  local.get $1
-  i32.load $0
-  local.get $0
-  i32.load $0
-  i32.sub
-  local.get $1
-  i32.load $0 offset=4
-  local.get $0
-  i32.load $0 offset=4
-  i32.sub
-  call $std/operator-overloading/Tester#constructor
+  local.get $2
   global.set $std/operator-overloading/s
   global.get $std/operator-overloading/s
   i32.load $0
@@ -2500,34 +2038,65 @@
   if
    unreachable
   end
-  i32.const 2
-  i32.const 5
-  call $std/operator-overloading/Tester#constructor
-  global.set $std/operator-overloading/m1
+  global.get $~lib/memory/__stack_pointer
   i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=40
+  local.get $0
   i32.const 2
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0
+  local.get $0
+  i32.const 5
+  i32.store $0 offset=4
+  local.get $0
+  global.set $std/operator-overloading/m1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=44
+  local.get $0
+  i32.const 3
+  i32.store $0
+  local.get $0
+  i32.const 2
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/m2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/m1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=48
   local.get $0
   global.get $std/operator-overloading/m2
   local.tee $0
+  i32.store $0 offset=52
+  local.get $2
+  i32.load $0
+  local.get $0
+  i32.load $0
+  i32.mul
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
+  local.get $0
+  i32.load $0 offset=4
+  i32.mul
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=56
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
   i32.store $0 offset=4
-  local.get $1
-  i32.load $0
-  local.get $0
-  i32.load $0
-  i32.mul
-  local.get $1
-  i32.load $0 offset=4
-  local.get $0
-  i32.load $0 offset=4
-  i32.mul
-  call $std/operator-overloading/Tester#constructor
+  local.get $2
   global.set $std/operator-overloading/m
   global.get $std/operator-overloading/m
   i32.load $0
@@ -2545,34 +2114,65 @@
   if
    unreachable
   end
-  i32.const 6
-  i32.const 50
-  call $std/operator-overloading/Tester#constructor
-  global.set $std/operator-overloading/d1
+  global.get $~lib/memory/__stack_pointer
   i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=60
+  local.get $0
+  i32.const 6
+  i32.store $0
+  local.get $0
+  i32.const 50
+  i32.store $0 offset=4
+  local.get $0
+  global.set $std/operator-overloading/d1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=64
+  local.get $0
+  i32.const 3
+  i32.store $0
+  local.get $0
   i32.const 10
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/d2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/d1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=68
   local.get $0
   global.get $std/operator-overloading/d2
   local.tee $0
+  i32.store $0 offset=72
+  local.get $2
+  i32.load $0
+  local.get $0
+  i32.load $0
+  i32.div_s
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
+  local.get $0
+  i32.load $0 offset=4
+  i32.div_s
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=76
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
   i32.store $0 offset=4
-  local.get $1
-  i32.load $0
-  local.get $0
-  i32.load $0
-  i32.div_s
-  local.get $1
-  i32.load $0 offset=4
-  local.get $0
-  i32.load $0 offset=4
-  i32.div_s
-  call $std/operator-overloading/Tester#constructor
+  local.get $2
   global.set $std/operator-overloading/d
   global.get $std/operator-overloading/d
   i32.load $0
@@ -2590,34 +2190,65 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=80
+  local.get $0
   i32.const 10
+  i32.store $0
+  local.get $0
   i32.const 10
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/f1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=84
+  local.get $0
   i32.const 6
+  i32.store $0
+  local.get $0
   i32.const 10
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/f2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/f1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=88
   local.get $0
   global.get $std/operator-overloading/f2
   local.tee $0
+  i32.store $0 offset=92
+  local.get $2
+  i32.load $0
+  local.get $0
+  i32.load $0
+  i32.rem_s
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
+  local.get $0
+  i32.load $0 offset=4
+  i32.rem_s
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=96
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
   i32.store $0 offset=4
-  local.get $1
-  i32.load $0
-  local.get $0
-  i32.load $0
-  i32.rem_s
-  local.get $1
-  i32.load $0 offset=4
-  local.get $0
-  i32.load $0 offset=4
-  i32.rem_s
-  call $std/operator-overloading/Tester#constructor
+  local.get $2
   global.set $std/operator-overloading/f
   global.get $std/operator-overloading/f
   i32.load $0
@@ -2632,34 +2263,65 @@
   if
    unreachable
   end
-  i32.const 2
+  global.get $~lib/memory/__stack_pointer
   i32.const 3
-  call $std/operator-overloading/Tester#constructor
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=100
+  local.get $0
+  i32.const 2
+  i32.store $0
+  local.get $0
+  i32.const 3
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/p1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=104
+  local.get $0
   i32.const 4
+  i32.store $0
+  local.get $0
   i32.const 5
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/p2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/p1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=108
   local.get $0
   global.get $std/operator-overloading/p2
   local.tee $0
+  i32.store $0 offset=112
+  local.get $2
+  i32.load $0
+  local.get $0
+  i32.load $0
+  call $~lib/math/ipow32
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
+  local.get $0
+  i32.load $0 offset=4
+  call $~lib/math/ipow32
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=116
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
   i32.store $0 offset=4
-  local.get $1
-  i32.load $0
-  local.get $0
-  i32.load $0
-  call $~lib/math/ipow32
-  local.get $1
-  i32.load $0 offset=4
-  local.get $0
-  i32.load $0 offset=4
-  call $~lib/math/ipow32
-  call $std/operator-overloading/Tester#constructor
+  local.get $2
   global.set $std/operator-overloading/p
   global.get $std/operator-overloading/p
   i32.load $0
@@ -2677,34 +2339,65 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=120
+  local.get $0
   i32.const 255
+  i32.store $0
+  local.get $0
   i32.const 15
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/n1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=124
+  local.get $0
   i32.const 15
+  i32.store $0
+  local.get $0
   i32.const 255
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/n2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/n1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=128
   local.get $0
   global.get $std/operator-overloading/n2
   local.tee $0
+  i32.store $0 offset=132
+  local.get $2
+  i32.load $0
+  local.get $0
+  i32.load $0
+  i32.and
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
+  local.get $0
+  i32.load $0 offset=4
+  i32.and
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=136
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
   i32.store $0 offset=4
-  local.get $1
-  i32.load $0
-  local.get $0
-  i32.load $0
-  i32.and
-  local.get $1
-  i32.load $0 offset=4
-  local.get $0
-  i32.load $0 offset=4
-  i32.and
-  call $std/operator-overloading/Tester#constructor
+  local.get $2
   global.set $std/operator-overloading/n
   global.get $std/operator-overloading/n
   i32.load $0
@@ -2722,34 +2415,65 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=140
+  local.get $0
   i32.const 3855
+  i32.store $0
+  local.get $0
   i32.const 255
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/o1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=144
+  local.get $0
   i32.const 61680
+  i32.store $0
+  local.get $0
   i32.const 0
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/o2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/o1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=148
   local.get $0
   global.get $std/operator-overloading/o2
   local.tee $0
+  i32.store $0 offset=152
+  local.get $2
+  i32.load $0
+  local.get $0
+  i32.load $0
+  i32.or
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
+  local.get $0
+  i32.load $0 offset=4
+  i32.or
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=156
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
   i32.store $0 offset=4
-  local.get $1
-  i32.load $0
-  local.get $0
-  i32.load $0
-  i32.or
-  local.get $1
-  i32.load $0 offset=4
-  local.get $0
-  i32.load $0 offset=4
-  i32.or
-  call $std/operator-overloading/Tester#constructor
+  local.get $2
   global.set $std/operator-overloading/o
   global.get $std/operator-overloading/o
   i32.load $0
@@ -2767,34 +2491,65 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=160
+  local.get $0
   i32.const 255
+  i32.store $0
+  local.get $0
   i32.const 255
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/x1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=164
+  local.get $0
   i32.const 65280
+  i32.store $0
+  local.get $0
   i32.const 0
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/x2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/x1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=168
   local.get $0
   global.get $std/operator-overloading/x2
   local.tee $0
+  i32.store $0 offset=172
+  local.get $2
+  i32.load $0
+  local.get $0
+  i32.load $0
+  i32.xor
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
+  local.get $0
+  i32.load $0 offset=4
+  i32.xor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=176
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
   i32.store $0 offset=4
-  local.get $1
-  i32.load $0
-  local.get $0
-  i32.load $0
-  i32.xor
-  local.get $1
-  i32.load $0 offset=4
-  local.get $0
-  i32.load $0 offset=4
-  i32.xor
-  call $std/operator-overloading/Tester#constructor
+  local.get $2
   global.set $std/operator-overloading/x
   global.get $std/operator-overloading/x
   i32.load $0
@@ -2812,30 +2567,48 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=180
+  local.get $0
   i32.const 1
+  i32.store $0
+  local.get $0
   i32.const -2
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/eq1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=184
+  local.get $0
   i32.const 1
+  i32.store $0
+  local.get $0
   i32.const -2
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/eq2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/eq1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=188
   local.get $0
   global.get $std/operator-overloading/eq2
   local.tee $0
-  i32.store $0 offset=4
-  local.get $1
+  i32.store $0 offset=192
+  local.get $2
   i32.load $0
   local.get $0
   i32.load $0
   i32.eq
   if (result i32)
-   local.get $1
+   local.get $2
    i32.load $0 offset=4
    local.get $0
    i32.load $0 offset=4
@@ -2850,30 +2623,48 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=196
+  local.get $0
   i32.const 1
+  i32.store $0
+  local.get $0
   i32.const 0
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/eq3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=200
+  local.get $0
   i32.const 0
+  i32.store $0
+  local.get $0
   i32.const 1
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/eq4
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/eq3
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=204
   local.get $0
   global.get $std/operator-overloading/eq4
   local.tee $0
-  i32.store $0 offset=4
-  local.get $1
+  i32.store $0 offset=208
+  local.get $2
   i32.load $0
   local.get $0
   i32.load $0
   i32.eq
   if (result i32)
-   local.get $1
+   local.get $2
    i32.load $0 offset=4
    local.get $0
    i32.load $0 offset=4
@@ -2889,19 +2680,19 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/eq1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=212
   local.get $0
   global.get $std/operator-overloading/eq2
   local.tee $0
-  i32.store $0 offset=4
-  local.get $1
+  i32.store $0 offset=216
+  local.get $2
   i32.load $0
   local.get $0
   i32.load $0
   i32.ne
   if (result i32)
-   local.get $1
+   local.get $2
    i32.load $0 offset=4
    local.get $0
    i32.load $0 offset=4
@@ -2917,19 +2708,19 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/eq3
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=220
   local.get $0
   global.get $std/operator-overloading/eq4
   local.tee $0
-  i32.store $0 offset=4
-  local.get $1
+  i32.store $0 offset=224
+  local.get $2
   i32.load $0
   local.get $0
   i32.load $0
   i32.ne
   if (result i32)
-   local.get $1
+   local.get $2
    i32.load $0 offset=4
    local.get $0
    i32.load $0 offset=4
@@ -2944,30 +2735,48 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=228
+  local.get $0
   i32.const 2
+  i32.store $0
+  local.get $0
   i32.const 2147483647
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/gt1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=232
+  local.get $0
   i32.const 1
+  i32.store $0
+  local.get $0
   i32.const 0
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/gt2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/gt1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=236
   local.get $0
   global.get $std/operator-overloading/gt2
   local.tee $0
-  i32.store $0 offset=4
-  local.get $1
+  i32.store $0 offset=240
+  local.get $2
   i32.load $0
   local.get $0
   i32.load $0
   i32.gt_s
   if (result i32)
-   local.get $1
+   local.get $2
    i32.load $0 offset=4
    local.get $0
    i32.load $0 offset=4
@@ -2982,30 +2791,48 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=244
+  local.get $0
   i32.const 2
+  i32.store $0
+  local.get $0
   i32.const 2
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/gte1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=248
+  local.get $0
   i32.const 2
+  i32.store $0
+  local.get $0
   i32.const 2
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/gte2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/gte1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=252
   local.get $0
   global.get $std/operator-overloading/gte2
   local.tee $0
-  i32.store $0 offset=4
-  local.get $1
+  i32.store $0 offset=256
+  local.get $2
   i32.load $0
   local.get $0
   i32.load $0
   i32.ge_s
   if (result i32)
-   local.get $1
+   local.get $2
    i32.load $0 offset=4
    local.get $0
    i32.load $0 offset=4
@@ -3020,30 +2847,48 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=260
+  local.get $0
   i32.const 5
+  i32.store $0
+  local.get $0
   i32.const -1
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/le1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=264
+  local.get $0
   i32.const 6
+  i32.store $0
+  local.get $0
   i32.const 6
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/le2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/le1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=268
   local.get $0
   global.get $std/operator-overloading/le2
   local.tee $0
-  i32.store $0 offset=4
-  local.get $1
+  i32.store $0 offset=272
+  local.get $2
   i32.load $0
   local.get $0
   i32.load $0
   i32.lt_s
   if (result i32)
-   local.get $1
+   local.get $2
    i32.load $0 offset=4
    local.get $0
    i32.load $0 offset=4
@@ -3058,30 +2903,48 @@
   if
    unreachable
   end
-  i32.const 4
+  global.get $~lib/memory/__stack_pointer
   i32.const 3
-  call $std/operator-overloading/Tester#constructor
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=276
+  local.get $0
+  i32.const 4
+  i32.store $0
+  local.get $0
+  i32.const 3
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/leq1
-  i32.const 4
+  global.get $~lib/memory/__stack_pointer
   i32.const 3
-  call $std/operator-overloading/Tester#constructor
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=280
+  local.get $0
+  i32.const 4
+  i32.store $0
+  local.get $0
+  i32.const 3
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/leq2
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/leq1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=284
   local.get $0
   global.get $std/operator-overloading/leq2
   local.tee $0
-  i32.store $0 offset=4
-  local.get $1
+  i32.store $0 offset=288
+  local.get $2
   i32.load $0
   local.get $0
   i32.load $0
   i32.le_s
   if (result i32)
-   local.get $1
+   local.get $2
    i32.load $0 offset=4
    local.get $0
    i32.load $0 offset=4
@@ -3096,23 +2959,45 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=292
+  local.get $0
   i32.const 8
+  i32.store $0
+  local.get $0
   i32.const 16
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/shr
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/shr
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=296
   local.get $0
   i32.load $0
   i32.const 3
   i32.shr_s
+  local.set $2
   local.get $0
   i32.load $0 offset=4
   i32.const 3
   i32.shr_s
-  call $std/operator-overloading/Tester#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $3
+  i32.store $0 offset=300
+  local.get $3
+  local.get $2
+  i32.store $0
+  local.get $3
+  local.get $0
+  i32.store $0 offset=4
+  local.get $3
   global.set $std/operator-overloading/sres
   global.get $std/operator-overloading/sres
   i32.load $0
@@ -3130,23 +3015,45 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=304
+  local.get $0
   i32.const -8
+  i32.store $0
+  local.get $0
   i32.const -16
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/shu
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/shu
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=308
   local.get $0
   i32.load $0
   i32.const 3
   i32.shr_u
+  local.set $2
   local.get $0
   i32.load $0 offset=4
   i32.const 3
   i32.shr_u
-  call $std/operator-overloading/Tester#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $3
+  i32.store $0 offset=312
+  local.get $3
+  local.get $2
+  i32.store $0
+  local.get $3
+  local.get $0
+  i32.store $0 offset=4
+  local.get $3
   global.set $std/operator-overloading/ures
   global.get $std/operator-overloading/ures
   i32.load $0
@@ -3164,23 +3071,45 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=316
+  local.get $0
   i32.const 1
+  i32.store $0
+  local.get $0
   i32.const 2
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/shl
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/shl
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=320
   local.get $0
   i32.load $0
   i32.const 3
   i32.shl
+  local.set $2
   local.get $0
   i32.load $0 offset=4
   i32.const 3
   i32.shl
-  call $std/operator-overloading/Tester#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $3
+  i32.store $0 offset=324
+  local.get $3
+  local.get $2
+  i32.store $0
+  local.get $3
+  local.get $0
+  i32.store $0 offset=4
+  local.get $3
   global.set $std/operator-overloading/sres
   global.get $std/operator-overloading/sres
   i32.load $0
@@ -3198,19 +3127,41 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=328
+  local.get $0
   i32.const 1
+  i32.store $0
+  local.get $0
   i32.const -2
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/pos
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/pos
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=332
   local.get $0
   i32.load $0
+  local.set $2
   local.get $0
   i32.load $0 offset=4
-  call $std/operator-overloading/Tester#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $3
+  i32.store $0 offset=336
+  local.get $3
+  local.get $2
+  i32.store $0
+  local.get $3
+  local.get $0
+  i32.store $0 offset=4
+  local.get $3
   global.set $std/operator-overloading/pres
   global.get $std/operator-overloading/pres
   i32.load $0
@@ -3230,23 +3181,45 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=340
+  local.get $0
   i32.const -1
+  i32.store $0
+  local.get $0
   i32.const -2
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/neg
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/neg
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=344
   i32.const 0
   local.get $0
   i32.load $0
   i32.sub
+  local.set $2
   i32.const 0
   local.get $0
   i32.load $0 offset=4
   i32.sub
-  call $std/operator-overloading/Tester#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $3
+  i32.store $0 offset=348
+  local.get $3
+  local.get $2
+  i32.store $0
+  local.get $3
+  local.get $0
+  i32.store $0 offset=4
+  local.get $3
   global.set $std/operator-overloading/nres
   global.get $std/operator-overloading/nres
   i32.load $0
@@ -3270,23 +3243,45 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=352
+  local.get $0
   i32.const 255
+  i32.store $0
+  local.get $0
   i32.const 16
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/not
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/not
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=356
   local.get $0
   i32.load $0
   i32.const -1
   i32.xor
+  local.set $2
   local.get $0
   i32.load $0 offset=4
   i32.const -1
   i32.xor
-  call $std/operator-overloading/Tester#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $3
+  i32.store $0 offset=360
+  local.get $3
+  local.get $2
+  i32.store $0
+  local.get $3
+  local.get $0
+  i32.store $0 offset=4
+  local.get $3
   global.set $std/operator-overloading/res
   global.get $std/operator-overloading/res
   i32.load $0
@@ -3310,14 +3305,23 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=364
+  local.get $0
   i32.const 0
+  i32.store $0
+  local.get $0
   i32.const 0
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/excl
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/excl
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=368
   local.get $0
   i32.load $0
   if (result i32)
@@ -3348,14 +3352,23 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=372
+  local.get $0
   i32.const 0
+  i32.store $0
+  local.get $0
   i32.const 1
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/incdec
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/incdec
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=376
   local.get $0
   local.get $0
   i32.load $0
@@ -3389,7 +3402,7 @@
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/incdec
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=380
   local.get $0
   local.get $0
   i32.load $0
@@ -3418,25 +3431,51 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=384
+  local.get $0
   i32.const 0
+  i32.store $0
+  local.get $0
   i32.const 1
-  call $std/operator-overloading/Tester#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/incdec
   global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/incdec
   local.tee $0
-  i32.store $0 offset=8
+  global.get $std/operator-overloading/incdec
+  local.tee $2
+  i32.store $0 offset=388
   local.get $0
+  local.get $2
+  i32.store $0 offset=392
+  local.get $2
   i32.load $0
   i32.const 1
   i32.add
-  local.get $0
+  local.set $0
+  local.get $2
   i32.load $0 offset=4
   i32.const 1
   i32.add
-  call $std/operator-overloading/Tester#constructor
-  global.set $std/operator-overloading/incdec
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $4
+  i32.store $0 offset=396
+  local.get $4
   local.get $0
+  i32.store $0
+  local.get $4
+  local.get $3
+  i32.store $0 offset=4
+  local.get $4
+  global.set $std/operator-overloading/incdec
+  local.get $2
   global.set $std/operator-overloading/tmp
   global.get $std/operator-overloading/tmp
   i32.load $0
@@ -3469,20 +3508,37 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/incdec
   local.tee $0
-  i32.store $0 offset=12
+  global.get $std/operator-overloading/incdec
+  local.tee $2
+  i32.store $0 offset=400
   local.get $0
+  local.get $2
+  i32.store $0 offset=404
+  local.get $2
   i32.load $0
   i32.const 1
   i32.sub
-  local.get $0
+  local.set $3
+  local.get $2
   i32.load $0 offset=4
   i32.const 1
   i32.sub
-  call $std/operator-overloading/Tester#constructor
-  global.set $std/operator-overloading/incdec
+  local.set $4
   local.get $0
+  i32.const 3
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=408
+  local.get $0
+  local.get $3
+  i32.store $0
+  local.get $0
+  local.get $4
+  i32.store $0 offset=4
+  local.get $0
+  global.set $std/operator-overloading/incdec
+  local.get $2
   global.set $std/operator-overloading/tmp
   global.get $std/operator-overloading/tmp
   i32.load $0
@@ -3514,51 +3570,96 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=412
+  local.get $0
   i32.const 1
+  i32.store $0
+  local.get $0
   i32.const 2
-  call $std/operator-overloading/TesterInlineStatic#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/ais1
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $std/operator-overloading/ais1
-  local.tee $1
-  i32.store $0
+  local.tee $2
+  i32.store $0 offset=416
   local.get $0
-  local.get $1
-  i32.store $0 offset=16
-  local.get $1
+  local.get $2
+  i32.store $0 offset=420
+  local.get $2
   i32.load $0
   i32.const 1
   i32.add
-  local.get $1
+  local.set $0
+  local.get $2
   i32.load $0 offset=4
   i32.const 1
   i32.add
-  call $std/operator-overloading/TesterInlineStatic#constructor
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $3
+  i32.store $0 offset=424
+  local.get $3
+  local.get $0
+  i32.store $0
+  local.get $3
+  local.get $2
+  i32.store $0 offset=4
+  local.get $3
   global.set $std/operator-overloading/ais1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=428
+  local.get $0
   i32.const 2
+  i32.store $0
+  local.get $0
   i32.const 3
-  call $std/operator-overloading/TesterInlineStatic#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/ais2
   global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/ais1
   local.tee $0
-  i32.store $0 offset=20
-  global.get $~lib/memory/__stack_pointer
+  global.get $std/operator-overloading/ais1
+  local.tee $2
+  i32.store $0 offset=432
+  local.get $0
   global.get $std/operator-overloading/ais2
-  local.tee $1
-  i32.store $0 offset=24
+  local.tee $0
+  i32.store $0 offset=436
+  local.get $2
+  i32.load $0
   local.get $0
   i32.load $0
-  local.get $1
-  i32.load $0
   i32.add
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
   local.get $0
   i32.load $0 offset=4
-  local.get $1
-  i32.load $0 offset=4
   i32.add
-  call $std/operator-overloading/TesterInlineStatic#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=440
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
+  i32.store $0 offset=4
+  local.get $2
   global.set $std/operator-overloading/ais
   global.get $std/operator-overloading/ais
   i32.load $0
@@ -3576,47 +3677,92 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 5
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=444
+  local.get $0
   i32.const 1
+  i32.store $0
+  local.get $0
   i32.const 2
-  call $std/operator-overloading/TesterInlineInstance#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/aii1
   global.get $~lib/memory/__stack_pointer
   global.get $std/operator-overloading/aii1
   local.tee $0
-  i32.store $0 offset=28
+  i32.store $0 offset=448
   local.get $0
   i32.load $0
   i32.const 1
   i32.add
+  local.set $2
   local.get $0
   i32.load $0 offset=4
   i32.const 1
   i32.add
-  call $std/operator-overloading/TesterInlineInstance#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 5
+  call $~lib/rt/itcms/__new
+  local.tee $3
+  i32.store $0 offset=452
+  local.get $3
+  local.get $2
+  i32.store $0
+  local.get $3
+  local.get $0
+  i32.store $0 offset=4
+  local.get $3
   global.set $std/operator-overloading/aii1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 5
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=456
+  local.get $0
   i32.const 2
+  i32.store $0
+  local.get $0
   i32.const 3
-  call $std/operator-overloading/TesterInlineInstance#constructor
+  i32.store $0 offset=4
+  local.get $0
   global.set $std/operator-overloading/aii2
   global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/aii1
   local.tee $0
-  i32.store $0 offset=32
-  global.get $~lib/memory/__stack_pointer
+  global.get $std/operator-overloading/aii1
+  local.tee $2
+  i32.store $0 offset=460
+  local.get $0
   global.get $std/operator-overloading/aii2
-  local.tee $1
-  i32.store $0 offset=36
+  local.tee $0
+  i32.store $0 offset=464
+  local.get $2
+  i32.load $0
   local.get $0
   i32.load $0
-  local.get $1
-  i32.load $0
   i32.add
+  local.set $3
+  local.get $2
+  i32.load $0 offset=4
   local.get $0
   i32.load $0 offset=4
-  local.get $1
-  i32.load $0 offset=4
   i32.add
-  call $std/operator-overloading/TesterInlineInstance#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 5
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=468
+  local.get $2
+  local.get $3
+  i32.store $0
+  local.get $2
+  local.get $0
+  i32.store $0 offset=4
+  local.get $2
   global.set $std/operator-overloading/aii
   global.get $std/operator-overloading/aii
   i32.load $0
@@ -3635,323 +3781,48 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1356
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 0
-  i32.store $0
-  local.get $0
   i32.const 6
   call $~lib/rt/itcms/__new
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=472
   local.get $0
   i32.const 1
   i32.store $0
   local.get $0
   i32.const 2
   i32.store $0 offset=4
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
   local.get $0
   global.set $std/operator-overloading/tea
   global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/tea
   local.tee $0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1248
-  i32.store $0 offset=4
+  global.get $std/operator-overloading/tea
+  local.tee $4
+  i32.store $0 offset=476
   local.get $0
   i32.const 1248
+  i32.store $0 offset=480
+  local.get $0
+  i32.const 1248
+  i32.store $0 offset=484
+  local.get $4
   i32.const -1
-  call $std/operator-overloading/TesterElementAccess#__set
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/tea
-  local.tee $0
   i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1280
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 1280
-  i32.const -2
-  call $std/operator-overloading/TesterElementAccess#__set
-  global.get $std/operator-overloading/tea
-  i32.load $0
-  i32.const -1
-  i32.ne
-  if
-   unreachable
-  end
   global.get $~lib/memory/__stack_pointer
   local.tee $0
-  global.get $std/operator-overloading/tea
-  local.tee $1
-  i32.store $0
-  local.get $0
-  i32.const 1248
-  i32.store $0 offset=4
-  local.get $1
-  i32.const 1248
-  call $std/operator-overloading/TesterElementAccess#__get
-  i32.const -1
-  i32.ne
-  if
-   unreachable
-  end
-  global.get $std/operator-overloading/tea
-  i32.load $0 offset=4
-  i32.const -2
-  i32.ne
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  global.get $std/operator-overloading/tea
-  local.tee $1
-  i32.store $0
+  local.get $4
+  i32.store $0 offset=488
   local.get $0
   i32.const 1280
-  i32.store $0 offset=4
-  local.get $1
-  i32.const 1280
-  call $std/operator-overloading/TesterElementAccess#__get
-  i32.const -2
-  i32.ne
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  global.get $std/operator-overloading/tea
-  local.tee $1
-  i32.store $0
-  local.get $0
-  i32.const 1248
-  i32.store $0 offset=4
-  local.get $0
-  local.get $1
-  i32.store $0 offset=40
-  local.get $0
-  i32.const 1248
-  i32.store $0 offset=44
-  local.get $1
-  i32.const 1248
-  local.get $1
-  i32.const 1248
-  call $std/operator-overloading/TesterElementAccess#__get
-  i32.const 1
-  i32.add
-  call $std/operator-overloading/TesterElementAccess#__set
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/tea
-  local.tee $0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1280
-  i32.store $0 offset=4
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/tea
-  local.tee $1
-  i32.store $0 offset=40
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1280
-  i32.store $0 offset=44
-  local.get $0
-  i32.const 1280
-  local.get $1
-  i32.const 1280
-  call $std/operator-overloading/TesterElementAccess#__get
-  i32.const 1
-  i32.sub
-  call $std/operator-overloading/TesterElementAccess#__set
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/operator-overloading/tea
-  local.tee $0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1248
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 1248
-  call $std/operator-overloading/TesterElementAccess#__get
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  global.get $std/operator-overloading/tea
-  local.tee $1
-  i32.store $0
-  local.get $0
-  i32.const 1280
-  i32.store $0 offset=4
-  local.get $1
-  i32.const 1280
-  call $std/operator-overloading/TesterElementAccess#__get
-  i32.const -3
-  i32.ne
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 48
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $std/operator-overloading/Tester#constructor (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1356
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $2
-  i32.const 0
-  i32.store $0
-  local.get $2
-  i32.const 3
-  call $~lib/rt/itcms/__new
-  local.tee $2
-  i32.store $0
-  local.get $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  local.get $1
-  i32.store $0 offset=4
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $2
- )
- (func $std/operator-overloading/TesterInlineStatic#constructor (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1356
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $2
-  i32.const 0
-  i32.store $0
-  local.get $2
-  i32.const 4
-  call $~lib/rt/itcms/__new
-  local.tee $2
-  i32.store $0
-  local.get $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  local.get $1
-  i32.store $0 offset=4
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $2
- )
- (func $std/operator-overloading/TesterInlineInstance#constructor (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1356
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $2
-  i32.const 0
-  i32.store $0
-  local.get $2
-  i32.const 5
-  call $~lib/rt/itcms/__new
-  local.tee $2
-  i32.store $0
-  local.get $2
-  local.get $0
-  i32.store $0
-  local.get $2
-  local.get $1
-  i32.store $0 offset=4
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $2
- )
- (func $std/operator-overloading/TesterElementAccess#__get (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1356
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $3
-  i32.const 0
-  i32.store $0
+  i32.store $0 offset=492
   block $~lib/string/String.__eq|inlined.1 (result i32)
    i32.const 1248
    local.set $2
-   local.get $3
+   local.get $0
    i32.const 1248
-   i32.store $0
-   i32.const 1
-   local.get $1
-   i32.const 1248
-   i32.eq
-   br_if $~lib/string/String.__eq|inlined.1
-   drop
+   i32.store $0 offset=496
    i32.const 0
-   local.get $1
-   i32.eqz
-   br_if $~lib/string/String.__eq|inlined.1
-   drop
-   i32.const 0
-   local.get $1
-   i32.const 20
-   i32.sub
-   i32.load $0 offset=16
+   i32.const 1276
+   i32.load $0
    local.tee $3
    i32.const 1244
    i32.load $0
@@ -3964,7 +3835,7 @@
    if (result i32)
     block $~lib/util/raweq/__raweq128|inlined.1 (result i32)
      i32.const 0
-     local.get $1
+     i32.const 1280
      i64.load $0
      i32.const 1248
      i64.load $0
@@ -3972,10 +3843,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1288
      i64.load $0
      i32.const 1256
      i64.load $0
@@ -3983,10 +3851,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1296
      i64.load $0
      i32.const 1264
      i64.load $0
@@ -3994,10 +3859,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1304
      i64.load $0
      i32.const 1272
      i64.load $0
@@ -4005,10 +3867,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1312
      i64.load $0
      i32.const 1280
      i64.load $0
@@ -4016,10 +3875,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1320
      i64.load $0
      i32.const 1288
      i64.load $0
@@ -4027,10 +3883,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1328
      i64.load $0
      i32.const 1296
      i64.load $0
@@ -4038,10 +3891,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1336
      i64.load $0
      i32.const 1304
      i64.load $0
@@ -4049,10 +3899,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1344
      i64.load $0
      i32.const 1312
      i64.load $0
@@ -4060,10 +3907,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1352
      i64.load $0
      i32.const 1320
      i64.load $0
@@ -4071,10 +3915,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1360
      i64.load $0
      i32.const 1328
      i64.load $0
@@ -4082,10 +3923,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1368
      i64.load $0
      i32.const 1336
      i64.load $0
@@ -4093,10 +3931,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1376
      i64.load $0
      i32.const 1344
      i64.load $0
@@ -4104,10 +3939,7 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1384
      i64.load $0
      i32.const 1352
      i64.load $0
@@ -4115,18 +3947,15 @@
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
      i32.const 0
-     local.get $1
-     i32.const 8
-     i32.add
-     local.tee $1
+     i32.const 1392
      i64.load $0
      i32.const 1360
      i64.load $0
      i64.ne
      br_if $~lib/util/raweq/__raweq128|inlined.1
      drop
-     local.get $1
-     i64.load $0 offset=8
+     i32.const 1400
+     i64.load $0
      i32.const 1368
      i64.load $0
      i64.eq
@@ -4136,11 +3965,11 @@
      local.get $3
      i32.const 64
      i32.ge_u
-     if
+     if (result i32)
       i32.const 0
       block $~lib/util/raweq/__raweq64|inlined.1 (result i32)
        i32.const 0
-       local.get $1
+       i32.const 1280
        i64.load $0
        i32.const 1248
        i64.load $0
@@ -4148,10 +3977,7 @@
        br_if $~lib/util/raweq/__raweq64|inlined.1
        drop
        i32.const 0
-       local.get $1
-       i32.const 8
-       i32.add
-       local.tee $2
+       i32.const 1288
        i64.load $0
        i32.const 1256
        i64.load $0
@@ -4159,10 +3985,7 @@
        br_if $~lib/util/raweq/__raweq64|inlined.1
        drop
        i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
+       i32.const 1296
        i64.load $0
        i32.const 1264
        i64.load $0
@@ -4170,10 +3993,7 @@
        br_if $~lib/util/raweq/__raweq64|inlined.1
        drop
        i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
+       i32.const 1304
        i64.load $0
        i32.const 1272
        i64.load $0
@@ -4181,10 +4001,7 @@
        br_if $~lib/util/raweq/__raweq64|inlined.1
        drop
        i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
+       i32.const 1312
        i64.load $0
        i32.const 1280
        i64.load $0
@@ -4192,10 +4009,7 @@
        br_if $~lib/util/raweq/__raweq64|inlined.1
        drop
        i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
+       i32.const 1320
        i64.load $0
        i32.const 1288
        i64.load $0
@@ -4203,18 +4017,15 @@
        br_if $~lib/util/raweq/__raweq64|inlined.1
        drop
        i32.const 0
-       local.get $2
-       i32.const 8
-       i32.add
-       local.tee $2
+       i32.const 1328
        i64.load $0
        i32.const 1296
        i64.load $0
        i64.ne
        br_if $~lib/util/raweq/__raweq64|inlined.1
        drop
-       local.get $2
-       i64.load $0 offset=8
+       i32.const 1336
+       i64.load $0
        i32.const 1304
        i64.load $0
        i64.eq
@@ -4222,17 +4033,17 @@
       i32.eqz
       br_if $~lib/util/equpto/__equpto127|inlined.1
       drop
-      i32.const 1312
-      local.set $2
       local.get $3
       i32.const -64
       i32.add
       local.set $3
-      local.get $1
-      i32.const -64
-      i32.sub
-      local.set $1
+      i32.const 1312
+      local.set $2
+      i32.const 1344
+     else
+      i32.const 1280
      end
+     local.set $0
      block $~lib/util/equpto/__equpto63|inlined.1
       local.get $3
       i32.const 32
@@ -4240,7 +4051,7 @@
       if
        block $~lib/util/raweq/__raweq32|inlined.1 (result i32)
         i32.const 0
-        local.get $1
+        local.get $0
         i64.load $0
         local.get $2
         i64.load $0
@@ -4248,7 +4059,7 @@
         br_if $~lib/util/raweq/__raweq32|inlined.1
         drop
         i32.const 0
-        local.get $1
+        local.get $0
         i32.const 8
         i32.add
         local.tee $5
@@ -4283,25 +4094,25 @@
        end
        i32.eqz
        br_if $~lib/util/equpto/__equpto63|inlined.1
-       local.get $2
-       i32.const 32
-       i32.add
-       local.set $2
        local.get $3
        i32.const 32
        i32.sub
        local.set $3
-       local.get $1
+       local.get $2
        i32.const 32
        i32.add
-       local.set $1
+       local.set $2
+       local.get $0
+       i32.const 32
+       i32.add
+       local.set $0
       end
       block $~lib/util/equpto/__equpto31|inlined.1
        local.get $3
        i32.const 16
        i32.ge_u
        if
-        local.get $1
+        local.get $0
         i64.load $0
         local.get $2
         i64.load $0
@@ -4309,7 +4120,7 @@
         if (result i32)
          i32.const 0
         else
-         local.get $1
+         local.get $0
          i64.load $0 offset=8
          local.get $2
          i64.load $0 offset=8
@@ -4317,18 +4128,18 @@
         end
         i32.eqz
         br_if $~lib/util/equpto/__equpto31|inlined.1
-        local.get $2
-        i32.const 16
-        i32.add
-        local.set $2
         local.get $3
         i32.const 16
         i32.sub
         local.set $3
-        local.get $1
+        local.get $2
         i32.const 16
         i32.add
-        local.set $1
+        local.set $2
+        local.get $0
+        i32.const 16
+        i32.add
+        local.set $0
        end
        block $~lib/util/equpto/__equpto15|inlined.1 (result i32)
         local.get $3
@@ -4336,25 +4147,25 @@
         i32.ge_u
         if
          i32.const 0
-         local.get $1
+         local.get $0
          i64.load $0
          local.get $2
          i64.load $0
          i64.ne
          br_if $~lib/util/equpto/__equpto15|inlined.1
          drop
-         local.get $2
-         i32.const 8
-         i32.add
-         local.set $2
          local.get $3
          i32.const 8
          i32.sub
          local.set $3
-         local.get $1
+         local.get $2
          i32.const 8
          i32.add
-         local.set $1
+         local.set $2
+         local.get $0
+         i32.const 8
+         i32.add
+         local.set $0
         end
         block $~lib/util/equpto/__equpto7|inlined.1 (result i32)
          local.get $3
@@ -4362,25 +4173,25 @@
          i32.ge_u
          if
           i32.const 0
-          local.get $1
+          local.get $0
           i32.load $0
           local.get $2
           i32.load $0
           i32.ne
           br_if $~lib/util/equpto/__equpto7|inlined.1
           drop
-          local.get $2
-          i32.const 4
-          i32.add
-          local.set $2
           local.get $3
           i32.const 4
           i32.sub
           local.set $3
-          local.get $1
+          local.get $2
           i32.const 4
           i32.add
-          local.set $1
+          local.set $2
+          local.get $0
+          i32.const 4
+          i32.add
+          local.set $0
          end
          block $~lib/util/equpto/__equpto3|inlined.1 (result i32)
           local.get $3
@@ -4388,29 +4199,29 @@
           i32.ge_u
           if
            i32.const 0
-           local.get $1
+           local.get $0
            i32.load16_u $0
            local.get $2
            i32.load16_u $0
            i32.ne
            br_if $~lib/util/equpto/__equpto3|inlined.1
            drop
-           local.get $2
-           i32.const 2
-           i32.add
-           local.set $2
            local.get $3
            i32.const 2
            i32.sub
            local.set $3
-           local.get $1
+           local.get $2
            i32.const 2
            i32.add
-           local.set $1
+           local.set $2
+           local.get $0
+           i32.const 2
+           i32.add
+           local.set $0
           end
           local.get $3
           if (result i32)
-           local.get $1
+           local.get $0
            i32.load8_u $0
            local.get $2
            i32.load8_u $0
@@ -4421,26 +4232,1889 @@
          end
         end
        end
-       local.set $4
+       local.set $1
       end
      end
-     local.get $4
+     local.get $1
+    end
+   end
+  end
+  if
+   local.get $4
+   i32.const -2
+   i32.store $0
+  else
+   local.get $4
+   i32.const -2
+   i32.store $0 offset=4
+  end
+  global.get $std/operator-overloading/tea
+  i32.load $0
+  i32.const -1
+  i32.ne
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  global.get $std/operator-overloading/tea
+  local.tee $1
+  i32.store $0 offset=500
+  local.get $0
+  i32.const 1248
+  i32.store $0 offset=504
+  local.get $0
+  i32.const 1248
+  i32.store $0 offset=508
+  local.get $1
+  i32.load $0
+  i32.const -1
+  i32.ne
+  if
+   unreachable
+  end
+  global.get $std/operator-overloading/tea
+  i32.load $0 offset=4
+  i32.const -2
+  i32.ne
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  global.get $std/operator-overloading/tea
+  local.tee $4
+  i32.store $0 offset=512
+  local.get $0
+  i32.const 1280
+  i32.store $0 offset=516
+  block $~lib/string/String.__eq|inlined.3 (result i32)
+   i32.const 1248
+   local.set $2
+   local.get $0
+   i32.const 1248
+   i32.store $0 offset=520
+   i32.const 0
+   i32.const 1276
+   i32.load $0
+   local.tee $3
+   i32.const 1244
+   i32.load $0
+   i32.ne
+   br_if $~lib/string/String.__eq|inlined.3
+   drop
+   local.get $3
+   i32.const 128
+   i32.ge_s
+   if (result i32)
+    block $~lib/util/raweq/__raweq128|inlined.3 (result i32)
+     i32.const 0
+     i32.const 1280
+     i64.load $0
+     i32.const 1248
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1288
+     i64.load $0
+     i32.const 1256
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1296
+     i64.load $0
+     i32.const 1264
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1304
+     i64.load $0
+     i32.const 1272
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1312
+     i64.load $0
+     i32.const 1280
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1320
+     i64.load $0
+     i32.const 1288
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1328
+     i64.load $0
+     i32.const 1296
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1336
+     i64.load $0
+     i32.const 1304
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1344
+     i64.load $0
+     i32.const 1312
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1352
+     i64.load $0
+     i32.const 1320
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1360
+     i64.load $0
+     i32.const 1328
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1368
+     i64.load $0
+     i32.const 1336
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1376
+     i64.load $0
+     i32.const 1344
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1384
+     i64.load $0
+     i32.const 1352
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 0
+     i32.const 1392
+     i64.load $0
+     i32.const 1360
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.3
+     drop
+     i32.const 1400
+     i64.load $0
+     i32.const 1368
+     i64.load $0
+     i64.eq
+    end
+   else
+    block $~lib/util/equpto/__equpto127|inlined.3 (result i32)
+     local.get $3
+     i32.const 64
+     i32.ge_u
+     if (result i32)
+      i32.const 0
+      block $~lib/util/raweq/__raweq64|inlined.3 (result i32)
+       i32.const 0
+       i32.const 1280
+       i64.load $0
+       i32.const 1248
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       i32.const 1288
+       i64.load $0
+       i32.const 1256
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       i32.const 1296
+       i64.load $0
+       i32.const 1264
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       i32.const 1304
+       i64.load $0
+       i32.const 1272
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       i32.const 1312
+       i64.load $0
+       i32.const 1280
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       i32.const 1320
+       i64.load $0
+       i32.const 1288
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 0
+       i32.const 1328
+       i64.load $0
+       i32.const 1296
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.3
+       drop
+       i32.const 1336
+       i64.load $0
+       i32.const 1304
+       i64.load $0
+       i64.eq
+      end
+      i32.eqz
+      br_if $~lib/util/equpto/__equpto127|inlined.3
+      drop
+      local.get $3
+      i32.const -64
+      i32.add
+      local.set $3
+      i32.const 1312
+      local.set $2
+      i32.const 1344
+     else
+      i32.const 1280
+     end
+     local.set $0
+     block $~lib/util/equpto/__equpto63|inlined.3
+      local.get $3
+      i32.const 32
+      i32.ge_u
+      if
+       i32.const 0
+       local.set $1
+       block $~lib/util/raweq/__raweq32|inlined.3 (result i32)
+        i32.const 0
+        local.get $0
+        i64.load $0
+        local.get $2
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.3
+        drop
+        i32.const 0
+        local.get $0
+        i32.const 8
+        i32.add
+        local.tee $5
+        i64.load $0
+        local.get $2
+        i32.const 8
+        i32.add
+        local.tee $6
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.3
+        drop
+        i32.const 0
+        local.get $5
+        i32.const 8
+        i32.add
+        local.tee $5
+        i64.load $0
+        local.get $6
+        i32.const 8
+        i32.add
+        local.tee $6
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.3
+        drop
+        local.get $5
+        i64.load $0 offset=8
+        local.get $6
+        i64.load $0 offset=8
+        i64.eq
+       end
+       i32.eqz
+       br_if $~lib/util/equpto/__equpto63|inlined.3
+       local.get $3
+       i32.const 32
+       i32.sub
+       local.set $3
+       local.get $2
+       i32.const 32
+       i32.add
+       local.set $2
+       local.get $0
+       i32.const 32
+       i32.add
+       local.set $0
+      end
+      block $~lib/util/equpto/__equpto31|inlined.3
+       local.get $3
+       i32.const 16
+       i32.ge_u
+       if
+        i32.const 0
+        local.set $1
+        local.get $0
+        i64.load $0
+        local.get $2
+        i64.load $0
+        i64.ne
+        if (result i32)
+         i32.const 0
+        else
+         local.get $0
+         i64.load $0 offset=8
+         local.get $2
+         i64.load $0 offset=8
+         i64.eq
+        end
+        i32.eqz
+        br_if $~lib/util/equpto/__equpto31|inlined.3
+        local.get $3
+        i32.const 16
+        i32.sub
+        local.set $3
+        local.get $2
+        i32.const 16
+        i32.add
+        local.set $2
+        local.get $0
+        i32.const 16
+        i32.add
+        local.set $0
+       end
+       block $~lib/util/equpto/__equpto15|inlined.3 (result i32)
+        local.get $3
+        i32.const 8
+        i32.ge_u
+        if
+         i32.const 0
+         local.get $0
+         i64.load $0
+         local.get $2
+         i64.load $0
+         i64.ne
+         br_if $~lib/util/equpto/__equpto15|inlined.3
+         drop
+         local.get $3
+         i32.const 8
+         i32.sub
+         local.set $3
+         local.get $2
+         i32.const 8
+         i32.add
+         local.set $2
+         local.get $0
+         i32.const 8
+         i32.add
+         local.set $0
+        end
+        block $~lib/util/equpto/__equpto7|inlined.3 (result i32)
+         local.get $3
+         i32.const 4
+         i32.ge_u
+         if
+          i32.const 0
+          local.get $0
+          i32.load $0
+          local.get $2
+          i32.load $0
+          i32.ne
+          br_if $~lib/util/equpto/__equpto7|inlined.3
+          drop
+          local.get $3
+          i32.const 4
+          i32.sub
+          local.set $3
+          local.get $2
+          i32.const 4
+          i32.add
+          local.set $2
+          local.get $0
+          i32.const 4
+          i32.add
+          local.set $0
+         end
+         block $~lib/util/equpto/__equpto3|inlined.3 (result i32)
+          local.get $3
+          i32.const 2
+          i32.ge_u
+          if
+           i32.const 0
+           local.get $0
+           i32.load16_u $0
+           local.get $2
+           i32.load16_u $0
+           i32.ne
+           br_if $~lib/util/equpto/__equpto3|inlined.3
+           drop
+           local.get $3
+           i32.const 2
+           i32.sub
+           local.set $3
+           local.get $2
+           i32.const 2
+           i32.add
+           local.set $2
+           local.get $0
+           i32.const 2
+           i32.add
+           local.set $0
+          end
+          local.get $3
+          if (result i32)
+           local.get $0
+           i32.load8_u $0
+           local.get $2
+           i32.load8_u $0
+           i32.eq
+          else
+           i32.const 1
+          end
+         end
+        end
+       end
+       local.set $1
+      end
+     end
+     local.get $1
     end
    end
   end
   if (result i32)
-   local.get $0
+   local.get $4
    i32.load $0
   else
-   local.get $0
+   local.get $4
    i32.load $0 offset=4
   end
-  local.set $0
+  i32.const -2
+  i32.ne
+  if
+   unreachable
+  end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  local.tee $0
+  global.get $std/operator-overloading/tea
+  local.tee $4
+  i32.store $0 offset=524
+  local.get $0
+  i32.const 1248
+  i32.store $0 offset=528
+  local.get $0
+  local.get $4
+  i32.store $0 offset=532
+  local.get $0
+  i32.const 1248
+  i32.store $0 offset=536
+  local.get $0
+  i32.const 1248
+  i32.store $0 offset=540
+  local.get $4
+  i32.load $0
+  i32.const 1
+  i32.add
+  local.set $1
+  local.get $0
+  i32.const 1248
+  i32.store $0 offset=544
+  local.get $4
+  local.get $1
+  i32.store $0
+  local.get $0
+  local.get $4
+  i32.store $0 offset=548
+  local.get $0
+  i32.const 1280
+  i32.store $0 offset=552
+  local.get $0
+  local.get $4
+  i32.store $0 offset=556
+  local.get $0
+  i32.const 1280
+  i32.store $0 offset=560
+  block $~lib/string/String.__eq|inlined.6 (result i32)
+   i32.const 1248
+   local.set $2
+   local.get $0
+   i32.const 1248
+   i32.store $0 offset=564
+   i32.const 0
+   i32.const 1276
+   i32.load $0
+   local.tee $3
+   i32.const 1244
+   i32.load $0
+   i32.ne
+   br_if $~lib/string/String.__eq|inlined.6
+   drop
+   local.get $3
+   i32.const 128
+   i32.ge_s
+   if (result i32)
+    block $~lib/util/raweq/__raweq128|inlined.6 (result i32)
+     i32.const 0
+     i32.const 1280
+     i64.load $0
+     i32.const 1248
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1288
+     i64.load $0
+     i32.const 1256
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1296
+     i64.load $0
+     i32.const 1264
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1304
+     i64.load $0
+     i32.const 1272
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1312
+     i64.load $0
+     i32.const 1280
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1320
+     i64.load $0
+     i32.const 1288
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1328
+     i64.load $0
+     i32.const 1296
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1336
+     i64.load $0
+     i32.const 1304
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1344
+     i64.load $0
+     i32.const 1312
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1352
+     i64.load $0
+     i32.const 1320
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1360
+     i64.load $0
+     i32.const 1328
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1368
+     i64.load $0
+     i32.const 1336
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1376
+     i64.load $0
+     i32.const 1344
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1384
+     i64.load $0
+     i32.const 1352
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 0
+     i32.const 1392
+     i64.load $0
+     i32.const 1360
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.6
+     drop
+     i32.const 1400
+     i64.load $0
+     i32.const 1368
+     i64.load $0
+     i64.eq
+    end
+   else
+    block $~lib/util/equpto/__equpto127|inlined.6 (result i32)
+     local.get $3
+     i32.const 64
+     i32.ge_u
+     if (result i32)
+      i32.const 0
+      block $~lib/util/raweq/__raweq64|inlined.6 (result i32)
+       i32.const 0
+       i32.const 1280
+       i64.load $0
+       i32.const 1248
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.6
+       drop
+       i32.const 0
+       i32.const 1288
+       i64.load $0
+       i32.const 1256
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.6
+       drop
+       i32.const 0
+       i32.const 1296
+       i64.load $0
+       i32.const 1264
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.6
+       drop
+       i32.const 0
+       i32.const 1304
+       i64.load $0
+       i32.const 1272
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.6
+       drop
+       i32.const 0
+       i32.const 1312
+       i64.load $0
+       i32.const 1280
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.6
+       drop
+       i32.const 0
+       i32.const 1320
+       i64.load $0
+       i32.const 1288
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.6
+       drop
+       i32.const 0
+       i32.const 1328
+       i64.load $0
+       i32.const 1296
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.6
+       drop
+       i32.const 1336
+       i64.load $0
+       i32.const 1304
+       i64.load $0
+       i64.eq
+      end
+      i32.eqz
+      br_if $~lib/util/equpto/__equpto127|inlined.6
+      drop
+      local.get $3
+      i32.const -64
+      i32.add
+      local.set $3
+      i32.const 1312
+      local.set $2
+      i32.const 1344
+     else
+      i32.const 1280
+     end
+     local.set $0
+     block $~lib/util/equpto/__equpto63|inlined.6
+      local.get $3
+      i32.const 32
+      i32.ge_u
+      if
+       i32.const 0
+       local.set $1
+       block $~lib/util/raweq/__raweq32|inlined.6 (result i32)
+        i32.const 0
+        local.get $0
+        i64.load $0
+        local.get $2
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.6
+        drop
+        i32.const 0
+        local.get $0
+        i32.const 8
+        i32.add
+        local.tee $5
+        i64.load $0
+        local.get $2
+        i32.const 8
+        i32.add
+        local.tee $6
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.6
+        drop
+        i32.const 0
+        local.get $5
+        i32.const 8
+        i32.add
+        local.tee $5
+        i64.load $0
+        local.get $6
+        i32.const 8
+        i32.add
+        local.tee $6
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.6
+        drop
+        local.get $5
+        i64.load $0 offset=8
+        local.get $6
+        i64.load $0 offset=8
+        i64.eq
+       end
+       i32.eqz
+       br_if $~lib/util/equpto/__equpto63|inlined.6
+       local.get $3
+       i32.const 32
+       i32.sub
+       local.set $3
+       local.get $2
+       i32.const 32
+       i32.add
+       local.set $2
+       local.get $0
+       i32.const 32
+       i32.add
+       local.set $0
+      end
+      block $~lib/util/equpto/__equpto31|inlined.6
+       local.get $3
+       i32.const 16
+       i32.ge_u
+       if
+        i32.const 0
+        local.set $1
+        local.get $0
+        i64.load $0
+        local.get $2
+        i64.load $0
+        i64.ne
+        if (result i32)
+         i32.const 0
+        else
+         local.get $0
+         i64.load $0 offset=8
+         local.get $2
+         i64.load $0 offset=8
+         i64.eq
+        end
+        i32.eqz
+        br_if $~lib/util/equpto/__equpto31|inlined.6
+        local.get $3
+        i32.const 16
+        i32.sub
+        local.set $3
+        local.get $2
+        i32.const 16
+        i32.add
+        local.set $2
+        local.get $0
+        i32.const 16
+        i32.add
+        local.set $0
+       end
+       block $~lib/util/equpto/__equpto15|inlined.6 (result i32)
+        local.get $3
+        i32.const 8
+        i32.ge_u
+        if
+         i32.const 0
+         local.get $0
+         i64.load $0
+         local.get $2
+         i64.load $0
+         i64.ne
+         br_if $~lib/util/equpto/__equpto15|inlined.6
+         drop
+         local.get $3
+         i32.const 8
+         i32.sub
+         local.set $3
+         local.get $2
+         i32.const 8
+         i32.add
+         local.set $2
+         local.get $0
+         i32.const 8
+         i32.add
+         local.set $0
+        end
+        block $~lib/util/equpto/__equpto7|inlined.6 (result i32)
+         local.get $3
+         i32.const 4
+         i32.ge_u
+         if
+          i32.const 0
+          local.get $0
+          i32.load $0
+          local.get $2
+          i32.load $0
+          i32.ne
+          br_if $~lib/util/equpto/__equpto7|inlined.6
+          drop
+          local.get $3
+          i32.const 4
+          i32.sub
+          local.set $3
+          local.get $2
+          i32.const 4
+          i32.add
+          local.set $2
+          local.get $0
+          i32.const 4
+          i32.add
+          local.set $0
+         end
+         block $~lib/util/equpto/__equpto3|inlined.6 (result i32)
+          local.get $3
+          i32.const 2
+          i32.ge_u
+          if
+           i32.const 0
+           local.get $0
+           i32.load16_u $0
+           local.get $2
+           i32.load16_u $0
+           i32.ne
+           br_if $~lib/util/equpto/__equpto3|inlined.6
+           drop
+           local.get $3
+           i32.const 2
+           i32.sub
+           local.set $3
+           local.get $2
+           i32.const 2
+           i32.add
+           local.set $2
+           local.get $0
+           i32.const 2
+           i32.add
+           local.set $0
+          end
+          local.get $3
+          if (result i32)
+           local.get $0
+           i32.load8_u $0
+           local.get $2
+           i32.load8_u $0
+           i32.eq
+          else
+           i32.const 1
+          end
+         end
+        end
+       end
+       local.set $1
+      end
+     end
+     local.get $1
+    end
+   end
+  end
+  if (result i32)
+   local.get $4
+   i32.load $0
+  else
+   local.get $4
+   i32.load $0 offset=4
+  end
+  i32.const 1
+  i32.sub
+  local.set $5
+  block $~lib/string/String.__eq|inlined.7 (result i32)
+   i32.const 1248
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1248
+   i32.store $0 offset=568
+   i32.const 0
+   i32.const 1276
+   i32.load $0
+   local.tee $3
+   i32.const 1244
+   i32.load $0
+   i32.ne
+   br_if $~lib/string/String.__eq|inlined.7
+   drop
+   local.get $3
+   i32.const 128
+   i32.ge_s
+   if (result i32)
+    block $~lib/util/raweq/__raweq128|inlined.7 (result i32)
+     i32.const 0
+     i32.const 1280
+     i64.load $0
+     i32.const 1248
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1288
+     i64.load $0
+     i32.const 1256
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1296
+     i64.load $0
+     i32.const 1264
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1304
+     i64.load $0
+     i32.const 1272
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1312
+     i64.load $0
+     i32.const 1280
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1320
+     i64.load $0
+     i32.const 1288
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1328
+     i64.load $0
+     i32.const 1296
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1336
+     i64.load $0
+     i32.const 1304
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1344
+     i64.load $0
+     i32.const 1312
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1352
+     i64.load $0
+     i32.const 1320
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1360
+     i64.load $0
+     i32.const 1328
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1368
+     i64.load $0
+     i32.const 1336
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1376
+     i64.load $0
+     i32.const 1344
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1384
+     i64.load $0
+     i32.const 1352
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 0
+     i32.const 1392
+     i64.load $0
+     i32.const 1360
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.7
+     drop
+     i32.const 1400
+     i64.load $0
+     i32.const 1368
+     i64.load $0
+     i64.eq
+    end
+   else
+    block $~lib/util/equpto/__equpto127|inlined.7 (result i32)
+     local.get $3
+     i32.const 64
+     i32.ge_u
+     if (result i32)
+      i32.const 0
+      block $~lib/util/raweq/__raweq64|inlined.7 (result i32)
+       i32.const 0
+       i32.const 1280
+       i64.load $0
+       i32.const 1248
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.7
+       drop
+       i32.const 0
+       i32.const 1288
+       i64.load $0
+       i32.const 1256
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.7
+       drop
+       i32.const 0
+       i32.const 1296
+       i64.load $0
+       i32.const 1264
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.7
+       drop
+       i32.const 0
+       i32.const 1304
+       i64.load $0
+       i32.const 1272
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.7
+       drop
+       i32.const 0
+       i32.const 1312
+       i64.load $0
+       i32.const 1280
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.7
+       drop
+       i32.const 0
+       i32.const 1320
+       i64.load $0
+       i32.const 1288
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.7
+       drop
+       i32.const 0
+       i32.const 1328
+       i64.load $0
+       i32.const 1296
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.7
+       drop
+       i32.const 1336
+       i64.load $0
+       i32.const 1304
+       i64.load $0
+       i64.eq
+      end
+      i32.eqz
+      br_if $~lib/util/equpto/__equpto127|inlined.7
+      drop
+      local.get $3
+      i32.const -64
+      i32.add
+      local.set $3
+      i32.const 1312
+      local.set $2
+      i32.const 1344
+     else
+      i32.const 1280
+     end
+     local.set $0
+     block $~lib/util/equpto/__equpto63|inlined.7
+      local.get $3
+      i32.const 32
+      i32.ge_u
+      if
+       i32.const 0
+       local.set $1
+       block $~lib/util/raweq/__raweq32|inlined.7 (result i32)
+        i32.const 0
+        local.get $0
+        i64.load $0
+        local.get $2
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.7
+        drop
+        i32.const 0
+        local.get $0
+        i32.const 8
+        i32.add
+        local.tee $6
+        i64.load $0
+        local.get $2
+        i32.const 8
+        i32.add
+        local.tee $7
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.7
+        drop
+        i32.const 0
+        local.get $6
+        i32.const 8
+        i32.add
+        local.tee $6
+        i64.load $0
+        local.get $7
+        i32.const 8
+        i32.add
+        local.tee $7
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.7
+        drop
+        local.get $6
+        i64.load $0 offset=8
+        local.get $7
+        i64.load $0 offset=8
+        i64.eq
+       end
+       i32.eqz
+       br_if $~lib/util/equpto/__equpto63|inlined.7
+       local.get $3
+       i32.const 32
+       i32.sub
+       local.set $3
+       local.get $2
+       i32.const 32
+       i32.add
+       local.set $2
+       local.get $0
+       i32.const 32
+       i32.add
+       local.set $0
+      end
+      block $~lib/util/equpto/__equpto31|inlined.7
+       local.get $3
+       i32.const 16
+       i32.ge_u
+       if
+        i32.const 0
+        local.set $1
+        local.get $0
+        i64.load $0
+        local.get $2
+        i64.load $0
+        i64.ne
+        if (result i32)
+         i32.const 0
+        else
+         local.get $0
+         i64.load $0 offset=8
+         local.get $2
+         i64.load $0 offset=8
+         i64.eq
+        end
+        i32.eqz
+        br_if $~lib/util/equpto/__equpto31|inlined.7
+        local.get $3
+        i32.const 16
+        i32.sub
+        local.set $3
+        local.get $2
+        i32.const 16
+        i32.add
+        local.set $2
+        local.get $0
+        i32.const 16
+        i32.add
+        local.set $0
+       end
+       block $~lib/util/equpto/__equpto15|inlined.7 (result i32)
+        local.get $3
+        i32.const 8
+        i32.ge_u
+        if
+         i32.const 0
+         local.get $0
+         i64.load $0
+         local.get $2
+         i64.load $0
+         i64.ne
+         br_if $~lib/util/equpto/__equpto15|inlined.7
+         drop
+         local.get $3
+         i32.const 8
+         i32.sub
+         local.set $3
+         local.get $2
+         i32.const 8
+         i32.add
+         local.set $2
+         local.get $0
+         i32.const 8
+         i32.add
+         local.set $0
+        end
+        block $~lib/util/equpto/__equpto7|inlined.7 (result i32)
+         local.get $3
+         i32.const 4
+         i32.ge_u
+         if
+          i32.const 0
+          local.get $0
+          i32.load $0
+          local.get $2
+          i32.load $0
+          i32.ne
+          br_if $~lib/util/equpto/__equpto7|inlined.7
+          drop
+          local.get $3
+          i32.const 4
+          i32.sub
+          local.set $3
+          local.get $2
+          i32.const 4
+          i32.add
+          local.set $2
+          local.get $0
+          i32.const 4
+          i32.add
+          local.set $0
+         end
+         block $~lib/util/equpto/__equpto3|inlined.7 (result i32)
+          local.get $3
+          i32.const 2
+          i32.ge_u
+          if
+           i32.const 0
+           local.get $0
+           i32.load16_u $0
+           local.get $2
+           i32.load16_u $0
+           i32.ne
+           br_if $~lib/util/equpto/__equpto3|inlined.7
+           drop
+           local.get $3
+           i32.const 2
+           i32.sub
+           local.set $3
+           local.get $2
+           i32.const 2
+           i32.add
+           local.set $2
+           local.get $0
+           i32.const 2
+           i32.add
+           local.set $0
+          end
+          local.get $3
+          if (result i32)
+           local.get $0
+           i32.load8_u $0
+           local.get $2
+           i32.load8_u $0
+           i32.eq
+          else
+           i32.const 1
+          end
+         end
+        end
+       end
+       local.set $1
+      end
+     end
+     local.get $1
+    end
+   end
+  end
+  if
+   local.get $4
+   local.get $5
+   i32.store $0
+  else
+   local.get $4
+   local.get $5
+   i32.store $0 offset=4
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  global.get $std/operator-overloading/tea
+  local.tee $1
+  i32.store $0 offset=572
+  local.get $0
+  i32.const 1248
+  i32.store $0 offset=576
+  local.get $0
+  i32.const 1248
+  i32.store $0 offset=580
+  local.get $1
+  i32.load $0
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  global.get $std/operator-overloading/tea
+  local.tee $4
+  i32.store $0 offset=584
+  local.get $0
+  i32.const 1280
+  i32.store $0 offset=588
+  block $~lib/string/String.__eq|inlined.9 (result i32)
+   i32.const 1248
+   local.set $2
+   local.get $0
+   i32.const 1248
+   i32.store $0 offset=592
+   i32.const 0
+   i32.const 1276
+   i32.load $0
+   local.tee $3
+   i32.const 1244
+   i32.load $0
+   i32.ne
+   br_if $~lib/string/String.__eq|inlined.9
+   drop
+   local.get $3
+   i32.const 128
+   i32.ge_s
+   if (result i32)
+    block $~lib/util/raweq/__raweq128|inlined.9 (result i32)
+     i32.const 0
+     i32.const 1280
+     i64.load $0
+     i32.const 1248
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1288
+     i64.load $0
+     i32.const 1256
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1296
+     i64.load $0
+     i32.const 1264
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1304
+     i64.load $0
+     i32.const 1272
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1312
+     i64.load $0
+     i32.const 1280
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1320
+     i64.load $0
+     i32.const 1288
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1328
+     i64.load $0
+     i32.const 1296
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1336
+     i64.load $0
+     i32.const 1304
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1344
+     i64.load $0
+     i32.const 1312
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1352
+     i64.load $0
+     i32.const 1320
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1360
+     i64.load $0
+     i32.const 1328
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1368
+     i64.load $0
+     i32.const 1336
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1376
+     i64.load $0
+     i32.const 1344
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1384
+     i64.load $0
+     i32.const 1352
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 0
+     i32.const 1392
+     i64.load $0
+     i32.const 1360
+     i64.load $0
+     i64.ne
+     br_if $~lib/util/raweq/__raweq128|inlined.9
+     drop
+     i32.const 1400
+     i64.load $0
+     i32.const 1368
+     i64.load $0
+     i64.eq
+    end
+   else
+    block $~lib/util/equpto/__equpto127|inlined.9 (result i32)
+     local.get $3
+     i32.const 64
+     i32.ge_u
+     if (result i32)
+      i32.const 0
+      block $~lib/util/raweq/__raweq64|inlined.9 (result i32)
+       i32.const 0
+       i32.const 1280
+       i64.load $0
+       i32.const 1248
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.9
+       drop
+       i32.const 0
+       i32.const 1288
+       i64.load $0
+       i32.const 1256
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.9
+       drop
+       i32.const 0
+       i32.const 1296
+       i64.load $0
+       i32.const 1264
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.9
+       drop
+       i32.const 0
+       i32.const 1304
+       i64.load $0
+       i32.const 1272
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.9
+       drop
+       i32.const 0
+       i32.const 1312
+       i64.load $0
+       i32.const 1280
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.9
+       drop
+       i32.const 0
+       i32.const 1320
+       i64.load $0
+       i32.const 1288
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.9
+       drop
+       i32.const 0
+       i32.const 1328
+       i64.load $0
+       i32.const 1296
+       i64.load $0
+       i64.ne
+       br_if $~lib/util/raweq/__raweq64|inlined.9
+       drop
+       i32.const 1336
+       i64.load $0
+       i32.const 1304
+       i64.load $0
+       i64.eq
+      end
+      i32.eqz
+      br_if $~lib/util/equpto/__equpto127|inlined.9
+      drop
+      local.get $3
+      i32.const -64
+      i32.add
+      local.set $3
+      i32.const 1312
+      local.set $2
+      i32.const 1344
+     else
+      i32.const 1280
+     end
+     local.set $0
+     block $~lib/util/equpto/__equpto63|inlined.9
+      local.get $3
+      i32.const 32
+      i32.ge_u
+      if
+       i32.const 0
+       local.set $1
+       block $~lib/util/raweq/__raweq32|inlined.9 (result i32)
+        i32.const 0
+        local.get $0
+        i64.load $0
+        local.get $2
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.9
+        drop
+        i32.const 0
+        local.get $0
+        i32.const 8
+        i32.add
+        local.tee $5
+        i64.load $0
+        local.get $2
+        i32.const 8
+        i32.add
+        local.tee $6
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.9
+        drop
+        i32.const 0
+        local.get $5
+        i32.const 8
+        i32.add
+        local.tee $5
+        i64.load $0
+        local.get $6
+        i32.const 8
+        i32.add
+        local.tee $6
+        i64.load $0
+        i64.ne
+        br_if $~lib/util/raweq/__raweq32|inlined.9
+        drop
+        local.get $5
+        i64.load $0 offset=8
+        local.get $6
+        i64.load $0 offset=8
+        i64.eq
+       end
+       i32.eqz
+       br_if $~lib/util/equpto/__equpto63|inlined.9
+       local.get $3
+       i32.const 32
+       i32.sub
+       local.set $3
+       local.get $2
+       i32.const 32
+       i32.add
+       local.set $2
+       local.get $0
+       i32.const 32
+       i32.add
+       local.set $0
+      end
+      block $~lib/util/equpto/__equpto31|inlined.9
+       local.get $3
+       i32.const 16
+       i32.ge_u
+       if
+        i32.const 0
+        local.set $1
+        local.get $0
+        i64.load $0
+        local.get $2
+        i64.load $0
+        i64.ne
+        if (result i32)
+         i32.const 0
+        else
+         local.get $0
+         i64.load $0 offset=8
+         local.get $2
+         i64.load $0 offset=8
+         i64.eq
+        end
+        i32.eqz
+        br_if $~lib/util/equpto/__equpto31|inlined.9
+        local.get $3
+        i32.const 16
+        i32.sub
+        local.set $3
+        local.get $2
+        i32.const 16
+        i32.add
+        local.set $2
+        local.get $0
+        i32.const 16
+        i32.add
+        local.set $0
+       end
+       block $~lib/util/equpto/__equpto15|inlined.9 (result i32)
+        local.get $3
+        i32.const 8
+        i32.ge_u
+        if
+         i32.const 0
+         local.get $0
+         i64.load $0
+         local.get $2
+         i64.load $0
+         i64.ne
+         br_if $~lib/util/equpto/__equpto15|inlined.9
+         drop
+         local.get $3
+         i32.const 8
+         i32.sub
+         local.set $3
+         local.get $2
+         i32.const 8
+         i32.add
+         local.set $2
+         local.get $0
+         i32.const 8
+         i32.add
+         local.set $0
+        end
+        block $~lib/util/equpto/__equpto7|inlined.9 (result i32)
+         local.get $3
+         i32.const 4
+         i32.ge_u
+         if
+          i32.const 0
+          local.get $0
+          i32.load $0
+          local.get $2
+          i32.load $0
+          i32.ne
+          br_if $~lib/util/equpto/__equpto7|inlined.9
+          drop
+          local.get $3
+          i32.const 4
+          i32.sub
+          local.set $3
+          local.get $2
+          i32.const 4
+          i32.add
+          local.set $2
+          local.get $0
+          i32.const 4
+          i32.add
+          local.set $0
+         end
+         block $~lib/util/equpto/__equpto3|inlined.9 (result i32)
+          local.get $3
+          i32.const 2
+          i32.ge_u
+          if
+           i32.const 0
+           local.get $0
+           i32.load16_u $0
+           local.get $2
+           i32.load16_u $0
+           i32.ne
+           br_if $~lib/util/equpto/__equpto3|inlined.9
+           drop
+           local.get $3
+           i32.const 2
+           i32.sub
+           local.set $3
+           local.get $2
+           i32.const 2
+           i32.add
+           local.set $2
+           local.get $0
+           i32.const 2
+           i32.add
+           local.set $0
+          end
+          local.get $3
+          if (result i32)
+           local.get $0
+           i32.load8_u $0
+           local.get $2
+           i32.load8_u $0
+           i32.eq
+          else
+           i32.const 1
+          end
+         end
+        end
+       end
+       local.set $1
+      end
+     end
+     local.get $1
+    end
+   end
+  end
+  if (result i32)
+   local.get $4
+   i32.load $0
+  else
+   local.get $4
+   i32.load $0 offset=4
+  end
+  i32.const -3
+  i32.ne
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 596
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $0
  )
  (func $byn-split-outlined-A$~lib/rt/itcms/__visit (type $i32_=>_none) (param $0 i32)
   (local $1 i32)

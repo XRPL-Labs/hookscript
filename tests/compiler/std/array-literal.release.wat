@@ -2,9 +2,9 @@
  (type $none_=>_none (func_subtype func))
  (type $i32_=>_none (func_subtype (param i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
- (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
+ (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $std/array-literal/emptyArrayI32 (mut i32) (i32.const 1296))
@@ -1513,7 +1513,7 @@
   (local $0 i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 48
+  i32.const 60
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -1525,7 +1525,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 0
-  i32.const 48
+  i32.const 60
   memory.fill $0
   local.get $0
   i32.const 1088
@@ -1937,17 +1937,35 @@
   local.get $0
   i32.load $0 offset=4
   i32.store $0 offset=32
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 7
+  call $~lib/rt/itcms/__new
+  local.tee $1
+  i32.store $0 offset=36
   local.get $0
   i32.const 0
-  call $std/array-literal/RefWithCtor#constructor
+  local.get $1
   call $~lib/array/Array<std/array-literal/Ref>#__uset
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 7
+  call $~lib/rt/itcms/__new
+  local.tee $1
+  i32.store $0 offset=40
   local.get $0
   i32.const 1
-  call $std/array-literal/RefWithCtor#constructor
+  local.get $1
   call $~lib/array/Array<std/array-literal/Ref>#__uset
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 7
+  call $~lib/rt/itcms/__new
+  local.tee $1
+  i32.store $0 offset=44
   local.get $0
   i32.const 2
-  call $std/array-literal/RefWithCtor#constructor
+  local.get $1
   call $~lib/array/Array<std/array-literal/Ref>#__uset
   local.get $0
   global.set $std/array-literal/dynamicArrayRefWithCtor
@@ -1979,18 +1997,18 @@
   i32.const 6
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=36
+  i32.store $0 offset=48
   global.get $~lib/memory/__stack_pointer
   local.get $1
   i32.load $0 offset=4
-  i32.store $0 offset=40
+  i32.store $0 offset=52
   local.get $1
   i32.const 0
   call $std/array-literal/Ref#constructor
   call $~lib/array/Array<std/array-literal/Ref>#__uset
   local.get $0
   local.get $1
-  i32.store $0 offset=44
+  i32.store $0 offset=56
   i32.const 34316
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/rt/itcms/state
@@ -2027,7 +2045,7 @@
   i32.add
   global.set $~lib/rt/itcms/threshold
   global.get $~lib/memory/__stack_pointer
-  i32.const 48
+  i32.const 60
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
@@ -2103,34 +2121,6 @@
   local.get $0
   i32.const 0
   i32.const 5
-  call $~lib/rt/itcms/__new
-  local.tee $0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
- )
- (func $std/array-literal/RefWithCtor#constructor (type $none_=>_i32) (result i32)
-  (local $0 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1548
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 0
-  i32.store $0
-  local.get $0
-  i32.const 0
-  i32.const 7
   call $~lib/rt/itcms/__new
   local.tee $0
   i32.store $0

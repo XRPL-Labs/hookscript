@@ -1255,7 +1255,7 @@
  (func $~start (type $none_=>_none)
   (local $0 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 12
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -1265,8 +1265,12 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  i64.const 0
+  i64.store $0
+  local.get $0
   i32.const 0
-  i32.store $0
+  i32.store $0 offset=8
   memory.size $0
   i32.const 16
   i32.shl
@@ -1303,10 +1307,9 @@
   global.set $new/ref
   call $new/Ref#constructor
   global.set $new/ref
-  call $new/Ref#constructor
-  local.set $0
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  call $new/Ref#constructor
+  local.tee $0
   i32.store $0
   local.get $0
   global.set $new/ref
@@ -1316,12 +1319,11 @@
   i32.const 0
   call $new/Gen<i32>#constructor
   global.set $new/gen
+  global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $new/Gen<i32>#constructor
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
+  local.tee $0
+  i32.store $0 offset=4
   local.get $0
   global.set $new/gen
   call $new/ns.Ref#constructor
@@ -1332,7 +1334,7 @@
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store $0
+  i32.store $0 offset=8
   local.get $0
   global.set $new/ref2
   call $new/GenExt#constructor
@@ -1342,7 +1344,7 @@
   call $new/GenExt#constructor
   global.set $new/genext3
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

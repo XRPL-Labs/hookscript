@@ -1312,6 +1312,21 @@
  )
  (func $start:constructor (type $none_=>_none)
   (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1348
+  i32.lt_s
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  i32.const 0
+  i32.const 28
+  memory.fill $0
   memory.size $0
   i32.const 16
   i32.shl
@@ -1344,120 +1359,48 @@
   i32.store $0
   i32.const 1200
   global.set $~lib/rt/itcms/fromSpace
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1348
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 0
-  i32.store $0
   local.get $0
   i32.const 0
   i32.const 3
   call $~lib/rt/itcms/__new
   local.tee $0
   i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
   local.get $0
   global.set $constructor/emptyCtor
   global.get $~lib/memory/__stack_pointer
   i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1348
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 0
-  i32.store $0
-  local.get $0
-  i32.const 4
   i32.const 4
   call $~lib/rt/itcms/__new
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=4
   local.get $0
   i32.const 1
   i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
   local.get $0
   global.set $constructor/emptyCtorWithFieldInit
   global.get $~lib/memory/__stack_pointer
   i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1348
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 0
-  i32.store $0
-  local.get $0
-  i32.const 4
   i32.const 5
   call $~lib/rt/itcms/__new
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=8
   local.get $0
   i32.const 0
   i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
   local.get $0
   global.set $constructor/emptyCtorWithFieldNoInit
   global.get $~lib/memory/__stack_pointer
   i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1348
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 0
-  i32.store $0
-  local.get $0
-  i32.const 4
   i32.const 6
   call $~lib/rt/itcms/__new
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=12
   local.get $0
   i32.const 0
   i32.store $0
   local.get $0
   i32.const 1
   i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
   local.get $0
   global.set $constructor/emptyCtorWithFieldAccess
   global.get $~lib/memory/__stack_pointer
@@ -1545,74 +1488,24 @@
   local.get $0
   global.set $constructor/justFieldNoInit
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1348
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 0
-  i32.store $0
-  local.get $0
   i32.const 0
   i32.const 11
   call $~lib/rt/itcms/__new
-  i32.store $0
+  i32.store $0 offset=16
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1348
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 0
-  i32.store $0
-  local.get $0
   i32.const 0
   i32.const 12
   call $~lib/rt/itcms/__new
   local.tee $0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
+  i32.store $0 offset=20
   local.get $0
   global.set $constructor/ctorConditionallyReturnsThis
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1348
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 0
-  i32.store $0
-  local.get $0
   i32.const 12
   i32.const 13
   call $~lib/rt/itcms/__new
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=24
   local.get $0
   i32.const 1
   i32.store $0 offset=4
@@ -1647,10 +1540,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
   local.get $0
   global.set $constructor/ctorFieldInitOrder
   global.get $constructor/ctorFieldInitOrder
@@ -1674,6 +1563,10 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.add
+  global.set $~lib/memory/__stack_pointer
  )
  (func $~lib/rt/__visit_members (type $i32_=>_none) (param $0 i32)
   block $invalid

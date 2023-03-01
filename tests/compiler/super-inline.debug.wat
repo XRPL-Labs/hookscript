@@ -2136,14 +2136,16 @@
  )
  (func $start:super-inline (type $none_=>_none)
   (local $0 i32)
+  (local $1 i32)
+  (local $2 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 8
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
+  i64.const 0
+  i64.store $0
   memory.size $0
   i32.const 16
   i32.shl
@@ -2165,26 +2167,26 @@
   call $super-inline/Foo#constructor
   global.set $super-inline/foo
   global.get $super-inline/foo
-  local.set $0
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  local.get $2
   i32.store $0
-  local.get $0
+  local.get $2
   call $super-inline/Foo#a@virtual
   drop
   i32.const 0
   call $super-inline/Bar#constructor
   global.set $super-inline/bar
-  global.get $super-inline/bar
-  local.set $0
   global.get $~lib/memory/__stack_pointer
+  global.get $super-inline/bar
+  local.tee $0
+  i32.store $0 offset=4
   local.get $0
-  i32.store $0
-  local.get $0
-  call $super-inline/Bar#a
+  local.set $1
+  i32.const 1
   drop
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 8
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

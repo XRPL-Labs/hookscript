@@ -1355,49 +1355,11 @@
   memory.fill $0
   local.get $0
  )
- (func $~lib/rt/__visit_members (type $i32_=>_none) (param $0 i32)
-  block $invalid
-   block $resolve-binary/Baz
-    block $resolve-binary/Bar
-     block $resolve-binary/Foo
-      block $~lib/arraybuffer/ArrayBufferView
-       block $~lib/string/String
-        block $~lib/arraybuffer/ArrayBuffer
-         local.get $0
-         i32.const 8
-         i32.sub
-         i32.load $0
-         br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $resolve-binary/Foo $resolve-binary/Bar $resolve-binary/Baz $invalid
-        end
-        return
-       end
-       return
-      end
-      local.get $0
-      i32.load $0
-      local.tee $0
-      if
-       local.get $0
-       call $byn-split-outlined-A$~lib/rt/itcms/__visit
-      end
-      return
-     end
-     return
-    end
-    return
-   end
-   return
-  end
-  unreachable
- )
- (func $~start (type $none_=>_none)
-  call $start:resolve-binary
- )
  (func $start:resolve-binary (type $none_=>_none)
   (local $0 i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 108
+  i32.const 220
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -1408,7 +1370,7 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.const 108
+  i32.const 220
   memory.fill $0
   i32.const 1
   global.set $resolve-binary/a
@@ -1525,146 +1487,146 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   local.get $1
-  i32.store $0
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7424
   i32.store $0 offset=16
   local.get $0
-  i32.const 7424
+  local.get $1
   i32.store $0 offset=20
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  local.get $1
-  i32.store $0
   local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7456
+  i32.const 7424
   i32.store $0 offset=24
   local.get $0
-  i32.const 7456
+  i32.const 7424
   i32.store $0 offset=28
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   local.get $1
-  i32.store $0
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7488
   i32.store $0 offset=32
   local.get $0
-  i32.const 7488
+  local.get $1
   i32.store $0 offset=36
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  local.get $1
-  i32.store $0
   local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7520
+  i32.const 7456
   i32.store $0 offset=40
   local.get $0
-  i32.const 7520
+  i32.const 7456
   i32.store $0 offset=44
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   local.get $1
-  i32.store $0
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7552
   i32.store $0 offset=48
   local.get $0
-  i32.const 7552
+  local.get $1
   i32.store $0 offset=52
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  local.get $1
-  i32.store $0
   local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7584
+  i32.const 7488
   i32.store $0 offset=56
   local.get $0
-  i32.const 7584
+  i32.const 7488
   i32.store $0 offset=60
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   local.get $1
-  i32.store $0
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7616
   i32.store $0 offset=64
   local.get $0
-  i32.const 7616
+  local.get $1
   i32.store $0 offset=68
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  local.get $1
-  i32.store $0
   local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7648
+  i32.const 7520
   i32.store $0 offset=72
   local.get $0
-  i32.const 7648
+  i32.const 7520
   i32.store $0 offset=76
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   local.get $1
-  i32.store $0
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7680
   i32.store $0 offset=80
   local.get $0
-  i32.const 7680
+  local.get $1
   i32.store $0 offset=84
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  local.get $1
-  i32.store $0
   local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7712
+  i32.const 7552
   i32.store $0 offset=88
   local.get $0
-  i32.const 7712
+  i32.const 7552
   i32.store $0 offset=92
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   local.get $1
-  i32.store $0
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
-  local.get $0
-  i32.const 7744
   i32.store $0 offset=96
   local.get $0
-  i32.const 7744
+  local.get $1
   i32.store $0 offset=100
+  local.get $0
+  i32.const 7584
+  i32.store $0 offset=104
+  local.get $0
+  i32.const 7584
+  i32.store $0 offset=108
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  local.get $1
+  i32.store $0 offset=112
+  local.get $0
+  local.get $1
+  i32.store $0 offset=116
+  local.get $0
+  i32.const 7616
+  i32.store $0 offset=120
+  local.get $0
+  i32.const 7616
+  i32.store $0 offset=124
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  local.get $1
+  i32.store $0 offset=128
+  local.get $0
+  local.get $1
+  i32.store $0 offset=132
+  local.get $0
+  i32.const 7648
+  i32.store $0 offset=136
+  local.get $0
+  i32.const 7648
+  i32.store $0 offset=140
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  local.get $1
+  i32.store $0 offset=144
+  local.get $0
+  local.get $1
+  i32.store $0 offset=148
+  local.get $0
+  i32.const 7680
+  i32.store $0 offset=152
+  local.get $0
+  i32.const 7680
+  i32.store $0 offset=156
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  local.get $1
+  i32.store $0 offset=160
+  local.get $0
+  local.get $1
+  i32.store $0 offset=164
+  local.get $0
+  i32.const 7712
+  i32.store $0 offset=168
+  local.get $0
+  i32.const 7712
+  i32.store $0 offset=172
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  local.get $1
+  i32.store $0 offset=176
+  local.get $0
+  local.get $1
+  i32.store $0 offset=180
+  local.get $0
+  i32.const 7744
+  i32.store $0 offset=184
+  local.get $0
+  i32.const 7744
+  i32.store $0 offset=188
   call $resolve-binary/Bar#constructor
   global.set $resolve-binary/bar
   call $resolve-binary/Bar#constructor
@@ -1672,17 +1634,17 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $1
   global.get $resolve-binary/bar
-  i32.store $0 offset=4
+  i32.store $0 offset=192
   local.get $1
   global.get $resolve-binary/bar2
   local.tee $0
-  i32.store $0 offset=104
+  i32.store $0 offset=196
   local.get $0
   global.set $resolve-binary/bar
   local.get $1
   global.get $resolve-binary/bar
   local.tee $1
-  i32.store $0
+  i32.store $0 offset=200
   local.get $0
   local.get $1
   i32.ne
@@ -1723,21 +1685,59 @@
   global.get $~lib/memory/__stack_pointer
   global.get $resolve-binary/baz
   local.tee $1
-  i32.store $0
+  i32.store $0 offset=204
   global.get $~lib/memory/__stack_pointer
   local.get $1
-  i32.store $0
+  i32.store $0 offset=208
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   local.get $1
-  i32.store $0
+  i32.store $0 offset=212
   local.get $0
   local.get $1
-  i32.store $0
+  i32.store $0 offset=216
   global.get $~lib/memory/__stack_pointer
-  i32.const 108
+  i32.const 220
   i32.add
   global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/rt/__visit_members (type $i32_=>_none) (param $0 i32)
+  block $invalid
+   block $resolve-binary/Baz
+    block $resolve-binary/Bar
+     block $resolve-binary/Foo
+      block $~lib/arraybuffer/ArrayBufferView
+       block $~lib/string/String
+        block $~lib/arraybuffer/ArrayBuffer
+         local.get $0
+         i32.const 8
+         i32.sub
+         i32.load $0
+         br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $resolve-binary/Foo $resolve-binary/Bar $resolve-binary/Baz $invalid
+        end
+        return
+       end
+       return
+      end
+      local.get $0
+      i32.load $0
+      local.tee $0
+      if
+       local.get $0
+       call $byn-split-outlined-A$~lib/rt/itcms/__visit
+      end
+      return
+     end
+     return
+    end
+    return
+   end
+   return
+  end
+  unreachable
+ )
+ (func $~start (type $none_=>_none)
+  call $start:resolve-binary
  )
  (func $resolve-binary/Bar#constructor (type $none_=>_i32) (result i32)
   (local $0 i32)

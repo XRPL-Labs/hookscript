@@ -1,6 +1,5 @@
 (module
  (type $none_=>_none (func_subtype func))
- (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
@@ -14,11 +13,8 @@
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
  (start $~start)
- (func $static-this/Foo.getBar (type $none_=>_i32) (result i32)
-  global.get $static-this/Foo.bar
- )
  (func $start:static-this (type $none_=>_none)
-  call $static-this/Foo.getBar
+  global.get $static-this/Foo.bar
   i32.const 42
   i32.eq
   i32.eqz

@@ -1316,7 +1316,7 @@
   (local $4 i32)
   (local $5 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 180
+  i32.const 204
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -1327,7 +1327,7 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.const 180
+  i32.const 204
   memory.fill $0
   memory.size $0
   i32.const 16
@@ -3574,86 +3574,65 @@
   global.set $class-overloading/which
   global.get $~lib/memory/__stack_pointer
   global.get $class-overloading/c
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1644
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
   local.tee $0
-  i64.const 0
-  i64.store $0
-  i32.const 1312
-  global.set $class-overloading/which
-  local.get $0
-  i32.const 1312
-  i32.store $0
-  local.get $0
-  i32.const 1312
-  i32.store $0 offset=4
-  i32.const 1344
-  global.set $class-overloading/which
-  local.get $0
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  i32.const 1344
   i32.store $0 offset=36
-  local.get $0
-  i32.const 1344
-  i32.store $0 offset=40
-  i32.const 1
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 1056
+  i32.const 1312
   global.set $class-overloading/which
   global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  global.get $class-overloading/c
-  local.tee $1
-  i32.store $0
+  i32.const 1312
+  i32.store $0 offset=40
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1312
+  i32.store $0 offset=44
   i32.const 1344
   global.set $class-overloading/which
-  local.get $0
-  i32.const 1344
-  i32.store $0 offset=44
-  local.get $0
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
   i32.const 1344
   i32.store $0 offset=48
-  i32.const 1056
-  global.set $class-overloading/which
-  local.get $0
   local.get $1
-  i32.store $0
-  i32.const 1344
-  global.set $class-overloading/which
-  local.get $0
   i32.const 1344
   i32.store $0 offset=52
+  i32.const 1056
+  global.set $class-overloading/which
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
   local.get $0
-  i32.const 1344
   i32.store $0 offset=56
-  local.get $0
-  local.get $1
-  i32.store $0
   i32.const 1344
   global.set $class-overloading/which
-  local.get $0
+  local.get $1
   i32.const 1344
   i32.store $0 offset=60
-  local.get $0
+  local.get $1
   i32.const 1344
   i32.store $0 offset=64
+  i32.const 1056
+  global.set $class-overloading/which
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  local.get $0
+  i32.store $0 offset=68
+  i32.const 1344
+  global.set $class-overloading/which
+  local.get $1
+  i32.const 1344
+  i32.store $0 offset=72
+  local.get $1
+  i32.const 1344
+  i32.store $0 offset=76
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  local.get $0
+  i32.store $0 offset=80
+  i32.const 1344
+  global.set $class-overloading/which
+  local.get $1
+  i32.const 1344
+  i32.store $0 offset=84
+  local.get $1
+  i32.const 1344
+  i32.store $0 offset=88
   i32.const 0
   call $class-overloading/D#constructor
   global.set $class-overloading/a
@@ -3663,22 +3642,22 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#a<i32>@virtual5
-   block $default7
-    block $case28
-     block $case19
-      block $case010
+  block $__inlined_func$class-overloading/A#a<i32>@virtual4
+   block $default5
+    block $case26
+     block $case17
+      block $case08
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case010 $case19 $case010 $case010 $case28 $default7
+       br_table $case08 $case17 $case08 $case08 $case26 $default5
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#a<i32>@virtual5
+      br $__inlined_func$class-overloading/A#a<i32>@virtual4
      end
      global.get $~lib/memory/__stack_pointer
      i32.const 8
@@ -3708,11 +3687,11 @@
      i32.const 8
      i32.add
      global.set $~lib/memory/__stack_pointer
-     br $__inlined_func$class-overloading/A#a<i32>@virtual5
+     br $__inlined_func$class-overloading/A#a<i32>@virtual4
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#a<i32>@virtual5
+    br $__inlined_func$class-overloading/A#a<i32>@virtual4
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -3722,12 +3701,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=68
+   i32.store $0 offset=92
    i32.const 1312
    local.set $2
    local.get $0
    i32.const 1312
-   i32.store $0 offset=72
+   i32.store $0 offset=96
    i32.const 1
    local.get $1
    i32.const 1312
@@ -4228,30 +4207,30 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#b@virtual22
-   block $default23
-    block $case224
-     block $case125
-      block $case026
+  block $__inlined_func$class-overloading/A#b@virtual20
+   block $default21
+    block $case222
+     block $case123
+      block $case024
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case026 $case125 $case026 $case026 $case224 $default23
+       br_table $case024 $case123 $case024 $case024 $case222 $default21
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#b@virtual22
+      br $__inlined_func$class-overloading/A#b@virtual20
      end
      i32.const 1344
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/A#b@virtual22
+     br $__inlined_func$class-overloading/A#b@virtual20
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#b@virtual22
+    br $__inlined_func$class-overloading/A#b@virtual20
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -4261,12 +4240,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=76
+   i32.store $0 offset=100
    i32.const 1312
    local.set $2
    local.get $0
    i32.const 1312
-   i32.store $0 offset=80
+   i32.store $0 offset=104
    i32.const 1
    local.get $1
    i32.const 1312
@@ -4767,30 +4746,30 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#get:c@virtual31
-   block $default32
-    block $case233
-     block $case134
-      block $case035
+  block $__inlined_func$class-overloading/A#get:c@virtual29
+   block $default30
+    block $case231
+     block $case132
+      block $case033
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case035 $case134 $case035 $case035 $case233 $default32
+       br_table $case033 $case132 $case033 $case033 $case231 $default30
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#get:c@virtual31
+      br $__inlined_func$class-overloading/A#get:c@virtual29
      end
      i32.const 1344
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/A#get:c@virtual31
+     br $__inlined_func$class-overloading/A#get:c@virtual29
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#get:c@virtual31
+    br $__inlined_func$class-overloading/A#get:c@virtual29
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -4800,12 +4779,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=84
+   i32.store $0 offset=108
    i32.const 1312
    local.set $2
    local.get $0
    i32.const 1312
-   i32.store $0 offset=88
+   i32.store $0 offset=112
    i32.const 1
    local.get $1
    i32.const 1312
@@ -5304,30 +5283,30 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#b@virtual40
-   block $default41
-    block $case242
-     block $case143
-      block $case044
+  block $__inlined_func$class-overloading/A#b@virtual38
+   block $default39
+    block $case240
+     block $case141
+      block $case042
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case044 $case143 $case044 $case044 $case242 $default41
+       br_table $case042 $case141 $case042 $case042 $case240 $default39
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#b@virtual40
+      br $__inlined_func$class-overloading/A#b@virtual38
      end
      i32.const 1344
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/A#b@virtual40
+     br $__inlined_func$class-overloading/A#b@virtual38
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#b@virtual40
+    br $__inlined_func$class-overloading/A#b@virtual38
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -5337,12 +5316,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=92
+   i32.store $0 offset=116
    i32.const 1312
    local.set $2
    local.get $0
    i32.const 1312
-   i32.store $0 offset=96
+   i32.store $0 offset=120
    i32.const 1
    local.get $1
    i32.const 1312
@@ -5846,22 +5825,22 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#a<i32>@virtual12
-   block $default13
-    block $case214
-     block $case115
-      block $case016
+  block $__inlined_func$class-overloading/A#a<i32>@virtual10
+   block $default12
+    block $case213
+     block $case114
+      block $case015
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case016 $case115 $case016 $case016 $case214 $default13
+       br_table $case015 $case114 $case015 $case015 $case213 $default12
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#a<i32>@virtual12
+      br $__inlined_func$class-overloading/A#a<i32>@virtual10
      end
      global.get $~lib/memory/__stack_pointer
      i32.const 8
@@ -5891,11 +5870,11 @@
      i32.const 8
      i32.add
      global.set $~lib/memory/__stack_pointer
-     br $__inlined_func$class-overloading/A#a<i32>@virtual12
+     br $__inlined_func$class-overloading/A#a<i32>@virtual10
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#a<i32>@virtual12
+    br $__inlined_func$class-overloading/A#a<i32>@virtual10
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -5905,12 +5884,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=100
+   i32.store $0 offset=124
    i32.const 1312
    local.set $2
    local.get $0
    i32.const 1312
-   i32.store $0 offset=104
+   i32.store $0 offset=128
    i32.const 1
    local.get $1
    i32.const 1312
@@ -6411,30 +6390,30 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#b@virtual49
-   block $default50
-    block $case251
-     block $case152
-      block $case053
+  block $__inlined_func$class-overloading/A#b@virtual47
+   block $default48
+    block $case249
+     block $case150
+      block $case051
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case053 $case152 $case053 $case053 $case251 $default50
+       br_table $case051 $case150 $case051 $case051 $case249 $default48
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#b@virtual49
+      br $__inlined_func$class-overloading/A#b@virtual47
      end
      i32.const 1344
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/A#b@virtual49
+     br $__inlined_func$class-overloading/A#b@virtual47
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#b@virtual49
+    br $__inlined_func$class-overloading/A#b@virtual47
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -6444,12 +6423,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=108
+   i32.store $0 offset=132
    i32.const 1312
    local.set $2
    local.get $0
    i32.const 1312
-   i32.store $0 offset=112
+   i32.store $0 offset=136
    i32.const 1
    local.get $1
    i32.const 1312
@@ -6950,30 +6929,30 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#get:c@virtual58
-   block $default59
-    block $case260
-     block $case161
-      block $case062
+  block $__inlined_func$class-overloading/A#get:c@virtual56
+   block $default57
+    block $case258
+     block $case159
+      block $case060
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case062 $case161 $case062 $case062 $case260 $default59
+       br_table $case060 $case159 $case060 $case060 $case258 $default57
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#get:c@virtual58
+      br $__inlined_func$class-overloading/A#get:c@virtual56
      end
      i32.const 1344
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/A#get:c@virtual58
+     br $__inlined_func$class-overloading/A#get:c@virtual56
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#get:c@virtual58
+    br $__inlined_func$class-overloading/A#get:c@virtual56
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -6983,12 +6962,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=116
+   i32.store $0 offset=140
    i32.const 1312
    local.set $2
    local.get $0
    i32.const 1312
-   i32.store $0 offset=120
+   i32.store $0 offset=144
    i32.const 1
    local.get $1
    i32.const 1312
@@ -7487,30 +7466,30 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#b@virtual67
-   block $default68
-    block $case269
-     block $case170
-      block $case071
+  block $__inlined_func$class-overloading/A#b@virtual65
+   block $default66
+    block $case267
+     block $case168
+      block $case069
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case071 $case170 $case071 $case071 $case269 $default68
+       br_table $case069 $case168 $case069 $case069 $case267 $default66
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#b@virtual67
+      br $__inlined_func$class-overloading/A#b@virtual65
      end
      i32.const 1344
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/A#b@virtual67
+     br $__inlined_func$class-overloading/A#b@virtual65
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#b@virtual67
+    br $__inlined_func$class-overloading/A#b@virtual65
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -7520,12 +7499,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=124
+   i32.store $0 offset=148
    i32.const 1312
    local.set $2
    local.get $0
    i32.const 1312
-   i32.store $0 offset=128
+   i32.store $0 offset=152
    i32.const 1
    local.get $1
    i32.const 1312
@@ -8056,22 +8035,22 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#a<i32>@virtual18
-   block $default19
-    block $case220
-     block $case121
-      block $case022
+  block $__inlined_func$class-overloading/A#a<i32>@virtual17
+   block $default18
+    block $case219
+     block $case120
+      block $case021
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case022 $case121 $case022 $case022 $case220 $default19
+       br_table $case021 $case120 $case021 $case021 $case219 $default18
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#a<i32>@virtual18
+      br $__inlined_func$class-overloading/A#a<i32>@virtual17
      end
      global.get $~lib/memory/__stack_pointer
      i32.const 8
@@ -8101,11 +8080,11 @@
      i32.const 8
      i32.add
      global.set $~lib/memory/__stack_pointer
-     br $__inlined_func$class-overloading/A#a<i32>@virtual18
+     br $__inlined_func$class-overloading/A#a<i32>@virtual17
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#a<i32>@virtual18
+    br $__inlined_func$class-overloading/A#a<i32>@virtual17
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -8115,12 +8094,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=132
+   i32.store $0 offset=156
    i32.const 1376
    local.set $2
    local.get $0
    i32.const 1376
-   i32.store $0 offset=136
+   i32.store $0 offset=160
    i32.const 1
    local.get $1
    i32.const 1376
@@ -8621,30 +8600,30 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#b@virtual77
-   block $default78
-    block $case279
-     block $case180
-      block $case081
+  block $__inlined_func$class-overloading/A#b@virtual75
+   block $default76
+    block $case277
+     block $case178
+      block $case079
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case081 $case180 $case081 $case081 $case279 $default78
+       br_table $case079 $case178 $case079 $case079 $case277 $default76
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#b@virtual77
+      br $__inlined_func$class-overloading/A#b@virtual75
      end
      i32.const 1344
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/A#b@virtual77
+     br $__inlined_func$class-overloading/A#b@virtual75
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#b@virtual77
+    br $__inlined_func$class-overloading/A#b@virtual75
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -8654,12 +8633,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=140
+   i32.store $0 offset=164
    i32.const 1376
    local.set $2
    local.get $0
    i32.const 1376
-   i32.store $0 offset=144
+   i32.store $0 offset=168
    i32.const 1
    local.get $1
    i32.const 1376
@@ -9160,30 +9139,30 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#get:c@virtual86
-   block $default87
-    block $case288
-     block $case189
-      block $case090
+  block $__inlined_func$class-overloading/A#get:c@virtual84
+   block $default85
+    block $case286
+     block $case187
+      block $case088
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case090 $case189 $case090 $case090 $case288 $default87
+       br_table $case088 $case187 $case088 $case088 $case286 $default85
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#get:c@virtual86
+      br $__inlined_func$class-overloading/A#get:c@virtual84
      end
      i32.const 1344
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/A#get:c@virtual86
+     br $__inlined_func$class-overloading/A#get:c@virtual84
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#get:c@virtual86
+    br $__inlined_func$class-overloading/A#get:c@virtual84
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -9193,12 +9172,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=148
+   i32.store $0 offset=172
    i32.const 1376
    local.set $2
    local.get $0
    i32.const 1376
-   i32.store $0 offset=152
+   i32.store $0 offset=176
    i32.const 1
    local.get $1
    i32.const 1376
@@ -9699,30 +9678,30 @@
   global.get $class-overloading/a
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/A#b@virtual95
-   block $default96
-    block $case297
-     block $case198
-      block $case099
+  block $__inlined_func$class-overloading/A#b@virtual93
+   block $default94
+    block $case295
+     block $case196
+      block $case097
        local.get $0
        i32.const 8
        i32.sub
        i32.load $0
        i32.const 4
        i32.sub
-       br_table $case099 $case198 $case099 $case099 $case297 $default96
+       br_table $case097 $case196 $case097 $case097 $case295 $default94
       end
       i32.const 1312
       global.set $class-overloading/which
-      br $__inlined_func$class-overloading/A#b@virtual95
+      br $__inlined_func$class-overloading/A#b@virtual93
      end
      i32.const 1344
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/A#b@virtual95
+     br $__inlined_func$class-overloading/A#b@virtual93
     end
     i32.const 1376
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/A#b@virtual95
+    br $__inlined_func$class-overloading/A#b@virtual93
    end
    i32.const 1280
    global.set $class-overloading/which
@@ -9732,12 +9711,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=156
+   i32.store $0 offset=180
    i32.const 1376
    local.set $2
    local.get $0
    i32.const 1376
-   i32.store $0 offset=160
+   i32.store $0 offset=184
    i32.const 1
    local.get $1
    i32.const 1376
@@ -10264,8 +10243,8 @@
   local.tee $0
   i32.store $0
   block $__inlined_func$class-overloading/IA#foo@virtual
-   block $default105
-    block $case1106
+   block $default103
+    block $case1104
      local.get $0
      i32.const 8
      i32.sub
@@ -10277,8 +10256,8 @@
       local.get $0
       i32.const 12
       i32.eq
-      br_if $case1106
-      br $default105
+      br_if $case1104
+      br $default103
      end
      i32.const 1408
      global.set $class-overloading/which
@@ -10295,12 +10274,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=164
+   i32.store $0 offset=188
    i32.const 1408
    local.set $2
    local.get $0
    i32.const 1408
-   i32.store $0 offset=168
+   i32.store $0 offset=192
    i32.const 1
    local.get $1
    i32.const 1408
@@ -10826,9 +10805,9 @@
   global.get $class-overloading/ic
   local.tee $0
   i32.store $0
-  block $__inlined_func$class-overloading/IA#foo@virtual109
-   block $default110
-    block $case1111
+  block $__inlined_func$class-overloading/IA#foo@virtual107
+   block $default108
+    block $case1109
      local.get $0
      i32.const 8
      i32.sub
@@ -10840,16 +10819,16 @@
       local.get $0
       i32.const 12
       i32.eq
-      br_if $case1111
-      br $default110
+      br_if $case1109
+      br $default108
      end
      i32.const 1408
      global.set $class-overloading/which
-     br $__inlined_func$class-overloading/IA#foo@virtual109
+     br $__inlined_func$class-overloading/IA#foo@virtual107
     end
     i32.const 1440
     global.set $class-overloading/which
-    br $__inlined_func$class-overloading/IA#foo@virtual109
+    br $__inlined_func$class-overloading/IA#foo@virtual107
    end
    unreachable
   end
@@ -10858,12 +10837,12 @@
    local.tee $0
    global.get $class-overloading/which
    local.tee $1
-   i32.store $0 offset=172
+   i32.store $0 offset=196
    i32.const 1440
    local.set $2
    local.get $0
    i32.const 1440
-   i32.store $0 offset=176
+   i32.store $0 offset=200
    i32.const 1
    local.get $1
    i32.const 1440
@@ -11450,16 +11429,16 @@
      unreachable
     end
     global.get $~lib/memory/__stack_pointer
-    local.tee $0
+    local.tee $1
     i32.const 0
     i32.store $0
-    local.get $0
+    local.get $1
     i32.const 15
     call $~lib/rt/itcms/__new
     local.tee $1
     i32.store $0
     global.get $~lib/memory/__stack_pointer
-    local.tee $0
+    local.tee $2
     i32.const 4
     i32.sub
     global.set $~lib/memory/__stack_pointer
@@ -11485,14 +11464,14 @@
     i32.const 4
     i32.add
     global.set $~lib/memory/__stack_pointer
-    local.get $0
+    local.get $2
     local.get $1
     i32.store $0
     global.get $~lib/memory/__stack_pointer
     i32.const 4
     i32.add
     global.set $~lib/memory/__stack_pointer
-    global.get $~lib/memory/__stack_pointer
+    local.get $0
     local.get $1
     i32.store $0
     local.get $1
@@ -11513,7 +11492,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 180
+  i32.const 204
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

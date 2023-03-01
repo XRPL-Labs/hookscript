@@ -33,6 +33,8 @@ class A2 {
 
 class B2 extends A2 {
   bar: Foo; // must be invariant
+  // TODO Fix: Property 'duplicate-fields/A2#bar' has no initializer and is not assigned in the constructor before 'this' is used or returned.
+  // when auto-inlining is enabled.
   constructor(bar: Foo) { super(bar); this.bar = bar; }
 }
 

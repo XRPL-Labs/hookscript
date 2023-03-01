@@ -2,13 +2,11 @@
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
- (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $none_=>_none (func_subtype func))
+ (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
- (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
- (type $f32_f32_=>_f32 (func_subtype (param f32 f32) (result f32) func))
- (type $i32_f32_f32_=>_f32 (func_subtype (param i32 f32 f32) (result f32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
@@ -46,22 +44,11 @@
  (export "memory" (memory $0))
  (export "test" (func $export:class/test))
  (start $~start)
- (func $class/Animal.add (type $i32_i32_=>_i32) (param $a i32) (param $b i32) (result i32)
-  local.get $a
-  local.get $b
-  i32.add
-  global.get $class/Animal.ONE
-  i32.add
- )
- (func $class/Animal.sub<f32> (type $f32_f32_=>_f32) (param $a f32) (param $b f32) (result f32)
-  local.get $a
-  local.get $b
-  f32.sub
-  global.get $class/Animal.ONE
-  f32.convert_i32_s
-  f32.add
- )
  (func $start:class (type $none_=>_none)
+  (local $a i32)
+  (local $b i32)
+  (local $a|2 f32)
+  (local $b|3 f32)
   i32.const 4
   i32.const 4
   i32.eq
@@ -69,28 +56,26 @@
   global.get $class/Animal.ONE
   drop
   i32.const 1
+  local.set $a
   i32.const 2
-  call $class/Animal.add
-  drop
-  f32.const 1
-  f32.const 2
-  call $class/Animal.sub<f32>
-  drop
- )
- (func $class/Animal<f64>#instanceAdd (type $i32_i32_i32_=>_i32) (param $this i32) (param $a i32) (param $b i32) (result i32)
+  local.set $b
   local.get $a
   local.get $b
   i32.add
   global.get $class/Animal.ONE
   i32.add
- )
- (func $class/Animal<f64>#instanceSub<f32> (type $i32_f32_f32_=>_f32) (param $this i32) (param $a f32) (param $b f32) (result f32)
-  local.get $a
-  local.get $b
+  drop
+  f32.const 1
+  local.set $a|2
+  f32.const 2
+  local.set $b|3
+  local.get $a|2
+  local.get $b|3
   f32.sub
   global.get $class/Animal.ONE
   f32.convert_i32_s
   f32.add
+  drop
  )
  (func $class/Animal<f64>#set:one (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
@@ -108,17 +93,38 @@
   i32.store8 $0 offset=6
  )
  (func $class/test (type $i32_=>_i32) (param $animal i32) (result i32)
+  (local $this i32)
+  (local $a i32)
+  (local $b i32)
+  (local $this|4 i32)
+  (local $a|5 f32)
+  (local $b|6 f32)
   (local $ptr i32)
   (local $cls i32)
   local.get $animal
+  local.set $this
   i32.const 1
+  local.set $a
   i32.const 2
-  call $class/Animal<f64>#instanceAdd
+  local.set $b
+  local.get $a
+  local.get $b
+  i32.add
+  global.get $class/Animal.ONE
+  i32.add
   drop
   local.get $animal
+  local.set $this|4
   f32.const 1
+  local.set $a|5
   f32.const 2
-  call $class/Animal<f64>#instanceSub<f32>
+  local.set $b|6
+  local.get $a|5
+  local.get $b|6
+  f32.sub
+  global.get $class/Animal.ONE
+  f32.convert_i32_s
+  f32.add
   drop
   local.get $animal
   i32.load $0

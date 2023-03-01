@@ -21,8 +21,6 @@
     "a: v128;",
     "AS103: Feature 'simd' is not enabled.",
     "b: Array<v128>;",
-    "AS103: Feature 'simd' is not enabled.",
-    "get c(): v128",
     "EOF"
   ]
 }

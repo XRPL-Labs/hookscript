@@ -2034,9 +2034,6 @@
  (func $getter-call/C#get:x~anonymous|0 (type $none_=>_i32) (result i32)
   i32.const 42
  )
- (func $getter-call/C#get:x (type $i32_=>_i32) (param $this i32) (result i32)
-  i32.const 224
- )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
   i32.const 144
@@ -2156,7 +2153,8 @@
  )
  (func $getter-call/test (type $none_=>_i32) (result i32)
   (local $c i32)
-  (local $1 i32)
+  (local $this i32)
+  (local $2 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -2173,14 +2171,15 @@
   i32.const 0
   global.set $~argumentsLength
   local.get $c
-  call $getter-call/C#get:x
+  local.set $this
+  i32.const 224
   i32.load $0
   call_indirect $0 (type $none_=>_i32)
-  local.set $1
+  local.set $2
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $1
+  local.get $2
  )
 )

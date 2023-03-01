@@ -1282,8 +1282,8 @@
   (local $4 i32)
   (local $5 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 56
-  i32.sub
+  i32.const -64
+  i32.add
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
   i32.const 1468
@@ -1294,7 +1294,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 0
-  i32.const 56
+  i32.const 64
   memory.fill $0
   memory.size $0
   i32.const 16
@@ -1980,13 +1980,13 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   global.get $class-overloading-cast/v2
-  i32.store $0
-  local.get $0
-  i32.const 1280
   i32.store $0 offset=12
   local.get $0
   i32.const 1280
   i32.store $0 offset=16
+  local.get $0
+  i32.const 1280
+  i32.store $0 offset=20
   block $~lib/string/String.__eq|inlined.2 (result i32)
    local.get $0
    block $__inlined_func$class-overloading-cast/A<f64>#foo@virtual (result i32)
@@ -2006,12 +2006,12 @@
     i32.const 1248
    end
    local.tee $0
-   i32.store $0 offset=20
+   i32.store $0 offset=24
    i32.const 1280
    local.set $3
    global.get $~lib/memory/__stack_pointer
    i32.const 1280
-   i32.store $0 offset=24
+   i32.store $0 offset=28
    i32.const 1
    local.get $0
    i32.const 1280
@@ -2573,7 +2573,7 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 1312
-  i32.store $0 offset=28
+  i32.store $0 offset=32
   local.get $0
   i32.const 8
   i32.sub
@@ -2581,17 +2581,17 @@
   drop
   global.get $~lib/memory/__stack_pointer
   i32.const 1248
-  i32.store $0 offset=32
+  i32.store $0 offset=36
   global.get $~lib/memory/__stack_pointer
   i32.const 1248
-  i32.store $0 offset=36
+  i32.store $0 offset=40
   global.get $~lib/memory/__stack_pointer
   local.tee $1
   local.get $0
   i32.store $0
   local.get $1
   i32.const 1312
-  i32.store $0 offset=28
+  i32.store $0 offset=32
   local.get $0
   i32.const 8
   i32.sub
@@ -2599,10 +2599,10 @@
   drop
   local.get $1
   i32.const 1248
-  i32.store $0 offset=40
+  i32.store $0 offset=44
   local.get $1
   i32.const 1248
-  i32.store $0 offset=44
+  i32.store $0 offset=48
   global.get $~lib/memory/__stack_pointer
   local.tee $1
   i32.const 4
@@ -2687,18 +2687,18 @@
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
+  local.get $1
   local.get $0
-  i32.store $0
+  i32.store $0 offset=52
   local.get $1
   i32.const 1344
-  i32.store $0 offset=48
+  i32.store $0 offset=56
   global.get $~lib/memory/__stack_pointer
   i32.const 1344
-  i32.store $0 offset=52
+  i32.store $0 offset=60
   global.get $~lib/memory/__stack_pointer
-  i32.const 56
-  i32.add
+  i32.const -64
+  i32.sub
   global.set $~lib/memory/__stack_pointer
  )
  (func $class-overloading-cast/A<i32>#constructor (type $i32_=>_i32) (param $0 i32) (result i32)

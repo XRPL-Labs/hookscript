@@ -1275,7 +1275,7 @@
   (local $0 i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 16
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -1286,8 +1286,11 @@
   end
   global.get $~lib/memory/__stack_pointer
   local.tee $0
-  i32.const 0
-  i32.store $0
+  i64.const 0
+  i64.store $0
+  local.get $0
+  i64.const 0
+  i64.store $0 offset=8
   memory.size $0
   i32.const 16
   i32.shl
@@ -1405,7 +1408,7 @@
   global.set $class-implements/c
   global.get $~lib/memory/__stack_pointer
   global.get $class-implements/c
-  i32.store $0
+  i32.store $0 offset=4
   i32.const 0
   call $class-implements/D#constructor
   global.set $class-implements/d
@@ -1413,7 +1416,7 @@
    global.get $~lib/memory/__stack_pointer
    global.get $class-implements/d
    local.tee $0
-   i32.store $0
+   i32.store $0 offset=8
    i32.const 4
    local.get $0
    i32.const 8
@@ -1464,7 +1467,7 @@
    global.get $~lib/memory/__stack_pointer
    global.get $class-implements/e
    local.tee $0
-   i32.store $0
+   i32.store $0 offset=8
    i32.const 4
    local.get $0
    i32.const 8
@@ -1485,14 +1488,14 @@
   global.set $class-implements/f
   global.get $~lib/memory/__stack_pointer
   global.get $class-implements/f
-  i32.store $0
+  i32.store $0 offset=12
   call $class-implements/F#constructor
   global.set $class-implements/g
-  block $__inlined_func$class-implements/D#foo@virtual15 (result i32)
+  block $__inlined_func$class-implements/D#foo@virtual14 (result i32)
    global.get $~lib/memory/__stack_pointer
    global.get $class-implements/g
    local.tee $0
-   i32.store $0
+   i32.store $0 offset=8
    i32.const 4
    local.get $0
    i32.const 8
@@ -1500,7 +1503,7 @@
    i32.load $0
    i32.const 10
    i32.eq
-   br_if $__inlined_func$class-implements/D#foo@virtual15
+   br_if $__inlined_func$class-implements/D#foo@virtual14
    drop
    i32.const 3
   end
@@ -1514,20 +1517,20 @@
   global.get $~lib/memory/__stack_pointer
   global.get $class-implements/h
   local.tee $0
-  i32.store $0
+  i32.store $0 offset=8
   block $__inlined_func$class-implements/I#foo@virtual
-   block $default20
+   block $default19
     block $case3
      block $case2
       block $case1
-       block $case021
+       block $case020
         local.get $0
         i32.const 8
         i32.sub
         i32.load $0
         i32.const 3
         i32.sub
-        br_table $case021 $default20 $case1 $default20 $case2 $default20 $case2 $case3 $default20
+        br_table $case020 $default19 $case1 $default19 $case2 $default19 $case2 $case3 $default19
        end
        i32.const 1
        local.set $0
@@ -1554,7 +1557,7 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 16
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

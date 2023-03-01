@@ -1,17 +1,18 @@
 import {
   Source,
-  Program,
   NodeKind,
   FunctionDeclaration,
-  DiagnosticCode,
-  CommonFlags,
   ArrowKind,
   Node,
-  Range,
   ParameterKind,
   SourceKind,
   DecoratorKind,
-} from ".";
+  ClassDeclaration,
+  MethodDeclaration,
+} from "./ast";
+import { CommonFlags } from './common';
+import { DiagnosticCode, Range } from './diagnostics';
+import { Program } from './program';
 
 export function transformHookScript(source: Source, program: Program): void {
   if (source.sourceKind !== SourceKind.UserEntry) return;
@@ -111,21 +112,25 @@ function maybeConvertTopLevelExpressionsToHook(source: Source, program: Program)
 }
 
 function inlineLocalsFunctions(source: Source, program: Program): void {
-  let ignoredDecoratorKinds = [DecoratorKind.External, DecoratorKind.ExternalJs];
+  let ignoredDecoratorKinds = [DecoratorKind.External, DecoratorKind.ExternalJs, DecoratorKind.Inline];
   let ignoredCommonFlags = CommonFlags.Export | CommonFlags.Ambient;
 
-  let locals = (source.statements.filter(
+  // Top level functions
+  let decls: FunctionDeclaration[] = (source.statements.filter(
     s => s.kind === NodeKind.FunctionDeclaration
-  ) as FunctionDeclaration[])
-    .filter(f => (f.flags & ignoredCommonFlags) === 0)
-    .filter(f => !f.decorators?.find(d => ignoredDecoratorKinds.includes(d.decoratorKind)));
-  // `hook` and `cbak` are not specially handled above cuz they are not supposed to be locals.
+  ) as FunctionDeclaration[]);
 
-  locals.forEach(l => {
-    if (l.decorators?.find(d => d.decoratorKind === DecoratorKind.External)) return;
-    if (!l.decorators?.find(d => d.decoratorKind === DecoratorKind.Inline)) {
-      l.decorators = l.decorators || [];
-      l.decorators.push(Node.createDecorator(Node.createIdentifierExpression("inline", l.name.range), [], l.signature.range));
-    }
+  // Class methods
+  source.statements.filter(s => s.kind === NodeKind.ClassDeclaration).forEach(c => {
+    decls.push(...(c as ClassDeclaration).members.filter(m => m.kind === NodeKind.MethodDeclaration) as MethodDeclaration[]);
+  });
+
+  // `hook` and `cbak` are not specially handled above cuz they are supposed to be exported.
+  decls = decls.filter(f => (f.flags & ignoredCommonFlags) === 0)
+    .filter(f => !f.decorators?.find(d => ignoredDecoratorKinds.includes(d.decoratorKind)));
+
+  decls.forEach(l => {
+    l.decorators = l.decorators || [];
+    l.decorators.push(Node.createDecorator(Node.createIdentifierExpression("inline", l.name.range), [], l.signature.range));
   });
 }

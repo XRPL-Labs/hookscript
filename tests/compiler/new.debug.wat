@@ -2034,12 +2034,6 @@
   memory.fill $0
   local.get $ptr
  )
- (func $new/Ref#get:ref (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
- )
- (func $new/Gen<i32>#get:gen (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
- )
  (func $new/ns.Ref#get:ref (type $i32_=>_i32) (param $this i32) (result i32)
   local.get $this
  )
@@ -2152,14 +2146,19 @@
  )
  (func $start:new (type $none_=>_none)
   (local $0 i32)
+  (local $1 i32)
+  (local $2 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 12
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store $0
+  global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.store $0
+  i32.store $0 offset=8
   memory.size $0
   i32.const 16
   i32.shl
@@ -2183,14 +2182,12 @@
   i32.const 0
   call $new/Ref#constructor
   global.set $new/ref
+  global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $new/Ref#constructor
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
+  local.tee $0
   i32.store $0
   local.get $0
-  call $new/Ref#get:ref
   global.set $new/ref
   i32.const 0
   call $new/Gen<i32>#constructor
@@ -2198,14 +2195,12 @@
   i32.const 0
   call $new/Gen<i32>#constructor
   global.set $new/gen
+  global.get $~lib/memory/__stack_pointer
   i32.const 0
   call $new/Gen<i32>#constructor
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
-  call $new/Gen<i32>#get:gen
+  local.tee $1
+  i32.store $0 offset=4
+  local.get $1
   global.set $new/gen
   i32.const 0
   call $new/ns.Ref#constructor
@@ -2215,11 +2210,11 @@
   global.set $new/ref2
   i32.const 0
   call $new/ns.Ref#constructor
-  local.set $0
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
+  local.get $2
+  i32.store $0 offset=8
+  local.get $2
   call $new/ns.Ref#get:ref
   global.set $new/ref2
   i32.const 0
@@ -2232,7 +2227,7 @@
   call $new/GenExt#constructor
   global.set $new/genext3
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

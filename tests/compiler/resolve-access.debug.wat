@@ -2256,11 +2256,6 @@
   local.get $1
   i64.store $0
  )
- (func $resolve-access/Container#toU32 (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i64.load $0
-  i32.wrap_i64
- )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
   i32.const 176
@@ -4300,6 +4295,7 @@
  (func $resolve-access/propertyAccess (type $none_=>_i32) (result i32)
   (local $container i32)
   (local $this i32)
+  (local $this|2 i32)
   (local $value i32)
   (local $decimals i32)
   (local $out i32)
@@ -4307,41 +4303,41 @@
   (local $num i32)
   (local $t i32)
   (local $r i32)
-  (local $end|9 i32)
-  (local $num|10 i32)
-  (local $t|11 i32)
-  (local $r|12 i32)
-  (local $end|13 i32)
-  (local $num|14 i32)
-  (local $t|15 i32)
-  (local $r|16 i32)
-  (local $end|17 i32)
-  (local $num|18 i32)
-  (local $t|19 i32)
-  (local $r|20 i32)
-  (local $end|21 i32)
-  (local $num|22 i32)
-  (local $t|23 i32)
-  (local $r|24 i32)
-  (local $end|25 i32)
-  (local $num|26 i32)
-  (local $t|27 i32)
-  (local $r|28 i32)
-  (local $end|29 i32)
-  (local $num|30 i32)
-  (local $t|31 i32)
-  (local $r|32 i32)
-  (local $end|33 i32)
-  (local $num|34 i32)
-  (local $t|35 i32)
-  (local $r|36 i32)
-  (local $end|37 i32)
-  (local $num|38 i32)
-  (local $t|39 i32)
-  (local $r|40 i32)
-  (local $end|41 i32)
-  (local $num|42 i32)
-  (local $43 i32)
+  (local $end|10 i32)
+  (local $num|11 i32)
+  (local $t|12 i32)
+  (local $r|13 i32)
+  (local $end|14 i32)
+  (local $num|15 i32)
+  (local $t|16 i32)
+  (local $r|17 i32)
+  (local $end|18 i32)
+  (local $num|19 i32)
+  (local $t|20 i32)
+  (local $r|21 i32)
+  (local $end|22 i32)
+  (local $num|23 i32)
+  (local $t|24 i32)
+  (local $r|25 i32)
+  (local $end|26 i32)
+  (local $num|27 i32)
+  (local $t|28 i32)
+  (local $r|29 i32)
+  (local $end|30 i32)
+  (local $num|31 i32)
+  (local $t|32 i32)
+  (local $r|33 i32)
+  (local $end|34 i32)
+  (local $num|35 i32)
+  (local $t|36 i32)
+  (local $r|37 i32)
+  (local $end|38 i32)
+  (local $num|39 i32)
+  (local $t|40 i32)
+  (local $r|41 i32)
+  (local $end|42 i32)
+  (local $num|43 i32)
+  (local $44 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -4359,10 +4355,13 @@
   i64.const 1
   call $resolve-access/Container#set:foo
   local.get $container
-  call $resolve-access/Container#toU32
   local.set $this
+  local.get $this
+  i64.load $0
+  i32.wrap_i64
+  local.set $this|2
   block $~lib/util/number/u32toa|inlined.0 (result i32)
-   local.get $this
+   local.get $this|2
    local.set $value
    local.get $value
    i32.eqz
@@ -4403,199 +4402,199 @@
    local.get $t
    if
     local.get $end
-    local.set $end|9
+    local.set $end|10
     local.get $t
-    local.set $num|10
-    local.get $num|10
+    local.set $num|11
+    local.get $num|11
     i32.const 10
     i32.div_u
-    local.set $t|11
-    local.get $num|10
+    local.set $t|12
+    local.get $num|11
     i32.const 10
     i32.rem_u
-    local.set $r|12
-    local.get $end|9
+    local.set $r|13
+    local.get $end|10
     i32.const 1
     i32.sub
-    local.set $end|9
-    local.get $end|9
+    local.set $end|10
+    local.get $end|10
     i32.const 48
-    local.get $r|12
+    local.get $r|13
     i32.add
     i32.store8 $0
-    local.get $t|11
+    local.get $t|12
     if
-     local.get $end|9
-     local.set $end|13
-     local.get $t|11
-     local.set $num|14
-     local.get $num|14
+     local.get $end|10
+     local.set $end|14
+     local.get $t|12
+     local.set $num|15
+     local.get $num|15
      i32.const 10
      i32.div_u
-     local.set $t|15
-     local.get $num|14
+     local.set $t|16
+     local.get $num|15
      i32.const 10
      i32.rem_u
-     local.set $r|16
-     local.get $end|13
+     local.set $r|17
+     local.get $end|14
      i32.const 1
      i32.sub
-     local.set $end|13
-     local.get $end|13
+     local.set $end|14
+     local.get $end|14
      i32.const 48
-     local.get $r|16
+     local.get $r|17
      i32.add
      i32.store8 $0
-     local.get $t|15
+     local.get $t|16
      if
-      local.get $end|13
-      local.set $end|17
-      local.get $t|15
-      local.set $num|18
-      local.get $num|18
+      local.get $end|14
+      local.set $end|18
+      local.get $t|16
+      local.set $num|19
+      local.get $num|19
       i32.const 10
       i32.div_u
-      local.set $t|19
-      local.get $num|18
+      local.set $t|20
+      local.get $num|19
       i32.const 10
       i32.rem_u
-      local.set $r|20
-      local.get $end|17
+      local.set $r|21
+      local.get $end|18
       i32.const 1
       i32.sub
-      local.set $end|17
-      local.get $end|17
+      local.set $end|18
+      local.get $end|18
       i32.const 48
-      local.get $r|20
+      local.get $r|21
       i32.add
       i32.store8 $0
-      local.get $t|19
+      local.get $t|20
       if
-       local.get $end|17
-       local.set $end|21
-       local.get $t|19
-       local.set $num|22
-       local.get $num|22
+       local.get $end|18
+       local.set $end|22
+       local.get $t|20
+       local.set $num|23
+       local.get $num|23
        i32.const 10
        i32.div_u
-       local.set $t|23
-       local.get $num|22
+       local.set $t|24
+       local.get $num|23
        i32.const 10
        i32.rem_u
-       local.set $r|24
-       local.get $end|21
+       local.set $r|25
+       local.get $end|22
        i32.const 1
        i32.sub
-       local.set $end|21
-       local.get $end|21
+       local.set $end|22
+       local.get $end|22
        i32.const 48
-       local.get $r|24
+       local.get $r|25
        i32.add
        i32.store8 $0
-       local.get $t|23
+       local.get $t|24
        if
-        local.get $end|21
-        local.set $end|25
-        local.get $t|23
-        local.set $num|26
-        local.get $num|26
+        local.get $end|22
+        local.set $end|26
+        local.get $t|24
+        local.set $num|27
+        local.get $num|27
         i32.const 10
         i32.div_u
-        local.set $t|27
-        local.get $num|26
+        local.set $t|28
+        local.get $num|27
         i32.const 10
         i32.rem_u
-        local.set $r|28
-        local.get $end|25
+        local.set $r|29
+        local.get $end|26
         i32.const 1
         i32.sub
-        local.set $end|25
-        local.get $end|25
+        local.set $end|26
+        local.get $end|26
         i32.const 48
-        local.get $r|28
+        local.get $r|29
         i32.add
         i32.store8 $0
-        local.get $t|27
+        local.get $t|28
         if
-         local.get $end|25
-         local.set $end|29
-         local.get $t|27
-         local.set $num|30
-         local.get $num|30
+         local.get $end|26
+         local.set $end|30
+         local.get $t|28
+         local.set $num|31
+         local.get $num|31
          i32.const 10
          i32.div_u
-         local.set $t|31
-         local.get $num|30
+         local.set $t|32
+         local.get $num|31
          i32.const 10
          i32.rem_u
-         local.set $r|32
-         local.get $end|29
+         local.set $r|33
+         local.get $end|30
          i32.const 1
          i32.sub
-         local.set $end|29
-         local.get $end|29
+         local.set $end|30
+         local.get $end|30
          i32.const 48
-         local.get $r|32
+         local.get $r|33
          i32.add
          i32.store8 $0
-         local.get $t|31
+         local.get $t|32
          if
-          local.get $end|29
-          local.set $end|33
-          local.get $t|31
-          local.set $num|34
-          local.get $num|34
+          local.get $end|30
+          local.set $end|34
+          local.get $t|32
+          local.set $num|35
+          local.get $num|35
           i32.const 10
           i32.div_u
-          local.set $t|35
-          local.get $num|34
+          local.set $t|36
+          local.get $num|35
           i32.const 10
           i32.rem_u
-          local.set $r|36
-          local.get $end|33
+          local.set $r|37
+          local.get $end|34
           i32.const 1
           i32.sub
-          local.set $end|33
-          local.get $end|33
+          local.set $end|34
+          local.get $end|34
           i32.const 48
-          local.get $r|36
+          local.get $r|37
           i32.add
           i32.store8 $0
-          local.get $t|35
+          local.get $t|36
           if
-           local.get $end|33
-           local.set $end|37
-           local.get $t|35
-           local.set $num|38
-           local.get $num|38
+           local.get $end|34
+           local.set $end|38
+           local.get $t|36
+           local.set $num|39
+           local.get $num|39
            i32.const 10
            i32.div_u
-           local.set $t|39
-           local.get $num|38
+           local.set $t|40
+           local.get $num|39
            i32.const 10
            i32.rem_u
-           local.set $r|40
-           local.get $end|37
+           local.set $r|41
+           local.get $end|38
            i32.const 1
            i32.sub
-           local.set $end|37
-           local.get $end|37
+           local.set $end|38
+           local.get $end|38
            i32.const 48
-           local.get $r|40
+           local.get $r|41
            i32.add
            i32.store8 $0
-           local.get $t|39
+           local.get $t|40
            if
-            local.get $end|37
-            local.set $end|41
-            local.get $t|39
-            local.set $num|42
-            local.get $end|41
+            local.get $end|38
+            local.set $end|42
+            local.get $t|40
+            local.set $num|43
+            local.get $end|42
             i32.const 1
             i32.sub
-            local.tee $end|41
+            local.tee $end|42
             i32.const 48
-            local.get $num|42
+            local.get $num|43
             i32.add
             i32.store8 $0
            end
@@ -4609,11 +4608,11 @@
    end
    local.get $out
   end
-  local.set $43
+  local.set $44
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $43
+  local.get $44
  )
 )

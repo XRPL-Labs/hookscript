@@ -7,10 +7,10 @@
  (type $f64_f64_=>_i32 (func_subtype (param f64 f64) (result i32) func))
  (type $i32_=>_none (func_subtype (param i32) func))
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
- (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $i32_i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32 i32) func))
  (type $i32_i32_i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32 i32 i32) func))
  (type $none_=>_none (func_subtype func))
+ (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $none_=>_f64 (func_subtype (result f64) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i32_i32_=>_f32 (func_subtype (param i32 i32 i32) (result f32) func))
@@ -7885,7 +7885,7 @@
   (local $16 i32)
   (local $17 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 1096
+  i32.const 1140
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -7896,7 +7896,7 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.const 1096
+  i32.const 1140
   memory.fill $0
   memory.size $0
   i32.const 16
@@ -7933,13 +7933,20 @@
   i32.const 0
   call $~lib/array/Array<i32>#constructor
   global.set $std/array/arr
-  i32.const 0
-  call $std/array/Ref#constructor
-  local.set $1
   global.get $~lib/memory/__stack_pointer
-  local.get $1
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store $0 offset=4
+  local.get $2
+  i32.const 0
   i32.store $0
   global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  local.get $2
+  i32.store $0
+  local.get $1
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
@@ -8047,7 +8054,7 @@
   i32.const 1328
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=4
+  i32.store $0 offset=8
   local.get $1
   i32.load $0 offset=4
   local.set $4
@@ -8086,7 +8093,7 @@
    i32.const 1360
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=8
+   i32.store $0 offset=12
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8180,7 +8187,7 @@
    i32.const 1392
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=12
+   i32.store $0 offset=16
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8279,7 +8286,7 @@
    i32.const 1424
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=16
+   i32.store $0 offset=20
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8373,7 +8380,7 @@
    i32.const 1456
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=20
+   i32.store $0 offset=24
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8475,7 +8482,7 @@
    i32.const 1488
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=24
+   i32.store $0 offset=28
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8571,7 +8578,7 @@
    i32.const 1520
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=28
+   i32.store $0 offset=32
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8643,7 +8650,7 @@
   i32.const 1552
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=32
+  i32.store $0 offset=36
   local.get $1
   i32.const 1
   i32.const 1
@@ -8657,7 +8664,7 @@
    i32.const 1600
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=36
+   i32.store $0 offset=40
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8737,7 +8744,7 @@
    i32.const 1648
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=40
+   i32.store $0 offset=44
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8817,7 +8824,7 @@
    i32.const 1696
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=44
+   i32.store $0 offset=48
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8897,7 +8904,7 @@
    i32.const 1744
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=48
+   i32.store $0 offset=52
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -8977,7 +8984,7 @@
    i32.const 1792
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=52
+   i32.store $0 offset=56
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -9057,7 +9064,7 @@
    i32.const 1840
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=56
+   i32.store $0 offset=60
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -9132,7 +9139,7 @@
   i32.const 1888
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=60
+  i32.store $0 offset=64
   local.get $1
   f32.const 1
   i32.const 1
@@ -9146,7 +9153,7 @@
    i32.const 1936
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=64
+   i32.store $0 offset=68
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -9308,7 +9315,7 @@
    i32.const 1984
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=68
+   i32.store $0 offset=72
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -9470,7 +9477,7 @@
    i32.const 2032
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=72
+   i32.store $0 offset=76
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -9632,7 +9639,7 @@
    i32.const 2080
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=76
+   i32.store $0 offset=80
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -9794,7 +9801,7 @@
    i32.const 2128
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=80
+   i32.store $0 offset=84
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -9956,7 +9963,7 @@
    i32.const 2176
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=84
+   i32.store $0 offset=88
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -10118,7 +10125,7 @@
    i32.const 2224
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=88
+   i32.store $0 offset=92
    i32.const 0
    local.get $1
    i32.load $0 offset=12
@@ -10281,12 +10288,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=92
+  i32.store $0 offset=96
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=96
+  i32.store $0 offset=100
   local.get $0
   i32.const 20
   i32.sub
@@ -10338,12 +10345,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=100
+  i32.store $0 offset=104
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=104
+  i32.store $0 offset=108
   local.get $0
   i32.const 20
   i32.sub
@@ -10400,12 +10407,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=108
+  i32.store $0 offset=112
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=112
+  i32.store $0 offset=116
   local.get $0
   i32.const 20
   i32.sub
@@ -10439,12 +10446,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=116
+  i32.store $0 offset=120
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=120
+  i32.store $0 offset=124
   local.get $0
   i32.const 20
   i32.sub
@@ -10496,12 +10503,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=124
+  i32.store $0 offset=128
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=128
+  i32.store $0 offset=132
   local.get $0
   i32.const 20
   i32.sub
@@ -10572,12 +10579,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=132
+  i32.store $0 offset=136
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=136
+  i32.store $0 offset=140
   local.get $0
   i32.const 20
   i32.sub
@@ -10646,39 +10653,55 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  local.tee $1
+  local.tee $2
   i32.const 2
   i32.const 2
   i32.const 9
   i32.const 0
   call $~lib/rt/__newArray
-  local.tee $0
-  i32.store $0 offset=140
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.load $0 offset=4
+  local.tee $1
   i32.store $0 offset=144
-  local.get $0
-  i32.const 0
-  i32.const 0
-  call $std/array/Ref#constructor
-  call $~lib/array/Array<std/array/Ref>#__uset
-  local.get $0
-  i32.const 1
-  i32.const 0
-  call $std/array/Ref#constructor
-  call $~lib/array/Array<std/array/Ref>#__uset
+  global.get $~lib/memory/__stack_pointer
   local.get $1
-  local.get $0
+  i32.load $0 offset=4
   i32.store $0 offset=148
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=152
   local.get $0
+  i32.const 0
+  i32.store $0
+  local.get $1
+  i32.const 0
+  local.get $0
+  call $~lib/array/Array<std/array/Ref>#__uset
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=156
+  local.get $0
+  i32.const 0
+  i32.store $0
+  local.get $1
+  i32.const 1
+  local.get $0
+  call $~lib/array/Array<std/array/Ref>#__uset
+  local.get $2
+  local.get $1
+  i32.store $0 offset=160
+  local.get $1
   i32.const 0
   i32.const 0
   call $~lib/array/ensureCapacity
-  local.get $0
+  local.get $1
   i32.const 0
   i32.store $0 offset=12
-  local.get $0
+  local.get $1
   i32.load $0 offset=12
   if
    unreachable
@@ -10690,7 +10713,7 @@
   i32.const 2320
   call $~lib/rt/__newArray
   local.tee $2
-  i32.store $0 offset=152
+  i32.store $0 offset=164
   local.get $2
   i32.load $0 offset=12
   i32.eqz
@@ -10772,7 +10795,7 @@
   i32.const 0
   call $~lib/array/Array<i32>#constructor
   local.tee $2
-  i32.store $0 offset=156
+  i32.store $0 offset=168
   global.get $~lib/memory/__stack_pointer
   global.get $std/array/arr
   local.tee $0
@@ -10782,16 +10805,16 @@
   local.get $2
   call $~lib/array/Array<i32>#concat
   local.tee $1
-  i32.store $0 offset=160
+  i32.store $0 offset=172
   global.get $~lib/memory/__stack_pointer
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=164
+  i32.store $0 offset=176
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=168
+  i32.store $0 offset=180
   local.get $0
   i32.const 20
   i32.sub
@@ -10829,7 +10852,7 @@
   local.set $0
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $1
   local.get $0
   call $~lib/array/Array<i32>#concat
@@ -10837,12 +10860,12 @@
   global.get $~lib/memory/__stack_pointer
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=176
+  i32.store $0 offset=188
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=180
+  i32.store $0 offset=192
   local.get $0
   i32.const 20
   i32.sub
@@ -10914,16 +10937,16 @@
   local.get $2
   call $~lib/array/Array<i32>#concat
   local.tee $1
-  i32.store $0 offset=160
+  i32.store $0 offset=172
   global.get $~lib/memory/__stack_pointer
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=184
+  i32.store $0 offset=196
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=188
+  i32.store $0 offset=200
   local.get $0
   i32.const 20
   i32.sub
@@ -11059,7 +11082,7 @@
   i32.const 2400
   call $~lib/rt/__newArray
   local.tee $2
-  i32.store $0 offset=192
+  i32.store $0 offset=204
   local.get $2
   i32.load $0 offset=12
   if
@@ -11069,13 +11092,13 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $1
   local.get $2
   local.get $0
   call $~lib/array/Array<i32>#concat
   local.tee $0
-  i32.store $0 offset=160
+  i32.store $0 offset=172
   local.get $0
   i32.load $0 offset=12
   i32.const 3
@@ -11095,7 +11118,7 @@
   i32.const 2432
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.0 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11104,7 +11127,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=200
+   i32.store $0 offset=212
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11112,7 +11135,7 @@
    i32.const 2480
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=204
+   i32.store $0 offset=216
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -11186,7 +11209,7 @@
   i32.const 2528
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.1 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11195,7 +11218,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=208
+   i32.store $0 offset=220
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11203,7 +11226,7 @@
    i32.const 2576
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=212
+   i32.store $0 offset=224
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -11277,7 +11300,7 @@
   i32.const 2624
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.2 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11286,7 +11309,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=216
+   i32.store $0 offset=228
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11294,7 +11317,7 @@
    i32.const 2672
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=220
+   i32.store $0 offset=232
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -11368,7 +11391,7 @@
   i32.const 2720
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.3 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11377,7 +11400,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=224
+   i32.store $0 offset=236
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11385,7 +11408,7 @@
    i32.const 2768
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=228
+   i32.store $0 offset=240
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -11459,7 +11482,7 @@
   i32.const 2816
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.4 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11468,7 +11491,7 @@
    i32.const 4
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=232
+   i32.store $0 offset=244
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11476,7 +11499,7 @@
    i32.const 2864
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=236
+   i32.store $0 offset=248
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -11550,7 +11573,7 @@
   i32.const 2912
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.5 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11559,7 +11582,7 @@
    i32.const 4
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=240
+   i32.store $0 offset=252
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11567,7 +11590,7 @@
    i32.const 2960
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=244
+   i32.store $0 offset=256
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -11641,7 +11664,7 @@
   i32.const 3008
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.6 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11650,7 +11673,7 @@
    i32.const 4
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=248
+   i32.store $0 offset=260
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11658,7 +11681,7 @@
    i32.const 3056
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=252
+   i32.store $0 offset=264
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -11732,7 +11755,7 @@
   i32.const 3104
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.7 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11741,7 +11764,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=256
+   i32.store $0 offset=268
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11749,7 +11772,7 @@
    i32.const 3152
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=260
+   i32.store $0 offset=272
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -11823,7 +11846,7 @@
   i32.const 3200
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.8 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11832,7 +11855,7 @@
    i32.const -1
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=264
+   i32.store $0 offset=276
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11840,7 +11863,7 @@
    i32.const 3248
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=268
+   i32.store $0 offset=280
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -11914,7 +11937,7 @@
   i32.const 3296
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.9 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -11923,7 +11946,7 @@
    i32.const -2
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=272
+   i32.store $0 offset=284
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -11931,7 +11954,7 @@
    i32.const 3344
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=276
+   i32.store $0 offset=288
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -12005,7 +12028,7 @@
   i32.const 3392
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.10 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -12014,7 +12037,7 @@
    i32.const -1
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=280
+   i32.store $0 offset=292
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -12022,7 +12045,7 @@
    i32.const 3440
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=284
+   i32.store $0 offset=296
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -12096,7 +12119,7 @@
   i32.const 3488
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=196
+  i32.store $0 offset=208
   block $std/array/isArraysEqual<i32>|inlined.11 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -12105,7 +12128,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#copyWithin
    local.tee $4
-   i32.store $0 offset=288
+   i32.store $0 offset=300
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -12113,7 +12136,7 @@
    i32.const 3536
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=292
+   i32.store $0 offset=304
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -12202,12 +12225,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=296
+  i32.store $0 offset=308
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=300
+  i32.store $0 offset=312
   local.get $0
   i32.const 20
   i32.sub
@@ -12316,12 +12339,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=304
+  i32.store $0 offset=316
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=308
+  i32.store $0 offset=320
   local.get $0
   i32.const 20
   i32.sub
@@ -12487,12 +12510,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=312
+  i32.store $0 offset=324
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=316
+  i32.store $0 offset=328
   local.get $0
   i32.const 20
   i32.sub
@@ -12628,12 +12651,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=320
+  i32.store $0 offset=332
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=324
+  i32.store $0 offset=336
   local.get $0
   i32.const 20
   i32.sub
@@ -12708,14 +12731,14 @@
   i32.const 3584
   call $~lib/rt/__newArray
   local.tee $5
-  i32.store $0 offset=328
+  i32.store $0 offset=340
   global.get $~lib/memory/__stack_pointer
   local.get $5
   i32.const 2
   i32.const 2147483647
   call $~lib/array/Array<i32>#slice
   local.tee $4
-  i32.store $0 offset=332
+  i32.store $0 offset=344
   block $std/array/isArraysEqual<i32>|inlined.12 (result i32)
    global.get $~lib/memory/__stack_pointer
    i32.const 3
@@ -12724,7 +12747,7 @@
    i32.const 3632
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=336
+   i32.store $0 offset=348
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -12797,7 +12820,7 @@
   i32.const 4
   call $~lib/array/Array<i32>#slice
   local.tee $4
-  i32.store $0 offset=332
+  i32.store $0 offset=344
   block $std/array/isArraysEqual<i32>|inlined.13 (result i32)
    global.get $~lib/memory/__stack_pointer
    i32.const 2
@@ -12806,7 +12829,7 @@
    i32.const 3664
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=340
+   i32.store $0 offset=352
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -12879,7 +12902,7 @@
   i32.const 5
   call $~lib/array/Array<i32>#slice
   local.tee $4
-  i32.store $0 offset=332
+  i32.store $0 offset=344
   block $std/array/isArraysEqual<i32>|inlined.14 (result i32)
    global.get $~lib/memory/__stack_pointer
    i32.const 4
@@ -12888,7 +12911,7 @@
    i32.const 3696
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=344
+   i32.store $0 offset=356
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -12961,7 +12984,7 @@
   i32.const 2147483647
   call $~lib/array/Array<i32>#slice
   local.tee $3
-  i32.store $0 offset=332
+  i32.store $0 offset=344
   block $std/array/isArraysEqual<i32>|inlined.15 (result i32)
    i32.const 0
    local.get $3
@@ -13035,7 +13058,7 @@
   i32.const 2147483647
   call $~lib/array/Array<i32>#slice
   local.tee $4
-  i32.store $0 offset=332
+  i32.store $0 offset=344
   block $std/array/isArraysEqual<i32>|inlined.16 (result i32)
    global.get $~lib/memory/__stack_pointer
    i32.const 2
@@ -13044,7 +13067,7 @@
    i32.const 3744
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=348
+   i32.store $0 offset=360
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -13117,7 +13140,7 @@
   i32.const -1
   call $~lib/array/Array<i32>#slice
   local.tee $4
-  i32.store $0 offset=332
+  i32.store $0 offset=344
   block $std/array/isArraysEqual<i32>|inlined.17 (result i32)
    global.get $~lib/memory/__stack_pointer
    i32.const 2
@@ -13126,7 +13149,7 @@
    i32.const 3776
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=352
+   i32.store $0 offset=364
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -13199,7 +13222,7 @@
   i32.const -1
   call $~lib/array/Array<i32>#slice
   local.tee $4
-  i32.store $0 offset=332
+  i32.store $0 offset=344
   block $std/array/isArraysEqual<i32>|inlined.18 (result i32)
    global.get $~lib/memory/__stack_pointer
    i32.const 2
@@ -13208,7 +13231,7 @@
    i32.const 3808
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=356
+   i32.store $0 offset=368
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -13374,12 +13397,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=360
+  i32.store $0 offset=372
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=364
+  i32.store $0 offset=376
   local.get $0
   i32.const 20
   i32.sub
@@ -13476,7 +13499,7 @@
   local.get $0
   call $~lib/array/Array<u8>#reverse
   local.tee $2
-  i32.store $0 offset=368
+  i32.store $0 offset=380
   i32.const 0
   local.set $1
   local.get $2
@@ -13531,7 +13554,7 @@
   local.get $0
   call $~lib/array/Array<u8>#reverse
   local.tee $2
-  i32.store $0 offset=372
+  i32.store $0 offset=384
   i32.const 0
   local.set $1
   local.get $2
@@ -13586,7 +13609,7 @@
   local.get $0
   call $~lib/array/Array<u8>#reverse
   local.tee $2
-  i32.store $0 offset=376
+  i32.store $0 offset=388
   i32.const 0
   local.set $1
   local.get $2
@@ -13641,7 +13664,7 @@
   local.get $0
   call $~lib/array/Array<u16>#reverse
   local.tee $2
-  i32.store $0 offset=380
+  i32.store $0 offset=392
   i32.const 0
   local.set $1
   local.get $2
@@ -13698,7 +13721,7 @@
   local.get $0
   call $~lib/array/Array<u16>#reverse
   local.tee $2
-  i32.store $0 offset=384
+  i32.store $0 offset=396
   i32.const 0
   local.set $1
   local.get $2
@@ -13755,7 +13778,7 @@
   local.get $0
   call $~lib/array/Array<u16>#reverse
   local.tee $2
-  i32.store $0 offset=388
+  i32.store $0 offset=400
   i32.const 0
   local.set $1
   local.get $2
@@ -13857,7 +13880,7 @@
   local.set $1
   i32.const -1
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#indexOf267
+  block $__inlined_func$~lib/array/Array<i32>#indexOf269
    local.get $2
    i32.load $0 offset=12
    local.tee $3
@@ -13866,11 +13889,11 @@
    i32.const 0
    i32.le_s
    i32.or
-   br_if $__inlined_func$~lib/array/Array<i32>#indexOf267
+   br_if $__inlined_func$~lib/array/Array<i32>#indexOf269
    local.get $2
    i32.load $0 offset=4
    local.set $2
-   loop $while-continue|0269
+   loop $while-continue|0271
     local.get $1
     local.get $3
     i32.lt_s
@@ -13884,12 +13907,12 @@
      i32.load $0
      i32.const 42
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#indexOf267
+     br_if $__inlined_func$~lib/array/Array<i32>#indexOf269
      local.get $0
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0269
+     br $while-continue|0271
     end
    end
    i32.const -1
@@ -13911,7 +13934,7 @@
   local.set $1
   i32.const -1
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#indexOf270
+  block $__inlined_func$~lib/array/Array<i32>#indexOf272
    local.get $2
    i32.load $0 offset=12
    local.tee $3
@@ -13920,11 +13943,11 @@
    i32.const 0
    i32.le_s
    i32.or
-   br_if $__inlined_func$~lib/array/Array<i32>#indexOf270
+   br_if $__inlined_func$~lib/array/Array<i32>#indexOf272
    local.get $2
    i32.load $0 offset=4
    local.set $2
-   loop $while-continue|0272
+   loop $while-continue|0274
     local.get $1
     local.get $3
     i32.lt_s
@@ -13938,12 +13961,12 @@
      i32.load $0
      i32.const 45
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#indexOf270
+     br_if $__inlined_func$~lib/array/Array<i32>#indexOf272
      local.get $0
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0272
+     br $while-continue|0274
     end
    end
    i32.const -1
@@ -13965,7 +13988,7 @@
   local.set $1
   i32.const -1
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#indexOf273
+  block $__inlined_func$~lib/array/Array<i32>#indexOf275
    local.get $2
    i32.load $0 offset=12
    local.tee $3
@@ -13974,11 +13997,11 @@
    i32.const 100
    i32.le_s
    i32.or
-   br_if $__inlined_func$~lib/array/Array<i32>#indexOf273
+   br_if $__inlined_func$~lib/array/Array<i32>#indexOf275
    local.get $2
    i32.load $0 offset=4
    local.set $2
-   loop $while-continue|0275
+   loop $while-continue|0277
     local.get $1
     local.get $3
     i32.lt_s
@@ -13992,12 +14015,12 @@
      i32.load $0
      i32.const 43
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#indexOf273
+     br_if $__inlined_func$~lib/array/Array<i32>#indexOf275
      local.get $0
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0275
+     br $while-continue|0277
     end
    end
    i32.const -1
@@ -14017,7 +14040,7 @@
   i32.store $0
   i32.const -1
   local.set $1
-  block $__inlined_func$~lib/array/Array<i32>#indexOf276
+  block $__inlined_func$~lib/array/Array<i32>#indexOf278
    local.get $3
    i32.load $0 offset=12
    local.tee $2
@@ -14026,7 +14049,7 @@
    i32.const -100
    i32.le_s
    i32.or
-   br_if $__inlined_func$~lib/array/Array<i32>#indexOf276
+   br_if $__inlined_func$~lib/array/Array<i32>#indexOf278
    local.get $2
    i32.const 100
    i32.sub
@@ -14040,7 +14063,7 @@
    local.get $3
    i32.load $0 offset=4
    local.set $0
-   loop $while-continue|0278
+   loop $while-continue|0280
     local.get $1
     local.get $2
     i32.lt_s
@@ -14053,12 +14076,12 @@
      i32.load $0
      i32.const 43
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#indexOf276
+     br_if $__inlined_func$~lib/array/Array<i32>#indexOf278
      local.get $1
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0278
+     br $while-continue|0280
     end
    end
    i32.const -1
@@ -14078,7 +14101,7 @@
   i32.store $0
   i32.const -1
   local.set $1
-  block $__inlined_func$~lib/array/Array<i32>#indexOf279
+  block $__inlined_func$~lib/array/Array<i32>#indexOf281
    local.get $3
    i32.load $0 offset=12
    local.tee $2
@@ -14087,7 +14110,7 @@
    i32.const -2
    i32.le_s
    i32.or
-   br_if $__inlined_func$~lib/array/Array<i32>#indexOf279
+   br_if $__inlined_func$~lib/array/Array<i32>#indexOf281
    local.get $2
    i32.const 2
    i32.sub
@@ -14101,7 +14124,7 @@
    local.get $3
    i32.load $0 offset=4
    local.set $0
-   loop $while-continue|0281
+   loop $while-continue|0283
     local.get $1
     local.get $2
     i32.lt_s
@@ -14114,12 +14137,12 @@
      i32.load $0
      i32.const 43
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#indexOf279
+     br_if $__inlined_func$~lib/array/Array<i32>#indexOf281
      local.get $1
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0281
+     br $while-continue|0283
     end
    end
    i32.const -1
@@ -14139,7 +14162,7 @@
   i32.store $0
   i32.const -1
   local.set $1
-  block $__inlined_func$~lib/array/Array<i32>#indexOf282
+  block $__inlined_func$~lib/array/Array<i32>#indexOf284
    local.get $3
    i32.load $0 offset=12
    local.tee $2
@@ -14148,7 +14171,7 @@
    i32.const -4
    i32.le_s
    i32.or
-   br_if $__inlined_func$~lib/array/Array<i32>#indexOf282
+   br_if $__inlined_func$~lib/array/Array<i32>#indexOf284
    local.get $2
    i32.const 4
    i32.sub
@@ -14162,7 +14185,7 @@
    local.get $3
    i32.load $0 offset=4
    local.set $0
-   loop $while-continue|0284
+   loop $while-continue|0286
     local.get $1
     local.get $2
     i32.lt_s
@@ -14175,12 +14198,12 @@
      i32.load $0
      i32.const 43
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#indexOf282
+     br_if $__inlined_func$~lib/array/Array<i32>#indexOf284
      local.get $1
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0284
+     br $while-continue|0286
     end
    end
    i32.const -1
@@ -14202,7 +14225,7 @@
   local.set $1
   i32.const -1
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#indexOf285
+  block $__inlined_func$~lib/array/Array<i32>#indexOf287
    local.get $2
    i32.load $0 offset=12
    local.tee $3
@@ -14211,11 +14234,11 @@
    i32.const 0
    i32.le_s
    i32.or
-   br_if $__inlined_func$~lib/array/Array<i32>#indexOf285
+   br_if $__inlined_func$~lib/array/Array<i32>#indexOf287
    local.get $2
    i32.load $0 offset=4
    local.set $2
-   loop $while-continue|0287
+   loop $while-continue|0289
     local.get $1
     local.get $3
     i32.lt_s
@@ -14229,12 +14252,12 @@
      i32.load $0
      i32.const 43
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#indexOf285
+     br_if $__inlined_func$~lib/array/Array<i32>#indexOf287
      local.get $0
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0287
+     br $while-continue|0289
     end
    end
    i32.const -1
@@ -14256,7 +14279,7 @@
   local.set $1
   i32.const -1
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#indexOf288
+  block $__inlined_func$~lib/array/Array<i32>#indexOf290
    local.get $2
    i32.load $0 offset=12
    local.tee $3
@@ -14265,11 +14288,11 @@
    i32.const 1
    i32.le_s
    i32.or
-   br_if $__inlined_func$~lib/array/Array<i32>#indexOf288
+   br_if $__inlined_func$~lib/array/Array<i32>#indexOf290
    local.get $2
    i32.load $0 offset=4
    local.set $2
-   loop $while-continue|0290
+   loop $while-continue|0292
     local.get $1
     local.get $3
     i32.lt_s
@@ -14283,12 +14306,12 @@
      i32.load $0
      i32.const 43
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#indexOf288
+     br_if $__inlined_func$~lib/array/Array<i32>#indexOf290
      local.get $0
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0290
+     br $while-continue|0292
     end
    end
    i32.const -1
@@ -14310,7 +14333,7 @@
   local.set $1
   i32.const -1
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#indexOf291
+  block $__inlined_func$~lib/array/Array<i32>#indexOf293
    local.get $2
    i32.load $0 offset=12
    local.tee $3
@@ -14319,11 +14342,11 @@
    i32.const 2
    i32.le_s
    i32.or
-   br_if $__inlined_func$~lib/array/Array<i32>#indexOf291
+   br_if $__inlined_func$~lib/array/Array<i32>#indexOf293
    local.get $2
    i32.load $0 offset=4
    local.set $2
-   loop $while-continue|0293
+   loop $while-continue|0295
     local.get $1
     local.get $3
     i32.lt_s
@@ -14337,12 +14360,12 @@
      i32.load $0
      i32.const 43
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#indexOf291
+     br_if $__inlined_func$~lib/array/Array<i32>#indexOf293
      local.get $0
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0293
+     br $while-continue|0295
     end
    end
    i32.const -1
@@ -14382,7 +14405,7 @@
    local.get $2
    i32.load $0 offset=4
    local.set $2
-   loop $while-continue|0295
+   loop $while-continue|0297
     local.get $1
     local.get $3
     i32.lt_s
@@ -14401,7 +14424,7 @@
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0295
+     br $while-continue|0297
     end
    end
    i32.const -1
@@ -14439,7 +14462,7 @@
    local.get $2
    i32.load $0 offset=4
    local.set $2
-   loop $while-continue|0297
+   loop $while-continue|0299
     local.get $1
     local.get $3
     i32.lt_s
@@ -14458,7 +14481,7 @@
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0297
+     br $while-continue|0299
     end
    end
    i32.const -1
@@ -14477,7 +14500,7 @@
   i32.const 4160
   call $~lib/rt/__newArray
   local.tee $2
-  i32.store $0 offset=392
+  i32.store $0 offset=404
   i32.const 1
   global.set $~argumentsLength
   i32.const -1
@@ -14606,7 +14629,7 @@
    local.get $2
    i32.load $0 offset=4
    local.set $1
-   loop $while-continue|0299
+   loop $while-continue|0301
     local.get $0
     i32.const 0
     i32.ge_s
@@ -14624,7 +14647,7 @@
      i32.const 1
      i32.sub
      local.set $0
-     br $while-continue|0299
+     br $while-continue|0301
     end
    end
    i32.const -1
@@ -14638,12 +14661,12 @@
   end
   i32.const -1
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#lastIndexOf300
+  block $__inlined_func$~lib/array/Array<i32>#lastIndexOf302
    local.get $2
    i32.load $0 offset=12
    local.tee $1
    i32.eqz
-   br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf300
+   br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf302
    i32.const 2
    local.get $1
    i32.const 1
@@ -14656,7 +14679,7 @@
    local.get $2
    i32.load $0 offset=4
    local.set $1
-   loop $while-continue|0302
+   loop $while-continue|0304
     local.get $0
     i32.const 0
     i32.ge_s
@@ -14669,12 +14692,12 @@
      i32.load $0
      i32.const 2
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf300
+     br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf302
      local.get $0
      i32.const 1
      i32.sub
      local.set $0
-     br $while-continue|0302
+     br $while-continue|0304
     end
    end
    i32.const -1
@@ -14686,12 +14709,12 @@
   end
   i32.const -1
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#lastIndexOf303
+  block $__inlined_func$~lib/array/Array<i32>#lastIndexOf305
    local.get $2
    i32.load $0 offset=12
    local.tee $1
    i32.eqz
-   br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf303
+   br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf305
    local.get $1
    i32.const 2
    i32.sub
@@ -14699,7 +14722,7 @@
    local.get $2
    i32.load $0 offset=4
    local.set $1
-   loop $while-continue|0305
+   loop $while-continue|0307
     local.get $0
     i32.const 0
     i32.ge_s
@@ -14712,12 +14735,12 @@
      i32.load $0
      i32.const 2
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf303
+     br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf305
      local.get $0
      i32.const 1
      i32.sub
      local.set $0
-     br $while-continue|0305
+     br $while-continue|0307
     end
    end
    i32.const -1
@@ -14729,12 +14752,12 @@
   end
   i32.const -1
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#lastIndexOf306
+  block $__inlined_func$~lib/array/Array<i32>#lastIndexOf308
    local.get $2
    i32.load $0 offset=12
    local.tee $1
    i32.eqz
-   br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf306
+   br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf308
    local.get $1
    i32.const 1
    i32.sub
@@ -14742,7 +14765,7 @@
    local.get $2
    i32.load $0 offset=4
    local.set $1
-   loop $while-continue|0308
+   loop $while-continue|0310
     local.get $0
     i32.const 0
     i32.ge_s
@@ -14755,12 +14778,12 @@
      i32.load $0
      i32.const 2
      i32.eq
-     br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf306
+     br_if $__inlined_func$~lib/array/Array<i32>#lastIndexOf308
      local.get $0
      i32.const 1
      i32.sub
      local.set $0
-     br $while-continue|0308
+     br $while-continue|0310
     end
    end
    i32.const -1
@@ -15339,7 +15362,7 @@
    local.get $0
    i32.load $0 offset=4
    local.set $0
-   loop $while-continue|0310
+   loop $while-continue|0312
     local.get $1
     local.get $2
     i32.lt_s
@@ -15360,7 +15383,7 @@
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0310
+     br $while-continue|0312
     end
    end
    i32.const 0
@@ -15395,7 +15418,7 @@
    local.get $0
    i32.load $0 offset=4
    local.set $0
-   loop $while-continue|0312
+   loop $while-continue|0314
     local.get $1
     local.get $2
     i32.lt_s
@@ -15416,7 +15439,7 @@
      i32.const 1
      i32.add
      local.set $1
-     br $while-continue|0312
+     br $while-continue|0314
     end
    end
    i32.const 0
@@ -15449,12 +15472,12 @@
   local.tee $1
   global.get $std/array/arr
   local.tee $0
-  i32.store $0 offset=396
+  i32.store $0 offset=408
   local.get $1
   local.get $0
   i32.load $0
   local.tee $0
-  i32.store $0 offset=400
+  i32.store $0 offset=412
   local.get $0
   i32.const 20
   i32.sub
@@ -15510,7 +15533,7 @@
   i32.const 4272
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.19 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -15518,7 +15541,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=408
+   i32.store $0 offset=420
    global.get $~lib/memory/__stack_pointer
    i32.const 5
    i32.const 2
@@ -15526,7 +15549,7 @@
    i32.const 4320
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=412
+   i32.store $0 offset=424
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -15601,7 +15624,7 @@
    i32.const 4368
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=416
+   i32.store $0 offset=428
    i32.const 0
    local.get $1
    local.tee $0
@@ -15676,7 +15699,7 @@
   i32.const 4400
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.21 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -15684,7 +15707,7 @@
    i32.const 0
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=420
+   i32.store $0 offset=432
    global.get $~lib/memory/__stack_pointer
    i32.const 0
    i32.const 2
@@ -15692,7 +15715,7 @@
    i32.const 4448
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=424
+   i32.store $0 offset=436
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -15767,7 +15790,7 @@
    i32.const 4480
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=428
+   i32.store $0 offset=440
    i32.const 0
    local.get $1
    local.tee $0
@@ -15842,7 +15865,7 @@
   i32.const 4528
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.23 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -15850,7 +15873,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=432
+   i32.store $0 offset=444
    global.get $~lib/memory/__stack_pointer
    i32.const 3
    i32.const 2
@@ -15858,7 +15881,7 @@
    i32.const 4576
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=436
+   i32.store $0 offset=448
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -15933,7 +15956,7 @@
    i32.const 4608
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=440
+   i32.store $0 offset=452
    i32.const 0
    local.get $1
    local.tee $0
@@ -16008,7 +16031,7 @@
   i32.const 4640
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.25 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -16016,7 +16039,7 @@
    i32.const 2
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=444
+   i32.store $0 offset=456
    global.get $~lib/memory/__stack_pointer
    i32.const 2
    i32.const 2
@@ -16024,7 +16047,7 @@
    i32.const 4688
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=448
+   i32.store $0 offset=460
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -16099,7 +16122,7 @@
    i32.const 4720
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=452
+   i32.store $0 offset=464
    i32.const 0
    local.get $1
    local.tee $0
@@ -16174,7 +16197,7 @@
   i32.const 4752
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.27 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -16182,7 +16205,7 @@
    i32.const 1
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=456
+   i32.store $0 offset=468
    global.get $~lib/memory/__stack_pointer
    i32.const 1
    i32.const 2
@@ -16190,7 +16213,7 @@
    i32.const 4800
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=460
+   i32.store $0 offset=472
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -16265,7 +16288,7 @@
    i32.const 4832
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=464
+   i32.store $0 offset=476
    i32.const 0
    local.get $1
    local.tee $0
@@ -16340,7 +16363,7 @@
   i32.const 4880
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.29 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -16348,7 +16371,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=468
+   i32.store $0 offset=480
    global.get $~lib/memory/__stack_pointer
    i32.const 1
    i32.const 2
@@ -16356,7 +16379,7 @@
    i32.const 4928
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=472
+   i32.store $0 offset=484
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -16431,7 +16454,7 @@
    i32.const 4960
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=476
+   i32.store $0 offset=488
    i32.const 0
    local.get $1
    local.tee $0
@@ -16506,7 +16529,7 @@
   i32.const 5008
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.31 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -16514,7 +16537,7 @@
    i32.const 2147483647
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=480
+   i32.store $0 offset=492
    global.get $~lib/memory/__stack_pointer
    i32.const 2
    i32.const 2
@@ -16522,7 +16545,7 @@
    i32.const 5056
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=484
+   i32.store $0 offset=496
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -16597,7 +16620,7 @@
    i32.const 5088
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=488
+   i32.store $0 offset=500
    i32.const 0
    local.get $1
    local.tee $0
@@ -16672,7 +16695,7 @@
   i32.const 5120
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.33 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -16680,7 +16703,7 @@
    i32.const 1
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=492
+   i32.store $0 offset=504
    global.get $~lib/memory/__stack_pointer
    i32.const 1
    i32.const 2
@@ -16688,7 +16711,7 @@
    i32.const 5168
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=496
+   i32.store $0 offset=508
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -16763,7 +16786,7 @@
    i32.const 5200
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=500
+   i32.store $0 offset=512
    i32.const 0
    local.get $1
    local.tee $0
@@ -16838,7 +16861,7 @@
   i32.const 5248
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.35 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -16846,7 +16869,7 @@
    i32.const 1
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=504
+   i32.store $0 offset=516
    global.get $~lib/memory/__stack_pointer
    i32.const 1
    i32.const 2
@@ -16854,7 +16877,7 @@
    i32.const 5296
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=508
+   i32.store $0 offset=520
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -16929,7 +16952,7 @@
    i32.const 5328
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=512
+   i32.store $0 offset=524
    i32.const 0
    local.get $1
    local.tee $0
@@ -17004,7 +17027,7 @@
   i32.const 5376
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.37 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -17012,7 +17035,7 @@
    i32.const -1
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=516
+   i32.store $0 offset=528
    global.get $~lib/memory/__stack_pointer
    i32.const 0
    i32.const 2
@@ -17020,7 +17043,7 @@
    i32.const 5424
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=520
+   i32.store $0 offset=532
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -17095,7 +17118,7 @@
    i32.const 5456
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=524
+   i32.store $0 offset=536
    i32.const 0
    local.get $1
    local.tee $0
@@ -17170,7 +17193,7 @@
   i32.const 5504
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.39 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -17178,7 +17201,7 @@
    i32.const -2
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=528
+   i32.store $0 offset=540
    global.get $~lib/memory/__stack_pointer
    i32.const 0
    i32.const 2
@@ -17186,7 +17209,7 @@
    i32.const 5552
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=532
+   i32.store $0 offset=544
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -17261,7 +17284,7 @@
    i32.const 5584
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=536
+   i32.store $0 offset=548
    i32.const 0
    local.get $1
    local.tee $0
@@ -17336,7 +17359,7 @@
   i32.const 5632
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.41 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -17344,7 +17367,7 @@
    i32.const 0
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=540
+   i32.store $0 offset=552
    global.get $~lib/memory/__stack_pointer
    i32.const 0
    i32.const 2
@@ -17352,7 +17375,7 @@
    i32.const 5680
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=544
+   i32.store $0 offset=556
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -17427,7 +17450,7 @@
    i32.const 5712
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=548
+   i32.store $0 offset=560
    i32.const 0
    local.get $1
    local.tee $0
@@ -17502,7 +17525,7 @@
   i32.const 5760
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.43 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -17510,7 +17533,7 @@
    i32.const 0
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=552
+   i32.store $0 offset=564
    global.get $~lib/memory/__stack_pointer
    i32.const 0
    i32.const 2
@@ -17518,7 +17541,7 @@
    i32.const 5808
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=556
+   i32.store $0 offset=568
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -17593,7 +17616,7 @@
    i32.const 5840
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=560
+   i32.store $0 offset=572
    i32.const 0
    local.get $1
    local.tee $0
@@ -17668,7 +17691,7 @@
   i32.const 5888
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=404
+  i32.store $0 offset=416
   block $std/array/isArraysEqual<i32>|inlined.45 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.get $1
@@ -17676,7 +17699,7 @@
    i32.const 5
    call $~lib/array/Array<i32>#splice
    local.tee $5
-   i32.store $0 offset=564
+   i32.store $0 offset=576
    global.get $~lib/memory/__stack_pointer
    i32.const 0
    i32.const 2
@@ -17684,7 +17707,7 @@
    i32.const 5936
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=568
+   i32.store $0 offset=580
    i32.const 0
    local.get $5
    i32.load $0 offset=12
@@ -17759,7 +17782,7 @@
    i32.const 5968
    call $~lib/rt/__newArray
    local.tee $4
-   i32.store $0 offset=572
+   i32.store $0 offset=584
    i32.const 0
    local.get $1
    local.tee $0
@@ -17834,13 +17857,13 @@
   i32.const 6016
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=576
+  i32.store $0 offset=588
   global.get $~lib/memory/__stack_pointer
   local.get $1
   i32.const 1
   call $~lib/array/Array<std/array/Ref>#splice
   local.tee $0
-  i32.store $0 offset=580
+  i32.store $0 offset=592
   local.get $0
   i32.load $0 offset=12
   if
@@ -17852,52 +17875,92 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  local.tee $0
+  local.tee $1
   i32.const 5
   i32.const 2
   i32.const 9
   i32.const 0
   call $~lib/rt/__newArray
   local.tee $2
-  i32.store $0 offset=584
+  i32.store $0 offset=596
   global.get $~lib/memory/__stack_pointer
   local.get $2
   i32.load $0 offset=4
-  i32.store $0 offset=588
+  i32.store $0 offset=600
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=604
+  local.get $0
+  i32.const 1
+  i32.store $0
   local.get $2
   i32.const 0
-  i32.const 1
-  call $std/array/Ref#constructor
-  call $~lib/array/Array<std/array/Ref>#__uset
-  local.get $2
-  i32.const 1
-  i32.const 2
-  call $std/array/Ref#constructor
-  call $~lib/array/Array<std/array/Ref>#__uset
-  local.get $2
-  i32.const 2
-  i32.const 3
-  call $std/array/Ref#constructor
-  call $~lib/array/Array<std/array/Ref>#__uset
-  local.get $2
-  i32.const 3
-  i32.const 4
-  call $std/array/Ref#constructor
-  call $~lib/array/Array<std/array/Ref>#__uset
-  local.get $2
-  i32.const 4
-  i32.const 5
-  call $std/array/Ref#constructor
-  call $~lib/array/Array<std/array/Ref>#__uset
   local.get $0
+  call $~lib/array/Array<std/array/Ref>#__uset
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=608
+  local.get $0
+  i32.const 2
+  i32.store $0
   local.get $2
-  i32.store $0 offset=576
+  i32.const 1
+  local.get $0
+  call $~lib/array/Array<std/array/Ref>#__uset
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=612
+  local.get $0
+  i32.const 3
+  i32.store $0
+  local.get $2
+  i32.const 2
+  local.get $0
+  call $~lib/array/Array<std/array/Ref>#__uset
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=616
+  local.get $0
+  i32.const 4
+  i32.store $0
+  local.get $2
+  i32.const 3
+  local.get $0
+  call $~lib/array/Array<std/array/Ref>#__uset
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=620
+  local.get $0
+  i32.const 5
+  i32.store $0
+  local.get $2
+  i32.const 4
+  local.get $0
+  call $~lib/array/Array<std/array/Ref>#__uset
+  local.get $1
+  local.get $2
+  i32.store $0 offset=588
   global.get $~lib/memory/__stack_pointer
   local.get $2
   i32.const 2
   call $~lib/array/Array<std/array/Ref>#splice
   local.tee $1
-  i32.store $0 offset=580
+  i32.store $0 offset=592
   local.get $1
   i32.load $0 offset=12
   i32.const 2
@@ -18121,38 +18184,53 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  local.tee $0
+  local.tee $1
   i32.const 3
   i32.const 2
   i32.const 13
   i32.const 0
   call $~lib/rt/__newArray
   local.tee $8
-  i32.store $0 offset=592
+  i32.store $0 offset=624
   global.get $~lib/memory/__stack_pointer
   local.get $8
   i32.load $0 offset=4
-  i32.store $0 offset=596
-  local.get $8
-  i32.const 0
-  i32.const 1
-  call $std/array/Ref#constructor
-  call $~lib/array/Array<std/array/Ref>#__uset
-  local.get $8
-  i32.const 1
-  i32.const 0
-  call $~lib/array/Array<std/array/Ref>#__uset
-  local.get $8
-  i32.const 2
-  i32.const 2
-  call $std/array/Ref#constructor
-  call $~lib/array/Array<std/array/Ref>#__uset
+  i32.store $0 offset=628
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=632
   local.get $0
+  i32.const 1
+  i32.store $0
   local.get $8
-  i32.store $0 offset=600
+  i32.const 0
+  local.get $0
+  call $~lib/array/Array<std/array/Ref>#__uset
+  local.get $8
+  i32.const 1
+  i32.const 0
+  call $~lib/array/Array<std/array/Ref>#__uset
   global.get $~lib/memory/__stack_pointer
-  local.set $7
+  i32.const 4
+  i32.const 4
+  call $~lib/rt/itcms/__new
+  local.tee $0
+  i32.store $0 offset=636
+  local.get $0
+  i32.const 2
+  i32.store $0
+  local.get $8
+  i32.const 2
+  local.get $0
+  call $~lib/array/Array<std/array/Ref>#__uset
+  local.get $1
+  local.get $8
+  i32.store $0 offset=640
   global.get $~lib/memory/__stack_pointer
+  local.tee $7
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
@@ -18243,7 +18321,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $7
   local.get $3
-  i32.store $0 offset=604
+  i32.store $0 offset=644
   local.get $3
   i32.load $0 offset=12
   i32.const 1
@@ -18284,7 +18362,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $2
   local.get $0
-  i32.store $0 offset=608
+  i32.store $0 offset=648
   local.get $0
   i32.eqz
   if
@@ -18372,7 +18450,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $2
   local.get $0
-  i32.store $0 offset=612
+  i32.store $0 offset=652
   local.get $0
   i32.eqz
   if
@@ -18423,14 +18501,14 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 6176
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
   i32.load $0 offset=12
   local.set $2
   block $__inlined_func$~lib/array/Array<i32>#findIndex
-   loop $for-loop|0436
+   loop $for-loop|0445
     local.get $1
     local.get $2
     local.get $3
@@ -18463,7 +18541,7 @@
      i32.const 1
      i32.add
      local.set $1
-     br $for-loop|0436
+     br $for-loop|0445
     end
    end
    i32.const -1
@@ -18482,14 +18560,14 @@
   i32.store $0
   local.get $0
   i32.const 6208
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  block $__inlined_func$~lib/array/Array<i32>#findIndex438
-   loop $for-loop|0440
+  block $__inlined_func$~lib/array/Array<i32>#findIndex447
+   loop $for-loop|0449
     local.get $1
     local.get $2
     local.get $3
@@ -18517,12 +18595,12 @@
      i32.const 6208
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#findIndex438
+     br_if $__inlined_func$~lib/array/Array<i32>#findIndex447
      local.get $1
      i32.const 1
      i32.add
      local.set $1
-     br $for-loop|0440
+     br $for-loop|0449
     end
    end
    i32.const -1
@@ -18543,140 +18621,7 @@
   i32.store $0
   local.get $0
   i32.const 6240
-  i32.store $0 offset=172
-  i32.const 0
-  local.set $1
-  local.get $3
-  i32.load $0 offset=12
-  local.set $2
-  block $__inlined_func$~lib/array/Array<i32>#findIndex442
-   loop $for-loop|0444
-    local.get $1
-    local.get $2
-    local.get $3
-    i32.load $0 offset=12
-    local.tee $0
-    local.get $0
-    local.get $2
-    i32.gt_s
-    select
-    i32.lt_s
-    if
-     local.get $3
-     i32.load $0 offset=4
-     local.get $1
-     i32.const 2
-     i32.shl
-     i32.add
-     i32.load $0
-     local.set $0
-     i32.const 3
-     global.set $~argumentsLength
-     local.get $0
-     local.get $1
-     local.get $3
-     i32.const 6240
-     i32.load $0
-     call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#findIndex442
-     local.get $1
-     i32.const 1
-     i32.add
-     local.set $1
-     br $for-loop|0444
-    end
-   end
-   i32.const -1
-   local.set $1
-  end
-  local.get $1
-  global.set $std/array/i
-  global.get $std/array/i
-  i32.const -1
-  i32.ne
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  global.get $std/array/arr
-  local.tee $3
-  i32.store $0
-  local.get $0
-  i32.const 6272
-  i32.store $0 offset=172
-  i32.const 0
-  local.set $1
-  local.get $3
-  i32.load $0 offset=12
-  local.set $2
-  block $__inlined_func$~lib/array/Array<i32>#findIndex446
-   loop $for-loop|0448
-    local.get $1
-    local.get $2
-    local.get $3
-    i32.load $0 offset=12
-    local.tee $0
-    local.get $0
-    local.get $2
-    i32.gt_s
-    select
-    i32.lt_s
-    if
-     local.get $3
-     i32.load $0 offset=4
-     local.get $1
-     i32.const 2
-     i32.shl
-     i32.add
-     i32.load $0
-     local.set $0
-     i32.const 3
-     global.set $~argumentsLength
-     local.get $0
-     local.get $1
-     local.get $3
-     i32.const 6272
-     i32.load $0
-     call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#findIndex446
-     local.get $1
-     i32.const 1
-     i32.add
-     local.set $1
-     br $for-loop|0448
-    end
-   end
-   i32.const -1
-   local.set $1
-  end
-  local.get $1
-  global.set $std/array/i
-  global.get $std/array/i
-  i32.const -1
-  i32.ne
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/array/arr
-  local.tee $0
-  i32.store $0
-  local.get $0
-  i32.load $0 offset=12
-  i32.const 8
-  i32.ne
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  global.get $std/array/arr
-  local.tee $3
-  i32.store $0
-  local.get $0
-  i32.const 6304
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
@@ -18708,7 +18653,7 @@
      local.get $0
      local.get $1
      local.get $3
-     i32.const 6304
+     i32.const 6240
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      br_if $__inlined_func$~lib/array/Array<i32>#findIndex451
@@ -18717,6 +18662,139 @@
      i32.add
      local.set $1
      br $for-loop|0453
+    end
+   end
+   i32.const -1
+   local.set $1
+  end
+  local.get $1
+  global.set $std/array/i
+  global.get $std/array/i
+  i32.const -1
+  i32.ne
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  global.get $std/array/arr
+  local.tee $3
+  i32.store $0
+  local.get $0
+  i32.const 6272
+  i32.store $0 offset=184
+  i32.const 0
+  local.set $1
+  local.get $3
+  i32.load $0 offset=12
+  local.set $2
+  block $__inlined_func$~lib/array/Array<i32>#findIndex455
+   loop $for-loop|0457
+    local.get $1
+    local.get $2
+    local.get $3
+    i32.load $0 offset=12
+    local.tee $0
+    local.get $0
+    local.get $2
+    i32.gt_s
+    select
+    i32.lt_s
+    if
+     local.get $3
+     i32.load $0 offset=4
+     local.get $1
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load $0
+     local.set $0
+     i32.const 3
+     global.set $~argumentsLength
+     local.get $0
+     local.get $1
+     local.get $3
+     i32.const 6272
+     i32.load $0
+     call_indirect $0 (type $i32_i32_i32_=>_i32)
+     br_if $__inlined_func$~lib/array/Array<i32>#findIndex455
+     local.get $1
+     i32.const 1
+     i32.add
+     local.set $1
+     br $for-loop|0457
+    end
+   end
+   i32.const -1
+   local.set $1
+  end
+  local.get $1
+  global.set $std/array/i
+  global.get $std/array/i
+  i32.const -1
+  i32.ne
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  global.get $std/array/arr
+  local.tee $0
+  i32.store $0
+  local.get $0
+  i32.load $0 offset=12
+  i32.const 8
+  i32.ne
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  global.get $std/array/arr
+  local.tee $3
+  i32.store $0
+  local.get $0
+  i32.const 6304
+  i32.store $0 offset=184
+  i32.const 0
+  local.set $1
+  local.get $3
+  i32.load $0 offset=12
+  local.set $2
+  block $__inlined_func$~lib/array/Array<i32>#findIndex460
+   loop $for-loop|0462
+    local.get $1
+    local.get $2
+    local.get $3
+    i32.load $0 offset=12
+    local.tee $0
+    local.get $0
+    local.get $2
+    i32.gt_s
+    select
+    i32.lt_s
+    if
+     local.get $3
+     i32.load $0 offset=4
+     local.get $1
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load $0
+     local.set $0
+     i32.const 3
+     global.set $~argumentsLength
+     local.get $0
+     local.get $1
+     local.get $3
+     i32.const 6304
+     i32.load $0
+     call_indirect $0 (type $i32_i32_i32_=>_i32)
+     br_if $__inlined_func$~lib/array/Array<i32>#findIndex460
+     local.get $1
+     i32.const 1
+     i32.add
+     local.set $1
+     br $for-loop|0462
     end
    end
    i32.const -1
@@ -18841,14 +18919,14 @@
   i32.store $0
   local.get $0
   i32.const 6336
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  block $__inlined_func$~lib/array/Array<i32>#findIndex455
-   loop $for-loop|0457
+  block $__inlined_func$~lib/array/Array<i32>#findIndex464
+   loop $for-loop|0466
     local.get $1
     local.get $2
     local.get $3
@@ -18876,12 +18954,12 @@
      i32.const 6336
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#findIndex455
+     br_if $__inlined_func$~lib/array/Array<i32>#findIndex464
      local.get $1
      i32.const 1
      i32.add
      local.set $1
-     br $for-loop|0457
+     br $for-loop|0466
     end
    end
    i32.const -1
@@ -18927,17 +19005,17 @@
   i32.const 6368
   call $~lib/rt/__newArray
   local.tee $2
-  i32.store $0 offset=616
+  i32.store $0 offset=656
   global.get $~lib/memory/__stack_pointer
   i32.const 6416
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $2
   i32.load $0 offset=12
   i32.const 1
   i32.sub
   local.set $0
   block $__inlined_func$~lib/array/Array<i32>#findLastIndex
-   loop $for-loop|0461
+   loop $for-loop|0470
     local.get $0
     i32.const 0
     i32.ge_s
@@ -18963,7 +19041,7 @@
      i32.const 1
      i32.sub
      local.set $0
-     br $for-loop|0461
+     br $for-loop|0470
     end
    end
    i32.const -1
@@ -18977,14 +19055,14 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 6448
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $2
   i32.load $0 offset=12
   i32.const 1
   i32.sub
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#findLastIndex463
-   loop $for-loop|0465
+  block $__inlined_func$~lib/array/Array<i32>#findLastIndex472
+   loop $for-loop|0474
     local.get $0
     i32.const 0
     i32.ge_s
@@ -19005,12 +19083,12 @@
      i32.const 6448
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#findLastIndex463
+     br_if $__inlined_func$~lib/array/Array<i32>#findLastIndex472
      local.get $0
      i32.const 1
      i32.sub
      local.set $0
-     br $for-loop|0465
+     br $for-loop|0474
     end
    end
    i32.const -1
@@ -19026,14 +19104,14 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 6480
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $2
   i32.load $0 offset=12
   i32.const 1
   i32.sub
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#findLastIndex467
-   loop $for-loop|0469
+  block $__inlined_func$~lib/array/Array<i32>#findLastIndex476
+   loop $for-loop|0478
     local.get $0
     i32.const 0
     i32.ge_s
@@ -19054,12 +19132,12 @@
      i32.const 6480
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#findLastIndex467
+     br_if $__inlined_func$~lib/array/Array<i32>#findLastIndex476
      local.get $0
      i32.const 1
      i32.sub
      local.set $0
-     br $for-loop|0469
+     br $for-loop|0478
     end
    end
    i32.const -1
@@ -19075,14 +19153,14 @@
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 6512
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $2
   i32.load $0 offset=12
   i32.const 1
   i32.sub
   local.set $0
-  block $__inlined_func$~lib/array/Array<i32>#findLastIndex471
-   loop $for-loop|0473
+  block $__inlined_func$~lib/array/Array<i32>#findLastIndex480
+   loop $for-loop|0482
     local.get $0
     i32.const 0
     i32.ge_s
@@ -19103,12 +19181,12 @@
      i32.const 6512
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#findLastIndex471
+     br_if $__inlined_func$~lib/array/Array<i32>#findLastIndex480
      local.get $0
      i32.const 1
      i32.sub
      local.set $0
-     br $for-loop|0473
+     br $for-loop|0482
     end
    end
    i32.const -1
@@ -19130,13 +19208,13 @@
    i32.store $0
    local.get $0
    i32.const 6544
-   i32.store $0 offset=172
+   i32.store $0 offset=184
    i32.const 0
    local.set $1
    local.get $3
    i32.load $0 offset=12
    local.set $2
-   loop $for-loop|0476
+   loop $for-loop|0485
     local.get $1
     local.get $2
     local.get $3
@@ -19172,140 +19250,12 @@
      i32.const 1
      i32.add
      local.set $1
-     br $for-loop|0476
+     br $for-loop|0485
     end
    end
    i32.const 1
   end
   i32.eqz
-  if
-   unreachable
-  end
-  block $__inlined_func$~lib/array/Array<i32>#every478 (result i32)
-   global.get $~lib/memory/__stack_pointer
-   local.tee $0
-   global.get $std/array/arr
-   local.tee $3
-   i32.store $0
-   local.get $0
-   i32.const 6576
-   i32.store $0 offset=172
-   i32.const 0
-   local.set $1
-   local.get $3
-   i32.load $0 offset=12
-   local.set $2
-   loop $for-loop|0480
-    local.get $1
-    local.get $2
-    local.get $3
-    i32.load $0 offset=12
-    local.tee $0
-    local.get $0
-    local.get $2
-    i32.gt_s
-    select
-    i32.lt_s
-    if
-     local.get $3
-     i32.load $0 offset=4
-     local.get $1
-     i32.const 2
-     i32.shl
-     i32.add
-     i32.load $0
-     local.set $0
-     i32.const 3
-     global.set $~argumentsLength
-     i32.const 0
-     local.get $0
-     local.get $1
-     local.get $3
-     i32.const 6576
-     i32.load $0
-     call_indirect $0 (type $i32_i32_i32_=>_i32)
-     i32.eqz
-     br_if $__inlined_func$~lib/array/Array<i32>#every478
-     drop
-     local.get $1
-     i32.const 1
-     i32.add
-     local.set $1
-     br $for-loop|0480
-    end
-   end
-   i32.const 1
-  end
-  if
-   unreachable
-  end
-  block $__inlined_func$~lib/array/Array<i32>#every482 (result i32)
-   global.get $~lib/memory/__stack_pointer
-   local.tee $0
-   global.get $std/array/arr
-   local.tee $3
-   i32.store $0
-   local.get $0
-   i32.const 6608
-   i32.store $0 offset=172
-   i32.const 0
-   local.set $1
-   local.get $3
-   i32.load $0 offset=12
-   local.set $2
-   loop $for-loop|0484
-    local.get $1
-    local.get $2
-    local.get $3
-    i32.load $0 offset=12
-    local.tee $0
-    local.get $0
-    local.get $2
-    i32.gt_s
-    select
-    i32.lt_s
-    if
-     local.get $3
-     i32.load $0 offset=4
-     local.get $1
-     i32.const 2
-     i32.shl
-     i32.add
-     i32.load $0
-     local.set $0
-     i32.const 3
-     global.set $~argumentsLength
-     i32.const 0
-     local.get $0
-     local.get $1
-     local.get $3
-     i32.const 6608
-     i32.load $0
-     call_indirect $0 (type $i32_i32_i32_=>_i32)
-     i32.eqz
-     br_if $__inlined_func$~lib/array/Array<i32>#every482
-     drop
-     local.get $1
-     i32.const 1
-     i32.add
-     local.set $1
-     br $for-loop|0484
-    end
-   end
-   i32.const 1
-  end
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/array/arr
-  local.tee $0
-  i32.store $0
-  local.get $0
-  i32.load $0 offset=12
-  i32.const 8
-  i32.ne
   if
    unreachable
   end
@@ -19316,8 +19266,8 @@
    local.tee $3
    i32.store $0
    local.get $0
-   i32.const 6640
-   i32.store $0 offset=172
+   i32.const 6576
+   i32.store $0 offset=184
    i32.const 0
    local.set $1
    local.get $3
@@ -19349,7 +19299,7 @@
      local.get $0
      local.get $1
      local.get $3
-     i32.const 6640
+     i32.const 6576
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      i32.eqz
@@ -19360,6 +19310,134 @@
      i32.add
      local.set $1
      br $for-loop|0489
+    end
+   end
+   i32.const 1
+  end
+  if
+   unreachable
+  end
+  block $__inlined_func$~lib/array/Array<i32>#every491 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.tee $0
+   global.get $std/array/arr
+   local.tee $3
+   i32.store $0
+   local.get $0
+   i32.const 6608
+   i32.store $0 offset=184
+   i32.const 0
+   local.set $1
+   local.get $3
+   i32.load $0 offset=12
+   local.set $2
+   loop $for-loop|0493
+    local.get $1
+    local.get $2
+    local.get $3
+    i32.load $0 offset=12
+    local.tee $0
+    local.get $0
+    local.get $2
+    i32.gt_s
+    select
+    i32.lt_s
+    if
+     local.get $3
+     i32.load $0 offset=4
+     local.get $1
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load $0
+     local.set $0
+     i32.const 3
+     global.set $~argumentsLength
+     i32.const 0
+     local.get $0
+     local.get $1
+     local.get $3
+     i32.const 6608
+     i32.load $0
+     call_indirect $0 (type $i32_i32_i32_=>_i32)
+     i32.eqz
+     br_if $__inlined_func$~lib/array/Array<i32>#every491
+     drop
+     local.get $1
+     i32.const 1
+     i32.add
+     local.set $1
+     br $for-loop|0493
+    end
+   end
+   i32.const 1
+  end
+  i32.eqz
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  global.get $std/array/arr
+  local.tee $0
+  i32.store $0
+  local.get $0
+  i32.load $0 offset=12
+  i32.const 8
+  i32.ne
+  if
+   unreachable
+  end
+  block $__inlined_func$~lib/array/Array<i32>#every496 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.tee $0
+   global.get $std/array/arr
+   local.tee $3
+   i32.store $0
+   local.get $0
+   i32.const 6640
+   i32.store $0 offset=184
+   i32.const 0
+   local.set $1
+   local.get $3
+   i32.load $0 offset=12
+   local.set $2
+   loop $for-loop|0498
+    local.get $1
+    local.get $2
+    local.get $3
+    i32.load $0 offset=12
+    local.tee $0
+    local.get $0
+    local.get $2
+    i32.gt_s
+    select
+    i32.lt_s
+    if
+     local.get $3
+     i32.load $0 offset=4
+     local.get $1
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load $0
+     local.set $0
+     i32.const 3
+     global.set $~argumentsLength
+     i32.const 0
+     local.get $0
+     local.get $1
+     local.get $3
+     i32.const 6640
+     i32.load $0
+     call_indirect $0 (type $i32_i32_i32_=>_i32)
+     i32.eqz
+     br_if $__inlined_func$~lib/array/Array<i32>#every496
+     drop
+     local.get $1
+     i32.const 1
+     i32.add
+     local.set $1
+     br $for-loop|0498
     end
    end
    i32.const 1
@@ -19471,7 +19549,7 @@
   local.get $1
   local.get $0
   i32.store $0 offset=12
-  block $__inlined_func$~lib/array/Array<i32>#every491 (result i32)
+  block $__inlined_func$~lib/array/Array<i32>#every500 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.tee $0
    global.get $std/array/arr
@@ -19479,13 +19557,13 @@
    i32.store $0
    local.get $0
    i32.const 6672
-   i32.store $0 offset=172
+   i32.store $0 offset=184
    i32.const 0
    local.set $1
    local.get $3
    i32.load $0 offset=12
    local.set $2
-   loop $for-loop|0493
+   loop $for-loop|0502
     local.get $1
     local.get $2
     local.get $3
@@ -19515,13 +19593,13 @@
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      i32.eqz
-     br_if $__inlined_func$~lib/array/Array<i32>#every491
+     br_if $__inlined_func$~lib/array/Array<i32>#every500
      drop
      local.get $1
      i32.const 1
      i32.add
      local.set $1
-     br $for-loop|0493
+     br $for-loop|0502
     end
    end
    i32.const 1
@@ -19562,13 +19640,13 @@
    i32.store $0
    global.get $~lib/memory/__stack_pointer
    i32.const 6704
-   i32.store $0 offset=172
+   i32.store $0 offset=184
    i32.const 0
    local.set $1
    local.get $3
    i32.load $0 offset=12
    local.set $2
-   loop $for-loop|0497
+   loop $for-loop|0506
     local.get $1
     local.get $2
     local.get $3
@@ -19603,137 +19681,12 @@
      i32.const 1
      i32.add
      local.set $1
-     br $for-loop|0497
+     br $for-loop|0506
     end
    end
    i32.const 0
   end
   i32.eqz
-  if
-   unreachable
-  end
-  block $__inlined_func$~lib/array/Array<i32>#some499 (result i32)
-   global.get $~lib/memory/__stack_pointer
-   local.tee $0
-   global.get $std/array/arr
-   local.tee $3
-   i32.store $0
-   local.get $0
-   i32.const 6736
-   i32.store $0 offset=172
-   i32.const 0
-   local.set $1
-   local.get $3
-   i32.load $0 offset=12
-   local.set $2
-   loop $for-loop|0501
-    local.get $1
-    local.get $2
-    local.get $3
-    i32.load $0 offset=12
-    local.tee $0
-    local.get $0
-    local.get $2
-    i32.gt_s
-    select
-    i32.lt_s
-    if
-     local.get $3
-     i32.load $0 offset=4
-     local.get $1
-     i32.const 2
-     i32.shl
-     i32.add
-     i32.load $0
-     local.set $0
-     i32.const 3
-     global.set $~argumentsLength
-     i32.const 1
-     local.get $0
-     local.get $1
-     local.get $3
-     i32.const 6736
-     i32.load $0
-     call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#some499
-     drop
-     local.get $1
-     i32.const 1
-     i32.add
-     local.set $1
-     br $for-loop|0501
-    end
-   end
-   i32.const 0
-  end
-  if
-   unreachable
-  end
-  block $__inlined_func$~lib/array/Array<i32>#some503 (result i32)
-   global.get $~lib/memory/__stack_pointer
-   local.tee $0
-   global.get $std/array/arr
-   local.tee $3
-   i32.store $0
-   local.get $0
-   i32.const 6768
-   i32.store $0 offset=172
-   i32.const 0
-   local.set $1
-   local.get $3
-   i32.load $0 offset=12
-   local.set $2
-   loop $for-loop|0505
-    local.get $1
-    local.get $2
-    local.get $3
-    i32.load $0 offset=12
-    local.tee $0
-    local.get $0
-    local.get $2
-    i32.gt_s
-    select
-    i32.lt_s
-    if
-     local.get $3
-     i32.load $0 offset=4
-     local.get $1
-     i32.const 2
-     i32.shl
-     i32.add
-     i32.load $0
-     local.set $0
-     i32.const 3
-     global.set $~argumentsLength
-     i32.const 1
-     local.get $0
-     local.get $1
-     local.get $3
-     i32.const 6768
-     i32.load $0
-     call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#some503
-     drop
-     local.get $1
-     i32.const 1
-     i32.add
-     local.set $1
-     br $for-loop|0505
-    end
-   end
-   i32.const 0
-  end
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/array/arr
-  local.tee $0
-  i32.store $0
-  local.get $0
-  i32.load $0 offset=12
-  i32.const 8
-  i32.ne
   if
    unreachable
   end
@@ -19744,8 +19697,8 @@
    local.tee $3
    i32.store $0
    local.get $0
-   i32.const 6800
-   i32.store $0 offset=172
+   i32.const 6736
+   i32.store $0 offset=184
    i32.const 0
    local.set $1
    local.get $3
@@ -19777,7 +19730,7 @@
      local.get $0
      local.get $1
      local.get $3
-     i32.const 6800
+     i32.const 6736
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
      br_if $__inlined_func$~lib/array/Array<i32>#some508
@@ -19787,6 +19740,131 @@
      i32.add
      local.set $1
      br $for-loop|0510
+    end
+   end
+   i32.const 0
+  end
+  if
+   unreachable
+  end
+  block $__inlined_func$~lib/array/Array<i32>#some512 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.tee $0
+   global.get $std/array/arr
+   local.tee $3
+   i32.store $0
+   local.get $0
+   i32.const 6768
+   i32.store $0 offset=184
+   i32.const 0
+   local.set $1
+   local.get $3
+   i32.load $0 offset=12
+   local.set $2
+   loop $for-loop|0514
+    local.get $1
+    local.get $2
+    local.get $3
+    i32.load $0 offset=12
+    local.tee $0
+    local.get $0
+    local.get $2
+    i32.gt_s
+    select
+    i32.lt_s
+    if
+     local.get $3
+     i32.load $0 offset=4
+     local.get $1
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load $0
+     local.set $0
+     i32.const 3
+     global.set $~argumentsLength
+     i32.const 1
+     local.get $0
+     local.get $1
+     local.get $3
+     i32.const 6768
+     i32.load $0
+     call_indirect $0 (type $i32_i32_i32_=>_i32)
+     br_if $__inlined_func$~lib/array/Array<i32>#some512
+     drop
+     local.get $1
+     i32.const 1
+     i32.add
+     local.set $1
+     br $for-loop|0514
+    end
+   end
+   i32.const 0
+  end
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  global.get $std/array/arr
+  local.tee $0
+  i32.store $0
+  local.get $0
+  i32.load $0 offset=12
+  i32.const 8
+  i32.ne
+  if
+   unreachable
+  end
+  block $__inlined_func$~lib/array/Array<i32>#some517 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.tee $0
+   global.get $std/array/arr
+   local.tee $3
+   i32.store $0
+   local.get $0
+   i32.const 6800
+   i32.store $0 offset=184
+   i32.const 0
+   local.set $1
+   local.get $3
+   i32.load $0 offset=12
+   local.set $2
+   loop $for-loop|0519
+    local.get $1
+    local.get $2
+    local.get $3
+    i32.load $0 offset=12
+    local.tee $0
+    local.get $0
+    local.get $2
+    i32.gt_s
+    select
+    i32.lt_s
+    if
+     local.get $3
+     i32.load $0 offset=4
+     local.get $1
+     i32.const 2
+     i32.shl
+     i32.add
+     i32.load $0
+     local.set $0
+     i32.const 3
+     global.set $~argumentsLength
+     i32.const 1
+     local.get $0
+     local.get $1
+     local.get $3
+     i32.const 6800
+     i32.load $0
+     call_indirect $0 (type $i32_i32_i32_=>_i32)
+     br_if $__inlined_func$~lib/array/Array<i32>#some517
+     drop
+     local.get $1
+     i32.const 1
+     i32.add
+     local.set $1
+     br $for-loop|0519
     end
    end
    i32.const 0
@@ -19899,7 +19977,7 @@
   local.get $1
   local.get $0
   i32.store $0 offset=12
-  block $__inlined_func$~lib/array/Array<i32>#some512 (result i32)
+  block $__inlined_func$~lib/array/Array<i32>#some521 (result i32)
    global.get $~lib/memory/__stack_pointer
    local.tee $0
    global.get $std/array/arr
@@ -19907,13 +19985,13 @@
    i32.store $0
    local.get $0
    i32.const 6832
-   i32.store $0 offset=172
+   i32.store $0 offset=184
    i32.const 0
    local.set $1
    local.get $3
    i32.load $0 offset=12
    local.set $2
-   loop $for-loop|0514
+   loop $for-loop|0523
     local.get $1
     local.get $2
     local.get $3
@@ -19942,13 +20020,13 @@
      i32.const 6832
      i32.load $0
      call_indirect $0 (type $i32_i32_i32_=>_i32)
-     br_if $__inlined_func$~lib/array/Array<i32>#some512
+     br_if $__inlined_func$~lib/array/Array<i32>#some521
      drop
      local.get $1
      i32.const 1
      i32.add
      local.set $1
-     br $for-loop|0514
+     br $for-loop|0523
     end
    end
    i32.const 0
@@ -19989,13 +20067,13 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 6864
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  loop $for-loop|0518
+  loop $for-loop|0527
    local.get $1
    local.get $2
    local.get $3
@@ -20027,7 +20105,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0518
+    br $for-loop|0527
    end
   end
   global.get $std/array/i
@@ -20045,13 +20123,13 @@
   i32.store $0
   local.get $0
   i32.const 6896
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  loop $for-loop|0522
+  loop $for-loop|0531
    local.get $1
    local.get $2
    local.get $3
@@ -20083,7 +20161,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0522
+    br $for-loop|0531
    end
   end
   global.get $std/array/i
@@ -20112,13 +20190,13 @@
   i32.store $0
   local.get $0
   i32.const 6928
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  loop $for-loop|0527
+  loop $for-loop|0536
    local.get $1
    local.get $2
    local.get $3
@@ -20150,7 +20228,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0527
+    br $for-loop|0536
    end
   end
   global.get $std/array/i
@@ -20272,13 +20350,13 @@
   i32.store $0
   local.get $0
   i32.const 6960
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  loop $for-loop|0531
+  loop $for-loop|0540
    local.get $1
    local.get $2
    local.get $3
@@ -20310,7 +20388,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0531
+    br $for-loop|0540
    end
   end
   global.get $std/array/i
@@ -20350,13 +20428,13 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 6992
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  loop $for-loop|0536
+  loop $for-loop|0545
    local.get $1
    local.get $2
    local.get $3
@@ -20388,7 +20466,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0536
+    br $for-loop|0545
    end
   end
   global.get $~lib/memory/__stack_pointer
@@ -20478,7 +20556,7 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 7056
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   global.get $~lib/memory/__stack_pointer
   i32.const 8
   i32.sub
@@ -20508,7 +20586,7 @@
   local.set $3
   i32.const 0
   local.set $1
-  loop $for-loop|0540
+  loop $for-loop|0549
    local.get $1
    local.get $5
    local.get $6
@@ -20556,7 +20634,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0540
+    br $for-loop|0549
    end
   end
   global.get $~lib/memory/__stack_pointer
@@ -20565,7 +20643,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $7
   local.get $4
-  i32.store $0 offset=620
+  i32.store $0 offset=660
   global.get $~lib/memory/__stack_pointer
   local.set $7
   global.get $~lib/memory/__stack_pointer
@@ -20574,7 +20652,7 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 7088
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -20604,7 +20682,7 @@
   local.set $3
   i32.const 0
   local.set $1
-  loop $for-loop|0543
+  loop $for-loop|0552
    local.get $1
    local.get $5
    local.get $6
@@ -20641,7 +20719,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0543
+    br $for-loop|0552
    end
   end
   global.get $~lib/memory/__stack_pointer
@@ -20650,7 +20728,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $7
   local.get $4
-  i32.store $0 offset=624
+  i32.store $0 offset=664
   local.get $4
   i32.load $0 offset=12
   i32.const 4
@@ -20696,7 +20774,7 @@
   i32.store $0
   local.get $1
   i32.const 7120
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $0
   i32.const 7120
   call $~lib/array/Array<i32>#map<i32>
@@ -20726,7 +20804,7 @@
   i32.store $0
   local.get $1
   i32.const 7152
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $0
   i32.const 7152
   call $~lib/array/Array<i32>#map<i32>
@@ -20849,7 +20927,7 @@
   i32.store $0
   local.get $1
   i32.const 7184
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $0
   i32.const 7184
   call $~lib/array/Array<i32>#map<i32>
@@ -20890,13 +20968,13 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 7216
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.const 7216
   call $~lib/array/Array<i32>#filter
   local.tee $0
-  i32.store $0 offset=628
+  i32.store $0 offset=668
   local.get $0
   i32.load $0 offset=12
   i32.const 2
@@ -20913,7 +20991,7 @@
   i32.store $0
   local.get $1
   i32.const 7248
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $0
   i32.const 7248
   call $~lib/array/Array<i32>#filter
@@ -20944,7 +21022,7 @@
   i32.store $0
   local.get $1
   i32.const 7280
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $0
   i32.const 7280
   call $~lib/array/Array<i32>#filter
@@ -21068,7 +21146,7 @@
   i32.store $0
   local.get $1
   i32.const 7312
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $0
   i32.const 7312
   call $~lib/array/Array<i32>#filter
@@ -21110,13 +21188,13 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 7344
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $1
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  loop $for-loop|0554
+  loop $for-loop|0563
    local.get $1
    local.get $2
    local.get $3
@@ -21150,7 +21228,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0554
+    br $for-loop|0563
    end
   end
   local.get $12
@@ -21168,7 +21246,7 @@
   i32.store $0
   local.get $0
   i32.const 7376
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 4
   local.set $12
   i32.const 0
@@ -21176,7 +21254,7 @@
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  loop $for-loop|0558
+  loop $for-loop|0567
    local.get $1
    local.get $2
    local.get $3
@@ -21210,7 +21288,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0558
+    br $for-loop|0567
    end
   end
   local.get $12
@@ -21228,7 +21306,7 @@
   i32.store $0
   local.get $0
   i32.const 7408
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $12
   i32.const 0
@@ -21236,7 +21314,7 @@
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  loop $for-loop|0562
+  loop $for-loop|0571
    local.get $1
    local.get $2
    local.get $3
@@ -21270,7 +21348,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0562
+    br $for-loop|0571
    end
   end
   local.get $12
@@ -21285,134 +21363,7 @@
   i32.store $0
   local.get $0
   i32.const 7440
-  i32.store $0 offset=172
-  i32.const 0
-  local.set $12
-  i32.const 0
-  local.set $1
-  local.get $3
-  i32.load $0 offset=12
-  local.set $2
-  loop $for-loop|0566
-   local.get $1
-   local.get $2
-   local.get $3
-   i32.load $0 offset=12
-   local.tee $0
-   local.get $0
-   local.get $2
-   i32.gt_s
-   select
-   i32.lt_s
-   if
-    local.get $3
-    i32.load $0 offset=4
-    local.get $1
-    i32.const 2
-    i32.shl
-    i32.add
-    i32.load $0
-    local.set $0
-    i32.const 4
-    global.set $~argumentsLength
-    local.get $12
-    local.get $0
-    local.get $1
-    local.get $3
-    i32.const 7440
-    i32.load $0
-    call_indirect $0 (type $i32_i32_i32_i32_=>_i32)
-    local.set $12
-    local.get $1
-    i32.const 1
-    i32.add
-    local.set $1
-    br $for-loop|0566
-   end
-  end
-  local.get $12
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  global.get $std/array/arr
-  local.tee $3
-  i32.store $0
-  local.get $0
-  i32.const 7472
-  i32.store $0 offset=172
-  i32.const 0
-  local.set $12
-  i32.const 0
-  local.set $1
-  local.get $3
-  i32.load $0 offset=12
-  local.set $2
-  loop $for-loop|0570
-   local.get $1
-   local.get $2
-   local.get $3
-   i32.load $0 offset=12
-   local.tee $0
-   local.get $0
-   local.get $2
-   i32.gt_s
-   select
-   i32.lt_s
-   if
-    local.get $3
-    i32.load $0 offset=4
-    local.get $1
-    i32.const 2
-    i32.shl
-    i32.add
-    i32.load $0
-    local.set $0
-    i32.const 4
-    global.set $~argumentsLength
-    local.get $12
-    local.get $0
-    local.get $1
-    local.get $3
-    i32.const 7472
-    i32.load $0
-    call_indirect $0 (type $i32_i32_i32_i32_=>_i32)
-    local.set $12
-    local.get $1
-    i32.const 1
-    i32.add
-    local.set $1
-    br $for-loop|0570
-   end
-  end
-  local.get $12
-  global.set $std/array/i
-  global.get $std/array/i
-  i32.const 6
-  i32.ne
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  global.get $std/array/arr
-  local.tee $0
-  i32.store $0
-  local.get $0
-  i32.load $0 offset=12
-  i32.const 8
-  i32.ne
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $0
-  global.get $std/array/arr
-  local.tee $3
-  i32.store $0
-  local.get $0
-  i32.const 7504
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $12
   i32.const 0
@@ -21446,7 +21397,7 @@
     local.get $0
     local.get $1
     local.get $3
-    i32.const 7504
+    i32.const 7440
     i32.load $0
     call_indirect $0 (type $i32_i32_i32_i32_=>_i32)
     local.set $12
@@ -21455,6 +21406,133 @@
     i32.add
     local.set $1
     br $for-loop|0575
+   end
+  end
+  local.get $12
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  global.get $std/array/arr
+  local.tee $3
+  i32.store $0
+  local.get $0
+  i32.const 7472
+  i32.store $0 offset=184
+  i32.const 0
+  local.set $12
+  i32.const 0
+  local.set $1
+  local.get $3
+  i32.load $0 offset=12
+  local.set $2
+  loop $for-loop|0579
+   local.get $1
+   local.get $2
+   local.get $3
+   i32.load $0 offset=12
+   local.tee $0
+   local.get $0
+   local.get $2
+   i32.gt_s
+   select
+   i32.lt_s
+   if
+    local.get $3
+    i32.load $0 offset=4
+    local.get $1
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load $0
+    local.set $0
+    i32.const 4
+    global.set $~argumentsLength
+    local.get $12
+    local.get $0
+    local.get $1
+    local.get $3
+    i32.const 7472
+    i32.load $0
+    call_indirect $0 (type $i32_i32_i32_i32_=>_i32)
+    local.set $12
+    local.get $1
+    i32.const 1
+    i32.add
+    local.set $1
+    br $for-loop|0579
+   end
+  end
+  local.get $12
+  global.set $std/array/i
+  global.get $std/array/i
+  i32.const 6
+  i32.ne
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  global.get $std/array/arr
+  local.tee $0
+  i32.store $0
+  local.get $0
+  i32.load $0 offset=12
+  i32.const 8
+  i32.ne
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  global.get $std/array/arr
+  local.tee $3
+  i32.store $0
+  local.get $0
+  i32.const 7504
+  i32.store $0 offset=184
+  i32.const 0
+  local.set $12
+  i32.const 0
+  local.set $1
+  local.get $3
+  i32.load $0 offset=12
+  local.set $2
+  loop $for-loop|0584
+   local.get $1
+   local.get $2
+   local.get $3
+   i32.load $0 offset=12
+   local.tee $0
+   local.get $0
+   local.get $2
+   i32.gt_s
+   select
+   i32.lt_s
+   if
+    local.get $3
+    i32.load $0 offset=4
+    local.get $1
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load $0
+    local.set $0
+    i32.const 4
+    global.set $~argumentsLength
+    local.get $12
+    local.get $0
+    local.get $1
+    local.get $3
+    i32.const 7504
+    i32.load $0
+    call_indirect $0 (type $i32_i32_i32_i32_=>_i32)
+    local.set $12
+    local.get $1
+    i32.const 1
+    i32.add
+    local.set $1
+    br $for-loop|0584
    end
   end
   local.get $12
@@ -21576,7 +21654,7 @@
   i32.store $0
   local.get $0
   i32.const 7536
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $12
   i32.const 0
@@ -21584,7 +21662,7 @@
   local.get $3
   i32.load $0 offset=12
   local.set $2
-  loop $for-loop|0579
+  loop $for-loop|0588
    local.get $1
    local.get $2
    local.get $3
@@ -21618,7 +21696,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0579
+    br $for-loop|0588
    end
   end
   local.get $12
@@ -21660,7 +21738,7 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 7568
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $12
   local.get $2
@@ -21668,7 +21746,7 @@
   i32.const 1
   i32.sub
   local.set $1
-  loop $for-loop|0583
+  loop $for-loop|0592
    local.get $1
    i32.const 0
    i32.ge_s
@@ -21695,7 +21773,7 @@
     i32.const 1
     i32.sub
     local.set $1
-    br $for-loop|0583
+    br $for-loop|0592
    end
   end
   local.get $12
@@ -21713,7 +21791,7 @@
   i32.store $0
   local.get $0
   i32.const 7600
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 4
   local.set $12
   local.get $2
@@ -21721,7 +21799,7 @@
   i32.const 1
   i32.sub
   local.set $1
-  loop $for-loop|0587
+  loop $for-loop|0596
    local.get $1
    i32.const 0
    i32.ge_s
@@ -21748,7 +21826,7 @@
     i32.const 1
     i32.sub
     local.set $1
-    br $for-loop|0587
+    br $for-loop|0596
    end
   end
   local.get $12
@@ -21766,7 +21844,7 @@
   i32.store $0
   local.get $0
   i32.const 7632
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $12
   local.get $2
@@ -21774,7 +21852,7 @@
   i32.const 1
   i32.sub
   local.set $1
-  loop $for-loop|0591
+  loop $for-loop|0600
    local.get $1
    i32.const 0
    i32.ge_s
@@ -21801,7 +21879,7 @@
     i32.const 1
     i32.sub
     local.set $1
-    br $for-loop|0591
+    br $for-loop|0600
    end
   end
   local.get $12
@@ -21816,7 +21894,7 @@
   i32.store $0
   local.get $0
   i32.const 7664
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $12
   local.get $2
@@ -21824,7 +21902,7 @@
   i32.const 1
   i32.sub
   local.set $1
-  loop $for-loop|0595
+  loop $for-loop|0604
    local.get $1
    i32.const 0
    i32.ge_s
@@ -21851,7 +21929,7 @@
     i32.const 1
     i32.sub
     local.set $1
-    br $for-loop|0595
+    br $for-loop|0604
    end
   end
   local.get $12
@@ -21865,7 +21943,7 @@
   i32.store $0
   local.get $0
   i32.const 7696
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $12
   local.get $2
@@ -21873,7 +21951,7 @@
   i32.const 1
   i32.sub
   local.set $1
-  loop $for-loop|0599
+  loop $for-loop|0608
    local.get $1
    i32.const 0
    i32.ge_s
@@ -21900,7 +21978,7 @@
     i32.const 1
     i32.sub
     local.set $1
-    br $for-loop|0599
+    br $for-loop|0608
    end
   end
   local.get $12
@@ -21929,7 +22007,7 @@
   i32.store $0
   local.get $0
   i32.const 7728
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $12
   local.get $2
@@ -21937,7 +22015,7 @@
   i32.const 1
   i32.sub
   local.set $1
-  loop $for-loop|0604
+  loop $for-loop|0613
    local.get $1
    i32.const 0
    i32.ge_s
@@ -21964,7 +22042,7 @@
     i32.const 1
     i32.sub
     local.set $1
-    br $for-loop|0604
+    br $for-loop|0613
    end
   end
   local.get $12
@@ -22086,7 +22164,7 @@
   i32.store $0
   local.get $0
   i32.const 7760
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   i32.const 0
   local.set $12
   local.get $2
@@ -22094,7 +22172,7 @@
   i32.const 1
   i32.sub
   local.set $1
-  loop $for-loop|0608
+  loop $for-loop|0617
    local.get $1
    i32.const 0
    i32.ge_s
@@ -22121,7 +22199,7 @@
     i32.const 1
     i32.sub
     local.set $1
-    br $for-loop|0608
+    br $for-loop|0617
    end
   end
   local.get $12
@@ -22228,15 +22306,15 @@
   i32.const 0
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=632
+  i32.store $0 offset=672
   global.get $~lib/memory/__stack_pointer
   local.get $1
   i32.load $0 offset=4
-  i32.store $0 offset=636
+  i32.store $0 offset=676
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=640
+  i32.store $0 offset=680
   local.get $0
   i32.const 100
   i32.store $0
@@ -22250,7 +22328,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=644
+  i32.store $0 offset=684
   local.get $0
   i32.const 90
   i32.store $0
@@ -22264,7 +22342,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=648
+  i32.store $0 offset=688
   local.get $0
   i32.const 70
   i32.store $0
@@ -22278,7 +22356,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=652
+  i32.store $0 offset=692
   local.get $0
   i32.const 100
   i32.store $0
@@ -22292,7 +22370,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=656
+  i32.store $0 offset=696
   local.get $0
   i32.const 80
   i32.store $0
@@ -22306,7 +22384,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=660
+  i32.store $0 offset=700
   local.get $0
   i32.const 110
   i32.store $0
@@ -22320,7 +22398,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=664
+  i32.store $0 offset=704
   local.get $0
   i32.const 100
   i32.store $0
@@ -22334,7 +22412,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=668
+  i32.store $0 offset=708
   local.get $0
   i32.const 70
   i32.store $0
@@ -22348,7 +22426,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=672
+  i32.store $0 offset=712
   local.get $0
   i32.const 70
   i32.store $0
@@ -22362,7 +22440,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=676
+  i32.store $0 offset=716
   local.get $0
   i32.const 100
   i32.store $0
@@ -22376,7 +22454,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=680
+  i32.store $0 offset=720
   local.get $0
   i32.const 75
   i32.store $0
@@ -22390,7 +22468,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=684
+  i32.store $0 offset=724
   local.get $0
   i32.const 70
   i32.store $0
@@ -22410,15 +22488,15 @@
   i32.const 0
   call $~lib/rt/__newArray
   local.tee $1
-  i32.store $0 offset=688
+  i32.store $0 offset=728
   global.get $~lib/memory/__stack_pointer
   local.get $1
   i32.load $0 offset=4
-  i32.store $0 offset=692
+  i32.store $0 offset=732
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=696
+  i32.store $0 offset=736
   local.get $0
   i32.const 70
   i32.store $0
@@ -22432,7 +22510,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=700
+  i32.store $0 offset=740
   local.get $0
   i32.const 70
   i32.store $0
@@ -22446,7 +22524,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=704
+  i32.store $0 offset=744
   local.get $0
   i32.const 70
   i32.store $0
@@ -22460,7 +22538,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=708
+  i32.store $0 offset=748
   local.get $0
   i32.const 70
   i32.store $0
@@ -22474,7 +22552,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=712
+  i32.store $0 offset=752
   local.get $0
   i32.const 75
   i32.store $0
@@ -22488,7 +22566,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=716
+  i32.store $0 offset=756
   local.get $0
   i32.const 80
   i32.store $0
@@ -22502,7 +22580,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=720
+  i32.store $0 offset=760
   local.get $0
   i32.const 90
   i32.store $0
@@ -22516,7 +22594,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=724
+  i32.store $0 offset=764
   local.get $0
   i32.const 100
   i32.store $0
@@ -22530,7 +22608,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=728
+  i32.store $0 offset=768
   local.get $0
   i32.const 100
   i32.store $0
@@ -22544,7 +22622,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=732
+  i32.store $0 offset=772
   local.get $0
   i32.const 100
   i32.store $0
@@ -22558,7 +22636,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=736
+  i32.store $0 offset=776
   local.get $0
   i32.const 100
   i32.store $0
@@ -22572,7 +22650,7 @@
   global.get $~lib/memory/__stack_pointer
   call $std/array/Dim#constructor
   local.tee $0
-  i32.store $0 offset=740
+  i32.store $0 offset=780
   local.get $0
   i32.const 110
   i32.store $0
@@ -22592,7 +22670,7 @@
   i32.const 7904
   call $~lib/rt/__newArray
   local.tee $4
-  i32.store $0 offset=744
+  i32.store $0 offset=784
   i32.const 0
   global.set $~argumentsLength
   local.get $4
@@ -22605,7 +22683,7 @@
    i32.const 7968
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=748
+   i32.store $0 offset=788
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -22761,7 +22839,7 @@
   i32.const 8000
   call $~lib/rt/__newArray
   local.tee $4
-  i32.store $0 offset=752
+  i32.store $0 offset=792
   i32.const 0
   global.set $~argumentsLength
   local.get $4
@@ -22774,7 +22852,7 @@
    i32.const 8064
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=756
+   i32.store $0 offset=796
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -22930,7 +23008,7 @@
   i32.const 8128
   call $~lib/rt/__newArray
   local.tee $4
-  i32.store $0 offset=760
+  i32.store $0 offset=800
   i32.const 0
   global.set $~argumentsLength
   i32.const 0
@@ -22980,7 +23058,7 @@
    i32.const 8256
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=764
+   i32.store $0 offset=804
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -23132,7 +23210,7 @@
   i32.const 8352
   call $~lib/rt/__newArray
   local.tee $4
-  i32.store $0 offset=768
+  i32.store $0 offset=808
   i32.const 0
   global.set $~argumentsLength
   i32.const 0
@@ -23150,11 +23228,11 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   i32.store $0
-  block $1of1680
-   block $0of1681
-    block $outOfRange682
+  block $1of1690
+   block $0of1691
+    block $outOfRange692
      global.get $~argumentsLength
-     br_table $0of1681 $1of1680 $outOfRange682
+     br_table $0of1691 $1of1690 $outOfRange692
     end
     unreachable
    end
@@ -23182,7 +23260,7 @@
    i32.const 8432
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=772
+   i32.store $0 offset=812
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -23256,7 +23334,7 @@
   i32.const 8480
   call $~lib/rt/__newArray
   local.tee $4
-  i32.store $0 offset=776
+  i32.store $0 offset=816
   i32.const 0
   global.set $~argumentsLength
   i32.const 0
@@ -23274,11 +23352,11 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   i32.store $0
-  block $1of1687
-   block $0of1688
-    block $outOfRange689
+  block $1of1697
+   block $0of1698
+    block $outOfRange699
      global.get $~argumentsLength
-     br_table $0of1688 $1of1687 $outOfRange689
+     br_table $0of1698 $1of1697 $outOfRange699
     end
     unreachable
    end
@@ -23306,7 +23384,7 @@
    i32.const 8560
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=780
+   i32.store $0 offset=820
    i32.const 0
    local.get $4
    i32.load $0 offset=12
@@ -23380,7 +23458,7 @@
   i32.const 8608
   call $~lib/rt/__newArray
   local.tee $3
-  i32.store $0 offset=784
+  i32.store $0 offset=824
   global.get $~lib/memory/__stack_pointer
   i32.const 1
   i32.const 2
@@ -23388,7 +23466,7 @@
   i32.const 8640
   call $~lib/rt/__newArray
   local.tee $15
-  i32.store $0 offset=788
+  i32.store $0 offset=828
   global.get $~lib/memory/__stack_pointer
   i32.const 2
   i32.const 2
@@ -23396,7 +23474,7 @@
   i32.const 8672
   call $~lib/rt/__newArray
   local.tee $8
-  i32.store $0 offset=792
+  i32.store $0 offset=832
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.const 2
@@ -23404,7 +23482,7 @@
   i32.const 8704
   call $~lib/rt/__newArray
   local.tee $7
-  i32.store $0 offset=796
+  i32.store $0 offset=836
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.const 2
@@ -23412,14 +23490,14 @@
   i32.const 8752
   call $~lib/rt/__newArray
   local.tee $14
-  i32.store $0 offset=800
+  i32.store $0 offset=840
   global.get $~lib/memory/__stack_pointer
   local.set $0
   global.get $~lib/memory/__stack_pointer
   i32.const 64
   call $~lib/array/Array<i32>#constructor
   local.tee $6
-  i32.store $0 offset=804
+  i32.store $0 offset=844
   i32.const 0
   local.set $12
   loop $for-loop|78
@@ -23442,13 +23520,13 @@
   end
   local.get $0
   local.get $6
-  i32.store $0 offset=808
+  i32.store $0 offset=848
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 128
   call $~lib/array/Array<i32>#constructor
   local.tee $5
-  i32.store $0 offset=812
+  i32.store $0 offset=852
   i32.const 0
   local.set $12
   loop $for-loop|79
@@ -23471,13 +23549,13 @@
   end
   local.get $0
   local.get $5
-  i32.store $0 offset=816
+  i32.store $0 offset=856
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 1024
   call $~lib/array/Array<i32>#constructor
   local.tee $4
-  i32.store $0 offset=820
+  i32.store $0 offset=860
   i32.const 0
   local.set $12
   loop $for-loop|80
@@ -23500,13 +23578,13 @@
   end
   local.get $0
   local.get $4
-  i32.store $0 offset=824
+  i32.store $0 offset=864
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 10000
   call $~lib/array/Array<i32>#constructor
   local.tee $16
-  i32.store $0 offset=828
+  i32.store $0 offset=868
   i32.const 0
   local.set $12
   loop $for-loop|81
@@ -23529,13 +23607,13 @@
   end
   local.get $0
   local.get $16
-  i32.store $0 offset=832
+  i32.store $0 offset=872
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 512
   call $~lib/array/Array<i32>#constructor
   local.tee $17
-  i32.store $0 offset=836
+  i32.store $0 offset=876
   i32.const 0
   local.set $12
   loop $for-loop|82
@@ -23559,11 +23637,11 @@
   end
   local.get $0
   local.get $17
-  i32.store $0 offset=840
+  i32.store $0 offset=880
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 8800
-  i32.store $0 offset=844
+  i32.store $0 offset=884
   block $std/array/isSorted<i32>|inlined.0 (result i32)
    local.get $3
    i32.load $0 offset=4
@@ -23573,7 +23651,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $3
-   i32.store $0 offset=848
+   i32.store $0 offset=888
    i32.const 1
    local.set $12
    local.get $3
@@ -23645,7 +23723,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 8832
-  i32.store $0 offset=852
+  i32.store $0 offset=892
   block $std/array/isSorted<i32>|inlined.1 (result i32)
    local.get $15
    i32.load $0 offset=4
@@ -23655,7 +23733,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $15
-   i32.store $0 offset=856
+   i32.store $0 offset=896
    i32.const 1
    local.set $12
    local.get $15
@@ -23732,7 +23810,7 @@
    i32.const 8864
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=860
+   i32.store $0 offset=900
    i32.const 0
    local.get $15
    i32.load $0 offset=12
@@ -23802,7 +23880,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 8896
-  i32.store $0 offset=864
+  i32.store $0 offset=904
   block $std/array/isSorted<i32>|inlined.2 (result i32)
    local.get $8
    i32.load $0 offset=4
@@ -23812,7 +23890,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $8
-   i32.store $0 offset=868
+   i32.store $0 offset=908
    i32.const 1
    local.set $12
    local.get $8
@@ -23889,7 +23967,7 @@
    i32.const 8928
    call $~lib/rt/__newArray
    local.tee $3
-   i32.store $0 offset=872
+   i32.store $0 offset=912
    i32.const 0
    local.get $8
    i32.load $0 offset=12
@@ -23959,7 +24037,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 8960
-  i32.store $0 offset=876
+  i32.store $0 offset=916
   block $std/array/isSorted<i32>|inlined.3 (result i32)
    local.get $7
    i32.load $0 offset=4
@@ -23969,7 +24047,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $7
-   i32.store $0 offset=880
+   i32.store $0 offset=920
    i32.const 1
    local.set $12
    local.get $7
@@ -24108,7 +24186,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 8992
-  i32.store $0 offset=884
+  i32.store $0 offset=924
   block $std/array/isSorted<i32>|inlined.4 (result i32)
    local.get $6
    i32.load $0 offset=4
@@ -24118,7 +24196,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $6
-   i32.store $0 offset=888
+   i32.store $0 offset=928
    i32.const 1
    local.set $12
    local.get $6
@@ -24242,7 +24320,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9024
-  i32.store $0 offset=892
+  i32.store $0 offset=932
   block $std/array/isSorted<i32>|inlined.5 (result i32)
    local.get $5
    i32.load $0 offset=4
@@ -24252,7 +24330,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $5
-   i32.store $0 offset=896
+   i32.store $0 offset=936
    i32.const 1
    local.set $12
    local.get $5
@@ -24376,7 +24454,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9056
-  i32.store $0 offset=900
+  i32.store $0 offset=940
   block $std/array/isSorted<i32>|inlined.6 (result i32)
    local.get $4
    i32.load $0 offset=4
@@ -24386,7 +24464,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $4
-   i32.store $0 offset=904
+   i32.store $0 offset=944
    i32.const 1
    local.set $12
    local.get $4
@@ -24510,7 +24588,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9088
-  i32.store $0 offset=908
+  i32.store $0 offset=948
   block $std/array/isSorted<i32>|inlined.7 (result i32)
    local.get $16
    i32.load $0 offset=4
@@ -24520,7 +24598,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $16
-   i32.store $0 offset=912
+   i32.store $0 offset=952
    i32.const 1
    local.set $12
    local.get $16
@@ -24644,7 +24722,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9120
-  i32.store $0 offset=916
+  i32.store $0 offset=956
   block $std/array/isSorted<i32>|inlined.8 (result i32)
    local.get $17
    i32.load $0 offset=4
@@ -24654,7 +24732,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $17
-   i32.store $0 offset=920
+   i32.store $0 offset=960
    i32.const 1
    local.set $0
    local.get $17
@@ -24727,7 +24805,7 @@
   local.tee $6
   global.get $std/array/inputStabArr
   local.tee $4
-  i32.store $0 offset=924
+  i32.store $0 offset=964
   local.get $6
   i32.const 4
   i32.sub
@@ -24784,7 +24862,7 @@
   i32.const 2
   i32.shl
   local.set $3
-  loop $while-continue|0758
+  loop $while-continue|0768
    local.get $0
    local.get $3
    i32.lt_u
@@ -24809,7 +24887,7 @@
     i32.const 4
     i32.add
     local.set $0
-    br $while-continue|0758
+    br $while-continue|0768
    end
   end
   global.get $~lib/memory/__stack_pointer
@@ -24821,7 +24899,7 @@
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 9152
-  i32.store $0 offset=172
+  i32.store $0 offset=184
   local.get $2
   i32.load $0 offset=4
   local.get $2
@@ -24830,7 +24908,7 @@
   call $~lib/util/sort/SORT<std/array/Dim>
   local.get $6
   local.get $2
-  i32.store $0 offset=928
+  i32.store $0 offset=968
   i32.const 1
   local.set $0
   i32.const 0
@@ -24890,7 +24968,7 @@
      global.set $~lib/memory/__stack_pointer
      local.get $3
      local.get $5
-     i32.store $0 offset=932
+     i32.store $0 offset=972
      global.get $~lib/memory/__stack_pointer
      local.set $4
      global.get $~lib/memory/__stack_pointer
@@ -24938,7 +25016,7 @@
      global.set $~lib/memory/__stack_pointer
      local.get $4
      local.get $3
-     i32.store $0 offset=936
+     i32.store $0 offset=976
      local.get $5
      i32.load $0
      local.get $3
@@ -24976,7 +25054,7 @@
   i32.const 64
   call $~lib/array/Array<i32>#constructor
   local.tee $5
-  i32.store $0 offset=940
+  i32.store $0 offset=980
   i32.const 0
   local.set $1
   loop $for-loop|100
@@ -25000,13 +25078,13 @@
   end
   local.get $0
   local.get $5
-  i32.store $0 offset=944
+  i32.store $0 offset=984
   global.get $~lib/memory/__stack_pointer
   local.tee $2
   i32.const 257
   call $~lib/array/Array<i32>#constructor
   local.tee $0
-  i32.store $0 offset=948
+  i32.store $0 offset=988
   i32.const 0
   local.set $1
   loop $for-loop|101
@@ -25031,11 +25109,11 @@
   local.get $2
   local.get $0
   local.tee $1
-  i32.store $0 offset=952
+  i32.store $0 offset=992
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9184
-  i32.store $0 offset=956
+  i32.store $0 offset=996
   block $std/array/isSorted<i32>|inlined.9 (result i32)
    local.get $5
    i32.load $0 offset=4
@@ -25045,7 +25123,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $5
-   i32.store $0 offset=960
+   i32.store $0 offset=1000
    i32.const 1
    local.set $0
    local.get $5
@@ -25117,7 +25195,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9216
-  i32.store $0 offset=964
+  i32.store $0 offset=1004
   block $std/array/isSorted<i32>|inlined.10 (result i32)
    local.get $5
    i32.load $0 offset=4
@@ -25127,7 +25205,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $5
-   i32.store $0 offset=968
+   i32.store $0 offset=1008
    i32.const 1
    local.set $0
    local.get $5
@@ -25199,7 +25277,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9248
-  i32.store $0 offset=972
+  i32.store $0 offset=1012
   block $std/array/isSorted<i32>|inlined.11 (result i32)
    local.get $1
    i32.load $0 offset=4
@@ -25209,7 +25287,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $1
-   i32.store $0 offset=976
+   i32.store $0 offset=1016
    i32.const 1
    local.set $0
    local.get $1
@@ -25281,7 +25359,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9280
-  i32.store $0 offset=980
+  i32.store $0 offset=1020
   block $std/array/isSorted<i32>|inlined.12 (result i32)
    local.get $1
    i32.load $0 offset=4
@@ -25291,7 +25369,7 @@
    call $~lib/util/sort/SORT<i32>
    local.get $0
    local.get $1
-   i32.store $0 offset=984
+   i32.store $0 offset=1024
    i32.const 1
    local.set $0
    local.get $1
@@ -25424,7 +25502,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $3
   local.get $2
-  i32.store $0 offset=988
+  i32.store $0 offset=1028
   i32.const 0
   local.set $1
   loop $for-loop|106
@@ -25436,7 +25514,7 @@
     i32.const 1
     call $~lib/array/Array<i32>#constructor
     local.tee $0
-    i32.store $0 offset=992
+    i32.store $0 offset=1032
     local.get $0
     i32.const 0
     i32.const 1
@@ -25457,11 +25535,11 @@
   local.get $3
   local.get $2
   local.tee $1
-  i32.store $0 offset=996
+  i32.store $0 offset=1036
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9312
-  i32.store $0 offset=1000
+  i32.store $0 offset=1040
   block $std/array/isSorted<~lib/array/Array<i32>>|inlined.0 (result i32)
    local.get $2
    i32.load $0 offset=4
@@ -25471,7 +25549,7 @@
    call $~lib/util/sort/SORT<std/array/Dim>
    local.get $0
    local.get $2
-   i32.store $0 offset=1004
+   i32.store $0 offset=1044
    i32.const 1
    local.set $0
    local.get $2
@@ -25568,7 +25646,7 @@
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
      local.get $2
-     i32.store $0 offset=172
+     i32.store $0 offset=184
      i32.const 2
      global.set $~argumentsLength
      i32.const 0
@@ -25658,7 +25736,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $2
   local.get $4
-  i32.store $0 offset=1008
+  i32.store $0 offset=1048
   i32.const 0
   local.set $1
   loop $for-loop|108
@@ -25668,36 +25746,18 @@
    if
     global.get $~lib/memory/__stack_pointer
     i32.const 4
-    i32.sub
-    global.set $~lib/memory/__stack_pointer
-    global.get $~lib/memory/__stack_pointer
-    i32.const 10364
-    i32.lt_s
-    if
-     unreachable
-    end
-    global.get $~lib/memory/__stack_pointer
-    local.tee $0
-    i32.const 0
-    i32.store $0
-    local.get $0
-    i32.const 4
     i32.const 31
     call $~lib/rt/itcms/__new
     local.tee $0
-    i32.store $0
+    i32.store $0 offset=1052
     local.get $0
     i32.const 511
     local.get $1
     i32.sub
     i32.store $0
     global.get $~lib/memory/__stack_pointer
-    i32.const 4
-    i32.add
-    global.set $~lib/memory/__stack_pointer
-    global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.store $0 offset=924
+    i32.store $0 offset=964
     local.get $4
     local.get $1
     local.get $0
@@ -25711,11 +25771,11 @@
   end
   local.get $2
   local.get $4
-  i32.store $0 offset=1012
+  i32.store $0 offset=1056
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 9344
-  i32.store $0 offset=1016
+  i32.store $0 offset=1060
   block $std/array/isSorted<std/array/Proxy<i32>>|inlined.0 (result i32)
    local.get $4
    i32.load $0 offset=4
@@ -25725,7 +25785,7 @@
    call $~lib/util/sort/SORT<std/array/Dim>
    local.get $0
    local.get $4
-   i32.store $0 offset=1020
+   i32.store $0 offset=1064
    i32.const 1
    local.set $0
    local.get $4
@@ -25822,7 +25882,7 @@
      global.set $~lib/memory/__stack_pointer
      global.get $~lib/memory/__stack_pointer
      local.get $1
-     i32.store $0 offset=172
+     i32.store $0 offset=184
      i32.const 2
      global.set $~argumentsLength
      i32.const 0
@@ -25856,11 +25916,11 @@
   i32.const 0
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=1024
+  i32.store $0 offset=1068
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load $0 offset=4
-  i32.store $0 offset=1028
+  i32.store $0 offset=1072
   local.get $0
   i32.const 0
   i32.const 1
@@ -25895,12 +25955,12 @@
   call $~lib/array/Array<std/array/Ref>#__uset
   local.get $1
   local.get $0
-  i32.store $0 offset=1032
+  i32.store $0 offset=1076
   global.get $~lib/memory/__stack_pointer
   local.get $0
   call $~lib/array/Array<~lib/array/Array<i32>>#flat
   local.tee $0
-  i32.store $0 offset=1036
+  i32.store $0 offset=1080
   local.get $0
   i32.load $0 offset=12
   i32.const 10
@@ -25949,11 +26009,11 @@
   i32.const 0
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=1040
+  i32.store $0 offset=1084
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load $0 offset=4
-  i32.store $0 offset=1044
+  i32.store $0 offset=1088
   local.get $0
   i32.const 0
   i32.const 1
@@ -25988,7 +26048,7 @@
   call $~lib/array/Array<std/array/Ref>#__uset
   local.get $1
   local.get $0
-  i32.store $0 offset=1048
+  i32.store $0 offset=1092
   global.get $~lib/memory/__stack_pointer
   local.set $6
   global.get $~lib/memory/__stack_pointer
@@ -26014,7 +26074,7 @@
   local.set $12
   i32.const 0
   local.set $1
-  loop $for-loop|0783
+  loop $for-loop|0794
    local.get $1
    local.get $3
    i32.lt_s
@@ -26039,7 +26099,7 @@
     i32.const 1
     i32.add
     local.set $1
-    br $for-loop|0783
+    br $for-loop|0794
    end
   end
   global.get $~lib/memory/__stack_pointer
@@ -26078,7 +26138,7 @@
   end
   i32.const 0
   local.set $0
-  loop $for-loop|1786
+  loop $for-loop|1797
    local.get $3
    local.get $13
    i32.gt_s
@@ -26111,12 +26171,12 @@
     i32.const 1
     i32.add
     local.set $13
-    br $for-loop|1786
+    br $for-loop|1797
    end
   end
   i32.const 0
   local.set $13
-  loop $for-loop|2789
+  loop $for-loop|2800
    local.get $12
    local.get $13
    i32.gt_s
@@ -26138,7 +26198,7 @@
     i32.const 1
     i32.add
     local.set $13
-    br $for-loop|2789
+    br $for-loop|2800
    end
   end
   global.get $~lib/memory/__stack_pointer
@@ -26147,7 +26207,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $6
   local.get $5
-  i32.store $0 offset=1052
+  i32.store $0 offset=1096
   global.get $~lib/memory/__stack_pointer
   i32.const 8
   i32.const 2
@@ -26155,7 +26215,7 @@
   i32.const 9856
   call $~lib/rt/__newArray
   local.tee $4
-  i32.store $0 offset=1056
+  i32.store $0 offset=1100
   local.get $5
   i32.load $0 offset=12
   i32.const 8
@@ -26210,7 +26270,7 @@
      global.set $~lib/memory/__stack_pointer
      local.get $2
      local.get $1
-     i32.store $0 offset=1060
+     i32.store $0 offset=1104
      global.get $~lib/memory/__stack_pointer
      local.set $3
      global.get $~lib/memory/__stack_pointer
@@ -26250,7 +26310,7 @@
      global.set $~lib/memory/__stack_pointer
      local.get $3
      local.get $0
-     i32.store $0 offset=1064
+     i32.store $0 offset=1108
      i32.const 1
      local.get $0
      local.get $1
@@ -26827,11 +26887,11 @@
   i32.const 0
   call $~lib/rt/__newArray
   local.tee $0
-  i32.store $0 offset=1068
+  i32.store $0 offset=1112
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load $0 offset=4
-  i32.store $0 offset=1072
+  i32.store $0 offset=1116
   local.get $0
   i32.const 0
   i32.const 0
@@ -26850,7 +26910,7 @@
   call $~lib/array/Array<std/array/Ref>#__uset
   local.get $1
   local.get $0
-  i32.store $0 offset=1076
+  i32.store $0 offset=1120
   local.get $0
   call $~lib/array/Array<~lib/array/Array<i32>>#flat
   local.set $0
@@ -26870,11 +26930,11 @@
   i32.const 0
   call $~lib/rt/__newArray
   local.tee $8
-  i32.store $0 offset=1080
+  i32.store $0 offset=1124
   global.get $~lib/memory/__stack_pointer
   local.get $8
   i32.load $0 offset=4
-  i32.store $0 offset=1084
+  i32.store $0 offset=1128
   local.get $8
   i32.const 0
   i32.const 1
@@ -26893,12 +26953,12 @@
   call $~lib/array/Array<std/array/Ref>#__uset
   local.get $0
   local.get $8
-  i32.store $0 offset=1088
+  i32.store $0 offset=1132
   global.get $~lib/memory/__stack_pointer
   local.set $7
   global.get $~lib/memory/__stack_pointer
   i32.const 10048
-  i32.store $0 offset=924
+  i32.store $0 offset=964
   global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.sub
@@ -26931,7 +26991,7 @@
   local.set $4
   i32.const 0
   local.set $0
-  loop $for-loop|0149
+  loop $for-loop|0147
    local.get $0
    local.get $6
    local.get $8
@@ -26982,7 +27042,7 @@
     i32.const 1
     i32.add
     local.set $0
-    br $for-loop|0149
+    br $for-loop|0147
    end
   end
   global.get $~lib/memory/__stack_pointer
@@ -26996,7 +27056,7 @@
   local.get $5
   call $~lib/array/Array<~lib/array/Array<i32>>#flat
   local.tee $0
-  i32.store $0 offset=1092
+  i32.store $0 offset=1136
   local.get $0
   i32.load $0 offset=12
   i32.const 4
@@ -27075,12 +27135,12 @@
   i32.const 0
   i32.gt_s
   if
-   loop $while-continue|0802
+   loop $while-continue|0813
     global.get $~lib/rt/itcms/state
     if
      call $~lib/rt/itcms/step
      drop
-     br $while-continue|0802
+     br $while-continue|0813
     end
    end
   end
@@ -27105,7 +27165,7 @@
   i32.add
   global.set $~lib/rt/itcms/threshold
   global.get $~lib/memory/__stack_pointer
-  i32.const 1096
+  i32.const 1140
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
@@ -27189,37 +27249,6 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $2
- )
- (func $std/array/Ref#constructor (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 10364
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i32.const 0
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.const 4
-  call $~lib/rt/itcms/__new
-  local.tee $1
-  i32.store $0
-  local.get $1
-  local.get $0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
  )
  (func $~lib/rt/__newArray (type $i32_i32_i32_i32_=>_i32) (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
   (local $4 i32)

@@ -1176,43 +1176,11 @@
   memory.fill $0
   local.get $0
  )
- (func $~lib/rt/__visit_members (type $i32_=>_none) (param $0 i32)
-  block $invalid
-   block $managed-cast/Animal
-    block $managed-cast/Cat
-     block $~lib/arraybuffer/ArrayBufferView
-      block $~lib/string/String
-       block $~lib/arraybuffer/ArrayBuffer
-        local.get $0
-        i32.const 8
-        i32.sub
-        i32.load $0
-        br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $managed-cast/Cat $managed-cast/Animal $invalid
-       end
-       return
-      end
-      return
-     end
-     local.get $0
-     i32.load $0
-     local.tee $0
-     if
-      local.get $0
-      call $byn-split-outlined-A$~lib/rt/itcms/__visit
-     end
-     return
-    end
-    return
-   end
-   return
-  end
-  unreachable
- )
- (func $~start (type $none_=>_none)
+ (func $start:managed-cast (type $none_=>_none)
   (local $0 i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 48
+  i32.const 56
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -1224,7 +1192,7 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $0
   i32.const 0
-  i32.const 48
+  i32.const 56
   memory.fill $0
   memory.size $0
   i32.const 16
@@ -1320,12 +1288,12 @@
   global.get $~lib/memory/__stack_pointer
   local.tee $1
   local.get $0
-  i32.store $0 offset=8
+  i32.store $0 offset=24
   local.get $1
   call $managed-cast/Cat#constructor
   local.tee $0
-  i32.store $0 offset=24
-  block $__inlined_func$~lib/rt/__instanceof11 (result i32)
+  i32.store $0 offset=28
+  block $__inlined_func$~lib/rt/__instanceof0 (result i32)
    local.get $0
    i32.eqz
    if
@@ -1333,7 +1301,7 @@
    end
    global.get $~lib/memory/__stack_pointer
    local.get $0
-   i32.store $0 offset=28
+   i32.store $0 offset=32
    local.get $0
    i32.const 20
    i32.sub
@@ -1343,12 +1311,12 @@
    i32.load $0
    i32.le_u
    if
-    loop $do-loop|013
+    loop $do-loop|02
      i32.const 1
      local.get $1
      i32.const 3
      i32.eq
-     br_if $__inlined_func$~lib/rt/__instanceof11
+     br_if $__inlined_func$~lib/rt/__instanceof0
      drop
      local.get $1
      i32.const 3
@@ -1357,48 +1325,7 @@
      i32.add
      i32.load $0 offset=4
      local.tee $1
-     br_if $do-loop|013
-    end
-   end
-   i32.const 0
-  end
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  local.get $0
-  i32.store $0 offset=8
-  local.get $1
-  call $managed-cast/Cat#constructor
-  local.tee $0
-  i32.store $0 offset=32
-  block $__inlined_func$~lib/rt/__instanceof14 (result i32)
-   local.get $0
-   i32.const 20
-   i32.sub
-   i32.load $0 offset=12
-   local.tee $1
-   i32.const 1328
-   i32.load $0
-   i32.le_u
-   if
-    loop $do-loop|016
-     i32.const 1
-     local.get $1
-     i32.const 3
-     i32.eq
-     br_if $__inlined_func$~lib/rt/__instanceof14
-     drop
-     local.get $1
-     i32.const 3
-     i32.shl
-     i32.const 1332
-     i32.add
-     i32.load $0 offset=4
-     local.tee $1
-     br_if $do-loop|016
+     br_if $do-loop|02
     end
    end
    i32.const 0
@@ -1415,9 +1342,50 @@
   call $managed-cast/Cat#constructor
   local.tee $0
   i32.store $0 offset=40
+  block $__inlined_func$~lib/rt/__instanceof3 (result i32)
+   local.get $0
+   i32.const 20
+   i32.sub
+   i32.load $0 offset=12
+   local.tee $1
+   i32.const 1328
+   i32.load $0
+   i32.le_u
+   if
+    loop $do-loop|05
+     i32.const 1
+     local.get $1
+     i32.const 3
+     i32.eq
+     br_if $__inlined_func$~lib/rt/__instanceof3
+     drop
+     local.get $1
+     i32.const 3
+     i32.shl
+     i32.const 1332
+     i32.add
+     i32.load $0 offset=4
+     local.tee $1
+     br_if $do-loop|05
+    end
+   end
+   i32.const 0
+  end
+  i32.eqz
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  local.get $0
+  i32.store $0 offset=44
+  local.get $1
+  call $managed-cast/Cat#constructor
+  local.tee $0
+  i32.store $0 offset=48
   local.get $0
   if
-   block $__inlined_func$~lib/rt/__instanceof18 (result i32)
+   block $__inlined_func$~lib/rt/__instanceof6 (result i32)
     local.get $0
     i32.const 20
     i32.sub
@@ -1427,12 +1395,12 @@
     i32.load $0
     i32.le_u
     if
-     loop $do-loop|020
+     loop $do-loop|08
       i32.const 1
       local.get $1
       i32.const 3
       i32.eq
-      br_if $__inlined_func$~lib/rt/__instanceof18
+      br_if $__inlined_func$~lib/rt/__instanceof6
       drop
       local.get $1
       i32.const 3
@@ -1441,7 +1409,7 @@
       i32.add
       i32.load $0 offset=4
       local.tee $1
-      br_if $do-loop|020
+      br_if $do-loop|08
      end
     end
     i32.const 0
@@ -1456,7 +1424,7 @@
   end
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store $0 offset=44
+  i32.store $0 offset=52
   i32.const 34140
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/rt/itcms/state
@@ -1493,9 +1461,44 @@
   i32.add
   global.set $~lib/rt/itcms/threshold
   global.get $~lib/memory/__stack_pointer
-  i32.const 48
+  i32.const 56
   i32.add
   global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/rt/__visit_members (type $i32_=>_none) (param $0 i32)
+  block $invalid
+   block $managed-cast/Animal
+    block $managed-cast/Cat
+     block $~lib/arraybuffer/ArrayBufferView
+      block $~lib/string/String
+       block $~lib/arraybuffer/ArrayBuffer
+        local.get $0
+        i32.const 8
+        i32.sub
+        i32.load $0
+        br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $managed-cast/Cat $managed-cast/Animal $invalid
+       end
+       return
+      end
+      return
+     end
+     local.get $0
+     i32.load $0
+     local.tee $0
+     if
+      local.get $0
+      call $byn-split-outlined-A$~lib/rt/itcms/__visit
+     end
+     return
+    end
+    return
+   end
+   return
+  end
+  unreachable
+ )
+ (func $~start (type $none_=>_none)
+  call $start:managed-cast
  )
  (func $managed-cast/Cat#constructor (type $none_=>_i32) (result i32)
   (local $0 i32)

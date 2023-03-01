@@ -51,13 +51,13 @@
  (data (i32.const 396) "\1c\00\00\00\00\00\00\00\00\00\00\00\07\00\00\00\08\00\00\00\r\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 428) "\1c\00\00\00\00\00\00\00\00\00\00\00\03\00\00\00\08\00\00\00\0e\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 460) "\1c\00\00\00\00\00\00\00\00\00\00\00\07\00\00\00\08\00\00\00\0f\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 492) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00Allocation too large\00\00\00\00\00\00\00\00")
- (data (i32.const 544) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 576) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 604) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\12\00\00\00Index out of range\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 656) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 684) "\1c\00\00\00\00\00\00\00\00\00\00\00\03\00\00\00\08\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 716) "\1c\00\00\00\00\00\00\00\00\00\00\00\07\00\00\00\08\00\00\00\11\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 492) "\1c\00\00\00\00\00\00\00\00\00\00\00\03\00\00\00\08\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 524) "\1c\00\00\00\00\00\00\00\00\00\00\00\07\00\00\00\08\00\00\00\11\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 556) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00Allocation too large\00\00\00\00\00\00\00\00")
+ (data (i32.const 608) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 640) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 668) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\12\00\00\00Index out of range\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 720) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 748) "\1c\00\00\00\00\00\00\00\00\00\00\00\03\00\00\00\08\00\00\00\12\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 780) "\1c\00\00\00\00\00\00\00\00\00\00\00\t\00\00\00\08\00\00\00\13\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 816) "\n\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -109,6 +109,11 @@
   i32.add
  )
  (func $function-expression/testLocal~anonymous|0~anonymous|0 (type $i32_=>_i32) (param $x i32) (result i32)
+  i32.const 24
+  local.get $x
+  i32.add
+ )
+ (func $function-expression/testField~anonymous|0~anonymous|0 (type $i32_=>_i32) (param $x i32) (result i32)
   i32.const 24
   local.get $x
   i32.add
@@ -2174,11 +2179,6 @@
   i32.const 0
   call $~lib/rt/itcms/__link
  )
- (func $function-expression/testField~anonymous|0~anonymous|0 (type $i32_=>_i32) (param $x i32) (result i32)
-  i32.const 24
-  local.get $x
-  i32.add
- )
  (func $function-expression/semanticallyAnonymous~fnDecl (type $i32_=>_i32) (param $val i32) (result i32)
   local.get $val
  )
@@ -2213,12 +2213,292 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
+ (func $start:function-expression (type $none_=>_none)
+  (local $fn i32)
+  (local $fn|1 i32)
+  (local $fn|2 i32)
+  (local $b i32)
+  (local $4 i32)
+  (local $localFunc i32)
+  (local $6 i32)
+  (local $this i32)
+  (local $fieldFunc i32)
+  (local $fieldInst i32)
+  (local $10 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 40
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 40
+  memory.fill $0
+  i32.const 1
+  i32.const 1
+  global.set $~argumentsLength
+  global.get $function-expression/f1
+  i32.load $0
+  call_indirect $0 (type $i32_=>_i32)
+  i32.const 1
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  i32.const 2
+  i32.const 1
+  global.set $~argumentsLength
+  global.get $function-expression/f2
+  i32.load $0
+  call_indirect $0 (type $i32_=>_i32)
+  i32.const 2
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  i32.const 0
+  global.set $~argumentsLength
+  global.get $function-expression/f3
+  i32.load $0
+  call_indirect $0 (type $none_=>_none)
+  i32.const 0
+  global.set $~argumentsLength
+  global.get $function-expression/f4
+  i32.load $0
+  call_indirect $0 (type $none_=>_i32)
+  i32.const 1
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 160
+  local.tee $fn
+  i32.store $0
+  i32.const 1
+  i32.const 2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $fn
+  i32.load $0
+  call_indirect $0 (type $i32_i32_=>_i32)
+  i32.const 3
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 192
+  local.tee $fn|1
+  i32.store $0 offset=4
+  i32.const 1
+  i32.const 2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $fn|1
+  i32.load $0
+  call_indirect $0 (type $i32_i32_=>_i32)
+  i32.const 1
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 224
+  local.tee $fn|2
+  i32.store $0 offset=8
+  i32.const 1
+  i32.const 2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $fn|2
+  i32.load $0
+  call_indirect $0 (type $i32_i32_=>_i32)
+  i32.const 42
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  i32.const 1
+  i32.const 2
+  i32.const 2
+  global.set $~argumentsLength
+  i32.const 256
+  i32.load $0
+  call_indirect $0 (type $i32_i32_=>_i32)
+  i32.const 3
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  i32.const 1
+  i32.const 2
+  i32.const 2
+  global.set $~argumentsLength
+  i32.const 288
+  i32.load $0
+  call_indirect $0 (type $i32_i32_=>_i32)
+  i32.const 1
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  i32.const 1
+  i32.const 2
+  i32.const 2
+  global.set $~argumentsLength
+  i32.const 320
+  i32.load $0
+  call_indirect $0 (type $i32_i32_=>_i32)
+  i32.const 42
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  block $function-expression/testNullable|inlined.0 (result i32)
+   i32.const 0
+   local.set $b
+   local.get $b
+   if
+    i32.const 352
+    br $function-expression/testNullable|inlined.0
+   else
+    i32.const 0
+    br $function-expression/testNullable|inlined.0
+   end
+   unreachable
+  end
+  i32.const 0
+  i32.eq
+  drop
+  i32.const 416
+  global.set $function-expression/globalFunc
+  i32.const 1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  global.set $~argumentsLength
+  global.get $function-expression/globalFunc
+  i32.load $0
+  call_indirect $0 (type $none_=>_i32)
+  local.tee $4
+  i32.store $0 offset=12
+  i32.const 1
+  global.set $~argumentsLength
+  local.get $4
+  i32.load $0
+  call_indirect $0 (type $i32_=>_i32)
+  i32.const 25
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 480
+  local.tee $localFunc
+  i32.store $0 offset=16
+  i32.const 1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  global.set $~argumentsLength
+  local.get $localFunc
+  i32.load $0
+  call_indirect $0 (type $none_=>_i32)
+  local.tee $6
+  i32.store $0 offset=20
+  i32.const 1
+  global.set $~argumentsLength
+  local.get $6
+  i32.load $0
+  call_indirect $0 (type $i32_=>_i32)
+  i32.const 25
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  memory.size $0
+  i32.const 16
+  i32.shl
+  global.get $~lib/memory/__heap_base
+  i32.sub
+  i32.const 1
+  i32.shr_u
+  global.set $~lib/rt/itcms/threshold
+  i32.const 608
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/pinSpace
+  i32.const 640
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/toSpace
+  i32.const 720
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/fromSpace
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.set $this
+  global.get $~lib/memory/__stack_pointer
+  i32.const 544
+  local.tee $fieldFunc
+  i32.store $0 offset=24
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.const 8
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store $0 offset=28
+  end
+  local.get $this
+  local.get $fieldFunc
+  call $function-expression/FieldClass#set:fieldFunc
+  local.get $this
+  local.tee $fieldInst
+  i32.store $0 offset=32
+  i32.const 1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  global.set $~argumentsLength
+  local.get $fieldInst
+  i32.load $0
+  i32.load $0
+  call_indirect $0 (type $none_=>_i32)
+  local.tee $10
+  i32.store $0 offset=36
+  i32.const 1
+  global.set $~argumentsLength
+  local.get $10
+  i32.load $0
+  call_indirect $0 (type $i32_=>_i32)
+  i32.const 25
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  call $function-expression/semanticallyAnonymous
+  global.get $~lib/memory/__stack_pointer
+  i32.const 40
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
-  i32.const 624
+  i32.const 688
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 512
+  i32.const 576
   local.get $0
   call $~lib/rt/itcms/__visit
  )
@@ -2385,273 +2665,6 @@
    unreachable
   end
  )
- (func $start:function-expression (type $none_=>_none)
-  (local $0 i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 36
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 36
-  memory.fill $0
-  i32.const 1
-  i32.const 1
-  global.set $~argumentsLength
-  global.get $function-expression/f1
-  i32.load $0
-  call_indirect $0 (type $i32_=>_i32)
-  i32.const 1
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 2
-  i32.const 1
-  global.set $~argumentsLength
-  global.get $function-expression/f2
-  i32.load $0
-  call_indirect $0 (type $i32_=>_i32)
-  i32.const 2
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 0
-  global.set $~argumentsLength
-  global.get $function-expression/f3
-  i32.load $0
-  call_indirect $0 (type $none_=>_none)
-  i32.const 0
-  global.set $~argumentsLength
-  global.get $function-expression/f4
-  i32.load $0
-  call_indirect $0 (type $none_=>_i32)
-  i32.const 1
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 160
-  local.tee $0
-  i32.store $0
-  i32.const 1
-  i32.const 2
-  i32.const 2
-  global.set $~argumentsLength
-  local.get $0
-  i32.load $0
-  call_indirect $0 (type $i32_i32_=>_i32)
-  i32.const 3
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 192
-  local.tee $1
-  i32.store $0 offset=4
-  i32.const 1
-  i32.const 2
-  i32.const 2
-  global.set $~argumentsLength
-  local.get $1
-  i32.load $0
-  call_indirect $0 (type $i32_i32_=>_i32)
-  i32.const 1
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 224
-  local.tee $2
-  i32.store $0 offset=8
-  i32.const 1
-  i32.const 2
-  i32.const 2
-  global.set $~argumentsLength
-  local.get $2
-  i32.load $0
-  call_indirect $0 (type $i32_i32_=>_i32)
-  i32.const 42
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 1
-  i32.const 2
-  i32.const 2
-  global.set $~argumentsLength
-  i32.const 256
-  i32.load $0
-  call_indirect $0 (type $i32_i32_=>_i32)
-  i32.const 3
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 1
-  i32.const 2
-  i32.const 2
-  global.set $~argumentsLength
-  i32.const 288
-  i32.load $0
-  call_indirect $0 (type $i32_i32_=>_i32)
-  i32.const 1
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 1
-  i32.const 2
-  i32.const 2
-  global.set $~argumentsLength
-  i32.const 320
-  i32.load $0
-  call_indirect $0 (type $i32_i32_=>_i32)
-  i32.const 42
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  block $function-expression/testNullable|inlined.0 (result i32)
-   i32.const 0
-   local.set $3
-   local.get $3
-   if
-    i32.const 352
-    br $function-expression/testNullable|inlined.0
-   else
-    i32.const 0
-    br $function-expression/testNullable|inlined.0
-   end
-   unreachable
-  end
-  i32.const 0
-  i32.eq
-  drop
-  i32.const 416
-  global.set $function-expression/globalFunc
-  i32.const 1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  global.set $~argumentsLength
-  global.get $function-expression/globalFunc
-  i32.load $0
-  call_indirect $0 (type $none_=>_i32)
-  local.tee $4
-  i32.store $0 offset=12
-  i32.const 1
-  global.set $~argumentsLength
-  local.get $4
-  i32.load $0
-  call_indirect $0 (type $i32_=>_i32)
-  i32.const 25
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 480
-  local.tee $5
-  i32.store $0 offset=16
-  i32.const 1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  global.set $~argumentsLength
-  local.get $5
-  i32.load $0
-  call_indirect $0 (type $none_=>_i32)
-  local.tee $6
-  i32.store $0 offset=20
-  i32.const 1
-  global.set $~argumentsLength
-  local.get $6
-  i32.load $0
-  call_indirect $0 (type $i32_=>_i32)
-  i32.const 25
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  memory.size $0
-  i32.const 16
-  i32.shl
-  global.get $~lib/memory/__heap_base
-  i32.sub
-  i32.const 1
-  i32.shr_u
-  global.set $~lib/rt/itcms/threshold
-  i32.const 544
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/pinSpace
-  i32.const 576
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/toSpace
-  i32.const 656
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/fromSpace
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 736
-  local.set $9
-  global.get $~lib/memory/__stack_pointer
-  local.get $9
-  i32.store $0 offset=24
-  local.get $9
-  call $function-expression/FieldClass#constructor
-  local.tee $7
-  i32.store $0 offset=28
-  i32.const 1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  global.set $~argumentsLength
-  local.get $7
-  i32.load $0
-  i32.load $0
-  call_indirect $0 (type $none_=>_i32)
-  local.tee $8
-  i32.store $0 offset=32
-  i32.const 1
-  global.set $~argumentsLength
-  local.get $8
-  i32.load $0
-  call_indirect $0 (type $i32_=>_i32)
-  i32.const 25
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  call $function-expression/semanticallyAnonymous
-  global.get $~lib/memory/__stack_pointer
-  i32.const 36
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
  (func $function-expression/testGlobal~anonymous|0 (type $none_=>_i32) (result i32)
   (local $myFunc i32)
   (local $1 i32)
@@ -2698,37 +2711,6 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
  )
- (func $function-expression/FieldClass#constructor (type $i32_i32_=>_i32) (param $this i32) (param $fieldFunc i32) (result i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.const 8
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  local.get $this
-  local.get $fieldFunc
-  call $function-expression/FieldClass#set:fieldFunc
-  local.get $this
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $2
- )
  (func $function-expression/testField~anonymous|0 (type $none_=>_i32) (result i32)
   (local $myFunc i32)
   (local $1 i32)
@@ -2741,7 +2723,7 @@
   i32.const 0
   i32.store $0
   global.get $~lib/memory/__stack_pointer
-  i32.const 704
+  i32.const 512
   local.tee $myFunc
   i32.store $0
   local.get $myFunc

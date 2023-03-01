@@ -1221,7 +1221,7 @@
  (func $~start (type $none_=>_none)
   (local $0 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 8
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -1231,8 +1231,8 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
+  i64.const 0
+  i64.store $0
   memory.size $0
   i32.const 16
   i32.shl
@@ -1313,9 +1313,9 @@
   global.set $super-inline/bar
   global.get $~lib/memory/__stack_pointer
   global.get $super-inline/bar
-  i32.store $0
+  i32.store $0 offset=4
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 8
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

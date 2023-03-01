@@ -1274,7 +1274,7 @@
  (func $~start (type $none_=>_none)
   (local $0 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 20
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -1285,8 +1285,9 @@
   end
   global.get $~lib/memory/__stack_pointer
   local.tee $0
-  i64.const 0
-  i64.store $0
+  i32.const 0
+  i32.const 20
+  memory.fill $0
   memory.size $0
   i32.const 16
   i32.shl
@@ -1374,7 +1375,7 @@
   global.set $optional-typeparameters/tDerived
   global.get $~lib/memory/__stack_pointer
   global.get $optional-typeparameters/tDerived
-  i32.store $0
+  i32.store $0 offset=4
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -1402,7 +1403,7 @@
   global.set $optional-typeparameters/tMethodDerived
   global.get $~lib/memory/__stack_pointer
   global.get $optional-typeparameters/tMethodDerived
-  i32.store $0
+  i32.store $0 offset=8
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -1430,12 +1431,12 @@
   global.set $optional-typeparameters/tMethodDerived2
   global.get $~lib/memory/__stack_pointer
   global.get $optional-typeparameters/tMethodDerived2
-  i32.store $0
+  i32.store $0 offset=12
   global.get $~lib/memory/__stack_pointer
   global.get $optional-typeparameters/tMethodDerived
-  i32.store $0 offset=4
+  i32.store $0 offset=16
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 20
   i32.add
   global.set $~lib/memory/__stack_pointer
  )

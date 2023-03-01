@@ -9,7 +9,6 @@
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
- (type $i32_f32_=>_i32 (func_subtype (param i32 f32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $std/new/AClass.aStaticField (mut i32) (i32.const 0))
@@ -2043,6 +2042,16 @@
   local.get $ptr
  )
  (func $start:std/new (type $none_=>_none)
+  (local $this i32)
+  (local $value f32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
   memory.size $0
   i32.const 16
   i32.shl
@@ -2061,9 +2070,40 @@
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/fromSpace
   i32.const 0
+  local.set $this
   f32.const 3
-  call $std/new/AClass#constructor
+  local.set $value
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.const 3
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store $0
+  end
+  local.get $this
+  i32.const 1
+  call $std/new/AClass#set:aField
+  local.get $this
+  f32.const 2
+  call $std/new/AClass#set:anotherField
+  local.get $this
+  local.get $this
+  i32.load $0
+  i32.const 1
+  i32.add
+  call $std/new/AClass#set:aField
+  local.get $this
+  local.get $value
+  call $std/new/AClass#set:anotherField
+  local.get $this
   global.set $std/new/aClass
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
  )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
@@ -2127,48 +2167,5 @@
   if
    unreachable
   end
- )
- (func $std/new/AClass#constructor (type $i32_f32_=>_i32) (param $this i32) (param $value f32) (result i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 8
-   i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  local.get $this
-  i32.const 1
-  call $std/new/AClass#set:aField
-  local.get $this
-  f32.const 2
-  call $std/new/AClass#set:anotherField
-  local.get $this
-  local.get $this
-  i32.load $0
-  i32.const 1
-  i32.add
-  call $std/new/AClass#set:aField
-  local.get $this
-  local.get $value
-  call $std/new/AClass#set:anotherField
-  local.get $this
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $2
  )
 )

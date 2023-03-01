@@ -5,8 +5,8 @@
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
- (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
@@ -2065,9 +2065,6 @@
   local.get $1
   i32.store $0
  )
- (func $constructor/CtorReturns#constructor (type $i32_=>_i32) (param $this i32) (result i32)
-  i32.const 0
- )
  (func $constructor/CtorFieldInitOrder#set:a (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -2084,6 +2081,25 @@
   i32.store $0
  )
  (func $start:constructor (type $none_=>_none)
+  (local $this i32)
+  (local $this|1 i32)
+  (local $this|2 i32)
+  (local $this|3 i32)
+  (local $this|4 i32)
+  (local $this|5 i32)
+  (local $this|6 i32)
+  (local $this|7 i32)
+  (local $a i32)
+  (local $b i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 28
+  memory.fill $0
   memory.size $0
   i32.const 16
   i32.shl
@@ -2102,16 +2118,72 @@
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/fromSpace
   i32.const 0
-  call $constructor/EmptyCtor#constructor
+  local.set $this
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 0
+   i32.const 3
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store $0
+  end
+  local.get $this
   global.set $constructor/emptyCtor
   i32.const 0
-  call $constructor/EmptyCtorWithFieldInit#constructor
+  local.set $this|1
+  local.get $this|1
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.const 4
+   call $~lib/rt/itcms/__new
+   local.tee $this|1
+   i32.store $0 offset=4
+  end
+  local.get $this|1
+  i32.const 1
+  call $constructor/EmptyCtorWithFieldInit#set:a
+  local.get $this|1
   global.set $constructor/emptyCtorWithFieldInit
   i32.const 0
-  call $constructor/EmptyCtorWithFieldNoInit#constructor
+  local.set $this|2
+  local.get $this|2
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.const 5
+   call $~lib/rt/itcms/__new
+   local.tee $this|2
+   i32.store $0 offset=8
+  end
+  local.get $this|2
+  i32.const 0
+  call $constructor/EmptyCtorWithFieldNoInit#set:a
+  local.get $this|2
   global.set $constructor/emptyCtorWithFieldNoInit
   i32.const 0
-  call $constructor/EmptyCtorWithFieldAccess#constructor
+  local.set $this|3
+  local.get $this|3
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.const 6
+   call $~lib/rt/itcms/__new
+   local.tee $this|3
+   i32.store $0 offset=12
+  end
+  local.get $this|3
+  i32.const 0
+  call $constructor/EmptyCtorWithFieldAccess#set:a
+  local.get $this|3
+  i32.const 1
+  call $constructor/EmptyCtorWithFieldAccess#set:a
+  local.get $this|3
   global.set $constructor/emptyCtorWithFieldAccess
   i32.const 0
   call $constructor/None#constructor
@@ -2123,18 +2195,119 @@
   call $constructor/JustFieldNoInit#constructor
   global.set $constructor/justFieldNoInit
   i32.const 0
-  call $constructor/CtorReturns#constructor
+  local.set $this|4
+  i32.const 0
   global.set $constructor/ctorReturns
-  i32.const 0
-  call $constructor/CtorConditionallyReturns#constructor
+  block $constructor/CtorConditionallyReturns#constructor|inlined.0 (result i32)
+   i32.const 0
+   local.set $this|5
+   local.get $this|5
+   i32.eqz
+   if
+    global.get $~lib/memory/__stack_pointer
+    i32.const 0
+    i32.const 11
+    call $~lib/rt/itcms/__new
+    local.tee $this|5
+    i32.store $0 offset=16
+   end
+   global.get $constructor/b
+   if
+    i32.const 0
+    br $constructor/CtorConditionallyReturns#constructor|inlined.0
+   end
+   local.get $this|5
+  end
   global.set $constructor/ctorConditionallyReturns
-  i32.const 0
-  call $constructor/CtorConditionallyReturnsThis#constructor
+  block $constructor/CtorConditionallyReturnsThis#constructor|inlined.0 (result i32)
+   i32.const 0
+   local.set $this|6
+   local.get $this|6
+   i32.eqz
+   if
+    global.get $~lib/memory/__stack_pointer
+    i32.const 0
+    i32.const 12
+    call $~lib/rt/itcms/__new
+    local.tee $this|6
+    i32.store $0 offset=20
+   end
+   global.get $constructor/b
+   if
+    local.get $this|6
+    br $constructor/CtorConditionallyReturnsThis#constructor|inlined.0
+   end
+   local.get $this|6
+  end
   global.set $constructor/ctorConditionallyReturnsThis
   i32.const 0
+  local.set $this|7
   i32.const 1
+  local.set $a
   i32.const 2
-  call $constructor/CtorFieldInitOrder#constructor
+  local.set $b
+  local.get $this|7
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 13
+   call $~lib/rt/itcms/__new
+   local.tee $this|7
+   i32.store $0 offset=24
+  end
+  local.get $this|7
+  local.get $a
+  call $constructor/CtorFieldInitOrder#set:a
+  local.get $this|7
+  local.get $b
+  call $constructor/CtorFieldInitOrder#set:b
+  local.get $this|7
+  local.get $this|7
+  i32.load $0 offset=4
+  local.get $this|7
+  i32.load $0 offset=8
+  i32.add
+  call $constructor/CtorFieldInitOrder#set:c
+  local.get $a
+  i32.const 1
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $this|7
+  i32.load $0 offset=4
+  i32.const 1
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $b
+  i32.const 2
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $this|7
+  i32.load $0 offset=8
+  i32.const 2
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $this|7
+  i32.load $0
+  i32.const 3
+  i32.eq
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $this|7
   global.set $constructor/ctorFieldInitOrder
   global.get $constructor/ctorFieldInitOrder
   i32.load $0 offset=4
@@ -2160,6 +2333,10 @@
   if
    unreachable
   end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.add
+  global.set $~lib/memory/__stack_pointer
  )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
@@ -2324,130 +2501,6 @@
    unreachable
   end
  )
- (func $constructor/EmptyCtor#constructor (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 0
-   i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
- )
- (func $constructor/EmptyCtorWithFieldInit#constructor (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.const 4
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  local.get $this
-  i32.const 1
-  call $constructor/EmptyCtorWithFieldInit#set:a
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
- )
- (func $constructor/EmptyCtorWithFieldNoInit#constructor (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.const 5
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  local.get $this
-  i32.const 0
-  call $constructor/EmptyCtorWithFieldNoInit#set:a
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
- )
- (func $constructor/EmptyCtorWithFieldAccess#constructor (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.const 6
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  local.get $this
-  i32.const 0
-  call $constructor/EmptyCtorWithFieldAccess#set:a
-  local.get $this
-  i32.const 1
-  call $constructor/EmptyCtorWithFieldAccess#set:a
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
- )
  (func $constructor/None#constructor (type $i32_=>_i32) (param $this i32) (result i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
@@ -2537,162 +2590,5 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $1
- )
- (func $constructor/CtorConditionallyReturns#constructor (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 0
-   i32.const 11
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  global.get $constructor/b
-  if
-   i32.const 0
-   local.set $1
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   local.get $1
-   return
-  end
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
- )
- (func $constructor/CtorConditionallyReturnsThis#constructor (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 0
-   i32.const 12
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  global.get $constructor/b
-  if
-   local.get $this
-   local.set $1
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   local.get $1
-   return
-  end
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
- )
- (func $constructor/CtorFieldInitOrder#constructor (type $i32_i32_i32_=>_i32) (param $this i32) (param $a i32) (param $b i32) (result i32)
-  (local $3 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 12
-   i32.const 13
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  local.get $this
-  local.get $a
-  call $constructor/CtorFieldInitOrder#set:a
-  local.get $this
-  local.get $b
-  call $constructor/CtorFieldInitOrder#set:b
-  local.get $this
-  local.get $this
-  i32.load $0 offset=4
-  local.get $this
-  i32.load $0 offset=8
-  i32.add
-  call $constructor/CtorFieldInitOrder#set:c
-  local.get $a
-  i32.const 1
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $this
-  i32.load $0 offset=4
-  i32.const 1
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $b
-  i32.const 2
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $this
-  i32.load $0 offset=8
-  i32.const 2
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $this
-  i32.load $0
-  i32.const 3
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $this
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $3
  )
 )

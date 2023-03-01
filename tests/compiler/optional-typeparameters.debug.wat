@@ -5,10 +5,9 @@
  (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
- (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
+ (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $none_=>_i32 (func_subtype (result i32) func))
- (type $i32_f64_f64_=>_f64 (func_subtype (param i32 f64 f64) (result f64) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/rt/itcms/total (mut i32) (i32.const 0))
@@ -2033,25 +2032,115 @@
   memory.fill $0
   local.get $ptr
  )
- (func $optional-typeparameters/TestConcrete<i32,i32>#test<i32> (type $i32_i32_i32_=>_i32) (param $this i32) (param $a i32) (param $b i32) (result i32)
+ (func $start:optional-typeparameters (type $none_=>_none)
+  (local $a i32)
+  (local $a|1 i32)
+  (local $this i32)
+  (local $a|3 i32)
+  (local $b i32)
+  (local $this|5 i32)
+  (local $a|6 f64)
+  (local $b|7 f64)
+  (local $this|8 i32)
+  (local $this|9 i32)
+  (local $v i32)
+  (local $this|11 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 20
+  memory.fill $0
+  i32.const 1
+  local.set $a
   local.get $a
+  drop
+  i32.const 2
+  local.set $a|1
+  local.get $a|1
+  drop
+  memory.size $0
+  i32.const 16
+  i32.shl
+  global.get $~lib/memory/__heap_base
+  i32.sub
+  i32.const 1
+  i32.shr_u
+  global.set $~lib/rt/itcms/threshold
+  i32.const 64
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/pinSpace
+  i32.const 96
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/toSpace
+  i32.const 176
+  call $~lib/rt/itcms/initLazy
+  global.set $~lib/rt/itcms/fromSpace
+  i32.const 0
+  call $optional-typeparameters/TestConcrete<i32,i32>#constructor
+  global.set $optional-typeparameters/tConcrete
+  global.get $~lib/memory/__stack_pointer
+  global.get $optional-typeparameters/tConcrete
+  local.tee $this
+  i32.store $0
+  i32.const 1
+  local.set $a|3
+  i32.const 2
+  local.set $b
+  local.get $a|3
   local.get $b
   i32.add
- )
- (func $optional-typeparameters/TestDerived<f64,f64>#test<f64> (type $i32_f64_f64_=>_f64) (param $this i32) (param $a f64) (param $b f64) (result f64)
-  local.get $a
-  local.get $b
+  drop
+  i32.const 0
+  call $optional-typeparameters/TestDerived<f64,f64>#constructor
+  global.set $optional-typeparameters/tDerived
+  global.get $~lib/memory/__stack_pointer
+  global.get $optional-typeparameters/tDerived
+  local.tee $this|5
+  i32.store $0 offset=4
+  f64.const 1
+  local.set $a|6
+  f64.const 2
+  local.set $b|7
+  local.get $a|6
+  local.get $b|7
   f64.add
- )
- (func $optional-typeparameters/TestMethodDerived<~lib/string/String>#test<~lib/array/Array<~lib/string/String>> (type $i32_=>_none) (param $this i32)
+  drop
+  i32.const 0
+  call $optional-typeparameters/TestMethodDerived<~lib/string/String>#constructor
+  global.set $optional-typeparameters/tMethodDerived
+  global.get $~lib/memory/__stack_pointer
+  global.get $optional-typeparameters/tMethodDerived
+  local.tee $this|8
+  i32.store $0 offset=8
   i32.const 6
   i32.const 6
   i32.eq
   drop
- )
- (func $optional-typeparameters/TestMethodDerived2<f64>#foo (type $i32_i32_=>_none) (param $this i32) (param $v i32)
+  i32.const 0
+  call $optional-typeparameters/TestMethodDerived2<f64>#constructor
+  global.set $optional-typeparameters/tMethodDerived2
+  global.get $~lib/memory/__stack_pointer
+  global.get $optional-typeparameters/tMethodDerived2
+  local.tee $this|9
+  i32.store $0 offset=12
+  global.get $~lib/memory/__stack_pointer
+  global.get $optional-typeparameters/tMethodDerived
+  local.tee $v
+  i32.store $0 offset=16
   local.get $v
-  call $optional-typeparameters/TestMethodDerived<~lib/string/String>#test<~lib/array/Array<~lib/string/String>>
+  local.set $this|11
+  i32.const 6
+  i32.const 6
+  i32.eq
+  drop
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.add
+  global.set $~lib/memory/__stack_pointer
  )
  (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
   (local $1 i32)
@@ -2201,100 +2290,6 @@
   if
    unreachable
   end
- )
- (func $start:optional-typeparameters (type $none_=>_none)
-  (local $0 i32)
-  (local $1 i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
-  i32.const 1
-  local.set $0
-  local.get $0
-  drop
-  i32.const 2
-  local.set $1
-  local.get $1
-  drop
-  memory.size $0
-  i32.const 16
-  i32.shl
-  global.get $~lib/memory/__heap_base
-  i32.sub
-  i32.const 1
-  i32.shr_u
-  global.set $~lib/rt/itcms/threshold
-  i32.const 64
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/pinSpace
-  i32.const 96
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/toSpace
-  i32.const 176
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/fromSpace
-  i32.const 0
-  call $optional-typeparameters/TestConcrete<i32,i32>#constructor
-  global.set $optional-typeparameters/tConcrete
-  global.get $optional-typeparameters/tConcrete
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0
-  local.get $2
-  i32.const 1
-  i32.const 2
-  call $optional-typeparameters/TestConcrete<i32,i32>#test<i32>
-  drop
-  i32.const 0
-  call $optional-typeparameters/TestDerived<f64,f64>#constructor
-  global.set $optional-typeparameters/tDerived
-  global.get $optional-typeparameters/tDerived
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0
-  local.get $2
-  f64.const 1
-  f64.const 2
-  call $optional-typeparameters/TestDerived<f64,f64>#test<f64>
-  drop
-  i32.const 0
-  call $optional-typeparameters/TestMethodDerived<~lib/string/String>#constructor
-  global.set $optional-typeparameters/tMethodDerived
-  global.get $optional-typeparameters/tMethodDerived
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0
-  local.get $2
-  call $optional-typeparameters/TestMethodDerived<~lib/string/String>#test<~lib/array/Array<~lib/string/String>>
-  i32.const 0
-  call $optional-typeparameters/TestMethodDerived2<f64>#constructor
-  global.set $optional-typeparameters/tMethodDerived2
-  global.get $optional-typeparameters/tMethodDerived2
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0
-  local.get $2
-  global.get $optional-typeparameters/tMethodDerived
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store $0 offset=4
-  local.get $2
-  call $optional-typeparameters/TestMethodDerived2<f64>#foo
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
  )
  (func $optional-typeparameters/TestConcrete<i32,i32>#constructor (type $i32_=>_i32) (param $this i32) (result i32)
   (local $1 i32)

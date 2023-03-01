@@ -1107,7 +1107,6 @@
   unreachable
  )
  (func $~start (type $none_=>_none)
-  (local $0 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -1155,10 +1154,8 @@
   global.set $~lib/rt/itcms/fromSpace
   call $resolve-new/Foo#constructor
   global.set $resolve-new/foo
-  call $resolve-new/Foo#constructor
-  local.set $0
   global.get $~lib/memory/__stack_pointer
-  local.get $0
+  call $resolve-new/Foo#constructor
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 4
