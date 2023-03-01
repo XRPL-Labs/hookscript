@@ -15,15 +15,23 @@ import {
   tfCANONICAL
 } from "./encode";
 
+class TransactionBuffer extends ByteView {
+  @inline
+  constructor(underlying: ByteArray, offset: i32, length: i32, public feePtr: u32) {
+    super(underlying, offset, length)
+  }
+}
+
 @global @inline
 export function accept(msg: string = "", err: i64 = 0): void {
   $accept(msg, msg.length, err);
   // does not return
 }
 
-@global @inline
-export function emit(tx: EmitSpec): ByteArray {
-  let buf = new ByteArray(emit_buffer_size(tx.amount.isXrp() ? 248 : 288));
+@inline
+function prepare_payment(tx: EmitSpec): TransactionBuffer {
+  let amount = tx.amount!;
+  let buf = new ByteArray(emit_buffer_size(amount.isXrp() ? 248 : 288));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -35,21 +43,48 @@ export function emit(tx: EmitSpec): ByteArray {
   buf_out = _02_14_ENCODE_TAG_DST(buf_out, tx.destinationTag);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
   buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
-  if (tx.amount.isXrp())
-    buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, tx.amount.bytes);
+  if (amount.isXrp())
+    buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, amount.bytes);
   else
-    buf_out = _06_01_ENCODE_TL_AMOUNT(buf_out, tx.amount.bytes);
+    buf_out = _06_01_ENCODE_TL_AMOUNT(buf_out, amount.bytes);
   let fee_ptr = buf_out;
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
-  buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.account.bytes));
+  buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
 
   let offset = buf_out - changetype<u32>(buf);
-  etxn_details(new ByteView(buf, offset, buf.length - offset));
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
 
+@inline
+function prepare_account_delete(tx: EmitSpec): TransactionBuffer {
+  let buf = new ByteArray(emit_buffer_size(224));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttACCOUNT_DELETE);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
+function do_emit(prepared: TransactionBuffer): ByteArray {
+  etxn_details(prepared);
+
+  let buf = prepared.underlying;
   let fee = etxn_fee_base(buf);
-  _06_08_ENCODE_DROPS_FEE(fee_ptr, fee);
+  _06_08_ENCODE_DROPS_FEE(prepared.feePtr, fee);
 
   let emit_hash = new ByteArray(32);
   let emit_result = $emit(changetype<u32>(emit_hash), 32, changetype<u32>(buf), buf.length);
@@ -57,6 +92,29 @@ export function emit(tx: EmitSpec): ByteArray {
     rollback("", pack_error_code(emit_result));
 
   return emit_hash;
+}
+
+@global @inline
+export function emit(tx: EmitSpec): ByteArray {
+  let prepared: TransactionBuffer;
+  switch (tx.transactionType) {
+    case ttPAYMENT: // 0, i.e. default
+      prepared = prepare_payment(tx);
+      break;
+    case ttACCOUNT_DELETE:
+      prepared = prepare_account_delete(tx);
+      break;
+    default:
+      rollback("", pack_error_code(tx.transactionType));
+      return changetype<ByteArray>(0); // dead code
+  }
+
+  return do_emit(prepared);
+}
+
+@global @inline
+export function emit_payment(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_payment(tx));
 }
 
 @global @inline
