@@ -656,6 +656,25 @@ export function toUpper8(c: u32): u32 {
   }
 }
 
+// @ts-ignore: decorator
+@inline
+export function hexlifyNibble(n: u32): i32 {
+  return (n < 10) ? (CharCode._0 + n) : (CharCode.A + n - 10);
+}
+
+// @ts-ignore: decorator
+@inline
+export function unhexlifyNibble(h: i32): u32 {
+  if ((CharCode._0 <= h) && (h <= CharCode._9))
+    return h - CharCode._0;
+  else if ((CharCode.A <= h) && (h <= CharCode.Z))
+    return 10 + h - CharCode.A;
+  else if ((CharCode.a <= h) && (h <= CharCode.z))
+    return 10 + h - CharCode.a;
+  else
+    throw new Error("");
+}
+
 /** Parses a string to an integer (usually), using the specified radix. */
 export function strtol<T>(str: string, radix: i32 = 0): T {
   let len = str.length;

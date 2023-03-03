@@ -22,6 +22,9 @@ assert(!!"" == false);
 assert(!!"\0" == true);
 assert(!!"a" == true);
 
+assert(str.hexlify() == "68692C2049276D206120737472696E67");
+assert("6578616d706c652e636f6d".unhexlify() == "example.com");
+
 // assert(String.fromCharCode(0) == "\0");
 // assert(String.fromCharCode(65600) == "@");
 // assert(String.fromCharCode(54) == "6");

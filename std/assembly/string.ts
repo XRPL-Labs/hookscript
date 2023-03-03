@@ -3,7 +3,7 @@
 import { OBJECT, BLOCK_MAXSIZE, TOTAL_OVERHEAD } from "./rt/common";
 import { __equpto127 } from "./util/equpto";
 import { __raweq128 } from "./util/raweq";
-import { compareImpl, strtol, strtod, isSpace, isAscii, isFinalSigma, toLower8, toUpper8 } from "./util/string";
+import { compareImpl, strtol, strtod, isSpace, isAscii, isFinalSigma, toLower8, toUpper8, hexlifyNibble, unhexlifyNibble } from "./util/string";
 import { SPECIALS_UPPER, casemap, bsearch } from "./util/casemap";
 import { E_INDEXOUTOFRANGE, E_INVALIDLENGTH, E_UNPAIRED_SURROGATE } from "./util/error";
 import { idof } from "./builtins";
@@ -67,6 +67,38 @@ import { Array } from "./array";
     let dest = __copyupto64(changetype<usize>(out), this);
     __copyupto64(dest, other);
     return out;
+  }
+
+  @inline
+  hexlify(): String {
+    let len = this.length;
+    if (len > 256)
+      throw new Error("");
+
+    if (len == 0) return changetype<String>("");
+    let out = __new(2 * len, idof<String>());
+    for (let i = 0; max_iterations(256), i < len; ++i) {
+      let j = 2 * i, c = this[i], hi = c / 16, lo = c % 16;
+      store<u8>(out + j, hexlifyNibble(hi));
+      store<u8>(out + j + 1, hexlifyNibble(lo));
+    }
+    return changetype<String>(out);
+  }
+
+  @inline
+  unhexlify(): String {
+    let len = this.length;
+    if ((len > 512) || (len % 2))
+      throw new Error("");
+
+    if (len == 0) return changetype<String>("");
+    let outLen = len / 2;
+    let out = __new(outLen, idof<String>());
+    for (let i = 0; max_iterations(256), i < outLen; ++i) {
+      let j = 2 * i, hi = this[j], lo = this[j + 1];
+      store<u8>(out + i, 16 * unhexlifyNibble(hi) + unhexlifyNibble(lo));
+    }
+    return changetype<String>(out);
   }
 
   endsWith(search: String, end: i32 = String.MAX_LENGTH): bool {
