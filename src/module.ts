@@ -2566,9 +2566,9 @@ export class Module {
 
     // Tweak inlining limits based on optimization levels
     if (optimizeLevel >= 2 && shrinkLevel == 0) {
-      this.setAlwaysInlineMaxSize(12);
-      this.setFlexibleInlineMaxSize(70);
-      this.setOneCallerInlineMaxSize(200);
+      this.setAlwaysInlineMaxSize(48);
+      this.setFlexibleInlineMaxSize(280);
+      this.setOneCallerInlineMaxSize(800);
       this.setAllowInliningFunctionsWithLoops(optimizeLevel >= 3);
     } else {
       this.setAlwaysInlineMaxSize(

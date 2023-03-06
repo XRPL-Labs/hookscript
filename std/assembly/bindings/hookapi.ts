@@ -3,15 +3,24 @@ import {
   _02_02_ENCODE_FLAGS,
   _02_03_ENCODE_TAG_SRC,
   _02_04_ENCODE_SEQUENCE,
+  _02_11_ENCODE_TRANSFER_RATE,
   _02_14_ENCODE_TAG_DST,
   _02_26_ENCODE_FLS,
   _02_27_ENCODE_LLS,
+  _02_33_ENCODE_SET_FLAG,
+  _02_34_ENCODE_CLEAR_FLAG,
+  _04_01_ENCODE_EMAIL_HASH,
+  _05_07_ENCODE_WALLET_LOCATOR,
   _06_01_ENCODE_DROPS_AMOUNT,
   _06_01_ENCODE_TL_AMOUNT,
   _06_08_ENCODE_DROPS_FEE,
+  _07_02_ENCODE_MESSAGE_KEY,
   _07_03_ENCODE_SIGNING_PUBKEY_NULL,
+  _07_07_ENCODE_DOMAIN,
   _08_01_ENCODE_ACCOUNT_SRC,
   _08_03_ENCODE_ACCOUNT_DST,
+  _08_09_ENCODE_NFTOKENMINTER,
+  _16_16_ENCODE_TICK_SIZE,
   tfCANONICAL
 } from "./encode";
 
@@ -79,6 +88,76 @@ function prepare_account_delete(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_account_set(tx: EmitSpec): TransactionBuffer {
+  let len = 223;
+  let dl = tx.domain.length;
+  if (dl) {
+    if (dl > 127) {
+      rollback("", pack_error_code(dl));
+    } else {
+      len += dl + 2;
+    }
+  }
+
+  let emailHash = tx.emailHash;
+  if (emailHash) {
+    if (emailHash.length != 16) {
+      rollback("", pack_error_code(emailHash.length));
+    } else {
+      len += 17;
+    }
+  }
+
+  let keyView = tx.messageKey ? tx.messageKey!.bytes : null;
+  if (keyView)
+    len += 35;
+
+  let minterBytes = tx.nftokenMinter ? tx.nftokenMinter!.bytes : null;
+  if (minterBytes)
+    len += 22;
+
+  let walletLocator = tx.walletLocator;
+  if (walletLocator) {
+    if (walletLocator.length != 32) {
+      rollback("", pack_error_code(walletLocator.length));
+    } else {
+      len += 33;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttACCOUNT_SET);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_11_ENCODE_TRANSFER_RATE(buf_out, tx.transferRate);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _02_33_ENCODE_SET_FLAG(buf_out, <u32>(tx.setFlag));
+  buf_out = _02_34_ENCODE_CLEAR_FLAG(buf_out, <u32>(tx.clearFlag));
+  if (emailHash)
+    buf_out = _04_01_ENCODE_EMAIL_HASH(buf_out, changetype<u32>(emailHash));
+  if (walletLocator)
+    buf_out = _05_07_ENCODE_WALLET_LOCATOR(buf_out, changetype<u32>(walletLocator));
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  if (keyView)
+    buf_out = _07_02_ENCODE_MESSAGE_KEY(buf_out, changetype<u32>(keyView.underlying) + keyView.offset);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  if (dl)
+    buf_out = _07_07_ENCODE_DOMAIN(buf_out, changetype<u32>(tx.domain), dl);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (minterBytes)
+    buf_out = _08_09_ENCODE_NFTOKENMINTER(buf_out, changetype<u32>(minterBytes));
+  buf_out = _16_16_ENCODE_TICK_SIZE(buf_out, tx.tickSize);
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function do_emit(prepared: TransactionBuffer): ByteArray {
   etxn_details(prepared);
 
@@ -103,6 +182,9 @@ export function emit(tx: EmitSpec): ByteArray {
       break;
     case ttACCOUNT_DELETE:
       prepared = prepare_account_delete(tx);
+      break;
+    case ttACCOUNT_SET:
+      prepared = prepare_account_set(tx);
       break;
     default:
       rollback("", pack_error_code(tx.transactionType));

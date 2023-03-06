@@ -110,11 +110,3 @@ export class Tx {
     return <TransactionType>(a.toUShort());
   }
 }
-
-export class EmitSpec {
-  transactionType: TransactionType;
-  destination: Account | null;
-  amount: Amount | null;
-  sourceTag: u32;
-  destinationTag: u32;
-}

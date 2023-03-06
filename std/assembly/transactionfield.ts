@@ -45,3 +45,48 @@ export const enum PaymentField {
   SendMax = sfSendMax,
   DeliverMin = sfDeliverMin
 }
+
+export const enum AccountDeleteField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/accountdelete.html
+  Destination = sfDestination,
+  DestinationTag = sfDestinationTag,
+}
+
+export const enum AccountSetField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/accountset.html
+  ClearFlag = sfClearFlag,
+  Domain = sfDomain,
+  EmailHash = sfEmailHash,
+  MessageKey = sfMessageKey,
+  NFTokenMinter = sfNFTokenMinter,
+  SetFlag = sfSetFlag,
+  TransferRate = sfTransferRate,
+  TickSize = sfTickSize,
+  WalletLocator = sfWalletLocator
+}

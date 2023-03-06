@@ -21,8 +21,7 @@ export const amFEE: u8 = 8;
 @inline
 export function ENCODE_TL(buf: u32, tlamt: u32, uat: u8): u32 {
   store<u8>(buf, 0x60 + (uat & 0x0F));
-  for (let i = 0; max_iterations(6), i < 48; i += 8)
-    store<u64>(buf + i + 1, load<u64>(tlamt + i));
+  __rawcopy48(buf + 1, tlamt);
   return buf + 49;
 }
 
@@ -96,6 +95,28 @@ export function ENCODE_ACCOUNT(buf: u32, account_id: u32, uat: u8): u32 {
 }
 
 @inline
+export function ENCODE_SHORT_BLOB(buf: u32, ptr: u32, len: u32, tag: u8): u32 {
+  store<u8>(buf, tag);
+  store<u8>(buf + 1, len);
+  __rawcopyupto127(buf + 2, ptr, len);
+  return buf + 2 + len;
+}
+
+@inline
+export function ENCODE_HASH128(buf: u32, h: u32, uat: u8): u32 {
+  store<u8>(buf, 0x40 | uat);
+  __rawcopy16(buf + 1, h);
+  return buf + 17;
+}
+
+@inline
+export function ENCODE_HASH256(buf: u32, h: u32, uat: u8): u32 {
+  store<u8>(buf, 0x50 | uat);
+  __rawcopy32(buf + 1, h);
+  return buf + 33;
+}
+
+@inline
 export function _01_02_ENCODE_TT(buf: u32, tt: u8): u32 {
   return ENCODE_TT(buf, tt);
 }
@@ -116,6 +137,11 @@ export function _02_04_ENCODE_SEQUENCE(buf: u32, sequence: u32): u32 {
 }
 
 @inline
+export function _02_11_ENCODE_TRANSFER_RATE(buf: u32, rate: u32): u32 {
+  return ENCODE_UINT32_COMMON(buf, rate, 0xB);
+}
+
+@inline
 export function _02_14_ENCODE_TAG_DST(buf: u32, tag: u32): u32 {
   return ENCODE_UINT32_COMMON(buf, tag, 0xE);
 }
@@ -128,6 +154,26 @@ export function _02_26_ENCODE_FLS(buf: u32, fls: u32): u32 {
 @inline
 export function _02_27_ENCODE_LLS(buf: u32, lls: u32): u32 {
   return ENCODE_UINT32_UNCOMMON(buf, lls, 0x1B);
+}
+
+@inline
+export function _02_33_ENCODE_SET_FLAG(buf: u32, fl: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, fl, 0x21);
+}
+
+@inline
+export function _02_34_ENCODE_CLEAR_FLAG(buf: u32, fl: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, fl, 0x22);
+}
+
+@inline
+export function _04_01_ENCODE_EMAIL_HASH(buf: u32, h: u32): u32 {
+  return ENCODE_HASH128(buf, h, 0x01);
+}
+
+@inline
+export function _05_07_ENCODE_WALLET_LOCATOR(buf: u32, h: u32): u32 {
+  return ENCODE_HASH256(buf, h, 0x07);
 }
 
 @inline
@@ -146,6 +192,13 @@ export function _06_08_ENCODE_DROPS_FEE(buf: u32, drops: u64): u32 {
 }
 
 @inline
+export function _07_02_ENCODE_MESSAGE_KEY(buf: u32, key: u32): u32 {
+  store<u16>(buf, 0x2172);
+  __rawcopy33(buf + 2, key);
+  return buf + 35;
+}
+
+@inline
 export function _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf: u32): u32 {
   store<u8>(buf, 0x73);
   store<u8>(buf + 1, 0x21);
@@ -158,6 +211,11 @@ export function _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf: u32): u32 {
 }
 
 @inline
+export function _07_07_ENCODE_DOMAIN(buf: u32, ptr: u32, len: u32): u32 {
+  return ENCODE_SHORT_BLOB(buf, ptr, len, 0x77);
+}
+
+@inline
 export function _08_01_ENCODE_ACCOUNT_SRC(buf: u32, account_id: u32): u32 {
   return ENCODE_ACCOUNT(buf, account_id, atACCOUNT);
 }
@@ -165,4 +223,16 @@ export function _08_01_ENCODE_ACCOUNT_SRC(buf: u32, account_id: u32): u32 {
 @inline
 export function _08_03_ENCODE_ACCOUNT_DST(buf: u32, account_id: u32): u32 {
   return ENCODE_ACCOUNT(buf, account_id, atDESTINATION);
+}
+
+@inline
+export function _08_09_ENCODE_NFTOKENMINTER(buf: u32, accid: u32): u32 {
+  return ENCODE_SHORT_BLOB(buf, accid, 20, 0x89);
+}
+
+@inline
+export function _16_16_ENCODE_TICK_SIZE(buf: u32, ts: u8): u32 {
+  let hi = <u32>ts << 24;
+  store<u32>(buf, 0x101000 | hi);
+  return buf + 4;
 }
