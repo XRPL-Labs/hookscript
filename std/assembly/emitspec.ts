@@ -31,4 +31,6 @@ export class EmitSpec {
   sendMax: Amount | null;
   expiration: LedgerDate | null;
   invoiceID: InvoiceID | null;
+  checkID: ByteArray | null;
+  deliverMin: Amount | null;
 }

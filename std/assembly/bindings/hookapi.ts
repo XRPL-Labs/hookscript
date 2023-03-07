@@ -13,11 +13,14 @@ import {
   _02_34_ENCODE_CLEAR_FLAG,
   _04_01_ENCODE_EMAIL_HASH,
   _05_07_ENCODE_WALLET_LOCATOR,
+  _05_24_ENCODE_CHECK_ID,
   _06_01_ENCODE_DROPS_AMOUNT,
   _06_01_ENCODE_TL_AMOUNT,
   _06_08_ENCODE_DROPS_FEE,
   _06_09_ENCODE_DROPS_SEND_MAX,
   _06_09_ENCODE_TL_SEND_MAX,
+  _06_10_ENCODE_DROPS_DELIVER_MIN,
+  _06_10_ENCODE_TL_DELIVER_MIN,
   _07_02_ENCODE_MESSAGE_KEY,
   _07_03_ENCODE_SIGNING_PUBKEY_NULL,
   _07_07_ENCODE_DOMAIN,
@@ -162,6 +165,58 @@ function prepare_account_set(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_check_cash(tx: EmitSpec): TransactionBuffer {
+  let checkID = tx.checkID!;
+  if (checkID.length != 32)
+    rollback("", pack_error_code(checkID.length));
+
+  let len = 241;
+  let usedAmount: Amount;
+  let isDeliverMin = false;
+  if (tx.amount) {
+    usedAmount = tx.amount!;
+    if (tx.deliverMin)
+      rollback("", INVALID_ARGUMENT);
+  } else {
+    usedAmount = tx.deliverMin!;
+    isDeliverMin = true;
+  }
+
+  len += (usedAmount.isXrp() ? 9 : 49);
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttCHECK_CASH);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _05_24_ENCODE_CHECK_ID(buf_out, changetype<u32>(checkID));
+  if (!isDeliverMin) {
+    if (usedAmount.isXrp())
+      buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, usedAmount.bytes);
+    else
+      buf_out = _06_01_ENCODE_TL_AMOUNT(buf_out, usedAmount.bytes);
+  }
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  if (isDeliverMin) {
+    if (usedAmount.isXrp())
+      buf_out = _06_10_ENCODE_DROPS_DELIVER_MIN(buf_out, usedAmount.bytes);
+    else
+      buf_out = _06_10_ENCODE_TL_DELIVER_MIN(buf_out, usedAmount.bytes);
+  }
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_check_create(tx: EmitSpec): TransactionBuffer {
   let amount = tx.sendMax!;
   let len = amount.isXrp() ? 243 : 283;
@@ -229,6 +284,9 @@ export function emit(tx: EmitSpec): ByteArray {
       break;
     case ttACCOUNT_SET:
       prepared = prepare_account_set(tx);
+      break;
+    case ttCHECK_CASH:
+      prepared = prepare_check_cash(tx);
       break;
     case ttCHECK_CREATE:
       prepared = prepare_check_create(tx);
