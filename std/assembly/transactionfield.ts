@@ -90,3 +90,25 @@ export const enum AccountSetField {
   TickSize = sfTickSize,
   WalletLocator = sfWalletLocator
 }
+
+export const enum CheckCreateField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/checkcreate.html
+  Destination = sfDestination,
+  SendMax = sfSendMax,
+  DestinationTag = sfDestinationTag,
+  Expiration = sfExpiration,
+  InvoiceID = sfInvoiceID
+}

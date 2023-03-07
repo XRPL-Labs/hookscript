@@ -137,6 +137,11 @@ export function _02_04_ENCODE_SEQUENCE(buf: u32, sequence: u32): u32 {
 }
 
 @inline
+export function _02_10_ENCODE_EXPIRATION(buf: u32, date: u32): u32 {
+  return ENCODE_UINT32_COMMON(buf, date, 0xA);
+}
+
+@inline
 export function _02_11_ENCODE_TRANSFER_RATE(buf: u32, rate: u32): u32 {
   return ENCODE_UINT32_COMMON(buf, rate, 0xB);
 }
@@ -144,6 +149,13 @@ export function _02_11_ENCODE_TRANSFER_RATE(buf: u32, rate: u32): u32 {
 @inline
 export function _02_14_ENCODE_TAG_DST(buf: u32, tag: u32): u32 {
   return ENCODE_UINT32_COMMON(buf, tag, 0xE);
+}
+
+@inline
+export function _02_17_ENCODE_INVOICE_ID(buf: u32, iid: u32): u32 {
+  store<u16>(buf, 0x1150);
+  __rawcopy32(buf + 2, iid);
+  return buf + 34;
 }
 
 @inline
@@ -189,6 +201,16 @@ export function _06_01_ENCODE_TL_AMOUNT(buf: u32, drops: ByteArray): u32 {
 @inline
 export function _06_08_ENCODE_DROPS_FEE(buf: u32, drops: u64): u32 {
   return ENCODE_DROPS(buf, drops, amFEE);
+}
+
+@inline
+export function _06_09_ENCODE_DROPS_SEND_MAX(buf: u32, drops: ByteArray): u32 {
+  return ENCODE_DROPS_ARRAY(buf, drops, 9);
+}
+
+@inline
+export function _06_09_ENCODE_TL_SEND_MAX(buf: u32, drops: ByteArray): u32 {
+  return ENCODE_TL(buf, changetype<u32>(drops), 9);
 }
 
 @inline

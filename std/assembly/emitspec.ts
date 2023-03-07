@@ -28,4 +28,7 @@ export class EmitSpec {
   transferRate: u32;
   tickSize: u8;
   walletLocator: ByteArray | null;
+  sendMax: Amount | null;
+  expiration: LedgerDate | null;
+  invoiceID: InvoiceID | null;
 }
