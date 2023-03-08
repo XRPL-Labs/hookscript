@@ -177,6 +177,15 @@
     ],
     "type": "s"
   },
+  "disableStartGeneration": {
+    "category": "Features",
+    "description": [
+      "Disable start function generation, which is enabled by default. ",
+      "Useful for hooks"
+    ],
+    "type": "b",
+    "default" : false
+  },
   "runtime": {
     "category": "Features",
     "description": [

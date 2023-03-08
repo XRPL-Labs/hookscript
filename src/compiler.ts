@@ -250,6 +250,8 @@ export class Options {
   sourceMap: bool = false;
   /** If given, exports the start function instead of calling it implicitly. */
   exportStart: string | null = null;
+  /** If given, start function is not generated */
+  disableStartGeneration: bool = false;
   /** Static memory start offset. */
   memoryBase: u32 = 0;
   /** Static table start offset. */
@@ -675,9 +677,10 @@ export class Compiler extends DiagnosticEmitter {
     // compile the start function if not empty or if explicitly requested
     let startIsEmpty = !startFunctionBody.length;
     let exportStart = options.exportStart;
-    if (!startIsEmpty || exportStart != null) {
+    let generateStart = !options.disableStartGeneration;
+    if ((!startIsEmpty && generateStart) || exportStart != null) {
       let signature = startFunctionInstance.signature;
-      if (!startIsEmpty && exportStart != null) {
+      if (!startIsEmpty && generateStart && exportStart != null) {
         module.addGlobal(BuiltinNames.started, TypeRef.I32, true, module.i32(0));
         startFunctionBody.unshift(
           module.global_set(BuiltinNames.started, module.i32(1))
@@ -2478,6 +2481,7 @@ export class Compiler extends DiagnosticEmitter {
     let continueLabel = `for-continue|${label}`;
     flow.continueLabel = continueLabel;
     let loopLabel = `for-loop|${label}`;
+    let guardLabel = `for-loop-guard|${label}`;
 
     // Compile initializer if present
     let initializer = statement.initializer;
@@ -2520,10 +2524,18 @@ export class Compiler extends DiagnosticEmitter {
     }
 
     // From here on condition is either always true or unknown
-
+    
+    // If there is a guard call place it at the beginning of the loop
+    let loopStmts = new Array<ExpressionRef>();
+    let body = statement.body;
+    let guardStmt = this.findGuardCallStatement((<BlockStatement>body).statements);
+    if (guardStmt) {
+      loopStmts.push(
+        module.block(guardLabel, [guardStmt])
+      );
+    }
     // Store condition result in a temp
     let tcond = flow.getTempLocal(Type.bool);
-    let loopStmts = new Array<ExpressionRef>();
     loopStmts.push(
       module.local_set(tcond.index, condExpr, false) // bool
     );
@@ -2536,7 +2548,6 @@ export class Compiler extends DiagnosticEmitter {
     bodyFlow.inheritNonnullIfTrue(condExpr);
     this.currentFlow = bodyFlow;
     let bodyStmts = new Array<ExpressionRef>();
-    let body = statement.body;
     if (body.kind == NodeKind.Block) {
       this.compileStatements((<BlockStatement>body).statements, false, bodyStmts);
     } else {
@@ -2605,6 +2616,27 @@ export class Compiler extends DiagnosticEmitter {
     }
     this.currentFlow = outerFlow;
     return module.flatten(stmts);
+  }
+
+  private findGuardCallStatement(
+    statements: Statement[]
+  ): ExpressionRef {
+    if (!statements || statements.length === 0) {
+      return 0;
+    }
+    if (statements[0].expression && 
+        statements[0].expression.expression &&
+        statements[0].expression.expression.text &&
+        statements[0].expression.expression.text === 'max_iterations') {
+      let stmts = new Array<ExpressionRef>();
+      this.compileStatements([statements[0]], false, stmts);
+      if (stmts.length > 0) {
+        //remove guard call from loop body
+        statements.shift();
+        return stmts[0];
+      }
+    }
+    return 0;
   }
 
   private compileForOfStatement(
@@ -3163,6 +3195,7 @@ export class Compiler extends DiagnosticEmitter {
     flow.breakLabel = breakLabel;
     let continueLabel = `while-continue|${label}`;
     flow.continueLabel = continueLabel;
+    let guardLabel = `while-guard|${label}`;
 
     // Precompute the condition
     let condFlow = flow.fork();
@@ -3186,12 +3219,22 @@ export class Compiler extends DiagnosticEmitter {
 
     // From here on condition is either always true or unknown
 
+    // If there is a guard call place it at the beginning of the loop
+    let body = statement.body;
+    let guardStmt = this.findGuardCallStatement((<BlockStatement>body).statements);
+    if (guardStmt) {
+      stmts.push(
+        module.block(guardLabel, [guardStmt])
+      );
+    }
+
     // Store condition result in a temp
     let tcond = flow.getTempLocal(Type.bool);
     stmts.push(
       module.local_set(tcond.index, condExpr, false) // bool
     );
 
+   
     flow.inherit(condFlow); // always executes
     this.currentFlow = flow;
 
@@ -3200,7 +3243,6 @@ export class Compiler extends DiagnosticEmitter {
     bodyFlow.inheritNonnullIfTrue(condExpr);
     this.currentFlow = bodyFlow;
     let bodyStmts = new Array<ExpressionRef>();
-    let body = statement.body;
     if (body.kind == NodeKind.Block) {
       this.compileStatements((<BlockStatement>body).statements, false, bodyStmts);
     } else {

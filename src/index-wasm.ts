@@ -144,6 +144,11 @@ export function setExportStart(options: Options, exportStart: string | null): vo
   options.exportStart = exportStart;
 }
 
+/** Sets the `generateStart` option. */
+export function setDisableStartGeneration(options: Options, disableStartGeneration: bool): void {
+  options.disableStartGeneration = disableStartGeneration;
+}
+
 /** Sets the `noUnsafe` option. */
 export function setNoUnsafe(options: Options, noUnsafe: bool): void {
   options.noUnsafe = noUnsafe;
