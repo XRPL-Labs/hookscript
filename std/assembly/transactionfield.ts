@@ -91,6 +91,24 @@ export const enum AccountSetField {
   WalletLocator = sfWalletLocator
 }
 
+export const enum CheckCancelField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/checkcancel.html
+  CheckID = sfCheckID
+}
+
 export const enum CheckCashField {
   Account = sfAccount,
   TransactionType = sfTransactionType,

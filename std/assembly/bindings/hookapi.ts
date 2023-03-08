@@ -165,6 +165,32 @@ function prepare_account_set(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_check_cancel(tx: EmitSpec): TransactionBuffer {
+  let checkID = tx.checkID!;
+  if (checkID.length != 32)
+    rollback("", pack_error_code(checkID.length));
+
+  let buf = new ByteArray(emit_buffer_size(241));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttCHECK_CANCEL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _05_24_ENCODE_CHECK_ID(buf_out, changetype<u32>(checkID));
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_check_cash(tx: EmitSpec): TransactionBuffer {
   let checkID = tx.checkID!;
   if (checkID.length != 32)
@@ -284,6 +310,9 @@ export function emit(tx: EmitSpec): ByteArray {
       break;
     case ttACCOUNT_SET:
       prepared = prepare_account_set(tx);
+      break;
+    case ttCHECK_CANCEL:
+      prepared = prepare_check_cancel(tx);
       break;
     case ttCHECK_CASH:
       prepared = prepare_check_cash(tx);
