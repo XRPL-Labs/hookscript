@@ -265,6 +265,16 @@ export function _08_03_ENCODE_ACCOUNT_DST(buf: u32, account_id: u32): u32 {
 }
 
 @inline
+export function _08_05_ENCODE_ACCOUNT_AUTHORIZE(buf: u32, account_id: u32): u32 {
+  return ENCODE_ACCOUNT(buf, account_id, 0x05);
+}
+
+@inline
+export function _08_06_ENCODE_ACCOUNT_UNAUTHORIZE(buf: u32, account_id: u32): u32 {
+  return ENCODE_ACCOUNT(buf, account_id, 0x06);
+}
+
+@inline
 export function _08_09_ENCODE_NFTOKENMINTER(buf: u32, accid: u32): u32 {
   return ENCODE_SHORT_BLOB(buf, accid, 20, 0x89);
 }

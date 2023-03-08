@@ -149,3 +149,22 @@ export const enum CheckCreateField {
   Expiration = sfExpiration,
   InvoiceID = sfInvoiceID
 }
+
+export const enum DepositPreauthField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/depositpreauth.html
+  Authorize = sfAuthorize,
+  Unauthorize = sfUnauthorize
+}

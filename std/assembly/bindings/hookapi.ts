@@ -26,6 +26,8 @@ import {
   _07_07_ENCODE_DOMAIN,
   _08_01_ENCODE_ACCOUNT_SRC,
   _08_03_ENCODE_ACCOUNT_DST,
+  _08_05_ENCODE_ACCOUNT_AUTHORIZE,
+  _08_06_ENCODE_ACCOUNT_UNAUTHORIZE,
   _08_09_ENCODE_NFTOKENMINTER,
   _16_16_ENCODE_TICK_SIZE,
   tfCANONICAL
@@ -283,6 +285,43 @@ function prepare_check_create(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_deposit_preauth(tx: EmitSpec): TransactionBuffer {
+  let usedAccount: Account;
+  let isAuthorize = true;
+  if (tx.authorize) {
+    usedAccount = tx.authorize!;
+    if (tx.unauthorize)
+      rollback("", INVALID_ARGUMENT);
+  } else {
+    usedAccount = tx.unauthorize!;
+    isAuthorize = false;
+  }
+
+  let buf = new ByteArray(emit_buffer_size(229));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttDEPOSIT_PREAUTH);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  let usedBytes = changetype<u32>(usedAccount.bytes);
+  if (isAuthorize)
+    buf_out = _08_05_ENCODE_ACCOUNT_AUTHORIZE(buf_out, usedBytes);
+  else
+    buf_out = _08_06_ENCODE_ACCOUNT_UNAUTHORIZE(buf_out, usedBytes);
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function do_emit(prepared: TransactionBuffer): ByteArray {
   etxn_details(prepared);
 
@@ -319,6 +358,9 @@ export function emit(tx: EmitSpec): ByteArray {
       break;
     case ttCHECK_CREATE:
       prepared = prepare_check_create(tx);
+      break;
+    case ttDEPOSIT_PREAUTH:
+      prepared = prepare_deposit_preauth(tx);
       break;
     default:
       rollback("", pack_error_code(tx.transactionType));

@@ -33,4 +33,6 @@ export class EmitSpec {
   invoiceID: InvoiceID | null;
   checkID: ByteArray | null;
   deliverMin: Amount | null;
+  authorize: Account | null;
+  unauthorize: Account | null;
 }
