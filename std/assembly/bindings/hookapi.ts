@@ -1,5 +1,6 @@
 import {
   _01_02_ENCODE_TT,
+  _01_04_ENCODE_TRANSFER_FEE,
   _02_02_ENCODE_FLAGS,
   _02_03_ENCODE_TAG_SRC,
   _02_04_ENCODE_SEQUENCE,
@@ -13,6 +14,7 @@ import {
   _02_34_ENCODE_CLEAR_FLAG,
   _02_36_ENCODE_CANCEL_AFTER,
   _02_37_ENCODE_FINISH_AFTER,
+  _02_42_ENCODE_NFTOKEN_TAXON,
   _04_01_ENCODE_EMAIL_HASH,
   _05_07_ENCODE_WALLET_LOCATOR,
   _05_24_ENCODE_CHECK_ID,
@@ -25,10 +27,12 @@ import {
   _06_10_ENCODE_TL_DELIVER_MIN,
   _07_02_ENCODE_MESSAGE_KEY,
   _07_03_ENCODE_SIGNING_PUBKEY_NULL,
+  _07_05_ENCODE_URI,
   _07_07_ENCODE_DOMAIN,
   _07_17_ENCODE_CONDITION,
   _08_01_ENCODE_ACCOUNT_SRC,
   _08_03_ENCODE_ACCOUNT_DST,
+  _08_04_ENCODE_ACCOUNT_ISSUER,
   _08_05_ENCODE_ACCOUNT_AUTHORIZE,
   _08_06_ENCODE_ACCOUNT_UNAUTHORIZE,
   _08_09_ENCODE_NFTOKENMINTER,
@@ -374,6 +378,51 @@ function prepare_escrow_create(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
+  let len = 213;
+  let issuerBytes = tx.issuer ? tx.issuer!.bytes : null;
+  if (issuerBytes)
+    len += 22;
+
+  if (tx.transferFee)
+    len += 3;
+
+  let ul = tx.domain.length;
+  if (ul) {
+    if (ul > 127) {
+      rollback("", pack_error_code(ul));
+    } else {
+      len += ul + 2;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttNFTOKEN_MINT);
+  if (tx.transferFee)
+    buf_out = _01_04_ENCODE_TRANSFER_FEE(buf_out, tx.transferFee);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _02_42_ENCODE_NFTOKEN_TAXON(buf_out, tx.nftokenTaxon);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  if (ul)
+    buf_out = _07_05_ENCODE_URI(buf_out, changetype<u32>(tx.uri), ul);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (issuerBytes)
+    buf_out = _08_04_ENCODE_ACCOUNT_ISSUER(buf_out, changetype<u32>(issuerBytes));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function do_emit(prepared: TransactionBuffer): ByteArray {
   etxn_details(prepared);
 
@@ -416,6 +465,9 @@ export function emit(tx: EmitSpec): ByteArray {
       break;
     case ttESCROW_CREATE:
       prepared = prepare_escrow_create(tx);
+      break;
+    case ttNFTOKEN_MINT:
+      prepared = prepare_nftoken_mint(tx);
       break;
     default:
       rollback("", pack_error_code(tx.transactionType));

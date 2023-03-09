@@ -191,3 +191,24 @@ export const enum EscrowCreateField {
   Condition = sfCondition,
   DestinationTag = sfDestinationTag
 }
+
+export const enum NFTokenMintField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/nftokenmint.html
+  NFTokenTaxon = sfNFTokenTaxon,
+  Issuer = sfIssuer,
+  TransferFee = sfTransferFee,
+  URI = sfURI
+}

@@ -122,6 +122,14 @@ export function _01_02_ENCODE_TT(buf: u32, tt: u8): u32 {
 }
 
 @inline
+export function _01_04_ENCODE_TRANSFER_FEE(buf: u32, tf: u16): u32 {
+  store<u8>(buf, 0x14);
+  store<u8>(buf + 1, (tf >> 8) & 0xFF);
+  store<u8>(buf + 2, tf & 0xFF);
+  return buf + 3;
+}
+
+@inline
 export function _02_02_ENCODE_FLAGS(buf: u32, tag: u32): u32 {
   return ENCODE_UINT32_COMMON(buf, tag, 0x2);
 }
@@ -186,6 +194,11 @@ export function _02_36_ENCODE_CANCEL_AFTER(buf: u32, d: u32): u32 {
 @inline
 export function _02_37_ENCODE_FINISH_AFTER(buf: u32, d: u32): u32 {
   return ENCODE_UINT32_UNCOMMON(buf, d, 0x25);
+}
+
+@inline
+export function _02_42_ENCODE_NFTOKEN_TAXON(buf: u32, t: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, t, 0x2A);
 }
 
 @inline
@@ -259,6 +272,11 @@ export function _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf: u32): u32 {
 }
 
 @inline
+export function _07_05_ENCODE_URI(buf: u32, ptr: u32, len: u32): u32 {
+  return ENCODE_SHORT_BLOB(buf, ptr, len, 0x75);
+}
+
+@inline
 export function _07_07_ENCODE_DOMAIN(buf: u32, ptr: u32, len: u32): u32 {
   return ENCODE_SHORT_BLOB(buf, ptr, len, 0x77);
 }
@@ -279,6 +297,11 @@ export function _08_01_ENCODE_ACCOUNT_SRC(buf: u32, account_id: u32): u32 {
 @inline
 export function _08_03_ENCODE_ACCOUNT_DST(buf: u32, account_id: u32): u32 {
   return ENCODE_ACCOUNT(buf, account_id, atDESTINATION);
+}
+
+@inline
+export function _08_04_ENCODE_ACCOUNT_ISSUER(buf: u32, account_id: u32): u32 {
+  return ENCODE_ACCOUNT(buf, account_id, 0x04);
 }
 
 @inline

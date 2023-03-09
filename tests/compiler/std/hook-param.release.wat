@@ -194,7 +194,7 @@
    local.get $1
    i64.const 255
    i64.and
-   i64.const 13270780160
+   i64.const 14143195392
    i64.or
    call $~lib/builtins/$rollback
    drop
