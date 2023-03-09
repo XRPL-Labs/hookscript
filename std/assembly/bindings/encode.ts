@@ -179,6 +179,16 @@ export function _02_34_ENCODE_CLEAR_FLAG(buf: u32, fl: u32): u32 {
 }
 
 @inline
+export function _02_36_ENCODE_CANCEL_AFTER(buf: u32, d: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, d, 0x24);
+}
+
+@inline
+export function _02_37_ENCODE_FINISH_AFTER(buf: u32, d: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, d, 0x25);
+}
+
+@inline
 export function _04_01_ENCODE_EMAIL_HASH(buf: u32, h: u32): u32 {
   return ENCODE_HASH128(buf, h, 0x01);
 }
@@ -239,8 +249,7 @@ export function _07_02_ENCODE_MESSAGE_KEY(buf: u32, key: u32): u32 {
 
 @inline
 export function _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf: u32): u32 {
-  store<u8>(buf, 0x73);
-  store<u8>(buf + 1, 0x21);
+  store<u16>(buf, 0x2173);
   store<u64>(buf + 2, 0);
   store<u64>(buf + 10, 0);
   store<u64>(buf + 18, 0);
@@ -252,6 +261,14 @@ export function _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf: u32): u32 {
 @inline
 export function _07_07_ENCODE_DOMAIN(buf: u32, ptr: u32, len: u32): u32 {
   return ENCODE_SHORT_BLOB(buf, ptr, len, 0x77);
+}
+
+@inline
+export function _07_17_ENCODE_CONDITION(buf: u32, ptr: u32): u32 {
+  store<u16>(buf, 0x1170);
+  store<u8>(buf + 2, 0x27);
+  __rawcopy39(buf + 3, ptr);
+  return buf + 42;
 }
 
 @inline

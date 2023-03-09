@@ -168,3 +168,26 @@ export const enum DepositPreauthField {
   Authorize = sfAuthorize,
   Unauthorize = sfUnauthorize
 }
+
+export const enum EscrowCreateField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/escrowcreate.html
+  Amount = sfAmount,
+  Destination = sfDestination,
+  CancelAfter = sfCancelAfter,
+  FinishAfter = sfFinishAfter,
+  Condition = sfCondition,
+  DestinationTag = sfDestinationTag
+}

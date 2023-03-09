@@ -11,6 +11,8 @@ import {
   _02_27_ENCODE_LLS,
   _02_33_ENCODE_SET_FLAG,
   _02_34_ENCODE_CLEAR_FLAG,
+  _02_36_ENCODE_CANCEL_AFTER,
+  _02_37_ENCODE_FINISH_AFTER,
   _04_01_ENCODE_EMAIL_HASH,
   _05_07_ENCODE_WALLET_LOCATOR,
   _05_24_ENCODE_CHECK_ID,
@@ -24,6 +26,7 @@ import {
   _07_02_ENCODE_MESSAGE_KEY,
   _07_03_ENCODE_SIGNING_PUBKEY_NULL,
   _07_07_ENCODE_DOMAIN,
+  _07_17_ENCODE_CONDITION,
   _08_01_ENCODE_ACCOUNT_SRC,
   _08_03_ENCODE_ACCOUNT_DST,
   _08_05_ENCODE_ACCOUNT_AUTHORIZE,
@@ -322,6 +325,55 @@ function prepare_deposit_preauth(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_escrow_create(tx: EmitSpec): TransactionBuffer {
+  let amount = tx.amount!;
+  let len = amount.isXrp() ? 243 : 283;
+  if (tx.cancelAfter)
+    len += 6;
+
+  if (tx.finishAfter)
+    len += 6;
+
+  if (tx.condition) {
+    let l = tx.condition!.length;
+    if (l != 39)
+      rollback("", pack_error_code(l));
+
+    len += 42;
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttESCROW_CREATE);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_14_ENCODE_TAG_DST(buf_out, tx.destinationTag);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  if (tx.cancelAfter)
+    buf_out = _02_36_ENCODE_CANCEL_AFTER(buf_out, <u32>(tx.cancelAfter!.getLedgerTime()));
+  if (tx.finishAfter)
+    buf_out = _02_37_ENCODE_FINISH_AFTER(buf_out, <u32>(tx.finishAfter!.getLedgerTime()));
+  if (amount.isXrp())
+    buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, amount.bytes);
+  else
+    buf_out = _06_01_ENCODE_TL_AMOUNT(buf_out, amount.bytes);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  if (tx.condition)
+    buf_out = _07_17_ENCODE_CONDITION(buf_out, changetype<u32>(tx.condition));
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function do_emit(prepared: TransactionBuffer): ByteArray {
   etxn_details(prepared);
 
@@ -361,6 +413,9 @@ export function emit(tx: EmitSpec): ByteArray {
       break;
     case ttDEPOSIT_PREAUTH:
       prepared = prepare_deposit_preauth(tx);
+      break;
+    case ttESCROW_CREATE:
+      prepared = prepare_escrow_create(tx);
       break;
     default:
       rollback("", pack_error_code(tx.transactionType));

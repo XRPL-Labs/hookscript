@@ -35,4 +35,7 @@ export class EmitSpec {
   deliverMin: Amount | null;
   authorize: Account | null;
   unauthorize: Account | null;
+  cancelAfter: LedgerDate | null;
+  finishAfter: LedgerDate | null;
+  condition: ByteArray | null;
 }
