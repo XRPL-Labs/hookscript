@@ -143,7 +143,10 @@ async function runTest(basename) {
   // Makes sure to reset the environment after
   function prepareResult(code, message = null) {
     if (v8_no_flags) v8.setFlagsFromString(v8_no_flags);
-    if (!args.createBinary) fs.unlink(path.join(basedir, basename + ".debug.wasm"), err => { /* nop */ });
+    if (!args.createBinary) {
+      fs.unlink(path.join(basedir, basename + ".debug.wasm"), err => { /* nop */ });
+      fs.unlink(path.join(basedir, basename + ".release.wasm"), err => { /* nop */ });
+    }
     return { code, message };
   }
 
@@ -266,9 +269,9 @@ async function runTest(basename) {
     const cmd = [
       basename + ".ts",
       "--baseDir", basedir,
-      "--outFile", // -> stdout
       "-O"
     ];
+    cmd.push("--outFile", basename + ".release.wasm");
     if (asc_flags) cmd.push(...asc_flags);
     if (args.create) cmd.push("--textFile", basename + ".release.wat");
     if (args.noColors) cmd.push("--noColors");
@@ -285,7 +288,7 @@ async function runTest(basename) {
     compileRelease.end(SUCCESS);
 
     const debugBuffer = fs.readFileSync(path.join(basedir, basename + ".debug.wasm"));
-    const releaseBuffer = stdout.toBuffer();
+    const releaseBuffer = fs.readFileSync(path.join(basedir, basename + ".release.wasm"));
     const instantiateDebug = section("instantiate debug");
     if (config.skipInstantiate) {
       instantiateDebug.end(SKIPPED);
