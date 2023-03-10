@@ -332,6 +332,29 @@ function prepare_deposit_preauth(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_escrow_cancel(tx: EmitSpec): TransactionBuffer {
+  let buf = new ByteArray(emit_buffer_size(235));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttESCROW_CANCEL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_25_ENCODE_OFFER_SEQUENCE(buf_out, tx.offerSequence);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(tx.owner!.bytes));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_escrow_create(tx: EmitSpec): TransactionBuffer {
   let amount = tx.amount!;
   let len = amount.isXrp() ? 243 : 283;
@@ -509,6 +532,9 @@ export function emit(tx: EmitSpec): ByteArray {
       break;
     case ttDEPOSIT_PREAUTH:
       prepared = prepare_deposit_preauth(tx);
+      break;
+    case ttESCROW_CANCEL:
+      prepared = prepare_escrow_cancel(tx);
       break;
     case ttESCROW_CREATE:
       prepared = prepare_escrow_create(tx);
