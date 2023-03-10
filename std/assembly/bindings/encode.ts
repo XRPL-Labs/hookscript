@@ -167,6 +167,11 @@ export function _02_17_ENCODE_INVOICE_ID(buf: u32, iid: u32): u32 {
 }
 
 @inline
+export function _02_25_ENCODE_OFFER_SEQUENCE(buf: u32, seq: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, seq, 0x19);
+}
+
+@inline
 export function _02_26_ENCODE_FLS(buf: u32, fls: u32): u32 {
   return ENCODE_UINT32_UNCOMMON(buf, fls, 0x1A);
 }
@@ -282,6 +287,14 @@ export function _07_07_ENCODE_DOMAIN(buf: u32, ptr: u32, len: u32): u32 {
 }
 
 @inline
+export function _07_16_ENCODE_FULFILLMENT(buf: u32, ptr: u32): u32 {
+  store<u16>(buf, 0x1070);
+  store<u8>(buf + 2, 0x24);
+  __rawcopy36(buf + 3, ptr);
+  return buf + 39;
+}
+
+@inline
 export function _07_17_ENCODE_CONDITION(buf: u32, ptr: u32): u32 {
   store<u16>(buf, 0x1170);
   store<u8>(buf + 2, 0x27);
@@ -292,6 +305,11 @@ export function _07_17_ENCODE_CONDITION(buf: u32, ptr: u32): u32 {
 @inline
 export function _08_01_ENCODE_ACCOUNT_SRC(buf: u32, account_id: u32): u32 {
   return ENCODE_ACCOUNT(buf, account_id, atACCOUNT);
+}
+
+@inline
+export function _08_02_ENCODE_ACCOUNT_OWNER(buf: u32, account_id: u32): u32 {
+  return ENCODE_ACCOUNT(buf, account_id, 0x02);
 }
 
 @inline

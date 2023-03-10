@@ -8,6 +8,7 @@ import {
   _02_11_ENCODE_TRANSFER_RATE,
   _02_14_ENCODE_TAG_DST,
   _02_17_ENCODE_INVOICE_ID,
+  _02_25_ENCODE_OFFER_SEQUENCE,
   _02_26_ENCODE_FLS,
   _02_27_ENCODE_LLS,
   _02_33_ENCODE_SET_FLAG,
@@ -29,8 +30,10 @@ import {
   _07_03_ENCODE_SIGNING_PUBKEY_NULL,
   _07_05_ENCODE_URI,
   _07_07_ENCODE_DOMAIN,
+  _07_16_ENCODE_FULFILLMENT,
   _07_17_ENCODE_CONDITION,
   _08_01_ENCODE_ACCOUNT_SRC,
+  _08_02_ENCODE_ACCOUNT_OWNER,
   _08_03_ENCODE_ACCOUNT_DST,
   _08_04_ENCODE_ACCOUNT_ISSUER,
   _08_05_ENCODE_ACCOUNT_AUTHORIZE,
@@ -378,6 +381,50 @@ function prepare_escrow_create(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_escrow_finish(tx: EmitSpec): TransactionBuffer {
+  let len = 235;
+  if (tx.fulfillment) {
+    let l = tx.fulfillment!.length;
+    if (l != 36)
+      rollback("", pack_error_code(l));
+
+    len += 39;
+  }
+
+  if (tx.condition) {
+    let l = tx.condition!.length;
+    if (l != 39)
+      rollback("", pack_error_code(l));
+
+    len += 42;
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttESCROW_FINISH);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_25_ENCODE_OFFER_SEQUENCE(buf_out, tx.offerSequence);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  if (tx.fulfillment)
+    buf_out = _07_16_ENCODE_FULFILLMENT(buf_out, changetype<u32>(tx.fulfillment));
+  if (tx.condition)
+    buf_out = _07_17_ENCODE_CONDITION(buf_out, changetype<u32>(tx.condition));
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(tx.owner!.bytes));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
   let len = 213;
   let issuerBytes = tx.issuer ? tx.issuer!.bytes : null;
@@ -465,6 +512,9 @@ export function emit(tx: EmitSpec): ByteArray {
       break;
     case ttESCROW_CREATE:
       prepared = prepare_escrow_create(tx);
+      break;
+    case ttESCROW_FINISH:
+      prepared = prepare_escrow_finish(tx);
       break;
     case ttNFTOKEN_MINT:
       prepared = prepare_nftoken_mint(tx);

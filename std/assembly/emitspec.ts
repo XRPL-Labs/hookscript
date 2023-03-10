@@ -46,6 +46,9 @@ export class EmitSpec {
   cancelAfter: LedgerDate | null;
   finishAfter: LedgerDate | null;
   condition: ByteArray | null;
+  owner: Account | null;
+  offerSequence: u32;
+  fulfillment: ByteArray | null;
   nftokenTaxon: u32;
   issuer: Account | null;
   flags: u32; // currently used just for NFTokenMint but should be generalized
