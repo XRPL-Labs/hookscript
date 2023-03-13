@@ -21,6 +21,12 @@ export const enum NFTokenMintFlag {
   Transferable = 8
 }
 
+// https://xrpl.org/nftokencreateoffer.html#nftokencreateoffer-flags
+export const enum NFTokenCreateOfferFlag {
+  None = 0,
+  SellNFToken = 1
+}
+
 export class EmitSpec {
   transactionType: TransactionType;
   destination: Account | null;
@@ -51,7 +57,8 @@ export class EmitSpec {
   fulfillment: ByteArray | null;
   nftokenTaxon: u32;
   issuer: Account | null;
-  flags: u32; // currently used just for NFTokenMint but should be generalized
+  flags: u32; // currently used just for NFToken* but should be generalized
   transferFee: u16;
   uri: String = "";
+  nftokenID: ByteArray | null;
 }

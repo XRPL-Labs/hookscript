@@ -232,6 +232,28 @@ export const enum EscrowFinishField {
   Fulfillment = sfFulfillment
 }
 
+export const enum NFTokenCreateOfferField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/nftokencreateoffer.html
+  Owner = sfOwner,
+  NFTokenID = sfNFTokenID,
+  Amount = sfAmount,
+  Expiration = sfExpiration,
+  Destination = sfDestination
+}
+
 export const enum NFTokenMintField {
   Account = sfAccount,
   TransactionType = sfTransactionType,

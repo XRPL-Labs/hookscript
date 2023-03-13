@@ -418,7 +418,9 @@ const transactionType2emitFunction = [
   null,
   null,
   null,
-  "emit_nftoken_mint"
+  "emit_nftoken_mint",
+  null,
+  "emit_nftoken_create_offer"
 ];
 
 /** Compiler interface. */

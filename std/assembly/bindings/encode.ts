@@ -217,6 +217,11 @@ export function _05_07_ENCODE_WALLET_LOCATOR(buf: u32, h: u32): u32 {
 }
 
 @inline
+export function _05_10_ENCODE_NFTOKEN_ID(buf: u32, h: u32): u32 {
+  return ENCODE_HASH256(buf, h, 0x0A);
+}
+
+@inline
 export function _05_24_ENCODE_CHECK_ID(buf: u32, cid: u32): u32 {
   store<u16>(buf, 0x1850);
   __rawcopy32(buf + 2, cid);

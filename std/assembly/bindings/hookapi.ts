@@ -18,6 +18,7 @@ import {
   _02_42_ENCODE_NFTOKEN_TAXON,
   _04_01_ENCODE_EMAIL_HASH,
   _05_07_ENCODE_WALLET_LOCATOR,
+  _05_10_ENCODE_NFTOKEN_ID,
   _05_24_ENCODE_CHECK_ID,
   _06_01_ENCODE_DROPS_AMOUNT,
   _06_01_ENCODE_TL_AMOUNT,
@@ -448,6 +449,55 @@ function prepare_escrow_finish(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_nftoken_create_offer(tx: EmitSpec): TransactionBuffer {
+  let amount = tx.amount!;
+  let len = amount.isXrp() ? 249 : 289;
+  if (tx.expiration)
+    len += 5;
+
+  let tokenBytes = tx.nftokenID!;
+  if (tokenBytes.length != 32)
+    rollback("", pack_error_code(tokenBytes.length));
+
+  let ownerBytes = tx.owner ? tx.owner!.bytes : null;
+  if (ownerBytes)
+    len += 22;
+
+  let destinationBytes = tx.destination ? tx.destination!.bytes : null;
+  if (destinationBytes)
+    len += 22;
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttNFTOKEN_CREATE_OFFER);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  if (tx.expiration)
+    buf_out = _02_10_ENCODE_EXPIRATION(buf_out, <u32>(tx.expiration!.getLedgerTime()));
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _05_10_ENCODE_NFTOKEN_ID(buf_out, changetype<u32>(tokenBytes));
+  if (amount.isXrp())
+    buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, amount.bytes);
+  else
+    buf_out = _06_01_ENCODE_TL_AMOUNT(buf_out, amount.bytes);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (ownerBytes)
+    buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(ownerBytes));
+  if (destinationBytes)
+    buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(destinationBytes));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
   let len = 213;
   let issuerBytes = tx.issuer ? tx.issuer!.bytes : null;
@@ -542,6 +592,9 @@ export function emit(tx: EmitSpec): ByteArray {
     case ttESCROW_FINISH:
       prepared = prepare_escrow_finish(tx);
       break;
+    case ttNFTOKEN_CREATE_OFFER:
+      prepared = prepare_nftoken_create_offer(tx);
+      break;
     case ttNFTOKEN_MINT:
       prepared = prepare_nftoken_mint(tx);
       break;
@@ -606,6 +659,11 @@ export function emit_escrow_finish(tx: EmitSpec): ByteArray {
 @global @inline
 export function emit_nftoken_mint(tx: EmitSpec): ByteArray {
   return do_emit(prepare_nftoken_mint(tx));
+}
+
+@global @inline
+export function emit_nftoken_create_offer(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_nftoken_create_offer(tx));
 }
 
 @global @inline
