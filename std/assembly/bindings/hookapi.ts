@@ -20,6 +20,8 @@ import {
   _05_07_ENCODE_WALLET_LOCATOR,
   _05_10_ENCODE_NFTOKEN_ID,
   _05_24_ENCODE_CHECK_ID,
+  _05_28_ENCODE_NFTOKEN_BUY,
+  _05_29_ENCODE_NFTOKEN_SELL,
   _06_01_ENCODE_DROPS_AMOUNT,
   _06_01_ENCODE_TL_AMOUNT,
   _06_08_ENCODE_DROPS_FEE,
@@ -27,6 +29,8 @@ import {
   _06_09_ENCODE_TL_SEND_MAX,
   _06_10_ENCODE_DROPS_DELIVER_MIN,
   _06_10_ENCODE_TL_DELIVER_MIN,
+  _06_19_ENCODE_DROPS_BROKER_FEE,
+  _06_19_ENCODE_TL_BROKER_FEE,
   _07_02_ENCODE_MESSAGE_KEY,
   _07_03_ENCODE_SIGNING_PUBKEY_NULL,
   _07_05_ENCODE_URI,
@@ -449,6 +453,58 @@ function prepare_escrow_finish(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_nftoken_accept_offer(tx: EmitSpec): TransactionBuffer {
+  let len = 207;
+  if (tx.nftokenBuyOffer) {
+    let l = tx.nftokenBuyOffer!.length;
+    if (l != 32)
+      rollback("", pack_error_code(l));
+
+    len += 34;
+  }
+
+  if (tx.nftokenSellOffer) {
+    let l = tx.nftokenSellOffer!.length;
+    if (l != 32)
+      rollback("", pack_error_code(l));
+
+    len += 34;
+  }
+
+  let brokerFee = tx.nftokenBrokerFee;
+  if (brokerFee)
+    len += (brokerFee.isXrp() ? 9 : 49);
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttNFTOKEN_ACCEPT_OFFER);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  if (tx.nftokenBuyOffer)
+    buf_out = _05_28_ENCODE_NFTOKEN_BUY(buf_out, changetype<u32>(tx.nftokenBuyOffer));
+  if (tx.nftokenSellOffer)
+    buf_out = _05_29_ENCODE_NFTOKEN_SELL(buf_out, changetype<u32>(tx.nftokenSellOffer));
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  if (brokerFee) {
+    if (brokerFee.isXrp())
+      buf_out = _06_19_ENCODE_DROPS_BROKER_FEE(buf_out, brokerFee.bytes);
+    else
+      buf_out = _06_19_ENCODE_TL_BROKER_FEE(buf_out, brokerFee.bytes);
+  }
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_nftoken_create_offer(tx: EmitSpec): TransactionBuffer {
   let amount = tx.amount!;
   let len = amount.isXrp() ? 249 : 289;
@@ -592,6 +648,9 @@ export function emit(tx: EmitSpec): ByteArray {
     case ttESCROW_FINISH:
       prepared = prepare_escrow_finish(tx);
       break;
+    case ttNFTOKEN_ACCEPT_OFFER:
+      prepared = prepare_nftoken_accept_offer(tx);
+      break;
     case ttNFTOKEN_CREATE_OFFER:
       prepared = prepare_nftoken_create_offer(tx);
       break;
@@ -657,13 +716,18 @@ export function emit_escrow_finish(tx: EmitSpec): ByteArray {
 }
 
 @global @inline
-export function emit_nftoken_mint(tx: EmitSpec): ByteArray {
-  return do_emit(prepare_nftoken_mint(tx));
+export function emit_nftoken_accept_offer(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_nftoken_accept_offer(tx));
 }
 
 @global @inline
 export function emit_nftoken_create_offer(tx: EmitSpec): ByteArray {
   return do_emit(prepare_nftoken_create_offer(tx));
+}
+
+@global @inline
+export function emit_nftoken_mint(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_nftoken_mint(tx));
 }
 
 @global @inline

@@ -61,4 +61,7 @@ export class EmitSpec {
   transferFee: u16;
   uri: String = "";
   nftokenID: ByteArray | null;
+  nftokenSellOffer: ByteArray | null;
+  nftokenBuyOffer: ByteArray | null;
+  nftokenBrokerFee: Amount | null;
 }

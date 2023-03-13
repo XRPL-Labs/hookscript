@@ -229,6 +229,20 @@ export function _05_24_ENCODE_CHECK_ID(buf: u32, cid: u32): u32 {
 }
 
 @inline
+export function _05_28_ENCODE_NFTOKEN_BUY(buf: u32, offer: u32): u32 {
+  store<u16>(buf, 0x1C50);
+  __rawcopy32(buf + 2, offer);
+  return buf + 34;
+}
+
+@inline
+export function _05_29_ENCODE_NFTOKEN_SELL(buf: u32, offer: u32): u32 {
+  store<u16>(buf, 0x1D50);
+  __rawcopy32(buf + 2, offer);
+  return buf + 34;
+}
+
+@inline
 export function _06_01_ENCODE_DROPS_AMOUNT(buf: u32, drops: ByteArray): u32 {
   return ENCODE_DROPS_ARRAY(buf, drops, amAMOUNT);
 }
@@ -261,6 +275,16 @@ export function _06_10_ENCODE_DROPS_DELIVER_MIN(buf: u32, drops: ByteArray): u32
 @inline
 export function _06_10_ENCODE_TL_DELIVER_MIN(buf: u32, drops: ByteArray): u32 {
   return ENCODE_TL(buf, changetype<u32>(drops), 10);
+}
+
+@inline
+export function _06_19_ENCODE_DROPS_BROKER_FEE(buf: u32, drops: ByteArray): u32 {
+  return ENCODE_DROPS_ARRAY(buf, drops, 19);
+}
+
+@inline
+export function _06_19_ENCODE_TL_BROKER_FEE(buf: u32, drops: ByteArray): u32 {
+  return ENCODE_TL(buf, changetype<u32>(drops), 19);
 }
 
 @inline
