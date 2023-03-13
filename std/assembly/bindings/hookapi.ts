@@ -559,6 +559,56 @@ export function emit_payment(tx: EmitSpec): ByteArray {
 }
 
 @global @inline
+export function emit_account_delete(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_account_delete(tx));
+}
+
+@global @inline
+export function emit_account_set(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_account_set(tx));
+}
+
+@global @inline
+export function emit_check_cancel(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_check_cancel(tx));
+}
+
+@global @inline
+export function emit_check_cash(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_check_cash(tx));
+}
+
+@global @inline
+export function emit_check_create(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_check_create(tx));
+}
+
+@global @inline
+export function emit_deposit_preauth(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_deposit_preauth(tx));
+}
+
+@global @inline
+export function emit_escrow_cancel(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_escrow_cancel(tx));
+}
+
+@global @inline
+export function emit_escrow_create(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_escrow_create(tx));
+}
+
+@global @inline
+export function emit_escrow_finish(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_escrow_finish(tx));
+}
+
+@global @inline
+export function emit_nftoken_mint(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_nftoken_mint(tx));
+}
+
+@global @inline
 export function etxn_details(target: ByteView): void {
   let r = $etxn_details(changetype<u32>(target.underlying) + target.offset, target.length);
   if (r < 0)

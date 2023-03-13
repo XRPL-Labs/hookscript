@@ -390,6 +390,37 @@ const runtimeFunctions = [ "__new", "__pin", "__unpin", "__collect" ];
 /** Globals to export if `--exportRuntime` is set. */
 const runtimeGlobals = [ "__rtti_base" ];
 
+/** Maps XRPL transaction type (array index) to name of function
+ * serializing that transaction. */
+const transactionType2emitFunction = [
+  "emit_payment",
+  "emit_escrow_create",
+  "emit_escrow_finish",
+  "emit_account_set",
+  "emit_escrow_cancel",
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  "emit_check_create",
+  "emit_check_cash",
+  "emit_check_cancel",
+  "emit_deposit_preauth",
+  null,
+  "emit_account_delete",
+  null,
+  null,
+  null,
+  "emit_nftoken_mint"
+];
+
 /** Compiler interface. */
 export class Compiler extends DiagnosticEmitter {
 
@@ -6123,6 +6154,42 @@ export class Compiler extends DiagnosticEmitter {
       flow.set(FlowFlags.AccessesThis | FlowFlags.CallsSuper);
       this.currentType = Type.void;
       return module.local_set(thisLocal.index, superCall, classInstance.type.isManaged);
+    }
+
+    // switch the name of emit according to the value of transactionType
+    if ((expression.expression.kind == NodeKind.Identifier) &&
+      (expression.args.length == 1) &&
+      (<IdentifierExpression>(expression.expression).text == 'emit')) {
+      let argExpr = expression.args[0];
+      if (argExpr.isLiteralKind(LiteralKind.Object)) {
+        let emitSpec = <ObjectLiteralExpression>argExpr;
+        let match = 0; // 1 transactionType found, 0 not there, -1 cannot say
+        let numNames = emitSpec.names.length;
+        for (let i = 0; i < numNames; ++i) {
+          let nameExpr = emitSpec.names[i];
+          if (nameExpr.kind == NodeKind.Identifier) {
+            if (<IdentifierExpression>(nameExpr).text == 'transactionType') {
+              match = 1;
+              // would be better to compile w/o reporting errors...
+              let compiled = this.compileExpression(emitSpec.values[i], Type.i32,
+                  Constraints.ConvImplicit);
+              if (getExpressionId(compiled) == ExpressionId.Const) {
+                let value = getConstValueI32(compiled);
+                let emitName = transactionType2emitFunction[value];
+                if (emitName)
+                  <IdentifierExpression>(expression.expression).text = emitName;
+              }
+              break;
+            }
+          } else {
+            match = -1;
+          }
+        }
+        if (!match) {
+          // Payment is default
+          <IdentifierExpression>(expression.expression).text = transactionType2emitFunction[0];
+        }
+      }
     }
 
     // otherwise resolve normally
