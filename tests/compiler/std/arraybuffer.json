@@ -1,5 +1,6 @@
 {
   "asc_flags": [
+    "--runtime", "stub", "--disableStartGeneration"
   ],
   "asc_rtrace": true
 }

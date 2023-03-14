@@ -372,3 +372,35 @@ export function _16_16_ENCODE_TICK_SIZE(buf: u32, ts: u8): u32 {
   store<u32>(buf, 0x101000 | hi);
   return buf + 4;
 }
+
+@inline
+export function _19_04_ENCODE_NFTOKEN_OFFERS(buf: u32, offers: StaticArray<ByteArray>): u32 {
+  let count = offers.length;
+  store<u16>(buf, 0x1304);
+  let len = 32 * count;
+  store<u8>(buf + 2, len);
+
+  let start = 0;
+  let cur_buf = buf + 3;
+  if (count >= 3) {
+    __rawcopy32(cur_buf, changetype<u32>(offers[0]));
+    __rawcopy32(cur_buf + 32, changetype<u32>(offers[1]));
+    __rawcopy32(cur_buf + 64, changetype<u32>(offers[2]));
+    cur_buf += 96;
+    count -= 3;
+    start = 3;
+  }
+
+  if (count >= 2) {
+    __rawcopy32(cur_buf, changetype<u32>(offers[start]));
+    __rawcopy32(cur_buf + 32, changetype<u32>(offers[start + 1]));
+    cur_buf += 64;
+    count -= 2;
+    start += 2;
+  }
+
+  if (count)
+    __rawcopy32(cur_buf, changetype<u32>(offers[start]));
+
+  return buf + 3 + len;
+}

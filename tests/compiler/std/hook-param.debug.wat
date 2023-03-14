@@ -6,7 +6,6 @@
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $i32_i32_i64_=>_i64 (func_subtype (param i32 i32 i64) (result i64) func))
  (type $i32_=>_i64 (func_subtype (param i32) (result i64) func))
- (type $none_=>_none (func_subtype func))
  (import "env" "util_accid" (func $~lib/builtins/$util_accid (param i32 i32 i32 i32) (result i64)))
  (import "env" "rollback" (func $~lib/builtins/$rollback (param i32 i32 i64) (result i64)))
  (import "env" "hook_param" (func $~lib/builtins/$hook_param (param i32 i32 i32 i32) (result i64)))
@@ -30,7 +29,6 @@
  (elem $0 (i32.const 1))
  (export "hook" (func $std/hook-param/hook))
  (export "memory" (memory $0))
- (start $~start)
  (func $~lib/rt/stub/__link (type $i32_i32_i32_=>_none) (param $parentPtr i32) (param $childPtr i32) (param $expectMultiple i32)
   nop
  )
@@ -368,7 +366,7 @@
     local.set $failure
     i32.const 9
     local.set $file
-    i32.const 1091
+    i32.const 1129
     local.set $line
     local.get $failure
     i64.const 255
@@ -765,21 +763,5 @@
   end
   local.set $act_flags
   i64.const 0
- )
- (func $~start (type $none_=>_none)
-  global.get $~lib/memory/__heap_base
-  i32.const 4
-  i32.add
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.const 4
-  i32.sub
-  global.set $~lib/rt/stub/startOffset
-  global.get $~lib/rt/stub/startOffset
-  global.set $~lib/rt/stub/offset
  )
 )

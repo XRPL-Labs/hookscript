@@ -64,4 +64,5 @@ export class EmitSpec {
   nftokenSellOffer: ByteArray | null;
   nftokenBuyOffer: ByteArray | null;
   nftokenBrokerFee: Amount | null;
+  nftokenOffers: StaticArray<ByteArray> | null;
 }

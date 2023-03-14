@@ -39,7 +39,10 @@ export function __instanceof(ptr: usize, classId: u32): bool { // keyword
 @unsafe
 export function __newBuffer(size: usize, id: u32, data: usize = 0): usize {
   let buffer = __new(size, id);
-  if (data) memory.copy(buffer, data, size);
+  if (data) {
+    if (size >= 64) throw new Error("");
+    __rawcopyupto63(buffer, data, <i32>size);
+  }
   return buffer;
 }
 

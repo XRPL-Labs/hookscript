@@ -45,6 +45,7 @@ import {
   _08_06_ENCODE_ACCOUNT_UNAUTHORIZE,
   _08_09_ENCODE_NFTOKENMINTER,
   _16_16_ENCODE_TICK_SIZE,
+  _19_04_ENCODE_NFTOKEN_OFFERS,
   tfCANONICAL
 } from "./encode";
 
@@ -505,6 +506,35 @@ function prepare_nftoken_accept_offer(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_nftoken_cancel_offer(tx: EmitSpec): TransactionBuffer {
+  let len = 210;
+  let offers = tx.nftokenOffers!;
+  let count = offers.length;
+  if ((count < 1) || (count > 6))
+    rollback("", pack_error_code(count));
+
+  len += (32 * count);
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttNFTOKEN_CANCEL_OFFER);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  buf_out = _19_04_ENCODE_NFTOKEN_OFFERS(buf_out, offers);
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_nftoken_create_offer(tx: EmitSpec): TransactionBuffer {
   let amount = tx.amount!;
   let len = amount.isXrp() ? 249 : 289;
@@ -651,6 +681,9 @@ export function emit(tx: EmitSpec): ByteArray {
     case ttNFTOKEN_ACCEPT_OFFER:
       prepared = prepare_nftoken_accept_offer(tx);
       break;
+    case ttNFTOKEN_CANCEL_OFFER:
+      prepared = prepare_nftoken_cancel_offer(tx);
+      break;
     case ttNFTOKEN_CREATE_OFFER:
       prepared = prepare_nftoken_create_offer(tx);
       break;
@@ -718,6 +751,11 @@ export function emit_escrow_finish(tx: EmitSpec): ByteArray {
 @global @inline
 export function emit_nftoken_accept_offer(tx: EmitSpec): ByteArray {
   return do_emit(prepare_nftoken_accept_offer(tx));
+}
+
+@global @inline
+export function emit_nftoken_cancel_offer(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_nftoken_cancel_offer(tx));
 }
 
 @global @inline

@@ -52,51 +52,51 @@
  (data (i32.const 412) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Fri \00\00\00\00\00\00\00\00")
  (data (i32.const 444) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Sat \00\00\00\00\00\00\00\00")
  (data (i32.const 476) ",\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\1c\00\00\00\10\01\00\000\01\00\00P\01\00\00p\01\00\00\90\01\00\00\b0\01\00\00\d0\01\00\00")
- (data (i32.const 524) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Jan \00\00\00\00\00\00\00\00")
- (data (i32.const 556) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Feb \00\00\00\00\00\00\00\00")
- (data (i32.const 588) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Mar \00\00\00\00\00\00\00\00")
- (data (i32.const 620) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Apr \00\00\00\00\00\00\00\00")
- (data (i32.const 652) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00May \00\00\00\00\00\00\00\00")
- (data (i32.const 684) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Jun \00\00\00\00\00\00\00\00")
- (data (i32.const 716) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Jul \00\00\00\00\00\00\00\00")
- (data (i32.const 748) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Aug \00\00\00\00\00\00\00\00")
- (data (i32.const 780) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Sep \00\00\00\00\00\00\00\00")
- (data (i32.const 812) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Oct \00\00\00\00\00\00\00\00")
- (data (i32.const 844) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Nov \00\00\00\00\00\00\00\00")
- (data (i32.const 876) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Dec \00\00\00\00\00\00\00\00")
- (data (i32.const 908) "L\00\00\00\00\00\00\00\00\00\00\00\04\00\00\000\00\00\00 \02\00\00@\02\00\00`\02\00\00\80\02\00\00\a0\02\00\00\c0\02\00\00\e0\02\00\00\00\03\00\00 \03\00\00@\03\00\00`\03\00\00\80\03\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 988) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\000\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1020) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\00 -\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1052) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00 \00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1084) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00Wed Jan 01 0020\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1132) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00Sun Feb 02 2020\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1180) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\10\00\00\00Thu Jul 01 -0001\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1228) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00:\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1260) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\0000:00:00\00\00\00\00")
- (data (i32.const 1292) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\0023:59:59\00\00\00\00")
- (data (i32.const 1324) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Sun, \00\00\00\00\00\00\00")
- (data (i32.const 1356) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Mon, \00\00\00\00\00\00\00")
- (data (i32.const 1388) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Tue, \00\00\00\00\00\00\00")
- (data (i32.const 1420) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Wed, \00\00\00\00\00\00\00")
- (data (i32.const 1452) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Thu, \00\00\00\00\00\00\00")
- (data (i32.const 1484) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Fri, \00\00\00\00\00\00\00")
- (data (i32.const 1516) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Sat, \00\00\00\00\00\00\00")
- (data (i32.const 1548) ",\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\1c\00\00\00@\05\00\00`\05\00\00\80\05\00\00\a0\05\00\00\c0\05\00\00\e0\05\00\00\00\06\00\00")
- (data (i32.const 1596) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Jan \00\00\00\00\00\00\00")
- (data (i32.const 1628) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Feb \00\00\00\00\00\00\00")
- (data (i32.const 1660) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Mar \00\00\00\00\00\00\00")
- (data (i32.const 1692) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Apr \00\00\00\00\00\00\00")
- (data (i32.const 1724) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 May \00\00\00\00\00\00\00")
- (data (i32.const 1756) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Jun \00\00\00\00\00\00\00")
- (data (i32.const 1788) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Jul \00\00\00\00\00\00\00")
- (data (i32.const 1820) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Aug \00\00\00\00\00\00\00")
- (data (i32.const 1852) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Sep \00\00\00\00\00\00\00")
- (data (i32.const 1884) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Oct \00\00\00\00\00\00\00")
- (data (i32.const 1916) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Nov \00\00\00\00\00\00\00")
- (data (i32.const 1948) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Dec \00\00\00\00\00\00\00")
- (data (i32.const 1980) "L\00\00\00\00\00\00\00\00\00\00\00\04\00\00\000\00\00\00P\06\00\00p\06\00\00\90\06\00\00\b0\06\00\00\d0\06\00\00\f0\06\00\00\10\07\00\000\07\00\00P\07\00\00p\07\00\00\90\07\00\00\b0\07\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2060) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00-\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2092) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 524) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 556) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Jan \00\00\00\00\00\00\00\00")
+ (data (i32.const 588) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Feb \00\00\00\00\00\00\00\00")
+ (data (i32.const 620) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Mar \00\00\00\00\00\00\00\00")
+ (data (i32.const 652) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Apr \00\00\00\00\00\00\00\00")
+ (data (i32.const 684) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00May \00\00\00\00\00\00\00\00")
+ (data (i32.const 716) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Jun \00\00\00\00\00\00\00\00")
+ (data (i32.const 748) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Jul \00\00\00\00\00\00\00\00")
+ (data (i32.const 780) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Aug \00\00\00\00\00\00\00\00")
+ (data (i32.const 812) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Sep \00\00\00\00\00\00\00\00")
+ (data (i32.const 844) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Oct \00\00\00\00\00\00\00\00")
+ (data (i32.const 876) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Nov \00\00\00\00\00\00\00\00")
+ (data (i32.const 908) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Dec \00\00\00\00\00\00\00\00")
+ (data (i32.const 940) "L\00\00\00\00\00\00\00\00\00\00\00\04\00\00\000\00\00\00@\02\00\00`\02\00\00\80\02\00\00\a0\02\00\00\c0\02\00\00\e0\02\00\00\00\03\00\00 \03\00\00@\03\00\00`\03\00\00\80\03\00\00\a0\03\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1020) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\000\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1052) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\00 -\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1084) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00 \00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1116) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00Wed Jan 01 0020\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1164) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00Sun Feb 02 2020\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1212) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\10\00\00\00Thu Jul 01 -0001\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1260) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00:\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1292) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\0000:00:00\00\00\00\00")
+ (data (i32.const 1324) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\0023:59:59\00\00\00\00")
+ (data (i32.const 1356) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Sun, \00\00\00\00\00\00\00")
+ (data (i32.const 1388) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Mon, \00\00\00\00\00\00\00")
+ (data (i32.const 1420) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Tue, \00\00\00\00\00\00\00")
+ (data (i32.const 1452) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Wed, \00\00\00\00\00\00\00")
+ (data (i32.const 1484) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Thu, \00\00\00\00\00\00\00")
+ (data (i32.const 1516) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Fri, \00\00\00\00\00\00\00")
+ (data (i32.const 1548) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Sat, \00\00\00\00\00\00\00")
+ (data (i32.const 1580) ",\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\1c\00\00\00`\05\00\00\80\05\00\00\a0\05\00\00\c0\05\00\00\e0\05\00\00\00\06\00\00 \06\00\00")
+ (data (i32.const 1628) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Jan \00\00\00\00\00\00\00")
+ (data (i32.const 1660) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Feb \00\00\00\00\00\00\00")
+ (data (i32.const 1692) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Mar \00\00\00\00\00\00\00")
+ (data (i32.const 1724) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Apr \00\00\00\00\00\00\00")
+ (data (i32.const 1756) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 May \00\00\00\00\00\00\00")
+ (data (i32.const 1788) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Jun \00\00\00\00\00\00\00")
+ (data (i32.const 1820) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Jul \00\00\00\00\00\00\00")
+ (data (i32.const 1852) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Aug \00\00\00\00\00\00\00")
+ (data (i32.const 1884) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Sep \00\00\00\00\00\00\00")
+ (data (i32.const 1916) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Oct \00\00\00\00\00\00\00")
+ (data (i32.const 1948) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Nov \00\00\00\00\00\00\00")
+ (data (i32.const 1980) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Dec \00\00\00\00\00\00\00")
+ (data (i32.const 2012) "L\00\00\00\00\00\00\00\00\00\00\00\04\00\00\000\00\00\00p\06\00\00\90\06\00\00\b0\06\00\00\d0\06\00\00\f0\06\00\00\10\07\00\000\07\00\00P\07\00\00p\07\00\00\90\07\00\00\b0\07\00\00\d0\07\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 2092) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00-\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 2124) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00 GMT\00\00\00\00\00\00\00\00")
  (data (i32.const 2156) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1d\00\00\00Wed, 01 Jan 0020 00:00:00 GMT\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 2220) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1d\00\00\00Mon, 03 Feb 2020 14:53:33 GMT\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -3688,16 +3688,262 @@
  )
  (func $~lib/rt/__newBuffer (type $i32_i32_i32_=>_i32) (param $size i32) (param $id i32) (param $data i32) (result i32)
   (local $buffer i32)
+  (local $dest i32)
+  (local $ptr i32)
+  (local $len i32)
+  (local $dest|7 i32)
+  (local $ptr|8 i32)
+  (local $dest|9 i32)
+  (local $ptr|10 i32)
+  (local $len|11 i32)
+  (local $dest|12 i32)
+  (local $ptr|13 i32)
+  (local $dest|14 i32)
+  (local $ptr|15 i32)
+  (local $len|16 i32)
+  (local $dest|17 i32)
+  (local $ptr|18 i32)
+  (local $dest|19 i32)
+  (local $ptr|20 i32)
+  (local $len|21 i32)
+  (local $dest|22 i32)
+  (local $ptr|23 i32)
+  (local $dest|24 i32)
+  (local $ptr|25 i32)
+  (local $len|26 i32)
+  (local $dest|27 i32)
+  (local $ptr|28 i32)
+  (local $dest|29 i32)
+  (local $ptr|30 i32)
+  (local $len|31 i32)
   local.get $size
   local.get $id
   call $~lib/rt/itcms/__new
   local.set $buffer
   local.get $data
   if
-   local.get $buffer
-   local.get $data
    local.get $size
-   memory.copy $0 $0
+   i32.const 64
+   i32.ge_u
+   if
+    unreachable
+   end
+   local.get $buffer
+   local.set $dest
+   local.get $data
+   local.set $ptr
+   local.get $size
+   local.set $len
+   local.get $len
+   i32.const 32
+   i32.ge_s
+   if
+    local.get $dest
+    local.set $dest|7
+    local.get $ptr
+    local.set $ptr|8
+    local.get $dest|7
+    local.get $ptr|8
+    i64.load $0
+    i64.store $0
+    local.get $dest|7
+    i32.const 8
+    i32.add
+    local.set $dest|7
+    local.get $ptr|8
+    i32.const 8
+    i32.add
+    local.set $ptr|8
+    local.get $dest|7
+    local.get $ptr|8
+    i64.load $0
+    i64.store $0
+    local.get $dest|7
+    i32.const 8
+    i32.add
+    local.set $dest|7
+    local.get $ptr|8
+    i32.const 8
+    i32.add
+    local.set $ptr|8
+    local.get $dest|7
+    local.get $ptr|8
+    i64.load $0
+    i64.store $0
+    local.get $dest|7
+    i32.const 8
+    i32.add
+    local.set $dest|7
+    local.get $ptr|8
+    i32.const 8
+    i32.add
+    local.set $ptr|8
+    local.get $dest|7
+    local.get $ptr|8
+    i64.load $0
+    i64.store $0
+    local.get $dest
+    i32.const 32
+    i32.add
+    local.set $dest
+    local.get $ptr
+    i32.const 32
+    i32.add
+    local.set $ptr
+    local.get $len
+    i32.const 32
+    i32.sub
+    local.set $len
+   end
+   local.get $dest
+   local.set $dest|9
+   local.get $ptr
+   local.set $ptr|10
+   local.get $len
+   local.set $len|11
+   local.get $len|11
+   i32.const 16
+   i32.ge_s
+   if
+    local.get $dest|9
+    local.set $dest|12
+    local.get $ptr|10
+    local.set $ptr|13
+    local.get $dest|12
+    local.get $ptr|13
+    i64.load $0
+    i64.store $0
+    local.get $dest|12
+    i32.const 8
+    i32.add
+    local.set $dest|12
+    local.get $ptr|13
+    i32.const 8
+    i32.add
+    local.set $ptr|13
+    local.get $dest|12
+    local.get $ptr|13
+    i64.load $0
+    i64.store $0
+    local.get $dest|9
+    i32.const 16
+    i32.add
+    local.set $dest|9
+    local.get $ptr|10
+    i32.const 16
+    i32.add
+    local.set $ptr|10
+    local.get $len|11
+    i32.const 16
+    i32.sub
+    local.set $len|11
+   end
+   local.get $dest|9
+   local.set $dest|14
+   local.get $ptr|10
+   local.set $ptr|15
+   local.get $len|11
+   local.set $len|16
+   local.get $len|16
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|14
+    local.set $dest|17
+    local.get $ptr|15
+    local.set $ptr|18
+    local.get $dest|17
+    local.get $ptr|18
+    i64.load $0
+    i64.store $0
+    local.get $dest|14
+    i32.const 8
+    i32.add
+    local.set $dest|14
+    local.get $ptr|15
+    i32.const 8
+    i32.add
+    local.set $ptr|15
+    local.get $len|16
+    i32.const 8
+    i32.sub
+    local.set $len|16
+   end
+   local.get $dest|14
+   local.set $dest|19
+   local.get $ptr|15
+   local.set $ptr|20
+   local.get $len|16
+   local.set $len|21
+   local.get $len|21
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|19
+    local.set $dest|22
+    local.get $ptr|20
+    local.set $ptr|23
+    local.get $dest|22
+    local.get $ptr|23
+    i32.load $0
+    i32.store $0
+    local.get $dest|19
+    i32.const 4
+    i32.add
+    local.set $dest|19
+    local.get $ptr|20
+    i32.const 4
+    i32.add
+    local.set $ptr|20
+    local.get $len|21
+    i32.const 4
+    i32.sub
+    local.set $len|21
+   end
+   local.get $dest|19
+   local.set $dest|24
+   local.get $ptr|20
+   local.set $ptr|25
+   local.get $len|21
+   local.set $len|26
+   local.get $len|26
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|24
+    local.set $dest|27
+    local.get $ptr|25
+    local.set $ptr|28
+    local.get $dest|27
+    local.get $ptr|28
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|24
+    i32.const 2
+    i32.add
+    local.set $dest|24
+    local.get $ptr|25
+    i32.const 2
+    i32.add
+    local.set $ptr|25
+    local.get $len|26
+    i32.const 2
+    i32.sub
+    local.set $len|26
+   end
+   local.get $dest|24
+   local.set $dest|29
+   local.get $ptr|25
+   local.set $ptr|30
+   local.get $len|26
+   local.set $len|31
+   local.get $len|31
+   if
+    local.get $dest|29
+    local.get $ptr|30
+    i32.load8_u $0
+    i32.store8 $0
+   end
   end
   local.get $buffer
  )
@@ -11148,7 +11394,7 @@
    local.tee $left
    i32.store $0 offset=164
    global.get $~lib/memory/__stack_pointer
-   i32.const 1104
+   i32.const 1136
    local.tee $right
    i32.store $0 offset=168
    local.get $left
@@ -12228,7 +12474,7 @@
    local.tee $left|715
    i32.store $0 offset=176
    global.get $~lib/memory/__stack_pointer
-   i32.const 1152
+   i32.const 1184
    local.tee $right|716
    i32.store $0 offset=180
    local.get $left|715
@@ -13308,7 +13554,7 @@
    local.tee $left|831
    i32.store $0 offset=188
    global.get $~lib/memory/__stack_pointer
-   i32.const 1200
+   i32.const 1232
    local.tee $right|832
    i32.store $0 offset=192
    local.get $left|831
@@ -14388,7 +14634,7 @@
    local.tee $left|948
    i32.store $0 offset=204
    global.get $~lib/memory/__stack_pointer
-   i32.const 1280
+   i32.const 1312
    local.tee $right|949
    i32.store $0 offset=208
    local.get $left|948
@@ -15468,7 +15714,7 @@
    local.tee $left|1064
    i32.store $0 offset=216
    global.get $~lib/memory/__stack_pointer
-   i32.const 1312
+   i32.const 1344
    local.tee $right|1065
    i32.store $0 offset=220
    local.get $left|1064
@@ -21003,7 +21249,7 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 48
   i32.const 4
-  i32.const 928
+  i32.const 960
   call $~lib/rt/__newBuffer
   local.tee $months
   i32.store $0 offset=4
@@ -21044,7 +21290,7 @@
     local.get $value|14
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.0
     end
     local.get $value|14
@@ -21560,7 +21806,7 @@
     local.get $value|100
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.1
     end
     local.get $value|100
@@ -23046,9 +23292,9 @@
     i32.const 0
     i32.lt_s
     if (result i32)
-     i32.const 1040
-    else
      i32.const 1072
+    else
+     i32.const 1104
     end
     local.tee $src|282
     i32.store $0 offset=32
@@ -24146,7 +24392,7 @@
     local.get $value|8
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.2
     end
     local.get $value|8
@@ -24672,7 +24918,7 @@
     local.get $value|96
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.3
     end
     local.get $value|96
@@ -25198,7 +25444,7 @@
     local.get $value|184
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.4
     end
     local.get $value|184
@@ -26024,7 +26270,7 @@
     end
     local.set $dest|299
     global.get $~lib/memory/__stack_pointer
-    i32.const 1248
+    i32.const 1280
     local.tee $src|300
     i32.store $0 offset=24
     local.get $dest|299
@@ -26367,7 +26613,7 @@
    end
    local.set $dest|336
    global.get $~lib/memory/__stack_pointer
-   i32.const 1248
+   i32.const 1280
    local.tee $src|337
    i32.store $0 offset=28
    local.get $dest|336
@@ -27468,14 +27714,14 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 28
   i32.const 4
-  i32.const 1568
+  i32.const 1600
   call $~lib/rt/__newBuffer
   local.tee $weeks
   i32.store $0
   global.get $~lib/memory/__stack_pointer
   i32.const 48
   i32.const 4
-  i32.const 2000
+  i32.const 2032
   call $~lib/rt/__newBuffer
   local.tee $months
   i32.store $0 offset=4
@@ -27516,7 +27762,7 @@
     local.get $value|14
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.5
     end
     local.get $value|14
@@ -28032,7 +28278,7 @@
     local.get $value|100
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.6
     end
     local.get $value|100
@@ -28558,7 +28804,7 @@
     local.get $value|188
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.7
     end
     local.get $value|188
@@ -29084,7 +29330,7 @@
     local.get $value|276
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.8
     end
     local.get $value|276
@@ -29610,7 +29856,7 @@
     local.get $value|364
     i32.eqz
     if
-     i32.const 1008
+     i32.const 1040
      br $~lib/util/number/i32toa|inlined.9
     end
     local.get $value|364
@@ -31099,9 +31345,9 @@
        i32.const 0
        i32.lt_s
        if (result i32)
-        i32.const 2080
-       else
         i32.const 2112
+       else
+        i32.const 544
        end
        local.tee $src|546
        i32.store $0 offset=56
@@ -31758,7 +32004,7 @@
      end
      local.set $dest|611
      global.get $~lib/memory/__stack_pointer
-     i32.const 1072
+     i32.const 1104
      local.tee $src|612
      i32.store $0 offset=60
      local.get $dest|611
@@ -32101,7 +32347,7 @@
     end
     local.set $dest|648
     global.get $~lib/memory/__stack_pointer
-    i32.const 1248
+    i32.const 1280
     local.tee $src|649
     i32.store $0 offset=64
     local.get $dest|648
@@ -32444,7 +32690,7 @@
    end
    local.set $dest|685
    global.get $~lib/memory/__stack_pointer
-   i32.const 1248
+   i32.const 1280
    local.tee $src|686
    i32.store $0 offset=68
    local.get $dest|685

@@ -1,7 +1,6 @@
 {
   "asc_flags": [
-    "--runtime",
-    "stub"
+    "--runtime", "stub", "--disableStartGeneration"
   ],
   "skipInstantiate": true
 }

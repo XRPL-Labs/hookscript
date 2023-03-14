@@ -2,7 +2,6 @@
  (type $i32_i32_i32_i32_=>_i64 (func_subtype (param i32 i32 i32 i32) (result i64) func))
  (type $i32_i32_i64_=>_i64 (func_subtype (param i32 i32 i64) (result i64) func))
  (type $i32_=>_i64 (func_subtype (param i32) (result i64) func))
- (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "util_accid" (func $~lib/builtins/$util_accid (param i32 i32 i32 i32) (result i64)))
  (import "env" "rollback" (func $~lib/builtins/$rollback (param i32 i32 i64) (result i64)))
@@ -26,7 +25,6 @@
  (data (i32.const 1352) "\01\00\00\00\0e\00\00\00orig_threshold")
  (export "hook" (func $std/hook-param/hook))
  (export "memory" (memory $0))
- (start $~start)
  (func $std/hook-param/hook (type $i32_=>_i64) (param $0 i32) (result i64)
   (local $1 i64)
   (local $2 i32)
@@ -194,7 +192,7 @@
    local.get $1
    i64.const 255
    i64.and
-   i64.const 18303944960
+   i64.const 18941479168
    i64.or
    call $~lib/builtins/$rollback
    drop
@@ -888,9 +886,5 @@
    drop
   end
   i64.const 0
- )
- (func $~start (type $none_=>_none)
-  i32.const 1388
-  global.set $~lib/rt/stub/offset
  )
 )
