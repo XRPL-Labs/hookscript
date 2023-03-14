@@ -419,7 +419,7 @@ const transactionType2emitFunction = [
   null,
   null,
   "emit_nftoken_mint",
-  null,
+  "emit_nftoken_burn",
   "emit_nftoken_create_offer",
   "emit_nftoken_cancel_offer",
   "emit_nftoken_accept_offer"
