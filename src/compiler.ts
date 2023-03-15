@@ -6164,35 +6164,46 @@ export class Compiler extends DiagnosticEmitter {
     if ((expression.expression.kind == NodeKind.Identifier) &&
       (expression.args.length == 1) &&
       (<IdentifierExpression>(expression.expression).text == 'emit')) {
+      let match = -1; // 1 transactionType found / defaulted, 0 not there, <0 unexpected / cannot say
       let argExpr = expression.args[0];
       if (argExpr.isLiteralKind(LiteralKind.Object)) {
+        match = 0;
         let emitSpec = <ObjectLiteralExpression>argExpr;
-        let match = 0; // 1 transactionType found, 0 not there, -1 cannot say
         let numNames = emitSpec.names.length;
         for (let i = 0; i < numNames; ++i) {
           let nameExpr = emitSpec.names[i];
           if (nameExpr.kind == NodeKind.Identifier) {
             if (<IdentifierExpression>(nameExpr).text == 'transactionType') {
-              match = 1;
+              match = -2;
               // would be better to compile w/o reporting errors...
               let compiled = this.compileExpression(emitSpec.values[i], Type.i32,
                   Constraints.ConvImplicit);
               if (getExpressionId(compiled) == ExpressionId.Const) {
                 let value = getConstValueI32(compiled);
                 let emitName = transactionType2emitFunction[value];
-                if (emitName)
+                if (emitName) {
+                  match = 1;
                   <IdentifierExpression>(expression.expression).text = emitName;
+                }
               }
               break;
             }
           } else {
-            match = -1;
+            match = -3;
           }
         }
         if (!match) {
           // Payment is default
+          match = 1;
           <IdentifierExpression>(expression.expression).text = transactionType2emitFunction[0];
         }
+      }
+      if (match != 1) {
+        this.error(
+          DiagnosticCode.Call_to_emit_cannot_be_optimized_Call_emit__transaction_type_directly,
+          expression.expression.range
+        );
+        return module.unreachable();
       }
     }
 

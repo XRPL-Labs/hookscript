@@ -1,5 +1,6 @@
 {
   "User defined 'hook' function and Top level expressions cannot be used simultaneously.": 1,
+  "Call to 'emit' cannot be optimized. Call 'emit_<transaction_type>' directly": 2,
   "Not implemented: {0}": 100,
   "Operation is unsafe.": 101,
   "User-defined: {0}": 102,

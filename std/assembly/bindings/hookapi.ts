@@ -679,59 +679,11 @@ function do_emit(prepared: TransactionBuffer): ByteArray {
 
 @global @inline
 export function emit(tx: EmitSpec): ByteArray {
-  let prepared: TransactionBuffer;
-  switch (tx.transactionType) {
-    case ttPAYMENT: // 0, i.e. default
-      prepared = prepare_payment(tx);
-      break;
-    case ttACCOUNT_DELETE:
-      prepared = prepare_account_delete(tx);
-      break;
-    case ttACCOUNT_SET:
-      prepared = prepare_account_set(tx);
-      break;
-    case ttCHECK_CANCEL:
-      prepared = prepare_check_cancel(tx);
-      break;
-    case ttCHECK_CASH:
-      prepared = prepare_check_cash(tx);
-      break;
-    case ttCHECK_CREATE:
-      prepared = prepare_check_create(tx);
-      break;
-    case ttDEPOSIT_PREAUTH:
-      prepared = prepare_deposit_preauth(tx);
-      break;
-    case ttESCROW_CANCEL:
-      prepared = prepare_escrow_cancel(tx);
-      break;
-    case ttESCROW_CREATE:
-      prepared = prepare_escrow_create(tx);
-      break;
-    case ttESCROW_FINISH:
-      prepared = prepare_escrow_finish(tx);
-      break;
-    case ttNFTOKEN_ACCEPT_OFFER:
-      prepared = prepare_nftoken_accept_offer(tx);
-      break;
-    case ttNFTOKEN_BURN:
-      prepared = prepare_nftoken_burn(tx);
-      break;
-    case ttNFTOKEN_CANCEL_OFFER:
-      prepared = prepare_nftoken_cancel_offer(tx);
-      break;
-    case ttNFTOKEN_CREATE_OFFER:
-      prepared = prepare_nftoken_create_offer(tx);
-      break;
-    case ttNFTOKEN_MINT:
-      prepared = prepare_nftoken_mint(tx);
-      break;
-    default:
-      rollback("", pack_error_code(tx.transactionType));
-      return changetype<ByteArray>(0); // dead code
-  }
-
-  return do_emit(prepared);
+  // Could be implemented, but the implementation is too complicated
+  // to deploy... Compiler will try to switch calls to emit by the
+  // simpler emit_<transaction_type> functions below (and error out if
+  // it can't).
+  return changetype<ByteArray>(0); // dead code
 }
 
 @global @inline
