@@ -1,16 +1,3 @@
-
-// @ts-ignore: decorator
-@lazy
-export const COMPARE_EQUAL = 1;
-
-// @ts-ignore: decorator
-@lazy
-export const COMPARE_LESS = 2;
-
-// @ts-ignore: decorator
-@lazy
-export const COMPARE_GREATER = 4;
-
 export const enum TransactionType {
   AccountDelete = ttACCOUNT_DELETE,
   AccountSet = ttACCOUNT_SET,
