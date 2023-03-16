@@ -26,6 +26,14 @@ export function ENCODE_TL(buf: u32, tlamt: u32, uat: u8): u32 {
 }
 
 @inline
+export function ENCODE_TL_UNCOMMON(buf: u32, tlamt: u32, uat: u8): u32 {
+  store<u8>(buf, 0x60);
+  store<u8>(buf + 1, uat);
+  __rawcopy48(buf + 2, tlamt);
+  return buf + 50;
+}
+
+@inline
 export function ENCODE_TT(buf: u32, utt: u8): u32 {
   store<u8>(buf, 0x12);
   store<u8>(buf + 1, 0);
@@ -82,6 +90,21 @@ export function ENCODE_DROPS_ARRAY(buf: u32, drops: ByteArray, uat: u8): u32 {
   store<u8>(buf + 7, drops[6]);
   store<u8>(buf + 8, drops[7]);
   return buf + 9;
+}
+
+@inline
+export function ENCODE_DROPS_ARRAY_UNCOMMON(buf: u32, drops: ByteArray, uat: u8): u32 {
+  store<u8>(buf, 0x60);
+  store<u8>(buf + 1, uat);
+  store<u8>(buf + 2, 0x40 + drops[0]);
+  store<u8>(buf + 3, drops[1]);
+  store<u8>(buf + 4, drops[2]);
+  store<u8>(buf + 5, drops[3]);
+  store<u8>(buf + 6, drops[4]);
+  store<u8>(buf + 7, drops[5]);
+  store<u8>(buf + 8, drops[6]);
+  store<u8>(buf + 9, drops[7]);
+  return buf + 10;
 }
 
 @inline
@@ -279,12 +302,12 @@ export function _06_10_ENCODE_TL_DELIVER_MIN(buf: u32, drops: ByteArray): u32 {
 
 @inline
 export function _06_19_ENCODE_DROPS_BROKER_FEE(buf: u32, drops: ByteArray): u32 {
-  return ENCODE_DROPS_ARRAY(buf, drops, 19);
+  return ENCODE_DROPS_ARRAY_UNCOMMON(buf, drops, 19);
 }
 
 @inline
 export function _06_19_ENCODE_TL_BROKER_FEE(buf: u32, drops: ByteArray): u32 {
-  return ENCODE_TL(buf, changetype<u32>(drops), 19);
+  return ENCODE_TL_UNCOMMON(buf, changetype<u32>(drops), 19);
 }
 
 @inline

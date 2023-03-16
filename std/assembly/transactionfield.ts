@@ -252,6 +252,25 @@ export const enum NFTokenAcceptOfferField {
   NFTokenBrokerFee = sfNFTokenBrokerFee
 }
 
+export const enum NFTokenBurnField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/nftokenburn.html
+  NFTokenID = sfNFTokenID,
+  Owner = sfOwner
+}
+
 export const enum NFTokenCreateOfferField {
   Account = sfAccount,
   TransactionType = sfTransactionType,

@@ -474,7 +474,7 @@ function prepare_nftoken_accept_offer(tx: EmitSpec): TransactionBuffer {
 
   let brokerFee = tx.nftokenBrokerFee;
   if (brokerFee)
-    len += (brokerFee.isXrp() ? 9 : 49);
+    len += (brokerFee.isXrp() ? 10 : 50);
 
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
