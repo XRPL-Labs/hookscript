@@ -78,4 +78,22 @@ export class Amount {
 
     return new Amount(buf);
   }
+
+  @inline
+  static makeCurrency(code: string): ByteArray {
+    if (code.length != 3)
+      rollback("", pack_error_code(code.length));
+
+    let a = new ByteArray(20);
+    let ptr = changetype<u32>(a);
+    store<u64>(ptr, 0);
+    store<u32>(ptr + 8, 0);
+    ptr += 12;
+    store<u8>(ptr++, code[0]);
+    store<u8>(ptr++, code[1]);
+    store<u8>(ptr++, code[2]);
+    store<u8>(ptr++, 0);
+    store<u32>(ptr, 0);
+    return a;
+  }
 };
