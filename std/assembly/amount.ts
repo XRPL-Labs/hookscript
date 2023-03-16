@@ -1,3 +1,9 @@
+export class TokenAmountSpec {
+  currency: String;
+  issuer: Account;
+  value: DecimalFloat;
+}
+
 export class Amount {
   @inline
   constructor(public bytes: ByteArray) {
@@ -63,6 +69,39 @@ export class Amount {
     buf[5] = <u8>((drops >> 16) & 0xFF);
     buf[6] = <u8>((drops >> 8) & 0xFF);
     buf[7] = <u8>(drops & 0xFF);
+
+    return new Amount(buf);
+  }
+
+  @inline
+  static fromToken(spec: TokenAmountSpec): Amount {
+    let code = spec.currency;
+    if (code.length != 3)
+      rollback("", pack_error_code(code.length));
+
+    let buf = new ByteArray(48);
+    let r = $float_sto(
+      changetype<u32>(buf), 48,
+      0, 0, 0, 0,
+      spec.value.value,
+      -1);
+    if (r < 0)
+      rollback("", pack_error_code(r))
+
+    // set the currency code
+    let p = changetype<u32>(buf) + 8;
+    store<u64>(p, 0);
+    store<u32>(p + 8, 0);
+    p += 12;
+    store<u8>(p++, code[0]);
+    store<u8>(p++, code[1]);
+    store<u8>(p++, code[2]);
+    store<u8>(p++, 0);
+    store<u32>(p, 0);
+    p += 4;
+
+    // and source
+    __rawcopy20(p, changetype<usize>(spec.issuer.bytes));
 
     return new Amount(buf);
   }

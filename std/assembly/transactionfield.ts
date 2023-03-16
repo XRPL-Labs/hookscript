@@ -313,3 +313,23 @@ export const enum NFTokenMintField {
   TransferFee = sfTransferFee,
   URI = sfURI
 }
+
+export const enum TrustSetField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/trustset.html
+  LimitAmount = sfLimitAmount,
+  QualityIn = sfQualityIn,
+  QualityOut = sfQualityOut
+}

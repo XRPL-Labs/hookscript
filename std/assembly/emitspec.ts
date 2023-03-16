@@ -27,6 +27,16 @@ export const enum NFTokenCreateOfferFlag {
   SellNFToken = 1
 }
 
+// https://xrpl.org/trustset.html#trustset-flags
+export const enum TrustSetFlag {
+  None = 0,
+  SetfAuth = 0x00010000,
+  SetNoRipple = 0x00020000,
+  ClearNoRipple = ClearNoRipple,
+  SetFreeze = 0x00100000,
+  ClearFreeze = 0x00200000
+}
+
 export class EmitSpec {
   transactionType: TransactionType;
   destination: Account | null;
@@ -65,4 +75,7 @@ export class EmitSpec {
   nftokenBuyOffer: ByteArray | null;
   nftokenBrokerFee: Amount | null;
   nftokenOffers: StaticArray<ByteArray> | null;
+  limitAmount: Amount | null;
+  qualityIn: u32;
+  qualityOut: u32;
 }

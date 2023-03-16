@@ -190,6 +190,16 @@ export function _02_17_ENCODE_INVOICE_ID(buf: u32, iid: u32): u32 {
 }
 
 @inline
+export function _02_20_ENCODE_QUALITY_IN(buf: u32, q: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, q, 0x14);
+}
+
+@inline
+export function _02_21_ENCODE_QUALITY_OUT(buf: u32, q: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, q, 0x15);
+}
+
+@inline
 export function _02_25_ENCODE_OFFER_SEQUENCE(buf: u32, seq: u32): u32 {
   return ENCODE_UINT32_UNCOMMON(buf, seq, 0x19);
 }
@@ -273,6 +283,11 @@ export function _06_01_ENCODE_DROPS_AMOUNT(buf: u32, drops: ByteArray): u32 {
 @inline
 export function _06_01_ENCODE_TL_AMOUNT(buf: u32, drops: ByteArray): u32 {
   return ENCODE_TL(buf, changetype<u32>(drops), amAMOUNT);
+}
+
+@inline
+export function _06_03_ENCODE_LIMIT_AMOUNT(buf: u32, amt: ByteArray): u32 {
+  return ENCODE_TL(buf, changetype<u32>(amt), 3);
 }
 
 @inline

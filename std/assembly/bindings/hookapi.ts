@@ -8,6 +8,8 @@ import {
   _02_11_ENCODE_TRANSFER_RATE,
   _02_14_ENCODE_TAG_DST,
   _02_17_ENCODE_INVOICE_ID,
+  _02_20_ENCODE_QUALITY_IN,
+  _02_21_ENCODE_QUALITY_OUT,
   _02_25_ENCODE_OFFER_SEQUENCE,
   _02_26_ENCODE_FLS,
   _02_27_ENCODE_LLS,
@@ -24,6 +26,7 @@ import {
   _05_29_ENCODE_NFTOKEN_SELL,
   _06_01_ENCODE_DROPS_AMOUNT,
   _06_01_ENCODE_TL_AMOUNT,
+  _06_03_ENCODE_LIMIT_AMOUNT,
   _06_08_ENCODE_DROPS_FEE,
   _06_09_ENCODE_DROPS_SEND_MAX,
   _06_09_ENCODE_TL_SEND_MAX,
@@ -662,6 +665,37 @@ function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_trust_set(tx: EmitSpec): TransactionBuffer {
+  let limitAmount = tx.limitAmount!;
+  let limitBytes = limitAmount.bytes;
+  if (limitAmount.isXrp())
+    rollback("", pack_error_code(limitBytes.length))
+
+  let len = 268;
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttTRUST_SET);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_20_ENCODE_QUALITY_IN(buf_out, tx.qualityIn);
+  buf_out = _02_21_ENCODE_QUALITY_OUT(buf_out, tx.qualityOut);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _06_03_ENCODE_LIMIT_AMOUNT(buf_out, limitBytes);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function do_emit(prepared: TransactionBuffer): ByteArray {
   etxn_details(prepared);
 
@@ -759,6 +793,11 @@ export function emit_nftoken_create_offer(tx: EmitSpec): ByteArray {
 @global @inline
 export function emit_nftoken_mint(tx: EmitSpec): ByteArray {
   return do_emit(prepare_nftoken_mint(tx));
+}
+
+@global @inline
+export function emit_trust_set(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_trust_set(tx));
 }
 
 @global @inline

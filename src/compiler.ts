@@ -413,7 +413,7 @@ const transactionType2emitFunction = [
   "emit_check_cash",
   "emit_check_cancel",
   "emit_deposit_preauth",
-  null,
+  "emit_trust_set",
   "emit_account_delete",
   null,
   null,
