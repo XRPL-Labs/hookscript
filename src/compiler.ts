@@ -400,7 +400,7 @@ const transactionType2emitFunction = [
   "emit_escrow_cancel",
   null,
   null,
-  null,
+  "emit_offer_create",
   null,
   null,
   null,

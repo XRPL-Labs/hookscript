@@ -37,6 +37,15 @@ export const enum TrustSetFlag {
   ClearFreeze = 0x00200000
 }
 
+// https://xrpl.org/offercreate.html#offercreate-flags
+export const enum OfferCreateFlag {
+  None = 0,
+  Passive = 0x00010000,
+  ImmediateOrCancel = 0x00020000,
+  FillOrKill = 0x00040000,
+  Sell = 0x00080000
+}
+
 export class EmitSpec {
   transactionType: TransactionType;
   destination: Account | null;
@@ -78,4 +87,6 @@ export class EmitSpec {
   limitAmount: Amount | null;
   qualityIn: u32;
   qualityOut: u32;
+  takerGets: Amount | null;
+  takerPays: Amount | null;
 }

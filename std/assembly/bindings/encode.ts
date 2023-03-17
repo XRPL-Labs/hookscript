@@ -291,6 +291,26 @@ export function _06_03_ENCODE_LIMIT_AMOUNT(buf: u32, amt: ByteArray): u32 {
 }
 
 @inline
+export function _06_04_ENCODE_DROPS_TAKER_PAYS(buf: u32, drops: ByteArray): u32 {
+  return ENCODE_DROPS_ARRAY(buf, drops, 4);
+}
+
+@inline
+export function _06_04_ENCODE_TL_TAKER_PAYS(buf: u32, tlamt: ByteArray): u32 {
+  return ENCODE_TL(buf, changetype<u32>(tlamt), 4);
+}
+
+@inline
+export function _06_05_ENCODE_DROPS_TAKER_GETS(buf: u32, drops: ByteArray): u32 {
+  return ENCODE_DROPS_ARRAY(buf, drops, 5);
+}
+
+@inline
+export function _06_05_ENCODE_TL_TAKER_GETS(buf: u32, tlamt: ByteArray): u32 {
+  return ENCODE_TL(buf, changetype<u32>(tlamt), 5);
+}
+
+@inline
 export function _06_08_ENCODE_DROPS_FEE(buf: u32, drops: u64): u32 {
   return ENCODE_DROPS(buf, drops, amFEE);
 }

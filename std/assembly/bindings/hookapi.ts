@@ -27,6 +27,10 @@ import {
   _06_01_ENCODE_DROPS_AMOUNT,
   _06_01_ENCODE_TL_AMOUNT,
   _06_03_ENCODE_LIMIT_AMOUNT,
+  _06_04_ENCODE_DROPS_TAKER_PAYS,
+  _06_04_ENCODE_TL_TAKER_PAYS,
+  _06_05_ENCODE_DROPS_TAKER_GETS,
+  _06_05_ENCODE_TL_TAKER_GETS,
   _06_08_ENCODE_DROPS_FEE,
   _06_09_ENCODE_DROPS_SEND_MAX,
   _06_09_ENCODE_TL_SEND_MAX,
@@ -665,15 +669,59 @@ function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_offer_create(tx: EmitSpec): TransactionBuffer {
+  let len = 207;
+  if (tx.expiration)
+    len += 5;
+
+  if (tx.offerSequence)
+    len += 6;
+
+  let bidAmount = tx.takerGets!;
+  len += (bidAmount.isXrp() ? 9 : 49);
+
+  let askAmount = tx.takerPays!;
+  len += (askAmount.isXrp() ? 9 : 49);
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttOFFER_CREATE);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  if (tx.expiration)
+    buf_out = _02_10_ENCODE_EXPIRATION(buf_out, <u32>(tx.expiration!.getLedgerTime()));
+  if (tx.offerSequence)
+    buf_out = _02_25_ENCODE_OFFER_SEQUENCE(buf_out, tx.offerSequence);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  if (askAmount.isXrp())
+    buf_out = _06_04_ENCODE_DROPS_TAKER_PAYS(buf_out, askAmount.bytes);
+  else
+    buf_out = _06_04_ENCODE_TL_TAKER_PAYS(buf_out, askAmount.bytes);
+  if (bidAmount.isXrp())
+    buf_out = _06_05_ENCODE_DROPS_TAKER_GETS(buf_out, bidAmount.bytes);
+  else
+    buf_out = _06_05_ENCODE_TL_TAKER_GETS(buf_out, bidAmount.bytes);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_trust_set(tx: EmitSpec): TransactionBuffer {
   let limitAmount = tx.limitAmount!;
   let limitBytes = limitAmount.bytes;
   if (limitAmount.isXrp())
     rollback("", pack_error_code(limitBytes.length))
 
-  let len = 268;
-
-  let buf = new ByteArray(emit_buffer_size(len));
+  let buf = new ByteArray(emit_buffer_size(268));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -793,6 +841,11 @@ export function emit_nftoken_create_offer(tx: EmitSpec): ByteArray {
 @global @inline
 export function emit_nftoken_mint(tx: EmitSpec): ByteArray {
   return do_emit(prepare_nftoken_mint(tx));
+}
+
+@global @inline
+export function emit_offer_create(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_offer_create(tx));
 }
 
 @global @inline
