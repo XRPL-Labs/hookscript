@@ -235,6 +235,11 @@ export function _02_37_ENCODE_FINISH_AFTER(buf: u32, d: u32): u32 {
 }
 
 @inline
+export function _02_39_ENCODE_SETTLE_DELAY(buf: u32, d: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, d, 0x27);
+}
+
+@inline
 export function _02_42_ENCODE_NFTOKEN_TAXON(buf: u32, t: u32): u32 {
   return ENCODE_UINT32_UNCOMMON(buf, t, 0x2A);
 }
@@ -343,6 +348,13 @@ export function _06_19_ENCODE_DROPS_BROKER_FEE(buf: u32, drops: ByteArray): u32 
 @inline
 export function _06_19_ENCODE_TL_BROKER_FEE(buf: u32, drops: ByteArray): u32 {
   return ENCODE_TL_UNCOMMON(buf, changetype<u32>(drops), 19);
+}
+
+@inline
+export function _07_01_ENCODE_PUBLIC_KEY(buf: u32, key: u32): u32 {
+  store<u16>(buf, 0x2171);
+  __rawcopy33(buf + 2, key);
+  return buf + 35;
 }
 
 @inline

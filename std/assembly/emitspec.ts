@@ -89,4 +89,6 @@ export class EmitSpec {
   qualityOut: u32;
   takerGets: Amount | null;
   takerPays: Amount | null;
+  settleDelay: u32;
+  publicKey: PubKey | null;
 }

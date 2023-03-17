@@ -366,7 +366,7 @@
     local.set $failure
     i32.const 9
     local.set $file
-    i32.const 1241
+    i32.const 1286
     local.set $line
     local.get $failure
     i64.const 255

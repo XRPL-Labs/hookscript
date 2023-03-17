@@ -406,7 +406,7 @@ const transactionType2emitFunction = [
   null,
   null,
   null,
-  null,
+  "emit_payment_channel_create",
   null,
   null,
   "emit_check_create",

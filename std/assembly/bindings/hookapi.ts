@@ -17,6 +17,7 @@ import {
   _02_34_ENCODE_CLEAR_FLAG,
   _02_36_ENCODE_CANCEL_AFTER,
   _02_37_ENCODE_FINISH_AFTER,
+  _02_39_ENCODE_SETTLE_DELAY,
   _02_42_ENCODE_NFTOKEN_TAXON,
   _04_01_ENCODE_EMAIL_HASH,
   _05_07_ENCODE_WALLET_LOCATOR,
@@ -38,6 +39,7 @@ import {
   _06_10_ENCODE_TL_DELIVER_MIN,
   _06_19_ENCODE_DROPS_BROKER_FEE,
   _06_19_ENCODE_TL_BROKER_FEE,
+  _07_01_ENCODE_PUBLIC_KEY,
   _07_02_ENCODE_MESSAGE_KEY,
   _07_03_ENCODE_SIGNING_PUBKEY_NULL,
   _07_05_ENCODE_URI,
@@ -737,6 +739,44 @@ function prepare_offer_create(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_payment_channel_create(tx: EmitSpec): TransactionBuffer {
+  let amount = tx.amount!;
+  let amountBytes = amount.bytes;
+  if (!amount.isXrp())
+    rollback("", pack_error_code(amountBytes.length))
+
+  let keyView = tx.publicKey!.bytes;
+  let len = 284;
+  if (tx.cancelAfter)
+    len += 6;
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttPAYCHAN_CREATE);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_14_ENCODE_TAG_DST(buf_out, tx.destinationTag);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  if (tx.cancelAfter)
+    buf_out = _02_36_ENCODE_CANCEL_AFTER(buf_out, <u32>(tx.cancelAfter!.getLedgerTime()));
+  buf_out = _02_39_ENCODE_SETTLE_DELAY(buf_out, tx.settleDelay);
+  buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, amountBytes);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_01_ENCODE_PUBLIC_KEY(buf_out, changetype<u32>(keyView.underlying) + keyView.offset);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_trust_set(tx: EmitSpec): TransactionBuffer {
   let limitAmount = tx.limitAmount!;
   let limitBytes = limitAmount.bytes;
@@ -873,6 +913,11 @@ export function emit_offer_cancel(tx: EmitSpec): ByteArray {
 @global @inline
 export function emit_offer_create(tx: EmitSpec): ByteArray {
   return do_emit(prepare_offer_create(tx));
+}
+
+@global @inline
+export function emit_payment_channel_create(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_payment_channel_create(tx));
 }
 
 @global @inline
