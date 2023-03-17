@@ -22,11 +22,13 @@ import {
   _04_01_ENCODE_EMAIL_HASH,
   _05_07_ENCODE_WALLET_LOCATOR,
   _05_10_ENCODE_NFTOKEN_ID,
+  _05_22_ENCODE_CHANNEL,
   _05_24_ENCODE_CHECK_ID,
   _05_28_ENCODE_NFTOKEN_BUY,
   _05_29_ENCODE_NFTOKEN_SELL,
   _06_01_ENCODE_DROPS_AMOUNT,
   _06_01_ENCODE_TL_AMOUNT,
+  _06_02_ENCODE_DROPS_BALANCE,
   _06_03_ENCODE_LIMIT_AMOUNT,
   _06_04_ENCODE_DROPS_TAKER_PAYS,
   _06_04_ENCODE_TL_TAKER_PAYS,
@@ -739,6 +741,67 @@ function prepare_offer_create(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_payment_channel_claim(tx: EmitSpec): TransactionBuffer {
+  let len = 169;
+  let channel = tx.channel!;
+  if (channel.length != 32)
+    rollback("", pack_error_code(channel.length))
+
+  if (tx.amount) {
+    let amount = tx.amount!;
+    if (!amount.isXrp())
+      rollback("", pack_error_code(amount.bytes.length))
+
+    len += 9;
+  }
+
+  if (tx.balance) {
+    let balance = tx.balance!;
+    if (!balance.isXrp())
+      rollback("", pack_error_code(balance.bytes.length))
+
+    len += 9;
+  }
+
+  if (tx.signature) {
+    let signature = tx.signature!;
+    if (signature.length > 127)
+      rollback("", pack_error_code(signature.length))
+
+    len += 2 + signature.length;
+  }
+
+  let keyView = tx.publicKey ? tx.publicKey!.bytes : null;
+  if (keyView)
+    len += 35;
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttPAYCHAN_CLAIM);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _05_22_ENCODE_CHANNEL(buf_out, changetype<u32>(channel));
+  if (tx.amount)
+    buf_out = _06_01_ENCODE_DROPS_AMOUNT(buf_out, tx.amount!.bytes);
+  if (tx.balance)
+    buf_out = _06_02_ENCODE_DROPS_BALANCE(buf_out, tx.balance!.bytes);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  if (keyView)
+    buf_out = _07_01_ENCODE_PUBLIC_KEY(buf_out, changetype<u32>(keyView.underlying) + keyView.offset);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_payment_channel_create(tx: EmitSpec): TransactionBuffer {
   let amount = tx.amount!;
   let amountBytes = amount.bytes;
@@ -913,6 +976,11 @@ export function emit_offer_cancel(tx: EmitSpec): ByteArray {
 @global @inline
 export function emit_offer_create(tx: EmitSpec): ByteArray {
   return do_emit(prepare_offer_create(tx));
+}
+
+@global @inline
+export function emit_payment_channel_claim(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_payment_channel_claim(tx));
 }
 
 @global @inline

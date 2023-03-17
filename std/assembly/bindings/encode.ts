@@ -267,6 +267,13 @@ export function _05_24_ENCODE_CHECK_ID(buf: u32, cid: u32): u32 {
 }
 
 @inline
+export function _05_22_ENCODE_CHANNEL(buf: u32, cid: u32): u32 {
+  store<u16>(buf, 0x1650);
+  __rawcopy32(buf + 2, cid);
+  return buf + 34;
+}
+
+@inline
 export function _05_28_ENCODE_NFTOKEN_BUY(buf: u32, offer: u32): u32 {
   store<u16>(buf, 0x1C50);
   __rawcopy32(buf + 2, offer);
@@ -288,6 +295,11 @@ export function _06_01_ENCODE_DROPS_AMOUNT(buf: u32, drops: ByteArray): u32 {
 @inline
 export function _06_01_ENCODE_TL_AMOUNT(buf: u32, drops: ByteArray): u32 {
   return ENCODE_TL(buf, changetype<u32>(drops), amAMOUNT);
+}
+
+@inline
+export function _06_02_ENCODE_DROPS_BALANCE(buf: u32, drops: ByteArray): u32 {
+  return ENCODE_DROPS_ARRAY(buf, drops, 2);
 }
 
 @inline

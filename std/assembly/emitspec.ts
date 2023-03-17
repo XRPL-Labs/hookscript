@@ -46,6 +46,13 @@ export const enum OfferCreateFlag {
   Sell = 0x00080000
 }
 
+// https://xrpl.org/paymentchannelclaim.html#paymentchannelclaim-flags
+export const enum PaymentChannelClaimFlag {
+  None = 0,
+  Renew = 0x00010000,
+  Close = 0x00020000
+}
+
 export class EmitSpec {
   transactionType: TransactionType;
   destination: Account | null;
@@ -91,4 +98,7 @@ export class EmitSpec {
   takerPays: Amount | null;
   settleDelay: u32;
   publicKey: PubKey | null;
+  channel: ByteArray | null;
+  balance: Amount | null;
+  signature: ByteArray | null;
 }

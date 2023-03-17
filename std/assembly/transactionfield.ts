@@ -353,6 +353,27 @@ export const enum OfferCreateField {
   TakerPays = sfTakerPays
 }
 
+export const enum PaymentChannelClaimField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/paymentchannelclaim.html
+  Channel = sfChannel,
+  Balance = sfBalance,
+  Amount = sfAmount,
+  Signature = sfSignature,
+  PublicKey = sfPublicKey
+}
 
 export const enum PaymentChannelCreateField {
   Account = sfAccount,
