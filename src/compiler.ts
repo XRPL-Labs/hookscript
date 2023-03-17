@@ -401,7 +401,7 @@ const transactionType2emitFunction = [
   null,
   null,
   "emit_offer_create",
-  null,
+  "emit_offer_cancel",
   null,
   null,
   null,

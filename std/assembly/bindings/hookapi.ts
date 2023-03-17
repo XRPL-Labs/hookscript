@@ -669,6 +669,28 @@ function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_offer_cancel(tx: EmitSpec): TransactionBuffer {
+  let buf = new ByteArray(emit_buffer_size(213));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttOFFER_CANCEL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_25_ENCODE_OFFER_SEQUENCE(buf_out, tx.offerSequence);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_offer_create(tx: EmitSpec): TransactionBuffer {
   let len = 207;
   if (tx.expiration)
@@ -841,6 +863,11 @@ export function emit_nftoken_create_offer(tx: EmitSpec): ByteArray {
 @global @inline
 export function emit_nftoken_mint(tx: EmitSpec): ByteArray {
   return do_emit(prepare_nftoken_mint(tx));
+}
+
+@global @inline
+export function emit_offer_cancel(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_offer_cancel(tx));
 }
 
 @global @inline

@@ -314,6 +314,24 @@ export const enum NFTokenMintField {
   URI = sfURI
 }
 
+export const enum OfferCancelField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/offercancel.html
+  OfferSequence = sfOfferSequence
+}
+
 export const enum OfferCreateField {
   Account = sfAccount,
   TransactionType = sfTransactionType,
