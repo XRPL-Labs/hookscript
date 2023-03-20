@@ -53,6 +53,12 @@ export const enum PaymentChannelClaimFlag {
   Close = 0x00020000
 }
 
+export class SignerEntry {
+  account: Account;
+  signerWeight: u16;
+  walletLocator: ByteArray | null;
+}
+
 export class EmitSpec {
   transactionType: TransactionType;
   destination: Account | null;
@@ -102,4 +108,6 @@ export class EmitSpec {
   balance: Amount | null;
   signature: ByteArray | null;
   regularKey: Account | null;
+  signerQuorum: u32;
+  signerEntries: StaticArray<SignerEntry> | null;
 }

@@ -1,3 +1,7 @@
+import {
+  __accumulateupto32
+} from "./accumupto"
+
 // @ts-ignore: decorator
 @lazy
 export const tfCANONICAL: u32 = 0x80000000;
@@ -17,6 +21,30 @@ export const amAMOUNT: u8 = 1;
 // @ts-ignore: decorator
 @lazy
 export const amFEE: u8 = 8;
+
+@final
+class SignerEntryEncoder {
+  constructor(private buffer: u32) {
+  }
+
+  public apply(entry: SignerEntry): void {
+    let buf = this.buffer;
+    store<u16>(buf, 0x13EB);
+    let weight = entry.signerWeight;
+    store<u8>(buf + 2, (weight >> 8) & 0xFF);
+    store<u8>(buf + 3, weight & 0xFF);
+    buf += 4;
+    let walletLocator = entry.walletLocator;
+    if (walletLocator) {
+      store<u8>(buf, 0x57);
+      __rawcopy32(buf + 1, changetype<u32>(walletLocator));
+      buf += 33;
+    }
+    buf = ENCODE_ACCOUNT(buf, changetype<u32>(entry.account.bytes), atACCOUNT);
+    store<u8>(buf, 0xE1);
+    this.buffer = buf + 1;
+  }
+}
 
 @inline
 export function ENCODE_TL(buf: u32, tlamt: u32, uat: u8): u32 {
@@ -222,6 +250,11 @@ export function _02_33_ENCODE_SET_FLAG(buf: u32, fl: u32): u32 {
 @inline
 export function _02_34_ENCODE_CLEAR_FLAG(buf: u32, fl: u32): u32 {
   return ENCODE_UINT32_UNCOMMON(buf, fl, 0x22);
+}
+
+@inline
+export function _02_35_ENCODE_SIGNER_QUORUM(buf: u32, q: u32): u32 {
+  return ENCODE_UINT32_UNCOMMON(buf, q, 0x23);
 }
 
 @inline
@@ -451,6 +484,15 @@ export function _08_08_ENCODE_ACCOUNT_REGULAR_KEY(buf: u32, account_id: u32): u3
 @inline
 export function _08_09_ENCODE_NFTOKENMINTER(buf: u32, accid: u32): u32 {
   return ENCODE_SHORT_BLOB(buf, accid, 20, 0x89);
+}
+
+@inline
+export function _15_04_ENCODE_SIGNER_ENTRIES(buf: u32, entries: StaticArray<SignerEntry>): u32 {
+  store<u8>(buf, 0xF4);
+  let encoder = __accumulateupto32<StaticArray<SignerEntry>, SignerEntryEncoder>(entries, 0, new SignerEntryEncoder(buf + 1));
+  buf = encoder.buffer;
+  store<u8>(buf, 0xF1);
+  return buf + 1;
 }
 
 @inline

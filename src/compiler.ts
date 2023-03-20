@@ -405,7 +405,7 @@ const transactionType2emitFunction = [
   null,
   null,
   null,
-  null,
+  "emit_signer_list_set",
   "emit_payment_channel_create",
   "emit_payment_channel_fund",
   "emit_payment_channel_claim",

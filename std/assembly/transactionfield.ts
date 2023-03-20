@@ -436,6 +436,25 @@ export const enum SetRegularKeyField {
   RegularKey = sfRegularKey
 }
 
+export const enum SignerListSetField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/signerlistset.html
+  SignerQuorum = sfSignerQuorum,
+  SignerEntries = sfSignerEntries
+}
+
 export const enum TrustSetField {
   Account = sfAccount,
   TransactionType = sfTransactionType,

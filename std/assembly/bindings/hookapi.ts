@@ -1,4 +1,8 @@
 import {
+  __accumulateupto32
+} from "./accumupto"
+
+import {
   _01_02_ENCODE_TT,
   _01_04_ENCODE_TRANSFER_FEE,
   _02_02_ENCODE_FLAGS,
@@ -15,6 +19,7 @@ import {
   _02_27_ENCODE_LLS,
   _02_33_ENCODE_SET_FLAG,
   _02_34_ENCODE_CLEAR_FLAG,
+  _02_35_ENCODE_SIGNER_QUORUM,
   _02_36_ENCODE_CANCEL_AFTER,
   _02_37_ENCODE_FINISH_AFTER,
   _02_39_ENCODE_SETTLE_DELAY,
@@ -56,6 +61,7 @@ import {
   _08_06_ENCODE_ACCOUNT_UNAUTHORIZE,
   _08_08_ENCODE_ACCOUNT_REGULAR_KEY,
   _08_09_ENCODE_NFTOKENMINTER,
+  _15_04_ENCODE_SIGNER_ENTRIES,
   _16_16_ENCODE_TICK_SIZE,
   _19_04_ENCODE_NFTOKEN_OFFERS,
   tfCANONICAL
@@ -65,6 +71,21 @@ class TransactionBuffer extends ByteView {
   @inline
   constructor(underlying: ByteArray, offset: i32, length: i32, public feePtr: u32) {
     super(underlying, offset, length)
+  }
+}
+
+class WalletLocatorCounter {
+  constructor(public count: i32 = 0) {
+  }
+
+  public apply(entry: SignerEntry): void {
+    let walletLocator = entry.walletLocator;
+    if (walletLocator) {
+      if (walletLocator.length != 32)
+        rollback("", pack_error_code(walletLocator.length));
+
+      this.count += 1;
+    }
   }
 }
 
@@ -908,6 +929,44 @@ function prepare_set_regular_key(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_signer_list_set(tx: EmitSpec): TransactionBuffer {
+  let len = 213;
+  let signerEntries = tx.signerEntries;
+  if (signerEntries) {
+    let l = signerEntries.length;
+    if ((l < 1) || (l > 32))
+      rollback("", pack_error_code(l))
+
+    len += 2;
+    len += 27 * l;
+
+    let counter = __accumulateupto32<StaticArray<SignerEntry>, WalletLocatorCounter>(signerEntries, 0, new WalletLocatorCounter());
+    len += 33 * counter.count;
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttSIGNER_LIST_SET);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _02_35_ENCODE_SIGNER_QUORUM(buf_out, <u32>(tx.signerQuorum));
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (signerEntries)
+    buf_out = _15_04_ENCODE_SIGNER_ENTRIES(buf_out, signerEntries);
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_trust_set(tx: EmitSpec): TransactionBuffer {
   let limitAmount = tx.limitAmount!;
   let limitBytes = limitAmount.bytes;
@@ -1064,6 +1123,11 @@ export function emit_payment_channel_fund(tx: EmitSpec): ByteArray {
 @global @inline
 export function emit_set_regular_key(tx: EmitSpec): ByteArray {
   return do_emit(prepare_set_regular_key(tx));
+}
+
+@global @inline
+export function emit_signer_list_set(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_signer_list_set(tx));
 }
 
 @global @inline
