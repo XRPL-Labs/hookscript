@@ -375,6 +375,26 @@ export const enum PaymentChannelClaimField {
   PublicKey = sfPublicKey
 }
 
+export const enum PaymentChannelFundField {
+  Account = sfAccount,
+  TransactionType = sfTransactionType,
+  Fee = sfFee,
+  Sequence = sfSequence,
+  AccountTxnID = sfAccountTxnID,
+  Flags = sfFlags,
+  LastLedgerSequence = sfLastLedgerSequence,
+  Memos = sfMemos,
+  Signers = sfSigners,
+  SourceTag = sfSourceTag,
+  SigningPubKey = sfSigningPubKey,
+  TicketSequence = sfTicketSequence,
+  TxnSignature = sfTxnSignature,
+  // https://xrpl.org/paymentchannelfund.html
+  Channel = sfChannel,
+  Amount = sfAmount,
+  Expiration = sfExpiration
+}
+
 export const enum PaymentChannelCreateField {
   Account = sfAccount,
   TransactionType = sfTransactionType,
