@@ -403,7 +403,7 @@ const transactionType2emitFunction = [
   "emit_offer_create",
   "emit_offer_cancel",
   null,
-  null,
+  "emit_ticket_create",
   null,
   "emit_signer_list_set",
   "emit_payment_channel_create",

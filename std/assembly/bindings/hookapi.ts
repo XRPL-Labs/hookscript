@@ -23,6 +23,7 @@ import {
   _02_36_ENCODE_CANCEL_AFTER,
   _02_37_ENCODE_FINISH_AFTER,
   _02_39_ENCODE_SETTLE_DELAY,
+  _02_40_ENCODE_TICKET_COUNT,
   _02_42_ENCODE_NFTOKEN_TAXON,
   _04_01_ENCODE_EMAIL_HASH,
   _05_07_ENCODE_WALLET_LOCATOR,
@@ -967,6 +968,28 @@ function prepare_signer_list_set(tx: EmitSpec): TransactionBuffer {
 }
 
 @inline
+function prepare_ticket_create(tx: EmitSpec): TransactionBuffer {
+  let buf = new ByteArray(emit_buffer_size(213));
+  let cls = <u32>ledger_seq();
+  let acc = hook_account();
+
+  let buf_out = changetype<u32>(buf);
+  buf_out = _01_02_ENCODE_TT(buf_out, ttTICKET_CREATE);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
+  buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
+  buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
+  buf_out = _02_40_ENCODE_TICKET_COUNT(buf_out, tx.ticketCount);
+  let fee_ptr = buf_out;
+  buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
+  buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
+  buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+
+  let offset = buf_out - changetype<u32>(buf);
+  return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
+}
+
+@inline
 function prepare_trust_set(tx: EmitSpec): TransactionBuffer {
   let limitAmount = tx.limitAmount!;
   let limitBytes = limitAmount.bytes;
@@ -1128,6 +1151,11 @@ export function emit_set_regular_key(tx: EmitSpec): ByteArray {
 @global @inline
 export function emit_signer_list_set(tx: EmitSpec): ByteArray {
   return do_emit(prepare_signer_list_set(tx));
+}
+
+@global @inline
+export function emit_ticket_create(tx: EmitSpec): ByteArray {
+  return do_emit(prepare_ticket_create(tx));
 }
 
 @global @inline

@@ -110,4 +110,5 @@ export class EmitSpec {
   regularKey: Account | null;
   signerQuorum: u32;
   signerEntries: StaticArray<SignerEntry> | null;
+  ticketCount: u8;
 }

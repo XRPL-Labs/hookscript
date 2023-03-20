@@ -273,6 +273,14 @@ export function _02_39_ENCODE_SETTLE_DELAY(buf: u32, d: u32): u32 {
 }
 
 @inline
+export function _02_40_ENCODE_TICKET_COUNT(buf: u32, tc: u8): u32 {
+  store<u32>(buf, 0x00002820);
+  store<u8>(buf + 4, 0);
+  store<u8>(buf + 5, tc);
+  return buf + 6;
+}
+
+@inline
 export function _02_42_ENCODE_NFTOKEN_TAXON(buf: u32, t: u32): u32 {
   return ENCODE_UINT32_UNCOMMON(buf, t, 0x2A);
 }
