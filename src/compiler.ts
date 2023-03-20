@@ -398,7 +398,7 @@ const transactionType2emitFunction = [
   "emit_escrow_finish",
   "emit_account_set",
   "emit_escrow_cancel",
-  null,
+  "emit_set_regular_key",
   null,
   "emit_offer_create",
   "emit_offer_cancel",

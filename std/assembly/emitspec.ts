@@ -101,4 +101,5 @@ export class EmitSpec {
   channel: ByteArray | null;
   balance: Amount | null;
   signature: ByteArray | null;
+  regularKey: Account | null;
 }
