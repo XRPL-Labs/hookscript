@@ -24,9 +24,11 @@ export const amFEE: u8 = 8;
 
 @final
 class SignerEntryEncoder {
-  constructor(private buffer: u32) {
+  @inline
+  constructor(public buffer: u32) {
   }
 
+  @inline
   public apply(entry: SignerEntry): void {
     let buf = this.buffer;
     store<u16>(buf, 0x13EB);

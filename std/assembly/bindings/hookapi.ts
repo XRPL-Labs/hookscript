@@ -76,9 +76,11 @@ class TransactionBuffer extends ByteView {
 }
 
 class WalletLocatorCounter {
+  @inline
   constructor(public count: i32 = 0) {
   }
 
+  @inline
   public apply(entry: SignerEntry): void {
     let walletLocator = entry.walletLocator;
     if (walletLocator) {
@@ -105,7 +107,7 @@ function prepare_payment(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttPAYMENT);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_03_ENCODE_TAG_SRC(buf_out, tx.sourceTag);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_14_ENCODE_TAG_DST(buf_out, tx.destinationTag);
@@ -228,7 +230,7 @@ function prepare_check_cancel(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttCHECK_CANCEL);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
   buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
@@ -268,7 +270,7 @@ function prepare_check_cash(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttCHECK_CASH);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
   buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
@@ -311,7 +313,7 @@ function prepare_check_create(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttCHECK_CREATE);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   if (tx.expiration)
     buf_out = _02_10_ENCODE_EXPIRATION(buf_out, <u32>(tx.expiration!.getLedgerTime()));
@@ -353,7 +355,7 @@ function prepare_deposit_preauth(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttDEPOSIT_PREAUTH);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
   buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
@@ -379,7 +381,7 @@ function prepare_escrow_cancel(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttESCROW_CANCEL);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_25_ENCODE_OFFER_SEQUENCE(buf_out, tx.offerSequence);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
@@ -418,7 +420,7 @@ function prepare_escrow_create(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttESCROW_CREATE);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_14_ENCODE_TAG_DST(buf_out, tx.destinationTag);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
@@ -468,7 +470,7 @@ function prepare_escrow_finish(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttESCROW_FINISH);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_25_ENCODE_OFFER_SEQUENCE(buf_out, tx.offerSequence);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
@@ -703,7 +705,7 @@ function prepare_offer_cancel(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttOFFER_CANCEL);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_25_ENCODE_OFFER_SEQUENCE(buf_out, tx.offerSequence);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
@@ -842,7 +844,7 @@ function prepare_payment_channel_create(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttPAYCHAN_CREATE);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_14_ENCODE_TAG_DST(buf_out, tx.destinationTag);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
@@ -883,7 +885,7 @@ function prepare_payment_channel_fund(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttPAYCHAN_FUND);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   if (tx.expiration)
     buf_out = _02_10_ENCODE_EXPIRATION(buf_out, <u32>(tx.expiration!.getLedgerTime()));
@@ -914,7 +916,7 @@ function prepare_set_regular_key(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttREGULAR_KEY_SET);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
   buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);
@@ -975,7 +977,7 @@ function prepare_ticket_create(tx: EmitSpec): TransactionBuffer {
 
   let buf_out = changetype<u32>(buf);
   buf_out = _01_02_ENCODE_TT(buf_out, ttTICKET_CREATE);
-  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL);
+  buf_out = _02_02_ENCODE_FLAGS(buf_out, tfCANONICAL | tx.flags);
   buf_out = _02_04_ENCODE_SEQUENCE(buf_out, 0);
   buf_out = _02_26_ENCODE_FLS(buf_out, cls + 1);
   buf_out = _02_27_ENCODE_LLS(buf_out, cls + 5);

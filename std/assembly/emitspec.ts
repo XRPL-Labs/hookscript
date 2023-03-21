@@ -89,7 +89,7 @@ export class EmitSpec {
   fulfillment: ByteArray | null;
   nftokenTaxon: u32;
   issuer: Account | null;
-  flags: u32; // currently used just for NFToken* but should be generalized
+  flags: u32;
   transferFee: u16;
   uri: String = "";
   nftokenID: ByteArray | null;
