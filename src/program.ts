@@ -1118,6 +1118,10 @@ export class Program extends DiagnosticEmitter {
     this.registerConstantInteger(CommonNames.ASC_FEATURE_STRINGREF, Type.bool,
       i64_new(options.hasFeature(Feature.Stringref) ? 1 : 0, 0));
 
+    // register #define-like names
+    this.registerConstantInteger(CommonNames.ASC_SKIP_SIGNER_ENTRIES, Type.i32,
+      i64_new(0));
+
     // remember deferred elements
     let queuedImports = new Array<QueuedImport>();
     let queuedExports = new Map<File,Map<string,QueuedExport>>();

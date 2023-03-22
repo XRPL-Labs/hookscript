@@ -425,6 +425,12 @@ const transactionType2emitFunction = [
   "emit_nftoken_accept_offer"
 ];
 
+/** Maps EmitSpec field names to global flags controlling their
+ * usage. Values are keys of Compiler.skipFlag2zero . */
+const emitSpecField2skipFlagName = {
+  'signerEntries': CommonNames.ASC_SKIP_SIGNER_ENTRIES
+};
+
 /** Compiler interface. */
 export class Compiler extends DiagnosticEmitter {
 
@@ -477,6 +483,9 @@ export class Compiler extends DiagnosticEmitter {
   hasCustomFunctionExports: bool = false;
   /** Whether the module would use the exported runtime to lift/lower. */
   desiresExportRuntime: bool = false;
+  /** Template for ASC_SKIP_* values. This object isn't modified after
+   * initialization - flags are set on copies. */
+  skipFlag2zero: Map<string,i32> = new Map();
 
   /** Compiles a {@link Program} to a {@link Module} using the specified options. */
   static compile(program: Program): Module {
@@ -519,6 +528,9 @@ export class Compiler extends DiagnosticEmitter {
     if (options.hasFeature(Feature.ExtendedConst)) featureFlags |= FeatureFlags.ExtendedConst;
     if (options.hasFeature(Feature.Stringref)) featureFlags |= FeatureFlags.Stringref;
     module.setFeatures(featureFlags);
+
+    for (let [fn, sf] of Object.entries(emitSpecField2skipFlagName))
+      this.skipFlag2zero.set(sf, 0);
 
     // set up the main start function
     let startFunctionInstance = program.makeNativeFunction(BuiltinNames.start, new Signature(program, [], Type.void));
@@ -6161,10 +6173,15 @@ export class Compiler extends DiagnosticEmitter {
     }
 
     // switch the name of emit according to the value of transactionType
+    let preproc = false;
     if ((expression.expression.kind == NodeKind.Identifier) &&
       (expression.args.length == 1) &&
       (<IdentifierExpression>(expression.expression).text == 'emit')) {
+      preproc = true;
       let match = -1; // 1 transactionType found / defaulted, 0 not there, <0 unexpected / cannot say
+      let skipFlags: Map<string,i32> = new Map();
+      for (let _keys = Map_keys(this.skipFlag2zero), i = 0, k = _keys.length; i < k; ++i)
+        skipFlags.set(_keys[i], 1);
       let argExpr = expression.args[0];
       if (argExpr.isLiteralKind(LiteralKind.Object)) {
         match = 0;
@@ -6173,7 +6190,8 @@ export class Compiler extends DiagnosticEmitter {
         for (let i = 0; i < numNames; ++i) {
           let nameExpr = emitSpec.names[i];
           if (nameExpr.kind == NodeKind.Identifier) {
-            if (<IdentifierExpression>(nameExpr).text == 'transactionType') {
+            let fieldName = <IdentifierExpression>(nameExpr).text;
+            if (fieldName == 'transactionType') {
               match = -2;
               // would be better to compile w/o reporting errors...
               let compiled = this.compileExpression(emitSpec.values[i], Type.i32,
@@ -6186,10 +6204,16 @@ export class Compiler extends DiagnosticEmitter {
                   <IdentifierExpression>(expression.expression).text = emitName;
                 }
               }
-              break;
+              if (match != 1)
+                break;
+            } else {
+              let flagName = emitSpecField2skipFlagName[fieldName];
+              if (flagName)
+                skipFlags.set(flagName, 0);
             }
           } else {
             match = -3;
+            break;
           }
         }
         if (!match) {
@@ -6198,7 +6222,9 @@ export class Compiler extends DiagnosticEmitter {
           <IdentifierExpression>(expression.expression).text = transactionType2emitFunction[0];
         }
       }
-      if (match != 1) {
+      if (match == 1) {
+        this.setSkipFlags(skipFlags);
+      } else {
         this.error(
           DiagnosticCode.Call_to_emit_cannot_be_optimized_Call_emit__transaction_type_directly,
           expression.expression.range
@@ -6238,13 +6264,16 @@ export class Compiler extends DiagnosticEmitter {
             Constraints.ConvImplicit | Constraints.IsThis
           );
         }
-        return this.compileCallDirect(
+        let result = this.compileCallDirect(
           functionInstance,
           expression.args,
           expression,
           thisArg,
           constraints
         );
+        if (preproc)
+          this.setSkipFlags(this.skipFlag2zero);
+        return result;
       }
 
       // indirect call: first-class function (non-generic, can't be inlined)
@@ -6394,6 +6423,21 @@ export class Compiler extends DiagnosticEmitter {
       0,
       contextualType == Type.void
     );
+  }
+
+  /** Updates values of ASC_SKIP_* globals. */
+  private setSkipFlags(skipFlags: Map<string,i32>): void {
+    let resolver = this.resolver;
+    let flow = this.currentFlow;
+    for (let _keys = Map_keys(skipFlags), i = 0, k = _keys.length; i < k; ++i) {
+      let name = _keys[i], value = skipFlags.get(name);
+      let ident = Node.createIdentifierExpression(name, this.program.nativeRange);
+      // internal error if it fails - so we might just as well report it...
+      let elem = resolver.lookupIdentifierExpression(ident, flow);
+      assert(elem.kind == ElementKind.Global);
+      let global = <Global>elem;
+      global.setConstantIntegerValue(i64_new(value), Type.i32);
+    }
   }
 
   /** Compiles the given arguments like a call expression according to the specified context. */

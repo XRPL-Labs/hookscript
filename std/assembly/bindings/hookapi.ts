@@ -934,17 +934,19 @@ function prepare_set_regular_key(tx: EmitSpec): TransactionBuffer {
 @inline
 function prepare_signer_list_set(tx: EmitSpec): TransactionBuffer {
   let len = 213;
-  let signerEntries = tx.signerEntries;
-  if (signerEntries) {
-    let l = signerEntries.length;
-    if ((l < 1) || (l > 32))
-      rollback("", pack_error_code(l))
+  if (!ASC_SKIP_SIGNER_ENTRIES) {
+    let signerEntries = tx.signerEntries;
+    if (signerEntries) {
+      let l = signerEntries.length;
+      if ((l < 1) || (l > 32))
+        rollback("", pack_error_code(l))
 
-    len += 2;
-    len += 27 * l;
+      len += 2;
+      len += 27 * l;
 
-    let counter = __accumulateupto32<StaticArray<SignerEntry>, WalletLocatorCounter>(signerEntries, 0, new WalletLocatorCounter());
-    len += 33 * counter.count;
+      let counter = __accumulateupto32<StaticArray<SignerEntry>, WalletLocatorCounter>(signerEntries, 0, new WalletLocatorCounter());
+      len += 33 * counter.count;
+    }
   }
 
   let buf = new ByteArray(emit_buffer_size(len));
@@ -962,8 +964,11 @@ function prepare_signer_list_set(tx: EmitSpec): TransactionBuffer {
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
-  if (signerEntries)
-    buf_out = _15_04_ENCODE_SIGNER_ENTRIES(buf_out, signerEntries);
+  if (!ASC_SKIP_SIGNER_ENTRIES) {
+    let signerEntries = tx.signerEntries;
+    if (signerEntries)
+      buf_out = _15_04_ENCODE_SIGNER_ENTRIES(buf_out, signerEntries);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
