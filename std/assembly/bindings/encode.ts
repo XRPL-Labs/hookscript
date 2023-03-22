@@ -1,4 +1,5 @@
 import {
+  __accumulateupto7,
   __accumulateupto32
 } from "./accumupto"
 
@@ -21,6 +22,35 @@ export const amAMOUNT: u8 = 1;
 // @ts-ignore: decorator
 @lazy
 export const amFEE: u8 = 8;
+
+@final
+class MemoEncoder {
+  @inline
+  constructor(public buffer: u32) {
+  }
+
+  @inline
+  public apply(obj: MemoObject): void {
+    let buf = this.buffer;
+    store<u8>(buf++, 0xEA);
+    let memoType = obj.memoType;
+    let len = memoType.length;
+    if (len)
+      buf = ENCODE_SHORT_BLOB(buf, changetype<u32>(memoType), len, 0x7C);
+
+    let memoData = obj.memoData;
+    if (memoData)
+      buf = ENCODE_SHORT_BLOB(buf, changetype<u32>(memoData), memoData.length, 0x7D);
+
+    let memoFormat = obj.memoFormat;
+    len = memoFormat.length;
+    if (len)
+      buf = ENCODE_SHORT_BLOB(buf, changetype<u32>(memoFormat), len, 0x7E);
+
+    store<u8>(buf, 0xE1);
+    this.buffer = buf + 1;
+  }
+}
 
 @final
 class SignerEntryEncoder {
@@ -500,6 +530,15 @@ export function _08_09_ENCODE_NFTOKENMINTER(buf: u32, accid: u32): u32 {
 export function _15_04_ENCODE_SIGNER_ENTRIES(buf: u32, entries: StaticArray<SignerEntry>): u32 {
   store<u8>(buf, 0xF4);
   let encoder = __accumulateupto32<StaticArray<SignerEntry>, SignerEntryEncoder>(entries, 0, new SignerEntryEncoder(buf + 1));
+  buf = encoder.buffer;
+  store<u8>(buf, 0xF1);
+  return buf + 1;
+}
+
+@inline
+export function _15_09_ENCODE_MEMOS(buf: u32, memos: StaticArray<MemoObject>): u32 {
+  store<u8>(buf, 0xF9);
+  let encoder = __accumulateupto7<StaticArray<MemoObject>, MemoEncoder>(memos, 0, new MemoEncoder(buf + 1));
   buf = encoder.buffer;
   store<u8>(buf, 0xF1);
   return buf + 1;

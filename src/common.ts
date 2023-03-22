@@ -194,6 +194,7 @@ export namespace CommonNames {
   export const ASC_VERSION_PATCH = "ASC_VERSION_PATCH";
   // not quite constants, but only changed by the compiler
   export const ASC_SKIP_SIGNER_ENTRIES = "ASC_SKIP_SIGNER_ENTRIES";
+  export const ASC_SKIP_MEMOS = "ASC_SKIP_MEMOS";
   // classes
   export const I8 = "I8";
   export const I16 = "I16";

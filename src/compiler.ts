@@ -91,6 +91,7 @@ import {
   PropertyPrototype,
   IndexSignature,
   File,
+  emitSpecField2skipFlagName,
   mangleInternalName
 } from "./program";
 
@@ -424,12 +425,6 @@ const transactionType2emitFunction = [
   "emit_nftoken_cancel_offer",
   "emit_nftoken_accept_offer"
 ];
-
-/** Maps EmitSpec field names to global flags controlling their
- * usage. Values are keys of Compiler.skipFlag2zero . */
-const emitSpecField2skipFlagName = {
-  'signerEntries': CommonNames.ASC_SKIP_SIGNER_ENTRIES
-};
 
 /** Compiler interface. */
 export class Compiler extends DiagnosticEmitter {

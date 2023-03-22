@@ -154,6 +154,13 @@ import { transformHookScript } from './transforms';
 const AL_SIZE = 16;
 const AL_MASK = AL_SIZE - 1;
 
+/** Maps EmitSpec field names to global flags controlling their
+ * usage. Values are keys of Compiler.skipFlag2zero . */
+export const emitSpecField2skipFlagName = {
+  'memos': CommonNames.ASC_SKIP_MEMOS,
+  'signerEntries': CommonNames.ASC_SKIP_SIGNER_ENTRIES
+};
+
 /** Represents a yet unresolved `import`. */
 class QueuedImport {
   constructor(
@@ -1119,8 +1126,8 @@ export class Program extends DiagnosticEmitter {
       i64_new(options.hasFeature(Feature.Stringref) ? 1 : 0, 0));
 
     // register #define-like names
-    this.registerConstantInteger(CommonNames.ASC_SKIP_SIGNER_ENTRIES, Type.i32,
-      i64_new(0));
+    for (let [fn, sf] of Object.entries(emitSpecField2skipFlagName))
+      this.registerConstantInteger(sf, Type.i32, i64_new(0));
 
     // remember deferred elements
     let queuedImports = new Array<QueuedImport>();

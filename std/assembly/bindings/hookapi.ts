@@ -1,4 +1,5 @@
 import {
+  __accumulateupto7,
   __accumulateupto32
 } from "./accumupto"
 
@@ -63,6 +64,7 @@ import {
   _08_08_ENCODE_ACCOUNT_REGULAR_KEY,
   _08_09_ENCODE_NFTOKENMINTER,
   _15_04_ENCODE_SIGNER_ENTRIES,
+  _15_09_ENCODE_MEMOS,
   _16_16_ENCODE_TICK_SIZE,
   _19_04_ENCODE_NFTOKEN_OFFERS,
   tfCANONICAL
@@ -72,6 +74,42 @@ class TransactionBuffer extends ByteView {
   @inline
   constructor(underlying: ByteArray, offset: i32, length: i32, public feePtr: u32) {
     super(underlying, offset, length)
+  }
+}
+
+class MemoSizer {
+  @inline
+  constructor(public size: i32 = 2) {
+  }
+
+  @inline
+  public apply(obj: MemoObject): void {
+    let sz = 0;
+    let len = obj.memoType.length;
+    if (len > 127)
+      rollback("", pack_error_code(len));
+    else if (len)
+      sz += (2 + len);
+
+    let memoData = obj.memoData;
+    if (memoData) {
+      len = memoData.length;
+      if (len > 127)
+        rollback("", pack_error_code(len));
+      else if (len)
+        sz += (2 + len);
+    }
+
+    len = obj.memoFormat.length;
+    if (len > 127)
+      rollback("", pack_error_code(len));
+    else if (len)
+      sz += (2 + len);
+
+    if (!sz)
+      rollback("", pack_error_code(0)); // MemoObject cannot be empty
+
+    this.size += (2 + sz);
   }
 }
 
@@ -101,7 +139,16 @@ export function accept(msg: string = "", err: i64 = 0): void {
 @inline
 function prepare_payment(tx: EmitSpec): TransactionBuffer {
   let amount = tx.amount!;
-  let buf = new ByteArray(emit_buffer_size(amount.isXrp() ? 248 : 288));
+  let len = amount.isXrp() ? 248 : 288;
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -122,6 +169,11 @@ function prepare_payment(tx: EmitSpec): TransactionBuffer {
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -129,7 +181,16 @@ function prepare_payment(tx: EmitSpec): TransactionBuffer {
 
 @inline
 function prepare_account_delete(tx: EmitSpec): TransactionBuffer {
-  let buf = new ByteArray(emit_buffer_size(224));
+  let len = 224;
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -143,6 +204,11 @@ function prepare_account_delete(tx: EmitSpec): TransactionBuffer {
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -186,6 +252,14 @@ function prepare_account_set(tx: EmitSpec): TransactionBuffer {
     }
   }
 
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
@@ -212,6 +286,11 @@ function prepare_account_set(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (minterBytes)
     buf_out = _08_09_ENCODE_NFTOKENMINTER(buf_out, changetype<u32>(minterBytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
   buf_out = _16_16_ENCODE_TICK_SIZE(buf_out, tx.tickSize);
 
   let offset = buf_out - changetype<u32>(buf);
@@ -224,7 +303,16 @@ function prepare_check_cancel(tx: EmitSpec): TransactionBuffer {
   if (checkID.length != 32)
     rollback("", pack_error_code(checkID.length));
 
-  let buf = new ByteArray(emit_buffer_size(241));
+  let len = 241;
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -239,6 +327,11 @@ function prepare_check_cancel(tx: EmitSpec): TransactionBuffer {
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -263,6 +356,14 @@ function prepare_check_cash(tx: EmitSpec): TransactionBuffer {
   }
 
   len += (usedAmount.isXrp() ? 9 : 49);
+
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
 
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
@@ -291,6 +392,11 @@ function prepare_check_cash(tx: EmitSpec): TransactionBuffer {
   }
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -306,6 +412,14 @@ function prepare_check_create(tx: EmitSpec): TransactionBuffer {
   let invoiceBytes = tx.invoiceID ? tx.invoiceID!.bytes : null;
   if (invoiceBytes)
     len += 34;
+
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
 
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
@@ -331,6 +445,11 @@ function prepare_check_create(tx: EmitSpec): TransactionBuffer {
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -349,7 +468,16 @@ function prepare_deposit_preauth(tx: EmitSpec): TransactionBuffer {
     isAuthorize = false;
   }
 
-  let buf = new ByteArray(emit_buffer_size(229));
+  let len = 229;
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -368,6 +496,11 @@ function prepare_deposit_preauth(tx: EmitSpec): TransactionBuffer {
     buf_out = _08_05_ENCODE_ACCOUNT_AUTHORIZE(buf_out, usedBytes);
   else
     buf_out = _08_06_ENCODE_ACCOUNT_UNAUTHORIZE(buf_out, usedBytes);
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -375,7 +508,16 @@ function prepare_deposit_preauth(tx: EmitSpec): TransactionBuffer {
 
 @inline
 function prepare_escrow_cancel(tx: EmitSpec): TransactionBuffer {
-  let buf = new ByteArray(emit_buffer_size(235));
+  let len = 235;
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -391,6 +533,11 @@ function prepare_escrow_cancel(tx: EmitSpec): TransactionBuffer {
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(tx.owner!.bytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -412,6 +559,14 @@ function prepare_escrow_create(tx: EmitSpec): TransactionBuffer {
       rollback("", pack_error_code(l));
 
     len += 42;
+  }
+
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
   }
 
   let buf = new ByteArray(emit_buffer_size(len));
@@ -440,6 +595,11 @@ function prepare_escrow_create(tx: EmitSpec): TransactionBuffer {
     buf_out = _07_17_ENCODE_CONDITION(buf_out, changetype<u32>(tx.condition));
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -464,6 +624,14 @@ function prepare_escrow_finish(tx: EmitSpec): TransactionBuffer {
     len += 42;
   }
 
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
@@ -484,6 +652,11 @@ function prepare_escrow_finish(tx: EmitSpec): TransactionBuffer {
     buf_out = _07_17_ENCODE_CONDITION(buf_out, changetype<u32>(tx.condition));
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(tx.owner!.bytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -512,6 +685,14 @@ function prepare_nftoken_accept_offer(tx: EmitSpec): TransactionBuffer {
   if (brokerFee)
     len += (brokerFee.isXrp() ? 10 : 50);
 
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
@@ -536,6 +717,11 @@ function prepare_nftoken_accept_offer(tx: EmitSpec): TransactionBuffer {
   }
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -551,6 +737,14 @@ function prepare_nftoken_burn(tx: EmitSpec): TransactionBuffer {
   let ownerBytes = tx.owner ? tx.owner!.bytes : null;
   if (ownerBytes)
     len += 22;
+
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
 
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
@@ -569,6 +763,11 @@ function prepare_nftoken_burn(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (ownerBytes)
     buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(ownerBytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -583,6 +782,15 @@ function prepare_nftoken_cancel_offer(tx: EmitSpec): TransactionBuffer {
     rollback("", pack_error_code(count));
 
   len += (32 * count);
+
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
@@ -597,6 +805,11 @@ function prepare_nftoken_cancel_offer(tx: EmitSpec): TransactionBuffer {
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
   buf_out = _19_04_ENCODE_NFTOKEN_OFFERS(buf_out, offers);
 
   let offset = buf_out - changetype<u32>(buf);
@@ -621,6 +834,14 @@ function prepare_nftoken_create_offer(tx: EmitSpec): TransactionBuffer {
   let destinationBytes = tx.destination ? tx.destination!.bytes : null;
   if (destinationBytes)
     len += 22;
+
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
 
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
@@ -647,6 +868,11 @@ function prepare_nftoken_create_offer(tx: EmitSpec): TransactionBuffer {
     buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(ownerBytes));
   if (destinationBytes)
     buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(destinationBytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -671,6 +897,14 @@ function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
     }
   }
 
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
@@ -692,6 +926,11 @@ function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (issuerBytes)
     buf_out = _08_04_ENCODE_ACCOUNT_ISSUER(buf_out, changetype<u32>(issuerBytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -699,7 +938,16 @@ function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
 
 @inline
 function prepare_offer_cancel(tx: EmitSpec): TransactionBuffer {
-  let buf = new ByteArray(emit_buffer_size(213));
+  let len = 213;
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -714,6 +962,11 @@ function prepare_offer_cancel(tx: EmitSpec): TransactionBuffer {
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -733,6 +986,14 @@ function prepare_offer_create(tx: EmitSpec): TransactionBuffer {
 
   let askAmount = tx.takerPays!;
   len += (askAmount.isXrp() ? 9 : 49);
+
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
 
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
@@ -760,6 +1021,11 @@ function prepare_offer_create(tx: EmitSpec): TransactionBuffer {
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -800,6 +1066,14 @@ function prepare_payment_channel_claim(tx: EmitSpec): TransactionBuffer {
   if (keyView)
     len += 35;
 
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
@@ -821,6 +1095,11 @@ function prepare_payment_channel_claim(tx: EmitSpec): TransactionBuffer {
     buf_out = _07_01_ENCODE_PUBLIC_KEY(buf_out, changetype<u32>(keyView.underlying) + keyView.offset);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -837,6 +1116,14 @@ function prepare_payment_channel_create(tx: EmitSpec): TransactionBuffer {
   let len = 284;
   if (tx.cancelAfter)
     len += 6;
+
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
 
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
@@ -859,6 +1146,11 @@ function prepare_payment_channel_create(tx: EmitSpec): TransactionBuffer {
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -879,6 +1171,14 @@ function prepare_payment_channel_fund(tx: EmitSpec): TransactionBuffer {
   if (tx.expiration)
     len += 5;
 
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
@@ -897,6 +1197,11 @@ function prepare_payment_channel_fund(tx: EmitSpec): TransactionBuffer {
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -905,10 +1210,17 @@ function prepare_payment_channel_fund(tx: EmitSpec): TransactionBuffer {
 @inline
 function prepare_set_regular_key(tx: EmitSpec): TransactionBuffer {
   let len = 207;
-
   let regularBytes = tx.regularKey ? tx.regularKey!.bytes : null;
   if (regularBytes)
     len += 22;
+
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
 
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
@@ -926,6 +1238,11 @@ function prepare_set_regular_key(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (regularBytes)
     buf_out = _08_08_ENCODE_ACCOUNT_REGULAR_KEY(buf_out, changetype<u32>(regularBytes));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -949,6 +1266,14 @@ function prepare_signer_list_set(tx: EmitSpec): TransactionBuffer {
     }
   }
 
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
   let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
@@ -969,6 +1294,11 @@ function prepare_signer_list_set(tx: EmitSpec): TransactionBuffer {
     if (signerEntries)
       buf_out = _15_04_ENCODE_SIGNER_ENTRIES(buf_out, signerEntries);
   }
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -976,7 +1306,16 @@ function prepare_signer_list_set(tx: EmitSpec): TransactionBuffer {
 
 @inline
 function prepare_ticket_create(tx: EmitSpec): TransactionBuffer {
-  let buf = new ByteArray(emit_buffer_size(213));
+  let len = 213;
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -991,6 +1330,11 @@ function prepare_ticket_create(tx: EmitSpec): TransactionBuffer {
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);
@@ -1003,7 +1347,16 @@ function prepare_trust_set(tx: EmitSpec): TransactionBuffer {
   if (limitAmount.isXrp())
     rollback("", pack_error_code(limitBytes.length))
 
-  let buf = new ByteArray(emit_buffer_size(268));
+  let len = 268;
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos) {
+      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
+      len += sizer.size;
+    }
+  }
+
+  let buf = new ByteArray(emit_buffer_size(len));
   let cls = <u32>ledger_seq();
   let acc = hook_account();
 
@@ -1020,6 +1373,11 @@ function prepare_trust_set(tx: EmitSpec): TransactionBuffer {
   buf_out = _06_08_ENCODE_DROPS_FEE(buf_out, 0);
   buf_out = _07_03_ENCODE_SIGNING_PUBKEY_NULL(buf_out);
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
+  if (!ASC_SKIP_MEMOS) {
+    let memos = tx.memos;
+    if (memos)
+      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+  }
 
   let offset = buf_out - changetype<u32>(buf);
   return new TransactionBuffer(buf, offset, buf.length - offset, fee_ptr);

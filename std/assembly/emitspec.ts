@@ -59,6 +59,12 @@ export class SignerEntry {
   walletLocator: ByteArray | null;
 }
 
+export class MemoObject {
+  memoData: ByteArray | null;
+  memoFormat: String = "";
+  memoType: String = "";
+}
+
 export class EmitSpec {
   transactionType: TransactionType;
   destination: Account | null;
@@ -111,4 +117,5 @@ export class EmitSpec {
   signerQuorum: u32;
   signerEntries: StaticArray<SignerEntry> | null;
   ticketCount: u8;
+  memos: StaticArray<MemoObject> | null;
 }
