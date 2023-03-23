@@ -141,7 +141,7 @@ export function ENCODE_DROPS(buf: u32, udrops: u64, uat: u8): u32 {
 @inline
 export function ENCODE_DROPS_ARRAY(buf: u32, drops: ByteArray, uat: u8): u32 {
   store<u8>(buf, 0x60 + (uat & 0x0F));
-  store<u8>(buf + 1, 0x40 + drops[0]);
+  store<u8>(buf + 1, 0x40 + (drops[0] & 0x0F));
   store<u8>(buf + 2, drops[1]);
   store<u8>(buf + 3, drops[2]);
   store<u8>(buf + 4, drops[3]);
@@ -156,7 +156,7 @@ export function ENCODE_DROPS_ARRAY(buf: u32, drops: ByteArray, uat: u8): u32 {
 export function ENCODE_DROPS_ARRAY_UNCOMMON(buf: u32, drops: ByteArray, uat: u8): u32 {
   store<u8>(buf, 0x60);
   store<u8>(buf + 1, uat);
-  store<u8>(buf + 2, 0x40 + drops[0]);
+  store<u8>(buf + 2, 0x40 + (drops[0] & 0x0F));
   store<u8>(buf + 3, drops[1]);
   store<u8>(buf + 4, drops[2]);
   store<u8>(buf + 5, drops[3]);
