@@ -9,7 +9,6 @@
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/date/_day (mut i32) (i32.const 0))
  (global $~lib/date/_month (mut i32) (i32.const 0))
- (global $~lib/rt/stub/startOffset (mut i32) (i32.const 0))
  (global $~lib/rt/stub/offset (mut i32) (i32.const 0))
  (global $std/date-toisostring/date (mut i32) (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
@@ -72,6 +71,22 @@
   i32.gt_u
   if
    unreachable
+  end
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   global.get $~lib/memory/__heap_base
+   i32.const 4
+   i32.add
+   i32.const 15
+   i32.add
+   i32.const 15
+   i32.const -1
+   i32.xor
+   i32.and
+   i32.const 4
+   i32.sub
+   global.set $~lib/rt/stub/offset
   end
   global.get $~lib/rt/stub/offset
   local.set $block
@@ -10515,20 +10530,6 @@
   (local $len|10275 i32)
   (local $ptr1|10276 i32)
   (local $ptr2|10277 i32)
-  global.get $~lib/memory/__heap_base
-  i32.const 4
-  i32.add
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.const 4
-  i32.sub
-  global.set $~lib/rt/stub/startOffset
-  global.get $~lib/rt/stub/startOffset
-  global.set $~lib/rt/stub/offset
   i32.const 0
   local.set $this
   i64.const -62167219200000

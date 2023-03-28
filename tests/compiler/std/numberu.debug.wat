@@ -29,7 +29,6 @@
  (global $std/numberu/hundred_quadrillion (mut i64) (i64.const 100000000000000000))
  (global $std/numberu/quintillion (mut i64) (i64.const 1000000000000000000))
  (global $std/numberu/ten_quintillion (mut i64) (i64.const -8446744073709551616))
- (global $~lib/rt/stub/startOffset (mut i32) (i32.const 0))
  (global $~lib/rt/stub/offset (mut i32) (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
@@ -141,6 +140,22 @@
   i32.gt_u
   if
    unreachable
+  end
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   global.get $~lib/memory/__heap_base
+   i32.const 4
+   i32.add
+   i32.const 15
+   i32.add
+   i32.const 15
+   i32.const -1
+   i32.xor
+   i32.and
+   i32.const 4
+   i32.sub
+   global.set $~lib/rt/stub/offset
   end
   global.get $~lib/rt/stub/offset
   local.set $block
@@ -4649,20 +4664,6 @@
   (local $ptr2|4319 i32)
   (local $ptr1|4320 i32)
   (local $ptr2|4321 i32)
-  global.get $~lib/memory/__heap_base
-  i32.const 4
-  i32.add
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.const 4
-  i32.sub
-  global.set $~lib/rt/stub/startOffset
-  global.get $~lib/rt/stub/startOffset
-  global.set $~lib/rt/stub/offset
   block $~lib/eq/__eq1|inlined.0 (result i32)
    global.get $std/numberu/zero
    local.set $this|47

@@ -4,9 +4,7 @@ import { E_ALLOCATION_TOO_LARGE } from "../util/error";
 // === A minimal runtime stub ===
 
 // @ts-ignore: decorator
-@lazy let startOffset: usize = ((__heap_base + BLOCK_OVERHEAD + AL_MASK) & ~AL_MASK) - BLOCK_OVERHEAD;
-// @ts-ignore: decorator
-@lazy let offset: usize = startOffset;
+@lazy let offset: usize = 0;
 
 @inline function maybeGrowMemory(newOffset: usize): void {
   // assumes newOffset is aligned
@@ -28,6 +26,9 @@ import { E_ALLOCATION_TOO_LARGE } from "../util/error";
 export function __alloc(size: usize): usize {
   if (size > BLOCK_MAXSIZE)
     unreachable();
+
+  if (!offset)
+    offset = ((__heap_base + BLOCK_OVERHEAD + AL_MASK) & ~AL_MASK) - BLOCK_OVERHEAD;
 
   let block = changetype<BLOCK>(offset);
   let ptr = offset + BLOCK_OVERHEAD;
@@ -75,7 +76,7 @@ export function __free(ptr: usize): void {
 // @ts-ignore: decorator
 @unsafe @global
 export function __reset(): void { // special
-  offset = startOffset;
+  offset = ((__heap_base + BLOCK_OVERHEAD + AL_MASK) & ~AL_MASK) - BLOCK_OVERHEAD;
 }
 
 // @ts-ignore: decorator

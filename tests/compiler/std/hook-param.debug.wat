@@ -10,7 +10,6 @@
  (import "env" "rollback" (func $~lib/builtins/$rollback (param i32 i32 i64) (result i64)))
  (import "env" "hook_param" (func $~lib/builtins/$hook_param (param i32 i32 i32 i32) (result i64)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
- (global $~lib/rt/stub/startOffset (mut i32) (i32.const 0))
  (global $~lib/rt/stub/offset (mut i32) (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
@@ -68,6 +67,22 @@
   i32.gt_u
   if
    unreachable
+  end
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   global.get $~lib/memory/__heap_base
+   i32.const 4
+   i32.add
+   i32.const 15
+   i32.add
+   i32.const 15
+   i32.const -1
+   i32.xor
+   i32.and
+   i32.const 4
+   i32.sub
+   global.set $~lib/rt/stub/offset
   end
   global.get $~lib/rt/stub/offset
   local.set $block

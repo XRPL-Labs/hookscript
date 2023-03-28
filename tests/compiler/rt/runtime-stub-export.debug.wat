@@ -2,10 +2,9 @@
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
- (type $none_=>_none (func_subtype func))
  (type $i32_=>_none (func_subtype (param i32) func))
+ (type $none_=>_none (func_subtype func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
- (global $~lib/rt/stub/startOffset (mut i32) (i32.const 0))
  (global $~lib/rt/stub/offset (mut i32) (i32.const 0))
  (global $~lib/rt/__rtti_base i32 (i32.const 16))
  (global $~lib/memory/__heap_base i32 (i32.const 44))
@@ -19,7 +18,6 @@
  (export "__collect" (func $~lib/rt/stub/__collect))
  (export "__rtti_base" (global $~lib/rt/__rtti_base))
  (export "memory" (memory $0))
- (start $~start)
  (func $~lib/rt/common/BLOCK#set:mmInfo (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -38,6 +36,22 @@
   i32.gt_u
   if
    unreachable
+  end
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   global.get $~lib/memory/__heap_base
+   i32.const 4
+   i32.add
+   i32.const 15
+   i32.add
+   i32.const 15
+   i32.const -1
+   i32.xor
+   i32.and
+   i32.const 4
+   i32.sub
+   global.set $~lib/rt/stub/offset
   end
   global.get $~lib/rt/stub/offset
   local.set $block
@@ -144,21 +158,5 @@
  )
  (func $~lib/rt/stub/__collect (type $none_=>_none)
   nop
- )
- (func $~start (type $none_=>_none)
-  global.get $~lib/memory/__heap_base
-  i32.const 4
-  i32.add
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.const 4
-  i32.sub
-  global.set $~lib/rt/stub/startOffset
-  global.get $~lib/rt/stub/startOffset
-  global.set $~lib/rt/stub/offset
  )
 )

@@ -15,7 +15,6 @@
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
  (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
- (global $~lib/rt/stub/startOffset (mut i32) (i32.const 0))
  (global $~lib/rt/stub/offset (mut i32) (i32.const 0))
  (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
  (global $~lib/memory/__heap_base i32 (i32.const 156))
@@ -48,6 +47,22 @@
   i32.gt_u
   if
    unreachable
+  end
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   global.get $~lib/memory/__heap_base
+   i32.const 4
+   i32.add
+   i32.const 15
+   i32.add
+   i32.const 15
+   i32.const -1
+   i32.xor
+   i32.and
+   i32.const 4
+   i32.sub
+   global.set $~lib/rt/stub/offset
   end
   global.get $~lib/rt/stub/offset
   local.set $block

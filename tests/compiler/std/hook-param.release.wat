@@ -32,6 +32,12 @@
   (local $4 i32)
   (local $5 i32)
   global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
+  global.get $~lib/rt/stub/offset
   local.tee $0
   i32.const 4
   i32.add
@@ -86,6 +92,12 @@
   i32.const 1104
   i32.store $0 offset=4
   global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
+  global.get $~lib/rt/stub/offset
   local.tee $2
   i32.const 4
   i32.add
@@ -134,6 +146,12 @@
   local.get $0
   i32.load $0
   i32.store $0
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
   global.get $~lib/rt/stub/offset
   local.tee $0
   i32.const 4
@@ -196,6 +214,12 @@
    i64.or
    call $~lib/builtins/$rollback
    drop
+  end
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
   end
   global.get $~lib/rt/stub/offset
   local.tee $0
@@ -264,6 +288,12 @@
    drop
   end
   global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
+  global.get $~lib/rt/stub/offset
   local.tee $2
   i32.const 4
   i32.add
@@ -320,6 +350,12 @@
    i64.const 20
    i64.eq
    if
+    global.get $~lib/rt/stub/offset
+    i32.eqz
+    if
+     i32.const 1388
+     global.set $~lib/rt/stub/offset
+    end
     global.get $~lib/rt/stub/offset
     local.tee $0
     i32.const 4
@@ -406,6 +442,12 @@
    end
   end
   global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
+  global.get $~lib/rt/stub/offset
   local.tee $0
   i32.const 4
   i32.add
@@ -460,6 +502,12 @@
   i32.const 0
   i32.store $0 offset=4
   global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
+  global.get $~lib/rt/stub/offset
   local.tee $3
   i32.const 4
   i32.add
@@ -507,6 +555,12 @@
   local.get $2
   i32.load $0
   i32.store $0 offset=16
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
   global.get $~lib/rt/stub/offset
   local.tee $2
   i32.const 4
@@ -566,6 +620,12 @@
    drop
   end
   global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
+  global.get $~lib/rt/stub/offset
   local.tee $0
   i32.const 4
   i32.add
@@ -620,6 +680,12 @@
   i32.const 0
   i32.store $0 offset=4
   global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
+  global.get $~lib/rt/stub/offset
   local.tee $3
   i32.const 4
   i32.add
@@ -667,6 +733,12 @@
   local.get $2
   i32.load $0
   i32.store $0 offset=16
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
   global.get $~lib/rt/stub/offset
   local.tee $2
   i32.const 4
@@ -726,6 +798,12 @@
    drop
   end
   global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
+  global.get $~lib/rt/stub/offset
   local.tee $0
   i32.const 4
   i32.add
@@ -780,6 +858,12 @@
   i32.const 0
   i32.store $0 offset=4
   global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
+  global.get $~lib/rt/stub/offset
   local.tee $3
   i32.const 4
   i32.add
@@ -827,6 +911,12 @@
   local.get $2
   i32.load $0
   i32.store $0 offset=16
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   i32.const 1388
+   global.set $~lib/rt/stub/offset
+  end
   global.get $~lib/rt/stub/offset
   local.tee $2
   i32.const 4

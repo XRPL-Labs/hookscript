@@ -102,12 +102,24 @@
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
-  i32.const 2748
-  global.set $~lib/rt/stub/offset
   block $~lib/eq/__eq1|inlined.0 (result i32)
    i32.const 1052
    i32.load $0
    local.set $0
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
+   local.tee $1
+   i32.const 4
+   i32.add
+   local.tee $2
+   i32.const 28
+   i32.add
+   local.tee $3
    memory.size $0
    i32.const 16
    i32.shl
@@ -115,48 +127,52 @@
    i32.add
    i32.const -16
    i32.and
-   i32.const 2780
-   i32.lt_u
+   i32.gt_u
    if
     unreachable
    end
-   i32.const 2780
+   local.get $3
    global.set $~lib/rt/stub/offset
-   i32.const 2748
+   local.get $1
    i32.const 28
    i32.store $0
-   i32.const 2752
+   local.get $2
+   i32.const 4
+   i32.sub
+   local.tee $1
    i32.const 0
-   i32.store $0
-   i32.const 2756
+   i32.store $0 offset=4
+   local.get $1
    i32.const 0
-   i32.store $0
-   i32.const 2760
+   i32.store $0 offset=8
+   local.get $1
    i32.const 3
-   i32.store $0
-   i32.const 2764
+   i32.store $0 offset=12
+   local.get $1
    i32.const 12
-   i32.store $0
-   i32.const 2768
+   i32.store $0 offset=16
+   local.get $2
+   i32.const 16
+   i32.add
    i32.const 1056
    i32.store $0
-   i32.const 2772
+   local.get $2
    i32.const 0
-   i32.store $0
-   i32.const 2776
+   i32.store $0 offset=20
+   local.get $2
    local.get $0
-   i32.store $0
+   i32.store $0 offset=24
    i32.const 0
-   i32.const 2776
-   i32.load $0
+   local.get $2
+   i32.load $0 offset=24
    i32.const 1
    i32.ne
    br_if $~lib/eq/__eq1|inlined.0
    drop
-   i32.const 2768
-   i32.load $0
-   i32.const 2772
-   i32.load $0
+   local.get $2
+   i32.load $0 offset=16
+   local.get $2
+   i32.load $0 offset=20
    i32.add
    i32.load8_u $0
    i32.const 1056
@@ -168,6 +184,12 @@
    unreachable
   end
   block $~lib/eq/__eq1|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -218,6 +240,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -291,6 +319,12 @@
   end
   block $~lib/eq/__eq2|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -348,6 +382,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -421,6 +461,12 @@
   end
   block $~lib/eq/__eq2|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -478,6 +524,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -551,6 +603,12 @@
   end
   block $~lib/eq/__eq3|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -614,6 +672,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -697,6 +761,12 @@
   end
   block $~lib/eq/__eq3|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -760,6 +830,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -843,6 +919,12 @@
   end
   block $~lib/eq/__eq4|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -912,6 +994,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -984,6 +1072,12 @@
    unreachable
   end
   block $~lib/eq/__eq5|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -1060,6 +1154,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -1143,6 +1243,12 @@
   end
   block $~lib/eq/__eq6|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -1225,6 +1331,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -1306,6 +1418,12 @@
    unreachable
   end
   block $~lib/eq/__eq7|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -1394,6 +1512,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -1488,6 +1612,12 @@
   end
   block $~lib/eq/__eq8|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -1582,6 +1712,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -1653,6 +1789,12 @@
    unreachable
   end
   block $~lib/eq/__eq9|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -1753,6 +1895,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -1836,6 +1984,12 @@
   end
   block $~lib/eq/__eq10|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -1942,6 +2096,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -2023,6 +2183,12 @@
    unreachable
   end
   block $~lib/eq/__eq10|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -2130,6 +2296,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -2211,6 +2383,12 @@
    unreachable
   end
   block $~lib/eq/__eq11|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -2323,6 +2501,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -2417,6 +2601,12 @@
   end
   block $~lib/eq/__eq12|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -2535,6 +2725,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -2616,6 +2812,12 @@
    unreachable
   end
   block $~lib/eq/__eq13|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -2740,6 +2942,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -2834,6 +3042,12 @@
   end
   block $~lib/eq/__eq14|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -2964,6 +3178,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -3056,6 +3276,12 @@
    unreachable
   end
   block $~lib/eq/__eq15|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -3192,6 +3418,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -3297,6 +3529,12 @@
   end
   block $~lib/eq/__eq16|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -3439,6 +3677,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -3520,6 +3764,12 @@
    unreachable
   end
   block $~lib/eq/__eq17|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -3668,6 +3918,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -3762,6 +4018,12 @@
   end
   block $~lib/eq/__eq18|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -3916,6 +4178,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -4008,6 +4276,12 @@
    unreachable
   end
   block $~lib/eq/__eq19|inlined.0 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -4168,6 +4442,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -4273,6 +4553,12 @@
   end
   block $~lib/eq/__eq19|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -4432,6 +4718,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -4537,6 +4829,12 @@
   end
   block $~lib/eq/__eq2|inlined.2 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -4589,6 +4887,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -4662,6 +4966,12 @@
   end
   block $~lib/eq/__eq3|inlined.2 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -4722,6 +5032,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -4805,6 +5121,12 @@
   end
   block $~lib/eq/__eq4|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -4871,6 +5193,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -4944,6 +5272,12 @@
   end
   block $~lib/eq/__eq5|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -5016,6 +5350,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -5099,6 +5439,12 @@
   end
   block $~lib/eq/__eq6|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -5177,6 +5523,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -5259,6 +5611,12 @@
    unreachable
   end
   block $~lib/eq/__eq7|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -5344,6 +5702,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -5438,6 +5802,12 @@
   end
   block $~lib/eq/__eq8|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -5529,6 +5899,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -5600,6 +5976,12 @@
    unreachable
   end
   block $~lib/eq/__eq9|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -5697,6 +6079,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -5780,6 +6168,12 @@
   end
   block $~lib/eq/__eq10|inlined.2 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -5883,6 +6277,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -5964,6 +6364,12 @@
    unreachable
   end
   block $~lib/eq/__eq11|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -6073,6 +6479,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -6166,6 +6578,12 @@
    unreachable
   end
   block $~lib/eq/__eq11|inlined.2 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -6276,6 +6694,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -6368,6 +6792,12 @@
    unreachable
   end
   block $~lib/eq/__eq12|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -6484,6 +6914,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -6565,6 +7001,12 @@
    unreachable
   end
   block $~lib/eq/__eq13|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -6686,6 +7128,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -6780,6 +7228,12 @@
   end
   block $~lib/eq/__eq14|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -6907,6 +7361,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -6999,6 +7459,12 @@
    unreachable
   end
   block $~lib/eq/__eq15|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -7132,6 +7598,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -7237,6 +7709,12 @@
   end
   block $~lib/eq/__eq16|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -7376,6 +7854,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -7457,6 +7941,12 @@
    unreachable
   end
   block $~lib/eq/__eq17|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -7602,6 +8092,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -7696,6 +8192,12 @@
   end
   block $~lib/eq/__eq18|inlined.1 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -7847,6 +8349,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -7939,6 +8447,12 @@
    unreachable
   end
   block $~lib/eq/__eq19|inlined.2 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -8096,6 +8610,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
@@ -8201,6 +8721,12 @@
   end
   block $~lib/eq/__eq20|inlined.0 (result i32)
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
    i32.add
@@ -8364,6 +8890,12 @@
    i32.load $0 offset=16
    local.set $1
    global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
+   global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4
    i32.add
@@ -8456,6 +8988,12 @@
    unreachable
   end
   block $~lib/eq/__eq20|inlined.1 (result i32)
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $0
    i32.const 4
@@ -8619,6 +9157,12 @@
    i32.sub
    i32.load $0 offset=16
    local.set $1
+   global.get $~lib/rt/stub/offset
+   i32.eqz
+   if
+    i32.const 2748
+    global.set $~lib/rt/stub/offset
+   end
    global.get $~lib/rt/stub/offset
    local.tee $2
    i32.const 4

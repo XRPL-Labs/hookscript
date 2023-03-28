@@ -10,7 +10,6 @@
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/date/_day (mut i32) (i32.const 0))
  (global $~lib/date/_month (mut i32) (i32.const 0))
- (global $~lib/rt/stub/startOffset (mut i32) (i32.const 0))
  (global $~lib/rt/stub/offset (mut i32) (i32.const 0))
  (global $~lib/memory/__heap_base i32 (i32.const 44))
  (memory $0 1)
@@ -52,6 +51,22 @@
   i32.gt_u
   if
    unreachable
+  end
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   global.get $~lib/memory/__heap_base
+   i32.const 4
+   i32.add
+   i32.const 15
+   i32.add
+   i32.const 15
+   i32.const -1
+   i32.xor
+   i32.and
+   i32.const 4
+   i32.sub
+   global.set $~lib/rt/stub/offset
   end
   global.get $~lib/rt/stub/offset
   local.set $block
@@ -290,20 +305,6 @@
   (local $a|119 i64)
   (local $b|120 i64)
   (local $m|121 i64)
-  global.get $~lib/memory/__heap_base
-  i32.const 4
-  i32.add
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.const 4
-  i32.sub
-  global.set $~lib/rt/stub/startOffset
-  global.get $~lib/rt/stub/startOffset
-  global.set $~lib/rt/stub/offset
   i32.const 1541847600
   local.set $creationTime
   local.get $creationTime

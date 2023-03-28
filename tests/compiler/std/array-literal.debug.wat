@@ -16,7 +16,6 @@
  (global $std/array-literal/staticArrayI32 i32 (i32.const 192))
  (global $std/array-literal/emptyArrayI32 (mut i32) (i32.const 272))
  (global $std/array-literal/i (mut i32) (i32.const 0))
- (global $~lib/rt/stub/startOffset (mut i32) (i32.const 0))
  (global $~lib/rt/stub/offset (mut i32) (i32.const 0))
  (global $std/array-literal/dynamicArrayI8 (mut i32) (i32.const 0))
  (global $std/array-literal/dynamicArrayI32 (mut i32) (i32.const 0))
@@ -104,6 +103,22 @@
   i32.gt_u
   if
    unreachable
+  end
+  global.get $~lib/rt/stub/offset
+  i32.eqz
+  if
+   global.get $~lib/memory/__heap_base
+   i32.const 4
+   i32.add
+   i32.const 15
+   i32.add
+   i32.const 15
+   i32.const -1
+   i32.xor
+   i32.and
+   i32.const 4
+   i32.sub
+   global.set $~lib/rt/stub/offset
   end
   global.get $~lib/rt/stub/offset
   local.set $block
@@ -678,20 +693,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__heap_base
-  i32.const 4
-  i32.add
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.const 4
-  i32.sub
-  global.set $~lib/rt/stub/startOffset
-  global.get $~lib/rt/stub/startOffset
-  global.set $~lib/rt/stub/offset
   i32.const 3
   i32.const 0
   i32.const 3
