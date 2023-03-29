@@ -65,6 +65,7 @@ import {
   _08_09_ENCODE_NFTOKENMINTER,
   _15_04_ENCODE_SIGNER_ENTRIES,
   _15_09_ENCODE_MEMOS,
+  _15_09_ENCODE_RAW_MEMOS,
   _16_16_ENCODE_TICK_SIZE,
   _19_04_ENCODE_NFTOKEN_OFFERS,
   tfCANONICAL
@@ -143,8 +144,17 @@ function prepare_payment(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -171,8 +181,13 @@ function prepare_payment(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -185,8 +200,17 @@ function prepare_account_delete(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -206,8 +230,13 @@ function prepare_account_delete(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -255,8 +284,17 @@ function prepare_account_set(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -288,8 +326,13 @@ function prepare_account_set(tx: EmitSpec): TransactionBuffer {
     buf_out = _08_09_ENCODE_NFTOKENMINTER(buf_out, changetype<u32>(minterBytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
   buf_out = _16_16_ENCODE_TICK_SIZE(buf_out, tx.tickSize);
 
@@ -307,8 +350,17 @@ function prepare_check_cancel(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -329,8 +381,13 @@ function prepare_check_cancel(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -360,8 +417,17 @@ function prepare_check_cash(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -394,8 +460,13 @@ function prepare_check_cash(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -416,8 +487,17 @@ function prepare_check_create(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -447,8 +527,13 @@ function prepare_check_create(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -472,8 +557,17 @@ function prepare_deposit_preauth(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -498,8 +592,13 @@ function prepare_deposit_preauth(tx: EmitSpec): TransactionBuffer {
     buf_out = _08_06_ENCODE_ACCOUNT_UNAUTHORIZE(buf_out, usedBytes);
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -512,8 +611,17 @@ function prepare_escrow_cancel(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -535,8 +643,13 @@ function prepare_escrow_cancel(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(tx.owner!.bytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -564,8 +677,17 @@ function prepare_escrow_create(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -597,8 +719,13 @@ function prepare_escrow_create(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -627,8 +754,17 @@ function prepare_escrow_finish(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -654,8 +790,13 @@ function prepare_escrow_finish(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(tx.owner!.bytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -688,8 +829,17 @@ function prepare_nftoken_accept_offer(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -719,8 +869,13 @@ function prepare_nftoken_accept_offer(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -741,8 +896,17 @@ function prepare_nftoken_burn(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -765,8 +929,13 @@ function prepare_nftoken_burn(tx: EmitSpec): TransactionBuffer {
     buf_out = _08_02_ENCODE_ACCOUNT_OWNER(buf_out, changetype<u32>(ownerBytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -786,8 +955,17 @@ function prepare_nftoken_cancel_offer(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -807,8 +985,13 @@ function prepare_nftoken_cancel_offer(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
   buf_out = _19_04_ENCODE_NFTOKEN_OFFERS(buf_out, offers);
 
@@ -838,8 +1021,17 @@ function prepare_nftoken_create_offer(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -870,8 +1062,13 @@ function prepare_nftoken_create_offer(tx: EmitSpec): TransactionBuffer {
     buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(destinationBytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -900,8 +1097,17 @@ function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -928,8 +1134,13 @@ function prepare_nftoken_mint(tx: EmitSpec): TransactionBuffer {
     buf_out = _08_04_ENCODE_ACCOUNT_ISSUER(buf_out, changetype<u32>(issuerBytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -942,8 +1153,17 @@ function prepare_offer_cancel(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -964,8 +1184,13 @@ function prepare_offer_cancel(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -990,8 +1215,17 @@ function prepare_offer_create(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -1023,8 +1257,13 @@ function prepare_offer_create(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -1069,8 +1308,17 @@ function prepare_payment_channel_claim(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -1097,8 +1345,13 @@ function prepare_payment_channel_claim(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -1120,8 +1373,17 @@ function prepare_payment_channel_create(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -1148,8 +1410,13 @@ function prepare_payment_channel_create(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_03_ENCODE_ACCOUNT_DST(buf_out, changetype<u32>(tx.destination!.bytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -1174,8 +1441,17 @@ function prepare_payment_channel_fund(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -1199,8 +1475,13 @@ function prepare_payment_channel_fund(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -1217,8 +1498,17 @@ function prepare_set_regular_key(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -1240,8 +1530,13 @@ function prepare_set_regular_key(tx: EmitSpec): TransactionBuffer {
     buf_out = _08_08_ENCODE_ACCOUNT_REGULAR_KEY(buf_out, changetype<u32>(regularBytes));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -1269,8 +1564,17 @@ function prepare_signer_list_set(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -1296,8 +1600,13 @@ function prepare_signer_list_set(tx: EmitSpec): TransactionBuffer {
   }
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -1310,8 +1619,17 @@ function prepare_ticket_create(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -1332,8 +1650,13 @@ function prepare_ticket_create(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);
@@ -1351,8 +1674,17 @@ function prepare_trust_set(tx: EmitSpec): TransactionBuffer {
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
     if (memos) {
-      let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(memos, 0, new MemoSizer());
-      len += sizer.size;
+      if (ASC_SKIP_RAW_MEMOS) {
+        let rawMemos = changetype<ByteArray>(memos);
+        let l = rawMemos.length;
+        if (l > 255)
+          rollback("", pack_error_code(l));
+        len += 2 + l;
+      } else {
+        let sizer = __accumulateupto7<StaticArray<MemoObject>, MemoSizer>(
+          changetype<StaticArray<MemoObject>>(memos), 0, new MemoSizer());
+        len += sizer.size;
+      }
     }
   }
 
@@ -1375,8 +1707,13 @@ function prepare_trust_set(tx: EmitSpec): TransactionBuffer {
   buf_out = _08_01_ENCODE_ACCOUNT_SRC(buf_out, changetype<u32>(acc));
   if (!ASC_SKIP_MEMOS) {
     let memos = tx.memos;
-    if (memos)
-      buf_out = _15_09_ENCODE_MEMOS(buf_out, memos);
+    if (memos) {
+      if (ASC_SKIP_RAW_MEMOS) {
+        buf_out = _15_09_ENCODE_RAW_MEMOS(buf_out, changetype<ByteArray>(memos));
+      } else {
+        buf_out = _15_09_ENCODE_MEMOS(buf_out, changetype<StaticArray<MemoObject>>(memos));
+      }
+    }
   }
 
   let offset = buf_out - changetype<u32>(buf);

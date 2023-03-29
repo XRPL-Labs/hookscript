@@ -65,6 +65,10 @@ export class MemoObject {
   memoType: String = "";
 }
 
+export class MemoArrayBase {
+  dummy: i32;
+}
+
 export class EmitSpec {
   transactionType: TransactionType;
   destination: Account | null;
@@ -117,5 +121,5 @@ export class EmitSpec {
   signerQuorum: u32;
   signerEntries: StaticArray<SignerEntry> | null;
   ticketCount: u8;
-  memos: StaticArray<MemoObject> | null;
+  memos: MemoArrayBase | null;
 }

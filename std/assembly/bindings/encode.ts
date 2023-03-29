@@ -545,6 +545,17 @@ export function _15_09_ENCODE_MEMOS(buf: u32, memos: StaticArray<MemoObject>): u
 }
 
 @inline
+export function _15_09_ENCODE_RAW_MEMOS(buf: u32, rawMemos: ByteArray): u32 {
+  store<u8>(buf, 0xF9);
+  ++buf;
+  let l = rawMemos.length;
+  __rawcopyupto255(buf, changetype<u32>(rawMemos), l);
+  buf += l;
+  store<u8>(buf, 0xF1);
+  return buf + 1;
+}
+
+@inline
 export function _16_16_ENCODE_TICK_SIZE(buf: u32, ts: u8): u32 {
   let hi = <u32>ts << 24;
   store<u32>(buf, 0x101000 | hi);

@@ -3610,7 +3610,25 @@ export class Compiler extends DiagnosticEmitter {
         }
         fromType = fromType.nonNullableType;
       }
-      if (fromType.isAssignableTo(toType)) { // upcast or same
+      // we should have some more general mechanism for custom casts -
+      // maybe a new decorator?
+      let assignable = false;
+      let toClass = toType.getClass();
+      if (toClass && (toClass.internalName == "~lib/emitspec/MemoArrayBase")) {
+        let fromClass = fromType.getClass();
+        if (fromClass) {
+          if (fromClass.internalName == "~lib/staticarray/StaticArray<~lib/emitspec/MemoObject>") {
+            this.setSkipFlag(CommonNames.ASC_SKIP_RAW_MEMOS, 0);
+            assignable = true;
+          } else if (fromClass.internalName == "~lib/staticarray/ByteArray") {
+            // ASC_SKIP_RAW_MEMOS is set
+            assignable = true;
+          }
+        }
+      } else {
+        assignable = fromType.isAssignableTo(toType);
+      }
+      if (assignable) { // upcast or same
         assert(toType.isExternalReference || fromType.kind == toType.kind);
         this.currentType = toType;
         return expr;
@@ -6422,17 +6440,20 @@ export class Compiler extends DiagnosticEmitter {
 
   /** Updates values of ASC_SKIP_* globals. */
   private setSkipFlags(skipFlags: Map<string,i32>): void {
-    let resolver = this.resolver;
-    let flow = this.currentFlow;
     for (let _keys = Map_keys(skipFlags), i = 0, k = _keys.length; i < k; ++i) {
-      let name = _keys[i], value = skipFlags.get(name);
-      let ident = Node.createIdentifierExpression(name, this.program.nativeRange);
-      // internal error if it fails - so we might just as well report it...
-      let elem = resolver.lookupIdentifierExpression(ident, flow);
-      assert(elem.kind == ElementKind.Global);
-      let global = <Global>elem;
-      global.setConstantIntegerValue(i64_new(value), Type.i32);
+      let name = _keys[i];
+      this.setSkipFlag(name, skipFlags.get(name));
     }
+  }
+
+  /** Updates value of an ASC_SKIP_* global. */
+  private setSkipFlag(name: string, value: i32): void {
+    let ident = Node.createIdentifierExpression(name, this.program.nativeRange);
+    // internal error if it fails - so we might just as well report it...
+    let elem = this.resolver.lookupIdentifierExpression(ident, this.currentFlow);
+    assert(elem.kind == ElementKind.Global);
+    let global = <Global>elem;
+    global.setConstantIntegerValue(i64_new(value), Type.i32);
   }
 
   /** Compiles the given arguments like a call expression according to the specified context. */

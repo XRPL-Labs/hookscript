@@ -69,3 +69,14 @@ export function __rawcopyupto127(dest: usize, ptr: usize, len: i32): void {
   }
   __rawcopyupto63(dest, ptr, len);
 }
+
+@global @inline
+export function __rawcopyupto255(dest: usize, ptr: usize, len: i32): void {
+  if (len >= 128) {
+    __rawcopy128(dest, ptr);
+    dest += 128;
+    ptr += 128;
+    len -= 128;
+  }
+  __rawcopyupto127(dest, ptr, len);
+}

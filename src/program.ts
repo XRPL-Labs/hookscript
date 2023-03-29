@@ -158,7 +158,8 @@ const AL_MASK = AL_SIZE - 1;
  * usage. Values are keys of Compiler.skipFlag2zero . */
 export const emitSpecField2skipFlagName = {
   'memos': CommonNames.ASC_SKIP_MEMOS,
-  'signerEntries': CommonNames.ASC_SKIP_SIGNER_ENTRIES
+  'signerEntries': CommonNames.ASC_SKIP_SIGNER_ENTRIES,
+  '': CommonNames.ASC_SKIP_RAW_MEMOS // not matched against any field but set separately
 };
 
 /** Represents a yet unresolved `import`. */
