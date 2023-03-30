@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Savings hook sends a percentage of incoming payments to a dedicated account.",
   "scripts": {
-    "compile": "./node_modules/.bin/asc --disable=bulk-memory --runtime=stub savings.ts -O3 -o savings.wasm && hook-cleaner savings.wasm",
+    "compile": "./node_modules/.bin/asc --disable=bulk-memory --runtime=stub savings.ts -O3 -o savings.wasm",
     "postinstall": "patch-package"
   },
   "author": "Equilibrium - https://equilibrium.co",
   "license": "Public Domain",
   "dependencies": {
-    "@eqlabs/assemblyscript": "^0.0.0-alpha.1677675681",
+    "@eqlabs/assemblyscript": "^0.0.0-alpha.1680097351",
     "patch-package": "^6.4.7",
     "xrpl-accountlib": "^1.6.1",
     "xrpl-client": "^2.0.1"

@@ -83,13 +83,7 @@ The full process is documented as part of the repository:
 This repo contains examples of XRPL Hooks written in <a href="https://github.com/xrpl-labs/hookscript">HookScript</a>, plus scripts needed to compile, deploy and test them.
 
 ## Compiler
-The HookScript compiler is now installed from NPM.
-
-For post-processing, it is also necessary to install <a href="https://github.com/XRPLF/hook-cleaner-c">Hook Cleaner</a> from
-
-	git clone https://github.com/XRPLF/hook-cleaner-c
-
-compile it as documented and install somewhere on PATH.
+The HookScript compiler is now installed from NPM and Hook Cleaner functionality has been integrated into it, so that a separate executable is no longer necessary.
 
 ## Get testnet XRP
 The Faucet is on the (main page)[https://hooks-testnet.xrpl-labs.com/]. Make a note of your secret (family seed) because you will need it for all the examples.
