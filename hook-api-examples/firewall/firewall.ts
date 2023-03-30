@@ -2,13 +2,11 @@ class ByteSet {
     @lazy
     static readonly dataSize: u32 = 32;
 
-    @inline
     constructor(public bytes: ByteArray) {
     if (bytes.length != ByteSet.dataSize)
         rollback("", pack_error_code(bytes.length));
     }
 
-    @inline
     has(n: u8): bool {
         let idx = n >> 3, flag = n & 7
         return !!(this.bytes[ByteSet.dataSize - 1 - idx] & (1 << flag))
