@@ -37,7 +37,7 @@ function hook(reserved: i32)
     const xrp_flag = amount.isXrp()
     let threshold_name: ByteView
     if (xrp_flag) {
-        const xrp_threshold_name = [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 88, 82, 80, 0,0,0,0,0 ] // "XRP"
+        const xrp_threshold_name = Amount.makeCurrency("XRP")
         threshold_name = new ByteView(xrp_threshold_name, 0, xrp_threshold_name.length)
     } else {
         threshold_name = amount.currencyCode
