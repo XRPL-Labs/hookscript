@@ -59,8 +59,8 @@ export function hook(reserved: i32)
     let slot_no = slot_set(keylet, 0)
 
     lim_slot = slot_subfield(slot_no, sfLowLimit, 0)
-    let exchange_rate = slot_float(lim_slot)
-    trace_float("exchange_rate", exchange_rate)
+    let exchange_rate = new DecimalFloat(slot_float(lim_slot))
+    trace_float("exchange_rate", exchange_rate.value)
 
     // process the amount sent, which could be either xrp or pusd
     // to do this we 'slot' the originating txn, that is: we place it into a slot so we can use the slot api
@@ -69,7 +69,7 @@ export function hook(reserved: i32)
 
     // specifically we're interested in the amount sent
     let amt_slot = slot_subfield(oslot, sfAmount, 0)
-    let amt = slot_float(amt_slot)
+    let amt = new DecimalFloat(slot_float(amt_slot))
     let is_xrp = slot_type(amt_slot, 1)
 
     let is_vault_owner = true
@@ -94,41 +94,46 @@ export function hook(reserved: i32)
     }
 
     // check if state currently exists
-    let vault_pusd: i64 = 0
-    let vault_xrp: i64 = 0
+    const zero = DecimalFloat.fromLong(0)
+    let vault_pusd = zero
+    let vault_xrp = zero
     let vault_exists = false
     let vault = state(vault_key, 16)
     if (vault.length == 16)
     {
-        vault_pusd = float_sto_set(new ByteView(vault, 0, 8))
-        vault_xrp  = float_sto_set(new ByteView(vault, 8, 8))
+        vault_pusd = new DecimalFloat(float_sto_set(new ByteView(vault, 0, 8)))
+        vault_xrp  = new DecimalFloat(float_sto_set(new ByteView(vault, 8, 8)))
         vault_exists = true
     }
     else if (!is_vault_owner)
         rollback("Peggy: You cannot takeover a vault that does not exist!", 1)
 
+    const liq_num = DecimalFloat.fromLong(LIQ_COLLATERALIZATION_NUMERATOR)
+    const liq_den = DecimalFloat.fromLong(LIQ_COLLATERALIZATION_DENOMINATOR)
+    const new_num = DecimalFloat.fromLong(NEW_COLLATERALIZATION_NUMERATOR)
+    const new_den = DecimalFloat.fromLong(NEW_COLLATERALIZATION_DENOMINATOR)
     if (is_xrp)
     {
         // XRP INCOMING
 
         // decide whether the vault is liquidatable
-        let required_vault_xrp = float_divide(vault_pusd, exchange_rate)
-        required_vault_xrp = float_mulratio(required_vault_xrp, 0, LIQ_COLLATERALIZATION_DENOMINATOR, LIQ_COLLATERALIZATION_NUMERATOR)
+        let required_vault_xrp = vault_pusd / exchange_rate
+        required_vault_xrp = (required_vault_xrp * liq_den) / liq_num
         let can_liq = required_vault_xrp < vault_xrp
 
         // compute new vault xrp by adding the xrp they just sent
-        vault_xrp = float_sum(amt, vault_xrp)
+        vault_xrp = amt + vault_xrp
 
         // compute the maximum amount of pusd that can be out
         // according to the collateralization
-        let max_vault_pusd = float_multiply(vault_xrp, exchange_rate)
-        max_vault_pusd = float_mulratio(max_vault_pusd, 0, NEW_COLLATERALIZATION_NUMERATOR, NEW_COLLATERALIZATION_DENOMINATOR)
+        let max_vault_pusd = vault_xrp * exchange_rate
+        max_vault_pusd = (max_vault_pusd * new_num) / new_den
 
         // compute the amount we can send them
-        let pusd_to_send = float_sum(max_vault_pusd, float_negate(vault_pusd))
+        let pusd_to_send = max_vault_pusd - vault_pusd
 
         // is the amount to send negative, that means the vault is undercollateralized
-        if (float_compare(pusd_to_send, 0, COMPARE_LESS))
+        if (pusd_to_send < zero)
         {
             if (!is_vault_owner)
                 rollback("Peggy: Vault is undercollateralized and your deposit would not redeem it.", 1)
@@ -138,7 +143,7 @@ export function hook(reserved: i32)
                     vault = new ByteArray(16)
 
                 let empty_view = new ByteView(vault, 0, 0)
-                let vault_xrp_sto = float_sto(empty_view, empty_view, vault_xrp, -1)
+                let vault_xrp_sto = float_sto(empty_view, empty_view, vault_xrp.value, -1)
                 for (let i = 0; max_iterations(8), i < 8; ++i)
                     vault[8 + i] = vault_xrp_sto[i]
 
@@ -153,7 +158,7 @@ export function hook(reserved: i32)
         // execution to here means we will send out pusd
 
         // update the vault
-        vault_pusd = float_sum(vault_pusd, pusd_to_send)
+        vault_pusd = vault_pusd + pusd_to_send
 
         // if this is a takeover we destroy the vault on the old key
         // and recreate it on the new key
@@ -176,8 +181,8 @@ export function hook(reserved: i32)
             vault = new ByteArray(16)
 
         let empty_view = new ByteView(vault, 0, 0)
-        let vault_pusd_sto = float_sto(empty_view, empty_view, vault_pusd, -1)
-        let vault_xrp_sto = float_sto(empty_view, empty_view, vault_xrp, -1)
+        let vault_pusd_sto = float_sto(empty_view, empty_view, vault_pusd.value, -1)
+        let vault_xrp_sto = float_sto(empty_view, empty_view, vault_xrp.value, -1)
         for (let i = 0; max_iterations(8), i < 8; ++i) {
             vault[i] = vault_pusd_sto[i]
             vault[8 + i] = vault_xrp_sto[i]
@@ -190,7 +195,7 @@ export function hook(reserved: i32)
             amount: Amount.fromToken({
                 currency: "USD",
                 issuer: new Account(hook_accid),
-                value: new DecimalFloat(pusd_to_send)
+                value: pusd_to_send
             }),
             sourceTag: <u32>source_tag,
             destinationTag: <u32>source_tag
@@ -220,27 +225,27 @@ export function hook(reserved: i32)
                 rollback("Peggy: A non USD currency was sent to us.", 1)
         }
 
-        trace_num("vault_pusd", vault_pusd)
+        trace_num("vault_pusd", vault_pusd.value)
 
         // decide whether the vault is liquidatable
-        let required_vault_xrp = float_divide(vault_pusd, exchange_rate)
-        required_vault_xrp = float_mulratio(required_vault_xrp, 0, LIQ_COLLATERALIZATION_DENOMINATOR, LIQ_COLLATERALIZATION_NUMERATOR)
+        let required_vault_xrp = vault_pusd / exchange_rate
+        required_vault_xrp = (required_vault_xrp * liq_den) / liq_num
         let can_liq = required_vault_xrp < vault_xrp
 
         // compute new vault pusd by adding the pusd they just sent
-        vault_pusd = float_sum(float_negate(amt), vault_pusd)
+        vault_pusd = vault_pusd - amt
 
         // compute the maximum amount of pusd that can be out
         // according to the collateralization
-        let max_vault_xrp = float_divide(vault_pusd, exchange_rate)
-        max_vault_xrp = float_mulratio(max_vault_xrp, 0, NEW_COLLATERALIZATION_DENOMINATOR, NEW_COLLATERALIZATION_NUMERATOR)
+        let max_vault_xrp = vault_pusd / exchange_rate
+        max_vault_xrp = (max_vault_xrp * new_den) / new_num
 
         // compute the amount we can send them
-        let xrp_to_send = float_sum(float_negate(max_vault_xrp), vault_xrp)
+        let xrp_to_send = vault_xrp - max_vault_xrp
 
         // if the amount to send is negative, that means the vault is
         // undercollateralized
-        if (float_compare(xrp_to_send, 0, COMPARE_LESS))
+        if (xrp_to_send < zero)
         {
             if (!is_vault_owner)
                 rollback("Peggy: Vault is undercollateralized and your deposit would not redeem it.", 1)
@@ -250,7 +255,7 @@ export function hook(reserved: i32)
                     vault = new ByteArray(16)
 
                 let empty_view = new ByteView(vault, 0, 0)
-                let vault_pusd_sto = float_sto(empty_view, empty_view, vault_pusd, -1)
+                let vault_pusd_sto = float_sto(empty_view, empty_view, vault_pusd.value, -1)
                 for (let i = 0; max_iterations(8), i < 8; ++i)
                     vault[i] = vault_pusd_sto[i]
 
@@ -265,7 +270,7 @@ export function hook(reserved: i32)
         // execution to here means we will send out pusd
 
         // update the vault
-        vault_xrp = float_sum(vault_xrp, xrp_to_send)
+        vault_xrp = vault_xrp + xrp_to_send
 
         // if this is a takeover we destroy the vault on the old key
         // and recreate it on the new key
@@ -288,8 +293,8 @@ export function hook(reserved: i32)
             vault = new ByteArray(16)
 
         let empty_view = new ByteView(vault, 0, 0)
-        let vault_pusd_sto = float_sto(empty_view, empty_view, vault_pusd, -1)
-        let vault_xrp_sto = float_sto(empty_view, empty_view, vault_xrp, -1)
+        let vault_pusd_sto = float_sto(empty_view, empty_view, vault_pusd.value, -1)
+        let vault_xrp_sto = float_sto(empty_view, empty_view, vault_xrp.value, -1)
         for (let i = 0; max_iterations(8), i < 8; ++i) {
             vault[i] = vault_pusd_sto[i]
             vault[8 + i] = vault_xrp_sto[i]
@@ -301,7 +306,7 @@ export function hook(reserved: i32)
 
         emit({
             destination: otxn_account,
-            amount: Amount.fromDrops(<u64>float_int(xrp_to_send, 6, 0)),
+            amount: Amount.fromDrops(<u64>float_int(xrp_to_send.value, 6, 0)),
             sourceTag: <u32>source_tag,
             destinationTag: <u32>source_tag
         })
