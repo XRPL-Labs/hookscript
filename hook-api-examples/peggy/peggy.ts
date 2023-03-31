@@ -37,9 +37,9 @@ export function hook(reserved: i32)
         rollback("Peggy: Invalid trustline set hi=lo?", 1)
 
     let lim_slot = slot_subfield(user_peggy_trustline_slot, ((compare_result < 0) ? sfLowLimit : sfHighLimit), 0)
-    let user_trustline_limit = slot_float(lim_slot)
-    let required_limit = float_set(10, 1)
-    if (float_compare(user_trustline_limit, required_limit, COMPARE_EQUAL | COMPARE_GREATER) != 1)
+    let user_trustline_limit = new DecimalFloat(slot_float(lim_slot))
+    let required_limit = new DecimalFloat(float_set(10, 1))
+    if (user_trustline_limit < required_limit)
         rollback("Peggy: You must set a trustline for USD to peggy for limit of at least 10B", 1)
 
     // execution to here means the invoking account has the required
