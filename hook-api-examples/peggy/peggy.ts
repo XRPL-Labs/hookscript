@@ -45,15 +45,17 @@ export function hook(reserved: i32)
     // execution to here means the invoking account has the required
     // trustline with the required limit; now fetch the price oracle
     // accounts and data (which also lives in a trustline)
-    let oracle_lo = Params.oracle_lo
-    if (oracle_lo.length < 20)
-        rollback("Peggy: \"oracle_lo\" parameter missing", 4)
+    const oracle_low_param = new HookParam<Account>({
+        name: 'oracle_lo'
+    })
+    const oracle_low_account = oracle_low_param.get()
 
-    let oracle_hi = Params.oracle_hi
-    if (oracle_hi.length < 20)
-        rollback("Peggy: \"oracle_hi\" parameter missing", 6);
+    const oracle_high_param = new HookParam<Account>({
+        name: 'oracle_hi'
+    })
+    const oracle_high_account = oracle_high_param.get()
 
-    keylet = Keylet.getTrustLine(new Account(oracle_lo), new Account(oracle_hi), currency)
+    keylet = Keylet.getTrustLine(oracle_low_account, oracle_high_account, currency)
     let slot_no = slot_set(keylet, 0)
 
     lim_slot = slot_subfield(slot_no, sfLowLimit, 0)
@@ -98,7 +100,7 @@ export function hook(reserved: i32)
     let vault = state(vault_key, 16)
     if (vault.length == 16)
     {
-      vault_pusd = float_sto_set(new ByteView(vault, 0, 8))
+        vault_pusd = float_sto_set(new ByteView(vault, 0, 8))
         vault_xrp  = float_sto_set(new ByteView(vault, 8, 8))
         vault_exists = true
     }
