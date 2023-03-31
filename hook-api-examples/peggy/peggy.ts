@@ -10,7 +10,7 @@ export function hook(reserved: i32)
 {
     etxn_reserve(1)
 
-    const currency = [ 0,0,0,0, 0,0,0,0, 0,0,0,0, 85, 83, 68, 0,0,0,0,0 ]
+    const currency = Amount.makeCurrency("USD")
 
     const hook_accid = hook_account()
     const otxn_account = Tx.Account
@@ -183,18 +183,13 @@ export function hook(reserved: i32)
 
         state_set(vault_key, new ByteView(vault, 0, 16))
 
-        // we need to dump the iou amount into a buffer
-        let amt_out = float_sto(empty_view, empty_view, pusd_to_send, -1, 48)
-
-        // set the currency code and source in the amount field
-        for (let i = 0; max_iterations(20), i < 20; ++i) {
-            amt_out[i + 8] = currency[i]
-            amt_out[i + 28] = hook_accid[i]
-        }
-
         emit({
             destination: otxn_account,
-            amount: new Amount(amt_out),
+            amount: Amount.fromToken({
+                currency: "USD",
+                issuer: new Account(hook_accid),
+                value: new DecimalFloat(pusd_to_send)
+            }),
             sourceTag: <u32>source_tag,
             destinationTag: <u32>source_tag
         })
