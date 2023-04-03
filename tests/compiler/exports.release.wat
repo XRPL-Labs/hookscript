@@ -5,7 +5,7 @@
  (global $exports/Animal.CAT i32 (i32.const 0))
  (global $exports/Animal.DOG i32 (i32.const 1))
  (global $~argumentsLength (mut i32) (i32.const 0))
- (memory $0 0)
+ (memory $0 1)
  (export "add" (func $exports/add))
  (export "subOpt" (func $exports/subOpt@varargs))
  (export "Animal.CAT" (global $exports/Animal.CAT))

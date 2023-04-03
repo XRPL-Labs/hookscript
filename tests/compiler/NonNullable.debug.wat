@@ -1,6 +1,6 @@
 (module
- (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
+ (type $none_=>_none (func_subtype func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
@@ -9,15 +9,12 @@
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
  (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
  (global $NonNullable/z (mut i32) (i32.const 144))
- (global $~lib/memory/__data_end i32 (i32.const 204))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32972))
- (global $~lib/memory/__heap_base i32 (i32.const 32972))
  (memory $0 1)
- (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\03\00\00\00u32\00\00\00\00\00\00\00\00\00")
- (data (i32.const 44) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\06\00\00\00String\00\00\00\00\00\00")
- (data (i32.const 76) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\19\00\00\00Array<~lib/string/String>\00\00\00")
- (data (i32.const 124) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00z\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 156) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00unexpected null\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\01\00\00\00\03\00\00\00\00\00\00\00\00\00\00\00u32\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 44) "\1c\00\00\00\01\00\00\00\06\00\00\00\00\00\00\00\00\00\00\00String\00\00\00\00\00\00")
+ (data (i32.const 76) ",\00\00\00\01\00\00\00\19\00\00\00\00\00\00\00\00\00\00\00Array<~lib/string/String>\00\00\00")
+ (data (i32.const 124) "\1c\00\00\00\01\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00z\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 156) ",\00\00\00\01\00\00\00\0f\00\00\00\00\00\00\00\00\00\00\00unexpected null\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
@@ -26,7 +23,7 @@
   local.get $this
   i32.const 20
   i32.sub
-  i32.load $0 offset=16
+  i32.load $0 offset=8
  )
  (func $~lib/string/String.__ne (type $i32_i32_=>_i32) (param $left i32) (param $right i32) (result i32)
   (local $left|2 i32)
@@ -1342,24 +1339,11 @@
   (local $t i32)
   (local $t|302 i32)
   (local $t|303 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 36
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 36
-  memory.fill $0
   block $~lib/string/String.__eq|inlined.0 (result i32)
-   global.get $~lib/memory/__stack_pointer
    i32.const 32
-   local.tee $left
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
+   local.set $left
    i32.const 32
-   local.tee $right
-   i32.store $0 offset=4
+   local.set $right
    local.get $left
    local.set $ptr1
    local.get $right
@@ -2263,19 +2247,12 @@
   end
   i32.const 0
   i32.ne
-  i32.eqz
-  if
-   unreachable
-  end
+  drop
   block $~lib/string/String.__eq|inlined.1 (result i32)
-   global.get $~lib/memory/__stack_pointer
    i32.const 64
-   local.tee $left|100
-   i32.store $0 offset=8
-   global.get $~lib/memory/__stack_pointer
+   local.set $left|100
    i32.const 64
-   local.tee $right|101
-   i32.store $0 offset=12
+   local.set $right|101
    local.get $left|100
    local.set $ptr1|102
    local.get $right|101
@@ -3179,19 +3156,12 @@
   end
   i32.const 0
   i32.ne
-  i32.eqz
-  if
-   unreachable
-  end
+  drop
   block $~lib/string/String.__eq|inlined.2 (result i32)
-   global.get $~lib/memory/__stack_pointer
    i32.const 96
-   local.tee $left|200
-   i32.store $0 offset=16
-   global.get $~lib/memory/__stack_pointer
+   local.set $left|200
    i32.const 96
-   local.tee $right|201
-   i32.store $0 offset=20
+   local.set $right|201
    local.get $left|200
    local.set $ptr1|202
    local.get $right|201
@@ -4095,23 +4065,15 @@
   end
   i32.const 0
   i32.ne
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
+  drop
   global.get $NonNullable/z
   local.tee $300
-  i32.store $0 offset=24
-  local.get $300
   if (result i32)
    local.get $300
   else
    unreachable
   end
-  local.tee $t
-  i32.store $0 offset=28
+  local.set $t
   i32.const 0
   i32.eqz
   drop
@@ -4122,10 +4084,8 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   global.get $NonNullable/z
-  local.tee $t|302
-  i32.store $0 offset=32
+  local.set $t|302
   local.get $t|302
   i32.const 0
   call $~lib/string/String.__ne
@@ -4143,20 +4103,8 @@
     unreachable
    end
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 36
-  i32.add
-  global.set $~lib/memory/__stack_pointer
  )
  (func $~start (type $none_=>_none)
   call $start:NonNullable
- )
- (func $~stack_check (type $none_=>_none)
-  global.get $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__data_end
-  i32.lt_s
-  if
-   unreachable
-  end
  )
 )

@@ -10,14 +10,11 @@
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
  (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
- (global $~lib/memory/__data_end i32 (i32.const 140))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32908))
- (global $~lib/memory/__heap_base i32 (i32.const 32908))
  (memory $0 1)
- (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00a\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 44) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00b\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 76) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\00ab\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 108) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\01\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00a\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 44) "\1c\00\00\00\01\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00b\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 76) "\1c\00\00\00\01\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00ab\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 108) "\1c\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
@@ -88,7 +85,7 @@
   local.get $this
   i32.const 20
   i32.sub
-  i32.load $0 offset=16
+  i32.load $0 offset=8
  )
  (func $~lib/object/Object.is<~lib/string/String> (type $i32_i32_=>_i32) (param $x i32) (param $y i32) (result i32)
   (local $left i32)
@@ -2110,27 +2107,7 @@
    unreachable
   end
  )
- (func $~start (type $none_=>_none)
-  call $start:std/object
- )
- (func $~stack_check (type $none_=>_none)
-  global.get $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__data_end
-  i32.lt_s
-  if
-   unreachable
-  end
- )
  (func $start:std/object (type $none_=>_none)
-  (local $0 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
   f64.const 0
   f64.const 0
   call $~lib/object/Object.is<f64>
@@ -2495,17 +2472,7 @@
    unreachable
   end
   i32.const 32
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
   i32.const 32
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0 offset=4
-  local.get $0
   call $~lib/object/Object.is<~lib/string/String>
   i32.const 0
   i32.ne
@@ -2516,17 +2483,7 @@
    unreachable
   end
   i32.const 32
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
   i32.const 64
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0 offset=4
-  local.get $0
   call $~lib/object/Object.is<~lib/string/String>
   i32.const 0
   i32.ne
@@ -2537,17 +2494,7 @@
    unreachable
   end
   i32.const 32
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
   i32.const 96
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0 offset=4
-  local.get $0
   call $~lib/object/Object.is<~lib/string/String>
   i32.const 0
   i32.ne
@@ -2569,11 +2516,6 @@
    unreachable
   end
   i32.const 128
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
   i32.const 0
   call $~lib/object/Object.is<~lib/string/String|null>
   i32.const 0
@@ -2586,11 +2528,6 @@
   end
   i32.const 0
   i32.const 128
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0 offset=4
-  local.get $0
   call $~lib/object/Object.is<~lib/string/String|null>
   i32.const 0
   i32.ne
@@ -2600,9 +2537,8 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~start (type $none_=>_none)
+  call $start:std/object
  )
 )

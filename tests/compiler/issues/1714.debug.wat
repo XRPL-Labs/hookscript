@@ -1,18 +1,13 @@
 (module
  (type $none_=>_none (func_subtype func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
- (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
- (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
  (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
- (global $~lib/memory/__data_end i32 (i32.const 44))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32812))
- (global $~lib/memory/__heap_base i32 (i32.const 32812))
  (memory $0 1)
- (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\03\00\00\00i32\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\01\00\00\00\03\00\00\00\00\00\00\00\00\00\00\00i32\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
@@ -21,7 +16,7 @@
   local.get $this
   i32.const 20
   i32.sub
-  i32.load $0 offset=16
+  i32.load $0 offset=8
  )
  (func $start:issues/1714 (type $none_=>_none)
   (local $left i32)
@@ -124,14 +119,6 @@
   (local $len|97 i32)
   (local $ptr1|98 i32)
   (local $ptr2|99 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
   i32.const 8
   i32.const 4
   i32.eq
@@ -145,7 +132,6 @@
   i32.eq
   drop
   block $~lib/string/String.__eq|inlined.0 (result i32)
-   global.get $~lib/memory/__stack_pointer
    block $issues/1714/bar<f64,i32>|inlined.0 (result i32)
     i32.const 1
     drop
@@ -154,12 +140,9 @@
     i32.const 32
     br $issues/1714/bar<f64,i32>|inlined.0
    end
-   local.tee $left
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
+   local.set $left
    i32.const 32
-   local.tee $right
-   i32.store $0 offset=4
+   local.set $right
    local.get $left
    local.set $ptr1
    local.get $right
@@ -1063,24 +1046,9 @@
   end
   i32.const 0
   i32.ne
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
+  drop
  )
  (func $~start (type $none_=>_none)
   call $start:issues/1714
- )
- (func $~stack_check (type $none_=>_none)
-  global.get $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__data_end
-  i32.lt_s
-  if
-   unreachable
-  end
  )
 )

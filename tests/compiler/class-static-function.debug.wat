@@ -1,16 +1,13 @@
 (module
- (type $none_=>_none (func_subtype func))
  (type $none_=>_i32 (func_subtype (result i32) func))
+ (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~argumentsLength (mut i32) (i32.const 0))
- (global $~lib/memory/__data_end i32 (i32.const 44))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 32812))
- (global $~lib/memory/__heap_base i32 (i32.const 32812))
  (memory $0 1)
- (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\03\00\00\00\08\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\03\00\00\00\08\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 2 2 funcref)
  (elem $0 (i32.const 1) $class-static-function/Example.staticFunc)
  (export "memory" (memory $0))
@@ -20,18 +17,8 @@
  )
  (func $start:class-static-function (type $none_=>_none)
   (local $func i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
   i32.const 32
-  local.tee $func
-  i32.store $0
+  local.set $func
   i32.const 0
   global.set $~argumentsLength
   local.get $func
@@ -43,20 +30,8 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
  )
  (func $~start (type $none_=>_none)
   call $start:class-static-function
- )
- (func $~stack_check (type $none_=>_none)
-  global.get $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__data_end
-  i32.lt_s
-  if
-   unreachable
-  end
  )
 )

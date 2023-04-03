@@ -17,13 +17,13 @@
  (global $~lib/account/Account.dataSize i32 (i32.const 20))
  (global $~lib/memory/__heap_base i32 (i32.const 364))
  (memory $0 1)
- (data (i32.const 12) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00savings_account\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 60) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00+\00\00\00The account the rounded savings are sent to\00")
- (data (i32.const 124) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\"\00\00\00rfCarbonVNTuXckX6x2qTMFmFSnm6dEWGX\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 188) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 220) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00unexpected null\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 268) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00emit_percentage\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 316) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0e\00\00\00orig_threshold\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) ",\00\00\00\01\00\00\00\0f\00\00\00\00\00\00\00\00\00\00\00savings_account\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 60) "<\00\00\00\01\00\00\00+\00\00\00\00\00\00\00\00\00\00\00The account the rounded savings are sent to\00")
+ (data (i32.const 124) "<\00\00\00\01\00\00\00\"\00\00\00\00\00\00\00\00\00\00\00rfCarbonVNTuXckX6x2qTMFmFSnm6dEWGX\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 188) "\1c\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 220) ",\00\00\00\01\00\00\00\0f\00\00\00\00\00\00\00\00\00\00\00unexpected null\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 268) ",\00\00\00\01\00\00\00\0f\00\00\00\00\00\00\00\00\00\00\00emit_percentage\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 316) ",\00\00\00\01\00\00\00\0e\00\00\00\00\00\00\00\00\00\00\00orig_threshold\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "hook" (func $std/hook-param/hook))
@@ -133,25 +133,15 @@
   call $~lib/rt/common/BLOCK#set:mmInfo
   local.get $ptr
  )
- (func $~lib/rt/common/OBJECT#set:gcInfo (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+ (func $~lib/rt/common/OBJECT#set:rtId (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
   i32.store $0 offset=4
  )
- (func $~lib/rt/common/OBJECT#set:gcInfo2 (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=8
- )
- (func $~lib/rt/common/OBJECT#set:rtId (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=12
- )
  (func $~lib/rt/common/OBJECT#set:rtSize (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
-  i32.store $0 offset=16
+  i32.store $0 offset=8
  )
  (func $~lib/rt/stub/__new (type $i32_i32_=>_i32) (param $size i32) (param $id i32) (result i32)
   (local $ptr i32)
@@ -165,12 +155,6 @@
   i32.const 4
   i32.sub
   local.set $object
-  local.get $object
-  i32.const 0
-  call $~lib/rt/common/OBJECT#set:gcInfo
-  local.get $object
-  i32.const 0
-  call $~lib/rt/common/OBJECT#set:gcInfo2
   local.get $object
   local.get $id
   call $~lib/rt/common/OBJECT#set:rtId
@@ -211,7 +195,7 @@
   local.get $this
   i32.const 20
   i32.sub
-  i32.load $0 offset=16
+  i32.load $0 offset=8
  )
  (func $~lib/account/Account#set:bytes (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
@@ -422,7 +406,7 @@
    local.get $this|17
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    global.get $~lib/account/Account.dataSize
    i32.ne
    if
@@ -433,7 +417,7 @@
     local.get $this|18
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i64.extend_i32_s
     local.set $failure|19
     i32.const 1
@@ -505,7 +489,7 @@
     local.get $this|32
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     global.get $~lib/account/Account.dataSize
     i32.ne
     if
@@ -516,7 +500,7 @@
      local.get $this|33
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      i64.extend_i32_s
      local.set $failure|34
      i32.const 1

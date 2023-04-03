@@ -3,7 +3,7 @@
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
- (memory $0 0)
+ (memory $0 1)
  (export "baz" (func $function-inline-regressions/baz))
  (export "foo" (func $function-inline-regressions/foo))
  (export "memory" (memory $0))

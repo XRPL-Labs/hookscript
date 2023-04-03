@@ -2,7 +2,7 @@
  (type $i32_=>_none (func_subtype (param i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
- (memory $0 0)
+ (memory $0 1)
  (export "testInherit" (func $continue/testInherit))
  (export "memory" (memory $0))
  (func $continue/testInherit (type $i32_=>_none) (param $0 i32)

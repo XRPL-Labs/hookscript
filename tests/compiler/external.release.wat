@@ -6,7 +6,7 @@
  (import "external" "bar" (func $external/two))
  (import "foo" "baz" (func $external/three))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
- (memory $0 0)
+ (memory $0 1)
  (export "foo" (func $external/foo))
  (export "two" (func $external/two))
  (export "three" (func $external/three))

@@ -4657,8 +4657,6 @@ export class Class extends TypedElement {
     let buffer = new Uint8Array(program.blockOverhead + blockSize);
     let OBJECT = program.OBJECTInstance;
     OBJECT.writeField("mmInfo", blockSize, buffer, 0);
-    OBJECT.writeField("gcInfo", 0, buffer, 0);
-    OBJECT.writeField("gcInfo2", 0, buffer, 0);
     OBJECT.writeField("rtId", this.id, buffer, 0);
     OBJECT.writeField("rtSize", payloadSize, buffer, 0);
     return buffer;

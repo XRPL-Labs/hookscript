@@ -84,8 +84,6 @@ export function __reset(): void { // special
 export function __new(size: usize, id: u32): usize {
   let ptr = __alloc(OBJECT_OVERHEAD + size);
   let object = changetype<OBJECT>(ptr - BLOCK_OVERHEAD);
-  object.gcInfo = 0;
-  object.gcInfo2 = 0;
   object.rtId = id;
   object.rtSize = <u32>size;
   return ptr + OBJECT_OVERHEAD;

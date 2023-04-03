@@ -102,25 +102,15 @@
   call $~lib/rt/common/BLOCK#set:mmInfo
   local.get $ptr
  )
- (func $~lib/rt/common/OBJECT#set:gcInfo (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+ (func $~lib/rt/common/OBJECT#set:rtId (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
   i32.store $0 offset=4
  )
- (func $~lib/rt/common/OBJECT#set:gcInfo2 (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=8
- )
- (func $~lib/rt/common/OBJECT#set:rtId (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=12
- )
  (func $~lib/rt/common/OBJECT#set:rtSize (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
-  i32.store $0 offset=16
+  i32.store $0 offset=8
  )
  (func $~lib/rt/stub/__new (type $i32_i32_=>_i32) (param $size i32) (param $id i32) (result i32)
   (local $ptr i32)
@@ -134,12 +124,6 @@
   i32.const 4
   i32.sub
   local.set $object
-  local.get $object
-  i32.const 0
-  call $~lib/rt/common/OBJECT#set:gcInfo
-  local.get $object
-  i32.const 0
-  call $~lib/rt/common/OBJECT#set:gcInfo2
   local.get $object
   local.get $id
   call $~lib/rt/common/OBJECT#set:rtId

@@ -6,12 +6,14 @@
  (global $unary/I (mut i64) (i64.const 0))
  (global $unary/f (mut f32) (f32.const 0))
  (global $unary/F (mut f64) (f64.const 0))
- (memory $0 0)
+ (memory $0 1)
  (export "memory" (memory $0))
  (start $~start)
  (func $~start (type $none_=>_none)
   (local $0 i32)
   (local $1 i64)
+  (local $2 f32)
+  (local $3 f64)
   global.get $unary/i
   i32.const 1
   i32.add

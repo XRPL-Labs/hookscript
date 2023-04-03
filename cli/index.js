@@ -298,10 +298,8 @@ export async function main(argv, options) {
   let program, runtime;
   const compilerOptions = assemblyscript.newOptions();
   switch (opts.runtime) {
-    case "stub": runtime = 0; break;
-    case "minimal": runtime = 1; break;
-    /* incremental */
-    default: runtime = 2; break;
+    /* stub */
+    default: runtime = 0; break;
   }
   assemblyscript.setTarget(compilerOptions, 0);
   assemblyscript.setDebugInfo(compilerOptions, !!opts.debug);

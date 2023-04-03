@@ -5,42 +5,41 @@
  (global $~lib/rt/stub/offset (mut i32) (i32.const 0))
  (global $std/date-toisostring/date (mut i32) (i32.const 0))
  (memory $0 1)
- (data (i32.const 1036) "\1c")
- (data (i32.const 1048) "\01\00\00\00\0c\00\00\00Invalid Date")
- (data (i32.const 1068) "\1c")
- (data (i32.const 1080) "\01\00\00\00\01\00\00\00-")
- (data (i32.const 1100) "\1c")
- (data (i32.const 1112) "\01\00\00\00\01\00\00\00+")
- (data (i32.const 1132) "\1c")
- (data (i32.const 1144) "\01\00\00\00\01\00\00\000")
- (data (i32.const 1164) "\1c")
- (data (i32.const 1176) "\01")
- (data (i32.const 1196) "\1c")
- (data (i32.const 1208) "\01\00\00\00\01\00\00\00T")
- (data (i32.const 1228) "\1c")
- (data (i32.const 1240) "\01\00\00\00\01\00\00\00:")
- (data (i32.const 1260) "\1c")
- (data (i32.const 1272) "\01\00\00\00\01\00\00\00.")
- (data (i32.const 1292) "\1c")
- (data (i32.const 1304) "\01\00\00\00\01\00\00\00Z")
- (data (i32.const 1324) ",")
- (data (i32.const 1336) "\01\00\00\00\18\00\00\000000-01-01T00:00:00.000Z")
- (data (i32.const 1372) ",")
- (data (i32.const 1384) "\01\00\00\00\1b\00\00\00-000001-12-31T23:59:59.999Z")
- (data (i32.const 1420) ",")
- (data (i32.const 1432) "\01\00\00\00\18\00\00\000001-04-07T23:06:40.000Z")
- (data (i32.const 1468) ",")
- (data (i32.const 1480) "\01\00\00\00\18\00\00\002009-01-06T08:40:31.020Z")
- (data (i32.const 1516) ",")
- (data (i32.const 1528) "\01\00\00\00\18\00\00\002009-01-06T08:40:31.456Z")
- (data (i32.const 1564) ",")
- (data (i32.const 1576) "\01\00\00\00\1b\00\00\00+012184-04-08T13:07:11.020Z")
- (data (i32.const 1612) ",")
- (data (i32.const 1624) "\01\00\00\00\18\00\00\009999-12-31T23:59:59.999Z")
- (data (i32.const 1660) ",")
- (data (i32.const 1672) "\01\00\00\00\1b\00\00\00+010000-01-01T00:00:00.000Z")
- (data (i32.const 1708) ",")
- (data (i32.const 1720) "\01\00\00\00\1b\00\00\00-000022-06-16T17:13:50.774Z")
+ (data (i32.const 1036) "\1c\00\00\00\01\00\00\00\0c")
+ (data (i32.const 1056) "Invalid Date")
+ (data (i32.const 1068) "\1c\00\00\00\01\00\00\00\01")
+ (data (i32.const 1088) "-")
+ (data (i32.const 1100) "\1c\00\00\00\01\00\00\00\01")
+ (data (i32.const 1120) "+")
+ (data (i32.const 1132) "\1c\00\00\00\01\00\00\00\01")
+ (data (i32.const 1152) "0")
+ (data (i32.const 1164) "\1c\00\00\00\01")
+ (data (i32.const 1196) "\1c\00\00\00\01\00\00\00\01")
+ (data (i32.const 1216) "T")
+ (data (i32.const 1228) "\1c\00\00\00\01\00\00\00\01")
+ (data (i32.const 1248) ":")
+ (data (i32.const 1260) "\1c\00\00\00\01\00\00\00\01")
+ (data (i32.const 1280) ".")
+ (data (i32.const 1292) "\1c\00\00\00\01\00\00\00\01")
+ (data (i32.const 1312) "Z")
+ (data (i32.const 1324) ",\00\00\00\01\00\00\00\18")
+ (data (i32.const 1344) "0000-01-01T00:00:00.000Z")
+ (data (i32.const 1372) ",\00\00\00\01\00\00\00\1b")
+ (data (i32.const 1392) "-000001-12-31T23:59:59.999Z")
+ (data (i32.const 1420) ",\00\00\00\01\00\00\00\18")
+ (data (i32.const 1440) "0001-04-07T23:06:40.000Z")
+ (data (i32.const 1468) ",\00\00\00\01\00\00\00\18")
+ (data (i32.const 1488) "2009-01-06T08:40:31.020Z")
+ (data (i32.const 1516) ",\00\00\00\01\00\00\00\18")
+ (data (i32.const 1536) "2009-01-06T08:40:31.456Z")
+ (data (i32.const 1564) ",\00\00\00\01\00\00\00\1b")
+ (data (i32.const 1584) "+012184-04-08T13:07:11.020Z")
+ (data (i32.const 1612) ",\00\00\00\01\00\00\00\18")
+ (data (i32.const 1632) "9999-12-31T23:59:59.999Z")
+ (data (i32.const 1660) ",\00\00\00\01\00\00\00\1b")
+ (data (i32.const 1680) "+010000-01-01T00:00:00.000Z")
+ (data (i32.const 1708) ",\00\00\00\01\00\00\00\1b")
+ (data (i32.const 1728) "-000022-06-16T17:13:50.774Z")
  (export "memory" (memory $0))
  (start $~start)
  (func $start:std/date-toisostring (type $none_=>_none)
@@ -56,10 +55,9 @@
   (local $9 i32)
   (local $10 i32)
   (local $11 i32)
-  (local $12 i32)
-  (local $13 i64)
+  (local $12 i64)
+  (local $13 i32)
   (local $14 i32)
-  (local $15 i32)
   global.get $~lib/rt/stub/offset
   i32.eqz
   if
@@ -94,17 +92,11 @@
   i32.const 4
   i32.sub
   local.tee $0
-  i32.const 0
+  i32.const 3
   i32.store $0 offset=4
   local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $0
   i32.const 24
-  i32.store $0 offset=16
+  i32.store $0 offset=8
   local.get $1
   i32.const 16
   i32.add
@@ -228,6 +220,11 @@
       i32.const 1756
       global.set $~lib/rt/stub/offset
      end
+     global.get $~lib/rt/stub/offset
+     local.tee $6
+     i32.const 4
+     i32.add
+     local.tee $7
      local.get $4
      i32.const 19
      i32.add
@@ -236,11 +233,6 @@
      i32.const 4
      i32.sub
      local.tee $4
-     global.get $~lib/rt/stub/offset
-     local.tee $6
-     i32.const 4
-     i32.add
-     local.tee $7
      i32.add
      local.tee $8
      memory.size $0
@@ -263,17 +255,11 @@
      i32.const 4
      i32.sub
      local.tee $4
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $4
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $4
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $4
      local.get $1
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $0
      local.get $7
      i32.const 16
@@ -445,7 +431,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $3
     i32.const 6
     i32.lt_u
@@ -484,17 +470,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 6
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -647,11 +627,11 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i32.add
     local.tee $0
     if
@@ -671,6 +651,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $4
+      i32.const 4
+      i32.add
+      local.tee $5
       local.get $3
       i32.const 19
       i32.add
@@ -679,11 +664,6 @@
       i32.const 4
       i32.sub
       local.tee $3
-      global.get $~lib/rt/stub/offset
-      local.tee $4
-      i32.const 4
-      i32.add
-      local.tee $5
       i32.add
       local.tee $6
       memory.size $0
@@ -706,17 +686,11 @@
       i32.const 4
       i32.sub
       local.tee $3
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $3
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $3
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $3
       local.get $0
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $5
       i32.const 16
       i32.add
@@ -724,7 +698,7 @@
       local.get $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -951,7 +925,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $1
       i32.const 64
       i32.ge_s
@@ -1244,6 +1218,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $5
+      i32.const 4
+      i32.add
+      local.tee $6
       local.get $4
       i32.const 19
       i32.add
@@ -1252,11 +1231,6 @@
       i32.const 4
       i32.sub
       local.tee $4
-      global.get $~lib/rt/stub/offset
-      local.tee $5
-      i32.const 4
-      i32.add
-      local.tee $6
       i32.add
       local.tee $7
       memory.size $0
@@ -1279,17 +1253,11 @@
       i32.const 4
       i32.sub
       local.tee $4
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $4
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $4
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $4
       local.get $1
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $0
       local.get $6
       i32.const 16
@@ -1461,7 +1429,7 @@
      local.get $1
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $3
      i32.const 4
      i32.ge_u
@@ -1500,17 +1468,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 4
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -1735,6 +1697,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $5
+    i32.const 4
+    i32.add
+    local.tee $6
     local.get $4
     i32.const 19
     i32.add
@@ -1743,11 +1710,6 @@
     i32.const 4
     i32.sub
     local.tee $4
-    global.get $~lib/rt/stub/offset
-    local.tee $5
-    i32.const 4
-    i32.add
-    local.tee $6
     i32.add
     local.tee $7
     memory.size $0
@@ -1770,17 +1732,11 @@
     i32.const 4
     i32.sub
     local.tee $4
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $4
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $4
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $4
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $6
     i32.const 16
@@ -1953,7 +1909,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $4
     i32.const 2
     i32.ge_u
@@ -1996,17 +1952,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -2226,6 +2176,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $6
+    i32.const 4
+    i32.add
+    local.tee $7
     local.get $5
     i32.const 19
     i32.add
@@ -2234,11 +2189,6 @@
     i32.const 4
     i32.sub
     local.tee $5
-    global.get $~lib/rt/stub/offset
-    local.tee $6
-    i32.const 4
-    i32.add
-    local.tee $7
     i32.add
     local.tee $8
     memory.size $0
@@ -2261,17 +2211,11 @@
     i32.const 4
     i32.sub
     local.tee $5
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $5
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $5
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $5
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $7
     i32.const 16
@@ -2444,7 +2388,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 2
     i32.ge_u
@@ -2487,17 +2431,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -2645,11 +2583,11 @@
    i64.load $0 offset=16
    i64.const 86400000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 3600000
@@ -2730,6 +2668,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $7
+    i32.const 4
+    i32.add
+    local.tee $8
     local.get $6
     i32.const 19
     i32.add
@@ -2738,11 +2681,6 @@
     i32.const 4
     i32.sub
     local.tee $6
-    global.get $~lib/rt/stub/offset
-    local.tee $7
-    i32.const 4
-    i32.add
-    local.tee $8
     i32.add
     local.tee $10
     memory.size $0
@@ -2765,17 +2703,11 @@
     i32.const 4
     i32.sub
     local.tee $6
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $6
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $6
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $6
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $8
     i32.const 16
@@ -2948,7 +2880,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $6
     i32.const 2
     i32.ge_u
@@ -2991,17 +2923,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -3149,11 +3075,11 @@
    i64.load $0 offset=16
    i64.const 3600000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 60000
@@ -3234,6 +3160,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $8
+    i32.const 4
+    i32.add
+    local.tee $10
     local.get $7
     i32.const 19
     i32.add
@@ -3242,13 +3173,8 @@
     i32.const 4
     i32.sub
     local.tee $7
-    global.get $~lib/rt/stub/offset
-    local.tee $8
-    i32.const 4
     i32.add
-    local.tee $10
-    i32.add
-    local.tee $14
+    local.tee $13
     memory.size $0
     i32.const 16
     i32.shl
@@ -3260,7 +3186,7 @@
     if
      unreachable
     end
-    local.get $14
+    local.get $13
     global.set $~lib/rt/stub/offset
     local.get $8
     local.get $7
@@ -3269,17 +3195,11 @@
     i32.const 4
     i32.sub
     local.tee $7
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $7
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $7
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $7
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $10
     i32.const 16
@@ -3452,7 +3372,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $7
     i32.const 2
     i32.ge_u
@@ -3495,17 +3415,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -3653,11 +3567,11 @@
    i64.load $0 offset=16
    i64.const 60000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 1000
@@ -3738,6 +3652,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $10
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $8
     i32.const 19
     i32.add
@@ -3746,13 +3665,8 @@
     i32.const 4
     i32.sub
     local.tee $8
-    global.get $~lib/rt/stub/offset
-    local.tee $10
-    i32.const 4
     i32.add
     local.tee $14
-    i32.add
-    local.tee $15
     memory.size $0
     i32.const 16
     i32.shl
@@ -3764,28 +3678,22 @@
     if
      unreachable
     end
-    local.get $15
+    local.get $14
     global.set $~lib/rt/stub/offset
     local.get $10
     local.get $8
     i32.store $0
-    local.get $14
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $8
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $8
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $8
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $8
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $14
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -3956,7 +3864,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $8
     i32.const 2
     i32.ge_u
@@ -3999,17 +3907,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -4018,7 +3920,7 @@
     i32.const 2
     local.get $8
     i32.sub
-    local.tee $14
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -4074,7 +3976,7 @@
      i32.store8 $0
     end
     local.get $7
-    local.get $14
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -4157,11 +4059,11 @@
    i64.load $0 offset=16
    i64.const 1000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    local.tee $0
@@ -4240,6 +4142,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $11
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $10
     i32.const 19
     i32.add
@@ -4248,13 +4155,8 @@
     i32.const 4
     i32.sub
     local.tee $10
-    global.get $~lib/rt/stub/offset
-    local.tee $11
-    i32.const 4
     i32.add
     local.tee $14
-    i32.add
-    local.tee $15
     memory.size $0
     i32.const 16
     i32.shl
@@ -4266,28 +4168,22 @@
     if
      unreachable
     end
-    local.get $15
+    local.get $14
     global.set $~lib/rt/stub/offset
     local.get $11
     local.get $10
     i32.store $0
-    local.get $14
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $10
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $10
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $10
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $10
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $14
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -4458,7 +4354,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $10
     i32.const 3
     i32.ge_u
@@ -4501,17 +4397,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 3
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -4520,7 +4410,7 @@
     i32.const 3
     local.get $10
     i32.sub
-    local.tee $14
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -4576,7 +4466,7 @@
      i32.store8 $0
     end
     local.get $8
-    local.get $14
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -4687,17 +4577,11 @@
    i32.const 4
    i32.sub
    local.tee $0
-   i32.const 0
+   i32.const 1
    i32.store $0 offset=4
    local.get $0
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $0
-   i32.const 1
-   i32.store $0 offset=12
-   local.get $0
    i32.const 455
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    local.get $1
    i32.const 16
    i32.add
@@ -4716,7 +4600,7 @@
           local.tee $2
           i32.const 20
           i32.sub
-          i32.load $0 offset=16
+          i32.load $0 offset=8
           local.tee $10
           i32.const 64
           i32.ge_s
@@ -4806,23 +4690,23 @@
            local.get $0
            i32.const 8
            i32.add
-           local.tee $14
+           local.tee $13
            local.get $2
            i32.const 8
            i32.add
-           local.tee $15
+           local.tee $14
            i64.load $0
            i64.store $0
+           local.get $13
+           i32.const 8
+           i32.add
            local.get $14
            i32.const 8
            i32.add
-           local.get $15
-           i32.const 8
-           i32.add
            i64.load $0
            i64.store $0
+           local.get $13
            local.get $14
-           local.get $15
            i64.load $0 offset=16
            i64.store $0 offset=16
            local.get $2
@@ -4949,7 +4833,7 @@
          local.tee $2
          i32.const 20
          i32.sub
-         i32.load $0 offset=16
+         i32.load $0 offset=8
          local.tee $10
          i32.const 64
          i32.ge_s
@@ -5039,23 +4923,23 @@
           local.get $0
           i32.const 8
           i32.add
-          local.tee $14
+          local.tee $13
           local.get $2
           i32.const 8
           i32.add
-          local.tee $15
+          local.tee $14
           i64.load $0
           i64.store $0
+          local.get $13
+          i32.const 8
+          i32.add
           local.get $14
           i32.const 8
           i32.add
-          local.get $15
-          i32.const 8
-          i32.add
           i64.load $0
           i64.store $0
+          local.get $13
           local.get $14
-          local.get $15
           i64.load $0 offset=16
           i64.store $0 offset=16
           local.get $2
@@ -5182,7 +5066,7 @@
         local.tee $2
         i32.const 20
         i32.sub
-        i32.load $0 offset=16
+        i32.load $0 offset=8
         local.tee $4
         i32.const 64
         i32.ge_s
@@ -5276,19 +5160,19 @@
          local.get $2
          i32.const 8
          i32.add
-         local.tee $14
+         local.tee $13
          i64.load $0
          i64.store $0
          local.get $10
          i32.const 8
          i32.add
-         local.get $14
+         local.get $13
          i32.const 8
          i32.add
          i64.load $0
          i64.store $0
          local.get $10
-         local.get $14
+         local.get $13
          i64.load $0 offset=16
          i64.store $0 offset=16
          local.get $2
@@ -5415,7 +5299,7 @@
        local.tee $2
        i32.const 20
        i32.sub
-       i32.load $0 offset=16
+       i32.load $0 offset=8
        local.tee $5
        i32.const 64
        i32.ge_s
@@ -5648,7 +5532,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -5881,7 +5765,7 @@
      local.tee $2
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $5
      i32.const 64
      i32.ge_s
@@ -6114,7 +5998,7 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 64
     i32.ge_s
@@ -6345,7 +6229,7 @@
    i32.add
    local.get $1
    i32.sub
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    i32.const 1344
    local.set $2
    i32.const 1
@@ -6364,9 +6248,9 @@
    local.get $0
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    local.tee $1
-   i32.const 1340
+   i32.const 1332
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.0
@@ -6550,6 +6434,8 @@
       i32.const 64
       i32.ge_u
       if
+       i32.const 0
+       local.set $3
        block $~lib/util/raweq/__raweq64|inlined.0 (result i32)
         i32.const 0
         local.get $0
@@ -6647,6 +6533,8 @@
       i32.const 32
       i32.ge_u
       if
+       i32.const 0
+       local.set $3
        block $~lib/util/raweq/__raweq32|inlined.0 (result i32)
         i32.const 0
         local.get $0
@@ -6660,31 +6548,31 @@
         local.get $0
         i32.const 8
         i32.add
-        local.tee $3
+        local.tee $4
         i64.load $0
         local.get $2
         i32.const 8
         i32.add
-        local.tee $4
+        local.tee $5
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.0
         drop
         i32.const 0
-        local.get $3
+        local.get $4
         i32.const 8
         i32.add
         i64.load $0
-        local.get $4
+        local.get $5
         i32.const 8
         i32.add
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.0
         drop
-        local.get $3
-        i64.load $0 offset=16
         local.get $4
+        i64.load $0 offset=16
+        local.get $5
         i64.load $0 offset=16
         i64.eq
        end
@@ -6707,6 +6595,8 @@
       i32.const 16
       i32.ge_u
       if
+       i32.const 0
+       local.set $3
        local.get $0
        i64.load $0
        local.get $2
@@ -6822,9 +6712,9 @@
        i32.const 1
       end
      end
-     local.set $12
+     local.set $3
     end
-    local.get $12
+    local.get $3
    end
   end
   i32.eqz
@@ -6865,17 +6755,11 @@
   i32.const 4
   i32.sub
   local.tee $0
-  i32.const 0
+  i32.const 3
   i32.store $0 offset=4
   local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $0
   i32.const 24
-  i32.store $0 offset=16
+  i32.store $0 offset=8
   local.get $1
   i32.const 16
   i32.add
@@ -6999,6 +6883,11 @@
       i32.const 1756
       global.set $~lib/rt/stub/offset
      end
+     global.get $~lib/rt/stub/offset
+     local.tee $6
+     i32.const 4
+     i32.add
+     local.tee $7
      local.get $4
      i32.const 19
      i32.add
@@ -7007,11 +6896,6 @@
      i32.const 4
      i32.sub
      local.tee $4
-     global.get $~lib/rt/stub/offset
-     local.tee $6
-     i32.const 4
-     i32.add
-     local.tee $7
      i32.add
      local.tee $8
      memory.size $0
@@ -7034,17 +6918,11 @@
      i32.const 4
      i32.sub
      local.tee $4
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $4
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $4
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $4
      local.get $1
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $0
      local.get $7
      i32.const 16
@@ -7216,7 +7094,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $3
     i32.const 6
     i32.lt_u
@@ -7255,17 +7133,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 6
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -7418,11 +7290,11 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i32.add
     local.tee $0
     if
@@ -7442,6 +7314,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $4
+      i32.const 4
+      i32.add
+      local.tee $5
       local.get $3
       i32.const 19
       i32.add
@@ -7450,11 +7327,6 @@
       i32.const 4
       i32.sub
       local.tee $3
-      global.get $~lib/rt/stub/offset
-      local.tee $4
-      i32.const 4
-      i32.add
-      local.tee $5
       i32.add
       local.tee $6
       memory.size $0
@@ -7477,17 +7349,11 @@
       i32.const 4
       i32.sub
       local.tee $3
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $3
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $3
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $3
       local.get $0
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $5
       i32.const 16
       i32.add
@@ -7495,7 +7361,7 @@
       local.get $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -7722,7 +7588,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $1
       i32.const 64
       i32.ge_s
@@ -8015,6 +7881,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $5
+      i32.const 4
+      i32.add
+      local.tee $6
       local.get $4
       i32.const 19
       i32.add
@@ -8023,11 +7894,6 @@
       i32.const 4
       i32.sub
       local.tee $4
-      global.get $~lib/rt/stub/offset
-      local.tee $5
-      i32.const 4
-      i32.add
-      local.tee $6
       i32.add
       local.tee $7
       memory.size $0
@@ -8050,17 +7916,11 @@
       i32.const 4
       i32.sub
       local.tee $4
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $4
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $4
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $4
       local.get $1
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $0
       local.get $6
       i32.const 16
@@ -8232,7 +8092,7 @@
      local.get $1
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $3
      i32.const 4
      i32.ge_u
@@ -8271,17 +8131,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 4
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -8506,6 +8360,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $5
+    i32.const 4
+    i32.add
+    local.tee $6
     local.get $4
     i32.const 19
     i32.add
@@ -8514,11 +8373,6 @@
     i32.const 4
     i32.sub
     local.tee $4
-    global.get $~lib/rt/stub/offset
-    local.tee $5
-    i32.const 4
-    i32.add
-    local.tee $6
     i32.add
     local.tee $7
     memory.size $0
@@ -8541,17 +8395,11 @@
     i32.const 4
     i32.sub
     local.tee $4
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $4
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $4
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $4
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $6
     i32.const 16
@@ -8724,7 +8572,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $4
     i32.const 2
     i32.ge_u
@@ -8767,17 +8615,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -8997,6 +8839,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $6
+    i32.const 4
+    i32.add
+    local.tee $7
     local.get $5
     i32.const 19
     i32.add
@@ -9005,11 +8852,6 @@
     i32.const 4
     i32.sub
     local.tee $5
-    global.get $~lib/rt/stub/offset
-    local.tee $6
-    i32.const 4
-    i32.add
-    local.tee $7
     i32.add
     local.tee $8
     memory.size $0
@@ -9032,17 +8874,11 @@
     i32.const 4
     i32.sub
     local.tee $5
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $5
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $5
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $5
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $7
     i32.const 16
@@ -9215,7 +9051,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 2
     i32.ge_u
@@ -9258,17 +9094,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -9416,11 +9246,11 @@
    i64.load $0 offset=16
    i64.const 86400000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 3600000
@@ -9501,6 +9331,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $7
+    i32.const 4
+    i32.add
+    local.tee $8
     local.get $6
     i32.const 19
     i32.add
@@ -9509,11 +9344,6 @@
     i32.const 4
     i32.sub
     local.tee $6
-    global.get $~lib/rt/stub/offset
-    local.tee $7
-    i32.const 4
-    i32.add
-    local.tee $8
     i32.add
     local.tee $10
     memory.size $0
@@ -9536,17 +9366,11 @@
     i32.const 4
     i32.sub
     local.tee $6
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $6
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $6
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $6
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $8
     i32.const 16
@@ -9719,7 +9543,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $6
     i32.const 2
     i32.ge_u
@@ -9762,17 +9586,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -9920,11 +9738,11 @@
    i64.load $0 offset=16
    i64.const 3600000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 60000
@@ -10005,6 +9823,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $8
+    i32.const 4
+    i32.add
+    local.tee $10
     local.get $7
     i32.const 19
     i32.add
@@ -10013,13 +9836,8 @@
     i32.const 4
     i32.sub
     local.tee $7
-    global.get $~lib/rt/stub/offset
-    local.tee $8
-    i32.const 4
     i32.add
-    local.tee $10
-    i32.add
-    local.tee $12
+    local.tee $13
     memory.size $0
     i32.const 16
     i32.shl
@@ -10031,7 +9849,7 @@
     if
      unreachable
     end
-    local.get $12
+    local.get $13
     global.set $~lib/rt/stub/offset
     local.get $8
     local.get $7
@@ -10040,17 +9858,11 @@
     i32.const 4
     i32.sub
     local.tee $7
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $7
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $7
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $7
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $10
     i32.const 16
@@ -10223,7 +10035,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $7
     i32.const 2
     i32.ge_u
@@ -10266,17 +10078,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -10424,11 +10230,11 @@
    i64.load $0 offset=16
    i64.const 60000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 1000
@@ -10509,6 +10315,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $10
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $8
     i32.const 19
     i32.add
@@ -10517,11 +10328,6 @@
     i32.const 4
     i32.sub
     local.tee $8
-    global.get $~lib/rt/stub/offset
-    local.tee $10
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -10540,23 +10346,17 @@
     local.get $10
     local.get $8
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $8
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $8
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $8
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $8
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -10727,7 +10527,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $8
     i32.const 2
     i32.ge_u
@@ -10770,17 +10570,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -10789,7 +10583,7 @@
     i32.const 2
     local.get $8
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -10845,7 +10639,7 @@
      i32.store8 $0
     end
     local.get $7
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -10928,11 +10722,11 @@
    i64.load $0 offset=16
    i64.const 1000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    local.tee $0
@@ -11011,6 +10805,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $11
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $10
     i32.const 19
     i32.add
@@ -11019,11 +10818,6 @@
     i32.const 4
     i32.sub
     local.tee $10
-    global.get $~lib/rt/stub/offset
-    local.tee $11
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -11042,23 +10836,17 @@
     local.get $11
     local.get $10
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $10
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $10
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $10
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $10
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -11229,7 +11017,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $10
     i32.const 3
     i32.ge_u
@@ -11272,17 +11060,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 3
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -11291,7 +11073,7 @@
     i32.const 3
     local.get $10
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -11347,7 +11129,7 @@
      i32.store8 $0
     end
     local.get $8
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -11458,17 +11240,11 @@
    i32.const 4
    i32.sub
    local.tee $0
-   i32.const 0
+   i32.const 1
    i32.store $0 offset=4
    local.get $0
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $0
-   i32.const 1
-   i32.store $0 offset=12
-   local.get $0
    i32.const 455
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    local.get $1
    i32.const 16
    i32.add
@@ -11487,7 +11263,7 @@
           local.tee $2
           i32.const 20
           i32.sub
-          i32.load $0 offset=16
+          i32.load $0 offset=8
           local.tee $10
           i32.const 64
           i32.ge_s
@@ -11577,14 +11353,14 @@
            local.get $0
            i32.const 8
            i32.add
-           local.tee $12
+           local.tee $13
            local.get $2
            i32.const 8
            i32.add
            local.tee $14
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            i32.const 8
            i32.add
            local.get $14
@@ -11592,7 +11368,7 @@
            i32.add
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            local.get $14
            i64.load $0 offset=16
            i64.store $0 offset=16
@@ -11720,7 +11496,7 @@
          local.tee $2
          i32.const 20
          i32.sub
-         i32.load $0 offset=16
+         i32.load $0 offset=8
          local.tee $10
          i32.const 64
          i32.ge_s
@@ -11810,14 +11586,14 @@
           local.get $0
           i32.const 8
           i32.add
-          local.tee $12
+          local.tee $13
           local.get $2
           i32.const 8
           i32.add
           local.tee $14
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           i32.const 8
           i32.add
           local.get $14
@@ -11825,7 +11601,7 @@
           i32.add
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           local.get $14
           i64.load $0 offset=16
           i64.store $0 offset=16
@@ -11953,7 +11729,7 @@
         local.tee $2
         i32.const 20
         i32.sub
-        i32.load $0 offset=16
+        i32.load $0 offset=8
         local.tee $4
         i32.const 64
         i32.ge_s
@@ -12047,19 +11823,19 @@
          local.get $2
          i32.const 8
          i32.add
-         local.tee $12
+         local.tee $13
          i64.load $0
          i64.store $0
          local.get $10
          i32.const 8
          i32.add
-         local.get $12
+         local.get $13
          i32.const 8
          i32.add
          i64.load $0
          i64.store $0
          local.get $10
-         local.get $12
+         local.get $13
          i64.load $0 offset=16
          i64.store $0 offset=16
          local.get $2
@@ -12186,7 +11962,7 @@
        local.tee $2
        i32.const 20
        i32.sub
-       i32.load $0 offset=16
+       i32.load $0 offset=8
        local.tee $5
        i32.const 64
        i32.ge_s
@@ -12419,7 +12195,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -12652,7 +12428,7 @@
      local.tee $2
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $5
      i32.const 64
      i32.ge_s
@@ -12885,7 +12661,7 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 64
     i32.ge_s
@@ -13116,7 +12892,7 @@
    i32.add
    local.get $1
    i32.sub
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    i32.const 1392
    local.set $2
    i32.const 1
@@ -13135,9 +12911,9 @@
    local.get $0
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    local.tee $1
-   i32.const 1388
+   i32.const 1380
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.1
@@ -13322,7 +13098,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq64|inlined.1 (result i32)
         i32.const 0
         local.get $0
@@ -13421,7 +13197,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq32|inlined.1 (result i32)
         i32.const 0
         local.get $0
@@ -13435,31 +13211,31 @@
         local.get $0
         i32.const 8
         i32.add
-        local.tee $3
+        local.tee $4
         i64.load $0
         local.get $2
         i32.const 8
         i32.add
-        local.tee $4
+        local.tee $5
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.1
         drop
         i32.const 0
-        local.get $3
+        local.get $4
         i32.const 8
         i32.add
         i64.load $0
-        local.get $4
+        local.get $5
         i32.const 8
         i32.add
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.1
         drop
-        local.get $3
-        i64.load $0 offset=16
         local.get $4
+        i64.load $0 offset=16
+        local.get $5
         i64.load $0 offset=16
         i64.eq
        end
@@ -13483,7 +13259,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        local.get $0
        i64.load $0
        local.get $2
@@ -13599,9 +13375,9 @@
        i32.const 1
       end
      end
-     local.set $12
+     local.set $3
     end
-    local.get $12
+    local.get $3
    end
   end
   i32.eqz
@@ -13642,17 +13418,11 @@
   i32.const 4
   i32.sub
   local.tee $0
-  i32.const 0
+  i32.const 3
   i32.store $0 offset=4
   local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $0
   i32.const 24
-  i32.store $0 offset=16
+  i32.store $0 offset=8
   local.get $1
   i32.const 16
   i32.add
@@ -13776,6 +13546,11 @@
       i32.const 1756
       global.set $~lib/rt/stub/offset
      end
+     global.get $~lib/rt/stub/offset
+     local.tee $6
+     i32.const 4
+     i32.add
+     local.tee $7
      local.get $4
      i32.const 19
      i32.add
@@ -13784,11 +13559,6 @@
      i32.const 4
      i32.sub
      local.tee $4
-     global.get $~lib/rt/stub/offset
-     local.tee $6
-     i32.const 4
-     i32.add
-     local.tee $7
      i32.add
      local.tee $8
      memory.size $0
@@ -13811,17 +13581,11 @@
      i32.const 4
      i32.sub
      local.tee $4
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $4
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $4
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $4
      local.get $1
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $0
      local.get $7
      i32.const 16
@@ -13993,7 +13757,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $3
     i32.const 6
     i32.lt_u
@@ -14032,17 +13796,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 6
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -14195,11 +13953,11 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i32.add
     local.tee $0
     if
@@ -14219,6 +13977,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $4
+      i32.const 4
+      i32.add
+      local.tee $5
       local.get $3
       i32.const 19
       i32.add
@@ -14227,11 +13990,6 @@
       i32.const 4
       i32.sub
       local.tee $3
-      global.get $~lib/rt/stub/offset
-      local.tee $4
-      i32.const 4
-      i32.add
-      local.tee $5
       i32.add
       local.tee $6
       memory.size $0
@@ -14254,17 +14012,11 @@
       i32.const 4
       i32.sub
       local.tee $3
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $3
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $3
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $3
       local.get $0
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $5
       i32.const 16
       i32.add
@@ -14272,7 +14024,7 @@
       local.get $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -14499,7 +14251,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $1
       i32.const 64
       i32.ge_s
@@ -14792,6 +14544,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $5
+      i32.const 4
+      i32.add
+      local.tee $6
       local.get $4
       i32.const 19
       i32.add
@@ -14800,11 +14557,6 @@
       i32.const 4
       i32.sub
       local.tee $4
-      global.get $~lib/rt/stub/offset
-      local.tee $5
-      i32.const 4
-      i32.add
-      local.tee $6
       i32.add
       local.tee $7
       memory.size $0
@@ -14827,17 +14579,11 @@
       i32.const 4
       i32.sub
       local.tee $4
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $4
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $4
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $4
       local.get $1
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $0
       local.get $6
       i32.const 16
@@ -15009,7 +14755,7 @@
      local.get $1
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $3
      i32.const 4
      i32.ge_u
@@ -15048,17 +14794,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 4
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -15283,6 +15023,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $5
+    i32.const 4
+    i32.add
+    local.tee $6
     local.get $4
     i32.const 19
     i32.add
@@ -15291,11 +15036,6 @@
     i32.const 4
     i32.sub
     local.tee $4
-    global.get $~lib/rt/stub/offset
-    local.tee $5
-    i32.const 4
-    i32.add
-    local.tee $6
     i32.add
     local.tee $7
     memory.size $0
@@ -15318,17 +15058,11 @@
     i32.const 4
     i32.sub
     local.tee $4
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $4
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $4
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $4
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $6
     i32.const 16
@@ -15501,7 +15235,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $4
     i32.const 2
     i32.ge_u
@@ -15544,17 +15278,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -15774,6 +15502,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $6
+    i32.const 4
+    i32.add
+    local.tee $7
     local.get $5
     i32.const 19
     i32.add
@@ -15782,11 +15515,6 @@
     i32.const 4
     i32.sub
     local.tee $5
-    global.get $~lib/rt/stub/offset
-    local.tee $6
-    i32.const 4
-    i32.add
-    local.tee $7
     i32.add
     local.tee $8
     memory.size $0
@@ -15809,17 +15537,11 @@
     i32.const 4
     i32.sub
     local.tee $5
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $5
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $5
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $5
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $7
     i32.const 16
@@ -15992,7 +15714,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 2
     i32.ge_u
@@ -16035,17 +15757,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -16193,11 +15909,11 @@
    i64.load $0 offset=16
    i64.const 86400000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 3600000
@@ -16278,6 +15994,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $7
+    i32.const 4
+    i32.add
+    local.tee $8
     local.get $6
     i32.const 19
     i32.add
@@ -16286,11 +16007,6 @@
     i32.const 4
     i32.sub
     local.tee $6
-    global.get $~lib/rt/stub/offset
-    local.tee $7
-    i32.const 4
-    i32.add
-    local.tee $8
     i32.add
     local.tee $10
     memory.size $0
@@ -16313,17 +16029,11 @@
     i32.const 4
     i32.sub
     local.tee $6
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $6
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $6
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $6
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $8
     i32.const 16
@@ -16496,7 +16206,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $6
     i32.const 2
     i32.ge_u
@@ -16539,17 +16249,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -16697,11 +16401,11 @@
    i64.load $0 offset=16
    i64.const 3600000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 60000
@@ -16782,6 +16486,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $8
+    i32.const 4
+    i32.add
+    local.tee $10
     local.get $7
     i32.const 19
     i32.add
@@ -16790,13 +16499,8 @@
     i32.const 4
     i32.sub
     local.tee $7
-    global.get $~lib/rt/stub/offset
-    local.tee $8
-    i32.const 4
     i32.add
-    local.tee $10
-    i32.add
-    local.tee $12
+    local.tee $13
     memory.size $0
     i32.const 16
     i32.shl
@@ -16808,7 +16512,7 @@
     if
      unreachable
     end
-    local.get $12
+    local.get $13
     global.set $~lib/rt/stub/offset
     local.get $8
     local.get $7
@@ -16817,17 +16521,11 @@
     i32.const 4
     i32.sub
     local.tee $7
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $7
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $7
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $7
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $10
     i32.const 16
@@ -17000,7 +16698,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $7
     i32.const 2
     i32.ge_u
@@ -17043,17 +16741,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -17201,11 +16893,11 @@
    i64.load $0 offset=16
    i64.const 60000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 1000
@@ -17286,6 +16978,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $10
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $8
     i32.const 19
     i32.add
@@ -17294,11 +16991,6 @@
     i32.const 4
     i32.sub
     local.tee $8
-    global.get $~lib/rt/stub/offset
-    local.tee $10
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -17317,23 +17009,17 @@
     local.get $10
     local.get $8
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $8
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $8
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $8
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $8
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -17504,7 +17190,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $8
     i32.const 2
     i32.ge_u
@@ -17547,17 +17233,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -17566,7 +17246,7 @@
     i32.const 2
     local.get $8
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -17622,7 +17302,7 @@
      i32.store8 $0
     end
     local.get $7
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -17705,11 +17385,11 @@
    i64.load $0 offset=16
    i64.const 1000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    local.tee $0
@@ -17788,6 +17468,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $11
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $10
     i32.const 19
     i32.add
@@ -17796,11 +17481,6 @@
     i32.const 4
     i32.sub
     local.tee $10
-    global.get $~lib/rt/stub/offset
-    local.tee $11
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -17819,23 +17499,17 @@
     local.get $11
     local.get $10
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $10
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $10
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $10
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $10
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -18006,7 +17680,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $10
     i32.const 3
     i32.ge_u
@@ -18049,17 +17723,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 3
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -18068,7 +17736,7 @@
     i32.const 3
     local.get $10
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -18124,7 +17792,7 @@
      i32.store8 $0
     end
     local.get $8
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -18235,17 +17903,11 @@
    i32.const 4
    i32.sub
    local.tee $0
-   i32.const 0
+   i32.const 1
    i32.store $0 offset=4
    local.get $0
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $0
-   i32.const 1
-   i32.store $0 offset=12
-   local.get $0
    i32.const 455
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    local.get $1
    i32.const 16
    i32.add
@@ -18264,7 +17926,7 @@
           local.tee $2
           i32.const 20
           i32.sub
-          i32.load $0 offset=16
+          i32.load $0 offset=8
           local.tee $10
           i32.const 64
           i32.ge_s
@@ -18354,14 +18016,14 @@
            local.get $0
            i32.const 8
            i32.add
-           local.tee $12
+           local.tee $13
            local.get $2
            i32.const 8
            i32.add
            local.tee $14
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            i32.const 8
            i32.add
            local.get $14
@@ -18369,7 +18031,7 @@
            i32.add
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            local.get $14
            i64.load $0 offset=16
            i64.store $0 offset=16
@@ -18497,7 +18159,7 @@
          local.tee $2
          i32.const 20
          i32.sub
-         i32.load $0 offset=16
+         i32.load $0 offset=8
          local.tee $10
          i32.const 64
          i32.ge_s
@@ -18587,14 +18249,14 @@
           local.get $0
           i32.const 8
           i32.add
-          local.tee $12
+          local.tee $13
           local.get $2
           i32.const 8
           i32.add
           local.tee $14
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           i32.const 8
           i32.add
           local.get $14
@@ -18602,7 +18264,7 @@
           i32.add
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           local.get $14
           i64.load $0 offset=16
           i64.store $0 offset=16
@@ -18730,7 +18392,7 @@
         local.tee $2
         i32.const 20
         i32.sub
-        i32.load $0 offset=16
+        i32.load $0 offset=8
         local.tee $4
         i32.const 64
         i32.ge_s
@@ -18824,19 +18486,19 @@
          local.get $2
          i32.const 8
          i32.add
-         local.tee $12
+         local.tee $13
          i64.load $0
          i64.store $0
          local.get $10
          i32.const 8
          i32.add
-         local.get $12
+         local.get $13
          i32.const 8
          i32.add
          i64.load $0
          i64.store $0
          local.get $10
-         local.get $12
+         local.get $13
          i64.load $0 offset=16
          i64.store $0 offset=16
          local.get $2
@@ -18963,7 +18625,7 @@
        local.tee $2
        i32.const 20
        i32.sub
-       i32.load $0 offset=16
+       i32.load $0 offset=8
        local.tee $5
        i32.const 64
        i32.ge_s
@@ -19196,7 +18858,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -19429,7 +19091,7 @@
      local.tee $2
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $5
      i32.const 64
      i32.ge_s
@@ -19662,7 +19324,7 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 64
     i32.ge_s
@@ -19893,7 +19555,7 @@
    i32.add
    local.get $1
    i32.sub
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    i32.const 1440
    local.set $2
    i32.const 1
@@ -19912,9 +19574,9 @@
    local.get $0
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    local.tee $1
-   i32.const 1436
+   i32.const 1428
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.2
@@ -20099,7 +19761,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq64|inlined.2 (result i32)
         i32.const 0
         local.get $0
@@ -20198,7 +19860,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq32|inlined.2 (result i32)
         i32.const 0
         local.get $0
@@ -20212,31 +19874,31 @@
         local.get $0
         i32.const 8
         i32.add
-        local.tee $3
+        local.tee $4
         i64.load $0
         local.get $2
         i32.const 8
         i32.add
-        local.tee $4
+        local.tee $5
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.2
         drop
         i32.const 0
-        local.get $3
+        local.get $4
         i32.const 8
         i32.add
         i64.load $0
-        local.get $4
+        local.get $5
         i32.const 8
         i32.add
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.2
         drop
-        local.get $3
-        i64.load $0 offset=16
         local.get $4
+        i64.load $0 offset=16
+        local.get $5
         i64.load $0 offset=16
         i64.eq
        end
@@ -20260,7 +19922,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        local.get $0
        i64.load $0
        local.get $2
@@ -20376,9 +20038,9 @@
        i32.const 1
       end
      end
-     local.set $12
+     local.set $3
     end
-    local.get $12
+    local.get $3
    end
   end
   i32.eqz
@@ -20419,17 +20081,11 @@
   i32.const 4
   i32.sub
   local.tee $0
-  i32.const 0
+  i32.const 3
   i32.store $0 offset=4
   local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $0
   i32.const 24
-  i32.store $0 offset=16
+  i32.store $0 offset=8
   local.get $1
   i32.const 16
   i32.add
@@ -20553,6 +20209,11 @@
       i32.const 1756
       global.set $~lib/rt/stub/offset
      end
+     global.get $~lib/rt/stub/offset
+     local.tee $6
+     i32.const 4
+     i32.add
+     local.tee $7
      local.get $4
      i32.const 19
      i32.add
@@ -20561,11 +20222,6 @@
      i32.const 4
      i32.sub
      local.tee $4
-     global.get $~lib/rt/stub/offset
-     local.tee $6
-     i32.const 4
-     i32.add
-     local.tee $7
      i32.add
      local.tee $8
      memory.size $0
@@ -20588,17 +20244,11 @@
      i32.const 4
      i32.sub
      local.tee $4
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $4
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $4
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $4
      local.get $1
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $0
      local.get $7
      i32.const 16
@@ -20770,7 +20420,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $3
     i32.const 6
     i32.lt_u
@@ -20809,17 +20459,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 6
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -20972,11 +20616,11 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i32.add
     local.tee $0
     if
@@ -20996,6 +20640,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $4
+      i32.const 4
+      i32.add
+      local.tee $5
       local.get $3
       i32.const 19
       i32.add
@@ -21004,11 +20653,6 @@
       i32.const 4
       i32.sub
       local.tee $3
-      global.get $~lib/rt/stub/offset
-      local.tee $4
-      i32.const 4
-      i32.add
-      local.tee $5
       i32.add
       local.tee $6
       memory.size $0
@@ -21031,17 +20675,11 @@
       i32.const 4
       i32.sub
       local.tee $3
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $3
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $3
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $3
       local.get $0
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $5
       i32.const 16
       i32.add
@@ -21049,7 +20687,7 @@
       local.get $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -21276,7 +20914,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $1
       i32.const 64
       i32.ge_s
@@ -21569,6 +21207,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $5
+      i32.const 4
+      i32.add
+      local.tee $6
       local.get $4
       i32.const 19
       i32.add
@@ -21577,11 +21220,6 @@
       i32.const 4
       i32.sub
       local.tee $4
-      global.get $~lib/rt/stub/offset
-      local.tee $5
-      i32.const 4
-      i32.add
-      local.tee $6
       i32.add
       local.tee $7
       memory.size $0
@@ -21604,17 +21242,11 @@
       i32.const 4
       i32.sub
       local.tee $4
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $4
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $4
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $4
       local.get $1
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $0
       local.get $6
       i32.const 16
@@ -21786,7 +21418,7 @@
      local.get $1
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $3
      i32.const 4
      i32.ge_u
@@ -21825,17 +21457,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 4
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -22060,6 +21686,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $5
+    i32.const 4
+    i32.add
+    local.tee $6
     local.get $4
     i32.const 19
     i32.add
@@ -22068,11 +21699,6 @@
     i32.const 4
     i32.sub
     local.tee $4
-    global.get $~lib/rt/stub/offset
-    local.tee $5
-    i32.const 4
-    i32.add
-    local.tee $6
     i32.add
     local.tee $7
     memory.size $0
@@ -22095,17 +21721,11 @@
     i32.const 4
     i32.sub
     local.tee $4
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $4
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $4
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $4
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $6
     i32.const 16
@@ -22278,7 +21898,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $4
     i32.const 2
     i32.ge_u
@@ -22321,17 +21941,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -22551,6 +22165,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $6
+    i32.const 4
+    i32.add
+    local.tee $7
     local.get $5
     i32.const 19
     i32.add
@@ -22559,11 +22178,6 @@
     i32.const 4
     i32.sub
     local.tee $5
-    global.get $~lib/rt/stub/offset
-    local.tee $6
-    i32.const 4
-    i32.add
-    local.tee $7
     i32.add
     local.tee $8
     memory.size $0
@@ -22586,17 +22200,11 @@
     i32.const 4
     i32.sub
     local.tee $5
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $5
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $5
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $5
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $7
     i32.const 16
@@ -22769,7 +22377,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 2
     i32.ge_u
@@ -22812,17 +22420,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -22970,11 +22572,11 @@
    i64.load $0 offset=16
    i64.const 86400000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 3600000
@@ -23055,6 +22657,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $7
+    i32.const 4
+    i32.add
+    local.tee $8
     local.get $6
     i32.const 19
     i32.add
@@ -23063,11 +22670,6 @@
     i32.const 4
     i32.sub
     local.tee $6
-    global.get $~lib/rt/stub/offset
-    local.tee $7
-    i32.const 4
-    i32.add
-    local.tee $8
     i32.add
     local.tee $10
     memory.size $0
@@ -23090,17 +22692,11 @@
     i32.const 4
     i32.sub
     local.tee $6
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $6
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $6
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $6
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $8
     i32.const 16
@@ -23273,7 +22869,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $6
     i32.const 2
     i32.ge_u
@@ -23316,17 +22912,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -23474,11 +23064,11 @@
    i64.load $0 offset=16
    i64.const 3600000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 60000
@@ -23559,6 +23149,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $8
+    i32.const 4
+    i32.add
+    local.tee $10
     local.get $7
     i32.const 19
     i32.add
@@ -23567,13 +23162,8 @@
     i32.const 4
     i32.sub
     local.tee $7
-    global.get $~lib/rt/stub/offset
-    local.tee $8
-    i32.const 4
     i32.add
-    local.tee $10
-    i32.add
-    local.tee $12
+    local.tee $13
     memory.size $0
     i32.const 16
     i32.shl
@@ -23585,7 +23175,7 @@
     if
      unreachable
     end
-    local.get $12
+    local.get $13
     global.set $~lib/rt/stub/offset
     local.get $8
     local.get $7
@@ -23594,17 +23184,11 @@
     i32.const 4
     i32.sub
     local.tee $7
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $7
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $7
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $7
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $10
     i32.const 16
@@ -23777,7 +23361,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $7
     i32.const 2
     i32.ge_u
@@ -23820,17 +23404,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -23978,11 +23556,11 @@
    i64.load $0 offset=16
    i64.const 60000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 1000
@@ -24063,6 +23641,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $10
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $8
     i32.const 19
     i32.add
@@ -24071,11 +23654,6 @@
     i32.const 4
     i32.sub
     local.tee $8
-    global.get $~lib/rt/stub/offset
-    local.tee $10
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -24094,23 +23672,17 @@
     local.get $10
     local.get $8
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $8
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $8
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $8
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $8
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -24281,7 +23853,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $8
     i32.const 2
     i32.ge_u
@@ -24324,17 +23896,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -24343,7 +23909,7 @@
     i32.const 2
     local.get $8
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -24399,7 +23965,7 @@
      i32.store8 $0
     end
     local.get $7
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -24482,11 +24048,11 @@
    i64.load $0 offset=16
    i64.const 1000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    local.tee $0
@@ -24565,6 +24131,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $11
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $10
     i32.const 19
     i32.add
@@ -24573,11 +24144,6 @@
     i32.const 4
     i32.sub
     local.tee $10
-    global.get $~lib/rt/stub/offset
-    local.tee $11
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -24596,23 +24162,17 @@
     local.get $11
     local.get $10
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $10
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $10
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $10
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $10
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -24783,7 +24343,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $10
     i32.const 3
     i32.ge_u
@@ -24826,17 +24386,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 3
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -24845,7 +24399,7 @@
     i32.const 3
     local.get $10
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -24901,7 +24455,7 @@
      i32.store8 $0
     end
     local.get $8
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -25012,17 +24566,11 @@
    i32.const 4
    i32.sub
    local.tee $0
-   i32.const 0
+   i32.const 1
    i32.store $0 offset=4
    local.get $0
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $0
-   i32.const 1
-   i32.store $0 offset=12
-   local.get $0
    i32.const 455
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    local.get $1
    i32.const 16
    i32.add
@@ -25041,7 +24589,7 @@
           local.tee $2
           i32.const 20
           i32.sub
-          i32.load $0 offset=16
+          i32.load $0 offset=8
           local.tee $10
           i32.const 64
           i32.ge_s
@@ -25131,14 +24679,14 @@
            local.get $0
            i32.const 8
            i32.add
-           local.tee $12
+           local.tee $13
            local.get $2
            i32.const 8
            i32.add
            local.tee $14
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            i32.const 8
            i32.add
            local.get $14
@@ -25146,7 +24694,7 @@
            i32.add
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            local.get $14
            i64.load $0 offset=16
            i64.store $0 offset=16
@@ -25274,7 +24822,7 @@
          local.tee $2
          i32.const 20
          i32.sub
-         i32.load $0 offset=16
+         i32.load $0 offset=8
          local.tee $10
          i32.const 64
          i32.ge_s
@@ -25364,14 +24912,14 @@
           local.get $0
           i32.const 8
           i32.add
-          local.tee $12
+          local.tee $13
           local.get $2
           i32.const 8
           i32.add
           local.tee $14
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           i32.const 8
           i32.add
           local.get $14
@@ -25379,7 +24927,7 @@
           i32.add
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           local.get $14
           i64.load $0 offset=16
           i64.store $0 offset=16
@@ -25507,7 +25055,7 @@
         local.tee $2
         i32.const 20
         i32.sub
-        i32.load $0 offset=16
+        i32.load $0 offset=8
         local.tee $4
         i32.const 64
         i32.ge_s
@@ -25601,19 +25149,19 @@
          local.get $2
          i32.const 8
          i32.add
-         local.tee $12
+         local.tee $13
          i64.load $0
          i64.store $0
          local.get $10
          i32.const 8
          i32.add
-         local.get $12
+         local.get $13
          i32.const 8
          i32.add
          i64.load $0
          i64.store $0
          local.get $10
-         local.get $12
+         local.get $13
          i64.load $0 offset=16
          i64.store $0 offset=16
          local.get $2
@@ -25740,7 +25288,7 @@
        local.tee $2
        i32.const 20
        i32.sub
-       i32.load $0 offset=16
+       i32.load $0 offset=8
        local.tee $5
        i32.const 64
        i32.ge_s
@@ -25973,7 +25521,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -26206,7 +25754,7 @@
      local.tee $2
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $5
      i32.const 64
      i32.ge_s
@@ -26439,7 +25987,7 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 64
     i32.ge_s
@@ -26670,7 +26218,7 @@
    i32.add
    local.get $1
    i32.sub
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    i32.const 1488
    local.set $2
    i32.const 1
@@ -26689,9 +26237,9 @@
    local.get $0
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    local.tee $1
-   i32.const 1484
+   i32.const 1476
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.3
@@ -26876,7 +26424,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq64|inlined.3 (result i32)
         i32.const 0
         local.get $0
@@ -26975,7 +26523,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq32|inlined.3 (result i32)
         i32.const 0
         local.get $0
@@ -26989,31 +26537,31 @@
         local.get $0
         i32.const 8
         i32.add
-        local.tee $3
+        local.tee $4
         i64.load $0
         local.get $2
         i32.const 8
         i32.add
-        local.tee $4
+        local.tee $5
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.3
         drop
         i32.const 0
-        local.get $3
+        local.get $4
         i32.const 8
         i32.add
         i64.load $0
-        local.get $4
+        local.get $5
         i32.const 8
         i32.add
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.3
         drop
-        local.get $3
-        i64.load $0 offset=16
         local.get $4
+        i64.load $0 offset=16
+        local.get $5
         i64.load $0 offset=16
         i64.eq
        end
@@ -27037,7 +26585,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        local.get $0
        i64.load $0
        local.get $2
@@ -27153,9 +26701,9 @@
        i32.const 1
       end
      end
-     local.set $12
+     local.set $3
     end
-    local.get $12
+    local.get $3
    end
   end
   i32.eqz
@@ -27196,17 +26744,11 @@
   i32.const 4
   i32.sub
   local.tee $0
-  i32.const 0
+  i32.const 3
   i32.store $0 offset=4
   local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $0
   i32.const 24
-  i32.store $0 offset=16
+  i32.store $0 offset=8
   local.get $1
   i32.const 16
   i32.add
@@ -27330,6 +26872,11 @@
       i32.const 1756
       global.set $~lib/rt/stub/offset
      end
+     global.get $~lib/rt/stub/offset
+     local.tee $6
+     i32.const 4
+     i32.add
+     local.tee $7
      local.get $4
      i32.const 19
      i32.add
@@ -27338,11 +26885,6 @@
      i32.const 4
      i32.sub
      local.tee $4
-     global.get $~lib/rt/stub/offset
-     local.tee $6
-     i32.const 4
-     i32.add
-     local.tee $7
      i32.add
      local.tee $8
      memory.size $0
@@ -27365,17 +26907,11 @@
      i32.const 4
      i32.sub
      local.tee $4
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $4
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $4
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $4
      local.get $1
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $0
      local.get $7
      i32.const 16
@@ -27547,7 +27083,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $3
     i32.const 6
     i32.lt_u
@@ -27586,17 +27122,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 6
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -27749,11 +27279,11 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i32.add
     local.tee $0
     if
@@ -27773,6 +27303,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $4
+      i32.const 4
+      i32.add
+      local.tee $5
       local.get $3
       i32.const 19
       i32.add
@@ -27781,11 +27316,6 @@
       i32.const 4
       i32.sub
       local.tee $3
-      global.get $~lib/rt/stub/offset
-      local.tee $4
-      i32.const 4
-      i32.add
-      local.tee $5
       i32.add
       local.tee $6
       memory.size $0
@@ -27808,17 +27338,11 @@
       i32.const 4
       i32.sub
       local.tee $3
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $3
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $3
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $3
       local.get $0
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $5
       i32.const 16
       i32.add
@@ -27826,7 +27350,7 @@
       local.get $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -28053,7 +27577,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $1
       i32.const 64
       i32.ge_s
@@ -28346,6 +27870,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $5
+      i32.const 4
+      i32.add
+      local.tee $6
       local.get $4
       i32.const 19
       i32.add
@@ -28354,11 +27883,6 @@
       i32.const 4
       i32.sub
       local.tee $4
-      global.get $~lib/rt/stub/offset
-      local.tee $5
-      i32.const 4
-      i32.add
-      local.tee $6
       i32.add
       local.tee $7
       memory.size $0
@@ -28381,17 +27905,11 @@
       i32.const 4
       i32.sub
       local.tee $4
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $4
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $4
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $4
       local.get $1
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $0
       local.get $6
       i32.const 16
@@ -28563,7 +28081,7 @@
      local.get $1
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $3
      i32.const 4
      i32.ge_u
@@ -28602,17 +28120,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 4
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -28837,6 +28349,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $5
+    i32.const 4
+    i32.add
+    local.tee $6
     local.get $4
     i32.const 19
     i32.add
@@ -28845,11 +28362,6 @@
     i32.const 4
     i32.sub
     local.tee $4
-    global.get $~lib/rt/stub/offset
-    local.tee $5
-    i32.const 4
-    i32.add
-    local.tee $6
     i32.add
     local.tee $7
     memory.size $0
@@ -28872,17 +28384,11 @@
     i32.const 4
     i32.sub
     local.tee $4
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $4
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $4
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $4
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $6
     i32.const 16
@@ -29055,7 +28561,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $4
     i32.const 2
     i32.ge_u
@@ -29098,17 +28604,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -29328,6 +28828,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $6
+    i32.const 4
+    i32.add
+    local.tee $7
     local.get $5
     i32.const 19
     i32.add
@@ -29336,11 +28841,6 @@
     i32.const 4
     i32.sub
     local.tee $5
-    global.get $~lib/rt/stub/offset
-    local.tee $6
-    i32.const 4
-    i32.add
-    local.tee $7
     i32.add
     local.tee $8
     memory.size $0
@@ -29363,17 +28863,11 @@
     i32.const 4
     i32.sub
     local.tee $5
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $5
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $5
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $5
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $7
     i32.const 16
@@ -29546,7 +29040,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 2
     i32.ge_u
@@ -29589,17 +29083,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -29747,11 +29235,11 @@
    i64.load $0 offset=16
    i64.const 86400000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 3600000
@@ -29832,6 +29320,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $7
+    i32.const 4
+    i32.add
+    local.tee $8
     local.get $6
     i32.const 19
     i32.add
@@ -29840,11 +29333,6 @@
     i32.const 4
     i32.sub
     local.tee $6
-    global.get $~lib/rt/stub/offset
-    local.tee $7
-    i32.const 4
-    i32.add
-    local.tee $8
     i32.add
     local.tee $10
     memory.size $0
@@ -29867,17 +29355,11 @@
     i32.const 4
     i32.sub
     local.tee $6
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $6
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $6
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $6
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $8
     i32.const 16
@@ -30050,7 +29532,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $6
     i32.const 2
     i32.ge_u
@@ -30093,17 +29575,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -30251,11 +29727,11 @@
    i64.load $0 offset=16
    i64.const 3600000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 60000
@@ -30336,6 +29812,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $8
+    i32.const 4
+    i32.add
+    local.tee $10
     local.get $7
     i32.const 19
     i32.add
@@ -30344,13 +29825,8 @@
     i32.const 4
     i32.sub
     local.tee $7
-    global.get $~lib/rt/stub/offset
-    local.tee $8
-    i32.const 4
     i32.add
-    local.tee $10
-    i32.add
-    local.tee $12
+    local.tee $13
     memory.size $0
     i32.const 16
     i32.shl
@@ -30362,7 +29838,7 @@
     if
      unreachable
     end
-    local.get $12
+    local.get $13
     global.set $~lib/rt/stub/offset
     local.get $8
     local.get $7
@@ -30371,17 +29847,11 @@
     i32.const 4
     i32.sub
     local.tee $7
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $7
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $7
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $7
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $10
     i32.const 16
@@ -30554,7 +30024,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $7
     i32.const 2
     i32.ge_u
@@ -30597,17 +30067,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -30755,11 +30219,11 @@
    i64.load $0 offset=16
    i64.const 60000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 1000
@@ -30840,6 +30304,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $10
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $8
     i32.const 19
     i32.add
@@ -30848,11 +30317,6 @@
     i32.const 4
     i32.sub
     local.tee $8
-    global.get $~lib/rt/stub/offset
-    local.tee $10
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -30871,23 +30335,17 @@
     local.get $10
     local.get $8
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $8
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $8
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $8
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $8
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -31058,7 +30516,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $8
     i32.const 2
     i32.ge_u
@@ -31101,17 +30559,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -31120,7 +30572,7 @@
     i32.const 2
     local.get $8
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -31176,7 +30628,7 @@
      i32.store8 $0
     end
     local.get $7
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -31259,11 +30711,11 @@
    i64.load $0 offset=16
    i64.const 1000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    local.tee $0
@@ -31342,6 +30794,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $11
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $10
     i32.const 19
     i32.add
@@ -31350,11 +30807,6 @@
     i32.const 4
     i32.sub
     local.tee $10
-    global.get $~lib/rt/stub/offset
-    local.tee $11
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -31373,23 +30825,17 @@
     local.get $11
     local.get $10
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $10
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $10
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $10
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $10
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -31560,7 +31006,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $10
     i32.const 3
     i32.ge_u
@@ -31603,17 +31049,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 3
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -31622,7 +31062,7 @@
     i32.const 3
     local.get $10
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -31678,7 +31118,7 @@
      i32.store8 $0
     end
     local.get $8
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -31789,17 +31229,11 @@
    i32.const 4
    i32.sub
    local.tee $0
-   i32.const 0
+   i32.const 1
    i32.store $0 offset=4
    local.get $0
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $0
-   i32.const 1
-   i32.store $0 offset=12
-   local.get $0
    i32.const 455
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    local.get $1
    i32.const 16
    i32.add
@@ -31818,7 +31252,7 @@
           local.tee $2
           i32.const 20
           i32.sub
-          i32.load $0 offset=16
+          i32.load $0 offset=8
           local.tee $10
           i32.const 64
           i32.ge_s
@@ -31908,14 +31342,14 @@
            local.get $0
            i32.const 8
            i32.add
-           local.tee $12
+           local.tee $13
            local.get $2
            i32.const 8
            i32.add
            local.tee $14
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            i32.const 8
            i32.add
            local.get $14
@@ -31923,7 +31357,7 @@
            i32.add
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            local.get $14
            i64.load $0 offset=16
            i64.store $0 offset=16
@@ -32051,7 +31485,7 @@
          local.tee $2
          i32.const 20
          i32.sub
-         i32.load $0 offset=16
+         i32.load $0 offset=8
          local.tee $10
          i32.const 64
          i32.ge_s
@@ -32141,14 +31575,14 @@
           local.get $0
           i32.const 8
           i32.add
-          local.tee $12
+          local.tee $13
           local.get $2
           i32.const 8
           i32.add
           local.tee $14
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           i32.const 8
           i32.add
           local.get $14
@@ -32156,7 +31590,7 @@
           i32.add
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           local.get $14
           i64.load $0 offset=16
           i64.store $0 offset=16
@@ -32284,7 +31718,7 @@
         local.tee $2
         i32.const 20
         i32.sub
-        i32.load $0 offset=16
+        i32.load $0 offset=8
         local.tee $4
         i32.const 64
         i32.ge_s
@@ -32378,19 +31812,19 @@
          local.get $2
          i32.const 8
          i32.add
-         local.tee $12
+         local.tee $13
          i64.load $0
          i64.store $0
          local.get $10
          i32.const 8
          i32.add
-         local.get $12
+         local.get $13
          i32.const 8
          i32.add
          i64.load $0
          i64.store $0
          local.get $10
-         local.get $12
+         local.get $13
          i64.load $0 offset=16
          i64.store $0 offset=16
          local.get $2
@@ -32517,7 +31951,7 @@
        local.tee $2
        i32.const 20
        i32.sub
-       i32.load $0 offset=16
+       i32.load $0 offset=8
        local.tee $5
        i32.const 64
        i32.ge_s
@@ -32750,7 +32184,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -32983,7 +32417,7 @@
      local.tee $2
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $5
      i32.const 64
      i32.ge_s
@@ -33216,7 +32650,7 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 64
     i32.ge_s
@@ -33447,7 +32881,7 @@
    i32.add
    local.get $1
    i32.sub
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    i32.const 1536
    local.set $2
    i32.const 1
@@ -33466,9 +32900,9 @@
    local.get $0
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    local.tee $1
-   i32.const 1532
+   i32.const 1524
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.4
@@ -33653,7 +33087,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq64|inlined.4 (result i32)
         i32.const 0
         local.get $0
@@ -33752,7 +33186,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq32|inlined.4 (result i32)
         i32.const 0
         local.get $0
@@ -33766,31 +33200,31 @@
         local.get $0
         i32.const 8
         i32.add
-        local.tee $3
+        local.tee $4
         i64.load $0
         local.get $2
         i32.const 8
         i32.add
-        local.tee $4
+        local.tee $5
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.4
         drop
         i32.const 0
-        local.get $3
+        local.get $4
         i32.const 8
         i32.add
         i64.load $0
-        local.get $4
+        local.get $5
         i32.const 8
         i32.add
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.4
         drop
-        local.get $3
-        i64.load $0 offset=16
         local.get $4
+        i64.load $0 offset=16
+        local.get $5
         i64.load $0 offset=16
         i64.eq
        end
@@ -33814,7 +33248,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        local.get $0
        i64.load $0
        local.get $2
@@ -33930,9 +33364,9 @@
        i32.const 1
       end
      end
-     local.set $12
+     local.set $3
     end
-    local.get $12
+    local.get $3
    end
   end
   i32.eqz
@@ -33973,17 +33407,11 @@
   i32.const 4
   i32.sub
   local.tee $0
-  i32.const 0
+  i32.const 3
   i32.store $0 offset=4
   local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $0
   i32.const 24
-  i32.store $0 offset=16
+  i32.store $0 offset=8
   local.get $1
   i32.const 16
   i32.add
@@ -34107,6 +33535,11 @@
       i32.const 1756
       global.set $~lib/rt/stub/offset
      end
+     global.get $~lib/rt/stub/offset
+     local.tee $6
+     i32.const 4
+     i32.add
+     local.tee $7
      local.get $4
      i32.const 19
      i32.add
@@ -34115,11 +33548,6 @@
      i32.const 4
      i32.sub
      local.tee $4
-     global.get $~lib/rt/stub/offset
-     local.tee $6
-     i32.const 4
-     i32.add
-     local.tee $7
      i32.add
      local.tee $8
      memory.size $0
@@ -34142,17 +33570,11 @@
      i32.const 4
      i32.sub
      local.tee $4
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $4
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $4
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $4
      local.get $1
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $0
      local.get $7
      i32.const 16
@@ -34324,7 +33746,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $3
     i32.const 6
     i32.lt_u
@@ -34363,17 +33785,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 6
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -34526,11 +33942,11 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i32.add
     local.tee $0
     if
@@ -34550,6 +33966,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $4
+      i32.const 4
+      i32.add
+      local.tee $5
       local.get $3
       i32.const 19
       i32.add
@@ -34558,11 +33979,6 @@
       i32.const 4
       i32.sub
       local.tee $3
-      global.get $~lib/rt/stub/offset
-      local.tee $4
-      i32.const 4
-      i32.add
-      local.tee $5
       i32.add
       local.tee $6
       memory.size $0
@@ -34585,17 +34001,11 @@
       i32.const 4
       i32.sub
       local.tee $3
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $3
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $3
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $3
       local.get $0
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $5
       i32.const 16
       i32.add
@@ -34603,7 +34013,7 @@
       local.get $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -34830,7 +34240,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $1
       i32.const 64
       i32.ge_s
@@ -35123,6 +34533,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $5
+      i32.const 4
+      i32.add
+      local.tee $6
       local.get $4
       i32.const 19
       i32.add
@@ -35131,11 +34546,6 @@
       i32.const 4
       i32.sub
       local.tee $4
-      global.get $~lib/rt/stub/offset
-      local.tee $5
-      i32.const 4
-      i32.add
-      local.tee $6
       i32.add
       local.tee $7
       memory.size $0
@@ -35158,17 +34568,11 @@
       i32.const 4
       i32.sub
       local.tee $4
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $4
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $4
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $4
       local.get $1
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $0
       local.get $6
       i32.const 16
@@ -35340,7 +34744,7 @@
      local.get $1
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $3
      i32.const 4
      i32.ge_u
@@ -35379,17 +34783,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 4
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -35614,6 +35012,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $5
+    i32.const 4
+    i32.add
+    local.tee $6
     local.get $4
     i32.const 19
     i32.add
@@ -35622,11 +35025,6 @@
     i32.const 4
     i32.sub
     local.tee $4
-    global.get $~lib/rt/stub/offset
-    local.tee $5
-    i32.const 4
-    i32.add
-    local.tee $6
     i32.add
     local.tee $7
     memory.size $0
@@ -35649,17 +35047,11 @@
     i32.const 4
     i32.sub
     local.tee $4
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $4
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $4
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $4
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $6
     i32.const 16
@@ -35832,7 +35224,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $4
     i32.const 2
     i32.ge_u
@@ -35875,17 +35267,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -36105,6 +35491,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $6
+    i32.const 4
+    i32.add
+    local.tee $7
     local.get $5
     i32.const 19
     i32.add
@@ -36113,11 +35504,6 @@
     i32.const 4
     i32.sub
     local.tee $5
-    global.get $~lib/rt/stub/offset
-    local.tee $6
-    i32.const 4
-    i32.add
-    local.tee $7
     i32.add
     local.tee $8
     memory.size $0
@@ -36140,17 +35526,11 @@
     i32.const 4
     i32.sub
     local.tee $5
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $5
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $5
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $5
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $7
     i32.const 16
@@ -36323,7 +35703,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 2
     i32.ge_u
@@ -36366,17 +35746,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -36524,11 +35898,11 @@
    i64.load $0 offset=16
    i64.const 86400000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 3600000
@@ -36609,6 +35983,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $7
+    i32.const 4
+    i32.add
+    local.tee $8
     local.get $6
     i32.const 19
     i32.add
@@ -36617,11 +35996,6 @@
     i32.const 4
     i32.sub
     local.tee $6
-    global.get $~lib/rt/stub/offset
-    local.tee $7
-    i32.const 4
-    i32.add
-    local.tee $8
     i32.add
     local.tee $10
     memory.size $0
@@ -36644,17 +36018,11 @@
     i32.const 4
     i32.sub
     local.tee $6
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $6
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $6
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $6
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $8
     i32.const 16
@@ -36827,7 +36195,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $6
     i32.const 2
     i32.ge_u
@@ -36870,17 +36238,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -37028,11 +36390,11 @@
    i64.load $0 offset=16
    i64.const 3600000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 60000
@@ -37113,6 +36475,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $8
+    i32.const 4
+    i32.add
+    local.tee $10
     local.get $7
     i32.const 19
     i32.add
@@ -37121,13 +36488,8 @@
     i32.const 4
     i32.sub
     local.tee $7
-    global.get $~lib/rt/stub/offset
-    local.tee $8
-    i32.const 4
     i32.add
-    local.tee $10
-    i32.add
-    local.tee $12
+    local.tee $13
     memory.size $0
     i32.const 16
     i32.shl
@@ -37139,7 +36501,7 @@
     if
      unreachable
     end
-    local.get $12
+    local.get $13
     global.set $~lib/rt/stub/offset
     local.get $8
     local.get $7
@@ -37148,17 +36510,11 @@
     i32.const 4
     i32.sub
     local.tee $7
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $7
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $7
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $7
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $10
     i32.const 16
@@ -37331,7 +36687,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $7
     i32.const 2
     i32.ge_u
@@ -37374,17 +36730,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -37532,11 +36882,11 @@
    i64.load $0 offset=16
    i64.const 60000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 1000
@@ -37617,6 +36967,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $10
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $8
     i32.const 19
     i32.add
@@ -37625,11 +36980,6 @@
     i32.const 4
     i32.sub
     local.tee $8
-    global.get $~lib/rt/stub/offset
-    local.tee $10
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -37648,23 +36998,17 @@
     local.get $10
     local.get $8
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $8
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $8
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $8
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $8
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -37835,7 +37179,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $8
     i32.const 2
     i32.ge_u
@@ -37878,17 +37222,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -37897,7 +37235,7 @@
     i32.const 2
     local.get $8
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -37953,7 +37291,7 @@
      i32.store8 $0
     end
     local.get $7
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -38036,11 +37374,11 @@
    i64.load $0 offset=16
    i64.const 1000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    local.tee $0
@@ -38119,6 +37457,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $11
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $10
     i32.const 19
     i32.add
@@ -38127,11 +37470,6 @@
     i32.const 4
     i32.sub
     local.tee $10
-    global.get $~lib/rt/stub/offset
-    local.tee $11
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -38150,23 +37488,17 @@
     local.get $11
     local.get $10
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $10
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $10
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $10
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $10
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -38337,7 +37669,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $10
     i32.const 3
     i32.ge_u
@@ -38380,17 +37712,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 3
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -38399,7 +37725,7 @@
     i32.const 3
     local.get $10
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -38455,7 +37781,7 @@
      i32.store8 $0
     end
     local.get $8
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -38566,17 +37892,11 @@
    i32.const 4
    i32.sub
    local.tee $0
-   i32.const 0
+   i32.const 1
    i32.store $0 offset=4
    local.get $0
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $0
-   i32.const 1
-   i32.store $0 offset=12
-   local.get $0
    i32.const 455
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    local.get $1
    i32.const 16
    i32.add
@@ -38595,7 +37915,7 @@
           local.tee $2
           i32.const 20
           i32.sub
-          i32.load $0 offset=16
+          i32.load $0 offset=8
           local.tee $10
           i32.const 64
           i32.ge_s
@@ -38685,14 +38005,14 @@
            local.get $0
            i32.const 8
            i32.add
-           local.tee $12
+           local.tee $13
            local.get $2
            i32.const 8
            i32.add
            local.tee $14
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            i32.const 8
            i32.add
            local.get $14
@@ -38700,7 +38020,7 @@
            i32.add
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            local.get $14
            i64.load $0 offset=16
            i64.store $0 offset=16
@@ -38828,7 +38148,7 @@
          local.tee $2
          i32.const 20
          i32.sub
-         i32.load $0 offset=16
+         i32.load $0 offset=8
          local.tee $10
          i32.const 64
          i32.ge_s
@@ -38918,14 +38238,14 @@
           local.get $0
           i32.const 8
           i32.add
-          local.tee $12
+          local.tee $13
           local.get $2
           i32.const 8
           i32.add
           local.tee $14
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           i32.const 8
           i32.add
           local.get $14
@@ -38933,7 +38253,7 @@
           i32.add
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           local.get $14
           i64.load $0 offset=16
           i64.store $0 offset=16
@@ -39061,7 +38381,7 @@
         local.tee $2
         i32.const 20
         i32.sub
-        i32.load $0 offset=16
+        i32.load $0 offset=8
         local.tee $4
         i32.const 64
         i32.ge_s
@@ -39155,19 +38475,19 @@
          local.get $2
          i32.const 8
          i32.add
-         local.tee $12
+         local.tee $13
          i64.load $0
          i64.store $0
          local.get $10
          i32.const 8
          i32.add
-         local.get $12
+         local.get $13
          i32.const 8
          i32.add
          i64.load $0
          i64.store $0
          local.get $10
-         local.get $12
+         local.get $13
          i64.load $0 offset=16
          i64.store $0 offset=16
          local.get $2
@@ -39294,7 +38614,7 @@
        local.tee $2
        i32.const 20
        i32.sub
-       i32.load $0 offset=16
+       i32.load $0 offset=8
        local.tee $5
        i32.const 64
        i32.ge_s
@@ -39527,7 +38847,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -39760,7 +39080,7 @@
      local.tee $2
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $5
      i32.const 64
      i32.ge_s
@@ -39993,7 +39313,7 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 64
     i32.ge_s
@@ -40224,7 +39544,7 @@
    i32.add
    local.get $1
    i32.sub
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    i32.const 1584
    local.set $2
    i32.const 1
@@ -40243,9 +39563,9 @@
    local.get $0
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    local.tee $1
-   i32.const 1580
+   i32.const 1572
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.5
@@ -40430,7 +39750,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq64|inlined.5 (result i32)
         i32.const 0
         local.get $0
@@ -40529,7 +39849,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq32|inlined.5 (result i32)
         i32.const 0
         local.get $0
@@ -40543,31 +39863,31 @@
         local.get $0
         i32.const 8
         i32.add
-        local.tee $3
+        local.tee $4
         i64.load $0
         local.get $2
         i32.const 8
         i32.add
-        local.tee $4
+        local.tee $5
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.5
         drop
         i32.const 0
-        local.get $3
+        local.get $4
         i32.const 8
         i32.add
         i64.load $0
-        local.get $4
+        local.get $5
         i32.const 8
         i32.add
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.5
         drop
-        local.get $3
-        i64.load $0 offset=16
         local.get $4
+        i64.load $0 offset=16
+        local.get $5
         i64.load $0 offset=16
         i64.eq
        end
@@ -40591,7 +39911,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        local.get $0
        i64.load $0
        local.get $2
@@ -40707,9 +40027,9 @@
        i32.const 1
       end
      end
-     local.set $12
+     local.set $3
     end
-    local.get $12
+    local.get $3
    end
   end
   i32.eqz
@@ -40750,17 +40070,11 @@
   i32.const 4
   i32.sub
   local.tee $0
-  i32.const 0
+  i32.const 3
   i32.store $0 offset=4
   local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $0
   i32.const 24
-  i32.store $0 offset=16
+  i32.store $0 offset=8
   local.get $1
   i32.const 16
   i32.add
@@ -40884,6 +40198,11 @@
       i32.const 1756
       global.set $~lib/rt/stub/offset
      end
+     global.get $~lib/rt/stub/offset
+     local.tee $6
+     i32.const 4
+     i32.add
+     local.tee $7
      local.get $4
      i32.const 19
      i32.add
@@ -40892,11 +40211,6 @@
      i32.const 4
      i32.sub
      local.tee $4
-     global.get $~lib/rt/stub/offset
-     local.tee $6
-     i32.const 4
-     i32.add
-     local.tee $7
      i32.add
      local.tee $8
      memory.size $0
@@ -40919,17 +40233,11 @@
      i32.const 4
      i32.sub
      local.tee $4
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $4
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $4
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $4
      local.get $1
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $0
      local.get $7
      i32.const 16
@@ -41101,7 +40409,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $3
     i32.const 6
     i32.lt_u
@@ -41140,17 +40448,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 6
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -41303,11 +40605,11 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i32.add
     local.tee $0
     if
@@ -41327,6 +40629,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $4
+      i32.const 4
+      i32.add
+      local.tee $5
       local.get $3
       i32.const 19
       i32.add
@@ -41335,11 +40642,6 @@
       i32.const 4
       i32.sub
       local.tee $3
-      global.get $~lib/rt/stub/offset
-      local.tee $4
-      i32.const 4
-      i32.add
-      local.tee $5
       i32.add
       local.tee $6
       memory.size $0
@@ -41362,17 +40664,11 @@
       i32.const 4
       i32.sub
       local.tee $3
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $3
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $3
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $3
       local.get $0
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $5
       i32.const 16
       i32.add
@@ -41380,7 +40676,7 @@
       local.get $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -41607,7 +40903,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $1
       i32.const 64
       i32.ge_s
@@ -41900,6 +41196,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $5
+      i32.const 4
+      i32.add
+      local.tee $6
       local.get $4
       i32.const 19
       i32.add
@@ -41908,11 +41209,6 @@
       i32.const 4
       i32.sub
       local.tee $4
-      global.get $~lib/rt/stub/offset
-      local.tee $5
-      i32.const 4
-      i32.add
-      local.tee $6
       i32.add
       local.tee $7
       memory.size $0
@@ -41935,17 +41231,11 @@
       i32.const 4
       i32.sub
       local.tee $4
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $4
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $4
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $4
       local.get $1
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $0
       local.get $6
       i32.const 16
@@ -42117,7 +41407,7 @@
      local.get $1
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $3
      i32.const 4
      i32.ge_u
@@ -42156,17 +41446,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 4
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -42391,6 +41675,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $5
+    i32.const 4
+    i32.add
+    local.tee $6
     local.get $4
     i32.const 19
     i32.add
@@ -42399,11 +41688,6 @@
     i32.const 4
     i32.sub
     local.tee $4
-    global.get $~lib/rt/stub/offset
-    local.tee $5
-    i32.const 4
-    i32.add
-    local.tee $6
     i32.add
     local.tee $7
     memory.size $0
@@ -42426,17 +41710,11 @@
     i32.const 4
     i32.sub
     local.tee $4
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $4
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $4
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $4
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $6
     i32.const 16
@@ -42609,7 +41887,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $4
     i32.const 2
     i32.ge_u
@@ -42652,17 +41930,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -42882,6 +42154,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $6
+    i32.const 4
+    i32.add
+    local.tee $7
     local.get $5
     i32.const 19
     i32.add
@@ -42890,11 +42167,6 @@
     i32.const 4
     i32.sub
     local.tee $5
-    global.get $~lib/rt/stub/offset
-    local.tee $6
-    i32.const 4
-    i32.add
-    local.tee $7
     i32.add
     local.tee $8
     memory.size $0
@@ -42917,17 +42189,11 @@
     i32.const 4
     i32.sub
     local.tee $5
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $5
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $5
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $5
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $7
     i32.const 16
@@ -43100,7 +42366,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 2
     i32.ge_u
@@ -43143,17 +42409,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -43301,11 +42561,11 @@
    i64.load $0 offset=16
    i64.const 86400000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 3600000
@@ -43386,6 +42646,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $7
+    i32.const 4
+    i32.add
+    local.tee $8
     local.get $6
     i32.const 19
     i32.add
@@ -43394,11 +42659,6 @@
     i32.const 4
     i32.sub
     local.tee $6
-    global.get $~lib/rt/stub/offset
-    local.tee $7
-    i32.const 4
-    i32.add
-    local.tee $8
     i32.add
     local.tee $10
     memory.size $0
@@ -43421,17 +42681,11 @@
     i32.const 4
     i32.sub
     local.tee $6
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $6
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $6
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $6
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $8
     i32.const 16
@@ -43604,7 +42858,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $6
     i32.const 2
     i32.ge_u
@@ -43647,17 +42901,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -43805,11 +43053,11 @@
    i64.load $0 offset=16
    i64.const 3600000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 60000
@@ -43890,6 +43138,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $8
+    i32.const 4
+    i32.add
+    local.tee $10
     local.get $7
     i32.const 19
     i32.add
@@ -43898,13 +43151,8 @@
     i32.const 4
     i32.sub
     local.tee $7
-    global.get $~lib/rt/stub/offset
-    local.tee $8
-    i32.const 4
     i32.add
-    local.tee $10
-    i32.add
-    local.tee $12
+    local.tee $13
     memory.size $0
     i32.const 16
     i32.shl
@@ -43916,7 +43164,7 @@
     if
      unreachable
     end
-    local.get $12
+    local.get $13
     global.set $~lib/rt/stub/offset
     local.get $8
     local.get $7
@@ -43925,17 +43173,11 @@
     i32.const 4
     i32.sub
     local.tee $7
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $7
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $7
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $7
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $10
     i32.const 16
@@ -44108,7 +43350,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $7
     i32.const 2
     i32.ge_u
@@ -44151,17 +43393,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -44309,11 +43545,11 @@
    i64.load $0 offset=16
    i64.const 60000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 1000
@@ -44394,6 +43630,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $10
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $8
     i32.const 19
     i32.add
@@ -44402,11 +43643,6 @@
     i32.const 4
     i32.sub
     local.tee $8
-    global.get $~lib/rt/stub/offset
-    local.tee $10
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -44425,23 +43661,17 @@
     local.get $10
     local.get $8
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $8
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $8
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $8
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $8
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -44612,7 +43842,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $8
     i32.const 2
     i32.ge_u
@@ -44655,17 +43885,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -44674,7 +43898,7 @@
     i32.const 2
     local.get $8
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -44730,7 +43954,7 @@
      i32.store8 $0
     end
     local.get $7
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -44813,11 +44037,11 @@
    i64.load $0 offset=16
    i64.const 1000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    local.tee $0
@@ -44896,6 +44120,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $11
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $10
     i32.const 19
     i32.add
@@ -44904,11 +44133,6 @@
     i32.const 4
     i32.sub
     local.tee $10
-    global.get $~lib/rt/stub/offset
-    local.tee $11
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -44927,23 +44151,17 @@
     local.get $11
     local.get $10
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $10
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $10
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $10
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $10
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -45114,7 +44332,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $10
     i32.const 3
     i32.ge_u
@@ -45157,17 +44375,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 3
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -45176,7 +44388,7 @@
     i32.const 3
     local.get $10
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -45232,7 +44444,7 @@
      i32.store8 $0
     end
     local.get $8
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -45343,17 +44555,11 @@
    i32.const 4
    i32.sub
    local.tee $0
-   i32.const 0
+   i32.const 1
    i32.store $0 offset=4
    local.get $0
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $0
-   i32.const 1
-   i32.store $0 offset=12
-   local.get $0
    i32.const 455
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    local.get $1
    i32.const 16
    i32.add
@@ -45372,7 +44578,7 @@
           local.tee $2
           i32.const 20
           i32.sub
-          i32.load $0 offset=16
+          i32.load $0 offset=8
           local.tee $10
           i32.const 64
           i32.ge_s
@@ -45462,14 +44668,14 @@
            local.get $0
            i32.const 8
            i32.add
-           local.tee $12
+           local.tee $13
            local.get $2
            i32.const 8
            i32.add
            local.tee $14
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            i32.const 8
            i32.add
            local.get $14
@@ -45477,7 +44683,7 @@
            i32.add
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            local.get $14
            i64.load $0 offset=16
            i64.store $0 offset=16
@@ -45605,7 +44811,7 @@
          local.tee $2
          i32.const 20
          i32.sub
-         i32.load $0 offset=16
+         i32.load $0 offset=8
          local.tee $10
          i32.const 64
          i32.ge_s
@@ -45695,14 +44901,14 @@
           local.get $0
           i32.const 8
           i32.add
-          local.tee $12
+          local.tee $13
           local.get $2
           i32.const 8
           i32.add
           local.tee $14
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           i32.const 8
           i32.add
           local.get $14
@@ -45710,7 +44916,7 @@
           i32.add
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           local.get $14
           i64.load $0 offset=16
           i64.store $0 offset=16
@@ -45838,7 +45044,7 @@
         local.tee $2
         i32.const 20
         i32.sub
-        i32.load $0 offset=16
+        i32.load $0 offset=8
         local.tee $4
         i32.const 64
         i32.ge_s
@@ -45932,19 +45138,19 @@
          local.get $2
          i32.const 8
          i32.add
-         local.tee $12
+         local.tee $13
          i64.load $0
          i64.store $0
          local.get $10
          i32.const 8
          i32.add
-         local.get $12
+         local.get $13
          i32.const 8
          i32.add
          i64.load $0
          i64.store $0
          local.get $10
-         local.get $12
+         local.get $13
          i64.load $0 offset=16
          i64.store $0 offset=16
          local.get $2
@@ -46071,7 +45277,7 @@
        local.tee $2
        i32.const 20
        i32.sub
-       i32.load $0 offset=16
+       i32.load $0 offset=8
        local.tee $5
        i32.const 64
        i32.ge_s
@@ -46304,7 +45510,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -46537,7 +45743,7 @@
      local.tee $2
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $5
      i32.const 64
      i32.ge_s
@@ -46770,7 +45976,7 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 64
     i32.ge_s
@@ -47001,7 +46207,7 @@
    i32.add
    local.get $1
    i32.sub
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    i32.const 1632
    local.set $2
    i32.const 1
@@ -47020,9 +46226,9 @@
    local.get $0
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    local.tee $1
-   i32.const 1628
+   i32.const 1620
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.6
@@ -47207,7 +46413,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq64|inlined.6 (result i32)
         i32.const 0
         local.get $0
@@ -47306,7 +46512,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq32|inlined.6 (result i32)
         i32.const 0
         local.get $0
@@ -47320,31 +46526,31 @@
         local.get $0
         i32.const 8
         i32.add
-        local.tee $3
+        local.tee $4
         i64.load $0
         local.get $2
         i32.const 8
         i32.add
-        local.tee $4
+        local.tee $5
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.6
         drop
         i32.const 0
-        local.get $3
+        local.get $4
         i32.const 8
         i32.add
         i64.load $0
-        local.get $4
+        local.get $5
         i32.const 8
         i32.add
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.6
         drop
-        local.get $3
-        i64.load $0 offset=16
         local.get $4
+        i64.load $0 offset=16
+        local.get $5
         i64.load $0 offset=16
         i64.eq
        end
@@ -47368,7 +46574,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        local.get $0
        i64.load $0
        local.get $2
@@ -47484,9 +46690,9 @@
        i32.const 1
       end
      end
-     local.set $12
+     local.set $3
     end
-    local.get $12
+    local.get $3
    end
   end
   i32.eqz
@@ -47527,17 +46733,11 @@
   i32.const 4
   i32.sub
   local.tee $0
-  i32.const 0
+  i32.const 3
   i32.store $0 offset=4
   local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $0
   i32.const 24
-  i32.store $0 offset=16
+  i32.store $0 offset=8
   local.get $1
   i32.const 16
   i32.add
@@ -47661,6 +46861,11 @@
       i32.const 1756
       global.set $~lib/rt/stub/offset
      end
+     global.get $~lib/rt/stub/offset
+     local.tee $6
+     i32.const 4
+     i32.add
+     local.tee $7
      local.get $4
      i32.const 19
      i32.add
@@ -47669,11 +46874,6 @@
      i32.const 4
      i32.sub
      local.tee $4
-     global.get $~lib/rt/stub/offset
-     local.tee $6
-     i32.const 4
-     i32.add
-     local.tee $7
      i32.add
      local.tee $8
      memory.size $0
@@ -47696,17 +46896,11 @@
      i32.const 4
      i32.sub
      local.tee $4
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $4
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $4
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $4
      local.get $1
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $0
      local.get $7
      i32.const 16
@@ -47878,7 +47072,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $3
     i32.const 6
     i32.lt_u
@@ -47917,17 +47111,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 6
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -48080,11 +47268,11 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i32.add
     local.tee $0
     if
@@ -48104,6 +47292,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $4
+      i32.const 4
+      i32.add
+      local.tee $5
       local.get $3
       i32.const 19
       i32.add
@@ -48112,11 +47305,6 @@
       i32.const 4
       i32.sub
       local.tee $3
-      global.get $~lib/rt/stub/offset
-      local.tee $4
-      i32.const 4
-      i32.add
-      local.tee $5
       i32.add
       local.tee $6
       memory.size $0
@@ -48139,17 +47327,11 @@
       i32.const 4
       i32.sub
       local.tee $3
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $3
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $3
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $3
       local.get $0
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $5
       i32.const 16
       i32.add
@@ -48157,7 +47339,7 @@
       local.get $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -48384,7 +47566,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $1
       i32.const 64
       i32.ge_s
@@ -48677,6 +47859,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $5
+      i32.const 4
+      i32.add
+      local.tee $6
       local.get $4
       i32.const 19
       i32.add
@@ -48685,11 +47872,6 @@
       i32.const 4
       i32.sub
       local.tee $4
-      global.get $~lib/rt/stub/offset
-      local.tee $5
-      i32.const 4
-      i32.add
-      local.tee $6
       i32.add
       local.tee $7
       memory.size $0
@@ -48712,17 +47894,11 @@
       i32.const 4
       i32.sub
       local.tee $4
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $4
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $4
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $4
       local.get $1
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $0
       local.get $6
       i32.const 16
@@ -48894,7 +48070,7 @@
      local.get $1
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $3
      i32.const 4
      i32.ge_u
@@ -48933,17 +48109,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 4
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -49168,6 +48338,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $5
+    i32.const 4
+    i32.add
+    local.tee $6
     local.get $4
     i32.const 19
     i32.add
@@ -49176,11 +48351,6 @@
     i32.const 4
     i32.sub
     local.tee $4
-    global.get $~lib/rt/stub/offset
-    local.tee $5
-    i32.const 4
-    i32.add
-    local.tee $6
     i32.add
     local.tee $7
     memory.size $0
@@ -49203,17 +48373,11 @@
     i32.const 4
     i32.sub
     local.tee $4
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $4
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $4
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $4
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $6
     i32.const 16
@@ -49386,7 +48550,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $4
     i32.const 2
     i32.ge_u
@@ -49429,17 +48593,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -49659,6 +48817,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $6
+    i32.const 4
+    i32.add
+    local.tee $7
     local.get $5
     i32.const 19
     i32.add
@@ -49667,11 +48830,6 @@
     i32.const 4
     i32.sub
     local.tee $5
-    global.get $~lib/rt/stub/offset
-    local.tee $6
-    i32.const 4
-    i32.add
-    local.tee $7
     i32.add
     local.tee $8
     memory.size $0
@@ -49694,17 +48852,11 @@
     i32.const 4
     i32.sub
     local.tee $5
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $5
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $5
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $5
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $7
     i32.const 16
@@ -49877,7 +49029,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 2
     i32.ge_u
@@ -49920,17 +49072,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -50078,11 +49224,11 @@
    i64.load $0 offset=16
    i64.const 86400000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 3600000
@@ -50163,6 +49309,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $7
+    i32.const 4
+    i32.add
+    local.tee $8
     local.get $6
     i32.const 19
     i32.add
@@ -50171,11 +49322,6 @@
     i32.const 4
     i32.sub
     local.tee $6
-    global.get $~lib/rt/stub/offset
-    local.tee $7
-    i32.const 4
-    i32.add
-    local.tee $8
     i32.add
     local.tee $10
     memory.size $0
@@ -50198,17 +49344,11 @@
     i32.const 4
     i32.sub
     local.tee $6
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $6
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $6
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $6
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $8
     i32.const 16
@@ -50381,7 +49521,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $6
     i32.const 2
     i32.ge_u
@@ -50424,17 +49564,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -50582,11 +49716,11 @@
    i64.load $0 offset=16
    i64.const 3600000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 60000
@@ -50667,6 +49801,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $8
+    i32.const 4
+    i32.add
+    local.tee $10
     local.get $7
     i32.const 19
     i32.add
@@ -50675,13 +49814,8 @@
     i32.const 4
     i32.sub
     local.tee $7
-    global.get $~lib/rt/stub/offset
-    local.tee $8
-    i32.const 4
     i32.add
-    local.tee $10
-    i32.add
-    local.tee $12
+    local.tee $13
     memory.size $0
     i32.const 16
     i32.shl
@@ -50693,7 +49827,7 @@
     if
      unreachable
     end
-    local.get $12
+    local.get $13
     global.set $~lib/rt/stub/offset
     local.get $8
     local.get $7
@@ -50702,17 +49836,11 @@
     i32.const 4
     i32.sub
     local.tee $7
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $7
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $7
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $7
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $10
     i32.const 16
@@ -50885,7 +50013,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $7
     i32.const 2
     i32.ge_u
@@ -50928,17 +50056,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -51086,11 +50208,11 @@
    i64.load $0 offset=16
    i64.const 60000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 1000
@@ -51171,6 +50293,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $10
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $8
     i32.const 19
     i32.add
@@ -51179,11 +50306,6 @@
     i32.const 4
     i32.sub
     local.tee $8
-    global.get $~lib/rt/stub/offset
-    local.tee $10
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -51202,23 +50324,17 @@
     local.get $10
     local.get $8
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $8
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $8
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $8
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $8
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -51389,7 +50505,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $8
     i32.const 2
     i32.ge_u
@@ -51432,17 +50548,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -51451,7 +50561,7 @@
     i32.const 2
     local.get $8
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -51507,7 +50617,7 @@
      i32.store8 $0
     end
     local.get $7
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -51590,11 +50700,11 @@
    i64.load $0 offset=16
    i64.const 1000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    local.tee $0
@@ -51673,6 +50783,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $11
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $10
     i32.const 19
     i32.add
@@ -51681,11 +50796,6 @@
     i32.const 4
     i32.sub
     local.tee $10
-    global.get $~lib/rt/stub/offset
-    local.tee $11
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -51704,23 +50814,17 @@
     local.get $11
     local.get $10
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $10
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $10
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $10
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $10
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -51891,7 +50995,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $10
     i32.const 3
     i32.ge_u
@@ -51934,17 +51038,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 3
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -51953,7 +51051,7 @@
     i32.const 3
     local.get $10
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -52009,7 +51107,7 @@
      i32.store8 $0
     end
     local.get $8
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -52120,17 +51218,11 @@
    i32.const 4
    i32.sub
    local.tee $0
-   i32.const 0
+   i32.const 1
    i32.store $0 offset=4
    local.get $0
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $0
-   i32.const 1
-   i32.store $0 offset=12
-   local.get $0
    i32.const 455
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    local.get $1
    i32.const 16
    i32.add
@@ -52149,7 +51241,7 @@
           local.tee $2
           i32.const 20
           i32.sub
-          i32.load $0 offset=16
+          i32.load $0 offset=8
           local.tee $10
           i32.const 64
           i32.ge_s
@@ -52239,14 +51331,14 @@
            local.get $0
            i32.const 8
            i32.add
-           local.tee $12
+           local.tee $13
            local.get $2
            i32.const 8
            i32.add
            local.tee $14
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            i32.const 8
            i32.add
            local.get $14
@@ -52254,7 +51346,7 @@
            i32.add
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            local.get $14
            i64.load $0 offset=16
            i64.store $0 offset=16
@@ -52382,7 +51474,7 @@
          local.tee $2
          i32.const 20
          i32.sub
-         i32.load $0 offset=16
+         i32.load $0 offset=8
          local.tee $10
          i32.const 64
          i32.ge_s
@@ -52472,14 +51564,14 @@
           local.get $0
           i32.const 8
           i32.add
-          local.tee $12
+          local.tee $13
           local.get $2
           i32.const 8
           i32.add
           local.tee $14
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           i32.const 8
           i32.add
           local.get $14
@@ -52487,7 +51579,7 @@
           i32.add
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           local.get $14
           i64.load $0 offset=16
           i64.store $0 offset=16
@@ -52615,7 +51707,7 @@
         local.tee $2
         i32.const 20
         i32.sub
-        i32.load $0 offset=16
+        i32.load $0 offset=8
         local.tee $4
         i32.const 64
         i32.ge_s
@@ -52709,19 +51801,19 @@
          local.get $2
          i32.const 8
          i32.add
-         local.tee $12
+         local.tee $13
          i64.load $0
          i64.store $0
          local.get $10
          i32.const 8
          i32.add
-         local.get $12
+         local.get $13
          i32.const 8
          i32.add
          i64.load $0
          i64.store $0
          local.get $10
-         local.get $12
+         local.get $13
          i64.load $0 offset=16
          i64.store $0 offset=16
          local.get $2
@@ -52848,7 +51940,7 @@
        local.tee $2
        i32.const 20
        i32.sub
-       i32.load $0 offset=16
+       i32.load $0 offset=8
        local.tee $5
        i32.const 64
        i32.ge_s
@@ -53081,7 +52173,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -53314,7 +52406,7 @@
      local.tee $2
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $5
      i32.const 64
      i32.ge_s
@@ -53547,7 +52639,7 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 64
     i32.ge_s
@@ -53778,7 +52870,7 @@
    i32.add
    local.get $1
    i32.sub
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    i32.const 1680
    local.set $2
    i32.const 1
@@ -53797,9 +52889,9 @@
    local.get $0
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    local.tee $1
-   i32.const 1676
+   i32.const 1668
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.7
@@ -53984,7 +53076,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq64|inlined.7 (result i32)
         i32.const 0
         local.get $0
@@ -54083,7 +53175,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq32|inlined.7 (result i32)
         i32.const 0
         local.get $0
@@ -54097,31 +53189,31 @@
         local.get $0
         i32.const 8
         i32.add
-        local.tee $3
+        local.tee $4
         i64.load $0
         local.get $2
         i32.const 8
         i32.add
-        local.tee $4
+        local.tee $5
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.7
         drop
         i32.const 0
-        local.get $3
+        local.get $4
         i32.const 8
         i32.add
         i64.load $0
-        local.get $4
+        local.get $5
         i32.const 8
         i32.add
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.7
         drop
-        local.get $3
-        i64.load $0 offset=16
         local.get $4
+        i64.load $0 offset=16
+        local.get $5
         i64.load $0 offset=16
         i64.eq
        end
@@ -54145,7 +53237,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        local.get $0
        i64.load $0
        local.get $2
@@ -54261,9 +53353,9 @@
        i32.const 1
       end
      end
-     local.set $12
+     local.set $3
     end
-    local.get $12
+    local.get $3
    end
   end
   i32.eqz
@@ -54304,17 +53396,11 @@
   i32.const 4
   i32.sub
   local.tee $0
-  i32.const 0
+  i32.const 3
   i32.store $0 offset=4
   local.get $0
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $0
-  i32.const 3
-  i32.store $0 offset=12
-  local.get $0
   i32.const 24
-  i32.store $0 offset=16
+  i32.store $0 offset=8
   local.get $1
   i32.const 16
   i32.add
@@ -54438,6 +53524,11 @@
       i32.const 1756
       global.set $~lib/rt/stub/offset
      end
+     global.get $~lib/rt/stub/offset
+     local.tee $6
+     i32.const 4
+     i32.add
+     local.tee $7
      local.get $4
      i32.const 19
      i32.add
@@ -54446,11 +53537,6 @@
      i32.const 4
      i32.sub
      local.tee $4
-     global.get $~lib/rt/stub/offset
-     local.tee $6
-     i32.const 4
-     i32.add
-     local.tee $7
      i32.add
      local.tee $8
      memory.size $0
@@ -54473,17 +53559,11 @@
      i32.const 4
      i32.sub
      local.tee $4
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $4
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $4
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $4
      local.get $1
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $0
      local.get $7
      i32.const 16
@@ -54655,7 +53735,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $3
     i32.const 6
     i32.lt_u
@@ -54694,17 +53774,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 6
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -54857,11 +53931,11 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     i32.add
     local.tee $0
     if
@@ -54881,6 +53955,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $4
+      i32.const 4
+      i32.add
+      local.tee $5
       local.get $3
       i32.const 19
       i32.add
@@ -54889,11 +53968,6 @@
       i32.const 4
       i32.sub
       local.tee $3
-      global.get $~lib/rt/stub/offset
-      local.tee $4
-      i32.const 4
-      i32.add
-      local.tee $5
       i32.add
       local.tee $6
       memory.size $0
@@ -54916,17 +53990,11 @@
       i32.const 4
       i32.sub
       local.tee $3
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $3
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $3
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $3
       local.get $0
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $5
       i32.const 16
       i32.add
@@ -54934,7 +54002,7 @@
       local.get $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -55161,7 +54229,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $1
       i32.const 64
       i32.ge_s
@@ -55454,6 +54522,11 @@
        i32.const 1756
        global.set $~lib/rt/stub/offset
       end
+      global.get $~lib/rt/stub/offset
+      local.tee $5
+      i32.const 4
+      i32.add
+      local.tee $6
       local.get $4
       i32.const 19
       i32.add
@@ -55462,11 +54535,6 @@
       i32.const 4
       i32.sub
       local.tee $4
-      global.get $~lib/rt/stub/offset
-      local.tee $5
-      i32.const 4
-      i32.add
-      local.tee $6
       i32.add
       local.tee $7
       memory.size $0
@@ -55489,17 +54557,11 @@
       i32.const 4
       i32.sub
       local.tee $4
-      i32.const 0
+      i32.const 1
       i32.store $0 offset=4
       local.get $4
-      i32.const 0
-      i32.store $0 offset=8
-      local.get $4
-      i32.const 1
-      i32.store $0 offset=12
-      local.get $4
       local.get $1
-      i32.store $0 offset=16
+      i32.store $0 offset=8
       local.get $0
       local.get $6
       i32.const 16
@@ -55671,7 +54733,7 @@
      local.get $1
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $3
      i32.const 4
      i32.ge_u
@@ -55710,17 +54772,11 @@
      i32.const 4
      i32.sub
      local.tee $0
-     i32.const 0
+     i32.const 1
      i32.store $0 offset=4
      local.get $0
-     i32.const 0
-     i32.store $0 offset=8
-     local.get $0
-     i32.const 1
-     i32.store $0 offset=12
-     local.get $0
      i32.const 4
-     i32.store $0 offset=16
+     i32.store $0 offset=8
      local.get $2
      i32.const 16
      i32.add
@@ -55945,6 +55001,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $5
+    i32.const 4
+    i32.add
+    local.tee $6
     local.get $4
     i32.const 19
     i32.add
@@ -55953,11 +55014,6 @@
     i32.const 4
     i32.sub
     local.tee $4
-    global.get $~lib/rt/stub/offset
-    local.tee $5
-    i32.const 4
-    i32.add
-    local.tee $6
     i32.add
     local.tee $7
     memory.size $0
@@ -55980,17 +55036,11 @@
     i32.const 4
     i32.sub
     local.tee $4
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $4
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $4
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $4
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $6
     i32.const 16
@@ -56163,7 +55213,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $4
     i32.const 2
     i32.ge_u
@@ -56206,17 +55256,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -56436,6 +55480,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $6
+    i32.const 4
+    i32.add
+    local.tee $7
     local.get $5
     i32.const 19
     i32.add
@@ -56444,11 +55493,6 @@
     i32.const 4
     i32.sub
     local.tee $5
-    global.get $~lib/rt/stub/offset
-    local.tee $6
-    i32.const 4
-    i32.add
-    local.tee $7
     i32.add
     local.tee $8
     memory.size $0
@@ -56471,17 +55515,11 @@
     i32.const 4
     i32.sub
     local.tee $5
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $5
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $5
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $5
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $7
     i32.const 16
@@ -56654,7 +55692,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 2
     i32.ge_u
@@ -56697,17 +55735,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -56855,11 +55887,11 @@
    i64.load $0 offset=16
    i64.const 86400000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 3600000
@@ -56940,6 +55972,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $7
+    i32.const 4
+    i32.add
+    local.tee $8
     local.get $6
     i32.const 19
     i32.add
@@ -56948,11 +55985,6 @@
     i32.const 4
     i32.sub
     local.tee $6
-    global.get $~lib/rt/stub/offset
-    local.tee $7
-    i32.const 4
-    i32.add
-    local.tee $8
     i32.add
     local.tee $10
     memory.size $0
@@ -56975,17 +56007,11 @@
     i32.const 4
     i32.sub
     local.tee $6
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $6
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $6
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $6
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $8
     i32.const 16
@@ -57158,7 +56184,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $6
     i32.const 2
     i32.ge_u
@@ -57201,17 +56227,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -57359,11 +56379,11 @@
    i64.load $0 offset=16
    i64.const 3600000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 60000
@@ -57444,6 +56464,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $8
+    i32.const 4
+    i32.add
+    local.tee $10
     local.get $7
     i32.const 19
     i32.add
@@ -57452,13 +56477,8 @@
     i32.const 4
     i32.sub
     local.tee $7
-    global.get $~lib/rt/stub/offset
-    local.tee $8
-    i32.const 4
     i32.add
-    local.tee $10
-    i32.add
-    local.tee $12
+    local.tee $13
     memory.size $0
     i32.const 16
     i32.shl
@@ -57470,7 +56490,7 @@
     if
      unreachable
     end
-    local.get $12
+    local.get $13
     global.set $~lib/rt/stub/offset
     local.get $8
     local.get $7
@@ -57479,17 +56499,11 @@
     i32.const 4
     i32.sub
     local.tee $7
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $7
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $7
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $7
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
     local.get $10
     i32.const 16
@@ -57662,7 +56676,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $7
     i32.const 2
     i32.ge_u
@@ -57705,17 +56719,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -57863,11 +56871,11 @@
    i64.load $0 offset=16
    i64.const 60000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    i32.const 1000
@@ -57948,6 +56956,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $10
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $8
     i32.const 19
     i32.add
@@ -57956,11 +56969,6 @@
     i32.const 4
     i32.sub
     local.tee $8
-    global.get $~lib/rt/stub/offset
-    local.tee $10
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -57979,23 +56987,17 @@
     local.get $10
     local.get $8
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $8
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $8
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $8
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $8
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -58166,7 +57168,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $8
     i32.const 2
     i32.ge_u
@@ -58209,17 +57211,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 2
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -58228,7 +57224,7 @@
     i32.const 2
     local.get $8
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -58284,7 +57280,7 @@
      i32.store8 $0
     end
     local.get $7
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -58367,11 +57363,11 @@
    i64.load $0 offset=16
    i64.const 1000
    i64.rem_s
-   local.tee $13
+   local.tee $12
    i64.const 0
    i64.lt_s
    select
-   local.get $13
+   local.get $12
    i64.add
    i32.wrap_i64
    local.tee $0
@@ -58450,6 +57446,11 @@
      i32.const 1756
      global.set $~lib/rt/stub/offset
     end
+    global.get $~lib/rt/stub/offset
+    local.tee $11
+    i32.const 4
+    i32.add
+    local.tee $13
     local.get $10
     i32.const 19
     i32.add
@@ -58458,11 +57459,6 @@
     i32.const 4
     i32.sub
     local.tee $10
-    global.get $~lib/rt/stub/offset
-    local.tee $11
-    i32.const 4
-    i32.add
-    local.tee $12
     i32.add
     local.tee $14
     memory.size $0
@@ -58481,23 +57477,17 @@
     local.get $11
     local.get $10
     i32.store $0
-    local.get $12
+    local.get $13
     i32.const 4
     i32.sub
     local.tee $10
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $10
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $10
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $10
     local.get $1
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $0
-    local.get $12
+    local.get $13
     i32.const 16
     i32.add
     local.tee $1
@@ -58668,7 +57658,7 @@
     local.get $1
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $10
     i32.const 3
     i32.ge_u
@@ -58711,17 +57701,11 @@
     i32.const 4
     i32.sub
     local.tee $0
-    i32.const 0
+    i32.const 1
     i32.store $0 offset=4
     local.get $0
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $0
-    i32.const 1
-    i32.store $0 offset=12
-    local.get $0
     i32.const 3
-    i32.store $0 offset=16
+    i32.store $0 offset=8
     local.get $2
     i32.const 16
     i32.add
@@ -58730,7 +57714,7 @@
     i32.const 3
     local.get $10
     i32.sub
-    local.tee $12
+    local.tee $13
     local.tee $2
     i32.const 4
     i32.ge_u
@@ -58786,7 +57770,7 @@
      i32.store8 $0
     end
     local.get $8
-    local.get $12
+    local.get $13
     i32.add
     local.set $2
     local.get $1
@@ -58897,17 +57881,11 @@
    i32.const 4
    i32.sub
    local.tee $0
-   i32.const 0
+   i32.const 1
    i32.store $0 offset=4
    local.get $0
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $0
-   i32.const 1
-   i32.store $0 offset=12
-   local.get $0
    i32.const 455
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    local.get $1
    i32.const 16
    i32.add
@@ -58926,7 +57904,7 @@
           local.tee $2
           i32.const 20
           i32.sub
-          i32.load $0 offset=16
+          i32.load $0 offset=8
           local.tee $10
           i32.const 64
           i32.ge_s
@@ -59016,14 +57994,14 @@
            local.get $0
            i32.const 8
            i32.add
-           local.tee $12
+           local.tee $13
            local.get $2
            i32.const 8
            i32.add
            local.tee $14
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            i32.const 8
            i32.add
            local.get $14
@@ -59031,7 +58009,7 @@
            i32.add
            i64.load $0
            i64.store $0
-           local.get $12
+           local.get $13
            local.get $14
            i64.load $0 offset=16
            i64.store $0 offset=16
@@ -59159,7 +58137,7 @@
          local.tee $2
          i32.const 20
          i32.sub
-         i32.load $0 offset=16
+         i32.load $0 offset=8
          local.tee $10
          i32.const 64
          i32.ge_s
@@ -59249,14 +58227,14 @@
           local.get $0
           i32.const 8
           i32.add
-          local.tee $12
+          local.tee $13
           local.get $2
           i32.const 8
           i32.add
           local.tee $14
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           i32.const 8
           i32.add
           local.get $14
@@ -59264,7 +58242,7 @@
           i32.add
           i64.load $0
           i64.store $0
-          local.get $12
+          local.get $13
           local.get $14
           i64.load $0 offset=16
           i64.store $0 offset=16
@@ -59392,7 +58370,7 @@
         local.tee $2
         i32.const 20
         i32.sub
-        i32.load $0 offset=16
+        i32.load $0 offset=8
         local.tee $4
         i32.const 64
         i32.ge_s
@@ -59486,19 +58464,19 @@
          local.get $2
          i32.const 8
          i32.add
-         local.tee $12
+         local.tee $13
          i64.load $0
          i64.store $0
          local.get $10
          i32.const 8
          i32.add
-         local.get $12
+         local.get $13
          i32.const 8
          i32.add
          i64.load $0
          i64.store $0
          local.get $10
-         local.get $12
+         local.get $13
          i64.load $0 offset=16
          i64.store $0 offset=16
          local.get $2
@@ -59625,7 +58603,7 @@
        local.tee $2
        i32.const 20
        i32.sub
-       i32.load $0 offset=16
+       i32.load $0 offset=8
        local.tee $5
        i32.const 64
        i32.ge_s
@@ -59858,7 +58836,7 @@
       local.tee $2
       i32.const 20
       i32.sub
-      i32.load $0 offset=16
+      i32.load $0 offset=8
       local.tee $5
       i32.const 64
       i32.ge_s
@@ -60091,7 +59069,7 @@
      local.tee $2
      i32.const 20
      i32.sub
-     i32.load $0 offset=16
+     i32.load $0 offset=8
      local.tee $5
      i32.const 64
      i32.ge_s
@@ -60324,7 +59302,7 @@
     local.tee $2
     i32.const 20
     i32.sub
-    i32.load $0 offset=16
+    i32.load $0 offset=8
     local.tee $5
     i32.const 64
     i32.ge_s
@@ -60555,7 +59533,7 @@
    i32.add
    local.get $1
    i32.sub
-   i32.store $0 offset=16
+   i32.store $0 offset=8
    i32.const 1728
    local.set $2
    i32.const 1
@@ -60574,9 +59552,9 @@
    local.get $0
    i32.const 20
    i32.sub
-   i32.load $0 offset=16
+   i32.load $0 offset=8
    local.tee $1
-   i32.const 1724
+   i32.const 1716
    i32.load $0
    i32.ne
    br_if $~lib/string/String.__eq|inlined.8
@@ -60761,7 +59739,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq64|inlined.8 (result i32)
         i32.const 0
         local.get $0
@@ -60860,7 +59838,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        block $~lib/util/raweq/__raweq32|inlined.8 (result i32)
         i32.const 0
         local.get $0
@@ -60874,31 +59852,31 @@
         local.get $0
         i32.const 8
         i32.add
-        local.tee $3
+        local.tee $4
         i64.load $0
         local.get $2
         i32.const 8
         i32.add
-        local.tee $4
+        local.tee $5
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.8
         drop
         i32.const 0
-        local.get $3
+        local.get $4
         i32.const 8
         i32.add
         i64.load $0
-        local.get $4
+        local.get $5
         i32.const 8
         i32.add
         i64.load $0
         i64.ne
         br_if $~lib/util/raweq/__raweq32|inlined.8
         drop
-        local.get $3
-        i64.load $0 offset=16
         local.get $4
+        i64.load $0 offset=16
+        local.get $5
         i64.load $0 offset=16
         i64.eq
        end
@@ -60922,7 +59900,7 @@
       i32.ge_u
       if
        i32.const 0
-       local.set $12
+       local.set $3
        local.get $0
        i64.load $0
        local.get $2
@@ -61038,9 +60016,9 @@
        i32.const 1
       end
      end
-     local.set $12
+     local.set $3
     end
-    local.get $12
+    local.get $3
    end
   end
   i32.eqz

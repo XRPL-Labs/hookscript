@@ -9,12 +9,6 @@ export declare interface BlockInfo {
     tags: string,
     size: number
   },
-  /** Garbage collector info. */
-  gcInfo: {
-    color: string,
-    next: number,
-    prev: number
-  },
   /** Runtime id. */
   rtId: number,
   /** Runtime size. */

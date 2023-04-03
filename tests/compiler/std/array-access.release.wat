@@ -2,20 +2,64 @@
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33964))
  (memory $0 1)
- (data (i32.const 1036) ",")
- (data (i32.const 1048) "\01\00\00\00\12\00\00\00Index out of range")
- (data (i32.const 1084) "L")
- (data (i32.const 1096) "\01\00\00\00/\00\00\00Element type must be nullable if array is holey")
- (data (i32.const 1164) "\1c")
- (data (i32.const 1176) "\01")
+ (data (i32.const 1036) ",\00\00\00\01\00\00\00\12")
+ (data (i32.const 1056) "Index out of range")
+ (data (i32.const 1084) "L\00\00\00\01\00\00\00/")
+ (data (i32.const 1104) "Element type must be nullable if array is holey")
+ (data (i32.const 1164) "\1c\00\00\00\01")
+ (export "i32ArrayArrayElementAccess" (func $std/array-access/i32ArrayArrayElementAccess))
+ (export "stringArrayPropertyAccess" (func $std/array-access/stringArrayPropertyAccess))
+ (export "stringArrayMethodCall" (func $std/array-access/stringArrayMethodCall))
+ (export "stringArrayArrayPropertyAccess" (func $std/array-access/stringArrayArrayPropertyAccess))
+ (export "stringArrayArrayMethodCall" (func $std/array-access/stringArrayArrayMethodCall))
  (export "memory" (memory $0))
- (export "i32ArrayArrayElementAccess" (func $export:std/array-access/i32ArrayArrayElementAccess))
- (export "stringArrayPropertyAccess" (func $export:std/array-access/stringArrayPropertyAccess))
- (export "stringArrayMethodCall" (func $export:std/array-access/stringArrayMethodCall))
- (export "stringArrayArrayPropertyAccess" (func $export:std/array-access/stringArrayArrayPropertyAccess))
- (export "stringArrayArrayMethodCall" (func $export:std/array-access/stringArrayArrayMethodCall))
+ (func $std/array-access/i32ArrayArrayElementAccess (type $i32_=>_i32) (param $0 i32) (result i32)
+  local.get $0
+  i32.load $0 offset=12
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  i32.load $0 offset=4
+  i32.load $0
+  local.tee $0
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  i32.load $0 offset=12
+  i32.const 1
+  i32.le_u
+  if
+   unreachable
+  end
+  local.get $0
+  i32.load $0 offset=4
+  i32.load $0 offset=4
+ )
+ (func $std/array-access/stringArrayPropertyAccess (type $i32_=>_i32) (param $0 i32) (result i32)
+  local.get $0
+  i32.load $0 offset=12
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  i32.load $0 offset=4
+  i32.load $0
+  local.tee $0
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  i32.const 20
+  i32.sub
+  i32.load $0 offset=8
+ )
  (func $~lib/string/String#startsWith (type $i32_=>_i32) (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
@@ -27,7 +71,7 @@
   local.get $0
   i32.const 20
   i32.sub
-  i32.load $0 offset=16
+  i32.load $0 offset=8
   local.tee $1
   i32.const 0
   local.get $1
@@ -36,7 +80,7 @@
   select
   local.set $3
   local.get $1
-  i32.const 1180
+  i32.const 1172
   i32.load $0
   local.tee $2
   local.get $3
@@ -2964,73 +3008,39 @@
   local.get $0
   i32.eqz
  )
- (func $export:std/array-access/i32ArrayArrayElementAccess (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  local.get $0
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i32.const 0
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
+ (func $std/array-access/stringArrayMethodCall (type $i32_=>_i32) (param $0 i32) (result i32)
   local.get $0
   i32.load $0 offset=12
   i32.eqz
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load $0 offset=4
   i32.load $0
   local.tee $0
-  i32.store $0
-  local.get $0
   i32.eqz
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.store $0
+  call $~lib/string/String#startsWith
+ )
+ (func $std/array-access/stringArrayArrayPropertyAccess (type $i32_=>_i32) (param $0 i32) (result i32)
+  local.get $0
+  i32.load $0 offset=12
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $0
+  i32.load $0 offset=4
+  i32.load $0
+  local.tee $0
+  i32.eqz
+  if
+   unreachable
+  end
   local.get $0
   i32.load $0 offset=12
   i32.const 1
@@ -3041,262 +3051,31 @@
   local.get $0
   i32.load $0 offset=4
   i32.load $0 offset=4
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
- )
- (func $export:std/array-access/stringArrayPropertyAccess (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  local.get $0
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i32.const 0
-  i32.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $0
-  i32.load $0 offset=12
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.load $0 offset=4
-  i32.load $0
   local.tee $0
-  i32.store $0
-  local.get $0
   i32.eqz
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
   local.get $0
   i32.const 20
   i32.sub
-  i32.load $0 offset=16
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
+  i32.load $0 offset=8
  )
- (func $export:std/array-access/stringArrayMethodCall (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  local.get $0
-  i32.store $0
-  local.get $1
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i64.const 0
-  i64.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
+ (func $std/array-access/stringArrayArrayMethodCall (type $i32_=>_i32) (param $0 i32) (result i32)
   local.get $0
   i32.load $0 offset=12
   i32.eqz
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load $0 offset=4
   i32.load $0
   local.tee $0
-  i32.store $0
-  local.get $0
   i32.eqz
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1184
-  i32.store $0 offset=4
-  local.get $0
-  call $~lib/string/String#startsWith
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
- )
- (func $export:std/array-access/stringArrayArrayPropertyAccess (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  local.get $0
-  i32.store $0
-  local.get $1
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i64.const 0
-  i64.store $0
-  local.get $1
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $0
-  i32.load $0 offset=12
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.load $0 offset=4
-  i32.load $0
-  local.tee $0
-  i32.store $0
-  local.get $0
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0 offset=4
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
   local.get $0
   i32.load $0 offset=12
   i32.const 1
@@ -3304,161 +3083,15 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load $0 offset=4
   i32.load $0 offset=4
   local.tee $0
-  i32.store $0
-  local.get $0
   i32.eqz
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
- )
- (func $export:std/array-access/stringArrayArrayMethodCall (type $i32_=>_i32) (param $0 i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  local.get $0
-  i32.store $0
-  local.get $1
-  i32.const 12
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i64.const 0
-  i64.store $0
-  local.get $1
-  i32.const 0
-  i32.store $0 offset=8
-  local.get $1
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $0
-  i32.load $0 offset=12
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.load $0 offset=4
-  i32.load $0
-  local.tee $0
-  i32.store $0
-  local.get $0
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0 offset=8
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1196
-  i32.lt_s
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $0
-  i32.load $0 offset=12
-  i32.const 1
-  i32.le_u
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.load $0 offset=4
-  i32.load $0 offset=4
-  local.tee $0
-  i32.store $0
-  local.get $0
-  i32.eqz
-  if
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1184
-  i32.store $0 offset=4
   local.get $0
   call $~lib/string/String#startsWith
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 12
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
  )
 )

@@ -4,7 +4,7 @@
  (global $unicode-identifier/ÀÈ (mut i32) (i32.const 0))
  (global $unicode-identifier/变量 (mut i32) (i32.const 0))
  (global $unicode-identifier/𠜎𠜱 (mut i32) (i32.const 0))
- (memory $0 0)
+ (memory $0 1)
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "ÀÈ" (global $unicode-identifier/ÀÈ))

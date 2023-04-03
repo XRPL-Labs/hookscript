@@ -5,7 +5,7 @@
  (global $inlining-blocklocals/b (mut i32) (i32.const 2))
  (global $inlining-blocklocals/theCall_b (mut i32) (i32.const 0))
  (global $inlining-blocklocals/theCall_c (mut i32) (i32.const 0))
- (memory $0 0)
+ (memory $0 1)
  (export "memory" (memory $0))
  (start $~start)
  (func $~start (type $none_=>_none)

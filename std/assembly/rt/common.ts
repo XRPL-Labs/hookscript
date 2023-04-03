@@ -58,10 +58,6 @@
 // ╞>ptr═══════════════════════════════════════════════════════════╡
 // │                              ...                              │
 @unmanaged export class OBJECT extends BLOCK {
-  /** Garbage collector info. */
-  gcInfo: u32;
-  /** Garbage collector info. */
-  gcInfo2: u32;
   /** Runtime class id. */
   rtId: u32;
   /** Runtime object size. */

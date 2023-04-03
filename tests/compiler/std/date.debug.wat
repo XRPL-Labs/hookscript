@@ -1,107 +1,86 @@
 (module
  (type $i32_i32_=>_none (func_subtype (param i32 i32) func))
  (type $i32_=>_i32 (func_subtype (param i32) (result i32) func))
- (type $i32_=>_none (func_subtype (param i32) func))
- (type $none_=>_none (func_subtype func))
  (type $i32_i32_=>_i32 (func_subtype (param i32 i32) (result i32) func))
  (type $i32_i32_i32_=>_none (func_subtype (param i32 i32 i32) func))
  (type $i32_i32_i32_=>_i32 (func_subtype (param i32 i32 i32) (result i32) func))
+ (type $none_=>_none (func_subtype func))
  (type $i32_i32_i32_=>_i64 (func_subtype (param i32 i32 i32) (result i64) func))
  (type $i32_i32_i32_i32_i32_i32_i32_=>_i64 (func_subtype (param i32 i32 i32 i32 i32 i32 i32) (result i64) func))
  (type $i32_i32_i32_i32_=>_none (func_subtype (param i32 i32 i32 i32) func))
- (type $none_=>_i32 (func_subtype (result i32) func))
  (type $i32_i64_=>_none (func_subtype (param i32 i64) func))
  (type $i32_i32_i32_i64_=>_i64 (func_subtype (param i32 i32 i32 i64) (result i64) func))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $~lib/date/_day (mut i32) (i32.const 0))
  (global $~lib/date/_month (mut i32) (i32.const 0))
- (global $~lib/rt/itcms/total (mut i32) (i32.const 0))
- (global $~lib/rt/itcms/threshold (mut i32) (i32.const 0))
- (global $~lib/rt/itcms/state (mut i32) (i32.const 0))
- (global $~lib/rt/itcms/visitCount (mut i32) (i32.const 0))
- (global $~lib/rt/itcms/pinSpace (mut i32) (i32.const 0))
- (global $~lib/rt/itcms/iter (mut i32) (i32.const 0))
- (global $~lib/rt/itcms/toSpace (mut i32) (i32.const 0))
- (global $~lib/rt/itcms/white (mut i32) (i32.const 0))
+ (global $~lib/rt/stub/offset (mut i32) (i32.const 0))
+ (global $~argumentsLength (mut i32) (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
  (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
  (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
- (global $~lib/rt/itcms/fromSpace (mut i32) (i32.const 0))
- (global $~lib/rt/tlsf/ROOT (mut i32) (i32.const 0))
- (global $~lib/native/ASC_LOW_MEMORY_LIMIT i32 (i32.const 0))
- (global $~argumentsLength (mut i32) (i32.const 0))
- (global $~lib/rt/__rtti_base i32 (i32.const 2352))
- (global $~lib/memory/__data_end i32 (i32.const 2396))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 35164))
- (global $~lib/memory/__heap_base i32 (i32.const 35164))
+ (global $~lib/memory/__heap_base i32 (i32.const 2156))
  (global $~started (mut i32) (i32.const 0))
  (memory $0 1)
- (data (i32.const 12) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0c\00\00\00Invalid Date")
- (data (i32.const 44) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00Allocation too large\00\00\00\00\00\00\00\00")
- (data (i32.const 96) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 128) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 156) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\12\00\00\00Index out of range\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 208) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 228) "\00\03\02\05\00\03\05\01\04\06\02\04")
- (data (i32.const 252) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Sun \00\00\00\00\00\00\00\00")
- (data (i32.const 284) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Mon \00\00\00\00\00\00\00\00")
- (data (i32.const 316) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Tue \00\00\00\00\00\00\00\00")
- (data (i32.const 348) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Wed \00\00\00\00\00\00\00\00")
- (data (i32.const 380) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Thu \00\00\00\00\00\00\00\00")
- (data (i32.const 412) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Fri \00\00\00\00\00\00\00\00")
- (data (i32.const 444) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Sat \00\00\00\00\00\00\00\00")
- (data (i32.const 476) ",\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\1c\00\00\00\10\01\00\000\01\00\00P\01\00\00p\01\00\00\90\01\00\00\b0\01\00\00\d0\01\00\00")
- (data (i32.const 524) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 556) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Jan \00\00\00\00\00\00\00\00")
- (data (i32.const 588) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Feb \00\00\00\00\00\00\00\00")
- (data (i32.const 620) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Mar \00\00\00\00\00\00\00\00")
- (data (i32.const 652) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Apr \00\00\00\00\00\00\00\00")
- (data (i32.const 684) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00May \00\00\00\00\00\00\00\00")
- (data (i32.const 716) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Jun \00\00\00\00\00\00\00\00")
- (data (i32.const 748) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Jul \00\00\00\00\00\00\00\00")
- (data (i32.const 780) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Aug \00\00\00\00\00\00\00\00")
- (data (i32.const 812) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Sep \00\00\00\00\00\00\00\00")
- (data (i32.const 844) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Oct \00\00\00\00\00\00\00\00")
- (data (i32.const 876) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Nov \00\00\00\00\00\00\00\00")
- (data (i32.const 908) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00Dec \00\00\00\00\00\00\00\00")
- (data (i32.const 940) "L\00\00\00\00\00\00\00\00\00\00\00\04\00\00\000\00\00\00@\02\00\00`\02\00\00\80\02\00\00\a0\02\00\00\c0\02\00\00\e0\02\00\00\00\03\00\00 \03\00\00@\03\00\00`\03\00\00\80\03\00\00\a0\03\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1020) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\000\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1052) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\00 -\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1084) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00 \00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1116) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00Wed Jan 01 0020\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1164) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0f\00\00\00Sun Feb 02 2020\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1212) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\10\00\00\00Thu Jul 01 -0001\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1260) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00:\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 1292) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\0000:00:00\00\00\00\00")
- (data (i32.const 1324) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\08\00\00\0023:59:59\00\00\00\00")
- (data (i32.const 1356) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Sun, \00\00\00\00\00\00\00")
- (data (i32.const 1388) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Mon, \00\00\00\00\00\00\00")
- (data (i32.const 1420) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Tue, \00\00\00\00\00\00\00")
- (data (i32.const 1452) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Wed, \00\00\00\00\00\00\00")
- (data (i32.const 1484) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Thu, \00\00\00\00\00\00\00")
- (data (i32.const 1516) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Fri, \00\00\00\00\00\00\00")
- (data (i32.const 1548) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00Sat, \00\00\00\00\00\00\00")
- (data (i32.const 1580) ",\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\1c\00\00\00`\05\00\00\80\05\00\00\a0\05\00\00\c0\05\00\00\e0\05\00\00\00\06\00\00 \06\00\00")
- (data (i32.const 1628) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Jan \00\00\00\00\00\00\00")
- (data (i32.const 1660) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Feb \00\00\00\00\00\00\00")
- (data (i32.const 1692) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Mar \00\00\00\00\00\00\00")
- (data (i32.const 1724) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Apr \00\00\00\00\00\00\00")
- (data (i32.const 1756) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 May \00\00\00\00\00\00\00")
- (data (i32.const 1788) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Jun \00\00\00\00\00\00\00")
- (data (i32.const 1820) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Jul \00\00\00\00\00\00\00")
- (data (i32.const 1852) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Aug \00\00\00\00\00\00\00")
- (data (i32.const 1884) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Sep \00\00\00\00\00\00\00")
- (data (i32.const 1916) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Oct \00\00\00\00\00\00\00")
- (data (i32.const 1948) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Nov \00\00\00\00\00\00\00")
- (data (i32.const 1980) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\05\00\00\00 Dec \00\00\00\00\00\00\00")
- (data (i32.const 2012) "L\00\00\00\00\00\00\00\00\00\00\00\04\00\00\000\00\00\00p\06\00\00\90\06\00\00\b0\06\00\00\d0\06\00\00\f0\06\00\00\10\07\00\000\07\00\00P\07\00\00p\07\00\00\90\07\00\00\b0\07\00\00\d0\07\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2092) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\01\00\00\00-\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2124) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04\00\00\00 GMT\00\00\00\00\00\00\00\00")
- (data (i32.const 2156) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1d\00\00\00Wed, 01 Jan 0020 00:00:00 GMT\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2220) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1d\00\00\00Mon, 03 Feb 2020 14:53:33 GMT\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2284) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1e\00\00\00Thu, 01 Jul -0001 00:00:00 GMT\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2352) "\05\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\04A\00\00\00\00\00\00")
+ (data (i32.const 12) "\1c\00\00\00\01\00\00\00\0c\00\00\00\00\00\00\00\00\00\00\00Invalid Date")
+ (data (i32.const 44) "\00\03\02\05\00\03\05\01\04\06\02\04")
+ (data (i32.const 60) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Sun \00\00\00\00\00\00\00\00")
+ (data (i32.const 92) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Mon \00\00\00\00\00\00\00\00")
+ (data (i32.const 124) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Tue \00\00\00\00\00\00\00\00")
+ (data (i32.const 156) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Wed \00\00\00\00\00\00\00\00")
+ (data (i32.const 188) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Thu \00\00\00\00\00\00\00\00")
+ (data (i32.const 220) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Fri \00\00\00\00\00\00\00\00")
+ (data (i32.const 252) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Sat \00\00\00\00\00\00\00\00")
+ (data (i32.const 284) ",\00\00\00\04\00\00\00\1c\00\00\00\00\00\00\00\00\00\00\00P\00\00\00p\00\00\00\90\00\00\00\b0\00\00\00\d0\00\00\00\f0\00\00\00\10\01\00\00")
+ (data (i32.const 332) "\1c\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 364) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Jan \00\00\00\00\00\00\00\00")
+ (data (i32.const 396) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Feb \00\00\00\00\00\00\00\00")
+ (data (i32.const 428) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Mar \00\00\00\00\00\00\00\00")
+ (data (i32.const 460) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Apr \00\00\00\00\00\00\00\00")
+ (data (i32.const 492) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00May \00\00\00\00\00\00\00\00")
+ (data (i32.const 524) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Jun \00\00\00\00\00\00\00\00")
+ (data (i32.const 556) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Jul \00\00\00\00\00\00\00\00")
+ (data (i32.const 588) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Aug \00\00\00\00\00\00\00\00")
+ (data (i32.const 620) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Sep \00\00\00\00\00\00\00\00")
+ (data (i32.const 652) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Oct \00\00\00\00\00\00\00\00")
+ (data (i32.const 684) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Nov \00\00\00\00\00\00\00\00")
+ (data (i32.const 716) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00Dec \00\00\00\00\00\00\00\00")
+ (data (i32.const 748) "L\00\00\00\04\00\00\000\00\00\00\00\00\00\00\00\00\00\00\80\01\00\00\a0\01\00\00\c0\01\00\00\e0\01\00\00\00\02\00\00 \02\00\00@\02\00\00`\02\00\00\80\02\00\00\a0\02\00\00\c0\02\00\00\e0\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 828) "\1c\00\00\00\01\00\00\00\01\00\00\00\00\00\00\00\00\00\00\000\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 860) "\1c\00\00\00\01\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00 -\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 892) "\1c\00\00\00\01\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 924) ",\00\00\00\01\00\00\00\0f\00\00\00\00\00\00\00\00\00\00\00Wed Jan 01 0020\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 972) ",\00\00\00\01\00\00\00\0f\00\00\00\00\00\00\00\00\00\00\00Sun Feb 02 2020\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1020) ",\00\00\00\01\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00Thu Jul 01 -0001\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1068) "\1c\00\00\00\01\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00:\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1100) "\1c\00\00\00\01\00\00\00\08\00\00\00\00\00\00\00\00\00\00\0000:00:00\00\00\00\00")
+ (data (i32.const 1132) "\1c\00\00\00\01\00\00\00\08\00\00\00\00\00\00\00\00\00\00\0023:59:59\00\00\00\00")
+ (data (i32.const 1164) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00Sun, \00\00\00\00\00\00\00")
+ (data (i32.const 1196) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00Mon, \00\00\00\00\00\00\00")
+ (data (i32.const 1228) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00Tue, \00\00\00\00\00\00\00")
+ (data (i32.const 1260) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00Wed, \00\00\00\00\00\00\00")
+ (data (i32.const 1292) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00Thu, \00\00\00\00\00\00\00")
+ (data (i32.const 1324) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00Fri, \00\00\00\00\00\00\00")
+ (data (i32.const 1356) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00Sat, \00\00\00\00\00\00\00")
+ (data (i32.const 1388) ",\00\00\00\04\00\00\00\1c\00\00\00\00\00\00\00\00\00\00\00\a0\04\00\00\c0\04\00\00\e0\04\00\00\00\05\00\00 \05\00\00@\05\00\00`\05\00\00")
+ (data (i32.const 1436) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Jan \00\00\00\00\00\00\00")
+ (data (i32.const 1468) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Feb \00\00\00\00\00\00\00")
+ (data (i32.const 1500) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Mar \00\00\00\00\00\00\00")
+ (data (i32.const 1532) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Apr \00\00\00\00\00\00\00")
+ (data (i32.const 1564) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 May \00\00\00\00\00\00\00")
+ (data (i32.const 1596) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Jun \00\00\00\00\00\00\00")
+ (data (i32.const 1628) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Jul \00\00\00\00\00\00\00")
+ (data (i32.const 1660) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Aug \00\00\00\00\00\00\00")
+ (data (i32.const 1692) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Sep \00\00\00\00\00\00\00")
+ (data (i32.const 1724) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Oct \00\00\00\00\00\00\00")
+ (data (i32.const 1756) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Nov \00\00\00\00\00\00\00")
+ (data (i32.const 1788) "\1c\00\00\00\01\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00 Dec \00\00\00\00\00\00\00")
+ (data (i32.const 1820) "L\00\00\00\04\00\00\000\00\00\00\00\00\00\00\00\00\00\00\b0\05\00\00\d0\05\00\00\f0\05\00\00\10\06\00\000\06\00\00P\06\00\00p\06\00\00\90\06\00\00\b0\06\00\00\d0\06\00\00\f0\06\00\00\10\07\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1900) "\1c\00\00\00\01\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00-\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1932) "\1c\00\00\00\01\00\00\00\04\00\00\00\00\00\00\00\00\00\00\00 GMT\00\00\00\00\00\00\00\00")
+ (data (i32.const 1964) "<\00\00\00\01\00\00\00\1d\00\00\00\00\00\00\00\00\00\00\00Wed, 01 Jan 0020 00:00:00 GMT\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 2028) "<\00\00\00\01\00\00\00\1d\00\00\00\00\00\00\00\00\00\00\00Mon, 03 Feb 2020 14:53:33 GMT\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 2092) "<\00\00\00\01\00\00\00\1e\00\00\00\00\00\00\00\00\00\00\00Thu, 01 Jul -0001 00:00:00 GMT\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
@@ -230,1994 +209,121 @@
   local.get $1
   i32.store $0 offset=8
  )
- (func $~lib/rt/itcms/Object#set:nextWithColor (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
- )
- (func $~lib/rt/itcms/Object#set:prev (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=8
- )
- (func $~lib/rt/itcms/initLazy (type $i32_=>_i32) (param $space i32) (result i32)
-  local.get $space
-  local.get $space
-  call $~lib/rt/itcms/Object#set:nextWithColor
-  local.get $space
-  local.get $space
-  call $~lib/rt/itcms/Object#set:prev
-  local.get $space
- )
- (func $~lib/rt/itcms/Object#get:next (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=4
-  i32.const 3
-  i32.const -1
-  i32.xor
-  i32.and
- )
- (func $~lib/rt/itcms/Object#get:color (type $i32_=>_i32) (param $this i32) (result i32)
-  local.get $this
-  i32.load $0 offset=4
-  i32.const 3
-  i32.and
- )
- (func $~lib/rt/itcms/visitRoots (type $i32_=>_none) (param $cookie i32)
-  (local $pn i32)
-  (local $iter i32)
-  (local $3 i32)
-  local.get $cookie
-  call $~lib/rt/__visit_globals
-  global.get $~lib/rt/itcms/pinSpace
-  local.set $pn
-  local.get $pn
-  call $~lib/rt/itcms/Object#get:next
-  local.set $iter
-  loop $while-continue|0
-   local.get $iter
-   local.get $pn
-   i32.ne
-   local.set $3
-   local.get $3
-   if
-    i32.const 1
-    drop
-    local.get $iter
-    call $~lib/rt/itcms/Object#get:color
-    i32.const 3
-    i32.eq
-    i32.eqz
-    if
-     unreachable
-    end
-    local.get $iter
-    i32.const 20
-    i32.add
-    local.get $cookie
-    call $~lib/rt/__visit_members
-    local.get $iter
-    call $~lib/rt/itcms/Object#get:next
-    local.set $iter
-    br $while-continue|0
-   end
-  end
- )
- (func $~lib/rt/itcms/Object#set:color (type $i32_i32_=>_none) (param $this i32) (param $color i32)
-  local.get $this
-  local.get $this
-  i32.load $0 offset=4
-  i32.const 3
-  i32.const -1
-  i32.xor
-  i32.and
-  local.get $color
-  i32.or
-  call $~lib/rt/itcms/Object#set:nextWithColor
- )
- (func $~lib/rt/itcms/Object#set:next (type $i32_i32_=>_none) (param $this i32) (param $obj i32)
-  local.get $this
-  local.get $obj
-  local.get $this
-  i32.load $0 offset=4
-  i32.const 3
-  i32.and
-  i32.or
-  call $~lib/rt/itcms/Object#set:nextWithColor
- )
- (func $~lib/rt/itcms/Object#unlink (type $i32_=>_none) (param $this i32)
-  (local $next i32)
-  (local $prev i32)
-  local.get $this
-  call $~lib/rt/itcms/Object#get:next
-  local.set $next
-  local.get $next
-  i32.const 0
-  i32.eq
-  if
-   i32.const 1
-   drop
-   local.get $this
-   i32.load $0 offset=8
-   i32.const 0
-   i32.eq
-   if (result i32)
-    local.get $this
-    global.get $~lib/memory/__heap_base
-    i32.lt_u
-   else
-    i32.const 0
-   end
-   i32.eqz
-   if
-    unreachable
-   end
-   return
-  end
-  local.get $this
-  i32.load $0 offset=8
-  local.set $prev
-  i32.const 1
-  drop
-  local.get $prev
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $next
-  local.get $prev
-  call $~lib/rt/itcms/Object#set:prev
-  local.get $prev
-  local.get $next
-  call $~lib/rt/itcms/Object#set:next
- )
- (func $~lib/rt/__typeinfo (type $i32_=>_i32) (param $id i32) (result i32)
-  (local $ptr i32)
-  global.get $~lib/rt/__rtti_base
-  local.set $ptr
-  local.get $id
-  local.get $ptr
-  i32.load $0
-  i32.gt_u
-  if
-   unreachable
-  end
-  local.get $ptr
-  i32.const 4
-  i32.add
-  local.get $id
-  i32.const 8
-  i32.mul
-  i32.add
-  i32.load $0
- )
- (func $~lib/rt/itcms/Object#get:isPointerfree (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $rtId i32)
-  local.get $this
-  i32.load $0 offset=12
-  local.set $rtId
-  local.get $rtId
-  i32.const 1
-  i32.le_u
-  if (result i32)
-   i32.const 1
-  else
-   local.get $rtId
-   call $~lib/rt/__typeinfo
-   i32.const 32
-   i32.and
-   i32.const 0
-   i32.ne
-  end
- )
- (func $~lib/rt/itcms/Object#linkTo (type $i32_i32_i32_=>_none) (param $this i32) (param $list i32) (param $withColor i32)
-  (local $prev i32)
-  local.get $list
-  i32.load $0 offset=8
-  local.set $prev
-  local.get $this
-  local.get $list
-  local.get $withColor
-  i32.or
-  call $~lib/rt/itcms/Object#set:nextWithColor
-  local.get $this
-  local.get $prev
-  call $~lib/rt/itcms/Object#set:prev
-  local.get $prev
-  local.get $this
-  call $~lib/rt/itcms/Object#set:next
-  local.get $list
-  local.get $this
-  call $~lib/rt/itcms/Object#set:prev
- )
- (func $~lib/rt/itcms/Object#makeGray (type $i32_=>_none) (param $this i32)
-  (local $1 i32)
-  local.get $this
-  global.get $~lib/rt/itcms/iter
-  i32.eq
-  if
-   local.get $this
-   i32.load $0 offset=8
-   local.tee $1
-   i32.eqz
-   if (result i32)
-    unreachable
-   else
-    local.get $1
-   end
-   global.set $~lib/rt/itcms/iter
-  end
-  local.get $this
-  call $~lib/rt/itcms/Object#unlink
-  local.get $this
-  global.get $~lib/rt/itcms/toSpace
-  local.get $this
-  call $~lib/rt/itcms/Object#get:isPointerfree
-  if (result i32)
-   global.get $~lib/rt/itcms/white
-   i32.eqz
-  else
-   i32.const 2
-  end
-  call $~lib/rt/itcms/Object#linkTo
- )
- (func $~lib/rt/itcms/__visit (type $i32_i32_=>_none) (param $ptr i32) (param $cookie i32)
-  (local $obj i32)
-  local.get $ptr
-  i32.eqz
-  if
-   return
-  end
-  local.get $ptr
-  i32.const 20
-  i32.sub
-  local.set $obj
-  i32.const 0
-  drop
-  local.get $obj
-  call $~lib/rt/itcms/Object#get:color
-  global.get $~lib/rt/itcms/white
-  i32.eq
-  if
-   local.get $obj
-   call $~lib/rt/itcms/Object#makeGray
-   global.get $~lib/rt/itcms/visitCount
-   i32.const 1
-   i32.add
-   global.set $~lib/rt/itcms/visitCount
-  end
- )
- (func $~lib/rt/itcms/visitStack (type $i32_=>_none) (param $cookie i32)
-  (local $ptr i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  local.set $ptr
-  loop $while-continue|0
-   local.get $ptr
-   global.get $~lib/memory/__heap_base
-   i32.lt_u
-   local.set $2
-   local.get $2
-   if
-    local.get $ptr
-    i32.load $0
-    local.get $cookie
-    call $~lib/rt/itcms/__visit
-    local.get $ptr
-    i32.const 4
-    i32.add
-    local.set $ptr
-    br $while-continue|0
-   end
-  end
- )
- (func $~lib/rt/itcms/Object#get:size (type $i32_=>_i32) (param $this i32) (result i32)
-  i32.const 4
-  local.get $this
-  i32.load $0
-  i32.const 3
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.add
- )
- (func $~lib/rt/tlsf/Root#set:flMap (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0
- )
  (func $~lib/rt/common/BLOCK#set:mmInfo (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
   i32.store $0
  )
- (func $~lib/rt/tlsf/Block#set:prev (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=4
- )
- (func $~lib/rt/tlsf/Block#set:next (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=8
- )
- (func $~lib/rt/tlsf/removeBlock (type $i32_i32_=>_none) (param $root i32) (param $block i32)
-  (local $blockInfo i32)
-  (local $size i32)
-  (local $fl i32)
-  (local $sl i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $boundedSize i32)
-  (local $prev i32)
-  (local $next i32)
-  (local $root|11 i32)
-  (local $fl|12 i32)
-  (local $sl|13 i32)
-  (local $root|14 i32)
-  (local $fl|15 i32)
-  (local $sl|16 i32)
-  (local $head i32)
-  (local $root|18 i32)
-  (local $fl|19 i32)
-  (local $slMap i32)
-  (local $root|21 i32)
-  (local $fl|22 i32)
-  (local $slMap|23 i32)
-  local.get $block
-  i32.load $0
-  local.set $blockInfo
-  i32.const 1
-  drop
-  local.get $blockInfo
-  i32.const 1
-  i32.and
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $blockInfo
-  i32.const 3
-  i32.const -1
-  i32.xor
-  i32.and
-  local.set $size
-  i32.const 1
-  drop
-  local.get $size
-  i32.const 12
-  i32.ge_u
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $size
-  i32.const 256
-  i32.lt_u
-  if
-   i32.const 0
-   local.set $fl
-   local.get $size
-   i32.const 4
-   i32.shr_u
-   local.set $sl
-  else
-   local.get $size
-   local.tee $6
-   i32.const 1073741820
-   local.tee $7
-   local.get $6
-   local.get $7
-   i32.lt_u
-   select
-   local.set $boundedSize
-   i32.const 31
-   local.get $boundedSize
-   i32.clz
-   i32.sub
-   local.set $fl
-   local.get $boundedSize
-   local.get $fl
-   i32.const 4
-   i32.sub
-   i32.shr_u
-   i32.const 1
-   i32.const 4
-   i32.shl
-   i32.xor
-   local.set $sl
-   local.get $fl
-   i32.const 8
-   i32.const 1
-   i32.sub
-   i32.sub
-   local.set $fl
-  end
-  i32.const 1
-  drop
-  local.get $fl
-  i32.const 23
-  i32.lt_u
-  if (result i32)
-   local.get $sl
-   i32.const 16
-   i32.lt_u
-  else
-   i32.const 0
-  end
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $block
-  i32.load $0 offset=4
-  local.set $prev
-  local.get $block
-  i32.load $0 offset=8
-  local.set $next
-  local.get $prev
-  if
-   local.get $prev
-   local.get $next
-   call $~lib/rt/tlsf/Block#set:next
-  end
-  local.get $next
-  if
-   local.get $next
-   local.get $prev
-   call $~lib/rt/tlsf/Block#set:prev
-  end
-  local.get $block
-  local.get $root
-  local.set $root|11
-  local.get $fl
-  local.set $fl|12
-  local.get $sl
-  local.set $sl|13
-  local.get $root|11
-  local.get $fl|12
-  i32.const 4
-  i32.shl
-  local.get $sl|13
-  i32.add
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load $0 offset=96
-  i32.eq
-  if
-   local.get $root
-   local.set $root|14
-   local.get $fl
-   local.set $fl|15
-   local.get $sl
-   local.set $sl|16
-   local.get $next
-   local.set $head
-   local.get $root|14
-   local.get $fl|15
-   i32.const 4
-   i32.shl
-   local.get $sl|16
-   i32.add
-   i32.const 2
-   i32.shl
-   i32.add
-   local.get $head
-   i32.store $0 offset=96
-   local.get $next
-   i32.eqz
-   if
-    local.get $root
-    local.set $root|18
-    local.get $fl
-    local.set $fl|19
-    local.get $root|18
-    local.get $fl|19
-    i32.const 2
-    i32.shl
-    i32.add
-    i32.load $0 offset=4
-    local.set $slMap
-    local.get $root
-    local.set $root|21
-    local.get $fl
-    local.set $fl|22
-    local.get $slMap
-    i32.const 1
-    local.get $sl
-    i32.shl
-    i32.const -1
-    i32.xor
-    i32.and
-    local.tee $slMap
-    local.set $slMap|23
-    local.get $root|21
-    local.get $fl|22
-    i32.const 2
-    i32.shl
-    i32.add
-    local.get $slMap|23
-    i32.store $0 offset=4
-    local.get $slMap
-    i32.eqz
-    if
-     local.get $root
-     local.get $root
-     i32.load $0
-     i32.const 1
-     local.get $fl
-     i32.shl
-     i32.const -1
-     i32.xor
-     i32.and
-     call $~lib/rt/tlsf/Root#set:flMap
-    end
-   end
-  end
- )
- (func $~lib/rt/tlsf/insertBlock (type $i32_i32_=>_none) (param $root i32) (param $block i32)
-  (local $blockInfo i32)
-  (local $block|3 i32)
-  (local $right i32)
-  (local $rightInfo i32)
-  (local $block|6 i32)
-  (local $block|7 i32)
-  (local $left i32)
-  (local $leftInfo i32)
-  (local $size i32)
-  (local $fl i32)
-  (local $sl i32)
-  (local $13 i32)
-  (local $14 i32)
-  (local $boundedSize i32)
-  (local $root|16 i32)
-  (local $fl|17 i32)
-  (local $sl|18 i32)
-  (local $head i32)
-  (local $root|20 i32)
-  (local $fl|21 i32)
-  (local $sl|22 i32)
-  (local $head|23 i32)
-  (local $root|24 i32)
-  (local $fl|25 i32)
-  (local $root|26 i32)
-  (local $fl|27 i32)
-  (local $slMap i32)
-  i32.const 1
-  drop
-  local.get $block
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $block
-  i32.load $0
-  local.set $blockInfo
-  i32.const 1
-  drop
-  local.get $blockInfo
-  i32.const 1
-  i32.and
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $block
-  local.set $block|3
-  local.get $block|3
-  i32.const 4
-  i32.add
-  local.get $block|3
-  i32.load $0
-  i32.const 3
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.add
-  local.set $right
-  local.get $right
-  i32.load $0
-  local.set $rightInfo
-  local.get $rightInfo
-  i32.const 1
-  i32.and
-  if
-   local.get $root
-   local.get $right
-   call $~lib/rt/tlsf/removeBlock
-   local.get $block
-   local.get $blockInfo
-   i32.const 4
-   i32.add
-   local.get $rightInfo
-   i32.const 3
-   i32.const -1
-   i32.xor
-   i32.and
-   i32.add
-   local.tee $blockInfo
-   call $~lib/rt/common/BLOCK#set:mmInfo
-   local.get $block
-   local.set $block|6
-   local.get $block|6
-   i32.const 4
-   i32.add
-   local.get $block|6
-   i32.load $0
-   i32.const 3
-   i32.const -1
-   i32.xor
-   i32.and
-   i32.add
-   local.set $right
-   local.get $right
-   i32.load $0
-   local.set $rightInfo
-  end
-  local.get $blockInfo
-  i32.const 2
-  i32.and
-  if
-   local.get $block
-   local.set $block|7
-   local.get $block|7
-   i32.const 4
-   i32.sub
-   i32.load $0
-   local.set $left
-   local.get $left
-   i32.load $0
-   local.set $leftInfo
-   i32.const 1
-   drop
-   local.get $leftInfo
-   i32.const 1
-   i32.and
-   i32.eqz
-   if
-    unreachable
-   end
-   local.get $root
-   local.get $left
-   call $~lib/rt/tlsf/removeBlock
-   local.get $left
-   local.set $block
-   local.get $block
-   local.get $leftInfo
-   i32.const 4
-   i32.add
-   local.get $blockInfo
-   i32.const 3
-   i32.const -1
-   i32.xor
-   i32.and
-   i32.add
-   local.tee $blockInfo
-   call $~lib/rt/common/BLOCK#set:mmInfo
-  end
-  local.get $right
-  local.get $rightInfo
-  i32.const 2
-  i32.or
-  call $~lib/rt/common/BLOCK#set:mmInfo
-  local.get $blockInfo
-  i32.const 3
-  i32.const -1
-  i32.xor
-  i32.and
-  local.set $size
-  i32.const 1
-  drop
-  local.get $size
-  i32.const 12
-  i32.ge_u
-  i32.eqz
-  if
-   unreachable
-  end
-  i32.const 1
-  drop
-  local.get $block
-  i32.const 4
-  i32.add
-  local.get $size
-  i32.add
-  local.get $right
-  i32.eq
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $right
-  i32.const 4
-  i32.sub
-  local.get $block
-  i32.store $0
-  local.get $size
-  i32.const 256
-  i32.lt_u
-  if
-   i32.const 0
-   local.set $fl
-   local.get $size
-   i32.const 4
-   i32.shr_u
-   local.set $sl
-  else
-   local.get $size
-   local.tee $13
-   i32.const 1073741820
-   local.tee $14
-   local.get $13
-   local.get $14
-   i32.lt_u
-   select
-   local.set $boundedSize
-   i32.const 31
-   local.get $boundedSize
-   i32.clz
-   i32.sub
-   local.set $fl
-   local.get $boundedSize
-   local.get $fl
-   i32.const 4
-   i32.sub
-   i32.shr_u
-   i32.const 1
-   i32.const 4
-   i32.shl
-   i32.xor
-   local.set $sl
-   local.get $fl
-   i32.const 8
-   i32.const 1
-   i32.sub
-   i32.sub
-   local.set $fl
-  end
-  i32.const 1
-  drop
-  local.get $fl
-  i32.const 23
-  i32.lt_u
-  if (result i32)
-   local.get $sl
-   i32.const 16
-   i32.lt_u
-  else
-   i32.const 0
-  end
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $root
-  local.set $root|16
-  local.get $fl
-  local.set $fl|17
-  local.get $sl
-  local.set $sl|18
-  local.get $root|16
-  local.get $fl|17
-  i32.const 4
-  i32.shl
-  local.get $sl|18
-  i32.add
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load $0 offset=96
-  local.set $head
-  local.get $block
-  i32.const 0
-  call $~lib/rt/tlsf/Block#set:prev
-  local.get $block
-  local.get $head
-  call $~lib/rt/tlsf/Block#set:next
-  local.get $head
-  if
-   local.get $head
-   local.get $block
-   call $~lib/rt/tlsf/Block#set:prev
-  end
-  local.get $root
-  local.set $root|20
-  local.get $fl
-  local.set $fl|21
-  local.get $sl
-  local.set $sl|22
-  local.get $block
-  local.set $head|23
-  local.get $root|20
-  local.get $fl|21
-  i32.const 4
-  i32.shl
-  local.get $sl|22
-  i32.add
-  i32.const 2
-  i32.shl
-  i32.add
-  local.get $head|23
-  i32.store $0 offset=96
-  local.get $root
-  local.get $root
-  i32.load $0
-  i32.const 1
-  local.get $fl
-  i32.shl
-  i32.or
-  call $~lib/rt/tlsf/Root#set:flMap
-  local.get $root
-  local.set $root|26
-  local.get $fl
-  local.set $fl|27
-  local.get $root
-  local.set $root|24
-  local.get $fl
-  local.set $fl|25
-  local.get $root|24
-  local.get $fl|25
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load $0 offset=4
-  i32.const 1
-  local.get $sl
-  i32.shl
-  i32.or
-  local.set $slMap
-  local.get $root|26
-  local.get $fl|27
-  i32.const 2
-  i32.shl
-  i32.add
-  local.get $slMap
-  i32.store $0 offset=4
- )
- (func $~lib/rt/tlsf/addMemory (type $i32_i32_i32_=>_i32) (param $root i32) (param $start i32) (param $end i32) (result i32)
-  (local $root|3 i32)
-  (local $tail i32)
-  (local $tailInfo i32)
-  (local $size i32)
-  (local $leftSize i32)
-  (local $left i32)
-  (local $root|9 i32)
-  (local $tail|10 i32)
-  i32.const 1
-  drop
-  local.get $start
-  local.get $end
-  i32.le_u
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $start
-  i32.const 4
-  i32.add
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.const 4
-  i32.sub
-  local.set $start
-  local.get $end
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  local.set $end
-  local.get $root
-  local.set $root|3
-  local.get $root|3
-  i32.load $0 offset=1568
-  local.set $tail
-  i32.const 0
-  local.set $tailInfo
-  local.get $tail
-  if
-   i32.const 1
-   drop
-   local.get $start
-   local.get $tail
-   i32.const 4
-   i32.add
-   i32.ge_u
-   i32.eqz
-   if
-    unreachable
-   end
-   local.get $start
-   i32.const 16
-   i32.sub
-   local.get $tail
-   i32.eq
-   if
-    local.get $start
-    i32.const 16
-    i32.sub
-    local.set $start
-    local.get $tail
-    i32.load $0
-    local.set $tailInfo
-   else
-    nop
-   end
-  else
-   i32.const 1
-   drop
-   local.get $start
-   local.get $root
-   i32.const 1572
-   i32.add
-   i32.ge_u
-   i32.eqz
-   if
-    unreachable
-   end
-  end
-  local.get $end
-  local.get $start
-  i32.sub
-  local.set $size
-  local.get $size
-  i32.const 4
-  i32.const 12
-  i32.add
-  i32.const 4
-  i32.add
-  i32.lt_u
-  if
-   i32.const 0
-   return
-  end
-  local.get $size
-  i32.const 2
-  i32.const 4
-  i32.mul
-  i32.sub
-  local.set $leftSize
-  local.get $start
-  local.set $left
-  local.get $left
-  local.get $leftSize
-  i32.const 1
-  i32.or
-  local.get $tailInfo
-  i32.const 2
-  i32.and
-  i32.or
-  call $~lib/rt/common/BLOCK#set:mmInfo
-  local.get $left
-  i32.const 0
-  call $~lib/rt/tlsf/Block#set:prev
-  local.get $left
-  i32.const 0
-  call $~lib/rt/tlsf/Block#set:next
-  local.get $start
-  i32.const 4
-  i32.add
-  local.get $leftSize
-  i32.add
-  local.set $tail
-  local.get $tail
-  i32.const 0
-  i32.const 2
-  i32.or
-  call $~lib/rt/common/BLOCK#set:mmInfo
-  local.get $root
-  local.set $root|9
-  local.get $tail
-  local.set $tail|10
-  local.get $root|9
-  local.get $tail|10
-  i32.store $0 offset=1568
-  local.get $root
-  local.get $left
-  call $~lib/rt/tlsf/insertBlock
-  i32.const 1
- )
- (func $~lib/rt/tlsf/initialize (type $none_=>_none)
-  (local $rootOffset i32)
-  (local $pagesBefore i32)
-  (local $pagesNeeded i32)
-  (local $root i32)
-  (local $root|4 i32)
-  (local $tail i32)
-  (local $fl i32)
-  (local $7 i32)
-  (local $root|8 i32)
-  (local $fl|9 i32)
-  (local $slMap i32)
-  (local $sl i32)
-  (local $12 i32)
-  (local $root|13 i32)
-  (local $fl|14 i32)
-  (local $sl|15 i32)
-  (local $head i32)
-  (local $memStart i32)
-  i32.const 0
-  drop
-  global.get $~lib/memory/__heap_base
-  i32.const 15
-  i32.add
-  i32.const 15
-  i32.const -1
-  i32.xor
-  i32.and
-  local.set $rootOffset
-  memory.size $0
-  local.set $pagesBefore
-  local.get $rootOffset
-  i32.const 1572
-  i32.add
-  i32.const 65535
-  i32.add
-  i32.const 65535
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.const 16
-  i32.shr_u
-  local.set $pagesNeeded
-  local.get $pagesNeeded
-  local.get $pagesBefore
-  i32.gt_s
-  if (result i32)
-   local.get $pagesNeeded
-   local.get $pagesBefore
-   i32.sub
-   memory.grow $0
-   i32.const 0
-   i32.lt_s
-  else
-   i32.const 0
-  end
-  if
-   unreachable
-  end
-  local.get $rootOffset
-  local.set $root
-  local.get $root
-  i32.const 0
-  call $~lib/rt/tlsf/Root#set:flMap
-  local.get $root
-  local.set $root|4
-  i32.const 0
-  local.set $tail
-  local.get $root|4
-  local.get $tail
-  i32.store $0 offset=1568
-  i32.const 0
-  local.set $fl
-  loop $for-loop|0
-   local.get $fl
-   i32.const 23
-   i32.lt_u
-   local.set $7
-   local.get $7
-   if
-    local.get $root
-    local.set $root|8
-    local.get $fl
-    local.set $fl|9
-    i32.const 0
-    local.set $slMap
-    local.get $root|8
-    local.get $fl|9
-    i32.const 2
-    i32.shl
-    i32.add
-    local.get $slMap
-    i32.store $0 offset=4
-    i32.const 0
-    local.set $sl
-    loop $for-loop|1
-     local.get $sl
-     i32.const 16
-     i32.lt_u
-     local.set $12
-     local.get $12
-     if
-      local.get $root
-      local.set $root|13
-      local.get $fl
-      local.set $fl|14
-      local.get $sl
-      local.set $sl|15
-      i32.const 0
-      local.set $head
-      local.get $root|13
-      local.get $fl|14
-      i32.const 4
-      i32.shl
-      local.get $sl|15
-      i32.add
-      i32.const 2
-      i32.shl
-      i32.add
-      local.get $head
-      i32.store $0 offset=96
-      local.get $sl
-      i32.const 1
-      i32.add
-      local.set $sl
-      br $for-loop|1
-     end
-    end
-    local.get $fl
-    i32.const 1
-    i32.add
-    local.set $fl
-    br $for-loop|0
-   end
-  end
-  local.get $rootOffset
-  i32.const 1572
-  i32.add
-  local.set $memStart
-  i32.const 0
-  drop
-  local.get $root
-  local.get $memStart
-  memory.size $0
-  i32.const 16
-  i32.shl
-  call $~lib/rt/tlsf/addMemory
-  drop
-  local.get $root
-  global.set $~lib/rt/tlsf/ROOT
- )
- (func $~lib/rt/tlsf/checkUsedBlock (type $i32_=>_i32) (param $ptr i32) (result i32)
+ (func $~lib/rt/stub/__alloc (type $i32_=>_i32) (param $size i32) (result i32)
   (local $block i32)
-  local.get $ptr
-  i32.const 4
-  i32.sub
-  local.set $block
-  local.get $ptr
-  i32.const 0
-  i32.ne
-  if (result i32)
-   local.get $ptr
-   i32.const 15
-   i32.and
-   i32.eqz
-  else
-   i32.const 0
-  end
-  if (result i32)
-   local.get $block
-   i32.load $0
-   i32.const 1
-   i32.and
-   i32.eqz
-  else
-   i32.const 0
-  end
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $block
- )
- (func $~lib/rt/tlsf/freeBlock (type $i32_i32_=>_none) (param $root i32) (param $block i32)
-  i32.const 0
-  drop
-  local.get $block
-  local.get $block
-  i32.load $0
-  i32.const 1
-  i32.or
-  call $~lib/rt/common/BLOCK#set:mmInfo
-  local.get $root
-  local.get $block
-  call $~lib/rt/tlsf/insertBlock
- )
- (func $~lib/rt/tlsf/__free (type $i32_=>_none) (param $ptr i32)
-  local.get $ptr
-  global.get $~lib/memory/__heap_base
-  i32.lt_u
-  if
-   return
-  end
-  global.get $~lib/rt/tlsf/ROOT
-  i32.eqz
-  if
-   call $~lib/rt/tlsf/initialize
-  end
-  global.get $~lib/rt/tlsf/ROOT
-  local.get $ptr
-  call $~lib/rt/tlsf/checkUsedBlock
-  call $~lib/rt/tlsf/freeBlock
- )
- (func $~lib/rt/itcms/free (type $i32_=>_none) (param $obj i32)
-  local.get $obj
-  global.get $~lib/memory/__heap_base
-  i32.lt_u
-  if
-   local.get $obj
-   i32.const 0
-   call $~lib/rt/itcms/Object#set:nextWithColor
-   local.get $obj
-   i32.const 0
-   call $~lib/rt/itcms/Object#set:prev
-  else
-   global.get $~lib/rt/itcms/total
-   local.get $obj
-   call $~lib/rt/itcms/Object#get:size
-   i32.sub
-   global.set $~lib/rt/itcms/total
-   i32.const 0
-   drop
-   local.get $obj
-   i32.const 4
-   i32.add
-   call $~lib/rt/tlsf/__free
-  end
- )
- (func $~lib/rt/itcms/step (type $none_=>_i32) (result i32)
-  (local $obj i32)
-  (local $1 i32)
-  (local $black i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $from i32)
-  block $break|0
-   block $case2|0
-    block $case1|0
-     block $case0|0
-      global.get $~lib/rt/itcms/state
-      local.set $1
-      local.get $1
-      i32.const 0
-      i32.eq
-      br_if $case0|0
-      local.get $1
-      i32.const 1
-      i32.eq
-      br_if $case1|0
-      local.get $1
-      i32.const 2
-      i32.eq
-      br_if $case2|0
-      br $break|0
-     end
-     i32.const 1
-     global.set $~lib/rt/itcms/state
-     i32.const 0
-     global.set $~lib/rt/itcms/visitCount
-     i32.const 0
-     call $~lib/rt/itcms/visitRoots
-     global.get $~lib/rt/itcms/toSpace
-     global.set $~lib/rt/itcms/iter
-     global.get $~lib/rt/itcms/visitCount
-     i32.const 1
-     i32.mul
-     return
-    end
-    global.get $~lib/rt/itcms/white
-    i32.eqz
-    local.set $black
-    global.get $~lib/rt/itcms/iter
-    call $~lib/rt/itcms/Object#get:next
-    local.set $obj
-    loop $while-continue|1
-     local.get $obj
-     global.get $~lib/rt/itcms/toSpace
-     i32.ne
-     local.set $3
-     local.get $3
-     if
-      local.get $obj
-      global.set $~lib/rt/itcms/iter
-      local.get $obj
-      call $~lib/rt/itcms/Object#get:color
-      local.get $black
-      i32.ne
-      if
-       local.get $obj
-       local.get $black
-       call $~lib/rt/itcms/Object#set:color
-       i32.const 0
-       global.set $~lib/rt/itcms/visitCount
-       local.get $obj
-       i32.const 20
-       i32.add
-       i32.const 0
-       call $~lib/rt/__visit_members
-       global.get $~lib/rt/itcms/visitCount
-       i32.const 1
-       i32.mul
-       return
-      end
-      local.get $obj
-      call $~lib/rt/itcms/Object#get:next
-      local.set $obj
-      br $while-continue|1
-     end
-    end
-    i32.const 0
-    global.set $~lib/rt/itcms/visitCount
-    i32.const 0
-    call $~lib/rt/itcms/visitRoots
-    global.get $~lib/rt/itcms/iter
-    call $~lib/rt/itcms/Object#get:next
-    local.set $obj
-    local.get $obj
-    global.get $~lib/rt/itcms/toSpace
-    i32.eq
-    if
-     i32.const 0
-     call $~lib/rt/itcms/visitStack
-     global.get $~lib/rt/itcms/iter
-     call $~lib/rt/itcms/Object#get:next
-     local.set $obj
-     loop $while-continue|2
-      local.get $obj
-      global.get $~lib/rt/itcms/toSpace
-      i32.ne
-      local.set $4
-      local.get $4
-      if
-       local.get $obj
-       call $~lib/rt/itcms/Object#get:color
-       local.get $black
-       i32.ne
-       if
-        local.get $obj
-        local.get $black
-        call $~lib/rt/itcms/Object#set:color
-        local.get $obj
-        i32.const 20
-        i32.add
-        i32.const 0
-        call $~lib/rt/__visit_members
-       end
-       local.get $obj
-       call $~lib/rt/itcms/Object#get:next
-       local.set $obj
-       br $while-continue|2
-      end
-     end
-     global.get $~lib/rt/itcms/fromSpace
-     local.set $from
-     global.get $~lib/rt/itcms/toSpace
-     global.set $~lib/rt/itcms/fromSpace
-     local.get $from
-     global.set $~lib/rt/itcms/toSpace
-     local.get $black
-     global.set $~lib/rt/itcms/white
-     local.get $from
-     call $~lib/rt/itcms/Object#get:next
-     global.set $~lib/rt/itcms/iter
-     i32.const 2
-     global.set $~lib/rt/itcms/state
-    end
-    global.get $~lib/rt/itcms/visitCount
-    i32.const 1
-    i32.mul
-    return
-   end
-   global.get $~lib/rt/itcms/iter
-   local.set $obj
-   local.get $obj
-   global.get $~lib/rt/itcms/toSpace
-   i32.ne
-   if
-    local.get $obj
-    call $~lib/rt/itcms/Object#get:next
-    global.set $~lib/rt/itcms/iter
-    i32.const 1
-    drop
-    local.get $obj
-    call $~lib/rt/itcms/Object#get:color
-    global.get $~lib/rt/itcms/white
-    i32.eqz
-    i32.eq
-    i32.eqz
-    if
-     unreachable
-    end
-    local.get $obj
-    call $~lib/rt/itcms/free
-    i32.const 10
-    return
-   end
-   global.get $~lib/rt/itcms/toSpace
-   global.get $~lib/rt/itcms/toSpace
-   call $~lib/rt/itcms/Object#set:nextWithColor
-   global.get $~lib/rt/itcms/toSpace
-   global.get $~lib/rt/itcms/toSpace
-   call $~lib/rt/itcms/Object#set:prev
-   i32.const 0
-   global.set $~lib/rt/itcms/state
-   br $break|0
-  end
-  i32.const 0
- )
- (func $~lib/rt/itcms/interrupt (type $none_=>_none)
-  (local $budget i32)
-  i32.const 0
-  drop
-  i32.const 0
-  drop
-  i32.const 1024
-  i32.const 200
-  i32.mul
-  i32.const 100
-  i32.div_u
-  local.set $budget
-  loop $do-loop|0
-   local.get $budget
-   call $~lib/rt/itcms/step
-   i32.sub
-   local.set $budget
-   global.get $~lib/rt/itcms/state
-   i32.const 0
-   i32.eq
-   if
-    i32.const 0
-    drop
-    global.get $~lib/rt/itcms/total
-    i64.extend_i32_u
-    i32.const 200
-    i64.extend_i32_u
-    i64.mul
-    i64.const 100
-    i64.div_u
-    i32.wrap_i64
-    i32.const 1024
-    i32.add
-    global.set $~lib/rt/itcms/threshold
-    i32.const 0
-    drop
-    return
-   end
-   local.get $budget
-   i32.const 0
-   i32.gt_s
-   br_if $do-loop|0
-  end
-  i32.const 0
-  drop
-  global.get $~lib/rt/itcms/total
-  i32.const 1024
-  global.get $~lib/rt/itcms/total
-  global.get $~lib/rt/itcms/threshold
-  i32.sub
-  i32.const 1024
-  i32.lt_u
-  i32.mul
-  i32.add
-  global.set $~lib/rt/itcms/threshold
-  i32.const 0
-  drop
- )
- (func $~lib/rt/tlsf/computeSize (type $i32_=>_i32) (param $size i32) (result i32)
-  local.get $size
-  i32.const 12
-  i32.le_u
-  if (result i32)
-   i32.const 12
-  else
-   local.get $size
-   i32.const 4
-   i32.add
-   i32.const 15
-   i32.add
-   i32.const 15
-   i32.const -1
-   i32.xor
-   i32.and
-   i32.const 4
-   i32.sub
-  end
- )
- (func $~lib/rt/tlsf/prepareSize (type $i32_=>_i32) (param $size i32) (result i32)
+  (local $ptr i32)
+  (local $size|3 i32)
+  (local $payloadSize i32)
+  (local $newOffset i32)
+  (local $pagesBefore i32)
+  (local $maxOffset i32)
   local.get $size
   i32.const 1073741820
   i32.gt_u
   if
    unreachable
   end
-  local.get $size
-  call $~lib/rt/tlsf/computeSize
- )
- (func $~lib/rt/tlsf/searchBlock (type $i32_i32_=>_i32) (param $root i32) (param $size i32) (result i32)
-  (local $fl i32)
-  (local $sl i32)
-  (local $requestSize i32)
-  (local $root|5 i32)
-  (local $fl|6 i32)
-  (local $slMap i32)
-  (local $head i32)
-  (local $flMap i32)
-  (local $root|10 i32)
-  (local $fl|11 i32)
-  (local $root|12 i32)
-  (local $fl|13 i32)
-  (local $sl|14 i32)
-  (local $root|15 i32)
-  (local $fl|16 i32)
-  (local $sl|17 i32)
-  local.get $size
-  i32.const 256
-  i32.lt_u
-  if
-   i32.const 0
-   local.set $fl
-   local.get $size
-   i32.const 4
-   i32.shr_u
-   local.set $sl
-  else
-   local.get $size
-   i32.const 536870910
-   i32.lt_u
-   if (result i32)
-    local.get $size
-    i32.const 1
-    i32.const 27
-    local.get $size
-    i32.clz
-    i32.sub
-    i32.shl
-    i32.add
-    i32.const 1
-    i32.sub
-   else
-    local.get $size
-   end
-   local.set $requestSize
-   i32.const 31
-   local.get $requestSize
-   i32.clz
-   i32.sub
-   local.set $fl
-   local.get $requestSize
-   local.get $fl
-   i32.const 4
-   i32.sub
-   i32.shr_u
-   i32.const 1
-   i32.const 4
-   i32.shl
-   i32.xor
-   local.set $sl
-   local.get $fl
-   i32.const 8
-   i32.const 1
-   i32.sub
-   i32.sub
-   local.set $fl
-  end
-  i32.const 1
-  drop
-  local.get $fl
-  i32.const 23
-  i32.lt_u
-  if (result i32)
-   local.get $sl
-   i32.const 16
-   i32.lt_u
-  else
-   i32.const 0
-  end
+  global.get $~lib/rt/stub/offset
   i32.eqz
   if
-   unreachable
-  end
-  local.get $root
-  local.set $root|5
-  local.get $fl
-  local.set $fl|6
-  local.get $root|5
-  local.get $fl|6
-  i32.const 2
-  i32.shl
-  i32.add
-  i32.load $0 offset=4
-  i32.const 0
-  i32.const -1
-  i32.xor
-  local.get $sl
-  i32.shl
-  i32.and
-  local.set $slMap
-  i32.const 0
-  local.set $head
-  local.get $slMap
-  i32.eqz
-  if
-   local.get $root
-   i32.load $0
-   i32.const 0
+   global.get $~lib/memory/__heap_base
+   i32.const 4
+   i32.add
+   i32.const 15
+   i32.add
+   i32.const 15
    i32.const -1
    i32.xor
-   local.get $fl
-   i32.const 1
-   i32.add
-   i32.shl
    i32.and
-   local.set $flMap
-   local.get $flMap
-   i32.eqz
-   if
-    i32.const 0
-    local.set $head
-   else
-    local.get $flMap
-    i32.ctz
-    local.set $fl
-    local.get $root
-    local.set $root|10
-    local.get $fl
-    local.set $fl|11
-    local.get $root|10
-    local.get $fl|11
-    i32.const 2
-    i32.shl
-    i32.add
-    i32.load $0 offset=4
-    local.set $slMap
-    i32.const 1
-    drop
-    local.get $slMap
-    i32.eqz
-    if
-     unreachable
-    end
-    local.get $root
-    local.set $root|12
-    local.get $fl
-    local.set $fl|13
-    local.get $slMap
-    i32.ctz
-    local.set $sl|14
-    local.get $root|12
-    local.get $fl|13
-    i32.const 4
-    i32.shl
-    local.get $sl|14
-    i32.add
-    i32.const 2
-    i32.shl
-    i32.add
-    i32.load $0 offset=96
-    local.set $head
-   end
-  else
-   local.get $root
-   local.set $root|15
-   local.get $fl
-   local.set $fl|16
-   local.get $slMap
-   i32.ctz
-   local.set $sl|17
-   local.get $root|15
-   local.get $fl|16
    i32.const 4
-   i32.shl
-   local.get $sl|17
-   i32.add
-   i32.const 2
-   i32.shl
-   i32.add
-   i32.load $0 offset=96
-   local.set $head
-  end
-  local.get $head
- )
- (func $~lib/rt/tlsf/growMemory (type $i32_i32_=>_none) (param $root i32) (param $size i32)
-  (local $pagesBefore i32)
-  (local $root|3 i32)
-  (local $pagesNeeded i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $pagesWanted i32)
-  (local $pagesAfter i32)
-  i32.const 0
-  drop
-  local.get $size
-  i32.const 536870910
-  i32.lt_u
-  if
-   local.get $size
-   i32.const 1
-   i32.const 27
-   local.get $size
-   i32.clz
    i32.sub
-   i32.shl
-   i32.const 1
-   i32.sub
-   i32.add
-   local.set $size
+   global.set $~lib/rt/stub/offset
   end
-  memory.size $0
-  local.set $pagesBefore
-  local.get $size
+  global.get $~lib/rt/stub/offset
+  local.set $block
+  global.get $~lib/rt/stub/offset
   i32.const 4
-  local.get $pagesBefore
-  i32.const 16
-  i32.shl
-  i32.const 4
-  i32.sub
-  local.get $root
-  local.set $root|3
-  local.get $root|3
-  i32.load $0 offset=1568
-  i32.ne
-  i32.shl
   i32.add
-  local.set $size
+  local.set $ptr
   local.get $size
-  i32.const 65535
-  i32.add
-  i32.const 65535
-  i32.const -1
-  i32.xor
-  i32.and
-  i32.const 16
-  i32.shr_u
-  local.set $pagesNeeded
-  local.get $pagesBefore
-  local.tee $5
-  local.get $pagesNeeded
-  local.tee $6
-  local.get $5
-  local.get $6
-  i32.gt_s
-  select
-  local.set $pagesWanted
-  local.get $pagesWanted
-  memory.grow $0
-  i32.const 0
-  i32.lt_s
-  if
-   local.get $pagesNeeded
-   memory.grow $0
-   i32.const 0
-   i32.lt_s
-   if
-    unreachable
-   end
-  end
-  memory.size $0
-  local.set $pagesAfter
-  local.get $root
-  local.get $pagesBefore
-  i32.const 16
-  i32.shl
-  local.get $pagesAfter
-  i32.const 16
-  i32.shl
-  call $~lib/rt/tlsf/addMemory
-  drop
- )
- (func $~lib/rt/tlsf/prepareBlock (type $i32_i32_i32_=>_none) (param $root i32) (param $block i32) (param $size i32)
-  (local $blockInfo i32)
-  (local $remaining i32)
-  (local $spare i32)
-  (local $block|6 i32)
-  (local $block|7 i32)
-  local.get $block
-  i32.load $0
-  local.set $blockInfo
-  i32.const 1
-  drop
-  local.get $size
+  local.set $size|3
+  local.get $size|3
   i32.const 4
   i32.add
   i32.const 15
-  i32.and
-  i32.eqz
-  i32.eqz
-  if
-   unreachable
-  end
-  local.get $blockInfo
-  i32.const 3
+  i32.add
+  i32.const 15
   i32.const -1
   i32.xor
   i32.and
-  local.get $size
+  i32.const 4
   i32.sub
-  local.set $remaining
-  local.get $remaining
-  i32.const 4
-  i32.const 12
-  i32.add
-  i32.ge_u
-  if
-   local.get $block
-   local.get $size
-   local.get $blockInfo
-   i32.const 2
-   i32.and
-   i32.or
-   call $~lib/rt/common/BLOCK#set:mmInfo
-   local.get $block
-   i32.const 4
-   i32.add
-   local.get $size
-   i32.add
-   local.set $spare
-   local.get $spare
-   local.get $remaining
-   i32.const 4
-   i32.sub
-   i32.const 1
-   i32.or
-   call $~lib/rt/common/BLOCK#set:mmInfo
-   local.get $root
-   local.get $spare
-   call $~lib/rt/tlsf/insertBlock
-  else
-   local.get $block
-   local.get $blockInfo
-   i32.const 1
-   i32.const -1
-   i32.xor
-   i32.and
-   call $~lib/rt/common/BLOCK#set:mmInfo
-   local.get $block
-   local.set $block|7
-   local.get $block|7
-   i32.const 4
-   i32.add
-   local.get $block|7
-   i32.load $0
-   i32.const 3
-   i32.const -1
-   i32.xor
-   i32.and
-   i32.add
-   local.get $block
-   local.set $block|6
-   local.get $block|6
-   i32.const 4
-   i32.add
-   local.get $block|6
-   i32.load $0
-   i32.const 3
-   i32.const -1
-   i32.xor
-   i32.and
-   i32.add
-   i32.load $0
-   i32.const 2
-   i32.const -1
-   i32.xor
-   i32.and
-   call $~lib/rt/common/BLOCK#set:mmInfo
-  end
- )
- (func $~lib/rt/tlsf/allocateBlock (type $i32_i32_=>_i32) (param $root i32) (param $size i32) (result i32)
-  (local $payloadSize i32)
-  (local $block i32)
-  local.get $size
-  call $~lib/rt/tlsf/prepareSize
   local.set $payloadSize
-  local.get $root
+  local.get $ptr
   local.get $payloadSize
-  call $~lib/rt/tlsf/searchBlock
-  local.set $block
-  local.get $block
-  i32.eqz
-  if
-   local.get $root
-   local.get $payloadSize
-   call $~lib/rt/tlsf/growMemory
-   local.get $root
-   local.get $payloadSize
-   call $~lib/rt/tlsf/searchBlock
-   local.set $block
-   i32.const 1
-   drop
-   local.get $block
-   i32.eqz
-   if
-    unreachable
-   end
-  end
-  i32.const 1
-  drop
-  local.get $block
-  i32.load $0
-  i32.const 3
+  i32.add
+  local.set $newOffset
+  memory.size $0
+  local.set $pagesBefore
+  local.get $pagesBefore
+  i32.const 16
+  i32.shl
+  i32.const 15
+  i32.add
+  i32.const 15
   i32.const -1
   i32.xor
   i32.and
-  local.get $payloadSize
-  i32.ge_u
-  i32.eqz
+  local.set $maxOffset
+  local.get $newOffset
+  local.get $maxOffset
+  i32.gt_u
   if
    unreachable
   end
-  local.get $root
-  local.get $block
-  call $~lib/rt/tlsf/removeBlock
-  local.get $root
+  local.get $newOffset
+  global.set $~lib/rt/stub/offset
   local.get $block
   local.get $payloadSize
-  call $~lib/rt/tlsf/prepareBlock
-  i32.const 0
-  drop
-  local.get $block
+  call $~lib/rt/common/BLOCK#set:mmInfo
+  local.get $ptr
  )
- (func $~lib/rt/tlsf/__alloc (type $i32_=>_i32) (param $size i32) (result i32)
-  global.get $~lib/rt/tlsf/ROOT
-  i32.eqz
-  if
-   call $~lib/rt/tlsf/initialize
-  end
-  global.get $~lib/rt/tlsf/ROOT
-  local.get $size
-  call $~lib/rt/tlsf/allocateBlock
-  i32.const 4
-  i32.add
- )
- (func $~lib/rt/itcms/Object#set:rtId (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+ (func $~lib/rt/common/OBJECT#set:rtId (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
-  i32.store $0 offset=12
+  i32.store $0 offset=4
  )
- (func $~lib/rt/itcms/Object#set:rtSize (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
+ (func $~lib/rt/common/OBJECT#set:rtSize (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
-  i32.store $0 offset=16
+  i32.store $0 offset=8
  )
- (func $~lib/rt/itcms/__new (type $i32_i32_=>_i32) (param $size i32) (param $id i32) (result i32)
-  (local $obj i32)
+ (func $~lib/rt/stub/__new (type $i32_i32_=>_i32) (param $size i32) (param $id i32) (result i32)
   (local $ptr i32)
-  local.get $size
-  i32.const 1073741804
-  i32.ge_u
-  if
-   unreachable
-  end
-  global.get $~lib/rt/itcms/total
-  global.get $~lib/rt/itcms/threshold
-  i32.ge_u
-  if
-   call $~lib/rt/itcms/interrupt
-  end
+  (local $object i32)
   i32.const 16
   local.get $size
   i32.add
-  call $~lib/rt/tlsf/__alloc
-  i32.const 4
-  i32.sub
-  local.set $obj
-  local.get $obj
-  local.get $id
-  call $~lib/rt/itcms/Object#set:rtId
-  local.get $obj
-  local.get $size
-  call $~lib/rt/itcms/Object#set:rtSize
-  local.get $obj
-  global.get $~lib/rt/itcms/fromSpace
-  global.get $~lib/rt/itcms/white
-  call $~lib/rt/itcms/Object#linkTo
-  global.get $~lib/rt/itcms/total
-  local.get $obj
-  call $~lib/rt/itcms/Object#get:size
-  i32.add
-  global.set $~lib/rt/itcms/total
-  local.get $obj
-  i32.const 20
-  i32.add
+  call $~lib/rt/stub/__alloc
   local.set $ptr
   local.get $ptr
-  i32.const 0
+  i32.const 4
+  i32.sub
+  local.set $object
+  local.get $object
+  local.get $id
+  call $~lib/rt/common/OBJECT#set:rtId
+  local.get $object
   local.get $size
-  memory.fill $0
+  call $~lib/rt/common/OBJECT#set:rtSize
   local.get $ptr
+  i32.const 16
+  i32.add
  )
  (func $~lib/date/Date#set:epochMillis (type $i32_i64_=>_none) (param $0 i32) (param $1 i64)
   local.get $0
@@ -3656,7 +1762,7 @@
   i32.add
   i32.add
   local.set $year
-  i32.const 228
+  i32.const 44
   local.get $month
   i32.add
   i32.const 1
@@ -3718,7 +1824,7 @@
   (local $len|31 i32)
   local.get $size
   local.get $id
-  call $~lib/rt/itcms/__new
+  call $~lib/rt/stub/__new
   local.set $buffer
   local.get $data
   if
@@ -4006,7 +2112,7 @@
   local.get $this
   i32.const 20
   i32.sub
-  i32.load $0 offset=16
+  i32.load $0 offset=8
  )
  (func $~lib/staticarray/StaticArray<~lib/string/String>#__uget (type $i32_i32_=>_i32) (param $this i32) (param $index i32) (result i32)
   local.get $this
@@ -4016,10 +2122,12071 @@
   i32.add
   i32.load $0
  )
- (func $~lib/rt/common/OBJECT#set:rtSize (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store $0 offset=16
+ (func $~lib/date/Date#toDateString (type $i32_=>_i32) (param $this i32) (result i32)
+  (local $1 i32)
+  (local $weeks i32)
+  (local $3 i32)
+  (local $months i32)
+  (local $mo i32)
+  (local $da i32)
+  (local $yr i32)
+  (local $wd i32)
+  (local $9 i32)
+  (local $10 i32)
+  (local $value i32)
+  (local $padding i32)
+  (local $this|13 i32)
+  (local $value|14 i32)
+  (local $sign i32)
+  (local $decimals i32)
+  (local $out i32)
+  (local $end i32)
+  (local $num i32)
+  (local $t i32)
+  (local $r i32)
+  (local $end|22 i32)
+  (local $num|23 i32)
+  (local $t|24 i32)
+  (local $r|25 i32)
+  (local $end|26 i32)
+  (local $num|27 i32)
+  (local $t|28 i32)
+  (local $r|29 i32)
+  (local $end|30 i32)
+  (local $num|31 i32)
+  (local $t|32 i32)
+  (local $r|33 i32)
+  (local $end|34 i32)
+  (local $num|35 i32)
+  (local $t|36 i32)
+  (local $r|37 i32)
+  (local $end|38 i32)
+  (local $num|39 i32)
+  (local $t|40 i32)
+  (local $r|41 i32)
+  (local $end|42 i32)
+  (local $num|43 i32)
+  (local $t|44 i32)
+  (local $r|45 i32)
+  (local $end|46 i32)
+  (local $num|47 i32)
+  (local $t|48 i32)
+  (local $r|49 i32)
+  (local $end|50 i32)
+  (local $num|51 i32)
+  (local $t|52 i32)
+  (local $r|53 i32)
+  (local $end|54 i32)
+  (local $num|55 i32)
+  (local $s i32)
+  (local $inSize i32)
+  (local $targetSize i32)
+  (local $prependSize i32)
+  (local $out|60 i32)
+  (local $dest i32)
+  (local $value|62 i32)
+  (local $count i32)
+  (local $64 i32)
+  (local $65 i32)
+  (local $66 i32)
+  (local $67 i32)
+  (local $dest|68 i32)
+  (local $value|69 i32)
+  (local $count|70 i32)
+  (local $71 i32)
+  (local $72 i32)
+  (local $dest|73 i32)
+  (local $value|74 i32)
+  (local $count|75 i32)
+  (local $dest|76 i32)
+  (local $ptr i32)
+  (local $len i32)
+  (local $dest|79 i32)
+  (local $ptr|80 i32)
+  (local $dest|81 i32)
+  (local $ptr|82 i32)
+  (local $len|83 i32)
+  (local $dest|84 i32)
+  (local $ptr|85 i32)
+  (local $dest|86 i32)
+  (local $ptr|87 i32)
+  (local $len|88 i32)
+  (local $dest|89 i32)
+  (local $ptr|90 i32)
+  (local $dest|91 i32)
+  (local $ptr|92 i32)
+  (local $len|93 i32)
+  (local $year i32)
+  (local $month i32)
+  (local $week i32)
+  (local $value|97 i32)
+  (local $padding|98 i32)
+  (local $this|99 i32)
+  (local $value|100 i32)
+  (local $sign|101 i32)
+  (local $decimals|102 i32)
+  (local $out|103 i32)
+  (local $end|104 i32)
+  (local $num|105 i32)
+  (local $t|106 i32)
+  (local $r|107 i32)
+  (local $end|108 i32)
+  (local $num|109 i32)
+  (local $t|110 i32)
+  (local $r|111 i32)
+  (local $end|112 i32)
+  (local $num|113 i32)
+  (local $t|114 i32)
+  (local $r|115 i32)
+  (local $end|116 i32)
+  (local $num|117 i32)
+  (local $t|118 i32)
+  (local $r|119 i32)
+  (local $end|120 i32)
+  (local $num|121 i32)
+  (local $t|122 i32)
+  (local $r|123 i32)
+  (local $end|124 i32)
+  (local $num|125 i32)
+  (local $t|126 i32)
+  (local $r|127 i32)
+  (local $end|128 i32)
+  (local $num|129 i32)
+  (local $t|130 i32)
+  (local $r|131 i32)
+  (local $end|132 i32)
+  (local $num|133 i32)
+  (local $t|134 i32)
+  (local $r|135 i32)
+  (local $end|136 i32)
+  (local $num|137 i32)
+  (local $t|138 i32)
+  (local $r|139 i32)
+  (local $end|140 i32)
+  (local $num|141 i32)
+  (local $s|142 i32)
+  (local $inSize|143 i32)
+  (local $targetSize|144 i32)
+  (local $prependSize|145 i32)
+  (local $out|146 i32)
+  (local $dest|147 i32)
+  (local $value|148 i32)
+  (local $count|149 i32)
+  (local $150 i32)
+  (local $151 i32)
+  (local $152 i32)
+  (local $153 i32)
+  (local $dest|154 i32)
+  (local $value|155 i32)
+  (local $count|156 i32)
+  (local $157 i32)
+  (local $158 i32)
+  (local $dest|159 i32)
+  (local $value|160 i32)
+  (local $count|161 i32)
+  (local $dest|162 i32)
+  (local $ptr|163 i32)
+  (local $len|164 i32)
+  (local $dest|165 i32)
+  (local $ptr|166 i32)
+  (local $dest|167 i32)
+  (local $ptr|168 i32)
+  (local $len|169 i32)
+  (local $dest|170 i32)
+  (local $ptr|171 i32)
+  (local $dest|172 i32)
+  (local $ptr|173 i32)
+  (local $len|174 i32)
+  (local $dest|175 i32)
+  (local $ptr|176 i32)
+  (local $dest|177 i32)
+  (local $ptr|178 i32)
+  (local $len|179 i32)
+  (local $day i32)
+  (local $181 i32)
+  (local $dest|182 i32)
+  (local $src i32)
+  (local $l i32)
+  (local $dest|185 i32)
+  (local $ptr|186 i32)
+  (local $dest|187 i32)
+  (local $ptr|188 i32)
+  (local $len|189 i32)
+  (local $dest|190 i32)
+  (local $ptr|191 i32)
+  (local $dest|192 i32)
+  (local $ptr|193 i32)
+  (local $len|194 i32)
+  (local $dest|195 i32)
+  (local $ptr|196 i32)
+  (local $dest|197 i32)
+  (local $ptr|198 i32)
+  (local $len|199 i32)
+  (local $dest|200 i32)
+  (local $ptr|201 i32)
+  (local $dest|202 i32)
+  (local $ptr|203 i32)
+  (local $len|204 i32)
+  (local $dest|205 i32)
+  (local $ptr|206 i32)
+  (local $dest|207 i32)
+  (local $ptr|208 i32)
+  (local $len|209 i32)
+  (local $dest|210 i32)
+  (local $ptr|211 i32)
+  (local $dest|212 i32)
+  (local $ptr|213 i32)
+  (local $len|214 i32)
+  (local $dest|215 i32)
+  (local $src|216 i32)
+  (local $l|217 i32)
+  (local $dest|218 i32)
+  (local $ptr|219 i32)
+  (local $dest|220 i32)
+  (local $ptr|221 i32)
+  (local $len|222 i32)
+  (local $dest|223 i32)
+  (local $ptr|224 i32)
+  (local $dest|225 i32)
+  (local $ptr|226 i32)
+  (local $len|227 i32)
+  (local $dest|228 i32)
+  (local $ptr|229 i32)
+  (local $dest|230 i32)
+  (local $ptr|231 i32)
+  (local $len|232 i32)
+  (local $dest|233 i32)
+  (local $ptr|234 i32)
+  (local $dest|235 i32)
+  (local $ptr|236 i32)
+  (local $len|237 i32)
+  (local $dest|238 i32)
+  (local $ptr|239 i32)
+  (local $dest|240 i32)
+  (local $ptr|241 i32)
+  (local $len|242 i32)
+  (local $dest|243 i32)
+  (local $ptr|244 i32)
+  (local $dest|245 i32)
+  (local $ptr|246 i32)
+  (local $len|247 i32)
+  (local $dest|248 i32)
+  (local $src|249 i32)
+  (local $l|250 i32)
+  (local $dest|251 i32)
+  (local $ptr|252 i32)
+  (local $dest|253 i32)
+  (local $ptr|254 i32)
+  (local $len|255 i32)
+  (local $dest|256 i32)
+  (local $ptr|257 i32)
+  (local $dest|258 i32)
+  (local $ptr|259 i32)
+  (local $len|260 i32)
+  (local $dest|261 i32)
+  (local $ptr|262 i32)
+  (local $dest|263 i32)
+  (local $ptr|264 i32)
+  (local $len|265 i32)
+  (local $dest|266 i32)
+  (local $ptr|267 i32)
+  (local $dest|268 i32)
+  (local $ptr|269 i32)
+  (local $len|270 i32)
+  (local $dest|271 i32)
+  (local $ptr|272 i32)
+  (local $dest|273 i32)
+  (local $ptr|274 i32)
+  (local $len|275 i32)
+  (local $dest|276 i32)
+  (local $ptr|277 i32)
+  (local $dest|278 i32)
+  (local $ptr|279 i32)
+  (local $len|280 i32)
+  (local $dest|281 i32)
+  (local $src|282 i32)
+  (local $l|283 i32)
+  (local $dest|284 i32)
+  (local $ptr|285 i32)
+  (local $dest|286 i32)
+  (local $ptr|287 i32)
+  (local $len|288 i32)
+  (local $dest|289 i32)
+  (local $ptr|290 i32)
+  (local $dest|291 i32)
+  (local $ptr|292 i32)
+  (local $len|293 i32)
+  (local $dest|294 i32)
+  (local $ptr|295 i32)
+  (local $dest|296 i32)
+  (local $ptr|297 i32)
+  (local $len|298 i32)
+  (local $dest|299 i32)
+  (local $ptr|300 i32)
+  (local $dest|301 i32)
+  (local $ptr|302 i32)
+  (local $len|303 i32)
+  (local $dest|304 i32)
+  (local $ptr|305 i32)
+  (local $dest|306 i32)
+  (local $ptr|307 i32)
+  (local $len|308 i32)
+  (local $dest|309 i32)
+  (local $ptr|310 i32)
+  (local $dest|311 i32)
+  (local $ptr|312 i32)
+  (local $len|313 i32)
+  (local $dest|314 i32)
+  (local $src|315 i32)
+  (local $l|316 i32)
+  (local $dest|317 i32)
+  (local $ptr|318 i32)
+  (local $dest|319 i32)
+  (local $ptr|320 i32)
+  (local $len|321 i32)
+  (local $dest|322 i32)
+  (local $ptr|323 i32)
+  (local $dest|324 i32)
+  (local $ptr|325 i32)
+  (local $len|326 i32)
+  (local $dest|327 i32)
+  (local $ptr|328 i32)
+  (local $dest|329 i32)
+  (local $ptr|330 i32)
+  (local $len|331 i32)
+  (local $dest|332 i32)
+  (local $ptr|333 i32)
+  (local $dest|334 i32)
+  (local $ptr|335 i32)
+  (local $len|336 i32)
+  (local $dest|337 i32)
+  (local $ptr|338 i32)
+  (local $dest|339 i32)
+  (local $ptr|340 i32)
+  (local $len|341 i32)
+  (local $dest|342 i32)
+  (local $ptr|343 i32)
+  (local $dest|344 i32)
+  (local $ptr|345 i32)
+  (local $len|346 i32)
+  (local $dest|347 i32)
+  (local $src|348 i32)
+  (local $size i32)
+  i32.const 28
+  i32.const 4
+  i32.const 304
+  call $~lib/rt/__newBuffer
+  local.set $weeks
+  i32.const 48
+  i32.const 4
+  i32.const 768
+  call $~lib/rt/__newBuffer
+  local.set $months
+  local.get $this
+  i32.load $0 offset=4
+  local.set $mo
+  local.get $this
+  i32.load $0 offset=8
+  local.set $da
+  local.get $this
+  i32.load $0
+  local.set $yr
+  local.get $yr
+  local.get $mo
+  local.get $da
+  call $~lib/date/dayOfWeek
+  local.set $wd
+  block $~lib/date/stringify|inlined.0 (result i32)
+   local.get $yr
+   local.tee $9
+   i32.const 31
+   i32.shr_s
+   local.tee $10
+   local.get $9
+   i32.add
+   local.get $10
+   i32.xor
+   local.set $value
+   i32.const 4
+   local.set $padding
+   local.get $value
+   local.set $this|13
+   block $~lib/util/number/i32toa|inlined.0 (result i32)
+    local.get $this|13
+    local.set $value|14
+    local.get $value|14
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.0
+    end
+    local.get $value|14
+    i32.const 31
+    i32.shr_u
+    local.set $sign
+    local.get $sign
+    if
+     i32.const 0
+     local.get $value|14
+     i32.sub
+     local.set $value|14
+    end
+    local.get $value|14
+    call $~lib/util/number/decimalCount32
+    local.set $decimals
+    local.get $sign
+    local.get $decimals
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out
+    local.get $out
+    local.get $sign
+    i32.add
+    local.get $decimals
+    i32.add
+    local.set $end
+    local.get $value|14
+    local.set $num
+    local.get $num
+    i32.const 10
+    i32.div_u
+    local.set $t
+    local.get $num
+    i32.const 10
+    i32.rem_u
+    local.set $r
+    local.get $end
+    i32.const 1
+    i32.sub
+    local.set $end
+    local.get $end
+    i32.const 48
+    local.get $r
+    i32.add
+    i32.store8 $0
+    local.get $t
+    if
+     local.get $end
+     local.set $end|22
+     local.get $t
+     local.set $num|23
+     local.get $num|23
+     i32.const 10
+     i32.div_u
+     local.set $t|24
+     local.get $num|23
+     i32.const 10
+     i32.rem_u
+     local.set $r|25
+     local.get $end|22
+     i32.const 1
+     i32.sub
+     local.set $end|22
+     local.get $end|22
+     i32.const 48
+     local.get $r|25
+     i32.add
+     i32.store8 $0
+     local.get $t|24
+     if
+      local.get $end|22
+      local.set $end|26
+      local.get $t|24
+      local.set $num|27
+      local.get $num|27
+      i32.const 10
+      i32.div_u
+      local.set $t|28
+      local.get $num|27
+      i32.const 10
+      i32.rem_u
+      local.set $r|29
+      local.get $end|26
+      i32.const 1
+      i32.sub
+      local.set $end|26
+      local.get $end|26
+      i32.const 48
+      local.get $r|29
+      i32.add
+      i32.store8 $0
+      local.get $t|28
+      if
+       local.get $end|26
+       local.set $end|30
+       local.get $t|28
+       local.set $num|31
+       local.get $num|31
+       i32.const 10
+       i32.div_u
+       local.set $t|32
+       local.get $num|31
+       i32.const 10
+       i32.rem_u
+       local.set $r|33
+       local.get $end|30
+       i32.const 1
+       i32.sub
+       local.set $end|30
+       local.get $end|30
+       i32.const 48
+       local.get $r|33
+       i32.add
+       i32.store8 $0
+       local.get $t|32
+       if
+        local.get $end|30
+        local.set $end|34
+        local.get $t|32
+        local.set $num|35
+        local.get $num|35
+        i32.const 10
+        i32.div_u
+        local.set $t|36
+        local.get $num|35
+        i32.const 10
+        i32.rem_u
+        local.set $r|37
+        local.get $end|34
+        i32.const 1
+        i32.sub
+        local.set $end|34
+        local.get $end|34
+        i32.const 48
+        local.get $r|37
+        i32.add
+        i32.store8 $0
+        local.get $t|36
+        if
+         local.get $end|34
+         local.set $end|38
+         local.get $t|36
+         local.set $num|39
+         local.get $num|39
+         i32.const 10
+         i32.div_u
+         local.set $t|40
+         local.get $num|39
+         i32.const 10
+         i32.rem_u
+         local.set $r|41
+         local.get $end|38
+         i32.const 1
+         i32.sub
+         local.set $end|38
+         local.get $end|38
+         i32.const 48
+         local.get $r|41
+         i32.add
+         i32.store8 $0
+         local.get $t|40
+         if
+          local.get $end|38
+          local.set $end|42
+          local.get $t|40
+          local.set $num|43
+          local.get $num|43
+          i32.const 10
+          i32.div_u
+          local.set $t|44
+          local.get $num|43
+          i32.const 10
+          i32.rem_u
+          local.set $r|45
+          local.get $end|42
+          i32.const 1
+          i32.sub
+          local.set $end|42
+          local.get $end|42
+          i32.const 48
+          local.get $r|45
+          i32.add
+          i32.store8 $0
+          local.get $t|44
+          if
+           local.get $end|42
+           local.set $end|46
+           local.get $t|44
+           local.set $num|47
+           local.get $num|47
+           i32.const 10
+           i32.div_u
+           local.set $t|48
+           local.get $num|47
+           i32.const 10
+           i32.rem_u
+           local.set $r|49
+           local.get $end|46
+           i32.const 1
+           i32.sub
+           local.set $end|46
+           local.get $end|46
+           i32.const 48
+           local.get $r|49
+           i32.add
+           i32.store8 $0
+           local.get $t|48
+           if
+            local.get $end|46
+            local.set $end|50
+            local.get $t|48
+            local.set $num|51
+            local.get $num|51
+            i32.const 10
+            i32.div_u
+            local.set $t|52
+            local.get $num|51
+            i32.const 10
+            i32.rem_u
+            local.set $r|53
+            local.get $end|50
+            i32.const 1
+            i32.sub
+            local.set $end|50
+            local.get $end|50
+            i32.const 48
+            local.get $r|53
+            i32.add
+            i32.store8 $0
+            local.get $t|52
+            if
+             local.get $end|50
+             local.set $end|54
+             local.get $t|52
+             local.set $num|55
+             local.get $end|54
+             i32.const 1
+             i32.sub
+             local.tee $end|54
+             i32.const 48
+             local.get $num|55
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign
+    if
+     local.get $out
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out
+   end
+   local.set $s
+   local.get $s
+   call $~lib/string/String#get:length
+   local.set $inSize
+   local.get $padding
+   local.set $targetSize
+   local.get $targetSize
+   local.get $inSize
+   i32.le_u
+   if
+    local.get $s
+    br $~lib/date/stringify|inlined.0
+   end
+   local.get $targetSize
+   local.get $inSize
+   i32.sub
+   local.set $prependSize
+   local.get $targetSize
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|60
+   local.get $out|60
+   local.set $dest
+   i32.const 48
+   local.set $value|62
+   local.get $prependSize
+   local.set $count
+   local.get $count
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest
+    local.tee $64
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $64
+    local.get $value|62
+    i32.store8 $0
+    local.get $dest
+    local.tee $65
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $65
+    local.get $value|62
+    i32.store8 $0
+    local.get $dest
+    local.tee $66
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $66
+    local.get $value|62
+    i32.store8 $0
+    local.get $dest
+    local.tee $67
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $67
+    local.get $value|62
+    i32.store8 $0
+    local.get $count
+    i32.const 4
+    i32.sub
+    local.set $count
+   end
+   local.get $dest
+   local.set $dest|68
+   local.get $value|62
+   local.set $value|69
+   local.get $count
+   local.set $count|70
+   local.get $count|70
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|68
+    local.tee $71
+    i32.const 1
+    i32.add
+    local.set $dest|68
+    local.get $71
+    local.get $value|69
+    i32.store8 $0
+    local.get $dest|68
+    local.tee $72
+    i32.const 1
+    i32.add
+    local.set $dest|68
+    local.get $72
+    local.get $value|69
+    i32.store8 $0
+    local.get $count|70
+    i32.const 2
+    i32.sub
+    local.set $count|70
+   end
+   local.get $dest|68
+   local.set $dest|73
+   local.get $value|69
+   local.set $value|74
+   local.get $count|70
+   local.set $count|75
+   local.get $count|75
+   if
+    local.get $dest|73
+    local.get $value|74
+    i32.store8 $0
+   end
+   local.get $out|60
+   local.get $prependSize
+   i32.add
+   local.set $dest|76
+   local.get $s
+   local.set $ptr
+   local.get $inSize
+   local.set $len
+   local.get $len
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|76
+    local.set $dest|79
+    local.get $ptr
+    local.set $ptr|80
+    local.get $dest|79
+    local.get $ptr|80
+    i64.load $0
+    i64.store $0
+    local.get $dest|76
+    i32.const 8
+    i32.add
+    local.set $dest|76
+    local.get $ptr
+    i32.const 8
+    i32.add
+    local.set $ptr
+    local.get $len
+    i32.const 8
+    i32.sub
+    local.set $len
+   end
+   local.get $dest|76
+   local.set $dest|81
+   local.get $ptr
+   local.set $ptr|82
+   local.get $len
+   local.set $len|83
+   local.get $len|83
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|81
+    local.set $dest|84
+    local.get $ptr|82
+    local.set $ptr|85
+    local.get $dest|84
+    local.get $ptr|85
+    i32.load $0
+    i32.store $0
+    local.get $dest|81
+    i32.const 4
+    i32.add
+    local.set $dest|81
+    local.get $ptr|82
+    i32.const 4
+    i32.add
+    local.set $ptr|82
+    local.get $len|83
+    i32.const 4
+    i32.sub
+    local.set $len|83
+   end
+   local.get $dest|81
+   local.set $dest|86
+   local.get $ptr|82
+   local.set $ptr|87
+   local.get $len|83
+   local.set $len|88
+   local.get $len|88
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|86
+    local.set $dest|89
+    local.get $ptr|87
+    local.set $ptr|90
+    local.get $dest|89
+    local.get $ptr|90
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|86
+    i32.const 2
+    i32.add
+    local.set $dest|86
+    local.get $ptr|87
+    i32.const 2
+    i32.add
+    local.set $ptr|87
+    local.get $len|88
+    i32.const 2
+    i32.sub
+    local.set $len|88
+   end
+   local.get $dest|86
+   local.set $dest|91
+   local.get $ptr|87
+   local.set $ptr|92
+   local.get $len|88
+   local.set $len|93
+   local.get $len|93
+   if
+    local.get $dest|91
+    local.get $ptr|92
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|60
+  end
+  local.set $year
+  local.get $months
+  local.get $mo
+  i32.const 1
+  i32.sub
+  call $~lib/staticarray/StaticArray<~lib/string/String>#__uget
+  local.set $month
+  local.get $weeks
+  local.get $wd
+  call $~lib/staticarray/StaticArray<~lib/string/String>#__uget
+  local.set $week
+  block $~lib/date/stringify|inlined.1 (result i32)
+   local.get $da
+   local.set $value|97
+   i32.const 2
+   local.set $padding|98
+   local.get $value|97
+   local.set $this|99
+   block $~lib/util/number/i32toa|inlined.1 (result i32)
+    local.get $this|99
+    local.set $value|100
+    local.get $value|100
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.1
+    end
+    local.get $value|100
+    i32.const 31
+    i32.shr_u
+    local.set $sign|101
+    local.get $sign|101
+    if
+     i32.const 0
+     local.get $value|100
+     i32.sub
+     local.set $value|100
+    end
+    local.get $value|100
+    call $~lib/util/number/decimalCount32
+    local.set $decimals|102
+    local.get $sign|101
+    local.get $decimals|102
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out|103
+    local.get $out|103
+    local.get $sign|101
+    i32.add
+    local.get $decimals|102
+    i32.add
+    local.set $end|104
+    local.get $value|100
+    local.set $num|105
+    local.get $num|105
+    i32.const 10
+    i32.div_u
+    local.set $t|106
+    local.get $num|105
+    i32.const 10
+    i32.rem_u
+    local.set $r|107
+    local.get $end|104
+    i32.const 1
+    i32.sub
+    local.set $end|104
+    local.get $end|104
+    i32.const 48
+    local.get $r|107
+    i32.add
+    i32.store8 $0
+    local.get $t|106
+    if
+     local.get $end|104
+     local.set $end|108
+     local.get $t|106
+     local.set $num|109
+     local.get $num|109
+     i32.const 10
+     i32.div_u
+     local.set $t|110
+     local.get $num|109
+     i32.const 10
+     i32.rem_u
+     local.set $r|111
+     local.get $end|108
+     i32.const 1
+     i32.sub
+     local.set $end|108
+     local.get $end|108
+     i32.const 48
+     local.get $r|111
+     i32.add
+     i32.store8 $0
+     local.get $t|110
+     if
+      local.get $end|108
+      local.set $end|112
+      local.get $t|110
+      local.set $num|113
+      local.get $num|113
+      i32.const 10
+      i32.div_u
+      local.set $t|114
+      local.get $num|113
+      i32.const 10
+      i32.rem_u
+      local.set $r|115
+      local.get $end|112
+      i32.const 1
+      i32.sub
+      local.set $end|112
+      local.get $end|112
+      i32.const 48
+      local.get $r|115
+      i32.add
+      i32.store8 $0
+      local.get $t|114
+      if
+       local.get $end|112
+       local.set $end|116
+       local.get $t|114
+       local.set $num|117
+       local.get $num|117
+       i32.const 10
+       i32.div_u
+       local.set $t|118
+       local.get $num|117
+       i32.const 10
+       i32.rem_u
+       local.set $r|119
+       local.get $end|116
+       i32.const 1
+       i32.sub
+       local.set $end|116
+       local.get $end|116
+       i32.const 48
+       local.get $r|119
+       i32.add
+       i32.store8 $0
+       local.get $t|118
+       if
+        local.get $end|116
+        local.set $end|120
+        local.get $t|118
+        local.set $num|121
+        local.get $num|121
+        i32.const 10
+        i32.div_u
+        local.set $t|122
+        local.get $num|121
+        i32.const 10
+        i32.rem_u
+        local.set $r|123
+        local.get $end|120
+        i32.const 1
+        i32.sub
+        local.set $end|120
+        local.get $end|120
+        i32.const 48
+        local.get $r|123
+        i32.add
+        i32.store8 $0
+        local.get $t|122
+        if
+         local.get $end|120
+         local.set $end|124
+         local.get $t|122
+         local.set $num|125
+         local.get $num|125
+         i32.const 10
+         i32.div_u
+         local.set $t|126
+         local.get $num|125
+         i32.const 10
+         i32.rem_u
+         local.set $r|127
+         local.get $end|124
+         i32.const 1
+         i32.sub
+         local.set $end|124
+         local.get $end|124
+         i32.const 48
+         local.get $r|127
+         i32.add
+         i32.store8 $0
+         local.get $t|126
+         if
+          local.get $end|124
+          local.set $end|128
+          local.get $t|126
+          local.set $num|129
+          local.get $num|129
+          i32.const 10
+          i32.div_u
+          local.set $t|130
+          local.get $num|129
+          i32.const 10
+          i32.rem_u
+          local.set $r|131
+          local.get $end|128
+          i32.const 1
+          i32.sub
+          local.set $end|128
+          local.get $end|128
+          i32.const 48
+          local.get $r|131
+          i32.add
+          i32.store8 $0
+          local.get $t|130
+          if
+           local.get $end|128
+           local.set $end|132
+           local.get $t|130
+           local.set $num|133
+           local.get $num|133
+           i32.const 10
+           i32.div_u
+           local.set $t|134
+           local.get $num|133
+           i32.const 10
+           i32.rem_u
+           local.set $r|135
+           local.get $end|132
+           i32.const 1
+           i32.sub
+           local.set $end|132
+           local.get $end|132
+           i32.const 48
+           local.get $r|135
+           i32.add
+           i32.store8 $0
+           local.get $t|134
+           if
+            local.get $end|132
+            local.set $end|136
+            local.get $t|134
+            local.set $num|137
+            local.get $num|137
+            i32.const 10
+            i32.div_u
+            local.set $t|138
+            local.get $num|137
+            i32.const 10
+            i32.rem_u
+            local.set $r|139
+            local.get $end|136
+            i32.const 1
+            i32.sub
+            local.set $end|136
+            local.get $end|136
+            i32.const 48
+            local.get $r|139
+            i32.add
+            i32.store8 $0
+            local.get $t|138
+            if
+             local.get $end|136
+             local.set $end|140
+             local.get $t|138
+             local.set $num|141
+             local.get $end|140
+             i32.const 1
+             i32.sub
+             local.tee $end|140
+             i32.const 48
+             local.get $num|141
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign|101
+    if
+     local.get $out|103
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out|103
+   end
+   local.set $s|142
+   local.get $s|142
+   call $~lib/string/String#get:length
+   local.set $inSize|143
+   local.get $padding|98
+   local.set $targetSize|144
+   local.get $targetSize|144
+   local.get $inSize|143
+   i32.le_u
+   if
+    local.get $s|142
+    br $~lib/date/stringify|inlined.1
+   end
+   local.get $targetSize|144
+   local.get $inSize|143
+   i32.sub
+   local.set $prependSize|145
+   local.get $targetSize|144
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|146
+   local.get $out|146
+   local.set $dest|147
+   i32.const 48
+   local.set $value|148
+   local.get $prependSize|145
+   local.set $count|149
+   local.get $count|149
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest|147
+    local.tee $150
+    i32.const 1
+    i32.add
+    local.set $dest|147
+    local.get $150
+    local.get $value|148
+    i32.store8 $0
+    local.get $dest|147
+    local.tee $151
+    i32.const 1
+    i32.add
+    local.set $dest|147
+    local.get $151
+    local.get $value|148
+    i32.store8 $0
+    local.get $dest|147
+    local.tee $152
+    i32.const 1
+    i32.add
+    local.set $dest|147
+    local.get $152
+    local.get $value|148
+    i32.store8 $0
+    local.get $dest|147
+    local.tee $153
+    i32.const 1
+    i32.add
+    local.set $dest|147
+    local.get $153
+    local.get $value|148
+    i32.store8 $0
+    local.get $count|149
+    i32.const 4
+    i32.sub
+    local.set $count|149
+   end
+   local.get $dest|147
+   local.set $dest|154
+   local.get $value|148
+   local.set $value|155
+   local.get $count|149
+   local.set $count|156
+   local.get $count|156
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|154
+    local.tee $157
+    i32.const 1
+    i32.add
+    local.set $dest|154
+    local.get $157
+    local.get $value|155
+    i32.store8 $0
+    local.get $dest|154
+    local.tee $158
+    i32.const 1
+    i32.add
+    local.set $dest|154
+    local.get $158
+    local.get $value|155
+    i32.store8 $0
+    local.get $count|156
+    i32.const 2
+    i32.sub
+    local.set $count|156
+   end
+   local.get $dest|154
+   local.set $dest|159
+   local.get $value|155
+   local.set $value|160
+   local.get $count|156
+   local.set $count|161
+   local.get $count|161
+   if
+    local.get $dest|159
+    local.get $value|160
+    i32.store8 $0
+   end
+   local.get $out|146
+   local.get $prependSize|145
+   i32.add
+   local.set $dest|162
+   local.get $s|142
+   local.set $ptr|163
+   local.get $inSize|143
+   local.set $len|164
+   local.get $len|164
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|162
+    local.set $dest|165
+    local.get $ptr|163
+    local.set $ptr|166
+    local.get $dest|165
+    local.get $ptr|166
+    i64.load $0
+    i64.store $0
+    local.get $dest|162
+    i32.const 8
+    i32.add
+    local.set $dest|162
+    local.get $ptr|163
+    i32.const 8
+    i32.add
+    local.set $ptr|163
+    local.get $len|164
+    i32.const 8
+    i32.sub
+    local.set $len|164
+   end
+   local.get $dest|162
+   local.set $dest|167
+   local.get $ptr|163
+   local.set $ptr|168
+   local.get $len|164
+   local.set $len|169
+   local.get $len|169
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|167
+    local.set $dest|170
+    local.get $ptr|168
+    local.set $ptr|171
+    local.get $dest|170
+    local.get $ptr|171
+    i32.load $0
+    i32.store $0
+    local.get $dest|167
+    i32.const 4
+    i32.add
+    local.set $dest|167
+    local.get $ptr|168
+    i32.const 4
+    i32.add
+    local.set $ptr|168
+    local.get $len|169
+    i32.const 4
+    i32.sub
+    local.set $len|169
+   end
+   local.get $dest|167
+   local.set $dest|172
+   local.get $ptr|168
+   local.set $ptr|173
+   local.get $len|169
+   local.set $len|174
+   local.get $len|174
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|172
+    local.set $dest|175
+    local.get $ptr|173
+    local.set $ptr|176
+    local.get $dest|175
+    local.get $ptr|176
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|172
+    i32.const 2
+    i32.add
+    local.set $dest|172
+    local.get $ptr|173
+    i32.const 2
+    i32.add
+    local.set $ptr|173
+    local.get $len|174
+    i32.const 2
+    i32.sub
+    local.set $len|174
+   end
+   local.get $dest|172
+   local.set $dest|177
+   local.get $ptr|173
+   local.set $ptr|178
+   local.get $len|174
+   local.set $len|179
+   local.get $len|179
+   if
+    local.get $dest|177
+    local.get $ptr|178
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|146
+  end
+  local.set $day
+  i32.const 320
+  local.set $size
+  local.get $size
+  i32.const 1
+  call $~lib/rt/stub/__new
+  local.set $181
+  block $~lib/copyupto/__copyupto64|inlined.4 (result i32)
+   block $~lib/copyupto/__copyupto64|inlined.3 (result i32)
+    block $~lib/copyupto/__copyupto64|inlined.2 (result i32)
+     block $~lib/copyupto/__copyupto64|inlined.1 (result i32)
+      block $~lib/copyupto/__copyupto64|inlined.0 (result i32)
+       local.get $181
+       local.set $dest|182
+       local.get $week
+       local.set $src
+       local.get $src
+       call $~lib/string/String#get:length
+       local.set $l
+       local.get $l
+       i32.const 64
+       i32.ge_s
+       if
+        local.get $dest|182
+        local.set $dest|185
+        local.get $src
+        local.set $ptr|186
+        local.get $dest|185
+        local.get $ptr|186
+        i64.load $0
+        i64.store $0
+        local.get $dest|185
+        i32.const 8
+        i32.add
+        local.set $dest|185
+        local.get $ptr|186
+        i32.const 8
+        i32.add
+        local.set $ptr|186
+        local.get $dest|185
+        local.get $ptr|186
+        i64.load $0
+        i64.store $0
+        local.get $dest|185
+        i32.const 8
+        i32.add
+        local.set $dest|185
+        local.get $ptr|186
+        i32.const 8
+        i32.add
+        local.set $ptr|186
+        local.get $dest|185
+        local.get $ptr|186
+        i64.load $0
+        i64.store $0
+        local.get $dest|185
+        i32.const 8
+        i32.add
+        local.set $dest|185
+        local.get $ptr|186
+        i32.const 8
+        i32.add
+        local.set $ptr|186
+        local.get $dest|185
+        local.get $ptr|186
+        i64.load $0
+        i64.store $0
+        local.get $dest|185
+        i32.const 8
+        i32.add
+        local.set $dest|185
+        local.get $ptr|186
+        i32.const 8
+        i32.add
+        local.set $ptr|186
+        local.get $dest|185
+        local.get $ptr|186
+        i64.load $0
+        i64.store $0
+        local.get $dest|185
+        i32.const 8
+        i32.add
+        local.set $dest|185
+        local.get $ptr|186
+        i32.const 8
+        i32.add
+        local.set $ptr|186
+        local.get $dest|185
+        local.get $ptr|186
+        i64.load $0
+        i64.store $0
+        local.get $dest|185
+        i32.const 8
+        i32.add
+        local.set $dest|185
+        local.get $ptr|186
+        i32.const 8
+        i32.add
+        local.set $ptr|186
+        local.get $dest|185
+        local.get $ptr|186
+        i64.load $0
+        i64.store $0
+        local.get $dest|185
+        i32.const 8
+        i32.add
+        local.set $dest|185
+        local.get $ptr|186
+        i32.const 8
+        i32.add
+        local.set $ptr|186
+        local.get $dest|185
+        local.get $ptr|186
+        i64.load $0
+        i64.store $0
+        local.get $dest|182
+        i32.const 64
+        i32.add
+        br $~lib/copyupto/__copyupto64|inlined.0
+       end
+       local.get $dest|182
+       local.set $dest|187
+       local.get $src
+       local.set $ptr|188
+       local.get $l
+       local.set $len|189
+       local.get $len|189
+       i32.const 32
+       i32.ge_s
+       if
+        local.get $dest|187
+        local.set $dest|190
+        local.get $ptr|188
+        local.set $ptr|191
+        local.get $dest|190
+        local.get $ptr|191
+        i64.load $0
+        i64.store $0
+        local.get $dest|190
+        i32.const 8
+        i32.add
+        local.set $dest|190
+        local.get $ptr|191
+        i32.const 8
+        i32.add
+        local.set $ptr|191
+        local.get $dest|190
+        local.get $ptr|191
+        i64.load $0
+        i64.store $0
+        local.get $dest|190
+        i32.const 8
+        i32.add
+        local.set $dest|190
+        local.get $ptr|191
+        i32.const 8
+        i32.add
+        local.set $ptr|191
+        local.get $dest|190
+        local.get $ptr|191
+        i64.load $0
+        i64.store $0
+        local.get $dest|190
+        i32.const 8
+        i32.add
+        local.set $dest|190
+        local.get $ptr|191
+        i32.const 8
+        i32.add
+        local.set $ptr|191
+        local.get $dest|190
+        local.get $ptr|191
+        i64.load $0
+        i64.store $0
+        local.get $dest|187
+        i32.const 32
+        i32.add
+        local.set $dest|187
+        local.get $ptr|188
+        i32.const 32
+        i32.add
+        local.set $ptr|188
+        local.get $len|189
+        i32.const 32
+        i32.sub
+        local.set $len|189
+       end
+       local.get $dest|187
+       local.set $dest|192
+       local.get $ptr|188
+       local.set $ptr|193
+       local.get $len|189
+       local.set $len|194
+       local.get $len|194
+       i32.const 16
+       i32.ge_s
+       if
+        local.get $dest|192
+        local.set $dest|195
+        local.get $ptr|193
+        local.set $ptr|196
+        local.get $dest|195
+        local.get $ptr|196
+        i64.load $0
+        i64.store $0
+        local.get $dest|195
+        i32.const 8
+        i32.add
+        local.set $dest|195
+        local.get $ptr|196
+        i32.const 8
+        i32.add
+        local.set $ptr|196
+        local.get $dest|195
+        local.get $ptr|196
+        i64.load $0
+        i64.store $0
+        local.get $dest|192
+        i32.const 16
+        i32.add
+        local.set $dest|192
+        local.get $ptr|193
+        i32.const 16
+        i32.add
+        local.set $ptr|193
+        local.get $len|194
+        i32.const 16
+        i32.sub
+        local.set $len|194
+       end
+       local.get $dest|192
+       local.set $dest|197
+       local.get $ptr|193
+       local.set $ptr|198
+       local.get $len|194
+       local.set $len|199
+       local.get $len|199
+       i32.const 8
+       i32.ge_s
+       if
+        local.get $dest|197
+        local.set $dest|200
+        local.get $ptr|198
+        local.set $ptr|201
+        local.get $dest|200
+        local.get $ptr|201
+        i64.load $0
+        i64.store $0
+        local.get $dest|197
+        i32.const 8
+        i32.add
+        local.set $dest|197
+        local.get $ptr|198
+        i32.const 8
+        i32.add
+        local.set $ptr|198
+        local.get $len|199
+        i32.const 8
+        i32.sub
+        local.set $len|199
+       end
+       local.get $dest|197
+       local.set $dest|202
+       local.get $ptr|198
+       local.set $ptr|203
+       local.get $len|199
+       local.set $len|204
+       local.get $len|204
+       i32.const 4
+       i32.ge_s
+       if
+        local.get $dest|202
+        local.set $dest|205
+        local.get $ptr|203
+        local.set $ptr|206
+        local.get $dest|205
+        local.get $ptr|206
+        i32.load $0
+        i32.store $0
+        local.get $dest|202
+        i32.const 4
+        i32.add
+        local.set $dest|202
+        local.get $ptr|203
+        i32.const 4
+        i32.add
+        local.set $ptr|203
+        local.get $len|204
+        i32.const 4
+        i32.sub
+        local.set $len|204
+       end
+       local.get $dest|202
+       local.set $dest|207
+       local.get $ptr|203
+       local.set $ptr|208
+       local.get $len|204
+       local.set $len|209
+       local.get $len|209
+       i32.const 2
+       i32.ge_s
+       if
+        local.get $dest|207
+        local.set $dest|210
+        local.get $ptr|208
+        local.set $ptr|211
+        local.get $dest|210
+        local.get $ptr|211
+        i32.load16_u $0
+        i32.store16 $0
+        local.get $dest|207
+        i32.const 2
+        i32.add
+        local.set $dest|207
+        local.get $ptr|208
+        i32.const 2
+        i32.add
+        local.set $ptr|208
+        local.get $len|209
+        i32.const 2
+        i32.sub
+        local.set $len|209
+       end
+       local.get $dest|207
+       local.set $dest|212
+       local.get $ptr|208
+       local.set $ptr|213
+       local.get $len|209
+       local.set $len|214
+       local.get $len|214
+       if
+        local.get $dest|212
+        local.get $ptr|213
+        i32.load8_u $0
+        i32.store8 $0
+       end
+       local.get $dest|182
+       local.get $l
+       i32.add
+      end
+      local.set $dest|215
+      local.get $month
+      local.set $src|216
+      local.get $src|216
+      call $~lib/string/String#get:length
+      local.set $l|217
+      local.get $l|217
+      i32.const 64
+      i32.ge_s
+      if
+       local.get $dest|215
+       local.set $dest|218
+       local.get $src|216
+       local.set $ptr|219
+       local.get $dest|218
+       local.get $ptr|219
+       i64.load $0
+       i64.store $0
+       local.get $dest|218
+       i32.const 8
+       i32.add
+       local.set $dest|218
+       local.get $ptr|219
+       i32.const 8
+       i32.add
+       local.set $ptr|219
+       local.get $dest|218
+       local.get $ptr|219
+       i64.load $0
+       i64.store $0
+       local.get $dest|218
+       i32.const 8
+       i32.add
+       local.set $dest|218
+       local.get $ptr|219
+       i32.const 8
+       i32.add
+       local.set $ptr|219
+       local.get $dest|218
+       local.get $ptr|219
+       i64.load $0
+       i64.store $0
+       local.get $dest|218
+       i32.const 8
+       i32.add
+       local.set $dest|218
+       local.get $ptr|219
+       i32.const 8
+       i32.add
+       local.set $ptr|219
+       local.get $dest|218
+       local.get $ptr|219
+       i64.load $0
+       i64.store $0
+       local.get $dest|218
+       i32.const 8
+       i32.add
+       local.set $dest|218
+       local.get $ptr|219
+       i32.const 8
+       i32.add
+       local.set $ptr|219
+       local.get $dest|218
+       local.get $ptr|219
+       i64.load $0
+       i64.store $0
+       local.get $dest|218
+       i32.const 8
+       i32.add
+       local.set $dest|218
+       local.get $ptr|219
+       i32.const 8
+       i32.add
+       local.set $ptr|219
+       local.get $dest|218
+       local.get $ptr|219
+       i64.load $0
+       i64.store $0
+       local.get $dest|218
+       i32.const 8
+       i32.add
+       local.set $dest|218
+       local.get $ptr|219
+       i32.const 8
+       i32.add
+       local.set $ptr|219
+       local.get $dest|218
+       local.get $ptr|219
+       i64.load $0
+       i64.store $0
+       local.get $dest|218
+       i32.const 8
+       i32.add
+       local.set $dest|218
+       local.get $ptr|219
+       i32.const 8
+       i32.add
+       local.set $ptr|219
+       local.get $dest|218
+       local.get $ptr|219
+       i64.load $0
+       i64.store $0
+       local.get $dest|215
+       i32.const 64
+       i32.add
+       br $~lib/copyupto/__copyupto64|inlined.1
+      end
+      local.get $dest|215
+      local.set $dest|220
+      local.get $src|216
+      local.set $ptr|221
+      local.get $l|217
+      local.set $len|222
+      local.get $len|222
+      i32.const 32
+      i32.ge_s
+      if
+       local.get $dest|220
+       local.set $dest|223
+       local.get $ptr|221
+       local.set $ptr|224
+       local.get $dest|223
+       local.get $ptr|224
+       i64.load $0
+       i64.store $0
+       local.get $dest|223
+       i32.const 8
+       i32.add
+       local.set $dest|223
+       local.get $ptr|224
+       i32.const 8
+       i32.add
+       local.set $ptr|224
+       local.get $dest|223
+       local.get $ptr|224
+       i64.load $0
+       i64.store $0
+       local.get $dest|223
+       i32.const 8
+       i32.add
+       local.set $dest|223
+       local.get $ptr|224
+       i32.const 8
+       i32.add
+       local.set $ptr|224
+       local.get $dest|223
+       local.get $ptr|224
+       i64.load $0
+       i64.store $0
+       local.get $dest|223
+       i32.const 8
+       i32.add
+       local.set $dest|223
+       local.get $ptr|224
+       i32.const 8
+       i32.add
+       local.set $ptr|224
+       local.get $dest|223
+       local.get $ptr|224
+       i64.load $0
+       i64.store $0
+       local.get $dest|220
+       i32.const 32
+       i32.add
+       local.set $dest|220
+       local.get $ptr|221
+       i32.const 32
+       i32.add
+       local.set $ptr|221
+       local.get $len|222
+       i32.const 32
+       i32.sub
+       local.set $len|222
+      end
+      local.get $dest|220
+      local.set $dest|225
+      local.get $ptr|221
+      local.set $ptr|226
+      local.get $len|222
+      local.set $len|227
+      local.get $len|227
+      i32.const 16
+      i32.ge_s
+      if
+       local.get $dest|225
+       local.set $dest|228
+       local.get $ptr|226
+       local.set $ptr|229
+       local.get $dest|228
+       local.get $ptr|229
+       i64.load $0
+       i64.store $0
+       local.get $dest|228
+       i32.const 8
+       i32.add
+       local.set $dest|228
+       local.get $ptr|229
+       i32.const 8
+       i32.add
+       local.set $ptr|229
+       local.get $dest|228
+       local.get $ptr|229
+       i64.load $0
+       i64.store $0
+       local.get $dest|225
+       i32.const 16
+       i32.add
+       local.set $dest|225
+       local.get $ptr|226
+       i32.const 16
+       i32.add
+       local.set $ptr|226
+       local.get $len|227
+       i32.const 16
+       i32.sub
+       local.set $len|227
+      end
+      local.get $dest|225
+      local.set $dest|230
+      local.get $ptr|226
+      local.set $ptr|231
+      local.get $len|227
+      local.set $len|232
+      local.get $len|232
+      i32.const 8
+      i32.ge_s
+      if
+       local.get $dest|230
+       local.set $dest|233
+       local.get $ptr|231
+       local.set $ptr|234
+       local.get $dest|233
+       local.get $ptr|234
+       i64.load $0
+       i64.store $0
+       local.get $dest|230
+       i32.const 8
+       i32.add
+       local.set $dest|230
+       local.get $ptr|231
+       i32.const 8
+       i32.add
+       local.set $ptr|231
+       local.get $len|232
+       i32.const 8
+       i32.sub
+       local.set $len|232
+      end
+      local.get $dest|230
+      local.set $dest|235
+      local.get $ptr|231
+      local.set $ptr|236
+      local.get $len|232
+      local.set $len|237
+      local.get $len|237
+      i32.const 4
+      i32.ge_s
+      if
+       local.get $dest|235
+       local.set $dest|238
+       local.get $ptr|236
+       local.set $ptr|239
+       local.get $dest|238
+       local.get $ptr|239
+       i32.load $0
+       i32.store $0
+       local.get $dest|235
+       i32.const 4
+       i32.add
+       local.set $dest|235
+       local.get $ptr|236
+       i32.const 4
+       i32.add
+       local.set $ptr|236
+       local.get $len|237
+       i32.const 4
+       i32.sub
+       local.set $len|237
+      end
+      local.get $dest|235
+      local.set $dest|240
+      local.get $ptr|236
+      local.set $ptr|241
+      local.get $len|237
+      local.set $len|242
+      local.get $len|242
+      i32.const 2
+      i32.ge_s
+      if
+       local.get $dest|240
+       local.set $dest|243
+       local.get $ptr|241
+       local.set $ptr|244
+       local.get $dest|243
+       local.get $ptr|244
+       i32.load16_u $0
+       i32.store16 $0
+       local.get $dest|240
+       i32.const 2
+       i32.add
+       local.set $dest|240
+       local.get $ptr|241
+       i32.const 2
+       i32.add
+       local.set $ptr|241
+       local.get $len|242
+       i32.const 2
+       i32.sub
+       local.set $len|242
+      end
+      local.get $dest|240
+      local.set $dest|245
+      local.get $ptr|241
+      local.set $ptr|246
+      local.get $len|242
+      local.set $len|247
+      local.get $len|247
+      if
+       local.get $dest|245
+       local.get $ptr|246
+       i32.load8_u $0
+       i32.store8 $0
+      end
+      local.get $dest|215
+      local.get $l|217
+      i32.add
+     end
+     local.set $dest|248
+     local.get $day
+     local.set $src|249
+     local.get $src|249
+     call $~lib/string/String#get:length
+     local.set $l|250
+     local.get $l|250
+     i32.const 64
+     i32.ge_s
+     if
+      local.get $dest|248
+      local.set $dest|251
+      local.get $src|249
+      local.set $ptr|252
+      local.get $dest|251
+      local.get $ptr|252
+      i64.load $0
+      i64.store $0
+      local.get $dest|251
+      i32.const 8
+      i32.add
+      local.set $dest|251
+      local.get $ptr|252
+      i32.const 8
+      i32.add
+      local.set $ptr|252
+      local.get $dest|251
+      local.get $ptr|252
+      i64.load $0
+      i64.store $0
+      local.get $dest|251
+      i32.const 8
+      i32.add
+      local.set $dest|251
+      local.get $ptr|252
+      i32.const 8
+      i32.add
+      local.set $ptr|252
+      local.get $dest|251
+      local.get $ptr|252
+      i64.load $0
+      i64.store $0
+      local.get $dest|251
+      i32.const 8
+      i32.add
+      local.set $dest|251
+      local.get $ptr|252
+      i32.const 8
+      i32.add
+      local.set $ptr|252
+      local.get $dest|251
+      local.get $ptr|252
+      i64.load $0
+      i64.store $0
+      local.get $dest|251
+      i32.const 8
+      i32.add
+      local.set $dest|251
+      local.get $ptr|252
+      i32.const 8
+      i32.add
+      local.set $ptr|252
+      local.get $dest|251
+      local.get $ptr|252
+      i64.load $0
+      i64.store $0
+      local.get $dest|251
+      i32.const 8
+      i32.add
+      local.set $dest|251
+      local.get $ptr|252
+      i32.const 8
+      i32.add
+      local.set $ptr|252
+      local.get $dest|251
+      local.get $ptr|252
+      i64.load $0
+      i64.store $0
+      local.get $dest|251
+      i32.const 8
+      i32.add
+      local.set $dest|251
+      local.get $ptr|252
+      i32.const 8
+      i32.add
+      local.set $ptr|252
+      local.get $dest|251
+      local.get $ptr|252
+      i64.load $0
+      i64.store $0
+      local.get $dest|251
+      i32.const 8
+      i32.add
+      local.set $dest|251
+      local.get $ptr|252
+      i32.const 8
+      i32.add
+      local.set $ptr|252
+      local.get $dest|251
+      local.get $ptr|252
+      i64.load $0
+      i64.store $0
+      local.get $dest|248
+      i32.const 64
+      i32.add
+      br $~lib/copyupto/__copyupto64|inlined.2
+     end
+     local.get $dest|248
+     local.set $dest|253
+     local.get $src|249
+     local.set $ptr|254
+     local.get $l|250
+     local.set $len|255
+     local.get $len|255
+     i32.const 32
+     i32.ge_s
+     if
+      local.get $dest|253
+      local.set $dest|256
+      local.get $ptr|254
+      local.set $ptr|257
+      local.get $dest|256
+      local.get $ptr|257
+      i64.load $0
+      i64.store $0
+      local.get $dest|256
+      i32.const 8
+      i32.add
+      local.set $dest|256
+      local.get $ptr|257
+      i32.const 8
+      i32.add
+      local.set $ptr|257
+      local.get $dest|256
+      local.get $ptr|257
+      i64.load $0
+      i64.store $0
+      local.get $dest|256
+      i32.const 8
+      i32.add
+      local.set $dest|256
+      local.get $ptr|257
+      i32.const 8
+      i32.add
+      local.set $ptr|257
+      local.get $dest|256
+      local.get $ptr|257
+      i64.load $0
+      i64.store $0
+      local.get $dest|256
+      i32.const 8
+      i32.add
+      local.set $dest|256
+      local.get $ptr|257
+      i32.const 8
+      i32.add
+      local.set $ptr|257
+      local.get $dest|256
+      local.get $ptr|257
+      i64.load $0
+      i64.store $0
+      local.get $dest|253
+      i32.const 32
+      i32.add
+      local.set $dest|253
+      local.get $ptr|254
+      i32.const 32
+      i32.add
+      local.set $ptr|254
+      local.get $len|255
+      i32.const 32
+      i32.sub
+      local.set $len|255
+     end
+     local.get $dest|253
+     local.set $dest|258
+     local.get $ptr|254
+     local.set $ptr|259
+     local.get $len|255
+     local.set $len|260
+     local.get $len|260
+     i32.const 16
+     i32.ge_s
+     if
+      local.get $dest|258
+      local.set $dest|261
+      local.get $ptr|259
+      local.set $ptr|262
+      local.get $dest|261
+      local.get $ptr|262
+      i64.load $0
+      i64.store $0
+      local.get $dest|261
+      i32.const 8
+      i32.add
+      local.set $dest|261
+      local.get $ptr|262
+      i32.const 8
+      i32.add
+      local.set $ptr|262
+      local.get $dest|261
+      local.get $ptr|262
+      i64.load $0
+      i64.store $0
+      local.get $dest|258
+      i32.const 16
+      i32.add
+      local.set $dest|258
+      local.get $ptr|259
+      i32.const 16
+      i32.add
+      local.set $ptr|259
+      local.get $len|260
+      i32.const 16
+      i32.sub
+      local.set $len|260
+     end
+     local.get $dest|258
+     local.set $dest|263
+     local.get $ptr|259
+     local.set $ptr|264
+     local.get $len|260
+     local.set $len|265
+     local.get $len|265
+     i32.const 8
+     i32.ge_s
+     if
+      local.get $dest|263
+      local.set $dest|266
+      local.get $ptr|264
+      local.set $ptr|267
+      local.get $dest|266
+      local.get $ptr|267
+      i64.load $0
+      i64.store $0
+      local.get $dest|263
+      i32.const 8
+      i32.add
+      local.set $dest|263
+      local.get $ptr|264
+      i32.const 8
+      i32.add
+      local.set $ptr|264
+      local.get $len|265
+      i32.const 8
+      i32.sub
+      local.set $len|265
+     end
+     local.get $dest|263
+     local.set $dest|268
+     local.get $ptr|264
+     local.set $ptr|269
+     local.get $len|265
+     local.set $len|270
+     local.get $len|270
+     i32.const 4
+     i32.ge_s
+     if
+      local.get $dest|268
+      local.set $dest|271
+      local.get $ptr|269
+      local.set $ptr|272
+      local.get $dest|271
+      local.get $ptr|272
+      i32.load $0
+      i32.store $0
+      local.get $dest|268
+      i32.const 4
+      i32.add
+      local.set $dest|268
+      local.get $ptr|269
+      i32.const 4
+      i32.add
+      local.set $ptr|269
+      local.get $len|270
+      i32.const 4
+      i32.sub
+      local.set $len|270
+     end
+     local.get $dest|268
+     local.set $dest|273
+     local.get $ptr|269
+     local.set $ptr|274
+     local.get $len|270
+     local.set $len|275
+     local.get $len|275
+     i32.const 2
+     i32.ge_s
+     if
+      local.get $dest|273
+      local.set $dest|276
+      local.get $ptr|274
+      local.set $ptr|277
+      local.get $dest|276
+      local.get $ptr|277
+      i32.load16_u $0
+      i32.store16 $0
+      local.get $dest|273
+      i32.const 2
+      i32.add
+      local.set $dest|273
+      local.get $ptr|274
+      i32.const 2
+      i32.add
+      local.set $ptr|274
+      local.get $len|275
+      i32.const 2
+      i32.sub
+      local.set $len|275
+     end
+     local.get $dest|273
+     local.set $dest|278
+     local.get $ptr|274
+     local.set $ptr|279
+     local.get $len|275
+     local.set $len|280
+     local.get $len|280
+     if
+      local.get $dest|278
+      local.get $ptr|279
+      i32.load8_u $0
+      i32.store8 $0
+     end
+     local.get $dest|248
+     local.get $l|250
+     i32.add
+    end
+    local.set $dest|281
+    local.get $yr
+    i32.const 0
+    i32.lt_s
+    if (result i32)
+     i32.const 880
+    else
+     i32.const 912
+    end
+    local.set $src|282
+    local.get $src|282
+    call $~lib/string/String#get:length
+    local.set $l|283
+    local.get $l|283
+    i32.const 64
+    i32.ge_s
+    if
+     local.get $dest|281
+     local.set $dest|284
+     local.get $src|282
+     local.set $ptr|285
+     local.get $dest|284
+     local.get $ptr|285
+     i64.load $0
+     i64.store $0
+     local.get $dest|284
+     i32.const 8
+     i32.add
+     local.set $dest|284
+     local.get $ptr|285
+     i32.const 8
+     i32.add
+     local.set $ptr|285
+     local.get $dest|284
+     local.get $ptr|285
+     i64.load $0
+     i64.store $0
+     local.get $dest|284
+     i32.const 8
+     i32.add
+     local.set $dest|284
+     local.get $ptr|285
+     i32.const 8
+     i32.add
+     local.set $ptr|285
+     local.get $dest|284
+     local.get $ptr|285
+     i64.load $0
+     i64.store $0
+     local.get $dest|284
+     i32.const 8
+     i32.add
+     local.set $dest|284
+     local.get $ptr|285
+     i32.const 8
+     i32.add
+     local.set $ptr|285
+     local.get $dest|284
+     local.get $ptr|285
+     i64.load $0
+     i64.store $0
+     local.get $dest|284
+     i32.const 8
+     i32.add
+     local.set $dest|284
+     local.get $ptr|285
+     i32.const 8
+     i32.add
+     local.set $ptr|285
+     local.get $dest|284
+     local.get $ptr|285
+     i64.load $0
+     i64.store $0
+     local.get $dest|284
+     i32.const 8
+     i32.add
+     local.set $dest|284
+     local.get $ptr|285
+     i32.const 8
+     i32.add
+     local.set $ptr|285
+     local.get $dest|284
+     local.get $ptr|285
+     i64.load $0
+     i64.store $0
+     local.get $dest|284
+     i32.const 8
+     i32.add
+     local.set $dest|284
+     local.get $ptr|285
+     i32.const 8
+     i32.add
+     local.set $ptr|285
+     local.get $dest|284
+     local.get $ptr|285
+     i64.load $0
+     i64.store $0
+     local.get $dest|284
+     i32.const 8
+     i32.add
+     local.set $dest|284
+     local.get $ptr|285
+     i32.const 8
+     i32.add
+     local.set $ptr|285
+     local.get $dest|284
+     local.get $ptr|285
+     i64.load $0
+     i64.store $0
+     local.get $dest|281
+     i32.const 64
+     i32.add
+     br $~lib/copyupto/__copyupto64|inlined.3
+    end
+    local.get $dest|281
+    local.set $dest|286
+    local.get $src|282
+    local.set $ptr|287
+    local.get $l|283
+    local.set $len|288
+    local.get $len|288
+    i32.const 32
+    i32.ge_s
+    if
+     local.get $dest|286
+     local.set $dest|289
+     local.get $ptr|287
+     local.set $ptr|290
+     local.get $dest|289
+     local.get $ptr|290
+     i64.load $0
+     i64.store $0
+     local.get $dest|289
+     i32.const 8
+     i32.add
+     local.set $dest|289
+     local.get $ptr|290
+     i32.const 8
+     i32.add
+     local.set $ptr|290
+     local.get $dest|289
+     local.get $ptr|290
+     i64.load $0
+     i64.store $0
+     local.get $dest|289
+     i32.const 8
+     i32.add
+     local.set $dest|289
+     local.get $ptr|290
+     i32.const 8
+     i32.add
+     local.set $ptr|290
+     local.get $dest|289
+     local.get $ptr|290
+     i64.load $0
+     i64.store $0
+     local.get $dest|289
+     i32.const 8
+     i32.add
+     local.set $dest|289
+     local.get $ptr|290
+     i32.const 8
+     i32.add
+     local.set $ptr|290
+     local.get $dest|289
+     local.get $ptr|290
+     i64.load $0
+     i64.store $0
+     local.get $dest|286
+     i32.const 32
+     i32.add
+     local.set $dest|286
+     local.get $ptr|287
+     i32.const 32
+     i32.add
+     local.set $ptr|287
+     local.get $len|288
+     i32.const 32
+     i32.sub
+     local.set $len|288
+    end
+    local.get $dest|286
+    local.set $dest|291
+    local.get $ptr|287
+    local.set $ptr|292
+    local.get $len|288
+    local.set $len|293
+    local.get $len|293
+    i32.const 16
+    i32.ge_s
+    if
+     local.get $dest|291
+     local.set $dest|294
+     local.get $ptr|292
+     local.set $ptr|295
+     local.get $dest|294
+     local.get $ptr|295
+     i64.load $0
+     i64.store $0
+     local.get $dest|294
+     i32.const 8
+     i32.add
+     local.set $dest|294
+     local.get $ptr|295
+     i32.const 8
+     i32.add
+     local.set $ptr|295
+     local.get $dest|294
+     local.get $ptr|295
+     i64.load $0
+     i64.store $0
+     local.get $dest|291
+     i32.const 16
+     i32.add
+     local.set $dest|291
+     local.get $ptr|292
+     i32.const 16
+     i32.add
+     local.set $ptr|292
+     local.get $len|293
+     i32.const 16
+     i32.sub
+     local.set $len|293
+    end
+    local.get $dest|291
+    local.set $dest|296
+    local.get $ptr|292
+    local.set $ptr|297
+    local.get $len|293
+    local.set $len|298
+    local.get $len|298
+    i32.const 8
+    i32.ge_s
+    if
+     local.get $dest|296
+     local.set $dest|299
+     local.get $ptr|297
+     local.set $ptr|300
+     local.get $dest|299
+     local.get $ptr|300
+     i64.load $0
+     i64.store $0
+     local.get $dest|296
+     i32.const 8
+     i32.add
+     local.set $dest|296
+     local.get $ptr|297
+     i32.const 8
+     i32.add
+     local.set $ptr|297
+     local.get $len|298
+     i32.const 8
+     i32.sub
+     local.set $len|298
+    end
+    local.get $dest|296
+    local.set $dest|301
+    local.get $ptr|297
+    local.set $ptr|302
+    local.get $len|298
+    local.set $len|303
+    local.get $len|303
+    i32.const 4
+    i32.ge_s
+    if
+     local.get $dest|301
+     local.set $dest|304
+     local.get $ptr|302
+     local.set $ptr|305
+     local.get $dest|304
+     local.get $ptr|305
+     i32.load $0
+     i32.store $0
+     local.get $dest|301
+     i32.const 4
+     i32.add
+     local.set $dest|301
+     local.get $ptr|302
+     i32.const 4
+     i32.add
+     local.set $ptr|302
+     local.get $len|303
+     i32.const 4
+     i32.sub
+     local.set $len|303
+    end
+    local.get $dest|301
+    local.set $dest|306
+    local.get $ptr|302
+    local.set $ptr|307
+    local.get $len|303
+    local.set $len|308
+    local.get $len|308
+    i32.const 2
+    i32.ge_s
+    if
+     local.get $dest|306
+     local.set $dest|309
+     local.get $ptr|307
+     local.set $ptr|310
+     local.get $dest|309
+     local.get $ptr|310
+     i32.load16_u $0
+     i32.store16 $0
+     local.get $dest|306
+     i32.const 2
+     i32.add
+     local.set $dest|306
+     local.get $ptr|307
+     i32.const 2
+     i32.add
+     local.set $ptr|307
+     local.get $len|308
+     i32.const 2
+     i32.sub
+     local.set $len|308
+    end
+    local.get $dest|306
+    local.set $dest|311
+    local.get $ptr|307
+    local.set $ptr|312
+    local.get $len|308
+    local.set $len|313
+    local.get $len|313
+    if
+     local.get $dest|311
+     local.get $ptr|312
+     i32.load8_u $0
+     i32.store8 $0
+    end
+    local.get $dest|281
+    local.get $l|283
+    i32.add
+   end
+   local.set $dest|314
+   local.get $year
+   local.set $src|315
+   local.get $src|315
+   call $~lib/string/String#get:length
+   local.set $l|316
+   local.get $l|316
+   i32.const 64
+   i32.ge_s
+   if
+    local.get $dest|314
+    local.set $dest|317
+    local.get $src|315
+    local.set $ptr|318
+    local.get $dest|317
+    local.get $ptr|318
+    i64.load $0
+    i64.store $0
+    local.get $dest|317
+    i32.const 8
+    i32.add
+    local.set $dest|317
+    local.get $ptr|318
+    i32.const 8
+    i32.add
+    local.set $ptr|318
+    local.get $dest|317
+    local.get $ptr|318
+    i64.load $0
+    i64.store $0
+    local.get $dest|317
+    i32.const 8
+    i32.add
+    local.set $dest|317
+    local.get $ptr|318
+    i32.const 8
+    i32.add
+    local.set $ptr|318
+    local.get $dest|317
+    local.get $ptr|318
+    i64.load $0
+    i64.store $0
+    local.get $dest|317
+    i32.const 8
+    i32.add
+    local.set $dest|317
+    local.get $ptr|318
+    i32.const 8
+    i32.add
+    local.set $ptr|318
+    local.get $dest|317
+    local.get $ptr|318
+    i64.load $0
+    i64.store $0
+    local.get $dest|317
+    i32.const 8
+    i32.add
+    local.set $dest|317
+    local.get $ptr|318
+    i32.const 8
+    i32.add
+    local.set $ptr|318
+    local.get $dest|317
+    local.get $ptr|318
+    i64.load $0
+    i64.store $0
+    local.get $dest|317
+    i32.const 8
+    i32.add
+    local.set $dest|317
+    local.get $ptr|318
+    i32.const 8
+    i32.add
+    local.set $ptr|318
+    local.get $dest|317
+    local.get $ptr|318
+    i64.load $0
+    i64.store $0
+    local.get $dest|317
+    i32.const 8
+    i32.add
+    local.set $dest|317
+    local.get $ptr|318
+    i32.const 8
+    i32.add
+    local.set $ptr|318
+    local.get $dest|317
+    local.get $ptr|318
+    i64.load $0
+    i64.store $0
+    local.get $dest|317
+    i32.const 8
+    i32.add
+    local.set $dest|317
+    local.get $ptr|318
+    i32.const 8
+    i32.add
+    local.set $ptr|318
+    local.get $dest|317
+    local.get $ptr|318
+    i64.load $0
+    i64.store $0
+    local.get $dest|314
+    i32.const 64
+    i32.add
+    br $~lib/copyupto/__copyupto64|inlined.4
+   end
+   local.get $dest|314
+   local.set $dest|319
+   local.get $src|315
+   local.set $ptr|320
+   local.get $l|316
+   local.set $len|321
+   local.get $len|321
+   i32.const 32
+   i32.ge_s
+   if
+    local.get $dest|319
+    local.set $dest|322
+    local.get $ptr|320
+    local.set $ptr|323
+    local.get $dest|322
+    local.get $ptr|323
+    i64.load $0
+    i64.store $0
+    local.get $dest|322
+    i32.const 8
+    i32.add
+    local.set $dest|322
+    local.get $ptr|323
+    i32.const 8
+    i32.add
+    local.set $ptr|323
+    local.get $dest|322
+    local.get $ptr|323
+    i64.load $0
+    i64.store $0
+    local.get $dest|322
+    i32.const 8
+    i32.add
+    local.set $dest|322
+    local.get $ptr|323
+    i32.const 8
+    i32.add
+    local.set $ptr|323
+    local.get $dest|322
+    local.get $ptr|323
+    i64.load $0
+    i64.store $0
+    local.get $dest|322
+    i32.const 8
+    i32.add
+    local.set $dest|322
+    local.get $ptr|323
+    i32.const 8
+    i32.add
+    local.set $ptr|323
+    local.get $dest|322
+    local.get $ptr|323
+    i64.load $0
+    i64.store $0
+    local.get $dest|319
+    i32.const 32
+    i32.add
+    local.set $dest|319
+    local.get $ptr|320
+    i32.const 32
+    i32.add
+    local.set $ptr|320
+    local.get $len|321
+    i32.const 32
+    i32.sub
+    local.set $len|321
+   end
+   local.get $dest|319
+   local.set $dest|324
+   local.get $ptr|320
+   local.set $ptr|325
+   local.get $len|321
+   local.set $len|326
+   local.get $len|326
+   i32.const 16
+   i32.ge_s
+   if
+    local.get $dest|324
+    local.set $dest|327
+    local.get $ptr|325
+    local.set $ptr|328
+    local.get $dest|327
+    local.get $ptr|328
+    i64.load $0
+    i64.store $0
+    local.get $dest|327
+    i32.const 8
+    i32.add
+    local.set $dest|327
+    local.get $ptr|328
+    i32.const 8
+    i32.add
+    local.set $ptr|328
+    local.get $dest|327
+    local.get $ptr|328
+    i64.load $0
+    i64.store $0
+    local.get $dest|324
+    i32.const 16
+    i32.add
+    local.set $dest|324
+    local.get $ptr|325
+    i32.const 16
+    i32.add
+    local.set $ptr|325
+    local.get $len|326
+    i32.const 16
+    i32.sub
+    local.set $len|326
+   end
+   local.get $dest|324
+   local.set $dest|329
+   local.get $ptr|325
+   local.set $ptr|330
+   local.get $len|326
+   local.set $len|331
+   local.get $len|331
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|329
+    local.set $dest|332
+    local.get $ptr|330
+    local.set $ptr|333
+    local.get $dest|332
+    local.get $ptr|333
+    i64.load $0
+    i64.store $0
+    local.get $dest|329
+    i32.const 8
+    i32.add
+    local.set $dest|329
+    local.get $ptr|330
+    i32.const 8
+    i32.add
+    local.set $ptr|330
+    local.get $len|331
+    i32.const 8
+    i32.sub
+    local.set $len|331
+   end
+   local.get $dest|329
+   local.set $dest|334
+   local.get $ptr|330
+   local.set $ptr|335
+   local.get $len|331
+   local.set $len|336
+   local.get $len|336
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|334
+    local.set $dest|337
+    local.get $ptr|335
+    local.set $ptr|338
+    local.get $dest|337
+    local.get $ptr|338
+    i32.load $0
+    i32.store $0
+    local.get $dest|334
+    i32.const 4
+    i32.add
+    local.set $dest|334
+    local.get $ptr|335
+    i32.const 4
+    i32.add
+    local.set $ptr|335
+    local.get $len|336
+    i32.const 4
+    i32.sub
+    local.set $len|336
+   end
+   local.get $dest|334
+   local.set $dest|339
+   local.get $ptr|335
+   local.set $ptr|340
+   local.get $len|336
+   local.set $len|341
+   local.get $len|341
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|339
+    local.set $dest|342
+    local.get $ptr|340
+    local.set $ptr|343
+    local.get $dest|342
+    local.get $ptr|343
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|339
+    i32.const 2
+    i32.add
+    local.set $dest|339
+    local.get $ptr|340
+    i32.const 2
+    i32.add
+    local.set $ptr|340
+    local.get $len|341
+    i32.const 2
+    i32.sub
+    local.set $len|341
+   end
+   local.get $dest|339
+   local.set $dest|344
+   local.get $ptr|340
+   local.set $ptr|345
+   local.get $len|341
+   local.set $len|346
+   local.get $len|346
+   if
+    local.get $dest|344
+    local.get $ptr|345
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $dest|314
+   local.get $l|316
+   i32.add
+  end
+  local.set $dest|347
+  local.get $181
+  local.set $src|348
+  local.get $src|348
+  i32.const 20
+  i32.sub
+  local.get $dest|347
+  local.get $src|348
+  i32.sub
+  call $~lib/rt/common/OBJECT#set:rtSize
+  local.get $src|348
+ )
+ (func $~lib/date/Date#toTimeString (type $i32_=>_i32) (param $this i32) (result i32)
+  (local $this|1 i32)
+  (local $a i64)
+  (local $b i64)
+  (local $m i64)
+  (local $value i32)
+  (local $padding i32)
+  (local $this|7 i32)
+  (local $value|8 i32)
+  (local $sign i32)
+  (local $decimals i32)
+  (local $out i32)
+  (local $end i32)
+  (local $num i32)
+  (local $t i32)
+  (local $r i32)
+  (local $end|16 i32)
+  (local $num|17 i32)
+  (local $t|18 i32)
+  (local $r|19 i32)
+  (local $end|20 i32)
+  (local $num|21 i32)
+  (local $t|22 i32)
+  (local $r|23 i32)
+  (local $end|24 i32)
+  (local $num|25 i32)
+  (local $t|26 i32)
+  (local $r|27 i32)
+  (local $end|28 i32)
+  (local $num|29 i32)
+  (local $t|30 i32)
+  (local $r|31 i32)
+  (local $end|32 i32)
+  (local $num|33 i32)
+  (local $t|34 i32)
+  (local $r|35 i32)
+  (local $end|36 i32)
+  (local $num|37 i32)
+  (local $t|38 i32)
+  (local $r|39 i32)
+  (local $end|40 i32)
+  (local $num|41 i32)
+  (local $t|42 i32)
+  (local $r|43 i32)
+  (local $end|44 i32)
+  (local $num|45 i32)
+  (local $t|46 i32)
+  (local $r|47 i32)
+  (local $end|48 i32)
+  (local $num|49 i32)
+  (local $s i32)
+  (local $inSize i32)
+  (local $targetSize i32)
+  (local $prependSize i32)
+  (local $out|54 i32)
+  (local $dest i32)
+  (local $value|56 i32)
+  (local $count i32)
+  (local $58 i32)
+  (local $59 i32)
+  (local $60 i32)
+  (local $61 i32)
+  (local $dest|62 i32)
+  (local $value|63 i32)
+  (local $count|64 i32)
+  (local $65 i32)
+  (local $66 i32)
+  (local $dest|67 i32)
+  (local $value|68 i32)
+  (local $count|69 i32)
+  (local $dest|70 i32)
+  (local $ptr i32)
+  (local $len i32)
+  (local $dest|73 i32)
+  (local $ptr|74 i32)
+  (local $dest|75 i32)
+  (local $ptr|76 i32)
+  (local $len|77 i32)
+  (local $dest|78 i32)
+  (local $ptr|79 i32)
+  (local $dest|80 i32)
+  (local $ptr|81 i32)
+  (local $len|82 i32)
+  (local $dest|83 i32)
+  (local $ptr|84 i32)
+  (local $dest|85 i32)
+  (local $ptr|86 i32)
+  (local $len|87 i32)
+  (local $hours i32)
+  (local $this|89 i32)
+  (local $a|90 i64)
+  (local $b|91 i64)
+  (local $m|92 i64)
+  (local $value|93 i32)
+  (local $padding|94 i32)
+  (local $this|95 i32)
+  (local $value|96 i32)
+  (local $sign|97 i32)
+  (local $decimals|98 i32)
+  (local $out|99 i32)
+  (local $end|100 i32)
+  (local $num|101 i32)
+  (local $t|102 i32)
+  (local $r|103 i32)
+  (local $end|104 i32)
+  (local $num|105 i32)
+  (local $t|106 i32)
+  (local $r|107 i32)
+  (local $end|108 i32)
+  (local $num|109 i32)
+  (local $t|110 i32)
+  (local $r|111 i32)
+  (local $end|112 i32)
+  (local $num|113 i32)
+  (local $t|114 i32)
+  (local $r|115 i32)
+  (local $end|116 i32)
+  (local $num|117 i32)
+  (local $t|118 i32)
+  (local $r|119 i32)
+  (local $end|120 i32)
+  (local $num|121 i32)
+  (local $t|122 i32)
+  (local $r|123 i32)
+  (local $end|124 i32)
+  (local $num|125 i32)
+  (local $t|126 i32)
+  (local $r|127 i32)
+  (local $end|128 i32)
+  (local $num|129 i32)
+  (local $t|130 i32)
+  (local $r|131 i32)
+  (local $end|132 i32)
+  (local $num|133 i32)
+  (local $t|134 i32)
+  (local $r|135 i32)
+  (local $end|136 i32)
+  (local $num|137 i32)
+  (local $s|138 i32)
+  (local $inSize|139 i32)
+  (local $targetSize|140 i32)
+  (local $prependSize|141 i32)
+  (local $out|142 i32)
+  (local $dest|143 i32)
+  (local $value|144 i32)
+  (local $count|145 i32)
+  (local $146 i32)
+  (local $147 i32)
+  (local $148 i32)
+  (local $149 i32)
+  (local $dest|150 i32)
+  (local $value|151 i32)
+  (local $count|152 i32)
+  (local $153 i32)
+  (local $154 i32)
+  (local $dest|155 i32)
+  (local $value|156 i32)
+  (local $count|157 i32)
+  (local $dest|158 i32)
+  (local $ptr|159 i32)
+  (local $len|160 i32)
+  (local $dest|161 i32)
+  (local $ptr|162 i32)
+  (local $dest|163 i32)
+  (local $ptr|164 i32)
+  (local $len|165 i32)
+  (local $dest|166 i32)
+  (local $ptr|167 i32)
+  (local $dest|168 i32)
+  (local $ptr|169 i32)
+  (local $len|170 i32)
+  (local $dest|171 i32)
+  (local $ptr|172 i32)
+  (local $dest|173 i32)
+  (local $ptr|174 i32)
+  (local $len|175 i32)
+  (local $mins i32)
+  (local $this|177 i32)
+  (local $a|178 i64)
+  (local $b|179 i64)
+  (local $m|180 i64)
+  (local $value|181 i32)
+  (local $padding|182 i32)
+  (local $this|183 i32)
+  (local $value|184 i32)
+  (local $sign|185 i32)
+  (local $decimals|186 i32)
+  (local $out|187 i32)
+  (local $end|188 i32)
+  (local $num|189 i32)
+  (local $t|190 i32)
+  (local $r|191 i32)
+  (local $end|192 i32)
+  (local $num|193 i32)
+  (local $t|194 i32)
+  (local $r|195 i32)
+  (local $end|196 i32)
+  (local $num|197 i32)
+  (local $t|198 i32)
+  (local $r|199 i32)
+  (local $end|200 i32)
+  (local $num|201 i32)
+  (local $t|202 i32)
+  (local $r|203 i32)
+  (local $end|204 i32)
+  (local $num|205 i32)
+  (local $t|206 i32)
+  (local $r|207 i32)
+  (local $end|208 i32)
+  (local $num|209 i32)
+  (local $t|210 i32)
+  (local $r|211 i32)
+  (local $end|212 i32)
+  (local $num|213 i32)
+  (local $t|214 i32)
+  (local $r|215 i32)
+  (local $end|216 i32)
+  (local $num|217 i32)
+  (local $t|218 i32)
+  (local $r|219 i32)
+  (local $end|220 i32)
+  (local $num|221 i32)
+  (local $t|222 i32)
+  (local $r|223 i32)
+  (local $end|224 i32)
+  (local $num|225 i32)
+  (local $s|226 i32)
+  (local $inSize|227 i32)
+  (local $targetSize|228 i32)
+  (local $prependSize|229 i32)
+  (local $out|230 i32)
+  (local $dest|231 i32)
+  (local $value|232 i32)
+  (local $count|233 i32)
+  (local $234 i32)
+  (local $235 i32)
+  (local $236 i32)
+  (local $237 i32)
+  (local $dest|238 i32)
+  (local $value|239 i32)
+  (local $count|240 i32)
+  (local $241 i32)
+  (local $242 i32)
+  (local $dest|243 i32)
+  (local $value|244 i32)
+  (local $count|245 i32)
+  (local $dest|246 i32)
+  (local $ptr|247 i32)
+  (local $len|248 i32)
+  (local $dest|249 i32)
+  (local $ptr|250 i32)
+  (local $dest|251 i32)
+  (local $ptr|252 i32)
+  (local $len|253 i32)
+  (local $dest|254 i32)
+  (local $ptr|255 i32)
+  (local $dest|256 i32)
+  (local $ptr|257 i32)
+  (local $len|258 i32)
+  (local $dest|259 i32)
+  (local $ptr|260 i32)
+  (local $dest|261 i32)
+  (local $ptr|262 i32)
+  (local $len|263 i32)
+  (local $secs i32)
+  (local $265 i32)
+  (local $dest|266 i32)
+  (local $src i32)
+  (local $l i32)
+  (local $dest|269 i32)
+  (local $ptr|270 i32)
+  (local $dest|271 i32)
+  (local $ptr|272 i32)
+  (local $len|273 i32)
+  (local $dest|274 i32)
+  (local $ptr|275 i32)
+  (local $dest|276 i32)
+  (local $ptr|277 i32)
+  (local $len|278 i32)
+  (local $dest|279 i32)
+  (local $ptr|280 i32)
+  (local $dest|281 i32)
+  (local $ptr|282 i32)
+  (local $len|283 i32)
+  (local $dest|284 i32)
+  (local $ptr|285 i32)
+  (local $dest|286 i32)
+  (local $ptr|287 i32)
+  (local $len|288 i32)
+  (local $dest|289 i32)
+  (local $ptr|290 i32)
+  (local $dest|291 i32)
+  (local $ptr|292 i32)
+  (local $len|293 i32)
+  (local $dest|294 i32)
+  (local $ptr|295 i32)
+  (local $dest|296 i32)
+  (local $ptr|297 i32)
+  (local $len|298 i32)
+  (local $dest|299 i32)
+  (local $src|300 i32)
+  (local $dest|301 i32)
+  (local $ptr|302 i32)
+  (local $dest|303 i32)
+  (local $src|304 i32)
+  (local $l|305 i32)
+  (local $dest|306 i32)
+  (local $ptr|307 i32)
+  (local $dest|308 i32)
+  (local $ptr|309 i32)
+  (local $len|310 i32)
+  (local $dest|311 i32)
+  (local $ptr|312 i32)
+  (local $dest|313 i32)
+  (local $ptr|314 i32)
+  (local $len|315 i32)
+  (local $dest|316 i32)
+  (local $ptr|317 i32)
+  (local $dest|318 i32)
+  (local $ptr|319 i32)
+  (local $len|320 i32)
+  (local $dest|321 i32)
+  (local $ptr|322 i32)
+  (local $dest|323 i32)
+  (local $ptr|324 i32)
+  (local $len|325 i32)
+  (local $dest|326 i32)
+  (local $ptr|327 i32)
+  (local $dest|328 i32)
+  (local $ptr|329 i32)
+  (local $len|330 i32)
+  (local $dest|331 i32)
+  (local $ptr|332 i32)
+  (local $dest|333 i32)
+  (local $ptr|334 i32)
+  (local $len|335 i32)
+  (local $dest|336 i32)
+  (local $src|337 i32)
+  (local $dest|338 i32)
+  (local $ptr|339 i32)
+  (local $dest|340 i32)
+  (local $src|341 i32)
+  (local $l|342 i32)
+  (local $dest|343 i32)
+  (local $ptr|344 i32)
+  (local $dest|345 i32)
+  (local $ptr|346 i32)
+  (local $len|347 i32)
+  (local $dest|348 i32)
+  (local $ptr|349 i32)
+  (local $dest|350 i32)
+  (local $ptr|351 i32)
+  (local $len|352 i32)
+  (local $dest|353 i32)
+  (local $ptr|354 i32)
+  (local $dest|355 i32)
+  (local $ptr|356 i32)
+  (local $len|357 i32)
+  (local $dest|358 i32)
+  (local $ptr|359 i32)
+  (local $dest|360 i32)
+  (local $ptr|361 i32)
+  (local $len|362 i32)
+  (local $dest|363 i32)
+  (local $ptr|364 i32)
+  (local $dest|365 i32)
+  (local $ptr|366 i32)
+  (local $len|367 i32)
+  (local $dest|368 i32)
+  (local $ptr|369 i32)
+  (local $dest|370 i32)
+  (local $ptr|371 i32)
+  (local $len|372 i32)
+  (local $dest|373 i32)
+  (local $src|374 i32)
+  (local $size i32)
+  block $~lib/date/stringify|inlined.2 (result i32)
+   local.get $this
+   local.set $this|1
+   local.get $this|1
+   i64.load $0 offset=16
+   local.set $a
+   i32.const 86400000
+   i64.extend_i32_s
+   local.set $b
+   local.get $a
+   local.get $b
+   i64.rem_s
+   local.set $m
+   local.get $m
+   local.get $m
+   i64.const 0
+   i64.lt_s
+   if (result i64)
+    local.get $b
+   else
+    i64.const 0
+   end
+   i64.add
+   i32.wrap_i64
+   i32.const 3600000
+   i32.div_s
+   local.set $value
+   i32.const 2
+   local.set $padding
+   local.get $value
+   local.set $this|7
+   block $~lib/util/number/i32toa|inlined.2 (result i32)
+    local.get $this|7
+    local.set $value|8
+    local.get $value|8
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.2
+    end
+    local.get $value|8
+    i32.const 31
+    i32.shr_u
+    local.set $sign
+    local.get $sign
+    if
+     i32.const 0
+     local.get $value|8
+     i32.sub
+     local.set $value|8
+    end
+    local.get $value|8
+    call $~lib/util/number/decimalCount32
+    local.set $decimals
+    local.get $sign
+    local.get $decimals
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out
+    local.get $out
+    local.get $sign
+    i32.add
+    local.get $decimals
+    i32.add
+    local.set $end
+    local.get $value|8
+    local.set $num
+    local.get $num
+    i32.const 10
+    i32.div_u
+    local.set $t
+    local.get $num
+    i32.const 10
+    i32.rem_u
+    local.set $r
+    local.get $end
+    i32.const 1
+    i32.sub
+    local.set $end
+    local.get $end
+    i32.const 48
+    local.get $r
+    i32.add
+    i32.store8 $0
+    local.get $t
+    if
+     local.get $end
+     local.set $end|16
+     local.get $t
+     local.set $num|17
+     local.get $num|17
+     i32.const 10
+     i32.div_u
+     local.set $t|18
+     local.get $num|17
+     i32.const 10
+     i32.rem_u
+     local.set $r|19
+     local.get $end|16
+     i32.const 1
+     i32.sub
+     local.set $end|16
+     local.get $end|16
+     i32.const 48
+     local.get $r|19
+     i32.add
+     i32.store8 $0
+     local.get $t|18
+     if
+      local.get $end|16
+      local.set $end|20
+      local.get $t|18
+      local.set $num|21
+      local.get $num|21
+      i32.const 10
+      i32.div_u
+      local.set $t|22
+      local.get $num|21
+      i32.const 10
+      i32.rem_u
+      local.set $r|23
+      local.get $end|20
+      i32.const 1
+      i32.sub
+      local.set $end|20
+      local.get $end|20
+      i32.const 48
+      local.get $r|23
+      i32.add
+      i32.store8 $0
+      local.get $t|22
+      if
+       local.get $end|20
+       local.set $end|24
+       local.get $t|22
+       local.set $num|25
+       local.get $num|25
+       i32.const 10
+       i32.div_u
+       local.set $t|26
+       local.get $num|25
+       i32.const 10
+       i32.rem_u
+       local.set $r|27
+       local.get $end|24
+       i32.const 1
+       i32.sub
+       local.set $end|24
+       local.get $end|24
+       i32.const 48
+       local.get $r|27
+       i32.add
+       i32.store8 $0
+       local.get $t|26
+       if
+        local.get $end|24
+        local.set $end|28
+        local.get $t|26
+        local.set $num|29
+        local.get $num|29
+        i32.const 10
+        i32.div_u
+        local.set $t|30
+        local.get $num|29
+        i32.const 10
+        i32.rem_u
+        local.set $r|31
+        local.get $end|28
+        i32.const 1
+        i32.sub
+        local.set $end|28
+        local.get $end|28
+        i32.const 48
+        local.get $r|31
+        i32.add
+        i32.store8 $0
+        local.get $t|30
+        if
+         local.get $end|28
+         local.set $end|32
+         local.get $t|30
+         local.set $num|33
+         local.get $num|33
+         i32.const 10
+         i32.div_u
+         local.set $t|34
+         local.get $num|33
+         i32.const 10
+         i32.rem_u
+         local.set $r|35
+         local.get $end|32
+         i32.const 1
+         i32.sub
+         local.set $end|32
+         local.get $end|32
+         i32.const 48
+         local.get $r|35
+         i32.add
+         i32.store8 $0
+         local.get $t|34
+         if
+          local.get $end|32
+          local.set $end|36
+          local.get $t|34
+          local.set $num|37
+          local.get $num|37
+          i32.const 10
+          i32.div_u
+          local.set $t|38
+          local.get $num|37
+          i32.const 10
+          i32.rem_u
+          local.set $r|39
+          local.get $end|36
+          i32.const 1
+          i32.sub
+          local.set $end|36
+          local.get $end|36
+          i32.const 48
+          local.get $r|39
+          i32.add
+          i32.store8 $0
+          local.get $t|38
+          if
+           local.get $end|36
+           local.set $end|40
+           local.get $t|38
+           local.set $num|41
+           local.get $num|41
+           i32.const 10
+           i32.div_u
+           local.set $t|42
+           local.get $num|41
+           i32.const 10
+           i32.rem_u
+           local.set $r|43
+           local.get $end|40
+           i32.const 1
+           i32.sub
+           local.set $end|40
+           local.get $end|40
+           i32.const 48
+           local.get $r|43
+           i32.add
+           i32.store8 $0
+           local.get $t|42
+           if
+            local.get $end|40
+            local.set $end|44
+            local.get $t|42
+            local.set $num|45
+            local.get $num|45
+            i32.const 10
+            i32.div_u
+            local.set $t|46
+            local.get $num|45
+            i32.const 10
+            i32.rem_u
+            local.set $r|47
+            local.get $end|44
+            i32.const 1
+            i32.sub
+            local.set $end|44
+            local.get $end|44
+            i32.const 48
+            local.get $r|47
+            i32.add
+            i32.store8 $0
+            local.get $t|46
+            if
+             local.get $end|44
+             local.set $end|48
+             local.get $t|46
+             local.set $num|49
+             local.get $end|48
+             i32.const 1
+             i32.sub
+             local.tee $end|48
+             i32.const 48
+             local.get $num|49
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign
+    if
+     local.get $out
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out
+   end
+   local.set $s
+   local.get $s
+   call $~lib/string/String#get:length
+   local.set $inSize
+   local.get $padding
+   local.set $targetSize
+   local.get $targetSize
+   local.get $inSize
+   i32.le_u
+   if
+    local.get $s
+    br $~lib/date/stringify|inlined.2
+   end
+   local.get $targetSize
+   local.get $inSize
+   i32.sub
+   local.set $prependSize
+   local.get $targetSize
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|54
+   local.get $out|54
+   local.set $dest
+   i32.const 48
+   local.set $value|56
+   local.get $prependSize
+   local.set $count
+   local.get $count
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest
+    local.tee $58
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $58
+    local.get $value|56
+    i32.store8 $0
+    local.get $dest
+    local.tee $59
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $59
+    local.get $value|56
+    i32.store8 $0
+    local.get $dest
+    local.tee $60
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $60
+    local.get $value|56
+    i32.store8 $0
+    local.get $dest
+    local.tee $61
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $61
+    local.get $value|56
+    i32.store8 $0
+    local.get $count
+    i32.const 4
+    i32.sub
+    local.set $count
+   end
+   local.get $dest
+   local.set $dest|62
+   local.get $value|56
+   local.set $value|63
+   local.get $count
+   local.set $count|64
+   local.get $count|64
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|62
+    local.tee $65
+    i32.const 1
+    i32.add
+    local.set $dest|62
+    local.get $65
+    local.get $value|63
+    i32.store8 $0
+    local.get $dest|62
+    local.tee $66
+    i32.const 1
+    i32.add
+    local.set $dest|62
+    local.get $66
+    local.get $value|63
+    i32.store8 $0
+    local.get $count|64
+    i32.const 2
+    i32.sub
+    local.set $count|64
+   end
+   local.get $dest|62
+   local.set $dest|67
+   local.get $value|63
+   local.set $value|68
+   local.get $count|64
+   local.set $count|69
+   local.get $count|69
+   if
+    local.get $dest|67
+    local.get $value|68
+    i32.store8 $0
+   end
+   local.get $out|54
+   local.get $prependSize
+   i32.add
+   local.set $dest|70
+   local.get $s
+   local.set $ptr
+   local.get $inSize
+   local.set $len
+   local.get $len
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|70
+    local.set $dest|73
+    local.get $ptr
+    local.set $ptr|74
+    local.get $dest|73
+    local.get $ptr|74
+    i64.load $0
+    i64.store $0
+    local.get $dest|70
+    i32.const 8
+    i32.add
+    local.set $dest|70
+    local.get $ptr
+    i32.const 8
+    i32.add
+    local.set $ptr
+    local.get $len
+    i32.const 8
+    i32.sub
+    local.set $len
+   end
+   local.get $dest|70
+   local.set $dest|75
+   local.get $ptr
+   local.set $ptr|76
+   local.get $len
+   local.set $len|77
+   local.get $len|77
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|75
+    local.set $dest|78
+    local.get $ptr|76
+    local.set $ptr|79
+    local.get $dest|78
+    local.get $ptr|79
+    i32.load $0
+    i32.store $0
+    local.get $dest|75
+    i32.const 4
+    i32.add
+    local.set $dest|75
+    local.get $ptr|76
+    i32.const 4
+    i32.add
+    local.set $ptr|76
+    local.get $len|77
+    i32.const 4
+    i32.sub
+    local.set $len|77
+   end
+   local.get $dest|75
+   local.set $dest|80
+   local.get $ptr|76
+   local.set $ptr|81
+   local.get $len|77
+   local.set $len|82
+   local.get $len|82
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|80
+    local.set $dest|83
+    local.get $ptr|81
+    local.set $ptr|84
+    local.get $dest|83
+    local.get $ptr|84
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|80
+    i32.const 2
+    i32.add
+    local.set $dest|80
+    local.get $ptr|81
+    i32.const 2
+    i32.add
+    local.set $ptr|81
+    local.get $len|82
+    i32.const 2
+    i32.sub
+    local.set $len|82
+   end
+   local.get $dest|80
+   local.set $dest|85
+   local.get $ptr|81
+   local.set $ptr|86
+   local.get $len|82
+   local.set $len|87
+   local.get $len|87
+   if
+    local.get $dest|85
+    local.get $ptr|86
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|54
+  end
+  local.set $hours
+  block $~lib/date/stringify|inlined.3 (result i32)
+   local.get $this
+   local.set $this|89
+   local.get $this|89
+   i64.load $0 offset=16
+   local.set $a|90
+   i32.const 3600000
+   i64.extend_i32_s
+   local.set $b|91
+   local.get $a|90
+   local.get $b|91
+   i64.rem_s
+   local.set $m|92
+   local.get $m|92
+   local.get $m|92
+   i64.const 0
+   i64.lt_s
+   if (result i64)
+    local.get $b|91
+   else
+    i64.const 0
+   end
+   i64.add
+   i32.wrap_i64
+   i32.const 60000
+   i32.div_s
+   local.set $value|93
+   i32.const 2
+   local.set $padding|94
+   local.get $value|93
+   local.set $this|95
+   block $~lib/util/number/i32toa|inlined.3 (result i32)
+    local.get $this|95
+    local.set $value|96
+    local.get $value|96
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.3
+    end
+    local.get $value|96
+    i32.const 31
+    i32.shr_u
+    local.set $sign|97
+    local.get $sign|97
+    if
+     i32.const 0
+     local.get $value|96
+     i32.sub
+     local.set $value|96
+    end
+    local.get $value|96
+    call $~lib/util/number/decimalCount32
+    local.set $decimals|98
+    local.get $sign|97
+    local.get $decimals|98
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out|99
+    local.get $out|99
+    local.get $sign|97
+    i32.add
+    local.get $decimals|98
+    i32.add
+    local.set $end|100
+    local.get $value|96
+    local.set $num|101
+    local.get $num|101
+    i32.const 10
+    i32.div_u
+    local.set $t|102
+    local.get $num|101
+    i32.const 10
+    i32.rem_u
+    local.set $r|103
+    local.get $end|100
+    i32.const 1
+    i32.sub
+    local.set $end|100
+    local.get $end|100
+    i32.const 48
+    local.get $r|103
+    i32.add
+    i32.store8 $0
+    local.get $t|102
+    if
+     local.get $end|100
+     local.set $end|104
+     local.get $t|102
+     local.set $num|105
+     local.get $num|105
+     i32.const 10
+     i32.div_u
+     local.set $t|106
+     local.get $num|105
+     i32.const 10
+     i32.rem_u
+     local.set $r|107
+     local.get $end|104
+     i32.const 1
+     i32.sub
+     local.set $end|104
+     local.get $end|104
+     i32.const 48
+     local.get $r|107
+     i32.add
+     i32.store8 $0
+     local.get $t|106
+     if
+      local.get $end|104
+      local.set $end|108
+      local.get $t|106
+      local.set $num|109
+      local.get $num|109
+      i32.const 10
+      i32.div_u
+      local.set $t|110
+      local.get $num|109
+      i32.const 10
+      i32.rem_u
+      local.set $r|111
+      local.get $end|108
+      i32.const 1
+      i32.sub
+      local.set $end|108
+      local.get $end|108
+      i32.const 48
+      local.get $r|111
+      i32.add
+      i32.store8 $0
+      local.get $t|110
+      if
+       local.get $end|108
+       local.set $end|112
+       local.get $t|110
+       local.set $num|113
+       local.get $num|113
+       i32.const 10
+       i32.div_u
+       local.set $t|114
+       local.get $num|113
+       i32.const 10
+       i32.rem_u
+       local.set $r|115
+       local.get $end|112
+       i32.const 1
+       i32.sub
+       local.set $end|112
+       local.get $end|112
+       i32.const 48
+       local.get $r|115
+       i32.add
+       i32.store8 $0
+       local.get $t|114
+       if
+        local.get $end|112
+        local.set $end|116
+        local.get $t|114
+        local.set $num|117
+        local.get $num|117
+        i32.const 10
+        i32.div_u
+        local.set $t|118
+        local.get $num|117
+        i32.const 10
+        i32.rem_u
+        local.set $r|119
+        local.get $end|116
+        i32.const 1
+        i32.sub
+        local.set $end|116
+        local.get $end|116
+        i32.const 48
+        local.get $r|119
+        i32.add
+        i32.store8 $0
+        local.get $t|118
+        if
+         local.get $end|116
+         local.set $end|120
+         local.get $t|118
+         local.set $num|121
+         local.get $num|121
+         i32.const 10
+         i32.div_u
+         local.set $t|122
+         local.get $num|121
+         i32.const 10
+         i32.rem_u
+         local.set $r|123
+         local.get $end|120
+         i32.const 1
+         i32.sub
+         local.set $end|120
+         local.get $end|120
+         i32.const 48
+         local.get $r|123
+         i32.add
+         i32.store8 $0
+         local.get $t|122
+         if
+          local.get $end|120
+          local.set $end|124
+          local.get $t|122
+          local.set $num|125
+          local.get $num|125
+          i32.const 10
+          i32.div_u
+          local.set $t|126
+          local.get $num|125
+          i32.const 10
+          i32.rem_u
+          local.set $r|127
+          local.get $end|124
+          i32.const 1
+          i32.sub
+          local.set $end|124
+          local.get $end|124
+          i32.const 48
+          local.get $r|127
+          i32.add
+          i32.store8 $0
+          local.get $t|126
+          if
+           local.get $end|124
+           local.set $end|128
+           local.get $t|126
+           local.set $num|129
+           local.get $num|129
+           i32.const 10
+           i32.div_u
+           local.set $t|130
+           local.get $num|129
+           i32.const 10
+           i32.rem_u
+           local.set $r|131
+           local.get $end|128
+           i32.const 1
+           i32.sub
+           local.set $end|128
+           local.get $end|128
+           i32.const 48
+           local.get $r|131
+           i32.add
+           i32.store8 $0
+           local.get $t|130
+           if
+            local.get $end|128
+            local.set $end|132
+            local.get $t|130
+            local.set $num|133
+            local.get $num|133
+            i32.const 10
+            i32.div_u
+            local.set $t|134
+            local.get $num|133
+            i32.const 10
+            i32.rem_u
+            local.set $r|135
+            local.get $end|132
+            i32.const 1
+            i32.sub
+            local.set $end|132
+            local.get $end|132
+            i32.const 48
+            local.get $r|135
+            i32.add
+            i32.store8 $0
+            local.get $t|134
+            if
+             local.get $end|132
+             local.set $end|136
+             local.get $t|134
+             local.set $num|137
+             local.get $end|136
+             i32.const 1
+             i32.sub
+             local.tee $end|136
+             i32.const 48
+             local.get $num|137
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign|97
+    if
+     local.get $out|99
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out|99
+   end
+   local.set $s|138
+   local.get $s|138
+   call $~lib/string/String#get:length
+   local.set $inSize|139
+   local.get $padding|94
+   local.set $targetSize|140
+   local.get $targetSize|140
+   local.get $inSize|139
+   i32.le_u
+   if
+    local.get $s|138
+    br $~lib/date/stringify|inlined.3
+   end
+   local.get $targetSize|140
+   local.get $inSize|139
+   i32.sub
+   local.set $prependSize|141
+   local.get $targetSize|140
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|142
+   local.get $out|142
+   local.set $dest|143
+   i32.const 48
+   local.set $value|144
+   local.get $prependSize|141
+   local.set $count|145
+   local.get $count|145
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest|143
+    local.tee $146
+    i32.const 1
+    i32.add
+    local.set $dest|143
+    local.get $146
+    local.get $value|144
+    i32.store8 $0
+    local.get $dest|143
+    local.tee $147
+    i32.const 1
+    i32.add
+    local.set $dest|143
+    local.get $147
+    local.get $value|144
+    i32.store8 $0
+    local.get $dest|143
+    local.tee $148
+    i32.const 1
+    i32.add
+    local.set $dest|143
+    local.get $148
+    local.get $value|144
+    i32.store8 $0
+    local.get $dest|143
+    local.tee $149
+    i32.const 1
+    i32.add
+    local.set $dest|143
+    local.get $149
+    local.get $value|144
+    i32.store8 $0
+    local.get $count|145
+    i32.const 4
+    i32.sub
+    local.set $count|145
+   end
+   local.get $dest|143
+   local.set $dest|150
+   local.get $value|144
+   local.set $value|151
+   local.get $count|145
+   local.set $count|152
+   local.get $count|152
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|150
+    local.tee $153
+    i32.const 1
+    i32.add
+    local.set $dest|150
+    local.get $153
+    local.get $value|151
+    i32.store8 $0
+    local.get $dest|150
+    local.tee $154
+    i32.const 1
+    i32.add
+    local.set $dest|150
+    local.get $154
+    local.get $value|151
+    i32.store8 $0
+    local.get $count|152
+    i32.const 2
+    i32.sub
+    local.set $count|152
+   end
+   local.get $dest|150
+   local.set $dest|155
+   local.get $value|151
+   local.set $value|156
+   local.get $count|152
+   local.set $count|157
+   local.get $count|157
+   if
+    local.get $dest|155
+    local.get $value|156
+    i32.store8 $0
+   end
+   local.get $out|142
+   local.get $prependSize|141
+   i32.add
+   local.set $dest|158
+   local.get $s|138
+   local.set $ptr|159
+   local.get $inSize|139
+   local.set $len|160
+   local.get $len|160
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|158
+    local.set $dest|161
+    local.get $ptr|159
+    local.set $ptr|162
+    local.get $dest|161
+    local.get $ptr|162
+    i64.load $0
+    i64.store $0
+    local.get $dest|158
+    i32.const 8
+    i32.add
+    local.set $dest|158
+    local.get $ptr|159
+    i32.const 8
+    i32.add
+    local.set $ptr|159
+    local.get $len|160
+    i32.const 8
+    i32.sub
+    local.set $len|160
+   end
+   local.get $dest|158
+   local.set $dest|163
+   local.get $ptr|159
+   local.set $ptr|164
+   local.get $len|160
+   local.set $len|165
+   local.get $len|165
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|163
+    local.set $dest|166
+    local.get $ptr|164
+    local.set $ptr|167
+    local.get $dest|166
+    local.get $ptr|167
+    i32.load $0
+    i32.store $0
+    local.get $dest|163
+    i32.const 4
+    i32.add
+    local.set $dest|163
+    local.get $ptr|164
+    i32.const 4
+    i32.add
+    local.set $ptr|164
+    local.get $len|165
+    i32.const 4
+    i32.sub
+    local.set $len|165
+   end
+   local.get $dest|163
+   local.set $dest|168
+   local.get $ptr|164
+   local.set $ptr|169
+   local.get $len|165
+   local.set $len|170
+   local.get $len|170
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|168
+    local.set $dest|171
+    local.get $ptr|169
+    local.set $ptr|172
+    local.get $dest|171
+    local.get $ptr|172
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|168
+    i32.const 2
+    i32.add
+    local.set $dest|168
+    local.get $ptr|169
+    i32.const 2
+    i32.add
+    local.set $ptr|169
+    local.get $len|170
+    i32.const 2
+    i32.sub
+    local.set $len|170
+   end
+   local.get $dest|168
+   local.set $dest|173
+   local.get $ptr|169
+   local.set $ptr|174
+   local.get $len|170
+   local.set $len|175
+   local.get $len|175
+   if
+    local.get $dest|173
+    local.get $ptr|174
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|142
+  end
+  local.set $mins
+  block $~lib/date/stringify|inlined.4 (result i32)
+   local.get $this
+   local.set $this|177
+   local.get $this|177
+   i64.load $0 offset=16
+   local.set $a|178
+   i32.const 60000
+   i64.extend_i32_s
+   local.set $b|179
+   local.get $a|178
+   local.get $b|179
+   i64.rem_s
+   local.set $m|180
+   local.get $m|180
+   local.get $m|180
+   i64.const 0
+   i64.lt_s
+   if (result i64)
+    local.get $b|179
+   else
+    i64.const 0
+   end
+   i64.add
+   i32.wrap_i64
+   i32.const 1000
+   i32.div_s
+   local.set $value|181
+   i32.const 2
+   local.set $padding|182
+   local.get $value|181
+   local.set $this|183
+   block $~lib/util/number/i32toa|inlined.4 (result i32)
+    local.get $this|183
+    local.set $value|184
+    local.get $value|184
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.4
+    end
+    local.get $value|184
+    i32.const 31
+    i32.shr_u
+    local.set $sign|185
+    local.get $sign|185
+    if
+     i32.const 0
+     local.get $value|184
+     i32.sub
+     local.set $value|184
+    end
+    local.get $value|184
+    call $~lib/util/number/decimalCount32
+    local.set $decimals|186
+    local.get $sign|185
+    local.get $decimals|186
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out|187
+    local.get $out|187
+    local.get $sign|185
+    i32.add
+    local.get $decimals|186
+    i32.add
+    local.set $end|188
+    local.get $value|184
+    local.set $num|189
+    local.get $num|189
+    i32.const 10
+    i32.div_u
+    local.set $t|190
+    local.get $num|189
+    i32.const 10
+    i32.rem_u
+    local.set $r|191
+    local.get $end|188
+    i32.const 1
+    i32.sub
+    local.set $end|188
+    local.get $end|188
+    i32.const 48
+    local.get $r|191
+    i32.add
+    i32.store8 $0
+    local.get $t|190
+    if
+     local.get $end|188
+     local.set $end|192
+     local.get $t|190
+     local.set $num|193
+     local.get $num|193
+     i32.const 10
+     i32.div_u
+     local.set $t|194
+     local.get $num|193
+     i32.const 10
+     i32.rem_u
+     local.set $r|195
+     local.get $end|192
+     i32.const 1
+     i32.sub
+     local.set $end|192
+     local.get $end|192
+     i32.const 48
+     local.get $r|195
+     i32.add
+     i32.store8 $0
+     local.get $t|194
+     if
+      local.get $end|192
+      local.set $end|196
+      local.get $t|194
+      local.set $num|197
+      local.get $num|197
+      i32.const 10
+      i32.div_u
+      local.set $t|198
+      local.get $num|197
+      i32.const 10
+      i32.rem_u
+      local.set $r|199
+      local.get $end|196
+      i32.const 1
+      i32.sub
+      local.set $end|196
+      local.get $end|196
+      i32.const 48
+      local.get $r|199
+      i32.add
+      i32.store8 $0
+      local.get $t|198
+      if
+       local.get $end|196
+       local.set $end|200
+       local.get $t|198
+       local.set $num|201
+       local.get $num|201
+       i32.const 10
+       i32.div_u
+       local.set $t|202
+       local.get $num|201
+       i32.const 10
+       i32.rem_u
+       local.set $r|203
+       local.get $end|200
+       i32.const 1
+       i32.sub
+       local.set $end|200
+       local.get $end|200
+       i32.const 48
+       local.get $r|203
+       i32.add
+       i32.store8 $0
+       local.get $t|202
+       if
+        local.get $end|200
+        local.set $end|204
+        local.get $t|202
+        local.set $num|205
+        local.get $num|205
+        i32.const 10
+        i32.div_u
+        local.set $t|206
+        local.get $num|205
+        i32.const 10
+        i32.rem_u
+        local.set $r|207
+        local.get $end|204
+        i32.const 1
+        i32.sub
+        local.set $end|204
+        local.get $end|204
+        i32.const 48
+        local.get $r|207
+        i32.add
+        i32.store8 $0
+        local.get $t|206
+        if
+         local.get $end|204
+         local.set $end|208
+         local.get $t|206
+         local.set $num|209
+         local.get $num|209
+         i32.const 10
+         i32.div_u
+         local.set $t|210
+         local.get $num|209
+         i32.const 10
+         i32.rem_u
+         local.set $r|211
+         local.get $end|208
+         i32.const 1
+         i32.sub
+         local.set $end|208
+         local.get $end|208
+         i32.const 48
+         local.get $r|211
+         i32.add
+         i32.store8 $0
+         local.get $t|210
+         if
+          local.get $end|208
+          local.set $end|212
+          local.get $t|210
+          local.set $num|213
+          local.get $num|213
+          i32.const 10
+          i32.div_u
+          local.set $t|214
+          local.get $num|213
+          i32.const 10
+          i32.rem_u
+          local.set $r|215
+          local.get $end|212
+          i32.const 1
+          i32.sub
+          local.set $end|212
+          local.get $end|212
+          i32.const 48
+          local.get $r|215
+          i32.add
+          i32.store8 $0
+          local.get $t|214
+          if
+           local.get $end|212
+           local.set $end|216
+           local.get $t|214
+           local.set $num|217
+           local.get $num|217
+           i32.const 10
+           i32.div_u
+           local.set $t|218
+           local.get $num|217
+           i32.const 10
+           i32.rem_u
+           local.set $r|219
+           local.get $end|216
+           i32.const 1
+           i32.sub
+           local.set $end|216
+           local.get $end|216
+           i32.const 48
+           local.get $r|219
+           i32.add
+           i32.store8 $0
+           local.get $t|218
+           if
+            local.get $end|216
+            local.set $end|220
+            local.get $t|218
+            local.set $num|221
+            local.get $num|221
+            i32.const 10
+            i32.div_u
+            local.set $t|222
+            local.get $num|221
+            i32.const 10
+            i32.rem_u
+            local.set $r|223
+            local.get $end|220
+            i32.const 1
+            i32.sub
+            local.set $end|220
+            local.get $end|220
+            i32.const 48
+            local.get $r|223
+            i32.add
+            i32.store8 $0
+            local.get $t|222
+            if
+             local.get $end|220
+             local.set $end|224
+             local.get $t|222
+             local.set $num|225
+             local.get $end|224
+             i32.const 1
+             i32.sub
+             local.tee $end|224
+             i32.const 48
+             local.get $num|225
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign|185
+    if
+     local.get $out|187
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out|187
+   end
+   local.set $s|226
+   local.get $s|226
+   call $~lib/string/String#get:length
+   local.set $inSize|227
+   local.get $padding|182
+   local.set $targetSize|228
+   local.get $targetSize|228
+   local.get $inSize|227
+   i32.le_u
+   if
+    local.get $s|226
+    br $~lib/date/stringify|inlined.4
+   end
+   local.get $targetSize|228
+   local.get $inSize|227
+   i32.sub
+   local.set $prependSize|229
+   local.get $targetSize|228
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|230
+   local.get $out|230
+   local.set $dest|231
+   i32.const 48
+   local.set $value|232
+   local.get $prependSize|229
+   local.set $count|233
+   local.get $count|233
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest|231
+    local.tee $234
+    i32.const 1
+    i32.add
+    local.set $dest|231
+    local.get $234
+    local.get $value|232
+    i32.store8 $0
+    local.get $dest|231
+    local.tee $235
+    i32.const 1
+    i32.add
+    local.set $dest|231
+    local.get $235
+    local.get $value|232
+    i32.store8 $0
+    local.get $dest|231
+    local.tee $236
+    i32.const 1
+    i32.add
+    local.set $dest|231
+    local.get $236
+    local.get $value|232
+    i32.store8 $0
+    local.get $dest|231
+    local.tee $237
+    i32.const 1
+    i32.add
+    local.set $dest|231
+    local.get $237
+    local.get $value|232
+    i32.store8 $0
+    local.get $count|233
+    i32.const 4
+    i32.sub
+    local.set $count|233
+   end
+   local.get $dest|231
+   local.set $dest|238
+   local.get $value|232
+   local.set $value|239
+   local.get $count|233
+   local.set $count|240
+   local.get $count|240
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|238
+    local.tee $241
+    i32.const 1
+    i32.add
+    local.set $dest|238
+    local.get $241
+    local.get $value|239
+    i32.store8 $0
+    local.get $dest|238
+    local.tee $242
+    i32.const 1
+    i32.add
+    local.set $dest|238
+    local.get $242
+    local.get $value|239
+    i32.store8 $0
+    local.get $count|240
+    i32.const 2
+    i32.sub
+    local.set $count|240
+   end
+   local.get $dest|238
+   local.set $dest|243
+   local.get $value|239
+   local.set $value|244
+   local.get $count|240
+   local.set $count|245
+   local.get $count|245
+   if
+    local.get $dest|243
+    local.get $value|244
+    i32.store8 $0
+   end
+   local.get $out|230
+   local.get $prependSize|229
+   i32.add
+   local.set $dest|246
+   local.get $s|226
+   local.set $ptr|247
+   local.get $inSize|227
+   local.set $len|248
+   local.get $len|248
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|246
+    local.set $dest|249
+    local.get $ptr|247
+    local.set $ptr|250
+    local.get $dest|249
+    local.get $ptr|250
+    i64.load $0
+    i64.store $0
+    local.get $dest|246
+    i32.const 8
+    i32.add
+    local.set $dest|246
+    local.get $ptr|247
+    i32.const 8
+    i32.add
+    local.set $ptr|247
+    local.get $len|248
+    i32.const 8
+    i32.sub
+    local.set $len|248
+   end
+   local.get $dest|246
+   local.set $dest|251
+   local.get $ptr|247
+   local.set $ptr|252
+   local.get $len|248
+   local.set $len|253
+   local.get $len|253
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|251
+    local.set $dest|254
+    local.get $ptr|252
+    local.set $ptr|255
+    local.get $dest|254
+    local.get $ptr|255
+    i32.load $0
+    i32.store $0
+    local.get $dest|251
+    i32.const 4
+    i32.add
+    local.set $dest|251
+    local.get $ptr|252
+    i32.const 4
+    i32.add
+    local.set $ptr|252
+    local.get $len|253
+    i32.const 4
+    i32.sub
+    local.set $len|253
+   end
+   local.get $dest|251
+   local.set $dest|256
+   local.get $ptr|252
+   local.set $ptr|257
+   local.get $len|253
+   local.set $len|258
+   local.get $len|258
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|256
+    local.set $dest|259
+    local.get $ptr|257
+    local.set $ptr|260
+    local.get $dest|259
+    local.get $ptr|260
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|256
+    i32.const 2
+    i32.add
+    local.set $dest|256
+    local.get $ptr|257
+    i32.const 2
+    i32.add
+    local.set $ptr|257
+    local.get $len|258
+    i32.const 2
+    i32.sub
+    local.set $len|258
+   end
+   local.get $dest|256
+   local.set $dest|261
+   local.get $ptr|257
+   local.set $ptr|262
+   local.get $len|258
+   local.set $len|263
+   local.get $len|263
+   if
+    local.get $dest|261
+    local.get $ptr|262
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|230
+  end
+  local.set $secs
+  i32.const 194
+  local.set $size
+  local.get $size
+  i32.const 1
+  call $~lib/rt/stub/__new
+  local.set $265
+  block $~lib/copyupto/__copyupto64|inlined.7 (result i32)
+   block $~lib/copyupto/__copyupto64|inlined.6 (result i32)
+    block $~lib/copyupto/__copyupto64|inlined.5 (result i32)
+     local.get $265
+     local.set $dest|266
+     local.get $hours
+     local.set $src
+     local.get $src
+     call $~lib/string/String#get:length
+     local.set $l
+     local.get $l
+     i32.const 64
+     i32.ge_s
+     if
+      local.get $dest|266
+      local.set $dest|269
+      local.get $src
+      local.set $ptr|270
+      local.get $dest|269
+      local.get $ptr|270
+      i64.load $0
+      i64.store $0
+      local.get $dest|269
+      i32.const 8
+      i32.add
+      local.set $dest|269
+      local.get $ptr|270
+      i32.const 8
+      i32.add
+      local.set $ptr|270
+      local.get $dest|269
+      local.get $ptr|270
+      i64.load $0
+      i64.store $0
+      local.get $dest|269
+      i32.const 8
+      i32.add
+      local.set $dest|269
+      local.get $ptr|270
+      i32.const 8
+      i32.add
+      local.set $ptr|270
+      local.get $dest|269
+      local.get $ptr|270
+      i64.load $0
+      i64.store $0
+      local.get $dest|269
+      i32.const 8
+      i32.add
+      local.set $dest|269
+      local.get $ptr|270
+      i32.const 8
+      i32.add
+      local.set $ptr|270
+      local.get $dest|269
+      local.get $ptr|270
+      i64.load $0
+      i64.store $0
+      local.get $dest|269
+      i32.const 8
+      i32.add
+      local.set $dest|269
+      local.get $ptr|270
+      i32.const 8
+      i32.add
+      local.set $ptr|270
+      local.get $dest|269
+      local.get $ptr|270
+      i64.load $0
+      i64.store $0
+      local.get $dest|269
+      i32.const 8
+      i32.add
+      local.set $dest|269
+      local.get $ptr|270
+      i32.const 8
+      i32.add
+      local.set $ptr|270
+      local.get $dest|269
+      local.get $ptr|270
+      i64.load $0
+      i64.store $0
+      local.get $dest|269
+      i32.const 8
+      i32.add
+      local.set $dest|269
+      local.get $ptr|270
+      i32.const 8
+      i32.add
+      local.set $ptr|270
+      local.get $dest|269
+      local.get $ptr|270
+      i64.load $0
+      i64.store $0
+      local.get $dest|269
+      i32.const 8
+      i32.add
+      local.set $dest|269
+      local.get $ptr|270
+      i32.const 8
+      i32.add
+      local.set $ptr|270
+      local.get $dest|269
+      local.get $ptr|270
+      i64.load $0
+      i64.store $0
+      local.get $dest|266
+      i32.const 64
+      i32.add
+      br $~lib/copyupto/__copyupto64|inlined.5
+     end
+     local.get $dest|266
+     local.set $dest|271
+     local.get $src
+     local.set $ptr|272
+     local.get $l
+     local.set $len|273
+     local.get $len|273
+     i32.const 32
+     i32.ge_s
+     if
+      local.get $dest|271
+      local.set $dest|274
+      local.get $ptr|272
+      local.set $ptr|275
+      local.get $dest|274
+      local.get $ptr|275
+      i64.load $0
+      i64.store $0
+      local.get $dest|274
+      i32.const 8
+      i32.add
+      local.set $dest|274
+      local.get $ptr|275
+      i32.const 8
+      i32.add
+      local.set $ptr|275
+      local.get $dest|274
+      local.get $ptr|275
+      i64.load $0
+      i64.store $0
+      local.get $dest|274
+      i32.const 8
+      i32.add
+      local.set $dest|274
+      local.get $ptr|275
+      i32.const 8
+      i32.add
+      local.set $ptr|275
+      local.get $dest|274
+      local.get $ptr|275
+      i64.load $0
+      i64.store $0
+      local.get $dest|274
+      i32.const 8
+      i32.add
+      local.set $dest|274
+      local.get $ptr|275
+      i32.const 8
+      i32.add
+      local.set $ptr|275
+      local.get $dest|274
+      local.get $ptr|275
+      i64.load $0
+      i64.store $0
+      local.get $dest|271
+      i32.const 32
+      i32.add
+      local.set $dest|271
+      local.get $ptr|272
+      i32.const 32
+      i32.add
+      local.set $ptr|272
+      local.get $len|273
+      i32.const 32
+      i32.sub
+      local.set $len|273
+     end
+     local.get $dest|271
+     local.set $dest|276
+     local.get $ptr|272
+     local.set $ptr|277
+     local.get $len|273
+     local.set $len|278
+     local.get $len|278
+     i32.const 16
+     i32.ge_s
+     if
+      local.get $dest|276
+      local.set $dest|279
+      local.get $ptr|277
+      local.set $ptr|280
+      local.get $dest|279
+      local.get $ptr|280
+      i64.load $0
+      i64.store $0
+      local.get $dest|279
+      i32.const 8
+      i32.add
+      local.set $dest|279
+      local.get $ptr|280
+      i32.const 8
+      i32.add
+      local.set $ptr|280
+      local.get $dest|279
+      local.get $ptr|280
+      i64.load $0
+      i64.store $0
+      local.get $dest|276
+      i32.const 16
+      i32.add
+      local.set $dest|276
+      local.get $ptr|277
+      i32.const 16
+      i32.add
+      local.set $ptr|277
+      local.get $len|278
+      i32.const 16
+      i32.sub
+      local.set $len|278
+     end
+     local.get $dest|276
+     local.set $dest|281
+     local.get $ptr|277
+     local.set $ptr|282
+     local.get $len|278
+     local.set $len|283
+     local.get $len|283
+     i32.const 8
+     i32.ge_s
+     if
+      local.get $dest|281
+      local.set $dest|284
+      local.get $ptr|282
+      local.set $ptr|285
+      local.get $dest|284
+      local.get $ptr|285
+      i64.load $0
+      i64.store $0
+      local.get $dest|281
+      i32.const 8
+      i32.add
+      local.set $dest|281
+      local.get $ptr|282
+      i32.const 8
+      i32.add
+      local.set $ptr|282
+      local.get $len|283
+      i32.const 8
+      i32.sub
+      local.set $len|283
+     end
+     local.get $dest|281
+     local.set $dest|286
+     local.get $ptr|282
+     local.set $ptr|287
+     local.get $len|283
+     local.set $len|288
+     local.get $len|288
+     i32.const 4
+     i32.ge_s
+     if
+      local.get $dest|286
+      local.set $dest|289
+      local.get $ptr|287
+      local.set $ptr|290
+      local.get $dest|289
+      local.get $ptr|290
+      i32.load $0
+      i32.store $0
+      local.get $dest|286
+      i32.const 4
+      i32.add
+      local.set $dest|286
+      local.get $ptr|287
+      i32.const 4
+      i32.add
+      local.set $ptr|287
+      local.get $len|288
+      i32.const 4
+      i32.sub
+      local.set $len|288
+     end
+     local.get $dest|286
+     local.set $dest|291
+     local.get $ptr|287
+     local.set $ptr|292
+     local.get $len|288
+     local.set $len|293
+     local.get $len|293
+     i32.const 2
+     i32.ge_s
+     if
+      local.get $dest|291
+      local.set $dest|294
+      local.get $ptr|292
+      local.set $ptr|295
+      local.get $dest|294
+      local.get $ptr|295
+      i32.load16_u $0
+      i32.store16 $0
+      local.get $dest|291
+      i32.const 2
+      i32.add
+      local.set $dest|291
+      local.get $ptr|292
+      i32.const 2
+      i32.add
+      local.set $ptr|292
+      local.get $len|293
+      i32.const 2
+      i32.sub
+      local.set $len|293
+     end
+     local.get $dest|291
+     local.set $dest|296
+     local.get $ptr|292
+     local.set $ptr|297
+     local.get $len|293
+     local.set $len|298
+     local.get $len|298
+     if
+      local.get $dest|296
+      local.get $ptr|297
+      i32.load8_u $0
+      i32.store8 $0
+     end
+     local.get $dest|266
+     local.get $l
+     i32.add
+    end
+    local.set $dest|299
+    i32.const 1088
+    local.set $src|300
+    local.get $dest|299
+    local.set $dest|301
+    local.get $src|300
+    local.set $ptr|302
+    local.get $dest|301
+    local.get $ptr|302
+    i32.load8_u $0
+    i32.store8 $0
+    local.get $dest|299
+    i32.const 1
+    i32.add
+    local.set $dest|303
+    local.get $mins
+    local.set $src|304
+    local.get $src|304
+    call $~lib/string/String#get:length
+    local.set $l|305
+    local.get $l|305
+    i32.const 64
+    i32.ge_s
+    if
+     local.get $dest|303
+     local.set $dest|306
+     local.get $src|304
+     local.set $ptr|307
+     local.get $dest|306
+     local.get $ptr|307
+     i64.load $0
+     i64.store $0
+     local.get $dest|306
+     i32.const 8
+     i32.add
+     local.set $dest|306
+     local.get $ptr|307
+     i32.const 8
+     i32.add
+     local.set $ptr|307
+     local.get $dest|306
+     local.get $ptr|307
+     i64.load $0
+     i64.store $0
+     local.get $dest|306
+     i32.const 8
+     i32.add
+     local.set $dest|306
+     local.get $ptr|307
+     i32.const 8
+     i32.add
+     local.set $ptr|307
+     local.get $dest|306
+     local.get $ptr|307
+     i64.load $0
+     i64.store $0
+     local.get $dest|306
+     i32.const 8
+     i32.add
+     local.set $dest|306
+     local.get $ptr|307
+     i32.const 8
+     i32.add
+     local.set $ptr|307
+     local.get $dest|306
+     local.get $ptr|307
+     i64.load $0
+     i64.store $0
+     local.get $dest|306
+     i32.const 8
+     i32.add
+     local.set $dest|306
+     local.get $ptr|307
+     i32.const 8
+     i32.add
+     local.set $ptr|307
+     local.get $dest|306
+     local.get $ptr|307
+     i64.load $0
+     i64.store $0
+     local.get $dest|306
+     i32.const 8
+     i32.add
+     local.set $dest|306
+     local.get $ptr|307
+     i32.const 8
+     i32.add
+     local.set $ptr|307
+     local.get $dest|306
+     local.get $ptr|307
+     i64.load $0
+     i64.store $0
+     local.get $dest|306
+     i32.const 8
+     i32.add
+     local.set $dest|306
+     local.get $ptr|307
+     i32.const 8
+     i32.add
+     local.set $ptr|307
+     local.get $dest|306
+     local.get $ptr|307
+     i64.load $0
+     i64.store $0
+     local.get $dest|306
+     i32.const 8
+     i32.add
+     local.set $dest|306
+     local.get $ptr|307
+     i32.const 8
+     i32.add
+     local.set $ptr|307
+     local.get $dest|306
+     local.get $ptr|307
+     i64.load $0
+     i64.store $0
+     local.get $dest|303
+     i32.const 64
+     i32.add
+     br $~lib/copyupto/__copyupto64|inlined.6
+    end
+    local.get $dest|303
+    local.set $dest|308
+    local.get $src|304
+    local.set $ptr|309
+    local.get $l|305
+    local.set $len|310
+    local.get $len|310
+    i32.const 32
+    i32.ge_s
+    if
+     local.get $dest|308
+     local.set $dest|311
+     local.get $ptr|309
+     local.set $ptr|312
+     local.get $dest|311
+     local.get $ptr|312
+     i64.load $0
+     i64.store $0
+     local.get $dest|311
+     i32.const 8
+     i32.add
+     local.set $dest|311
+     local.get $ptr|312
+     i32.const 8
+     i32.add
+     local.set $ptr|312
+     local.get $dest|311
+     local.get $ptr|312
+     i64.load $0
+     i64.store $0
+     local.get $dest|311
+     i32.const 8
+     i32.add
+     local.set $dest|311
+     local.get $ptr|312
+     i32.const 8
+     i32.add
+     local.set $ptr|312
+     local.get $dest|311
+     local.get $ptr|312
+     i64.load $0
+     i64.store $0
+     local.get $dest|311
+     i32.const 8
+     i32.add
+     local.set $dest|311
+     local.get $ptr|312
+     i32.const 8
+     i32.add
+     local.set $ptr|312
+     local.get $dest|311
+     local.get $ptr|312
+     i64.load $0
+     i64.store $0
+     local.get $dest|308
+     i32.const 32
+     i32.add
+     local.set $dest|308
+     local.get $ptr|309
+     i32.const 32
+     i32.add
+     local.set $ptr|309
+     local.get $len|310
+     i32.const 32
+     i32.sub
+     local.set $len|310
+    end
+    local.get $dest|308
+    local.set $dest|313
+    local.get $ptr|309
+    local.set $ptr|314
+    local.get $len|310
+    local.set $len|315
+    local.get $len|315
+    i32.const 16
+    i32.ge_s
+    if
+     local.get $dest|313
+     local.set $dest|316
+     local.get $ptr|314
+     local.set $ptr|317
+     local.get $dest|316
+     local.get $ptr|317
+     i64.load $0
+     i64.store $0
+     local.get $dest|316
+     i32.const 8
+     i32.add
+     local.set $dest|316
+     local.get $ptr|317
+     i32.const 8
+     i32.add
+     local.set $ptr|317
+     local.get $dest|316
+     local.get $ptr|317
+     i64.load $0
+     i64.store $0
+     local.get $dest|313
+     i32.const 16
+     i32.add
+     local.set $dest|313
+     local.get $ptr|314
+     i32.const 16
+     i32.add
+     local.set $ptr|314
+     local.get $len|315
+     i32.const 16
+     i32.sub
+     local.set $len|315
+    end
+    local.get $dest|313
+    local.set $dest|318
+    local.get $ptr|314
+    local.set $ptr|319
+    local.get $len|315
+    local.set $len|320
+    local.get $len|320
+    i32.const 8
+    i32.ge_s
+    if
+     local.get $dest|318
+     local.set $dest|321
+     local.get $ptr|319
+     local.set $ptr|322
+     local.get $dest|321
+     local.get $ptr|322
+     i64.load $0
+     i64.store $0
+     local.get $dest|318
+     i32.const 8
+     i32.add
+     local.set $dest|318
+     local.get $ptr|319
+     i32.const 8
+     i32.add
+     local.set $ptr|319
+     local.get $len|320
+     i32.const 8
+     i32.sub
+     local.set $len|320
+    end
+    local.get $dest|318
+    local.set $dest|323
+    local.get $ptr|319
+    local.set $ptr|324
+    local.get $len|320
+    local.set $len|325
+    local.get $len|325
+    i32.const 4
+    i32.ge_s
+    if
+     local.get $dest|323
+     local.set $dest|326
+     local.get $ptr|324
+     local.set $ptr|327
+     local.get $dest|326
+     local.get $ptr|327
+     i32.load $0
+     i32.store $0
+     local.get $dest|323
+     i32.const 4
+     i32.add
+     local.set $dest|323
+     local.get $ptr|324
+     i32.const 4
+     i32.add
+     local.set $ptr|324
+     local.get $len|325
+     i32.const 4
+     i32.sub
+     local.set $len|325
+    end
+    local.get $dest|323
+    local.set $dest|328
+    local.get $ptr|324
+    local.set $ptr|329
+    local.get $len|325
+    local.set $len|330
+    local.get $len|330
+    i32.const 2
+    i32.ge_s
+    if
+     local.get $dest|328
+     local.set $dest|331
+     local.get $ptr|329
+     local.set $ptr|332
+     local.get $dest|331
+     local.get $ptr|332
+     i32.load16_u $0
+     i32.store16 $0
+     local.get $dest|328
+     i32.const 2
+     i32.add
+     local.set $dest|328
+     local.get $ptr|329
+     i32.const 2
+     i32.add
+     local.set $ptr|329
+     local.get $len|330
+     i32.const 2
+     i32.sub
+     local.set $len|330
+    end
+    local.get $dest|328
+    local.set $dest|333
+    local.get $ptr|329
+    local.set $ptr|334
+    local.get $len|330
+    local.set $len|335
+    local.get $len|335
+    if
+     local.get $dest|333
+     local.get $ptr|334
+     i32.load8_u $0
+     i32.store8 $0
+    end
+    local.get $dest|303
+    local.get $l|305
+    i32.add
+   end
+   local.set $dest|336
+   i32.const 1088
+   local.set $src|337
+   local.get $dest|336
+   local.set $dest|338
+   local.get $src|337
+   local.set $ptr|339
+   local.get $dest|338
+   local.get $ptr|339
+   i32.load8_u $0
+   i32.store8 $0
+   local.get $dest|336
+   i32.const 1
+   i32.add
+   local.set $dest|340
+   local.get $secs
+   local.set $src|341
+   local.get $src|341
+   call $~lib/string/String#get:length
+   local.set $l|342
+   local.get $l|342
+   i32.const 64
+   i32.ge_s
+   if
+    local.get $dest|340
+    local.set $dest|343
+    local.get $src|341
+    local.set $ptr|344
+    local.get $dest|343
+    local.get $ptr|344
+    i64.load $0
+    i64.store $0
+    local.get $dest|343
+    i32.const 8
+    i32.add
+    local.set $dest|343
+    local.get $ptr|344
+    i32.const 8
+    i32.add
+    local.set $ptr|344
+    local.get $dest|343
+    local.get $ptr|344
+    i64.load $0
+    i64.store $0
+    local.get $dest|343
+    i32.const 8
+    i32.add
+    local.set $dest|343
+    local.get $ptr|344
+    i32.const 8
+    i32.add
+    local.set $ptr|344
+    local.get $dest|343
+    local.get $ptr|344
+    i64.load $0
+    i64.store $0
+    local.get $dest|343
+    i32.const 8
+    i32.add
+    local.set $dest|343
+    local.get $ptr|344
+    i32.const 8
+    i32.add
+    local.set $ptr|344
+    local.get $dest|343
+    local.get $ptr|344
+    i64.load $0
+    i64.store $0
+    local.get $dest|343
+    i32.const 8
+    i32.add
+    local.set $dest|343
+    local.get $ptr|344
+    i32.const 8
+    i32.add
+    local.set $ptr|344
+    local.get $dest|343
+    local.get $ptr|344
+    i64.load $0
+    i64.store $0
+    local.get $dest|343
+    i32.const 8
+    i32.add
+    local.set $dest|343
+    local.get $ptr|344
+    i32.const 8
+    i32.add
+    local.set $ptr|344
+    local.get $dest|343
+    local.get $ptr|344
+    i64.load $0
+    i64.store $0
+    local.get $dest|343
+    i32.const 8
+    i32.add
+    local.set $dest|343
+    local.get $ptr|344
+    i32.const 8
+    i32.add
+    local.set $ptr|344
+    local.get $dest|343
+    local.get $ptr|344
+    i64.load $0
+    i64.store $0
+    local.get $dest|343
+    i32.const 8
+    i32.add
+    local.set $dest|343
+    local.get $ptr|344
+    i32.const 8
+    i32.add
+    local.set $ptr|344
+    local.get $dest|343
+    local.get $ptr|344
+    i64.load $0
+    i64.store $0
+    local.get $dest|340
+    i32.const 64
+    i32.add
+    br $~lib/copyupto/__copyupto64|inlined.7
+   end
+   local.get $dest|340
+   local.set $dest|345
+   local.get $src|341
+   local.set $ptr|346
+   local.get $l|342
+   local.set $len|347
+   local.get $len|347
+   i32.const 32
+   i32.ge_s
+   if
+    local.get $dest|345
+    local.set $dest|348
+    local.get $ptr|346
+    local.set $ptr|349
+    local.get $dest|348
+    local.get $ptr|349
+    i64.load $0
+    i64.store $0
+    local.get $dest|348
+    i32.const 8
+    i32.add
+    local.set $dest|348
+    local.get $ptr|349
+    i32.const 8
+    i32.add
+    local.set $ptr|349
+    local.get $dest|348
+    local.get $ptr|349
+    i64.load $0
+    i64.store $0
+    local.get $dest|348
+    i32.const 8
+    i32.add
+    local.set $dest|348
+    local.get $ptr|349
+    i32.const 8
+    i32.add
+    local.set $ptr|349
+    local.get $dest|348
+    local.get $ptr|349
+    i64.load $0
+    i64.store $0
+    local.get $dest|348
+    i32.const 8
+    i32.add
+    local.set $dest|348
+    local.get $ptr|349
+    i32.const 8
+    i32.add
+    local.set $ptr|349
+    local.get $dest|348
+    local.get $ptr|349
+    i64.load $0
+    i64.store $0
+    local.get $dest|345
+    i32.const 32
+    i32.add
+    local.set $dest|345
+    local.get $ptr|346
+    i32.const 32
+    i32.add
+    local.set $ptr|346
+    local.get $len|347
+    i32.const 32
+    i32.sub
+    local.set $len|347
+   end
+   local.get $dest|345
+   local.set $dest|350
+   local.get $ptr|346
+   local.set $ptr|351
+   local.get $len|347
+   local.set $len|352
+   local.get $len|352
+   i32.const 16
+   i32.ge_s
+   if
+    local.get $dest|350
+    local.set $dest|353
+    local.get $ptr|351
+    local.set $ptr|354
+    local.get $dest|353
+    local.get $ptr|354
+    i64.load $0
+    i64.store $0
+    local.get $dest|353
+    i32.const 8
+    i32.add
+    local.set $dest|353
+    local.get $ptr|354
+    i32.const 8
+    i32.add
+    local.set $ptr|354
+    local.get $dest|353
+    local.get $ptr|354
+    i64.load $0
+    i64.store $0
+    local.get $dest|350
+    i32.const 16
+    i32.add
+    local.set $dest|350
+    local.get $ptr|351
+    i32.const 16
+    i32.add
+    local.set $ptr|351
+    local.get $len|352
+    i32.const 16
+    i32.sub
+    local.set $len|352
+   end
+   local.get $dest|350
+   local.set $dest|355
+   local.get $ptr|351
+   local.set $ptr|356
+   local.get $len|352
+   local.set $len|357
+   local.get $len|357
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|355
+    local.set $dest|358
+    local.get $ptr|356
+    local.set $ptr|359
+    local.get $dest|358
+    local.get $ptr|359
+    i64.load $0
+    i64.store $0
+    local.get $dest|355
+    i32.const 8
+    i32.add
+    local.set $dest|355
+    local.get $ptr|356
+    i32.const 8
+    i32.add
+    local.set $ptr|356
+    local.get $len|357
+    i32.const 8
+    i32.sub
+    local.set $len|357
+   end
+   local.get $dest|355
+   local.set $dest|360
+   local.get $ptr|356
+   local.set $ptr|361
+   local.get $len|357
+   local.set $len|362
+   local.get $len|362
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|360
+    local.set $dest|363
+    local.get $ptr|361
+    local.set $ptr|364
+    local.get $dest|363
+    local.get $ptr|364
+    i32.load $0
+    i32.store $0
+    local.get $dest|360
+    i32.const 4
+    i32.add
+    local.set $dest|360
+    local.get $ptr|361
+    i32.const 4
+    i32.add
+    local.set $ptr|361
+    local.get $len|362
+    i32.const 4
+    i32.sub
+    local.set $len|362
+   end
+   local.get $dest|360
+   local.set $dest|365
+   local.get $ptr|361
+   local.set $ptr|366
+   local.get $len|362
+   local.set $len|367
+   local.get $len|367
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|365
+    local.set $dest|368
+    local.get $ptr|366
+    local.set $ptr|369
+    local.get $dest|368
+    local.get $ptr|369
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|365
+    i32.const 2
+    i32.add
+    local.set $dest|365
+    local.get $ptr|366
+    i32.const 2
+    i32.add
+    local.set $ptr|366
+    local.get $len|367
+    i32.const 2
+    i32.sub
+    local.set $len|367
+   end
+   local.get $dest|365
+   local.set $dest|370
+   local.get $ptr|366
+   local.set $ptr|371
+   local.get $len|367
+   local.set $len|372
+   local.get $len|372
+   if
+    local.get $dest|370
+    local.get $ptr|371
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $dest|340
+   local.get $l|342
+   i32.add
+  end
+  local.set $dest|373
+  local.get $265
+  local.set $src|374
+  local.get $src|374
+  i32.const 20
+  i32.sub
+  local.get $dest|373
+  local.get $src|374
+  i32.sub
+  call $~lib/rt/common/OBJECT#set:rtSize
+  local.get $src|374
+ )
+ (func $~lib/date/Date#toUTCString (type $i32_=>_i32) (param $this i32) (result i32)
+  (local $1 i32)
+  (local $weeks i32)
+  (local $3 i32)
+  (local $months i32)
+  (local $mo i32)
+  (local $da i32)
+  (local $yr i32)
+  (local $wd i32)
+  (local $9 i32)
+  (local $10 i32)
+  (local $value i32)
+  (local $padding i32)
+  (local $this|13 i32)
+  (local $value|14 i32)
+  (local $sign i32)
+  (local $decimals i32)
+  (local $out i32)
+  (local $end i32)
+  (local $num i32)
+  (local $t i32)
+  (local $r i32)
+  (local $end|22 i32)
+  (local $num|23 i32)
+  (local $t|24 i32)
+  (local $r|25 i32)
+  (local $end|26 i32)
+  (local $num|27 i32)
+  (local $t|28 i32)
+  (local $r|29 i32)
+  (local $end|30 i32)
+  (local $num|31 i32)
+  (local $t|32 i32)
+  (local $r|33 i32)
+  (local $end|34 i32)
+  (local $num|35 i32)
+  (local $t|36 i32)
+  (local $r|37 i32)
+  (local $end|38 i32)
+  (local $num|39 i32)
+  (local $t|40 i32)
+  (local $r|41 i32)
+  (local $end|42 i32)
+  (local $num|43 i32)
+  (local $t|44 i32)
+  (local $r|45 i32)
+  (local $end|46 i32)
+  (local $num|47 i32)
+  (local $t|48 i32)
+  (local $r|49 i32)
+  (local $end|50 i32)
+  (local $num|51 i32)
+  (local $t|52 i32)
+  (local $r|53 i32)
+  (local $end|54 i32)
+  (local $num|55 i32)
+  (local $s i32)
+  (local $inSize i32)
+  (local $targetSize i32)
+  (local $prependSize i32)
+  (local $out|60 i32)
+  (local $dest i32)
+  (local $value|62 i32)
+  (local $count i32)
+  (local $64 i32)
+  (local $65 i32)
+  (local $66 i32)
+  (local $67 i32)
+  (local $dest|68 i32)
+  (local $value|69 i32)
+  (local $count|70 i32)
+  (local $71 i32)
+  (local $72 i32)
+  (local $dest|73 i32)
+  (local $value|74 i32)
+  (local $count|75 i32)
+  (local $dest|76 i32)
+  (local $ptr i32)
+  (local $len i32)
+  (local $dest|79 i32)
+  (local $ptr|80 i32)
+  (local $dest|81 i32)
+  (local $ptr|82 i32)
+  (local $len|83 i32)
+  (local $dest|84 i32)
+  (local $ptr|85 i32)
+  (local $dest|86 i32)
+  (local $ptr|87 i32)
+  (local $len|88 i32)
+  (local $dest|89 i32)
+  (local $ptr|90 i32)
+  (local $dest|91 i32)
+  (local $ptr|92 i32)
+  (local $len|93 i32)
+  (local $year i32)
+  (local $month i32)
+  (local $week i32)
+  (local $value|97 i32)
+  (local $padding|98 i32)
+  (local $this|99 i32)
+  (local $value|100 i32)
+  (local $sign|101 i32)
+  (local $decimals|102 i32)
+  (local $out|103 i32)
+  (local $end|104 i32)
+  (local $num|105 i32)
+  (local $t|106 i32)
+  (local $r|107 i32)
+  (local $end|108 i32)
+  (local $num|109 i32)
+  (local $t|110 i32)
+  (local $r|111 i32)
+  (local $end|112 i32)
+  (local $num|113 i32)
+  (local $t|114 i32)
+  (local $r|115 i32)
+  (local $end|116 i32)
+  (local $num|117 i32)
+  (local $t|118 i32)
+  (local $r|119 i32)
+  (local $end|120 i32)
+  (local $num|121 i32)
+  (local $t|122 i32)
+  (local $r|123 i32)
+  (local $end|124 i32)
+  (local $num|125 i32)
+  (local $t|126 i32)
+  (local $r|127 i32)
+  (local $end|128 i32)
+  (local $num|129 i32)
+  (local $t|130 i32)
+  (local $r|131 i32)
+  (local $end|132 i32)
+  (local $num|133 i32)
+  (local $t|134 i32)
+  (local $r|135 i32)
+  (local $end|136 i32)
+  (local $num|137 i32)
+  (local $t|138 i32)
+  (local $r|139 i32)
+  (local $end|140 i32)
+  (local $num|141 i32)
+  (local $s|142 i32)
+  (local $inSize|143 i32)
+  (local $targetSize|144 i32)
+  (local $prependSize|145 i32)
+  (local $out|146 i32)
+  (local $dest|147 i32)
+  (local $value|148 i32)
+  (local $count|149 i32)
+  (local $150 i32)
+  (local $151 i32)
+  (local $152 i32)
+  (local $153 i32)
+  (local $dest|154 i32)
+  (local $value|155 i32)
+  (local $count|156 i32)
+  (local $157 i32)
+  (local $158 i32)
+  (local $dest|159 i32)
+  (local $value|160 i32)
+  (local $count|161 i32)
+  (local $dest|162 i32)
+  (local $ptr|163 i32)
+  (local $len|164 i32)
+  (local $dest|165 i32)
+  (local $ptr|166 i32)
+  (local $dest|167 i32)
+  (local $ptr|168 i32)
+  (local $len|169 i32)
+  (local $dest|170 i32)
+  (local $ptr|171 i32)
+  (local $dest|172 i32)
+  (local $ptr|173 i32)
+  (local $len|174 i32)
+  (local $dest|175 i32)
+  (local $ptr|176 i32)
+  (local $dest|177 i32)
+  (local $ptr|178 i32)
+  (local $len|179 i32)
+  (local $day i32)
+  (local $this|181 i32)
+  (local $a i64)
+  (local $b i64)
+  (local $m i64)
+  (local $value|185 i32)
+  (local $padding|186 i32)
+  (local $this|187 i32)
+  (local $value|188 i32)
+  (local $sign|189 i32)
+  (local $decimals|190 i32)
+  (local $out|191 i32)
+  (local $end|192 i32)
+  (local $num|193 i32)
+  (local $t|194 i32)
+  (local $r|195 i32)
+  (local $end|196 i32)
+  (local $num|197 i32)
+  (local $t|198 i32)
+  (local $r|199 i32)
+  (local $end|200 i32)
+  (local $num|201 i32)
+  (local $t|202 i32)
+  (local $r|203 i32)
+  (local $end|204 i32)
+  (local $num|205 i32)
+  (local $t|206 i32)
+  (local $r|207 i32)
+  (local $end|208 i32)
+  (local $num|209 i32)
+  (local $t|210 i32)
+  (local $r|211 i32)
+  (local $end|212 i32)
+  (local $num|213 i32)
+  (local $t|214 i32)
+  (local $r|215 i32)
+  (local $end|216 i32)
+  (local $num|217 i32)
+  (local $t|218 i32)
+  (local $r|219 i32)
+  (local $end|220 i32)
+  (local $num|221 i32)
+  (local $t|222 i32)
+  (local $r|223 i32)
+  (local $end|224 i32)
+  (local $num|225 i32)
+  (local $t|226 i32)
+  (local $r|227 i32)
+  (local $end|228 i32)
+  (local $num|229 i32)
+  (local $s|230 i32)
+  (local $inSize|231 i32)
+  (local $targetSize|232 i32)
+  (local $prependSize|233 i32)
+  (local $out|234 i32)
+  (local $dest|235 i32)
+  (local $value|236 i32)
+  (local $count|237 i32)
+  (local $238 i32)
+  (local $239 i32)
+  (local $240 i32)
+  (local $241 i32)
+  (local $dest|242 i32)
+  (local $value|243 i32)
+  (local $count|244 i32)
+  (local $245 i32)
+  (local $246 i32)
+  (local $dest|247 i32)
+  (local $value|248 i32)
+  (local $count|249 i32)
+  (local $dest|250 i32)
+  (local $ptr|251 i32)
+  (local $len|252 i32)
+  (local $dest|253 i32)
+  (local $ptr|254 i32)
+  (local $dest|255 i32)
+  (local $ptr|256 i32)
+  (local $len|257 i32)
+  (local $dest|258 i32)
+  (local $ptr|259 i32)
+  (local $dest|260 i32)
+  (local $ptr|261 i32)
+  (local $len|262 i32)
+  (local $dest|263 i32)
+  (local $ptr|264 i32)
+  (local $dest|265 i32)
+  (local $ptr|266 i32)
+  (local $len|267 i32)
+  (local $hours i32)
+  (local $this|269 i32)
+  (local $a|270 i64)
+  (local $b|271 i64)
+  (local $m|272 i64)
+  (local $value|273 i32)
+  (local $padding|274 i32)
+  (local $this|275 i32)
+  (local $value|276 i32)
+  (local $sign|277 i32)
+  (local $decimals|278 i32)
+  (local $out|279 i32)
+  (local $end|280 i32)
+  (local $num|281 i32)
+  (local $t|282 i32)
+  (local $r|283 i32)
+  (local $end|284 i32)
+  (local $num|285 i32)
+  (local $t|286 i32)
+  (local $r|287 i32)
+  (local $end|288 i32)
+  (local $num|289 i32)
+  (local $t|290 i32)
+  (local $r|291 i32)
+  (local $end|292 i32)
+  (local $num|293 i32)
+  (local $t|294 i32)
+  (local $r|295 i32)
+  (local $end|296 i32)
+  (local $num|297 i32)
+  (local $t|298 i32)
+  (local $r|299 i32)
+  (local $end|300 i32)
+  (local $num|301 i32)
+  (local $t|302 i32)
+  (local $r|303 i32)
+  (local $end|304 i32)
+  (local $num|305 i32)
+  (local $t|306 i32)
+  (local $r|307 i32)
+  (local $end|308 i32)
+  (local $num|309 i32)
+  (local $t|310 i32)
+  (local $r|311 i32)
+  (local $end|312 i32)
+  (local $num|313 i32)
+  (local $t|314 i32)
+  (local $r|315 i32)
+  (local $end|316 i32)
+  (local $num|317 i32)
+  (local $s|318 i32)
+  (local $inSize|319 i32)
+  (local $targetSize|320 i32)
+  (local $prependSize|321 i32)
+  (local $out|322 i32)
+  (local $dest|323 i32)
+  (local $value|324 i32)
+  (local $count|325 i32)
+  (local $326 i32)
+  (local $327 i32)
+  (local $328 i32)
+  (local $329 i32)
+  (local $dest|330 i32)
+  (local $value|331 i32)
+  (local $count|332 i32)
+  (local $333 i32)
+  (local $334 i32)
+  (local $dest|335 i32)
+  (local $value|336 i32)
+  (local $count|337 i32)
+  (local $dest|338 i32)
+  (local $ptr|339 i32)
+  (local $len|340 i32)
+  (local $dest|341 i32)
+  (local $ptr|342 i32)
+  (local $dest|343 i32)
+  (local $ptr|344 i32)
+  (local $len|345 i32)
+  (local $dest|346 i32)
+  (local $ptr|347 i32)
+  (local $dest|348 i32)
+  (local $ptr|349 i32)
+  (local $len|350 i32)
+  (local $dest|351 i32)
+  (local $ptr|352 i32)
+  (local $dest|353 i32)
+  (local $ptr|354 i32)
+  (local $len|355 i32)
+  (local $mins i32)
+  (local $this|357 i32)
+  (local $a|358 i64)
+  (local $b|359 i64)
+  (local $m|360 i64)
+  (local $value|361 i32)
+  (local $padding|362 i32)
+  (local $this|363 i32)
+  (local $value|364 i32)
+  (local $sign|365 i32)
+  (local $decimals|366 i32)
+  (local $out|367 i32)
+  (local $end|368 i32)
+  (local $num|369 i32)
+  (local $t|370 i32)
+  (local $r|371 i32)
+  (local $end|372 i32)
+  (local $num|373 i32)
+  (local $t|374 i32)
+  (local $r|375 i32)
+  (local $end|376 i32)
+  (local $num|377 i32)
+  (local $t|378 i32)
+  (local $r|379 i32)
+  (local $end|380 i32)
+  (local $num|381 i32)
+  (local $t|382 i32)
+  (local $r|383 i32)
+  (local $end|384 i32)
+  (local $num|385 i32)
+  (local $t|386 i32)
+  (local $r|387 i32)
+  (local $end|388 i32)
+  (local $num|389 i32)
+  (local $t|390 i32)
+  (local $r|391 i32)
+  (local $end|392 i32)
+  (local $num|393 i32)
+  (local $t|394 i32)
+  (local $r|395 i32)
+  (local $end|396 i32)
+  (local $num|397 i32)
+  (local $t|398 i32)
+  (local $r|399 i32)
+  (local $end|400 i32)
+  (local $num|401 i32)
+  (local $t|402 i32)
+  (local $r|403 i32)
+  (local $end|404 i32)
+  (local $num|405 i32)
+  (local $s|406 i32)
+  (local $inSize|407 i32)
+  (local $targetSize|408 i32)
+  (local $prependSize|409 i32)
+  (local $out|410 i32)
+  (local $dest|411 i32)
+  (local $value|412 i32)
+  (local $count|413 i32)
+  (local $414 i32)
+  (local $415 i32)
+  (local $416 i32)
+  (local $417 i32)
+  (local $dest|418 i32)
+  (local $value|419 i32)
+  (local $count|420 i32)
+  (local $421 i32)
+  (local $422 i32)
+  (local $dest|423 i32)
+  (local $value|424 i32)
+  (local $count|425 i32)
+  (local $dest|426 i32)
+  (local $ptr|427 i32)
+  (local $len|428 i32)
+  (local $dest|429 i32)
+  (local $ptr|430 i32)
+  (local $dest|431 i32)
+  (local $ptr|432 i32)
+  (local $len|433 i32)
+  (local $dest|434 i32)
+  (local $ptr|435 i32)
+  (local $dest|436 i32)
+  (local $ptr|437 i32)
+  (local $len|438 i32)
+  (local $dest|439 i32)
+  (local $ptr|440 i32)
+  (local $dest|441 i32)
+  (local $ptr|442 i32)
+  (local $len|443 i32)
+  (local $secs i32)
+  (local $445 i32)
+  (local $dest|446 i32)
+  (local $src i32)
+  (local $l i32)
+  (local $dest|449 i32)
+  (local $ptr|450 i32)
+  (local $dest|451 i32)
+  (local $ptr|452 i32)
+  (local $len|453 i32)
+  (local $dest|454 i32)
+  (local $ptr|455 i32)
+  (local $dest|456 i32)
+  (local $ptr|457 i32)
+  (local $len|458 i32)
+  (local $dest|459 i32)
+  (local $ptr|460 i32)
+  (local $dest|461 i32)
+  (local $ptr|462 i32)
+  (local $len|463 i32)
+  (local $dest|464 i32)
+  (local $ptr|465 i32)
+  (local $dest|466 i32)
+  (local $ptr|467 i32)
+  (local $len|468 i32)
+  (local $dest|469 i32)
+  (local $ptr|470 i32)
+  (local $dest|471 i32)
+  (local $ptr|472 i32)
+  (local $len|473 i32)
+  (local $dest|474 i32)
+  (local $ptr|475 i32)
+  (local $dest|476 i32)
+  (local $ptr|477 i32)
+  (local $len|478 i32)
+  (local $dest|479 i32)
+  (local $src|480 i32)
+  (local $l|481 i32)
+  (local $dest|482 i32)
+  (local $ptr|483 i32)
+  (local $dest|484 i32)
+  (local $ptr|485 i32)
+  (local $len|486 i32)
+  (local $dest|487 i32)
+  (local $ptr|488 i32)
+  (local $dest|489 i32)
+  (local $ptr|490 i32)
+  (local $len|491 i32)
+  (local $dest|492 i32)
+  (local $ptr|493 i32)
+  (local $dest|494 i32)
+  (local $ptr|495 i32)
+  (local $len|496 i32)
+  (local $dest|497 i32)
+  (local $ptr|498 i32)
+  (local $dest|499 i32)
+  (local $ptr|500 i32)
+  (local $len|501 i32)
+  (local $dest|502 i32)
+  (local $ptr|503 i32)
+  (local $dest|504 i32)
+  (local $ptr|505 i32)
+  (local $len|506 i32)
+  (local $dest|507 i32)
+  (local $ptr|508 i32)
+  (local $dest|509 i32)
+  (local $ptr|510 i32)
+  (local $len|511 i32)
+  (local $dest|512 i32)
+  (local $src|513 i32)
+  (local $l|514 i32)
+  (local $dest|515 i32)
+  (local $ptr|516 i32)
+  (local $dest|517 i32)
+  (local $ptr|518 i32)
+  (local $len|519 i32)
+  (local $dest|520 i32)
+  (local $ptr|521 i32)
+  (local $dest|522 i32)
+  (local $ptr|523 i32)
+  (local $len|524 i32)
+  (local $dest|525 i32)
+  (local $ptr|526 i32)
+  (local $dest|527 i32)
+  (local $ptr|528 i32)
+  (local $len|529 i32)
+  (local $dest|530 i32)
+  (local $ptr|531 i32)
+  (local $dest|532 i32)
+  (local $ptr|533 i32)
+  (local $len|534 i32)
+  (local $dest|535 i32)
+  (local $ptr|536 i32)
+  (local $dest|537 i32)
+  (local $ptr|538 i32)
+  (local $len|539 i32)
+  (local $dest|540 i32)
+  (local $ptr|541 i32)
+  (local $dest|542 i32)
+  (local $ptr|543 i32)
+  (local $len|544 i32)
+  (local $dest|545 i32)
+  (local $src|546 i32)
+  (local $l|547 i32)
+  (local $dest|548 i32)
+  (local $ptr|549 i32)
+  (local $dest|550 i32)
+  (local $ptr|551 i32)
+  (local $len|552 i32)
+  (local $dest|553 i32)
+  (local $ptr|554 i32)
+  (local $dest|555 i32)
+  (local $ptr|556 i32)
+  (local $len|557 i32)
+  (local $dest|558 i32)
+  (local $ptr|559 i32)
+  (local $dest|560 i32)
+  (local $ptr|561 i32)
+  (local $len|562 i32)
+  (local $dest|563 i32)
+  (local $ptr|564 i32)
+  (local $dest|565 i32)
+  (local $ptr|566 i32)
+  (local $len|567 i32)
+  (local $dest|568 i32)
+  (local $ptr|569 i32)
+  (local $dest|570 i32)
+  (local $ptr|571 i32)
+  (local $len|572 i32)
+  (local $dest|573 i32)
+  (local $ptr|574 i32)
+  (local $dest|575 i32)
+  (local $ptr|576 i32)
+  (local $len|577 i32)
+  (local $dest|578 i32)
+  (local $src|579 i32)
+  (local $l|580 i32)
+  (local $dest|581 i32)
+  (local $ptr|582 i32)
+  (local $dest|583 i32)
+  (local $ptr|584 i32)
+  (local $len|585 i32)
+  (local $dest|586 i32)
+  (local $ptr|587 i32)
+  (local $dest|588 i32)
+  (local $ptr|589 i32)
+  (local $len|590 i32)
+  (local $dest|591 i32)
+  (local $ptr|592 i32)
+  (local $dest|593 i32)
+  (local $ptr|594 i32)
+  (local $len|595 i32)
+  (local $dest|596 i32)
+  (local $ptr|597 i32)
+  (local $dest|598 i32)
+  (local $ptr|599 i32)
+  (local $len|600 i32)
+  (local $dest|601 i32)
+  (local $ptr|602 i32)
+  (local $dest|603 i32)
+  (local $ptr|604 i32)
+  (local $len|605 i32)
+  (local $dest|606 i32)
+  (local $ptr|607 i32)
+  (local $dest|608 i32)
+  (local $ptr|609 i32)
+  (local $len|610 i32)
+  (local $dest|611 i32)
+  (local $src|612 i32)
+  (local $dest|613 i32)
+  (local $ptr|614 i32)
+  (local $dest|615 i32)
+  (local $src|616 i32)
+  (local $l|617 i32)
+  (local $dest|618 i32)
+  (local $ptr|619 i32)
+  (local $dest|620 i32)
+  (local $ptr|621 i32)
+  (local $len|622 i32)
+  (local $dest|623 i32)
+  (local $ptr|624 i32)
+  (local $dest|625 i32)
+  (local $ptr|626 i32)
+  (local $len|627 i32)
+  (local $dest|628 i32)
+  (local $ptr|629 i32)
+  (local $dest|630 i32)
+  (local $ptr|631 i32)
+  (local $len|632 i32)
+  (local $dest|633 i32)
+  (local $ptr|634 i32)
+  (local $dest|635 i32)
+  (local $ptr|636 i32)
+  (local $len|637 i32)
+  (local $dest|638 i32)
+  (local $ptr|639 i32)
+  (local $dest|640 i32)
+  (local $ptr|641 i32)
+  (local $len|642 i32)
+  (local $dest|643 i32)
+  (local $ptr|644 i32)
+  (local $dest|645 i32)
+  (local $ptr|646 i32)
+  (local $len|647 i32)
+  (local $dest|648 i32)
+  (local $src|649 i32)
+  (local $dest|650 i32)
+  (local $ptr|651 i32)
+  (local $dest|652 i32)
+  (local $src|653 i32)
+  (local $l|654 i32)
+  (local $dest|655 i32)
+  (local $ptr|656 i32)
+  (local $dest|657 i32)
+  (local $ptr|658 i32)
+  (local $len|659 i32)
+  (local $dest|660 i32)
+  (local $ptr|661 i32)
+  (local $dest|662 i32)
+  (local $ptr|663 i32)
+  (local $len|664 i32)
+  (local $dest|665 i32)
+  (local $ptr|666 i32)
+  (local $dest|667 i32)
+  (local $ptr|668 i32)
+  (local $len|669 i32)
+  (local $dest|670 i32)
+  (local $ptr|671 i32)
+  (local $dest|672 i32)
+  (local $ptr|673 i32)
+  (local $len|674 i32)
+  (local $dest|675 i32)
+  (local $ptr|676 i32)
+  (local $dest|677 i32)
+  (local $ptr|678 i32)
+  (local $len|679 i32)
+  (local $dest|680 i32)
+  (local $ptr|681 i32)
+  (local $dest|682 i32)
+  (local $ptr|683 i32)
+  (local $len|684 i32)
+  (local $dest|685 i32)
+  (local $src|686 i32)
+  (local $dest|687 i32)
+  (local $ptr|688 i32)
+  (local $dest|689 i32)
+  (local $src|690 i32)
+  (local $l|691 i32)
+  (local $dest|692 i32)
+  (local $ptr|693 i32)
+  (local $dest|694 i32)
+  (local $ptr|695 i32)
+  (local $len|696 i32)
+  (local $dest|697 i32)
+  (local $ptr|698 i32)
+  (local $dest|699 i32)
+  (local $ptr|700 i32)
+  (local $len|701 i32)
+  (local $dest|702 i32)
+  (local $ptr|703 i32)
+  (local $dest|704 i32)
+  (local $ptr|705 i32)
+  (local $len|706 i32)
+  (local $dest|707 i32)
+  (local $ptr|708 i32)
+  (local $dest|709 i32)
+  (local $ptr|710 i32)
+  (local $len|711 i32)
+  (local $dest|712 i32)
+  (local $ptr|713 i32)
+  (local $dest|714 i32)
+  (local $ptr|715 i32)
+  (local $len|716 i32)
+  (local $dest|717 i32)
+  (local $ptr|718 i32)
+  (local $dest|719 i32)
+  (local $ptr|720 i32)
+  (local $len|721 i32)
+  (local $dest|722 i32)
+  (local $src|723 i32)
+  (local $dest|724 i32)
+  (local $ptr|725 i32)
+  (local $dest|726 i32)
+  (local $src|727 i32)
+  (local $size i32)
+  i32.const 28
+  i32.const 4
+  i32.const 1408
+  call $~lib/rt/__newBuffer
+  local.set $weeks
+  i32.const 48
+  i32.const 4
+  i32.const 1840
+  call $~lib/rt/__newBuffer
+  local.set $months
+  local.get $this
+  i32.load $0 offset=4
+  local.set $mo
+  local.get $this
+  i32.load $0 offset=8
+  local.set $da
+  local.get $this
+  i32.load $0
+  local.set $yr
+  local.get $yr
+  local.get $mo
+  local.get $da
+  call $~lib/date/dayOfWeek
+  local.set $wd
+  block $~lib/date/stringify|inlined.5 (result i32)
+   local.get $yr
+   local.tee $9
+   i32.const 31
+   i32.shr_s
+   local.tee $10
+   local.get $9
+   i32.add
+   local.get $10
+   i32.xor
+   local.set $value
+   i32.const 4
+   local.set $padding
+   local.get $value
+   local.set $this|13
+   block $~lib/util/number/i32toa|inlined.5 (result i32)
+    local.get $this|13
+    local.set $value|14
+    local.get $value|14
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.5
+    end
+    local.get $value|14
+    i32.const 31
+    i32.shr_u
+    local.set $sign
+    local.get $sign
+    if
+     i32.const 0
+     local.get $value|14
+     i32.sub
+     local.set $value|14
+    end
+    local.get $value|14
+    call $~lib/util/number/decimalCount32
+    local.set $decimals
+    local.get $sign
+    local.get $decimals
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out
+    local.get $out
+    local.get $sign
+    i32.add
+    local.get $decimals
+    i32.add
+    local.set $end
+    local.get $value|14
+    local.set $num
+    local.get $num
+    i32.const 10
+    i32.div_u
+    local.set $t
+    local.get $num
+    i32.const 10
+    i32.rem_u
+    local.set $r
+    local.get $end
+    i32.const 1
+    i32.sub
+    local.set $end
+    local.get $end
+    i32.const 48
+    local.get $r
+    i32.add
+    i32.store8 $0
+    local.get $t
+    if
+     local.get $end
+     local.set $end|22
+     local.get $t
+     local.set $num|23
+     local.get $num|23
+     i32.const 10
+     i32.div_u
+     local.set $t|24
+     local.get $num|23
+     i32.const 10
+     i32.rem_u
+     local.set $r|25
+     local.get $end|22
+     i32.const 1
+     i32.sub
+     local.set $end|22
+     local.get $end|22
+     i32.const 48
+     local.get $r|25
+     i32.add
+     i32.store8 $0
+     local.get $t|24
+     if
+      local.get $end|22
+      local.set $end|26
+      local.get $t|24
+      local.set $num|27
+      local.get $num|27
+      i32.const 10
+      i32.div_u
+      local.set $t|28
+      local.get $num|27
+      i32.const 10
+      i32.rem_u
+      local.set $r|29
+      local.get $end|26
+      i32.const 1
+      i32.sub
+      local.set $end|26
+      local.get $end|26
+      i32.const 48
+      local.get $r|29
+      i32.add
+      i32.store8 $0
+      local.get $t|28
+      if
+       local.get $end|26
+       local.set $end|30
+       local.get $t|28
+       local.set $num|31
+       local.get $num|31
+       i32.const 10
+       i32.div_u
+       local.set $t|32
+       local.get $num|31
+       i32.const 10
+       i32.rem_u
+       local.set $r|33
+       local.get $end|30
+       i32.const 1
+       i32.sub
+       local.set $end|30
+       local.get $end|30
+       i32.const 48
+       local.get $r|33
+       i32.add
+       i32.store8 $0
+       local.get $t|32
+       if
+        local.get $end|30
+        local.set $end|34
+        local.get $t|32
+        local.set $num|35
+        local.get $num|35
+        i32.const 10
+        i32.div_u
+        local.set $t|36
+        local.get $num|35
+        i32.const 10
+        i32.rem_u
+        local.set $r|37
+        local.get $end|34
+        i32.const 1
+        i32.sub
+        local.set $end|34
+        local.get $end|34
+        i32.const 48
+        local.get $r|37
+        i32.add
+        i32.store8 $0
+        local.get $t|36
+        if
+         local.get $end|34
+         local.set $end|38
+         local.get $t|36
+         local.set $num|39
+         local.get $num|39
+         i32.const 10
+         i32.div_u
+         local.set $t|40
+         local.get $num|39
+         i32.const 10
+         i32.rem_u
+         local.set $r|41
+         local.get $end|38
+         i32.const 1
+         i32.sub
+         local.set $end|38
+         local.get $end|38
+         i32.const 48
+         local.get $r|41
+         i32.add
+         i32.store8 $0
+         local.get $t|40
+         if
+          local.get $end|38
+          local.set $end|42
+          local.get $t|40
+          local.set $num|43
+          local.get $num|43
+          i32.const 10
+          i32.div_u
+          local.set $t|44
+          local.get $num|43
+          i32.const 10
+          i32.rem_u
+          local.set $r|45
+          local.get $end|42
+          i32.const 1
+          i32.sub
+          local.set $end|42
+          local.get $end|42
+          i32.const 48
+          local.get $r|45
+          i32.add
+          i32.store8 $0
+          local.get $t|44
+          if
+           local.get $end|42
+           local.set $end|46
+           local.get $t|44
+           local.set $num|47
+           local.get $num|47
+           i32.const 10
+           i32.div_u
+           local.set $t|48
+           local.get $num|47
+           i32.const 10
+           i32.rem_u
+           local.set $r|49
+           local.get $end|46
+           i32.const 1
+           i32.sub
+           local.set $end|46
+           local.get $end|46
+           i32.const 48
+           local.get $r|49
+           i32.add
+           i32.store8 $0
+           local.get $t|48
+           if
+            local.get $end|46
+            local.set $end|50
+            local.get $t|48
+            local.set $num|51
+            local.get $num|51
+            i32.const 10
+            i32.div_u
+            local.set $t|52
+            local.get $num|51
+            i32.const 10
+            i32.rem_u
+            local.set $r|53
+            local.get $end|50
+            i32.const 1
+            i32.sub
+            local.set $end|50
+            local.get $end|50
+            i32.const 48
+            local.get $r|53
+            i32.add
+            i32.store8 $0
+            local.get $t|52
+            if
+             local.get $end|50
+             local.set $end|54
+             local.get $t|52
+             local.set $num|55
+             local.get $end|54
+             i32.const 1
+             i32.sub
+             local.tee $end|54
+             i32.const 48
+             local.get $num|55
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign
+    if
+     local.get $out
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out
+   end
+   local.set $s
+   local.get $s
+   call $~lib/string/String#get:length
+   local.set $inSize
+   local.get $padding
+   local.set $targetSize
+   local.get $targetSize
+   local.get $inSize
+   i32.le_u
+   if
+    local.get $s
+    br $~lib/date/stringify|inlined.5
+   end
+   local.get $targetSize
+   local.get $inSize
+   i32.sub
+   local.set $prependSize
+   local.get $targetSize
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|60
+   local.get $out|60
+   local.set $dest
+   i32.const 48
+   local.set $value|62
+   local.get $prependSize
+   local.set $count
+   local.get $count
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest
+    local.tee $64
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $64
+    local.get $value|62
+    i32.store8 $0
+    local.get $dest
+    local.tee $65
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $65
+    local.get $value|62
+    i32.store8 $0
+    local.get $dest
+    local.tee $66
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $66
+    local.get $value|62
+    i32.store8 $0
+    local.get $dest
+    local.tee $67
+    i32.const 1
+    i32.add
+    local.set $dest
+    local.get $67
+    local.get $value|62
+    i32.store8 $0
+    local.get $count
+    i32.const 4
+    i32.sub
+    local.set $count
+   end
+   local.get $dest
+   local.set $dest|68
+   local.get $value|62
+   local.set $value|69
+   local.get $count
+   local.set $count|70
+   local.get $count|70
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|68
+    local.tee $71
+    i32.const 1
+    i32.add
+    local.set $dest|68
+    local.get $71
+    local.get $value|69
+    i32.store8 $0
+    local.get $dest|68
+    local.tee $72
+    i32.const 1
+    i32.add
+    local.set $dest|68
+    local.get $72
+    local.get $value|69
+    i32.store8 $0
+    local.get $count|70
+    i32.const 2
+    i32.sub
+    local.set $count|70
+   end
+   local.get $dest|68
+   local.set $dest|73
+   local.get $value|69
+   local.set $value|74
+   local.get $count|70
+   local.set $count|75
+   local.get $count|75
+   if
+    local.get $dest|73
+    local.get $value|74
+    i32.store8 $0
+   end
+   local.get $out|60
+   local.get $prependSize
+   i32.add
+   local.set $dest|76
+   local.get $s
+   local.set $ptr
+   local.get $inSize
+   local.set $len
+   local.get $len
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|76
+    local.set $dest|79
+    local.get $ptr
+    local.set $ptr|80
+    local.get $dest|79
+    local.get $ptr|80
+    i64.load $0
+    i64.store $0
+    local.get $dest|76
+    i32.const 8
+    i32.add
+    local.set $dest|76
+    local.get $ptr
+    i32.const 8
+    i32.add
+    local.set $ptr
+    local.get $len
+    i32.const 8
+    i32.sub
+    local.set $len
+   end
+   local.get $dest|76
+   local.set $dest|81
+   local.get $ptr
+   local.set $ptr|82
+   local.get $len
+   local.set $len|83
+   local.get $len|83
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|81
+    local.set $dest|84
+    local.get $ptr|82
+    local.set $ptr|85
+    local.get $dest|84
+    local.get $ptr|85
+    i32.load $0
+    i32.store $0
+    local.get $dest|81
+    i32.const 4
+    i32.add
+    local.set $dest|81
+    local.get $ptr|82
+    i32.const 4
+    i32.add
+    local.set $ptr|82
+    local.get $len|83
+    i32.const 4
+    i32.sub
+    local.set $len|83
+   end
+   local.get $dest|81
+   local.set $dest|86
+   local.get $ptr|82
+   local.set $ptr|87
+   local.get $len|83
+   local.set $len|88
+   local.get $len|88
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|86
+    local.set $dest|89
+    local.get $ptr|87
+    local.set $ptr|90
+    local.get $dest|89
+    local.get $ptr|90
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|86
+    i32.const 2
+    i32.add
+    local.set $dest|86
+    local.get $ptr|87
+    i32.const 2
+    i32.add
+    local.set $ptr|87
+    local.get $len|88
+    i32.const 2
+    i32.sub
+    local.set $len|88
+   end
+   local.get $dest|86
+   local.set $dest|91
+   local.get $ptr|87
+   local.set $ptr|92
+   local.get $len|88
+   local.set $len|93
+   local.get $len|93
+   if
+    local.get $dest|91
+    local.get $ptr|92
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|60
+  end
+  local.set $year
+  local.get $months
+  local.get $mo
+  i32.const 1
+  i32.sub
+  call $~lib/staticarray/StaticArray<~lib/string/String>#__uget
+  local.set $month
+  local.get $weeks
+  local.get $wd
+  call $~lib/staticarray/StaticArray<~lib/string/String>#__uget
+  local.set $week
+  block $~lib/date/stringify|inlined.6 (result i32)
+   local.get $da
+   local.set $value|97
+   i32.const 2
+   local.set $padding|98
+   local.get $value|97
+   local.set $this|99
+   block $~lib/util/number/i32toa|inlined.6 (result i32)
+    local.get $this|99
+    local.set $value|100
+    local.get $value|100
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.6
+    end
+    local.get $value|100
+    i32.const 31
+    i32.shr_u
+    local.set $sign|101
+    local.get $sign|101
+    if
+     i32.const 0
+     local.get $value|100
+     i32.sub
+     local.set $value|100
+    end
+    local.get $value|100
+    call $~lib/util/number/decimalCount32
+    local.set $decimals|102
+    local.get $sign|101
+    local.get $decimals|102
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out|103
+    local.get $out|103
+    local.get $sign|101
+    i32.add
+    local.get $decimals|102
+    i32.add
+    local.set $end|104
+    local.get $value|100
+    local.set $num|105
+    local.get $num|105
+    i32.const 10
+    i32.div_u
+    local.set $t|106
+    local.get $num|105
+    i32.const 10
+    i32.rem_u
+    local.set $r|107
+    local.get $end|104
+    i32.const 1
+    i32.sub
+    local.set $end|104
+    local.get $end|104
+    i32.const 48
+    local.get $r|107
+    i32.add
+    i32.store8 $0
+    local.get $t|106
+    if
+     local.get $end|104
+     local.set $end|108
+     local.get $t|106
+     local.set $num|109
+     local.get $num|109
+     i32.const 10
+     i32.div_u
+     local.set $t|110
+     local.get $num|109
+     i32.const 10
+     i32.rem_u
+     local.set $r|111
+     local.get $end|108
+     i32.const 1
+     i32.sub
+     local.set $end|108
+     local.get $end|108
+     i32.const 48
+     local.get $r|111
+     i32.add
+     i32.store8 $0
+     local.get $t|110
+     if
+      local.get $end|108
+      local.set $end|112
+      local.get $t|110
+      local.set $num|113
+      local.get $num|113
+      i32.const 10
+      i32.div_u
+      local.set $t|114
+      local.get $num|113
+      i32.const 10
+      i32.rem_u
+      local.set $r|115
+      local.get $end|112
+      i32.const 1
+      i32.sub
+      local.set $end|112
+      local.get $end|112
+      i32.const 48
+      local.get $r|115
+      i32.add
+      i32.store8 $0
+      local.get $t|114
+      if
+       local.get $end|112
+       local.set $end|116
+       local.get $t|114
+       local.set $num|117
+       local.get $num|117
+       i32.const 10
+       i32.div_u
+       local.set $t|118
+       local.get $num|117
+       i32.const 10
+       i32.rem_u
+       local.set $r|119
+       local.get $end|116
+       i32.const 1
+       i32.sub
+       local.set $end|116
+       local.get $end|116
+       i32.const 48
+       local.get $r|119
+       i32.add
+       i32.store8 $0
+       local.get $t|118
+       if
+        local.get $end|116
+        local.set $end|120
+        local.get $t|118
+        local.set $num|121
+        local.get $num|121
+        i32.const 10
+        i32.div_u
+        local.set $t|122
+        local.get $num|121
+        i32.const 10
+        i32.rem_u
+        local.set $r|123
+        local.get $end|120
+        i32.const 1
+        i32.sub
+        local.set $end|120
+        local.get $end|120
+        i32.const 48
+        local.get $r|123
+        i32.add
+        i32.store8 $0
+        local.get $t|122
+        if
+         local.get $end|120
+         local.set $end|124
+         local.get $t|122
+         local.set $num|125
+         local.get $num|125
+         i32.const 10
+         i32.div_u
+         local.set $t|126
+         local.get $num|125
+         i32.const 10
+         i32.rem_u
+         local.set $r|127
+         local.get $end|124
+         i32.const 1
+         i32.sub
+         local.set $end|124
+         local.get $end|124
+         i32.const 48
+         local.get $r|127
+         i32.add
+         i32.store8 $0
+         local.get $t|126
+         if
+          local.get $end|124
+          local.set $end|128
+          local.get $t|126
+          local.set $num|129
+          local.get $num|129
+          i32.const 10
+          i32.div_u
+          local.set $t|130
+          local.get $num|129
+          i32.const 10
+          i32.rem_u
+          local.set $r|131
+          local.get $end|128
+          i32.const 1
+          i32.sub
+          local.set $end|128
+          local.get $end|128
+          i32.const 48
+          local.get $r|131
+          i32.add
+          i32.store8 $0
+          local.get $t|130
+          if
+           local.get $end|128
+           local.set $end|132
+           local.get $t|130
+           local.set $num|133
+           local.get $num|133
+           i32.const 10
+           i32.div_u
+           local.set $t|134
+           local.get $num|133
+           i32.const 10
+           i32.rem_u
+           local.set $r|135
+           local.get $end|132
+           i32.const 1
+           i32.sub
+           local.set $end|132
+           local.get $end|132
+           i32.const 48
+           local.get $r|135
+           i32.add
+           i32.store8 $0
+           local.get $t|134
+           if
+            local.get $end|132
+            local.set $end|136
+            local.get $t|134
+            local.set $num|137
+            local.get $num|137
+            i32.const 10
+            i32.div_u
+            local.set $t|138
+            local.get $num|137
+            i32.const 10
+            i32.rem_u
+            local.set $r|139
+            local.get $end|136
+            i32.const 1
+            i32.sub
+            local.set $end|136
+            local.get $end|136
+            i32.const 48
+            local.get $r|139
+            i32.add
+            i32.store8 $0
+            local.get $t|138
+            if
+             local.get $end|136
+             local.set $end|140
+             local.get $t|138
+             local.set $num|141
+             local.get $end|140
+             i32.const 1
+             i32.sub
+             local.tee $end|140
+             i32.const 48
+             local.get $num|141
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign|101
+    if
+     local.get $out|103
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out|103
+   end
+   local.set $s|142
+   local.get $s|142
+   call $~lib/string/String#get:length
+   local.set $inSize|143
+   local.get $padding|98
+   local.set $targetSize|144
+   local.get $targetSize|144
+   local.get $inSize|143
+   i32.le_u
+   if
+    local.get $s|142
+    br $~lib/date/stringify|inlined.6
+   end
+   local.get $targetSize|144
+   local.get $inSize|143
+   i32.sub
+   local.set $prependSize|145
+   local.get $targetSize|144
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|146
+   local.get $out|146
+   local.set $dest|147
+   i32.const 48
+   local.set $value|148
+   local.get $prependSize|145
+   local.set $count|149
+   local.get $count|149
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest|147
+    local.tee $150
+    i32.const 1
+    i32.add
+    local.set $dest|147
+    local.get $150
+    local.get $value|148
+    i32.store8 $0
+    local.get $dest|147
+    local.tee $151
+    i32.const 1
+    i32.add
+    local.set $dest|147
+    local.get $151
+    local.get $value|148
+    i32.store8 $0
+    local.get $dest|147
+    local.tee $152
+    i32.const 1
+    i32.add
+    local.set $dest|147
+    local.get $152
+    local.get $value|148
+    i32.store8 $0
+    local.get $dest|147
+    local.tee $153
+    i32.const 1
+    i32.add
+    local.set $dest|147
+    local.get $153
+    local.get $value|148
+    i32.store8 $0
+    local.get $count|149
+    i32.const 4
+    i32.sub
+    local.set $count|149
+   end
+   local.get $dest|147
+   local.set $dest|154
+   local.get $value|148
+   local.set $value|155
+   local.get $count|149
+   local.set $count|156
+   local.get $count|156
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|154
+    local.tee $157
+    i32.const 1
+    i32.add
+    local.set $dest|154
+    local.get $157
+    local.get $value|155
+    i32.store8 $0
+    local.get $dest|154
+    local.tee $158
+    i32.const 1
+    i32.add
+    local.set $dest|154
+    local.get $158
+    local.get $value|155
+    i32.store8 $0
+    local.get $count|156
+    i32.const 2
+    i32.sub
+    local.set $count|156
+   end
+   local.get $dest|154
+   local.set $dest|159
+   local.get $value|155
+   local.set $value|160
+   local.get $count|156
+   local.set $count|161
+   local.get $count|161
+   if
+    local.get $dest|159
+    local.get $value|160
+    i32.store8 $0
+   end
+   local.get $out|146
+   local.get $prependSize|145
+   i32.add
+   local.set $dest|162
+   local.get $s|142
+   local.set $ptr|163
+   local.get $inSize|143
+   local.set $len|164
+   local.get $len|164
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|162
+    local.set $dest|165
+    local.get $ptr|163
+    local.set $ptr|166
+    local.get $dest|165
+    local.get $ptr|166
+    i64.load $0
+    i64.store $0
+    local.get $dest|162
+    i32.const 8
+    i32.add
+    local.set $dest|162
+    local.get $ptr|163
+    i32.const 8
+    i32.add
+    local.set $ptr|163
+    local.get $len|164
+    i32.const 8
+    i32.sub
+    local.set $len|164
+   end
+   local.get $dest|162
+   local.set $dest|167
+   local.get $ptr|163
+   local.set $ptr|168
+   local.get $len|164
+   local.set $len|169
+   local.get $len|169
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|167
+    local.set $dest|170
+    local.get $ptr|168
+    local.set $ptr|171
+    local.get $dest|170
+    local.get $ptr|171
+    i32.load $0
+    i32.store $0
+    local.get $dest|167
+    i32.const 4
+    i32.add
+    local.set $dest|167
+    local.get $ptr|168
+    i32.const 4
+    i32.add
+    local.set $ptr|168
+    local.get $len|169
+    i32.const 4
+    i32.sub
+    local.set $len|169
+   end
+   local.get $dest|167
+   local.set $dest|172
+   local.get $ptr|168
+   local.set $ptr|173
+   local.get $len|169
+   local.set $len|174
+   local.get $len|174
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|172
+    local.set $dest|175
+    local.get $ptr|173
+    local.set $ptr|176
+    local.get $dest|175
+    local.get $ptr|176
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|172
+    i32.const 2
+    i32.add
+    local.set $dest|172
+    local.get $ptr|173
+    i32.const 2
+    i32.add
+    local.set $ptr|173
+    local.get $len|174
+    i32.const 2
+    i32.sub
+    local.set $len|174
+   end
+   local.get $dest|172
+   local.set $dest|177
+   local.get $ptr|173
+   local.set $ptr|178
+   local.get $len|174
+   local.set $len|179
+   local.get $len|179
+   if
+    local.get $dest|177
+    local.get $ptr|178
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|146
+  end
+  local.set $day
+  block $~lib/date/stringify|inlined.7 (result i32)
+   local.get $this
+   local.set $this|181
+   local.get $this|181
+   i64.load $0 offset=16
+   local.set $a
+   i32.const 86400000
+   i64.extend_i32_s
+   local.set $b
+   local.get $a
+   local.get $b
+   i64.rem_s
+   local.set $m
+   local.get $m
+   local.get $m
+   i64.const 0
+   i64.lt_s
+   if (result i64)
+    local.get $b
+   else
+    i64.const 0
+   end
+   i64.add
+   i32.wrap_i64
+   i32.const 3600000
+   i32.div_s
+   local.set $value|185
+   i32.const 2
+   local.set $padding|186
+   local.get $value|185
+   local.set $this|187
+   block $~lib/util/number/i32toa|inlined.7 (result i32)
+    local.get $this|187
+    local.set $value|188
+    local.get $value|188
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.7
+    end
+    local.get $value|188
+    i32.const 31
+    i32.shr_u
+    local.set $sign|189
+    local.get $sign|189
+    if
+     i32.const 0
+     local.get $value|188
+     i32.sub
+     local.set $value|188
+    end
+    local.get $value|188
+    call $~lib/util/number/decimalCount32
+    local.set $decimals|190
+    local.get $sign|189
+    local.get $decimals|190
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out|191
+    local.get $out|191
+    local.get $sign|189
+    i32.add
+    local.get $decimals|190
+    i32.add
+    local.set $end|192
+    local.get $value|188
+    local.set $num|193
+    local.get $num|193
+    i32.const 10
+    i32.div_u
+    local.set $t|194
+    local.get $num|193
+    i32.const 10
+    i32.rem_u
+    local.set $r|195
+    local.get $end|192
+    i32.const 1
+    i32.sub
+    local.set $end|192
+    local.get $end|192
+    i32.const 48
+    local.get $r|195
+    i32.add
+    i32.store8 $0
+    local.get $t|194
+    if
+     local.get $end|192
+     local.set $end|196
+     local.get $t|194
+     local.set $num|197
+     local.get $num|197
+     i32.const 10
+     i32.div_u
+     local.set $t|198
+     local.get $num|197
+     i32.const 10
+     i32.rem_u
+     local.set $r|199
+     local.get $end|196
+     i32.const 1
+     i32.sub
+     local.set $end|196
+     local.get $end|196
+     i32.const 48
+     local.get $r|199
+     i32.add
+     i32.store8 $0
+     local.get $t|198
+     if
+      local.get $end|196
+      local.set $end|200
+      local.get $t|198
+      local.set $num|201
+      local.get $num|201
+      i32.const 10
+      i32.div_u
+      local.set $t|202
+      local.get $num|201
+      i32.const 10
+      i32.rem_u
+      local.set $r|203
+      local.get $end|200
+      i32.const 1
+      i32.sub
+      local.set $end|200
+      local.get $end|200
+      i32.const 48
+      local.get $r|203
+      i32.add
+      i32.store8 $0
+      local.get $t|202
+      if
+       local.get $end|200
+       local.set $end|204
+       local.get $t|202
+       local.set $num|205
+       local.get $num|205
+       i32.const 10
+       i32.div_u
+       local.set $t|206
+       local.get $num|205
+       i32.const 10
+       i32.rem_u
+       local.set $r|207
+       local.get $end|204
+       i32.const 1
+       i32.sub
+       local.set $end|204
+       local.get $end|204
+       i32.const 48
+       local.get $r|207
+       i32.add
+       i32.store8 $0
+       local.get $t|206
+       if
+        local.get $end|204
+        local.set $end|208
+        local.get $t|206
+        local.set $num|209
+        local.get $num|209
+        i32.const 10
+        i32.div_u
+        local.set $t|210
+        local.get $num|209
+        i32.const 10
+        i32.rem_u
+        local.set $r|211
+        local.get $end|208
+        i32.const 1
+        i32.sub
+        local.set $end|208
+        local.get $end|208
+        i32.const 48
+        local.get $r|211
+        i32.add
+        i32.store8 $0
+        local.get $t|210
+        if
+         local.get $end|208
+         local.set $end|212
+         local.get $t|210
+         local.set $num|213
+         local.get $num|213
+         i32.const 10
+         i32.div_u
+         local.set $t|214
+         local.get $num|213
+         i32.const 10
+         i32.rem_u
+         local.set $r|215
+         local.get $end|212
+         i32.const 1
+         i32.sub
+         local.set $end|212
+         local.get $end|212
+         i32.const 48
+         local.get $r|215
+         i32.add
+         i32.store8 $0
+         local.get $t|214
+         if
+          local.get $end|212
+          local.set $end|216
+          local.get $t|214
+          local.set $num|217
+          local.get $num|217
+          i32.const 10
+          i32.div_u
+          local.set $t|218
+          local.get $num|217
+          i32.const 10
+          i32.rem_u
+          local.set $r|219
+          local.get $end|216
+          i32.const 1
+          i32.sub
+          local.set $end|216
+          local.get $end|216
+          i32.const 48
+          local.get $r|219
+          i32.add
+          i32.store8 $0
+          local.get $t|218
+          if
+           local.get $end|216
+           local.set $end|220
+           local.get $t|218
+           local.set $num|221
+           local.get $num|221
+           i32.const 10
+           i32.div_u
+           local.set $t|222
+           local.get $num|221
+           i32.const 10
+           i32.rem_u
+           local.set $r|223
+           local.get $end|220
+           i32.const 1
+           i32.sub
+           local.set $end|220
+           local.get $end|220
+           i32.const 48
+           local.get $r|223
+           i32.add
+           i32.store8 $0
+           local.get $t|222
+           if
+            local.get $end|220
+            local.set $end|224
+            local.get $t|222
+            local.set $num|225
+            local.get $num|225
+            i32.const 10
+            i32.div_u
+            local.set $t|226
+            local.get $num|225
+            i32.const 10
+            i32.rem_u
+            local.set $r|227
+            local.get $end|224
+            i32.const 1
+            i32.sub
+            local.set $end|224
+            local.get $end|224
+            i32.const 48
+            local.get $r|227
+            i32.add
+            i32.store8 $0
+            local.get $t|226
+            if
+             local.get $end|224
+             local.set $end|228
+             local.get $t|226
+             local.set $num|229
+             local.get $end|228
+             i32.const 1
+             i32.sub
+             local.tee $end|228
+             i32.const 48
+             local.get $num|229
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign|189
+    if
+     local.get $out|191
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out|191
+   end
+   local.set $s|230
+   local.get $s|230
+   call $~lib/string/String#get:length
+   local.set $inSize|231
+   local.get $padding|186
+   local.set $targetSize|232
+   local.get $targetSize|232
+   local.get $inSize|231
+   i32.le_u
+   if
+    local.get $s|230
+    br $~lib/date/stringify|inlined.7
+   end
+   local.get $targetSize|232
+   local.get $inSize|231
+   i32.sub
+   local.set $prependSize|233
+   local.get $targetSize|232
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|234
+   local.get $out|234
+   local.set $dest|235
+   i32.const 48
+   local.set $value|236
+   local.get $prependSize|233
+   local.set $count|237
+   local.get $count|237
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest|235
+    local.tee $238
+    i32.const 1
+    i32.add
+    local.set $dest|235
+    local.get $238
+    local.get $value|236
+    i32.store8 $0
+    local.get $dest|235
+    local.tee $239
+    i32.const 1
+    i32.add
+    local.set $dest|235
+    local.get $239
+    local.get $value|236
+    i32.store8 $0
+    local.get $dest|235
+    local.tee $240
+    i32.const 1
+    i32.add
+    local.set $dest|235
+    local.get $240
+    local.get $value|236
+    i32.store8 $0
+    local.get $dest|235
+    local.tee $241
+    i32.const 1
+    i32.add
+    local.set $dest|235
+    local.get $241
+    local.get $value|236
+    i32.store8 $0
+    local.get $count|237
+    i32.const 4
+    i32.sub
+    local.set $count|237
+   end
+   local.get $dest|235
+   local.set $dest|242
+   local.get $value|236
+   local.set $value|243
+   local.get $count|237
+   local.set $count|244
+   local.get $count|244
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|242
+    local.tee $245
+    i32.const 1
+    i32.add
+    local.set $dest|242
+    local.get $245
+    local.get $value|243
+    i32.store8 $0
+    local.get $dest|242
+    local.tee $246
+    i32.const 1
+    i32.add
+    local.set $dest|242
+    local.get $246
+    local.get $value|243
+    i32.store8 $0
+    local.get $count|244
+    i32.const 2
+    i32.sub
+    local.set $count|244
+   end
+   local.get $dest|242
+   local.set $dest|247
+   local.get $value|243
+   local.set $value|248
+   local.get $count|244
+   local.set $count|249
+   local.get $count|249
+   if
+    local.get $dest|247
+    local.get $value|248
+    i32.store8 $0
+   end
+   local.get $out|234
+   local.get $prependSize|233
+   i32.add
+   local.set $dest|250
+   local.get $s|230
+   local.set $ptr|251
+   local.get $inSize|231
+   local.set $len|252
+   local.get $len|252
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|250
+    local.set $dest|253
+    local.get $ptr|251
+    local.set $ptr|254
+    local.get $dest|253
+    local.get $ptr|254
+    i64.load $0
+    i64.store $0
+    local.get $dest|250
+    i32.const 8
+    i32.add
+    local.set $dest|250
+    local.get $ptr|251
+    i32.const 8
+    i32.add
+    local.set $ptr|251
+    local.get $len|252
+    i32.const 8
+    i32.sub
+    local.set $len|252
+   end
+   local.get $dest|250
+   local.set $dest|255
+   local.get $ptr|251
+   local.set $ptr|256
+   local.get $len|252
+   local.set $len|257
+   local.get $len|257
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|255
+    local.set $dest|258
+    local.get $ptr|256
+    local.set $ptr|259
+    local.get $dest|258
+    local.get $ptr|259
+    i32.load $0
+    i32.store $0
+    local.get $dest|255
+    i32.const 4
+    i32.add
+    local.set $dest|255
+    local.get $ptr|256
+    i32.const 4
+    i32.add
+    local.set $ptr|256
+    local.get $len|257
+    i32.const 4
+    i32.sub
+    local.set $len|257
+   end
+   local.get $dest|255
+   local.set $dest|260
+   local.get $ptr|256
+   local.set $ptr|261
+   local.get $len|257
+   local.set $len|262
+   local.get $len|262
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|260
+    local.set $dest|263
+    local.get $ptr|261
+    local.set $ptr|264
+    local.get $dest|263
+    local.get $ptr|264
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|260
+    i32.const 2
+    i32.add
+    local.set $dest|260
+    local.get $ptr|261
+    i32.const 2
+    i32.add
+    local.set $ptr|261
+    local.get $len|262
+    i32.const 2
+    i32.sub
+    local.set $len|262
+   end
+   local.get $dest|260
+   local.set $dest|265
+   local.get $ptr|261
+   local.set $ptr|266
+   local.get $len|262
+   local.set $len|267
+   local.get $len|267
+   if
+    local.get $dest|265
+    local.get $ptr|266
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|234
+  end
+  local.set $hours
+  block $~lib/date/stringify|inlined.8 (result i32)
+   local.get $this
+   local.set $this|269
+   local.get $this|269
+   i64.load $0 offset=16
+   local.set $a|270
+   i32.const 3600000
+   i64.extend_i32_s
+   local.set $b|271
+   local.get $a|270
+   local.get $b|271
+   i64.rem_s
+   local.set $m|272
+   local.get $m|272
+   local.get $m|272
+   i64.const 0
+   i64.lt_s
+   if (result i64)
+    local.get $b|271
+   else
+    i64.const 0
+   end
+   i64.add
+   i32.wrap_i64
+   i32.const 60000
+   i32.div_s
+   local.set $value|273
+   i32.const 2
+   local.set $padding|274
+   local.get $value|273
+   local.set $this|275
+   block $~lib/util/number/i32toa|inlined.8 (result i32)
+    local.get $this|275
+    local.set $value|276
+    local.get $value|276
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.8
+    end
+    local.get $value|276
+    i32.const 31
+    i32.shr_u
+    local.set $sign|277
+    local.get $sign|277
+    if
+     i32.const 0
+     local.get $value|276
+     i32.sub
+     local.set $value|276
+    end
+    local.get $value|276
+    call $~lib/util/number/decimalCount32
+    local.set $decimals|278
+    local.get $sign|277
+    local.get $decimals|278
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out|279
+    local.get $out|279
+    local.get $sign|277
+    i32.add
+    local.get $decimals|278
+    i32.add
+    local.set $end|280
+    local.get $value|276
+    local.set $num|281
+    local.get $num|281
+    i32.const 10
+    i32.div_u
+    local.set $t|282
+    local.get $num|281
+    i32.const 10
+    i32.rem_u
+    local.set $r|283
+    local.get $end|280
+    i32.const 1
+    i32.sub
+    local.set $end|280
+    local.get $end|280
+    i32.const 48
+    local.get $r|283
+    i32.add
+    i32.store8 $0
+    local.get $t|282
+    if
+     local.get $end|280
+     local.set $end|284
+     local.get $t|282
+     local.set $num|285
+     local.get $num|285
+     i32.const 10
+     i32.div_u
+     local.set $t|286
+     local.get $num|285
+     i32.const 10
+     i32.rem_u
+     local.set $r|287
+     local.get $end|284
+     i32.const 1
+     i32.sub
+     local.set $end|284
+     local.get $end|284
+     i32.const 48
+     local.get $r|287
+     i32.add
+     i32.store8 $0
+     local.get $t|286
+     if
+      local.get $end|284
+      local.set $end|288
+      local.get $t|286
+      local.set $num|289
+      local.get $num|289
+      i32.const 10
+      i32.div_u
+      local.set $t|290
+      local.get $num|289
+      i32.const 10
+      i32.rem_u
+      local.set $r|291
+      local.get $end|288
+      i32.const 1
+      i32.sub
+      local.set $end|288
+      local.get $end|288
+      i32.const 48
+      local.get $r|291
+      i32.add
+      i32.store8 $0
+      local.get $t|290
+      if
+       local.get $end|288
+       local.set $end|292
+       local.get $t|290
+       local.set $num|293
+       local.get $num|293
+       i32.const 10
+       i32.div_u
+       local.set $t|294
+       local.get $num|293
+       i32.const 10
+       i32.rem_u
+       local.set $r|295
+       local.get $end|292
+       i32.const 1
+       i32.sub
+       local.set $end|292
+       local.get $end|292
+       i32.const 48
+       local.get $r|295
+       i32.add
+       i32.store8 $0
+       local.get $t|294
+       if
+        local.get $end|292
+        local.set $end|296
+        local.get $t|294
+        local.set $num|297
+        local.get $num|297
+        i32.const 10
+        i32.div_u
+        local.set $t|298
+        local.get $num|297
+        i32.const 10
+        i32.rem_u
+        local.set $r|299
+        local.get $end|296
+        i32.const 1
+        i32.sub
+        local.set $end|296
+        local.get $end|296
+        i32.const 48
+        local.get $r|299
+        i32.add
+        i32.store8 $0
+        local.get $t|298
+        if
+         local.get $end|296
+         local.set $end|300
+         local.get $t|298
+         local.set $num|301
+         local.get $num|301
+         i32.const 10
+         i32.div_u
+         local.set $t|302
+         local.get $num|301
+         i32.const 10
+         i32.rem_u
+         local.set $r|303
+         local.get $end|300
+         i32.const 1
+         i32.sub
+         local.set $end|300
+         local.get $end|300
+         i32.const 48
+         local.get $r|303
+         i32.add
+         i32.store8 $0
+         local.get $t|302
+         if
+          local.get $end|300
+          local.set $end|304
+          local.get $t|302
+          local.set $num|305
+          local.get $num|305
+          i32.const 10
+          i32.div_u
+          local.set $t|306
+          local.get $num|305
+          i32.const 10
+          i32.rem_u
+          local.set $r|307
+          local.get $end|304
+          i32.const 1
+          i32.sub
+          local.set $end|304
+          local.get $end|304
+          i32.const 48
+          local.get $r|307
+          i32.add
+          i32.store8 $0
+          local.get $t|306
+          if
+           local.get $end|304
+           local.set $end|308
+           local.get $t|306
+           local.set $num|309
+           local.get $num|309
+           i32.const 10
+           i32.div_u
+           local.set $t|310
+           local.get $num|309
+           i32.const 10
+           i32.rem_u
+           local.set $r|311
+           local.get $end|308
+           i32.const 1
+           i32.sub
+           local.set $end|308
+           local.get $end|308
+           i32.const 48
+           local.get $r|311
+           i32.add
+           i32.store8 $0
+           local.get $t|310
+           if
+            local.get $end|308
+            local.set $end|312
+            local.get $t|310
+            local.set $num|313
+            local.get $num|313
+            i32.const 10
+            i32.div_u
+            local.set $t|314
+            local.get $num|313
+            i32.const 10
+            i32.rem_u
+            local.set $r|315
+            local.get $end|312
+            i32.const 1
+            i32.sub
+            local.set $end|312
+            local.get $end|312
+            i32.const 48
+            local.get $r|315
+            i32.add
+            i32.store8 $0
+            local.get $t|314
+            if
+             local.get $end|312
+             local.set $end|316
+             local.get $t|314
+             local.set $num|317
+             local.get $end|316
+             i32.const 1
+             i32.sub
+             local.tee $end|316
+             i32.const 48
+             local.get $num|317
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign|277
+    if
+     local.get $out|279
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out|279
+   end
+   local.set $s|318
+   local.get $s|318
+   call $~lib/string/String#get:length
+   local.set $inSize|319
+   local.get $padding|274
+   local.set $targetSize|320
+   local.get $targetSize|320
+   local.get $inSize|319
+   i32.le_u
+   if
+    local.get $s|318
+    br $~lib/date/stringify|inlined.8
+   end
+   local.get $targetSize|320
+   local.get $inSize|319
+   i32.sub
+   local.set $prependSize|321
+   local.get $targetSize|320
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|322
+   local.get $out|322
+   local.set $dest|323
+   i32.const 48
+   local.set $value|324
+   local.get $prependSize|321
+   local.set $count|325
+   local.get $count|325
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest|323
+    local.tee $326
+    i32.const 1
+    i32.add
+    local.set $dest|323
+    local.get $326
+    local.get $value|324
+    i32.store8 $0
+    local.get $dest|323
+    local.tee $327
+    i32.const 1
+    i32.add
+    local.set $dest|323
+    local.get $327
+    local.get $value|324
+    i32.store8 $0
+    local.get $dest|323
+    local.tee $328
+    i32.const 1
+    i32.add
+    local.set $dest|323
+    local.get $328
+    local.get $value|324
+    i32.store8 $0
+    local.get $dest|323
+    local.tee $329
+    i32.const 1
+    i32.add
+    local.set $dest|323
+    local.get $329
+    local.get $value|324
+    i32.store8 $0
+    local.get $count|325
+    i32.const 4
+    i32.sub
+    local.set $count|325
+   end
+   local.get $dest|323
+   local.set $dest|330
+   local.get $value|324
+   local.set $value|331
+   local.get $count|325
+   local.set $count|332
+   local.get $count|332
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|330
+    local.tee $333
+    i32.const 1
+    i32.add
+    local.set $dest|330
+    local.get $333
+    local.get $value|331
+    i32.store8 $0
+    local.get $dest|330
+    local.tee $334
+    i32.const 1
+    i32.add
+    local.set $dest|330
+    local.get $334
+    local.get $value|331
+    i32.store8 $0
+    local.get $count|332
+    i32.const 2
+    i32.sub
+    local.set $count|332
+   end
+   local.get $dest|330
+   local.set $dest|335
+   local.get $value|331
+   local.set $value|336
+   local.get $count|332
+   local.set $count|337
+   local.get $count|337
+   if
+    local.get $dest|335
+    local.get $value|336
+    i32.store8 $0
+   end
+   local.get $out|322
+   local.get $prependSize|321
+   i32.add
+   local.set $dest|338
+   local.get $s|318
+   local.set $ptr|339
+   local.get $inSize|319
+   local.set $len|340
+   local.get $len|340
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|338
+    local.set $dest|341
+    local.get $ptr|339
+    local.set $ptr|342
+    local.get $dest|341
+    local.get $ptr|342
+    i64.load $0
+    i64.store $0
+    local.get $dest|338
+    i32.const 8
+    i32.add
+    local.set $dest|338
+    local.get $ptr|339
+    i32.const 8
+    i32.add
+    local.set $ptr|339
+    local.get $len|340
+    i32.const 8
+    i32.sub
+    local.set $len|340
+   end
+   local.get $dest|338
+   local.set $dest|343
+   local.get $ptr|339
+   local.set $ptr|344
+   local.get $len|340
+   local.set $len|345
+   local.get $len|345
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|343
+    local.set $dest|346
+    local.get $ptr|344
+    local.set $ptr|347
+    local.get $dest|346
+    local.get $ptr|347
+    i32.load $0
+    i32.store $0
+    local.get $dest|343
+    i32.const 4
+    i32.add
+    local.set $dest|343
+    local.get $ptr|344
+    i32.const 4
+    i32.add
+    local.set $ptr|344
+    local.get $len|345
+    i32.const 4
+    i32.sub
+    local.set $len|345
+   end
+   local.get $dest|343
+   local.set $dest|348
+   local.get $ptr|344
+   local.set $ptr|349
+   local.get $len|345
+   local.set $len|350
+   local.get $len|350
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|348
+    local.set $dest|351
+    local.get $ptr|349
+    local.set $ptr|352
+    local.get $dest|351
+    local.get $ptr|352
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|348
+    i32.const 2
+    i32.add
+    local.set $dest|348
+    local.get $ptr|349
+    i32.const 2
+    i32.add
+    local.set $ptr|349
+    local.get $len|350
+    i32.const 2
+    i32.sub
+    local.set $len|350
+   end
+   local.get $dest|348
+   local.set $dest|353
+   local.get $ptr|349
+   local.set $ptr|354
+   local.get $len|350
+   local.set $len|355
+   local.get $len|355
+   if
+    local.get $dest|353
+    local.get $ptr|354
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|322
+  end
+  local.set $mins
+  block $~lib/date/stringify|inlined.9 (result i32)
+   local.get $this
+   local.set $this|357
+   local.get $this|357
+   i64.load $0 offset=16
+   local.set $a|358
+   i32.const 60000
+   i64.extend_i32_s
+   local.set $b|359
+   local.get $a|358
+   local.get $b|359
+   i64.rem_s
+   local.set $m|360
+   local.get $m|360
+   local.get $m|360
+   i64.const 0
+   i64.lt_s
+   if (result i64)
+    local.get $b|359
+   else
+    i64.const 0
+   end
+   i64.add
+   i32.wrap_i64
+   i32.const 1000
+   i32.div_s
+   local.set $value|361
+   i32.const 2
+   local.set $padding|362
+   local.get $value|361
+   local.set $this|363
+   block $~lib/util/number/i32toa|inlined.9 (result i32)
+    local.get $this|363
+    local.set $value|364
+    local.get $value|364
+    i32.eqz
+    if
+     i32.const 848
+     br $~lib/util/number/i32toa|inlined.9
+    end
+    local.get $value|364
+    i32.const 31
+    i32.shr_u
+    local.set $sign|365
+    local.get $sign|365
+    if
+     i32.const 0
+     local.get $value|364
+     i32.sub
+     local.set $value|364
+    end
+    local.get $value|364
+    call $~lib/util/number/decimalCount32
+    local.set $decimals|366
+    local.get $sign|365
+    local.get $decimals|366
+    i32.add
+    i32.const 1
+    call $~lib/rt/stub/__new
+    local.set $out|367
+    local.get $out|367
+    local.get $sign|365
+    i32.add
+    local.get $decimals|366
+    i32.add
+    local.set $end|368
+    local.get $value|364
+    local.set $num|369
+    local.get $num|369
+    i32.const 10
+    i32.div_u
+    local.set $t|370
+    local.get $num|369
+    i32.const 10
+    i32.rem_u
+    local.set $r|371
+    local.get $end|368
+    i32.const 1
+    i32.sub
+    local.set $end|368
+    local.get $end|368
+    i32.const 48
+    local.get $r|371
+    i32.add
+    i32.store8 $0
+    local.get $t|370
+    if
+     local.get $end|368
+     local.set $end|372
+     local.get $t|370
+     local.set $num|373
+     local.get $num|373
+     i32.const 10
+     i32.div_u
+     local.set $t|374
+     local.get $num|373
+     i32.const 10
+     i32.rem_u
+     local.set $r|375
+     local.get $end|372
+     i32.const 1
+     i32.sub
+     local.set $end|372
+     local.get $end|372
+     i32.const 48
+     local.get $r|375
+     i32.add
+     i32.store8 $0
+     local.get $t|374
+     if
+      local.get $end|372
+      local.set $end|376
+      local.get $t|374
+      local.set $num|377
+      local.get $num|377
+      i32.const 10
+      i32.div_u
+      local.set $t|378
+      local.get $num|377
+      i32.const 10
+      i32.rem_u
+      local.set $r|379
+      local.get $end|376
+      i32.const 1
+      i32.sub
+      local.set $end|376
+      local.get $end|376
+      i32.const 48
+      local.get $r|379
+      i32.add
+      i32.store8 $0
+      local.get $t|378
+      if
+       local.get $end|376
+       local.set $end|380
+       local.get $t|378
+       local.set $num|381
+       local.get $num|381
+       i32.const 10
+       i32.div_u
+       local.set $t|382
+       local.get $num|381
+       i32.const 10
+       i32.rem_u
+       local.set $r|383
+       local.get $end|380
+       i32.const 1
+       i32.sub
+       local.set $end|380
+       local.get $end|380
+       i32.const 48
+       local.get $r|383
+       i32.add
+       i32.store8 $0
+       local.get $t|382
+       if
+        local.get $end|380
+        local.set $end|384
+        local.get $t|382
+        local.set $num|385
+        local.get $num|385
+        i32.const 10
+        i32.div_u
+        local.set $t|386
+        local.get $num|385
+        i32.const 10
+        i32.rem_u
+        local.set $r|387
+        local.get $end|384
+        i32.const 1
+        i32.sub
+        local.set $end|384
+        local.get $end|384
+        i32.const 48
+        local.get $r|387
+        i32.add
+        i32.store8 $0
+        local.get $t|386
+        if
+         local.get $end|384
+         local.set $end|388
+         local.get $t|386
+         local.set $num|389
+         local.get $num|389
+         i32.const 10
+         i32.div_u
+         local.set $t|390
+         local.get $num|389
+         i32.const 10
+         i32.rem_u
+         local.set $r|391
+         local.get $end|388
+         i32.const 1
+         i32.sub
+         local.set $end|388
+         local.get $end|388
+         i32.const 48
+         local.get $r|391
+         i32.add
+         i32.store8 $0
+         local.get $t|390
+         if
+          local.get $end|388
+          local.set $end|392
+          local.get $t|390
+          local.set $num|393
+          local.get $num|393
+          i32.const 10
+          i32.div_u
+          local.set $t|394
+          local.get $num|393
+          i32.const 10
+          i32.rem_u
+          local.set $r|395
+          local.get $end|392
+          i32.const 1
+          i32.sub
+          local.set $end|392
+          local.get $end|392
+          i32.const 48
+          local.get $r|395
+          i32.add
+          i32.store8 $0
+          local.get $t|394
+          if
+           local.get $end|392
+           local.set $end|396
+           local.get $t|394
+           local.set $num|397
+           local.get $num|397
+           i32.const 10
+           i32.div_u
+           local.set $t|398
+           local.get $num|397
+           i32.const 10
+           i32.rem_u
+           local.set $r|399
+           local.get $end|396
+           i32.const 1
+           i32.sub
+           local.set $end|396
+           local.get $end|396
+           i32.const 48
+           local.get $r|399
+           i32.add
+           i32.store8 $0
+           local.get $t|398
+           if
+            local.get $end|396
+            local.set $end|400
+            local.get $t|398
+            local.set $num|401
+            local.get $num|401
+            i32.const 10
+            i32.div_u
+            local.set $t|402
+            local.get $num|401
+            i32.const 10
+            i32.rem_u
+            local.set $r|403
+            local.get $end|400
+            i32.const 1
+            i32.sub
+            local.set $end|400
+            local.get $end|400
+            i32.const 48
+            local.get $r|403
+            i32.add
+            i32.store8 $0
+            local.get $t|402
+            if
+             local.get $end|400
+             local.set $end|404
+             local.get $t|402
+             local.set $num|405
+             local.get $end|404
+             i32.const 1
+             i32.sub
+             local.tee $end|404
+             i32.const 48
+             local.get $num|405
+             i32.add
+             i32.store8 $0
+            end
+           end
+          end
+         end
+        end
+       end
+      end
+     end
+    end
+    local.get $sign|365
+    if
+     local.get $out|367
+     i32.const 45
+     i32.store8 $0
+    end
+    local.get $out|367
+   end
+   local.set $s|406
+   local.get $s|406
+   call $~lib/string/String#get:length
+   local.set $inSize|407
+   local.get $padding|362
+   local.set $targetSize|408
+   local.get $targetSize|408
+   local.get $inSize|407
+   i32.le_u
+   if
+    local.get $s|406
+    br $~lib/date/stringify|inlined.9
+   end
+   local.get $targetSize|408
+   local.get $inSize|407
+   i32.sub
+   local.set $prependSize|409
+   local.get $targetSize|408
+   i32.const 1
+   call $~lib/rt/stub/__new
+   local.set $out|410
+   local.get $out|410
+   local.set $dest|411
+   i32.const 48
+   local.set $value|412
+   local.get $prependSize|409
+   local.set $count|413
+   local.get $count|413
+   i32.const 4
+   i32.ge_u
+   if
+    local.get $dest|411
+    local.tee $414
+    i32.const 1
+    i32.add
+    local.set $dest|411
+    local.get $414
+    local.get $value|412
+    i32.store8 $0
+    local.get $dest|411
+    local.tee $415
+    i32.const 1
+    i32.add
+    local.set $dest|411
+    local.get $415
+    local.get $value|412
+    i32.store8 $0
+    local.get $dest|411
+    local.tee $416
+    i32.const 1
+    i32.add
+    local.set $dest|411
+    local.get $416
+    local.get $value|412
+    i32.store8 $0
+    local.get $dest|411
+    local.tee $417
+    i32.const 1
+    i32.add
+    local.set $dest|411
+    local.get $417
+    local.get $value|412
+    i32.store8 $0
+    local.get $count|413
+    i32.const 4
+    i32.sub
+    local.set $count|413
+   end
+   local.get $dest|411
+   local.set $dest|418
+   local.get $value|412
+   local.set $value|419
+   local.get $count|413
+   local.set $count|420
+   local.get $count|420
+   i32.const 2
+   i32.ge_u
+   if
+    local.get $dest|418
+    local.tee $421
+    i32.const 1
+    i32.add
+    local.set $dest|418
+    local.get $421
+    local.get $value|419
+    i32.store8 $0
+    local.get $dest|418
+    local.tee $422
+    i32.const 1
+    i32.add
+    local.set $dest|418
+    local.get $422
+    local.get $value|419
+    i32.store8 $0
+    local.get $count|420
+    i32.const 2
+    i32.sub
+    local.set $count|420
+   end
+   local.get $dest|418
+   local.set $dest|423
+   local.get $value|419
+   local.set $value|424
+   local.get $count|420
+   local.set $count|425
+   local.get $count|425
+   if
+    local.get $dest|423
+    local.get $value|424
+    i32.store8 $0
+   end
+   local.get $out|410
+   local.get $prependSize|409
+   i32.add
+   local.set $dest|426
+   local.get $s|406
+   local.set $ptr|427
+   local.get $inSize|407
+   local.set $len|428
+   local.get $len|428
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|426
+    local.set $dest|429
+    local.get $ptr|427
+    local.set $ptr|430
+    local.get $dest|429
+    local.get $ptr|430
+    i64.load $0
+    i64.store $0
+    local.get $dest|426
+    i32.const 8
+    i32.add
+    local.set $dest|426
+    local.get $ptr|427
+    i32.const 8
+    i32.add
+    local.set $ptr|427
+    local.get $len|428
+    i32.const 8
+    i32.sub
+    local.set $len|428
+   end
+   local.get $dest|426
+   local.set $dest|431
+   local.get $ptr|427
+   local.set $ptr|432
+   local.get $len|428
+   local.set $len|433
+   local.get $len|433
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|431
+    local.set $dest|434
+    local.get $ptr|432
+    local.set $ptr|435
+    local.get $dest|434
+    local.get $ptr|435
+    i32.load $0
+    i32.store $0
+    local.get $dest|431
+    i32.const 4
+    i32.add
+    local.set $dest|431
+    local.get $ptr|432
+    i32.const 4
+    i32.add
+    local.set $ptr|432
+    local.get $len|433
+    i32.const 4
+    i32.sub
+    local.set $len|433
+   end
+   local.get $dest|431
+   local.set $dest|436
+   local.get $ptr|432
+   local.set $ptr|437
+   local.get $len|433
+   local.set $len|438
+   local.get $len|438
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|436
+    local.set $dest|439
+    local.get $ptr|437
+    local.set $ptr|440
+    local.get $dest|439
+    local.get $ptr|440
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|436
+    i32.const 2
+    i32.add
+    local.set $dest|436
+    local.get $ptr|437
+    i32.const 2
+    i32.add
+    local.set $ptr|437
+    local.get $len|438
+    i32.const 2
+    i32.sub
+    local.set $len|438
+   end
+   local.get $dest|436
+   local.set $dest|441
+   local.get $ptr|437
+   local.set $ptr|442
+   local.get $len|438
+   local.set $len|443
+   local.get $len|443
+   if
+    local.get $dest|441
+    local.get $ptr|442
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $out|410
+  end
+  local.set $secs
+  i32.const 519
+  local.set $size
+  local.get $size
+  i32.const 1
+  call $~lib/rt/stub/__new
+  local.set $445
+  block $~lib/copyupto/__copyupto64|inlined.15 (result i32)
+   block $~lib/copyupto/__copyupto64|inlined.14 (result i32)
+    block $~lib/copyupto/__copyupto64|inlined.13 (result i32)
+     block $~lib/copyupto/__copyupto64|inlined.12 (result i32)
+      block $~lib/copyupto/__copyupto64|inlined.11 (result i32)
+       block $~lib/copyupto/__copyupto64|inlined.10 (result i32)
+        block $~lib/copyupto/__copyupto64|inlined.9 (result i32)
+         block $~lib/copyupto/__copyupto64|inlined.8 (result i32)
+          local.get $445
+          local.set $dest|446
+          local.get $week
+          local.set $src
+          local.get $src
+          call $~lib/string/String#get:length
+          local.set $l
+          local.get $l
+          i32.const 64
+          i32.ge_s
+          if
+           local.get $dest|446
+           local.set $dest|449
+           local.get $src
+           local.set $ptr|450
+           local.get $dest|449
+           local.get $ptr|450
+           i64.load $0
+           i64.store $0
+           local.get $dest|449
+           i32.const 8
+           i32.add
+           local.set $dest|449
+           local.get $ptr|450
+           i32.const 8
+           i32.add
+           local.set $ptr|450
+           local.get $dest|449
+           local.get $ptr|450
+           i64.load $0
+           i64.store $0
+           local.get $dest|449
+           i32.const 8
+           i32.add
+           local.set $dest|449
+           local.get $ptr|450
+           i32.const 8
+           i32.add
+           local.set $ptr|450
+           local.get $dest|449
+           local.get $ptr|450
+           i64.load $0
+           i64.store $0
+           local.get $dest|449
+           i32.const 8
+           i32.add
+           local.set $dest|449
+           local.get $ptr|450
+           i32.const 8
+           i32.add
+           local.set $ptr|450
+           local.get $dest|449
+           local.get $ptr|450
+           i64.load $0
+           i64.store $0
+           local.get $dest|449
+           i32.const 8
+           i32.add
+           local.set $dest|449
+           local.get $ptr|450
+           i32.const 8
+           i32.add
+           local.set $ptr|450
+           local.get $dest|449
+           local.get $ptr|450
+           i64.load $0
+           i64.store $0
+           local.get $dest|449
+           i32.const 8
+           i32.add
+           local.set $dest|449
+           local.get $ptr|450
+           i32.const 8
+           i32.add
+           local.set $ptr|450
+           local.get $dest|449
+           local.get $ptr|450
+           i64.load $0
+           i64.store $0
+           local.get $dest|449
+           i32.const 8
+           i32.add
+           local.set $dest|449
+           local.get $ptr|450
+           i32.const 8
+           i32.add
+           local.set $ptr|450
+           local.get $dest|449
+           local.get $ptr|450
+           i64.load $0
+           i64.store $0
+           local.get $dest|449
+           i32.const 8
+           i32.add
+           local.set $dest|449
+           local.get $ptr|450
+           i32.const 8
+           i32.add
+           local.set $ptr|450
+           local.get $dest|449
+           local.get $ptr|450
+           i64.load $0
+           i64.store $0
+           local.get $dest|446
+           i32.const 64
+           i32.add
+           br $~lib/copyupto/__copyupto64|inlined.8
+          end
+          local.get $dest|446
+          local.set $dest|451
+          local.get $src
+          local.set $ptr|452
+          local.get $l
+          local.set $len|453
+          local.get $len|453
+          i32.const 32
+          i32.ge_s
+          if
+           local.get $dest|451
+           local.set $dest|454
+           local.get $ptr|452
+           local.set $ptr|455
+           local.get $dest|454
+           local.get $ptr|455
+           i64.load $0
+           i64.store $0
+           local.get $dest|454
+           i32.const 8
+           i32.add
+           local.set $dest|454
+           local.get $ptr|455
+           i32.const 8
+           i32.add
+           local.set $ptr|455
+           local.get $dest|454
+           local.get $ptr|455
+           i64.load $0
+           i64.store $0
+           local.get $dest|454
+           i32.const 8
+           i32.add
+           local.set $dest|454
+           local.get $ptr|455
+           i32.const 8
+           i32.add
+           local.set $ptr|455
+           local.get $dest|454
+           local.get $ptr|455
+           i64.load $0
+           i64.store $0
+           local.get $dest|454
+           i32.const 8
+           i32.add
+           local.set $dest|454
+           local.get $ptr|455
+           i32.const 8
+           i32.add
+           local.set $ptr|455
+           local.get $dest|454
+           local.get $ptr|455
+           i64.load $0
+           i64.store $0
+           local.get $dest|451
+           i32.const 32
+           i32.add
+           local.set $dest|451
+           local.get $ptr|452
+           i32.const 32
+           i32.add
+           local.set $ptr|452
+           local.get $len|453
+           i32.const 32
+           i32.sub
+           local.set $len|453
+          end
+          local.get $dest|451
+          local.set $dest|456
+          local.get $ptr|452
+          local.set $ptr|457
+          local.get $len|453
+          local.set $len|458
+          local.get $len|458
+          i32.const 16
+          i32.ge_s
+          if
+           local.get $dest|456
+           local.set $dest|459
+           local.get $ptr|457
+           local.set $ptr|460
+           local.get $dest|459
+           local.get $ptr|460
+           i64.load $0
+           i64.store $0
+           local.get $dest|459
+           i32.const 8
+           i32.add
+           local.set $dest|459
+           local.get $ptr|460
+           i32.const 8
+           i32.add
+           local.set $ptr|460
+           local.get $dest|459
+           local.get $ptr|460
+           i64.load $0
+           i64.store $0
+           local.get $dest|456
+           i32.const 16
+           i32.add
+           local.set $dest|456
+           local.get $ptr|457
+           i32.const 16
+           i32.add
+           local.set $ptr|457
+           local.get $len|458
+           i32.const 16
+           i32.sub
+           local.set $len|458
+          end
+          local.get $dest|456
+          local.set $dest|461
+          local.get $ptr|457
+          local.set $ptr|462
+          local.get $len|458
+          local.set $len|463
+          local.get $len|463
+          i32.const 8
+          i32.ge_s
+          if
+           local.get $dest|461
+           local.set $dest|464
+           local.get $ptr|462
+           local.set $ptr|465
+           local.get $dest|464
+           local.get $ptr|465
+           i64.load $0
+           i64.store $0
+           local.get $dest|461
+           i32.const 8
+           i32.add
+           local.set $dest|461
+           local.get $ptr|462
+           i32.const 8
+           i32.add
+           local.set $ptr|462
+           local.get $len|463
+           i32.const 8
+           i32.sub
+           local.set $len|463
+          end
+          local.get $dest|461
+          local.set $dest|466
+          local.get $ptr|462
+          local.set $ptr|467
+          local.get $len|463
+          local.set $len|468
+          local.get $len|468
+          i32.const 4
+          i32.ge_s
+          if
+           local.get $dest|466
+           local.set $dest|469
+           local.get $ptr|467
+           local.set $ptr|470
+           local.get $dest|469
+           local.get $ptr|470
+           i32.load $0
+           i32.store $0
+           local.get $dest|466
+           i32.const 4
+           i32.add
+           local.set $dest|466
+           local.get $ptr|467
+           i32.const 4
+           i32.add
+           local.set $ptr|467
+           local.get $len|468
+           i32.const 4
+           i32.sub
+           local.set $len|468
+          end
+          local.get $dest|466
+          local.set $dest|471
+          local.get $ptr|467
+          local.set $ptr|472
+          local.get $len|468
+          local.set $len|473
+          local.get $len|473
+          i32.const 2
+          i32.ge_s
+          if
+           local.get $dest|471
+           local.set $dest|474
+           local.get $ptr|472
+           local.set $ptr|475
+           local.get $dest|474
+           local.get $ptr|475
+           i32.load16_u $0
+           i32.store16 $0
+           local.get $dest|471
+           i32.const 2
+           i32.add
+           local.set $dest|471
+           local.get $ptr|472
+           i32.const 2
+           i32.add
+           local.set $ptr|472
+           local.get $len|473
+           i32.const 2
+           i32.sub
+           local.set $len|473
+          end
+          local.get $dest|471
+          local.set $dest|476
+          local.get $ptr|472
+          local.set $ptr|477
+          local.get $len|473
+          local.set $len|478
+          local.get $len|478
+          if
+           local.get $dest|476
+           local.get $ptr|477
+           i32.load8_u $0
+           i32.store8 $0
+          end
+          local.get $dest|446
+          local.get $l
+          i32.add
+         end
+         local.set $dest|479
+         local.get $day
+         local.set $src|480
+         local.get $src|480
+         call $~lib/string/String#get:length
+         local.set $l|481
+         local.get $l|481
+         i32.const 64
+         i32.ge_s
+         if
+          local.get $dest|479
+          local.set $dest|482
+          local.get $src|480
+          local.set $ptr|483
+          local.get $dest|482
+          local.get $ptr|483
+          i64.load $0
+          i64.store $0
+          local.get $dest|482
+          i32.const 8
+          i32.add
+          local.set $dest|482
+          local.get $ptr|483
+          i32.const 8
+          i32.add
+          local.set $ptr|483
+          local.get $dest|482
+          local.get $ptr|483
+          i64.load $0
+          i64.store $0
+          local.get $dest|482
+          i32.const 8
+          i32.add
+          local.set $dest|482
+          local.get $ptr|483
+          i32.const 8
+          i32.add
+          local.set $ptr|483
+          local.get $dest|482
+          local.get $ptr|483
+          i64.load $0
+          i64.store $0
+          local.get $dest|482
+          i32.const 8
+          i32.add
+          local.set $dest|482
+          local.get $ptr|483
+          i32.const 8
+          i32.add
+          local.set $ptr|483
+          local.get $dest|482
+          local.get $ptr|483
+          i64.load $0
+          i64.store $0
+          local.get $dest|482
+          i32.const 8
+          i32.add
+          local.set $dest|482
+          local.get $ptr|483
+          i32.const 8
+          i32.add
+          local.set $ptr|483
+          local.get $dest|482
+          local.get $ptr|483
+          i64.load $0
+          i64.store $0
+          local.get $dest|482
+          i32.const 8
+          i32.add
+          local.set $dest|482
+          local.get $ptr|483
+          i32.const 8
+          i32.add
+          local.set $ptr|483
+          local.get $dest|482
+          local.get $ptr|483
+          i64.load $0
+          i64.store $0
+          local.get $dest|482
+          i32.const 8
+          i32.add
+          local.set $dest|482
+          local.get $ptr|483
+          i32.const 8
+          i32.add
+          local.set $ptr|483
+          local.get $dest|482
+          local.get $ptr|483
+          i64.load $0
+          i64.store $0
+          local.get $dest|482
+          i32.const 8
+          i32.add
+          local.set $dest|482
+          local.get $ptr|483
+          i32.const 8
+          i32.add
+          local.set $ptr|483
+          local.get $dest|482
+          local.get $ptr|483
+          i64.load $0
+          i64.store $0
+          local.get $dest|479
+          i32.const 64
+          i32.add
+          br $~lib/copyupto/__copyupto64|inlined.9
+         end
+         local.get $dest|479
+         local.set $dest|484
+         local.get $src|480
+         local.set $ptr|485
+         local.get $l|481
+         local.set $len|486
+         local.get $len|486
+         i32.const 32
+         i32.ge_s
+         if
+          local.get $dest|484
+          local.set $dest|487
+          local.get $ptr|485
+          local.set $ptr|488
+          local.get $dest|487
+          local.get $ptr|488
+          i64.load $0
+          i64.store $0
+          local.get $dest|487
+          i32.const 8
+          i32.add
+          local.set $dest|487
+          local.get $ptr|488
+          i32.const 8
+          i32.add
+          local.set $ptr|488
+          local.get $dest|487
+          local.get $ptr|488
+          i64.load $0
+          i64.store $0
+          local.get $dest|487
+          i32.const 8
+          i32.add
+          local.set $dest|487
+          local.get $ptr|488
+          i32.const 8
+          i32.add
+          local.set $ptr|488
+          local.get $dest|487
+          local.get $ptr|488
+          i64.load $0
+          i64.store $0
+          local.get $dest|487
+          i32.const 8
+          i32.add
+          local.set $dest|487
+          local.get $ptr|488
+          i32.const 8
+          i32.add
+          local.set $ptr|488
+          local.get $dest|487
+          local.get $ptr|488
+          i64.load $0
+          i64.store $0
+          local.get $dest|484
+          i32.const 32
+          i32.add
+          local.set $dest|484
+          local.get $ptr|485
+          i32.const 32
+          i32.add
+          local.set $ptr|485
+          local.get $len|486
+          i32.const 32
+          i32.sub
+          local.set $len|486
+         end
+         local.get $dest|484
+         local.set $dest|489
+         local.get $ptr|485
+         local.set $ptr|490
+         local.get $len|486
+         local.set $len|491
+         local.get $len|491
+         i32.const 16
+         i32.ge_s
+         if
+          local.get $dest|489
+          local.set $dest|492
+          local.get $ptr|490
+          local.set $ptr|493
+          local.get $dest|492
+          local.get $ptr|493
+          i64.load $0
+          i64.store $0
+          local.get $dest|492
+          i32.const 8
+          i32.add
+          local.set $dest|492
+          local.get $ptr|493
+          i32.const 8
+          i32.add
+          local.set $ptr|493
+          local.get $dest|492
+          local.get $ptr|493
+          i64.load $0
+          i64.store $0
+          local.get $dest|489
+          i32.const 16
+          i32.add
+          local.set $dest|489
+          local.get $ptr|490
+          i32.const 16
+          i32.add
+          local.set $ptr|490
+          local.get $len|491
+          i32.const 16
+          i32.sub
+          local.set $len|491
+         end
+         local.get $dest|489
+         local.set $dest|494
+         local.get $ptr|490
+         local.set $ptr|495
+         local.get $len|491
+         local.set $len|496
+         local.get $len|496
+         i32.const 8
+         i32.ge_s
+         if
+          local.get $dest|494
+          local.set $dest|497
+          local.get $ptr|495
+          local.set $ptr|498
+          local.get $dest|497
+          local.get $ptr|498
+          i64.load $0
+          i64.store $0
+          local.get $dest|494
+          i32.const 8
+          i32.add
+          local.set $dest|494
+          local.get $ptr|495
+          i32.const 8
+          i32.add
+          local.set $ptr|495
+          local.get $len|496
+          i32.const 8
+          i32.sub
+          local.set $len|496
+         end
+         local.get $dest|494
+         local.set $dest|499
+         local.get $ptr|495
+         local.set $ptr|500
+         local.get $len|496
+         local.set $len|501
+         local.get $len|501
+         i32.const 4
+         i32.ge_s
+         if
+          local.get $dest|499
+          local.set $dest|502
+          local.get $ptr|500
+          local.set $ptr|503
+          local.get $dest|502
+          local.get $ptr|503
+          i32.load $0
+          i32.store $0
+          local.get $dest|499
+          i32.const 4
+          i32.add
+          local.set $dest|499
+          local.get $ptr|500
+          i32.const 4
+          i32.add
+          local.set $ptr|500
+          local.get $len|501
+          i32.const 4
+          i32.sub
+          local.set $len|501
+         end
+         local.get $dest|499
+         local.set $dest|504
+         local.get $ptr|500
+         local.set $ptr|505
+         local.get $len|501
+         local.set $len|506
+         local.get $len|506
+         i32.const 2
+         i32.ge_s
+         if
+          local.get $dest|504
+          local.set $dest|507
+          local.get $ptr|505
+          local.set $ptr|508
+          local.get $dest|507
+          local.get $ptr|508
+          i32.load16_u $0
+          i32.store16 $0
+          local.get $dest|504
+          i32.const 2
+          i32.add
+          local.set $dest|504
+          local.get $ptr|505
+          i32.const 2
+          i32.add
+          local.set $ptr|505
+          local.get $len|506
+          i32.const 2
+          i32.sub
+          local.set $len|506
+         end
+         local.get $dest|504
+         local.set $dest|509
+         local.get $ptr|505
+         local.set $ptr|510
+         local.get $len|506
+         local.set $len|511
+         local.get $len|511
+         if
+          local.get $dest|509
+          local.get $ptr|510
+          i32.load8_u $0
+          i32.store8 $0
+         end
+         local.get $dest|479
+         local.get $l|481
+         i32.add
+        end
+        local.set $dest|512
+        local.get $month
+        local.set $src|513
+        local.get $src|513
+        call $~lib/string/String#get:length
+        local.set $l|514
+        local.get $l|514
+        i32.const 64
+        i32.ge_s
+        if
+         local.get $dest|512
+         local.set $dest|515
+         local.get $src|513
+         local.set $ptr|516
+         local.get $dest|515
+         local.get $ptr|516
+         i64.load $0
+         i64.store $0
+         local.get $dest|515
+         i32.const 8
+         i32.add
+         local.set $dest|515
+         local.get $ptr|516
+         i32.const 8
+         i32.add
+         local.set $ptr|516
+         local.get $dest|515
+         local.get $ptr|516
+         i64.load $0
+         i64.store $0
+         local.get $dest|515
+         i32.const 8
+         i32.add
+         local.set $dest|515
+         local.get $ptr|516
+         i32.const 8
+         i32.add
+         local.set $ptr|516
+         local.get $dest|515
+         local.get $ptr|516
+         i64.load $0
+         i64.store $0
+         local.get $dest|515
+         i32.const 8
+         i32.add
+         local.set $dest|515
+         local.get $ptr|516
+         i32.const 8
+         i32.add
+         local.set $ptr|516
+         local.get $dest|515
+         local.get $ptr|516
+         i64.load $0
+         i64.store $0
+         local.get $dest|515
+         i32.const 8
+         i32.add
+         local.set $dest|515
+         local.get $ptr|516
+         i32.const 8
+         i32.add
+         local.set $ptr|516
+         local.get $dest|515
+         local.get $ptr|516
+         i64.load $0
+         i64.store $0
+         local.get $dest|515
+         i32.const 8
+         i32.add
+         local.set $dest|515
+         local.get $ptr|516
+         i32.const 8
+         i32.add
+         local.set $ptr|516
+         local.get $dest|515
+         local.get $ptr|516
+         i64.load $0
+         i64.store $0
+         local.get $dest|515
+         i32.const 8
+         i32.add
+         local.set $dest|515
+         local.get $ptr|516
+         i32.const 8
+         i32.add
+         local.set $ptr|516
+         local.get $dest|515
+         local.get $ptr|516
+         i64.load $0
+         i64.store $0
+         local.get $dest|515
+         i32.const 8
+         i32.add
+         local.set $dest|515
+         local.get $ptr|516
+         i32.const 8
+         i32.add
+         local.set $ptr|516
+         local.get $dest|515
+         local.get $ptr|516
+         i64.load $0
+         i64.store $0
+         local.get $dest|512
+         i32.const 64
+         i32.add
+         br $~lib/copyupto/__copyupto64|inlined.10
+        end
+        local.get $dest|512
+        local.set $dest|517
+        local.get $src|513
+        local.set $ptr|518
+        local.get $l|514
+        local.set $len|519
+        local.get $len|519
+        i32.const 32
+        i32.ge_s
+        if
+         local.get $dest|517
+         local.set $dest|520
+         local.get $ptr|518
+         local.set $ptr|521
+         local.get $dest|520
+         local.get $ptr|521
+         i64.load $0
+         i64.store $0
+         local.get $dest|520
+         i32.const 8
+         i32.add
+         local.set $dest|520
+         local.get $ptr|521
+         i32.const 8
+         i32.add
+         local.set $ptr|521
+         local.get $dest|520
+         local.get $ptr|521
+         i64.load $0
+         i64.store $0
+         local.get $dest|520
+         i32.const 8
+         i32.add
+         local.set $dest|520
+         local.get $ptr|521
+         i32.const 8
+         i32.add
+         local.set $ptr|521
+         local.get $dest|520
+         local.get $ptr|521
+         i64.load $0
+         i64.store $0
+         local.get $dest|520
+         i32.const 8
+         i32.add
+         local.set $dest|520
+         local.get $ptr|521
+         i32.const 8
+         i32.add
+         local.set $ptr|521
+         local.get $dest|520
+         local.get $ptr|521
+         i64.load $0
+         i64.store $0
+         local.get $dest|517
+         i32.const 32
+         i32.add
+         local.set $dest|517
+         local.get $ptr|518
+         i32.const 32
+         i32.add
+         local.set $ptr|518
+         local.get $len|519
+         i32.const 32
+         i32.sub
+         local.set $len|519
+        end
+        local.get $dest|517
+        local.set $dest|522
+        local.get $ptr|518
+        local.set $ptr|523
+        local.get $len|519
+        local.set $len|524
+        local.get $len|524
+        i32.const 16
+        i32.ge_s
+        if
+         local.get $dest|522
+         local.set $dest|525
+         local.get $ptr|523
+         local.set $ptr|526
+         local.get $dest|525
+         local.get $ptr|526
+         i64.load $0
+         i64.store $0
+         local.get $dest|525
+         i32.const 8
+         i32.add
+         local.set $dest|525
+         local.get $ptr|526
+         i32.const 8
+         i32.add
+         local.set $ptr|526
+         local.get $dest|525
+         local.get $ptr|526
+         i64.load $0
+         i64.store $0
+         local.get $dest|522
+         i32.const 16
+         i32.add
+         local.set $dest|522
+         local.get $ptr|523
+         i32.const 16
+         i32.add
+         local.set $ptr|523
+         local.get $len|524
+         i32.const 16
+         i32.sub
+         local.set $len|524
+        end
+        local.get $dest|522
+        local.set $dest|527
+        local.get $ptr|523
+        local.set $ptr|528
+        local.get $len|524
+        local.set $len|529
+        local.get $len|529
+        i32.const 8
+        i32.ge_s
+        if
+         local.get $dest|527
+         local.set $dest|530
+         local.get $ptr|528
+         local.set $ptr|531
+         local.get $dest|530
+         local.get $ptr|531
+         i64.load $0
+         i64.store $0
+         local.get $dest|527
+         i32.const 8
+         i32.add
+         local.set $dest|527
+         local.get $ptr|528
+         i32.const 8
+         i32.add
+         local.set $ptr|528
+         local.get $len|529
+         i32.const 8
+         i32.sub
+         local.set $len|529
+        end
+        local.get $dest|527
+        local.set $dest|532
+        local.get $ptr|528
+        local.set $ptr|533
+        local.get $len|529
+        local.set $len|534
+        local.get $len|534
+        i32.const 4
+        i32.ge_s
+        if
+         local.get $dest|532
+         local.set $dest|535
+         local.get $ptr|533
+         local.set $ptr|536
+         local.get $dest|535
+         local.get $ptr|536
+         i32.load $0
+         i32.store $0
+         local.get $dest|532
+         i32.const 4
+         i32.add
+         local.set $dest|532
+         local.get $ptr|533
+         i32.const 4
+         i32.add
+         local.set $ptr|533
+         local.get $len|534
+         i32.const 4
+         i32.sub
+         local.set $len|534
+        end
+        local.get $dest|532
+        local.set $dest|537
+        local.get $ptr|533
+        local.set $ptr|538
+        local.get $len|534
+        local.set $len|539
+        local.get $len|539
+        i32.const 2
+        i32.ge_s
+        if
+         local.get $dest|537
+         local.set $dest|540
+         local.get $ptr|538
+         local.set $ptr|541
+         local.get $dest|540
+         local.get $ptr|541
+         i32.load16_u $0
+         i32.store16 $0
+         local.get $dest|537
+         i32.const 2
+         i32.add
+         local.set $dest|537
+         local.get $ptr|538
+         i32.const 2
+         i32.add
+         local.set $ptr|538
+         local.get $len|539
+         i32.const 2
+         i32.sub
+         local.set $len|539
+        end
+        local.get $dest|537
+        local.set $dest|542
+        local.get $ptr|538
+        local.set $ptr|543
+        local.get $len|539
+        local.set $len|544
+        local.get $len|544
+        if
+         local.get $dest|542
+         local.get $ptr|543
+         i32.load8_u $0
+         i32.store8 $0
+        end
+        local.get $dest|512
+        local.get $l|514
+        i32.add
+       end
+       local.set $dest|545
+       local.get $yr
+       i32.const 0
+       i32.lt_s
+       if (result i32)
+        i32.const 1920
+       else
+        i32.const 352
+       end
+       local.set $src|546
+       local.get $src|546
+       call $~lib/string/String#get:length
+       local.set $l|547
+       local.get $l|547
+       i32.const 64
+       i32.ge_s
+       if
+        local.get $dest|545
+        local.set $dest|548
+        local.get $src|546
+        local.set $ptr|549
+        local.get $dest|548
+        local.get $ptr|549
+        i64.load $0
+        i64.store $0
+        local.get $dest|548
+        i32.const 8
+        i32.add
+        local.set $dest|548
+        local.get $ptr|549
+        i32.const 8
+        i32.add
+        local.set $ptr|549
+        local.get $dest|548
+        local.get $ptr|549
+        i64.load $0
+        i64.store $0
+        local.get $dest|548
+        i32.const 8
+        i32.add
+        local.set $dest|548
+        local.get $ptr|549
+        i32.const 8
+        i32.add
+        local.set $ptr|549
+        local.get $dest|548
+        local.get $ptr|549
+        i64.load $0
+        i64.store $0
+        local.get $dest|548
+        i32.const 8
+        i32.add
+        local.set $dest|548
+        local.get $ptr|549
+        i32.const 8
+        i32.add
+        local.set $ptr|549
+        local.get $dest|548
+        local.get $ptr|549
+        i64.load $0
+        i64.store $0
+        local.get $dest|548
+        i32.const 8
+        i32.add
+        local.set $dest|548
+        local.get $ptr|549
+        i32.const 8
+        i32.add
+        local.set $ptr|549
+        local.get $dest|548
+        local.get $ptr|549
+        i64.load $0
+        i64.store $0
+        local.get $dest|548
+        i32.const 8
+        i32.add
+        local.set $dest|548
+        local.get $ptr|549
+        i32.const 8
+        i32.add
+        local.set $ptr|549
+        local.get $dest|548
+        local.get $ptr|549
+        i64.load $0
+        i64.store $0
+        local.get $dest|548
+        i32.const 8
+        i32.add
+        local.set $dest|548
+        local.get $ptr|549
+        i32.const 8
+        i32.add
+        local.set $ptr|549
+        local.get $dest|548
+        local.get $ptr|549
+        i64.load $0
+        i64.store $0
+        local.get $dest|548
+        i32.const 8
+        i32.add
+        local.set $dest|548
+        local.get $ptr|549
+        i32.const 8
+        i32.add
+        local.set $ptr|549
+        local.get $dest|548
+        local.get $ptr|549
+        i64.load $0
+        i64.store $0
+        local.get $dest|545
+        i32.const 64
+        i32.add
+        br $~lib/copyupto/__copyupto64|inlined.11
+       end
+       local.get $dest|545
+       local.set $dest|550
+       local.get $src|546
+       local.set $ptr|551
+       local.get $l|547
+       local.set $len|552
+       local.get $len|552
+       i32.const 32
+       i32.ge_s
+       if
+        local.get $dest|550
+        local.set $dest|553
+        local.get $ptr|551
+        local.set $ptr|554
+        local.get $dest|553
+        local.get $ptr|554
+        i64.load $0
+        i64.store $0
+        local.get $dest|553
+        i32.const 8
+        i32.add
+        local.set $dest|553
+        local.get $ptr|554
+        i32.const 8
+        i32.add
+        local.set $ptr|554
+        local.get $dest|553
+        local.get $ptr|554
+        i64.load $0
+        i64.store $0
+        local.get $dest|553
+        i32.const 8
+        i32.add
+        local.set $dest|553
+        local.get $ptr|554
+        i32.const 8
+        i32.add
+        local.set $ptr|554
+        local.get $dest|553
+        local.get $ptr|554
+        i64.load $0
+        i64.store $0
+        local.get $dest|553
+        i32.const 8
+        i32.add
+        local.set $dest|553
+        local.get $ptr|554
+        i32.const 8
+        i32.add
+        local.set $ptr|554
+        local.get $dest|553
+        local.get $ptr|554
+        i64.load $0
+        i64.store $0
+        local.get $dest|550
+        i32.const 32
+        i32.add
+        local.set $dest|550
+        local.get $ptr|551
+        i32.const 32
+        i32.add
+        local.set $ptr|551
+        local.get $len|552
+        i32.const 32
+        i32.sub
+        local.set $len|552
+       end
+       local.get $dest|550
+       local.set $dest|555
+       local.get $ptr|551
+       local.set $ptr|556
+       local.get $len|552
+       local.set $len|557
+       local.get $len|557
+       i32.const 16
+       i32.ge_s
+       if
+        local.get $dest|555
+        local.set $dest|558
+        local.get $ptr|556
+        local.set $ptr|559
+        local.get $dest|558
+        local.get $ptr|559
+        i64.load $0
+        i64.store $0
+        local.get $dest|558
+        i32.const 8
+        i32.add
+        local.set $dest|558
+        local.get $ptr|559
+        i32.const 8
+        i32.add
+        local.set $ptr|559
+        local.get $dest|558
+        local.get $ptr|559
+        i64.load $0
+        i64.store $0
+        local.get $dest|555
+        i32.const 16
+        i32.add
+        local.set $dest|555
+        local.get $ptr|556
+        i32.const 16
+        i32.add
+        local.set $ptr|556
+        local.get $len|557
+        i32.const 16
+        i32.sub
+        local.set $len|557
+       end
+       local.get $dest|555
+       local.set $dest|560
+       local.get $ptr|556
+       local.set $ptr|561
+       local.get $len|557
+       local.set $len|562
+       local.get $len|562
+       i32.const 8
+       i32.ge_s
+       if
+        local.get $dest|560
+        local.set $dest|563
+        local.get $ptr|561
+        local.set $ptr|564
+        local.get $dest|563
+        local.get $ptr|564
+        i64.load $0
+        i64.store $0
+        local.get $dest|560
+        i32.const 8
+        i32.add
+        local.set $dest|560
+        local.get $ptr|561
+        i32.const 8
+        i32.add
+        local.set $ptr|561
+        local.get $len|562
+        i32.const 8
+        i32.sub
+        local.set $len|562
+       end
+       local.get $dest|560
+       local.set $dest|565
+       local.get $ptr|561
+       local.set $ptr|566
+       local.get $len|562
+       local.set $len|567
+       local.get $len|567
+       i32.const 4
+       i32.ge_s
+       if
+        local.get $dest|565
+        local.set $dest|568
+        local.get $ptr|566
+        local.set $ptr|569
+        local.get $dest|568
+        local.get $ptr|569
+        i32.load $0
+        i32.store $0
+        local.get $dest|565
+        i32.const 4
+        i32.add
+        local.set $dest|565
+        local.get $ptr|566
+        i32.const 4
+        i32.add
+        local.set $ptr|566
+        local.get $len|567
+        i32.const 4
+        i32.sub
+        local.set $len|567
+       end
+       local.get $dest|565
+       local.set $dest|570
+       local.get $ptr|566
+       local.set $ptr|571
+       local.get $len|567
+       local.set $len|572
+       local.get $len|572
+       i32.const 2
+       i32.ge_s
+       if
+        local.get $dest|570
+        local.set $dest|573
+        local.get $ptr|571
+        local.set $ptr|574
+        local.get $dest|573
+        local.get $ptr|574
+        i32.load16_u $0
+        i32.store16 $0
+        local.get $dest|570
+        i32.const 2
+        i32.add
+        local.set $dest|570
+        local.get $ptr|571
+        i32.const 2
+        i32.add
+        local.set $ptr|571
+        local.get $len|572
+        i32.const 2
+        i32.sub
+        local.set $len|572
+       end
+       local.get $dest|570
+       local.set $dest|575
+       local.get $ptr|571
+       local.set $ptr|576
+       local.get $len|572
+       local.set $len|577
+       local.get $len|577
+       if
+        local.get $dest|575
+        local.get $ptr|576
+        i32.load8_u $0
+        i32.store8 $0
+       end
+       local.get $dest|545
+       local.get $l|547
+       i32.add
+      end
+      local.set $dest|578
+      local.get $year
+      local.set $src|579
+      local.get $src|579
+      call $~lib/string/String#get:length
+      local.set $l|580
+      local.get $l|580
+      i32.const 64
+      i32.ge_s
+      if
+       local.get $dest|578
+       local.set $dest|581
+       local.get $src|579
+       local.set $ptr|582
+       local.get $dest|581
+       local.get $ptr|582
+       i64.load $0
+       i64.store $0
+       local.get $dest|581
+       i32.const 8
+       i32.add
+       local.set $dest|581
+       local.get $ptr|582
+       i32.const 8
+       i32.add
+       local.set $ptr|582
+       local.get $dest|581
+       local.get $ptr|582
+       i64.load $0
+       i64.store $0
+       local.get $dest|581
+       i32.const 8
+       i32.add
+       local.set $dest|581
+       local.get $ptr|582
+       i32.const 8
+       i32.add
+       local.set $ptr|582
+       local.get $dest|581
+       local.get $ptr|582
+       i64.load $0
+       i64.store $0
+       local.get $dest|581
+       i32.const 8
+       i32.add
+       local.set $dest|581
+       local.get $ptr|582
+       i32.const 8
+       i32.add
+       local.set $ptr|582
+       local.get $dest|581
+       local.get $ptr|582
+       i64.load $0
+       i64.store $0
+       local.get $dest|581
+       i32.const 8
+       i32.add
+       local.set $dest|581
+       local.get $ptr|582
+       i32.const 8
+       i32.add
+       local.set $ptr|582
+       local.get $dest|581
+       local.get $ptr|582
+       i64.load $0
+       i64.store $0
+       local.get $dest|581
+       i32.const 8
+       i32.add
+       local.set $dest|581
+       local.get $ptr|582
+       i32.const 8
+       i32.add
+       local.set $ptr|582
+       local.get $dest|581
+       local.get $ptr|582
+       i64.load $0
+       i64.store $0
+       local.get $dest|581
+       i32.const 8
+       i32.add
+       local.set $dest|581
+       local.get $ptr|582
+       i32.const 8
+       i32.add
+       local.set $ptr|582
+       local.get $dest|581
+       local.get $ptr|582
+       i64.load $0
+       i64.store $0
+       local.get $dest|581
+       i32.const 8
+       i32.add
+       local.set $dest|581
+       local.get $ptr|582
+       i32.const 8
+       i32.add
+       local.set $ptr|582
+       local.get $dest|581
+       local.get $ptr|582
+       i64.load $0
+       i64.store $0
+       local.get $dest|578
+       i32.const 64
+       i32.add
+       br $~lib/copyupto/__copyupto64|inlined.12
+      end
+      local.get $dest|578
+      local.set $dest|583
+      local.get $src|579
+      local.set $ptr|584
+      local.get $l|580
+      local.set $len|585
+      local.get $len|585
+      i32.const 32
+      i32.ge_s
+      if
+       local.get $dest|583
+       local.set $dest|586
+       local.get $ptr|584
+       local.set $ptr|587
+       local.get $dest|586
+       local.get $ptr|587
+       i64.load $0
+       i64.store $0
+       local.get $dest|586
+       i32.const 8
+       i32.add
+       local.set $dest|586
+       local.get $ptr|587
+       i32.const 8
+       i32.add
+       local.set $ptr|587
+       local.get $dest|586
+       local.get $ptr|587
+       i64.load $0
+       i64.store $0
+       local.get $dest|586
+       i32.const 8
+       i32.add
+       local.set $dest|586
+       local.get $ptr|587
+       i32.const 8
+       i32.add
+       local.set $ptr|587
+       local.get $dest|586
+       local.get $ptr|587
+       i64.load $0
+       i64.store $0
+       local.get $dest|586
+       i32.const 8
+       i32.add
+       local.set $dest|586
+       local.get $ptr|587
+       i32.const 8
+       i32.add
+       local.set $ptr|587
+       local.get $dest|586
+       local.get $ptr|587
+       i64.load $0
+       i64.store $0
+       local.get $dest|583
+       i32.const 32
+       i32.add
+       local.set $dest|583
+       local.get $ptr|584
+       i32.const 32
+       i32.add
+       local.set $ptr|584
+       local.get $len|585
+       i32.const 32
+       i32.sub
+       local.set $len|585
+      end
+      local.get $dest|583
+      local.set $dest|588
+      local.get $ptr|584
+      local.set $ptr|589
+      local.get $len|585
+      local.set $len|590
+      local.get $len|590
+      i32.const 16
+      i32.ge_s
+      if
+       local.get $dest|588
+       local.set $dest|591
+       local.get $ptr|589
+       local.set $ptr|592
+       local.get $dest|591
+       local.get $ptr|592
+       i64.load $0
+       i64.store $0
+       local.get $dest|591
+       i32.const 8
+       i32.add
+       local.set $dest|591
+       local.get $ptr|592
+       i32.const 8
+       i32.add
+       local.set $ptr|592
+       local.get $dest|591
+       local.get $ptr|592
+       i64.load $0
+       i64.store $0
+       local.get $dest|588
+       i32.const 16
+       i32.add
+       local.set $dest|588
+       local.get $ptr|589
+       i32.const 16
+       i32.add
+       local.set $ptr|589
+       local.get $len|590
+       i32.const 16
+       i32.sub
+       local.set $len|590
+      end
+      local.get $dest|588
+      local.set $dest|593
+      local.get $ptr|589
+      local.set $ptr|594
+      local.get $len|590
+      local.set $len|595
+      local.get $len|595
+      i32.const 8
+      i32.ge_s
+      if
+       local.get $dest|593
+       local.set $dest|596
+       local.get $ptr|594
+       local.set $ptr|597
+       local.get $dest|596
+       local.get $ptr|597
+       i64.load $0
+       i64.store $0
+       local.get $dest|593
+       i32.const 8
+       i32.add
+       local.set $dest|593
+       local.get $ptr|594
+       i32.const 8
+       i32.add
+       local.set $ptr|594
+       local.get $len|595
+       i32.const 8
+       i32.sub
+       local.set $len|595
+      end
+      local.get $dest|593
+      local.set $dest|598
+      local.get $ptr|594
+      local.set $ptr|599
+      local.get $len|595
+      local.set $len|600
+      local.get $len|600
+      i32.const 4
+      i32.ge_s
+      if
+       local.get $dest|598
+       local.set $dest|601
+       local.get $ptr|599
+       local.set $ptr|602
+       local.get $dest|601
+       local.get $ptr|602
+       i32.load $0
+       i32.store $0
+       local.get $dest|598
+       i32.const 4
+       i32.add
+       local.set $dest|598
+       local.get $ptr|599
+       i32.const 4
+       i32.add
+       local.set $ptr|599
+       local.get $len|600
+       i32.const 4
+       i32.sub
+       local.set $len|600
+      end
+      local.get $dest|598
+      local.set $dest|603
+      local.get $ptr|599
+      local.set $ptr|604
+      local.get $len|600
+      local.set $len|605
+      local.get $len|605
+      i32.const 2
+      i32.ge_s
+      if
+       local.get $dest|603
+       local.set $dest|606
+       local.get $ptr|604
+       local.set $ptr|607
+       local.get $dest|606
+       local.get $ptr|607
+       i32.load16_u $0
+       i32.store16 $0
+       local.get $dest|603
+       i32.const 2
+       i32.add
+       local.set $dest|603
+       local.get $ptr|604
+       i32.const 2
+       i32.add
+       local.set $ptr|604
+       local.get $len|605
+       i32.const 2
+       i32.sub
+       local.set $len|605
+      end
+      local.get $dest|603
+      local.set $dest|608
+      local.get $ptr|604
+      local.set $ptr|609
+      local.get $len|605
+      local.set $len|610
+      local.get $len|610
+      if
+       local.get $dest|608
+       local.get $ptr|609
+       i32.load8_u $0
+       i32.store8 $0
+      end
+      local.get $dest|578
+      local.get $l|580
+      i32.add
+     end
+     local.set $dest|611
+     i32.const 912
+     local.set $src|612
+     local.get $dest|611
+     local.set $dest|613
+     local.get $src|612
+     local.set $ptr|614
+     local.get $dest|613
+     local.get $ptr|614
+     i32.load8_u $0
+     i32.store8 $0
+     local.get $dest|611
+     i32.const 1
+     i32.add
+     local.set $dest|615
+     local.get $hours
+     local.set $src|616
+     local.get $src|616
+     call $~lib/string/String#get:length
+     local.set $l|617
+     local.get $l|617
+     i32.const 64
+     i32.ge_s
+     if
+      local.get $dest|615
+      local.set $dest|618
+      local.get $src|616
+      local.set $ptr|619
+      local.get $dest|618
+      local.get $ptr|619
+      i64.load $0
+      i64.store $0
+      local.get $dest|618
+      i32.const 8
+      i32.add
+      local.set $dest|618
+      local.get $ptr|619
+      i32.const 8
+      i32.add
+      local.set $ptr|619
+      local.get $dest|618
+      local.get $ptr|619
+      i64.load $0
+      i64.store $0
+      local.get $dest|618
+      i32.const 8
+      i32.add
+      local.set $dest|618
+      local.get $ptr|619
+      i32.const 8
+      i32.add
+      local.set $ptr|619
+      local.get $dest|618
+      local.get $ptr|619
+      i64.load $0
+      i64.store $0
+      local.get $dest|618
+      i32.const 8
+      i32.add
+      local.set $dest|618
+      local.get $ptr|619
+      i32.const 8
+      i32.add
+      local.set $ptr|619
+      local.get $dest|618
+      local.get $ptr|619
+      i64.load $0
+      i64.store $0
+      local.get $dest|618
+      i32.const 8
+      i32.add
+      local.set $dest|618
+      local.get $ptr|619
+      i32.const 8
+      i32.add
+      local.set $ptr|619
+      local.get $dest|618
+      local.get $ptr|619
+      i64.load $0
+      i64.store $0
+      local.get $dest|618
+      i32.const 8
+      i32.add
+      local.set $dest|618
+      local.get $ptr|619
+      i32.const 8
+      i32.add
+      local.set $ptr|619
+      local.get $dest|618
+      local.get $ptr|619
+      i64.load $0
+      i64.store $0
+      local.get $dest|618
+      i32.const 8
+      i32.add
+      local.set $dest|618
+      local.get $ptr|619
+      i32.const 8
+      i32.add
+      local.set $ptr|619
+      local.get $dest|618
+      local.get $ptr|619
+      i64.load $0
+      i64.store $0
+      local.get $dest|618
+      i32.const 8
+      i32.add
+      local.set $dest|618
+      local.get $ptr|619
+      i32.const 8
+      i32.add
+      local.set $ptr|619
+      local.get $dest|618
+      local.get $ptr|619
+      i64.load $0
+      i64.store $0
+      local.get $dest|615
+      i32.const 64
+      i32.add
+      br $~lib/copyupto/__copyupto64|inlined.13
+     end
+     local.get $dest|615
+     local.set $dest|620
+     local.get $src|616
+     local.set $ptr|621
+     local.get $l|617
+     local.set $len|622
+     local.get $len|622
+     i32.const 32
+     i32.ge_s
+     if
+      local.get $dest|620
+      local.set $dest|623
+      local.get $ptr|621
+      local.set $ptr|624
+      local.get $dest|623
+      local.get $ptr|624
+      i64.load $0
+      i64.store $0
+      local.get $dest|623
+      i32.const 8
+      i32.add
+      local.set $dest|623
+      local.get $ptr|624
+      i32.const 8
+      i32.add
+      local.set $ptr|624
+      local.get $dest|623
+      local.get $ptr|624
+      i64.load $0
+      i64.store $0
+      local.get $dest|623
+      i32.const 8
+      i32.add
+      local.set $dest|623
+      local.get $ptr|624
+      i32.const 8
+      i32.add
+      local.set $ptr|624
+      local.get $dest|623
+      local.get $ptr|624
+      i64.load $0
+      i64.store $0
+      local.get $dest|623
+      i32.const 8
+      i32.add
+      local.set $dest|623
+      local.get $ptr|624
+      i32.const 8
+      i32.add
+      local.set $ptr|624
+      local.get $dest|623
+      local.get $ptr|624
+      i64.load $0
+      i64.store $0
+      local.get $dest|620
+      i32.const 32
+      i32.add
+      local.set $dest|620
+      local.get $ptr|621
+      i32.const 32
+      i32.add
+      local.set $ptr|621
+      local.get $len|622
+      i32.const 32
+      i32.sub
+      local.set $len|622
+     end
+     local.get $dest|620
+     local.set $dest|625
+     local.get $ptr|621
+     local.set $ptr|626
+     local.get $len|622
+     local.set $len|627
+     local.get $len|627
+     i32.const 16
+     i32.ge_s
+     if
+      local.get $dest|625
+      local.set $dest|628
+      local.get $ptr|626
+      local.set $ptr|629
+      local.get $dest|628
+      local.get $ptr|629
+      i64.load $0
+      i64.store $0
+      local.get $dest|628
+      i32.const 8
+      i32.add
+      local.set $dest|628
+      local.get $ptr|629
+      i32.const 8
+      i32.add
+      local.set $ptr|629
+      local.get $dest|628
+      local.get $ptr|629
+      i64.load $0
+      i64.store $0
+      local.get $dest|625
+      i32.const 16
+      i32.add
+      local.set $dest|625
+      local.get $ptr|626
+      i32.const 16
+      i32.add
+      local.set $ptr|626
+      local.get $len|627
+      i32.const 16
+      i32.sub
+      local.set $len|627
+     end
+     local.get $dest|625
+     local.set $dest|630
+     local.get $ptr|626
+     local.set $ptr|631
+     local.get $len|627
+     local.set $len|632
+     local.get $len|632
+     i32.const 8
+     i32.ge_s
+     if
+      local.get $dest|630
+      local.set $dest|633
+      local.get $ptr|631
+      local.set $ptr|634
+      local.get $dest|633
+      local.get $ptr|634
+      i64.load $0
+      i64.store $0
+      local.get $dest|630
+      i32.const 8
+      i32.add
+      local.set $dest|630
+      local.get $ptr|631
+      i32.const 8
+      i32.add
+      local.set $ptr|631
+      local.get $len|632
+      i32.const 8
+      i32.sub
+      local.set $len|632
+     end
+     local.get $dest|630
+     local.set $dest|635
+     local.get $ptr|631
+     local.set $ptr|636
+     local.get $len|632
+     local.set $len|637
+     local.get $len|637
+     i32.const 4
+     i32.ge_s
+     if
+      local.get $dest|635
+      local.set $dest|638
+      local.get $ptr|636
+      local.set $ptr|639
+      local.get $dest|638
+      local.get $ptr|639
+      i32.load $0
+      i32.store $0
+      local.get $dest|635
+      i32.const 4
+      i32.add
+      local.set $dest|635
+      local.get $ptr|636
+      i32.const 4
+      i32.add
+      local.set $ptr|636
+      local.get $len|637
+      i32.const 4
+      i32.sub
+      local.set $len|637
+     end
+     local.get $dest|635
+     local.set $dest|640
+     local.get $ptr|636
+     local.set $ptr|641
+     local.get $len|637
+     local.set $len|642
+     local.get $len|642
+     i32.const 2
+     i32.ge_s
+     if
+      local.get $dest|640
+      local.set $dest|643
+      local.get $ptr|641
+      local.set $ptr|644
+      local.get $dest|643
+      local.get $ptr|644
+      i32.load16_u $0
+      i32.store16 $0
+      local.get $dest|640
+      i32.const 2
+      i32.add
+      local.set $dest|640
+      local.get $ptr|641
+      i32.const 2
+      i32.add
+      local.set $ptr|641
+      local.get $len|642
+      i32.const 2
+      i32.sub
+      local.set $len|642
+     end
+     local.get $dest|640
+     local.set $dest|645
+     local.get $ptr|641
+     local.set $ptr|646
+     local.get $len|642
+     local.set $len|647
+     local.get $len|647
+     if
+      local.get $dest|645
+      local.get $ptr|646
+      i32.load8_u $0
+      i32.store8 $0
+     end
+     local.get $dest|615
+     local.get $l|617
+     i32.add
+    end
+    local.set $dest|648
+    i32.const 1088
+    local.set $src|649
+    local.get $dest|648
+    local.set $dest|650
+    local.get $src|649
+    local.set $ptr|651
+    local.get $dest|650
+    local.get $ptr|651
+    i32.load8_u $0
+    i32.store8 $0
+    local.get $dest|648
+    i32.const 1
+    i32.add
+    local.set $dest|652
+    local.get $mins
+    local.set $src|653
+    local.get $src|653
+    call $~lib/string/String#get:length
+    local.set $l|654
+    local.get $l|654
+    i32.const 64
+    i32.ge_s
+    if
+     local.get $dest|652
+     local.set $dest|655
+     local.get $src|653
+     local.set $ptr|656
+     local.get $dest|655
+     local.get $ptr|656
+     i64.load $0
+     i64.store $0
+     local.get $dest|655
+     i32.const 8
+     i32.add
+     local.set $dest|655
+     local.get $ptr|656
+     i32.const 8
+     i32.add
+     local.set $ptr|656
+     local.get $dest|655
+     local.get $ptr|656
+     i64.load $0
+     i64.store $0
+     local.get $dest|655
+     i32.const 8
+     i32.add
+     local.set $dest|655
+     local.get $ptr|656
+     i32.const 8
+     i32.add
+     local.set $ptr|656
+     local.get $dest|655
+     local.get $ptr|656
+     i64.load $0
+     i64.store $0
+     local.get $dest|655
+     i32.const 8
+     i32.add
+     local.set $dest|655
+     local.get $ptr|656
+     i32.const 8
+     i32.add
+     local.set $ptr|656
+     local.get $dest|655
+     local.get $ptr|656
+     i64.load $0
+     i64.store $0
+     local.get $dest|655
+     i32.const 8
+     i32.add
+     local.set $dest|655
+     local.get $ptr|656
+     i32.const 8
+     i32.add
+     local.set $ptr|656
+     local.get $dest|655
+     local.get $ptr|656
+     i64.load $0
+     i64.store $0
+     local.get $dest|655
+     i32.const 8
+     i32.add
+     local.set $dest|655
+     local.get $ptr|656
+     i32.const 8
+     i32.add
+     local.set $ptr|656
+     local.get $dest|655
+     local.get $ptr|656
+     i64.load $0
+     i64.store $0
+     local.get $dest|655
+     i32.const 8
+     i32.add
+     local.set $dest|655
+     local.get $ptr|656
+     i32.const 8
+     i32.add
+     local.set $ptr|656
+     local.get $dest|655
+     local.get $ptr|656
+     i64.load $0
+     i64.store $0
+     local.get $dest|655
+     i32.const 8
+     i32.add
+     local.set $dest|655
+     local.get $ptr|656
+     i32.const 8
+     i32.add
+     local.set $ptr|656
+     local.get $dest|655
+     local.get $ptr|656
+     i64.load $0
+     i64.store $0
+     local.get $dest|652
+     i32.const 64
+     i32.add
+     br $~lib/copyupto/__copyupto64|inlined.14
+    end
+    local.get $dest|652
+    local.set $dest|657
+    local.get $src|653
+    local.set $ptr|658
+    local.get $l|654
+    local.set $len|659
+    local.get $len|659
+    i32.const 32
+    i32.ge_s
+    if
+     local.get $dest|657
+     local.set $dest|660
+     local.get $ptr|658
+     local.set $ptr|661
+     local.get $dest|660
+     local.get $ptr|661
+     i64.load $0
+     i64.store $0
+     local.get $dest|660
+     i32.const 8
+     i32.add
+     local.set $dest|660
+     local.get $ptr|661
+     i32.const 8
+     i32.add
+     local.set $ptr|661
+     local.get $dest|660
+     local.get $ptr|661
+     i64.load $0
+     i64.store $0
+     local.get $dest|660
+     i32.const 8
+     i32.add
+     local.set $dest|660
+     local.get $ptr|661
+     i32.const 8
+     i32.add
+     local.set $ptr|661
+     local.get $dest|660
+     local.get $ptr|661
+     i64.load $0
+     i64.store $0
+     local.get $dest|660
+     i32.const 8
+     i32.add
+     local.set $dest|660
+     local.get $ptr|661
+     i32.const 8
+     i32.add
+     local.set $ptr|661
+     local.get $dest|660
+     local.get $ptr|661
+     i64.load $0
+     i64.store $0
+     local.get $dest|657
+     i32.const 32
+     i32.add
+     local.set $dest|657
+     local.get $ptr|658
+     i32.const 32
+     i32.add
+     local.set $ptr|658
+     local.get $len|659
+     i32.const 32
+     i32.sub
+     local.set $len|659
+    end
+    local.get $dest|657
+    local.set $dest|662
+    local.get $ptr|658
+    local.set $ptr|663
+    local.get $len|659
+    local.set $len|664
+    local.get $len|664
+    i32.const 16
+    i32.ge_s
+    if
+     local.get $dest|662
+     local.set $dest|665
+     local.get $ptr|663
+     local.set $ptr|666
+     local.get $dest|665
+     local.get $ptr|666
+     i64.load $0
+     i64.store $0
+     local.get $dest|665
+     i32.const 8
+     i32.add
+     local.set $dest|665
+     local.get $ptr|666
+     i32.const 8
+     i32.add
+     local.set $ptr|666
+     local.get $dest|665
+     local.get $ptr|666
+     i64.load $0
+     i64.store $0
+     local.get $dest|662
+     i32.const 16
+     i32.add
+     local.set $dest|662
+     local.get $ptr|663
+     i32.const 16
+     i32.add
+     local.set $ptr|663
+     local.get $len|664
+     i32.const 16
+     i32.sub
+     local.set $len|664
+    end
+    local.get $dest|662
+    local.set $dest|667
+    local.get $ptr|663
+    local.set $ptr|668
+    local.get $len|664
+    local.set $len|669
+    local.get $len|669
+    i32.const 8
+    i32.ge_s
+    if
+     local.get $dest|667
+     local.set $dest|670
+     local.get $ptr|668
+     local.set $ptr|671
+     local.get $dest|670
+     local.get $ptr|671
+     i64.load $0
+     i64.store $0
+     local.get $dest|667
+     i32.const 8
+     i32.add
+     local.set $dest|667
+     local.get $ptr|668
+     i32.const 8
+     i32.add
+     local.set $ptr|668
+     local.get $len|669
+     i32.const 8
+     i32.sub
+     local.set $len|669
+    end
+    local.get $dest|667
+    local.set $dest|672
+    local.get $ptr|668
+    local.set $ptr|673
+    local.get $len|669
+    local.set $len|674
+    local.get $len|674
+    i32.const 4
+    i32.ge_s
+    if
+     local.get $dest|672
+     local.set $dest|675
+     local.get $ptr|673
+     local.set $ptr|676
+     local.get $dest|675
+     local.get $ptr|676
+     i32.load $0
+     i32.store $0
+     local.get $dest|672
+     i32.const 4
+     i32.add
+     local.set $dest|672
+     local.get $ptr|673
+     i32.const 4
+     i32.add
+     local.set $ptr|673
+     local.get $len|674
+     i32.const 4
+     i32.sub
+     local.set $len|674
+    end
+    local.get $dest|672
+    local.set $dest|677
+    local.get $ptr|673
+    local.set $ptr|678
+    local.get $len|674
+    local.set $len|679
+    local.get $len|679
+    i32.const 2
+    i32.ge_s
+    if
+     local.get $dest|677
+     local.set $dest|680
+     local.get $ptr|678
+     local.set $ptr|681
+     local.get $dest|680
+     local.get $ptr|681
+     i32.load16_u $0
+     i32.store16 $0
+     local.get $dest|677
+     i32.const 2
+     i32.add
+     local.set $dest|677
+     local.get $ptr|678
+     i32.const 2
+     i32.add
+     local.set $ptr|678
+     local.get $len|679
+     i32.const 2
+     i32.sub
+     local.set $len|679
+    end
+    local.get $dest|677
+    local.set $dest|682
+    local.get $ptr|678
+    local.set $ptr|683
+    local.get $len|679
+    local.set $len|684
+    local.get $len|684
+    if
+     local.get $dest|682
+     local.get $ptr|683
+     i32.load8_u $0
+     i32.store8 $0
+    end
+    local.get $dest|652
+    local.get $l|654
+    i32.add
+   end
+   local.set $dest|685
+   i32.const 1088
+   local.set $src|686
+   local.get $dest|685
+   local.set $dest|687
+   local.get $src|686
+   local.set $ptr|688
+   local.get $dest|687
+   local.get $ptr|688
+   i32.load8_u $0
+   i32.store8 $0
+   local.get $dest|685
+   i32.const 1
+   i32.add
+   local.set $dest|689
+   local.get $secs
+   local.set $src|690
+   local.get $src|690
+   call $~lib/string/String#get:length
+   local.set $l|691
+   local.get $l|691
+   i32.const 64
+   i32.ge_s
+   if
+    local.get $dest|689
+    local.set $dest|692
+    local.get $src|690
+    local.set $ptr|693
+    local.get $dest|692
+    local.get $ptr|693
+    i64.load $0
+    i64.store $0
+    local.get $dest|692
+    i32.const 8
+    i32.add
+    local.set $dest|692
+    local.get $ptr|693
+    i32.const 8
+    i32.add
+    local.set $ptr|693
+    local.get $dest|692
+    local.get $ptr|693
+    i64.load $0
+    i64.store $0
+    local.get $dest|692
+    i32.const 8
+    i32.add
+    local.set $dest|692
+    local.get $ptr|693
+    i32.const 8
+    i32.add
+    local.set $ptr|693
+    local.get $dest|692
+    local.get $ptr|693
+    i64.load $0
+    i64.store $0
+    local.get $dest|692
+    i32.const 8
+    i32.add
+    local.set $dest|692
+    local.get $ptr|693
+    i32.const 8
+    i32.add
+    local.set $ptr|693
+    local.get $dest|692
+    local.get $ptr|693
+    i64.load $0
+    i64.store $0
+    local.get $dest|692
+    i32.const 8
+    i32.add
+    local.set $dest|692
+    local.get $ptr|693
+    i32.const 8
+    i32.add
+    local.set $ptr|693
+    local.get $dest|692
+    local.get $ptr|693
+    i64.load $0
+    i64.store $0
+    local.get $dest|692
+    i32.const 8
+    i32.add
+    local.set $dest|692
+    local.get $ptr|693
+    i32.const 8
+    i32.add
+    local.set $ptr|693
+    local.get $dest|692
+    local.get $ptr|693
+    i64.load $0
+    i64.store $0
+    local.get $dest|692
+    i32.const 8
+    i32.add
+    local.set $dest|692
+    local.get $ptr|693
+    i32.const 8
+    i32.add
+    local.set $ptr|693
+    local.get $dest|692
+    local.get $ptr|693
+    i64.load $0
+    i64.store $0
+    local.get $dest|692
+    i32.const 8
+    i32.add
+    local.set $dest|692
+    local.get $ptr|693
+    i32.const 8
+    i32.add
+    local.set $ptr|693
+    local.get $dest|692
+    local.get $ptr|693
+    i64.load $0
+    i64.store $0
+    local.get $dest|689
+    i32.const 64
+    i32.add
+    br $~lib/copyupto/__copyupto64|inlined.15
+   end
+   local.get $dest|689
+   local.set $dest|694
+   local.get $src|690
+   local.set $ptr|695
+   local.get $l|691
+   local.set $len|696
+   local.get $len|696
+   i32.const 32
+   i32.ge_s
+   if
+    local.get $dest|694
+    local.set $dest|697
+    local.get $ptr|695
+    local.set $ptr|698
+    local.get $dest|697
+    local.get $ptr|698
+    i64.load $0
+    i64.store $0
+    local.get $dest|697
+    i32.const 8
+    i32.add
+    local.set $dest|697
+    local.get $ptr|698
+    i32.const 8
+    i32.add
+    local.set $ptr|698
+    local.get $dest|697
+    local.get $ptr|698
+    i64.load $0
+    i64.store $0
+    local.get $dest|697
+    i32.const 8
+    i32.add
+    local.set $dest|697
+    local.get $ptr|698
+    i32.const 8
+    i32.add
+    local.set $ptr|698
+    local.get $dest|697
+    local.get $ptr|698
+    i64.load $0
+    i64.store $0
+    local.get $dest|697
+    i32.const 8
+    i32.add
+    local.set $dest|697
+    local.get $ptr|698
+    i32.const 8
+    i32.add
+    local.set $ptr|698
+    local.get $dest|697
+    local.get $ptr|698
+    i64.load $0
+    i64.store $0
+    local.get $dest|694
+    i32.const 32
+    i32.add
+    local.set $dest|694
+    local.get $ptr|695
+    i32.const 32
+    i32.add
+    local.set $ptr|695
+    local.get $len|696
+    i32.const 32
+    i32.sub
+    local.set $len|696
+   end
+   local.get $dest|694
+   local.set $dest|699
+   local.get $ptr|695
+   local.set $ptr|700
+   local.get $len|696
+   local.set $len|701
+   local.get $len|701
+   i32.const 16
+   i32.ge_s
+   if
+    local.get $dest|699
+    local.set $dest|702
+    local.get $ptr|700
+    local.set $ptr|703
+    local.get $dest|702
+    local.get $ptr|703
+    i64.load $0
+    i64.store $0
+    local.get $dest|702
+    i32.const 8
+    i32.add
+    local.set $dest|702
+    local.get $ptr|703
+    i32.const 8
+    i32.add
+    local.set $ptr|703
+    local.get $dest|702
+    local.get $ptr|703
+    i64.load $0
+    i64.store $0
+    local.get $dest|699
+    i32.const 16
+    i32.add
+    local.set $dest|699
+    local.get $ptr|700
+    i32.const 16
+    i32.add
+    local.set $ptr|700
+    local.get $len|701
+    i32.const 16
+    i32.sub
+    local.set $len|701
+   end
+   local.get $dest|699
+   local.set $dest|704
+   local.get $ptr|700
+   local.set $ptr|705
+   local.get $len|701
+   local.set $len|706
+   local.get $len|706
+   i32.const 8
+   i32.ge_s
+   if
+    local.get $dest|704
+    local.set $dest|707
+    local.get $ptr|705
+    local.set $ptr|708
+    local.get $dest|707
+    local.get $ptr|708
+    i64.load $0
+    i64.store $0
+    local.get $dest|704
+    i32.const 8
+    i32.add
+    local.set $dest|704
+    local.get $ptr|705
+    i32.const 8
+    i32.add
+    local.set $ptr|705
+    local.get $len|706
+    i32.const 8
+    i32.sub
+    local.set $len|706
+   end
+   local.get $dest|704
+   local.set $dest|709
+   local.get $ptr|705
+   local.set $ptr|710
+   local.get $len|706
+   local.set $len|711
+   local.get $len|711
+   i32.const 4
+   i32.ge_s
+   if
+    local.get $dest|709
+    local.set $dest|712
+    local.get $ptr|710
+    local.set $ptr|713
+    local.get $dest|712
+    local.get $ptr|713
+    i32.load $0
+    i32.store $0
+    local.get $dest|709
+    i32.const 4
+    i32.add
+    local.set $dest|709
+    local.get $ptr|710
+    i32.const 4
+    i32.add
+    local.set $ptr|710
+    local.get $len|711
+    i32.const 4
+    i32.sub
+    local.set $len|711
+   end
+   local.get $dest|709
+   local.set $dest|714
+   local.get $ptr|710
+   local.set $ptr|715
+   local.get $len|711
+   local.set $len|716
+   local.get $len|716
+   i32.const 2
+   i32.ge_s
+   if
+    local.get $dest|714
+    local.set $dest|717
+    local.get $ptr|715
+    local.set $ptr|718
+    local.get $dest|717
+    local.get $ptr|718
+    i32.load16_u $0
+    i32.store16 $0
+    local.get $dest|714
+    i32.const 2
+    i32.add
+    local.set $dest|714
+    local.get $ptr|715
+    i32.const 2
+    i32.add
+    local.set $ptr|715
+    local.get $len|716
+    i32.const 2
+    i32.sub
+    local.set $len|716
+   end
+   local.get $dest|714
+   local.set $dest|719
+   local.get $ptr|715
+   local.set $ptr|720
+   local.get $len|716
+   local.set $len|721
+   local.get $len|721
+   if
+    local.get $dest|719
+    local.get $ptr|720
+    i32.load8_u $0
+    i32.store8 $0
+   end
+   local.get $dest|689
+   local.get $l|691
+   i32.add
+  end
+  local.set $dest|722
+  i32.const 1952
+  local.set $src|723
+  local.get $dest|722
+  local.set $dest|724
+  local.get $src|723
+  local.set $ptr|725
+  local.get $dest|724
+  local.get $ptr|725
+  i32.load $0
+  i32.store $0
+  local.get $dest|722
+  i32.const 4
+  i32.add
+  local.set $dest|726
+  local.get $445
+  local.set $src|727
+  local.get $src|727
+  i32.const 20
+  i32.sub
+  local.get $dest|726
+  local.get $src|727
+  i32.sub
+  call $~lib/rt/common/OBJECT#set:rtSize
+  local.get $src|727
  )
  (func $start:std/date (type $none_=>_none)
   (local $year i32)
@@ -5630,15 +15797,6 @@
   (local $a|1605 i64)
   (local $b|1606 i64)
   (local $m|1607 i64)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 296
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 296
-  memory.fill $0
   i32.const 1970
   local.set $year
   i32.const 0
@@ -6073,26 +16231,8 @@
   if
    unreachable
   end
-  memory.size $0
-  i32.const 16
-  i32.shl
-  global.get $~lib/memory/__heap_base
-  i32.sub
-  i32.const 1
-  i32.shr_u
-  global.set $~lib/rt/itcms/threshold
-  i32.const 96
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/pinSpace
-  i32.const 128
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/toSpace
-  i32.const 208
-  call $~lib/rt/itcms/initLazy
-  global.set $~lib/rt/itcms/fromSpace
   i64.const 1541847600001
   local.set $creationTime
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this
   local.get $creationTime
@@ -6100,12 +16240,10 @@
   local.get $this
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
+   call $~lib/rt/stub/__new
+   local.set $this
   end
   local.get $this
   local.get $epochMillis
@@ -6253,8 +16391,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this
-  local.tee $date
-  i32.store $0 offset=4
+  local.set $date
   local.get $date
   local.set $this|81
   local.get $this|81
@@ -6421,7 +16558,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|99
   i64.const 5918283958183706
@@ -6429,12 +16565,10 @@
   local.get $this|99
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|99
-   i32.store $0 offset=8
+   call $~lib/rt/stub/__new
+   local.set $this|99
   end
   local.get $this|99
   local.get $epochMillis|100
@@ -6582,8 +16716,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|99
-  local.tee $date|115
-  i32.store $0 offset=12
+  local.set $date|115
   local.get $date|115
   local.set $this|116
   local.get $this|116
@@ -6738,7 +16871,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|135
   i64.const 123814991274
@@ -6746,12 +16878,10 @@
   local.get $this|135
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|135
-   i32.store $0 offset=16
+   call $~lib/rt/stub/__new
+   local.set $this|135
   end
   local.get $this|135
   local.get $epochMillis|136
@@ -6899,8 +17029,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|135
-  local.tee $date|151
-  i32.store $0 offset=20
+  local.set $date|151
   local.get $date|151
   local.set $this|152
   local.get $this|152
@@ -7055,7 +17184,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|171
   i64.const 399464523963984
@@ -7063,12 +17191,10 @@
   local.get $this|171
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|171
-   i32.store $0 offset=24
+   call $~lib/rt/stub/__new
+   local.set $this|171
   end
   local.get $this|171
   local.get $epochMillis|172
@@ -7216,8 +17342,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|171
-  local.tee $date|187
-  i32.store $0 offset=28
+  local.set $date|187
   local.get $date|187
   local.set $this|188
   local.get $this|188
@@ -7421,7 +17546,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|212
   i64.const 372027318331986
@@ -7429,12 +17553,10 @@
   local.get $this|212
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|212
-   i32.store $0 offset=32
+   call $~lib/rt/stub/__new
+   local.set $this|212
   end
   local.get $this|212
   local.get $epochMillis|213
@@ -7582,8 +17704,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|212
-  local.tee $date|228
-  i32.store $0 offset=36
+  local.set $date|228
   local.get $date|228
   local.set $this|229
   local.get $this|229
@@ -7709,7 +17830,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|243
   i64.const 372027318331986
@@ -7717,12 +17837,10 @@
   local.get $this|243
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|243
-   i32.store $0 offset=40
+   call $~lib/rt/stub/__new
+   local.set $this|243
   end
   local.get $this|243
   local.get $epochMillis|244
@@ -7870,8 +17988,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|243
-  local.tee $date|259
-  i32.store $0 offset=44
+  local.set $date|259
   local.get $date|259
   local.set $this|260
   local.get $this|260
@@ -7997,7 +18114,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|274
   i64.const 372027318331986
@@ -8005,12 +18121,10 @@
   local.get $this|274
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|274
-   i32.store $0 offset=48
+   call $~lib/rt/stub/__new
+   local.set $this|274
   end
   local.get $this|274
   local.get $epochMillis|275
@@ -8158,8 +18272,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|274
-  local.tee $date|290
-  i32.store $0 offset=52
+  local.set $date|290
   local.get $date|290
   local.set $this|291
   local.get $this|291
@@ -8285,7 +18398,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|305
   i64.const 123814991274
@@ -8293,12 +18405,10 @@
   local.get $this|305
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|305
-   i32.store $0 offset=56
+   call $~lib/rt/stub/__new
+   local.set $this|305
   end
   local.get $this|305
   local.get $epochMillis|306
@@ -8446,8 +18556,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|305
-  local.tee $date|321
-  i32.store $0 offset=60
+  local.set $date|321
   local.get $date|321
   local.set $this|322
   local.get $this|322
@@ -8670,7 +18779,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|342
   i64.const 1362106799999
@@ -8678,12 +18786,10 @@
   local.get $this|342
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|342
-   i32.store $0 offset=64
+   call $~lib/rt/stub/__new
+   local.set $this|342
   end
   local.get $this|342
   local.get $epochMillis|343
@@ -8831,8 +18937,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|342
-  local.tee $date|321
-  i32.store $0 offset=60
+  local.set $date|321
   local.get $date|321
   i32.const 20
   call $~lib/date/Date#setUTCDate
@@ -8927,7 +19032,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|364
   i64.const 123814991274
@@ -8935,12 +19039,10 @@
   local.get $this|364
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|364
-   i32.store $0 offset=68
+   call $~lib/rt/stub/__new
+   local.set $this|364
   end
   local.get $this|364
   local.get $epochMillis|365
@@ -9088,8 +19190,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|364
-  local.tee $date|321
-  i32.store $0 offset=60
+  local.set $date|321
   local.get $date|321
   i32.const -2208
   call $~lib/date/Date#setUTCDate
@@ -9103,7 +19204,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|381
   i64.const 123814991274
@@ -9111,12 +19211,10 @@
   local.get $this|381
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|381
-   i32.store $0 offset=72
+   call $~lib/rt/stub/__new
+   local.set $this|381
   end
   local.get $this|381
   local.get $epochMillis|382
@@ -9264,8 +19362,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|381
-  local.tee $date|321
-  i32.store $0 offset=60
+  local.set $date|321
   local.get $date|321
   i32.const 2208
   call $~lib/date/Date#setUTCDate
@@ -9279,7 +19376,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|398
   i64.const 1467763200000
@@ -9287,12 +19383,10 @@
   local.get $this|398
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|398
-   i32.store $0 offset=76
+   call $~lib/rt/stub/__new
+   local.set $this|398
   end
   local.get $this|398
   local.get $epochMillis|399
@@ -9440,8 +19534,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|398
-  local.tee $this|414
-  i32.store $0 offset=80
+  local.set $this|414
   local.get $this|414
   i32.load $0
   local.get $this|414
@@ -9455,7 +19548,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|415
   i64.const 1467763200000
@@ -9465,12 +19557,10 @@
   local.get $this|415
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|415
-   i32.store $0 offset=84
+   call $~lib/rt/stub/__new
+   local.set $this|415
   end
   local.get $this|415
   local.get $epochMillis|416
@@ -9618,8 +19708,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|415
-  local.tee $this|431
-  i32.store $0 offset=88
+  local.set $this|431
   local.get $this|431
   i32.load $0
   local.get $this|431
@@ -9633,7 +19722,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|432
   i64.const 1467763200000
@@ -9645,12 +19733,10 @@
   local.get $this|432
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|432
-   i32.store $0 offset=92
+   call $~lib/rt/stub/__new
+   local.set $this|432
   end
   local.get $this|432
   local.get $epochMillis|433
@@ -9798,8 +19884,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|432
-  local.tee $this|448
-  i32.store $0 offset=96
+  local.set $this|448
   local.get $this|448
   i32.load $0
   local.get $this|448
@@ -9813,7 +19898,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|449
   i64.const 1467763200000
@@ -9823,12 +19907,10 @@
   local.get $this|449
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|449
-   i32.store $0 offset=100
+   call $~lib/rt/stub/__new
+   local.set $this|449
   end
   local.get $this|449
   local.get $epochMillis|450
@@ -9976,8 +20058,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|449
-  local.tee $this|465
-  i32.store $0 offset=104
+  local.set $this|465
   local.get $this|465
   i32.load $0
   local.get $this|465
@@ -9991,7 +20072,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|466
   i64.const 1468022400000
@@ -9999,12 +20079,10 @@
   local.get $this|466
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|466
-   i32.store $0 offset=108
+   call $~lib/rt/stub/__new
+   local.set $this|466
   end
   local.get $this|466
   local.get $epochMillis|467
@@ -10152,8 +20230,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|466
-  local.tee $this|482
-  i32.store $0 offset=112
+  local.set $this|482
   local.get $this|482
   i32.load $0
   local.get $this|482
@@ -10167,7 +20244,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|483
   i64.const 1468022400000
@@ -10177,12 +20253,10 @@
   local.get $this|483
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|483
-   i32.store $0 offset=116
+   call $~lib/rt/stub/__new
+   local.set $this|483
   end
   local.get $this|483
   local.get $epochMillis|484
@@ -10330,8 +20404,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|483
-  local.tee $this|499
-  i32.store $0 offset=120
+  local.set $this|499
   local.get $this|499
   i32.load $0
   local.get $this|499
@@ -10345,7 +20418,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|500
   i64.const 1468022400000
@@ -10357,12 +20429,10 @@
   local.get $this|500
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|500
-   i32.store $0 offset=124
+   call $~lib/rt/stub/__new
+   local.set $this|500
   end
   local.get $this|500
   local.get $epochMillis|501
@@ -10510,8 +20580,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|500
-  local.tee $this|516
-  i32.store $0 offset=128
+  local.set $this|516
   local.get $this|516
   i32.load $0
   local.get $this|516
@@ -10525,7 +20594,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|517
   i64.const 1468022400000
@@ -10535,12 +20603,10 @@
   local.get $this|517
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|517
-   i32.store $0 offset=132
+   call $~lib/rt/stub/__new
+   local.set $this|517
   end
   local.get $this|517
   local.get $epochMillis|518
@@ -10688,8 +20754,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|517
-  local.tee $this|533
-  i32.store $0 offset=136
+  local.set $this|533
   local.get $this|533
   i32.load $0
   local.get $this|533
@@ -10703,7 +20768,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|534
   i64.const 7899943856218720
@@ -10711,12 +20775,10 @@
   local.get $this|534
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|534
-   i32.store $0 offset=140
+   call $~lib/rt/stub/__new
+   local.set $this|534
   end
   local.get $this|534
   local.get $epochMillis|535
@@ -10864,8 +20926,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|534
-  local.tee $date|550
-  i32.store $0 offset=144
+  local.set $date|550
   local.get $date|550
   local.set $this|551
   local.get $this|551
@@ -11012,7 +21073,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|561
   i64.const 7941202527925698
@@ -11020,12 +21080,10 @@
   local.get $this|561
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|561
-   i32.store $0 offset=148
+   call $~lib/rt/stub/__new
+   local.set $this|561
   end
   local.get $this|561
   local.get $epochMillis|562
@@ -11173,8 +21231,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|561
-  local.tee $date|577
-  i32.store $0 offset=152
+  local.set $date|577
   local.get $date|577
   local.set $this|578
   local.get $this|578
@@ -11224,7 +21281,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|582
   i64.const -61536067200000
@@ -11232,12 +21288,10 @@
   local.get $this|582
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|582
-   i32.store $0 offset=156
+   call $~lib/rt/stub/__new
+   local.set $this|582
   end
   local.get $this|582
   local.get $epochMillis|583
@@ -11385,18 +21439,13 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|582
-  local.tee $date|598
-  i32.store $0 offset=160
+  local.set $date|598
   block $~lib/string/String.__eq|inlined.0 (result i32)
-   global.get $~lib/memory/__stack_pointer
    local.get $date|598
    call $~lib/date/Date#toDateString
-   local.tee $left
-   i32.store $0 offset=164
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1136
-   local.tee $right
-   i32.store $0 offset=168
+   local.set $left
+   i32.const 944
+   local.set $right
    local.get $left
    local.set $ptr1
    local.get $right
@@ -12304,7 +22353,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|699
   i64.const 1580601600000
@@ -12312,12 +22360,10 @@
   local.get $this|699
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|699
-   i32.store $0 offset=172
+   call $~lib/rt/stub/__new
+   local.set $this|699
   end
   local.get $this|699
   local.get $epochMillis|700
@@ -12465,18 +22511,13 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|699
-  local.tee $date|598
-  i32.store $0 offset=160
+  local.set $date|598
   block $~lib/string/String.__eq|inlined.1 (result i32)
-   global.get $~lib/memory/__stack_pointer
    local.get $date|598
    call $~lib/date/Date#toDateString
-   local.tee $left|715
-   i32.store $0 offset=176
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1184
-   local.tee $right|716
-   i32.store $0 offset=180
+   local.set $left|715
+   i32.const 992
+   local.set $right|716
    local.get $left|715
    local.set $ptr1|717
    local.get $right|716
@@ -13384,7 +23425,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|815
   i64.const -62183116800000
@@ -13392,12 +23432,10 @@
   local.get $this|815
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|815
-   i32.store $0 offset=184
+   call $~lib/rt/stub/__new
+   local.set $this|815
   end
   local.get $this|815
   local.get $epochMillis|816
@@ -13545,18 +23583,13 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|815
-  local.tee $date|598
-  i32.store $0 offset=160
+  local.set $date|598
   block $~lib/string/String.__eq|inlined.2 (result i32)
-   global.get $~lib/memory/__stack_pointer
    local.get $date|598
    call $~lib/date/Date#toDateString
-   local.tee $left|831
-   i32.store $0 offset=188
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1232
-   local.tee $right|832
-   i32.store $0 offset=192
+   local.set $left|831
+   i32.const 1040
+   local.set $right|832
    local.get $left|831
    local.set $ptr1|833
    local.get $right|832
@@ -14464,7 +24497,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|931
   i64.const -61536067200000
@@ -14472,12 +24504,10 @@
   local.get $this|931
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|931
-   i32.store $0 offset=196
+   call $~lib/rt/stub/__new
+   local.set $this|931
   end
   local.get $this|931
   local.get $epochMillis|932
@@ -14625,18 +24655,13 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|931
-  local.tee $date|947
-  i32.store $0 offset=200
+  local.set $date|947
   block $~lib/string/String.__eq|inlined.3 (result i32)
-   global.get $~lib/memory/__stack_pointer
    local.get $date|947
    call $~lib/date/Date#toTimeString
-   local.tee $left|948
-   i32.store $0 offset=204
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1312
-   local.tee $right|949
-   i32.store $0 offset=208
+   local.set $left|948
+   i32.const 1120
+   local.set $right|949
    local.get $left|948
    local.set $ptr1|950
    local.get $right|949
@@ -15544,7 +25569,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|1048
   i64.const 253402300799999
@@ -15552,12 +25576,10 @@
   local.get $this|1048
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|1048
-   i32.store $0 offset=212
+   call $~lib/rt/stub/__new
+   local.set $this|1048
   end
   local.get $this|1048
   local.get $epochMillis|1049
@@ -15705,18 +25727,13 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|1048
-  local.tee $date|947
-  i32.store $0 offset=200
+  local.set $date|947
   block $~lib/string/String.__eq|inlined.4 (result i32)
-   global.get $~lib/memory/__stack_pointer
    local.get $date|947
    call $~lib/date/Date#toTimeString
-   local.tee $left|1064
-   i32.store $0 offset=216
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1344
-   local.tee $right|1065
-   i32.store $0 offset=220
+   local.set $left|1064
+   i32.const 1152
+   local.set $right|1065
    local.get $left|1064
    local.set $ptr1|1066
    local.get $right|1065
@@ -16624,7 +26641,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|1164
   i64.const -61536067200000
@@ -16632,12 +26648,10 @@
   local.get $this|1164
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|1164
-   i32.store $0 offset=224
+   call $~lib/rt/stub/__new
+   local.set $this|1164
   end
   local.get $this|1164
   local.get $epochMillis|1165
@@ -16785,18 +26799,13 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|1164
-  local.tee $date|1180
-  i32.store $0 offset=228
+  local.set $date|1180
   block $~lib/string/String.__eq|inlined.5 (result i32)
-   global.get $~lib/memory/__stack_pointer
    local.get $date|1180
    call $~lib/date/Date#toUTCString
-   local.tee $left|1181
-   i32.store $0 offset=232
-   global.get $~lib/memory/__stack_pointer
-   i32.const 2176
-   local.tee $right|1182
-   i32.store $0 offset=236
+   local.set $left|1181
+   i32.const 1984
+   local.set $right|1182
    local.get $left|1181
    local.set $ptr1|1183
    local.get $right|1182
@@ -17704,7 +27713,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|1281
   i64.const 1580741613467
@@ -17712,12 +27720,10 @@
   local.get $this|1281
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|1281
-   i32.store $0 offset=240
+   call $~lib/rt/stub/__new
+   local.set $this|1281
   end
   local.get $this|1281
   local.get $epochMillis|1282
@@ -17865,18 +27871,13 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|1281
-  local.tee $date|1180
-  i32.store $0 offset=228
+  local.set $date|1180
   block $~lib/string/String.__eq|inlined.6 (result i32)
-   global.get $~lib/memory/__stack_pointer
    local.get $date|1180
    call $~lib/date/Date#toUTCString
-   local.tee $left|1297
-   i32.store $0 offset=244
-   global.get $~lib/memory/__stack_pointer
-   i32.const 2240
-   local.tee $right|1298
-   i32.store $0 offset=248
+   local.set $left|1297
+   i32.const 2048
+   local.set $right|1298
    local.get $left|1297
    local.set $ptr1|1299
    local.get $right|1298
@@ -18784,7 +28785,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|1397
   i64.const -62183116800000
@@ -18792,12 +28792,10 @@
   local.get $this|1397
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|1397
-   i32.store $0 offset=252
+   call $~lib/rt/stub/__new
+   local.set $this|1397
   end
   local.get $this|1397
   local.get $epochMillis|1398
@@ -18945,18 +28943,13 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|1397
-  local.tee $date|1180
-  i32.store $0 offset=228
+  local.set $date|1180
   block $~lib/string/String.__eq|inlined.7 (result i32)
-   global.get $~lib/memory/__stack_pointer
    local.get $date|1180
    call $~lib/date/Date#toUTCString
-   local.tee $left|1413
-   i32.store $0 offset=256
-   global.get $~lib/memory/__stack_pointer
-   i32.const 2304
-   local.tee $right|1414
-   i32.store $0 offset=260
+   local.set $left|1413
+   i32.const 2112
+   local.set $right|1414
    local.get $left|1413
    local.set $ptr1|1415
    local.get $right|1414
@@ -19864,7 +29857,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|1513
   i64.const -8640000000000000
@@ -19872,12 +29864,10 @@
   local.get $this|1513
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|1513
-   i32.store $0 offset=264
+   call $~lib/rt/stub/__new
+   local.set $this|1513
   end
   local.get $this|1513
   local.get $epochMillis|1514
@@ -20025,9 +30015,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|1513
-  local.tee $minDate
-  i32.store $0 offset=268
-  global.get $~lib/memory/__stack_pointer
+  local.set $minDate
   i32.const 0
   local.set $this|1530
   i64.const 8640000000000000
@@ -20035,12 +30023,10 @@
   local.get $this|1530
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|1530
-   i32.store $0 offset=272
+   call $~lib/rt/stub/__new
+   local.set $this|1530
   end
   local.get $this|1530
   local.get $epochMillis|1531
@@ -20188,8 +30174,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|1530
-  local.tee $maxDate
-  i32.store $0 offset=276
+  local.set $maxDate
   local.get $minDate
   local.set $this|1547
   local.get $this|1547
@@ -20274,7 +30259,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.set $this|1555
   i64.const 8640000000000000
@@ -20284,12 +30268,10 @@
   local.get $this|1555
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|1555
-   i32.store $0 offset=280
+   call $~lib/rt/stub/__new
+   local.set $this|1555
   end
   local.get $this|1555
   local.get $epochMillis|1556
@@ -20437,9 +30419,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|1555
-  local.tee $maxDateDec
-  i32.store $0 offset=284
-  global.get $~lib/memory/__stack_pointer
+  local.set $maxDateDec
   i32.const 0
   local.set $this|1572
   i64.const -8640000000000000
@@ -20449,12 +30429,10 @@
   local.get $this|1572
   i32.eqz
   if
-   global.get $~lib/memory/__stack_pointer
    i32.const 24
    i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $this|1572
-   i32.store $0 offset=288
+   call $~lib/rt/stub/__new
+   local.set $this|1572
   end
   local.get $this|1572
   local.get $epochMillis|1573
@@ -20602,8 +30580,7 @@
   global.get $~lib/date/_day
   call $~lib/date/Date#set:day
   local.get $this|1572
-  local.tee $minDateInc
-  i32.store $0 offset=292
+  local.set $minDateInc
   local.get $minDateInc
   local.set $this|1589
   local.get $this|1589
@@ -20758,109 +30735,6 @@
   if
    unreachable
   end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 296
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $~lib/rt/__visit_globals (type $i32_=>_none) (param $0 i32)
-  (local $1 i32)
-  i32.const 176
-  local.get $0
-  call $~lib/rt/itcms/__visit
-  i32.const 64
-  local.get $0
-  call $~lib/rt/itcms/__visit
-  i32.const 32
-  local.get $0
-  call $~lib/rt/itcms/__visit
- )
- (func $~lib/arraybuffer/ArrayBufferView~visit (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  local.get $0
-  i32.load $0
-  local.tee $2
-  if
-   local.get $2
-   local.get $1
-   call $~lib/rt/itcms/__visit
-  end
- )
- (func $~lib/staticarray/StaticArray<~lib/string/String>#__visit (type $i32_i32_=>_none) (param $this i32) (param $cookie i32)
-  (local $cur i32)
-  (local $end i32)
-  (local $4 i32)
-  (local $val i32)
-  i32.const 1
-  drop
-  local.get $this
-  local.set $cur
-  local.get $cur
-  local.get $this
-  i32.const 20
-  i32.sub
-  i32.load $0 offset=16
-  i32.add
-  local.set $end
-  loop $while-continue|0
-   local.get $cur
-   local.get $end
-   i32.lt_u
-   local.set $4
-   local.get $4
-   if
-    local.get $cur
-    i32.load $0
-    local.set $val
-    local.get $val
-    if
-     local.get $val
-     local.get $cookie
-     call $~lib/rt/itcms/__visit
-    end
-    local.get $cur
-    i32.const 4
-    i32.add
-    local.set $cur
-    br $while-continue|0
-   end
-  end
- )
- (func $~lib/staticarray/StaticArray<~lib/string/String>~visit (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__visit
- )
- (func $~lib/rt/__visit_members (type $i32_i32_=>_none) (param $0 i32) (param $1 i32)
-  block $invalid
-   block $~lib/staticarray/StaticArray<~lib/string/String>
-    block $~lib/date/Date
-     block $~lib/arraybuffer/ArrayBufferView
-      block $~lib/string/String
-       block $~lib/arraybuffer/ArrayBuffer
-        local.get $0
-        i32.const 8
-        i32.sub
-        i32.load $0
-        br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/date/Date $~lib/staticarray/StaticArray<~lib/string/String> $invalid
-       end
-       return
-      end
-      return
-     end
-     local.get $0
-     local.get $1
-     call $~lib/arraybuffer/ArrayBufferView~visit
-     return
-    end
-    return
-   end
-   local.get $0
-   local.get $1
-   call $~lib/staticarray/StaticArray<~lib/string/String>~visit
-   return
-  end
-  unreachable
  )
  (func $~start (type $none_=>_none)
   global.get $~started
@@ -20870,12199 +30744,5 @@
   i32.const 1
   global.set $~started
   call $start:std/date
- )
- (func $~stack_check (type $none_=>_none)
-  global.get $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__data_end
-  i32.lt_s
-  if
-   unreachable
-  end
- )
- (func $~lib/date/Date#toDateString (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $1 i32)
-  (local $weeks i32)
-  (local $3 i32)
-  (local $months i32)
-  (local $mo i32)
-  (local $da i32)
-  (local $yr i32)
-  (local $wd i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $value i32)
-  (local $padding i32)
-  (local $this|13 i32)
-  (local $value|14 i32)
-  (local $sign i32)
-  (local $decimals i32)
-  (local $out i32)
-  (local $end i32)
-  (local $num i32)
-  (local $t i32)
-  (local $r i32)
-  (local $end|22 i32)
-  (local $num|23 i32)
-  (local $t|24 i32)
-  (local $r|25 i32)
-  (local $end|26 i32)
-  (local $num|27 i32)
-  (local $t|28 i32)
-  (local $r|29 i32)
-  (local $end|30 i32)
-  (local $num|31 i32)
-  (local $t|32 i32)
-  (local $r|33 i32)
-  (local $end|34 i32)
-  (local $num|35 i32)
-  (local $t|36 i32)
-  (local $r|37 i32)
-  (local $end|38 i32)
-  (local $num|39 i32)
-  (local $t|40 i32)
-  (local $r|41 i32)
-  (local $end|42 i32)
-  (local $num|43 i32)
-  (local $t|44 i32)
-  (local $r|45 i32)
-  (local $end|46 i32)
-  (local $num|47 i32)
-  (local $t|48 i32)
-  (local $r|49 i32)
-  (local $end|50 i32)
-  (local $num|51 i32)
-  (local $t|52 i32)
-  (local $r|53 i32)
-  (local $end|54 i32)
-  (local $num|55 i32)
-  (local $s i32)
-  (local $inSize i32)
-  (local $targetSize i32)
-  (local $prependSize i32)
-  (local $out|60 i32)
-  (local $dest i32)
-  (local $value|62 i32)
-  (local $count i32)
-  (local $64 i32)
-  (local $65 i32)
-  (local $66 i32)
-  (local $67 i32)
-  (local $dest|68 i32)
-  (local $value|69 i32)
-  (local $count|70 i32)
-  (local $71 i32)
-  (local $72 i32)
-  (local $dest|73 i32)
-  (local $value|74 i32)
-  (local $count|75 i32)
-  (local $dest|76 i32)
-  (local $ptr i32)
-  (local $len i32)
-  (local $dest|79 i32)
-  (local $ptr|80 i32)
-  (local $dest|81 i32)
-  (local $ptr|82 i32)
-  (local $len|83 i32)
-  (local $dest|84 i32)
-  (local $ptr|85 i32)
-  (local $dest|86 i32)
-  (local $ptr|87 i32)
-  (local $len|88 i32)
-  (local $dest|89 i32)
-  (local $ptr|90 i32)
-  (local $dest|91 i32)
-  (local $ptr|92 i32)
-  (local $len|93 i32)
-  (local $year i32)
-  (local $month i32)
-  (local $week i32)
-  (local $value|97 i32)
-  (local $padding|98 i32)
-  (local $this|99 i32)
-  (local $value|100 i32)
-  (local $sign|101 i32)
-  (local $decimals|102 i32)
-  (local $out|103 i32)
-  (local $end|104 i32)
-  (local $num|105 i32)
-  (local $t|106 i32)
-  (local $r|107 i32)
-  (local $end|108 i32)
-  (local $num|109 i32)
-  (local $t|110 i32)
-  (local $r|111 i32)
-  (local $end|112 i32)
-  (local $num|113 i32)
-  (local $t|114 i32)
-  (local $r|115 i32)
-  (local $end|116 i32)
-  (local $num|117 i32)
-  (local $t|118 i32)
-  (local $r|119 i32)
-  (local $end|120 i32)
-  (local $num|121 i32)
-  (local $t|122 i32)
-  (local $r|123 i32)
-  (local $end|124 i32)
-  (local $num|125 i32)
-  (local $t|126 i32)
-  (local $r|127 i32)
-  (local $end|128 i32)
-  (local $num|129 i32)
-  (local $t|130 i32)
-  (local $r|131 i32)
-  (local $end|132 i32)
-  (local $num|133 i32)
-  (local $t|134 i32)
-  (local $r|135 i32)
-  (local $end|136 i32)
-  (local $num|137 i32)
-  (local $t|138 i32)
-  (local $r|139 i32)
-  (local $end|140 i32)
-  (local $num|141 i32)
-  (local $s|142 i32)
-  (local $inSize|143 i32)
-  (local $targetSize|144 i32)
-  (local $prependSize|145 i32)
-  (local $out|146 i32)
-  (local $dest|147 i32)
-  (local $value|148 i32)
-  (local $count|149 i32)
-  (local $150 i32)
-  (local $151 i32)
-  (local $152 i32)
-  (local $153 i32)
-  (local $dest|154 i32)
-  (local $value|155 i32)
-  (local $count|156 i32)
-  (local $157 i32)
-  (local $158 i32)
-  (local $dest|159 i32)
-  (local $value|160 i32)
-  (local $count|161 i32)
-  (local $dest|162 i32)
-  (local $ptr|163 i32)
-  (local $len|164 i32)
-  (local $dest|165 i32)
-  (local $ptr|166 i32)
-  (local $dest|167 i32)
-  (local $ptr|168 i32)
-  (local $len|169 i32)
-  (local $dest|170 i32)
-  (local $ptr|171 i32)
-  (local $dest|172 i32)
-  (local $ptr|173 i32)
-  (local $len|174 i32)
-  (local $dest|175 i32)
-  (local $ptr|176 i32)
-  (local $dest|177 i32)
-  (local $ptr|178 i32)
-  (local $len|179 i32)
-  (local $day i32)
-  (local $181 i32)
-  (local $dest|182 i32)
-  (local $src i32)
-  (local $l i32)
-  (local $dest|185 i32)
-  (local $ptr|186 i32)
-  (local $dest|187 i32)
-  (local $ptr|188 i32)
-  (local $len|189 i32)
-  (local $dest|190 i32)
-  (local $ptr|191 i32)
-  (local $dest|192 i32)
-  (local $ptr|193 i32)
-  (local $len|194 i32)
-  (local $dest|195 i32)
-  (local $ptr|196 i32)
-  (local $dest|197 i32)
-  (local $ptr|198 i32)
-  (local $len|199 i32)
-  (local $dest|200 i32)
-  (local $ptr|201 i32)
-  (local $dest|202 i32)
-  (local $ptr|203 i32)
-  (local $len|204 i32)
-  (local $dest|205 i32)
-  (local $ptr|206 i32)
-  (local $dest|207 i32)
-  (local $ptr|208 i32)
-  (local $len|209 i32)
-  (local $dest|210 i32)
-  (local $ptr|211 i32)
-  (local $dest|212 i32)
-  (local $ptr|213 i32)
-  (local $len|214 i32)
-  (local $dest|215 i32)
-  (local $src|216 i32)
-  (local $l|217 i32)
-  (local $dest|218 i32)
-  (local $ptr|219 i32)
-  (local $dest|220 i32)
-  (local $ptr|221 i32)
-  (local $len|222 i32)
-  (local $dest|223 i32)
-  (local $ptr|224 i32)
-  (local $dest|225 i32)
-  (local $ptr|226 i32)
-  (local $len|227 i32)
-  (local $dest|228 i32)
-  (local $ptr|229 i32)
-  (local $dest|230 i32)
-  (local $ptr|231 i32)
-  (local $len|232 i32)
-  (local $dest|233 i32)
-  (local $ptr|234 i32)
-  (local $dest|235 i32)
-  (local $ptr|236 i32)
-  (local $len|237 i32)
-  (local $dest|238 i32)
-  (local $ptr|239 i32)
-  (local $dest|240 i32)
-  (local $ptr|241 i32)
-  (local $len|242 i32)
-  (local $dest|243 i32)
-  (local $ptr|244 i32)
-  (local $dest|245 i32)
-  (local $ptr|246 i32)
-  (local $len|247 i32)
-  (local $dest|248 i32)
-  (local $src|249 i32)
-  (local $l|250 i32)
-  (local $dest|251 i32)
-  (local $ptr|252 i32)
-  (local $dest|253 i32)
-  (local $ptr|254 i32)
-  (local $len|255 i32)
-  (local $dest|256 i32)
-  (local $ptr|257 i32)
-  (local $dest|258 i32)
-  (local $ptr|259 i32)
-  (local $len|260 i32)
-  (local $dest|261 i32)
-  (local $ptr|262 i32)
-  (local $dest|263 i32)
-  (local $ptr|264 i32)
-  (local $len|265 i32)
-  (local $dest|266 i32)
-  (local $ptr|267 i32)
-  (local $dest|268 i32)
-  (local $ptr|269 i32)
-  (local $len|270 i32)
-  (local $dest|271 i32)
-  (local $ptr|272 i32)
-  (local $dest|273 i32)
-  (local $ptr|274 i32)
-  (local $len|275 i32)
-  (local $dest|276 i32)
-  (local $ptr|277 i32)
-  (local $dest|278 i32)
-  (local $ptr|279 i32)
-  (local $len|280 i32)
-  (local $dest|281 i32)
-  (local $src|282 i32)
-  (local $l|283 i32)
-  (local $dest|284 i32)
-  (local $ptr|285 i32)
-  (local $dest|286 i32)
-  (local $ptr|287 i32)
-  (local $len|288 i32)
-  (local $dest|289 i32)
-  (local $ptr|290 i32)
-  (local $dest|291 i32)
-  (local $ptr|292 i32)
-  (local $len|293 i32)
-  (local $dest|294 i32)
-  (local $ptr|295 i32)
-  (local $dest|296 i32)
-  (local $ptr|297 i32)
-  (local $len|298 i32)
-  (local $dest|299 i32)
-  (local $ptr|300 i32)
-  (local $dest|301 i32)
-  (local $ptr|302 i32)
-  (local $len|303 i32)
-  (local $dest|304 i32)
-  (local $ptr|305 i32)
-  (local $dest|306 i32)
-  (local $ptr|307 i32)
-  (local $len|308 i32)
-  (local $dest|309 i32)
-  (local $ptr|310 i32)
-  (local $dest|311 i32)
-  (local $ptr|312 i32)
-  (local $len|313 i32)
-  (local $dest|314 i32)
-  (local $src|315 i32)
-  (local $l|316 i32)
-  (local $dest|317 i32)
-  (local $ptr|318 i32)
-  (local $dest|319 i32)
-  (local $ptr|320 i32)
-  (local $len|321 i32)
-  (local $dest|322 i32)
-  (local $ptr|323 i32)
-  (local $dest|324 i32)
-  (local $ptr|325 i32)
-  (local $len|326 i32)
-  (local $dest|327 i32)
-  (local $ptr|328 i32)
-  (local $dest|329 i32)
-  (local $ptr|330 i32)
-  (local $len|331 i32)
-  (local $dest|332 i32)
-  (local $ptr|333 i32)
-  (local $dest|334 i32)
-  (local $ptr|335 i32)
-  (local $len|336 i32)
-  (local $dest|337 i32)
-  (local $ptr|338 i32)
-  (local $dest|339 i32)
-  (local $ptr|340 i32)
-  (local $len|341 i32)
-  (local $dest|342 i32)
-  (local $ptr|343 i32)
-  (local $dest|344 i32)
-  (local $ptr|345 i32)
-  (local $len|346 i32)
-  (local $dest|347 i32)
-  (local $src|348 i32)
-  (local $size i32)
-  (local $350 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 36
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 36
-  memory.fill $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 28
-  i32.const 4
-  i32.const 496
-  call $~lib/rt/__newBuffer
-  local.tee $weeks
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 48
-  i32.const 4
-  i32.const 960
-  call $~lib/rt/__newBuffer
-  local.tee $months
-  i32.store $0 offset=4
-  local.get $this
-  i32.load $0 offset=4
-  local.set $mo
-  local.get $this
-  i32.load $0 offset=8
-  local.set $da
-  local.get $this
-  i32.load $0
-  local.set $yr
-  local.get $yr
-  local.get $mo
-  local.get $da
-  call $~lib/date/dayOfWeek
-  local.set $wd
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.0 (result i32)
-   local.get $yr
-   local.tee $9
-   i32.const 31
-   i32.shr_s
-   local.tee $10
-   local.get $9
-   i32.add
-   local.get $10
-   i32.xor
-   local.set $value
-   i32.const 4
-   local.set $padding
-   global.get $~lib/memory/__stack_pointer
-   local.get $value
-   local.set $this|13
-   block $~lib/util/number/i32toa|inlined.0 (result i32)
-    local.get $this|13
-    local.set $value|14
-    local.get $value|14
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.0
-    end
-    local.get $value|14
-    i32.const 31
-    i32.shr_u
-    local.set $sign
-    local.get $sign
-    if
-     i32.const 0
-     local.get $value|14
-     i32.sub
-     local.set $value|14
-    end
-    local.get $value|14
-    call $~lib/util/number/decimalCount32
-    local.set $decimals
-    local.get $sign
-    local.get $decimals
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out
-    local.get $out
-    local.get $sign
-    i32.add
-    local.get $decimals
-    i32.add
-    local.set $end
-    local.get $value|14
-    local.set $num
-    local.get $num
-    i32.const 10
-    i32.div_u
-    local.set $t
-    local.get $num
-    i32.const 10
-    i32.rem_u
-    local.set $r
-    local.get $end
-    i32.const 1
-    i32.sub
-    local.set $end
-    local.get $end
-    i32.const 48
-    local.get $r
-    i32.add
-    i32.store8 $0
-    local.get $t
-    if
-     local.get $end
-     local.set $end|22
-     local.get $t
-     local.set $num|23
-     local.get $num|23
-     i32.const 10
-     i32.div_u
-     local.set $t|24
-     local.get $num|23
-     i32.const 10
-     i32.rem_u
-     local.set $r|25
-     local.get $end|22
-     i32.const 1
-     i32.sub
-     local.set $end|22
-     local.get $end|22
-     i32.const 48
-     local.get $r|25
-     i32.add
-     i32.store8 $0
-     local.get $t|24
-     if
-      local.get $end|22
-      local.set $end|26
-      local.get $t|24
-      local.set $num|27
-      local.get $num|27
-      i32.const 10
-      i32.div_u
-      local.set $t|28
-      local.get $num|27
-      i32.const 10
-      i32.rem_u
-      local.set $r|29
-      local.get $end|26
-      i32.const 1
-      i32.sub
-      local.set $end|26
-      local.get $end|26
-      i32.const 48
-      local.get $r|29
-      i32.add
-      i32.store8 $0
-      local.get $t|28
-      if
-       local.get $end|26
-       local.set $end|30
-       local.get $t|28
-       local.set $num|31
-       local.get $num|31
-       i32.const 10
-       i32.div_u
-       local.set $t|32
-       local.get $num|31
-       i32.const 10
-       i32.rem_u
-       local.set $r|33
-       local.get $end|30
-       i32.const 1
-       i32.sub
-       local.set $end|30
-       local.get $end|30
-       i32.const 48
-       local.get $r|33
-       i32.add
-       i32.store8 $0
-       local.get $t|32
-       if
-        local.get $end|30
-        local.set $end|34
-        local.get $t|32
-        local.set $num|35
-        local.get $num|35
-        i32.const 10
-        i32.div_u
-        local.set $t|36
-        local.get $num|35
-        i32.const 10
-        i32.rem_u
-        local.set $r|37
-        local.get $end|34
-        i32.const 1
-        i32.sub
-        local.set $end|34
-        local.get $end|34
-        i32.const 48
-        local.get $r|37
-        i32.add
-        i32.store8 $0
-        local.get $t|36
-        if
-         local.get $end|34
-         local.set $end|38
-         local.get $t|36
-         local.set $num|39
-         local.get $num|39
-         i32.const 10
-         i32.div_u
-         local.set $t|40
-         local.get $num|39
-         i32.const 10
-         i32.rem_u
-         local.set $r|41
-         local.get $end|38
-         i32.const 1
-         i32.sub
-         local.set $end|38
-         local.get $end|38
-         i32.const 48
-         local.get $r|41
-         i32.add
-         i32.store8 $0
-         local.get $t|40
-         if
-          local.get $end|38
-          local.set $end|42
-          local.get $t|40
-          local.set $num|43
-          local.get $num|43
-          i32.const 10
-          i32.div_u
-          local.set $t|44
-          local.get $num|43
-          i32.const 10
-          i32.rem_u
-          local.set $r|45
-          local.get $end|42
-          i32.const 1
-          i32.sub
-          local.set $end|42
-          local.get $end|42
-          i32.const 48
-          local.get $r|45
-          i32.add
-          i32.store8 $0
-          local.get $t|44
-          if
-           local.get $end|42
-           local.set $end|46
-           local.get $t|44
-           local.set $num|47
-           local.get $num|47
-           i32.const 10
-           i32.div_u
-           local.set $t|48
-           local.get $num|47
-           i32.const 10
-           i32.rem_u
-           local.set $r|49
-           local.get $end|46
-           i32.const 1
-           i32.sub
-           local.set $end|46
-           local.get $end|46
-           i32.const 48
-           local.get $r|49
-           i32.add
-           i32.store8 $0
-           local.get $t|48
-           if
-            local.get $end|46
-            local.set $end|50
-            local.get $t|48
-            local.set $num|51
-            local.get $num|51
-            i32.const 10
-            i32.div_u
-            local.set $t|52
-            local.get $num|51
-            i32.const 10
-            i32.rem_u
-            local.set $r|53
-            local.get $end|50
-            i32.const 1
-            i32.sub
-            local.set $end|50
-            local.get $end|50
-            i32.const 48
-            local.get $r|53
-            i32.add
-            i32.store8 $0
-            local.get $t|52
-            if
-             local.get $end|50
-             local.set $end|54
-             local.get $t|52
-             local.set $num|55
-             local.get $end|54
-             i32.const 1
-             i32.sub
-             local.tee $end|54
-             i32.const 48
-             local.get $num|55
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign
-    if
-     local.get $out
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out
-   end
-   local.tee $s
-   i32.store $0 offset=8
-   local.get $s
-   call $~lib/string/String#get:length
-   local.set $inSize
-   local.get $padding
-   local.set $targetSize
-   local.get $targetSize
-   local.get $inSize
-   i32.le_u
-   if
-    local.get $s
-    br $~lib/date/stringify|inlined.0
-   end
-   local.get $targetSize
-   local.get $inSize
-   i32.sub
-   local.set $prependSize
-   local.get $targetSize
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|60
-   local.get $out|60
-   local.set $dest
-   i32.const 48
-   local.set $value|62
-   local.get $prependSize
-   local.set $count
-   local.get $count
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest
-    local.tee $64
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $64
-    local.get $value|62
-    i32.store8 $0
-    local.get $dest
-    local.tee $65
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $65
-    local.get $value|62
-    i32.store8 $0
-    local.get $dest
-    local.tee $66
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $66
-    local.get $value|62
-    i32.store8 $0
-    local.get $dest
-    local.tee $67
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $67
-    local.get $value|62
-    i32.store8 $0
-    local.get $count
-    i32.const 4
-    i32.sub
-    local.set $count
-   end
-   local.get $dest
-   local.set $dest|68
-   local.get $value|62
-   local.set $value|69
-   local.get $count
-   local.set $count|70
-   local.get $count|70
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|68
-    local.tee $71
-    i32.const 1
-    i32.add
-    local.set $dest|68
-    local.get $71
-    local.get $value|69
-    i32.store8 $0
-    local.get $dest|68
-    local.tee $72
-    i32.const 1
-    i32.add
-    local.set $dest|68
-    local.get $72
-    local.get $value|69
-    i32.store8 $0
-    local.get $count|70
-    i32.const 2
-    i32.sub
-    local.set $count|70
-   end
-   local.get $dest|68
-   local.set $dest|73
-   local.get $value|69
-   local.set $value|74
-   local.get $count|70
-   local.set $count|75
-   local.get $count|75
-   if
-    local.get $dest|73
-    local.get $value|74
-    i32.store8 $0
-   end
-   local.get $out|60
-   local.get $prependSize
-   i32.add
-   local.set $dest|76
-   local.get $s
-   local.set $ptr
-   local.get $inSize
-   local.set $len
-   local.get $len
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|76
-    local.set $dest|79
-    local.get $ptr
-    local.set $ptr|80
-    local.get $dest|79
-    local.get $ptr|80
-    i64.load $0
-    i64.store $0
-    local.get $dest|76
-    i32.const 8
-    i32.add
-    local.set $dest|76
-    local.get $ptr
-    i32.const 8
-    i32.add
-    local.set $ptr
-    local.get $len
-    i32.const 8
-    i32.sub
-    local.set $len
-   end
-   local.get $dest|76
-   local.set $dest|81
-   local.get $ptr
-   local.set $ptr|82
-   local.get $len
-   local.set $len|83
-   local.get $len|83
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|81
-    local.set $dest|84
-    local.get $ptr|82
-    local.set $ptr|85
-    local.get $dest|84
-    local.get $ptr|85
-    i32.load $0
-    i32.store $0
-    local.get $dest|81
-    i32.const 4
-    i32.add
-    local.set $dest|81
-    local.get $ptr|82
-    i32.const 4
-    i32.add
-    local.set $ptr|82
-    local.get $len|83
-    i32.const 4
-    i32.sub
-    local.set $len|83
-   end
-   local.get $dest|81
-   local.set $dest|86
-   local.get $ptr|82
-   local.set $ptr|87
-   local.get $len|83
-   local.set $len|88
-   local.get $len|88
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|86
-    local.set $dest|89
-    local.get $ptr|87
-    local.set $ptr|90
-    local.get $dest|89
-    local.get $ptr|90
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|86
-    i32.const 2
-    i32.add
-    local.set $dest|86
-    local.get $ptr|87
-    i32.const 2
-    i32.add
-    local.set $ptr|87
-    local.get $len|88
-    i32.const 2
-    i32.sub
-    local.set $len|88
-   end
-   local.get $dest|86
-   local.set $dest|91
-   local.get $ptr|87
-   local.set $ptr|92
-   local.get $len|88
-   local.set $len|93
-   local.get $len|93
-   if
-    local.get $dest|91
-    local.get $ptr|92
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|60
-  end
-  local.tee $year
-  i32.store $0 offset=12
-  global.get $~lib/memory/__stack_pointer
-  local.get $months
-  local.get $mo
-  i32.const 1
-  i32.sub
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__uget
-  local.tee $month
-  i32.store $0 offset=16
-  global.get $~lib/memory/__stack_pointer
-  local.get $weeks
-  local.get $wd
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__uget
-  local.tee $week
-  i32.store $0 offset=20
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.1 (result i32)
-   local.get $da
-   local.set $value|97
-   i32.const 2
-   local.set $padding|98
-   global.get $~lib/memory/__stack_pointer
-   local.get $value|97
-   local.set $this|99
-   block $~lib/util/number/i32toa|inlined.1 (result i32)
-    local.get $this|99
-    local.set $value|100
-    local.get $value|100
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.1
-    end
-    local.get $value|100
-    i32.const 31
-    i32.shr_u
-    local.set $sign|101
-    local.get $sign|101
-    if
-     i32.const 0
-     local.get $value|100
-     i32.sub
-     local.set $value|100
-    end
-    local.get $value|100
-    call $~lib/util/number/decimalCount32
-    local.set $decimals|102
-    local.get $sign|101
-    local.get $decimals|102
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out|103
-    local.get $out|103
-    local.get $sign|101
-    i32.add
-    local.get $decimals|102
-    i32.add
-    local.set $end|104
-    local.get $value|100
-    local.set $num|105
-    local.get $num|105
-    i32.const 10
-    i32.div_u
-    local.set $t|106
-    local.get $num|105
-    i32.const 10
-    i32.rem_u
-    local.set $r|107
-    local.get $end|104
-    i32.const 1
-    i32.sub
-    local.set $end|104
-    local.get $end|104
-    i32.const 48
-    local.get $r|107
-    i32.add
-    i32.store8 $0
-    local.get $t|106
-    if
-     local.get $end|104
-     local.set $end|108
-     local.get $t|106
-     local.set $num|109
-     local.get $num|109
-     i32.const 10
-     i32.div_u
-     local.set $t|110
-     local.get $num|109
-     i32.const 10
-     i32.rem_u
-     local.set $r|111
-     local.get $end|108
-     i32.const 1
-     i32.sub
-     local.set $end|108
-     local.get $end|108
-     i32.const 48
-     local.get $r|111
-     i32.add
-     i32.store8 $0
-     local.get $t|110
-     if
-      local.get $end|108
-      local.set $end|112
-      local.get $t|110
-      local.set $num|113
-      local.get $num|113
-      i32.const 10
-      i32.div_u
-      local.set $t|114
-      local.get $num|113
-      i32.const 10
-      i32.rem_u
-      local.set $r|115
-      local.get $end|112
-      i32.const 1
-      i32.sub
-      local.set $end|112
-      local.get $end|112
-      i32.const 48
-      local.get $r|115
-      i32.add
-      i32.store8 $0
-      local.get $t|114
-      if
-       local.get $end|112
-       local.set $end|116
-       local.get $t|114
-       local.set $num|117
-       local.get $num|117
-       i32.const 10
-       i32.div_u
-       local.set $t|118
-       local.get $num|117
-       i32.const 10
-       i32.rem_u
-       local.set $r|119
-       local.get $end|116
-       i32.const 1
-       i32.sub
-       local.set $end|116
-       local.get $end|116
-       i32.const 48
-       local.get $r|119
-       i32.add
-       i32.store8 $0
-       local.get $t|118
-       if
-        local.get $end|116
-        local.set $end|120
-        local.get $t|118
-        local.set $num|121
-        local.get $num|121
-        i32.const 10
-        i32.div_u
-        local.set $t|122
-        local.get $num|121
-        i32.const 10
-        i32.rem_u
-        local.set $r|123
-        local.get $end|120
-        i32.const 1
-        i32.sub
-        local.set $end|120
-        local.get $end|120
-        i32.const 48
-        local.get $r|123
-        i32.add
-        i32.store8 $0
-        local.get $t|122
-        if
-         local.get $end|120
-         local.set $end|124
-         local.get $t|122
-         local.set $num|125
-         local.get $num|125
-         i32.const 10
-         i32.div_u
-         local.set $t|126
-         local.get $num|125
-         i32.const 10
-         i32.rem_u
-         local.set $r|127
-         local.get $end|124
-         i32.const 1
-         i32.sub
-         local.set $end|124
-         local.get $end|124
-         i32.const 48
-         local.get $r|127
-         i32.add
-         i32.store8 $0
-         local.get $t|126
-         if
-          local.get $end|124
-          local.set $end|128
-          local.get $t|126
-          local.set $num|129
-          local.get $num|129
-          i32.const 10
-          i32.div_u
-          local.set $t|130
-          local.get $num|129
-          i32.const 10
-          i32.rem_u
-          local.set $r|131
-          local.get $end|128
-          i32.const 1
-          i32.sub
-          local.set $end|128
-          local.get $end|128
-          i32.const 48
-          local.get $r|131
-          i32.add
-          i32.store8 $0
-          local.get $t|130
-          if
-           local.get $end|128
-           local.set $end|132
-           local.get $t|130
-           local.set $num|133
-           local.get $num|133
-           i32.const 10
-           i32.div_u
-           local.set $t|134
-           local.get $num|133
-           i32.const 10
-           i32.rem_u
-           local.set $r|135
-           local.get $end|132
-           i32.const 1
-           i32.sub
-           local.set $end|132
-           local.get $end|132
-           i32.const 48
-           local.get $r|135
-           i32.add
-           i32.store8 $0
-           local.get $t|134
-           if
-            local.get $end|132
-            local.set $end|136
-            local.get $t|134
-            local.set $num|137
-            local.get $num|137
-            i32.const 10
-            i32.div_u
-            local.set $t|138
-            local.get $num|137
-            i32.const 10
-            i32.rem_u
-            local.set $r|139
-            local.get $end|136
-            i32.const 1
-            i32.sub
-            local.set $end|136
-            local.get $end|136
-            i32.const 48
-            local.get $r|139
-            i32.add
-            i32.store8 $0
-            local.get $t|138
-            if
-             local.get $end|136
-             local.set $end|140
-             local.get $t|138
-             local.set $num|141
-             local.get $end|140
-             i32.const 1
-             i32.sub
-             local.tee $end|140
-             i32.const 48
-             local.get $num|141
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign|101
-    if
-     local.get $out|103
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out|103
-   end
-   local.tee $s|142
-   i32.store $0 offset=24
-   local.get $s|142
-   call $~lib/string/String#get:length
-   local.set $inSize|143
-   local.get $padding|98
-   local.set $targetSize|144
-   local.get $targetSize|144
-   local.get $inSize|143
-   i32.le_u
-   if
-    local.get $s|142
-    br $~lib/date/stringify|inlined.1
-   end
-   local.get $targetSize|144
-   local.get $inSize|143
-   i32.sub
-   local.set $prependSize|145
-   local.get $targetSize|144
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|146
-   local.get $out|146
-   local.set $dest|147
-   i32.const 48
-   local.set $value|148
-   local.get $prependSize|145
-   local.set $count|149
-   local.get $count|149
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest|147
-    local.tee $150
-    i32.const 1
-    i32.add
-    local.set $dest|147
-    local.get $150
-    local.get $value|148
-    i32.store8 $0
-    local.get $dest|147
-    local.tee $151
-    i32.const 1
-    i32.add
-    local.set $dest|147
-    local.get $151
-    local.get $value|148
-    i32.store8 $0
-    local.get $dest|147
-    local.tee $152
-    i32.const 1
-    i32.add
-    local.set $dest|147
-    local.get $152
-    local.get $value|148
-    i32.store8 $0
-    local.get $dest|147
-    local.tee $153
-    i32.const 1
-    i32.add
-    local.set $dest|147
-    local.get $153
-    local.get $value|148
-    i32.store8 $0
-    local.get $count|149
-    i32.const 4
-    i32.sub
-    local.set $count|149
-   end
-   local.get $dest|147
-   local.set $dest|154
-   local.get $value|148
-   local.set $value|155
-   local.get $count|149
-   local.set $count|156
-   local.get $count|156
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|154
-    local.tee $157
-    i32.const 1
-    i32.add
-    local.set $dest|154
-    local.get $157
-    local.get $value|155
-    i32.store8 $0
-    local.get $dest|154
-    local.tee $158
-    i32.const 1
-    i32.add
-    local.set $dest|154
-    local.get $158
-    local.get $value|155
-    i32.store8 $0
-    local.get $count|156
-    i32.const 2
-    i32.sub
-    local.set $count|156
-   end
-   local.get $dest|154
-   local.set $dest|159
-   local.get $value|155
-   local.set $value|160
-   local.get $count|156
-   local.set $count|161
-   local.get $count|161
-   if
-    local.get $dest|159
-    local.get $value|160
-    i32.store8 $0
-   end
-   local.get $out|146
-   local.get $prependSize|145
-   i32.add
-   local.set $dest|162
-   local.get $s|142
-   local.set $ptr|163
-   local.get $inSize|143
-   local.set $len|164
-   local.get $len|164
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|162
-    local.set $dest|165
-    local.get $ptr|163
-    local.set $ptr|166
-    local.get $dest|165
-    local.get $ptr|166
-    i64.load $0
-    i64.store $0
-    local.get $dest|162
-    i32.const 8
-    i32.add
-    local.set $dest|162
-    local.get $ptr|163
-    i32.const 8
-    i32.add
-    local.set $ptr|163
-    local.get $len|164
-    i32.const 8
-    i32.sub
-    local.set $len|164
-   end
-   local.get $dest|162
-   local.set $dest|167
-   local.get $ptr|163
-   local.set $ptr|168
-   local.get $len|164
-   local.set $len|169
-   local.get $len|169
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|167
-    local.set $dest|170
-    local.get $ptr|168
-    local.set $ptr|171
-    local.get $dest|170
-    local.get $ptr|171
-    i32.load $0
-    i32.store $0
-    local.get $dest|167
-    i32.const 4
-    i32.add
-    local.set $dest|167
-    local.get $ptr|168
-    i32.const 4
-    i32.add
-    local.set $ptr|168
-    local.get $len|169
-    i32.const 4
-    i32.sub
-    local.set $len|169
-   end
-   local.get $dest|167
-   local.set $dest|172
-   local.get $ptr|168
-   local.set $ptr|173
-   local.get $len|169
-   local.set $len|174
-   local.get $len|174
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|172
-    local.set $dest|175
-    local.get $ptr|173
-    local.set $ptr|176
-    local.get $dest|175
-    local.get $ptr|176
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|172
-    i32.const 2
-    i32.add
-    local.set $dest|172
-    local.get $ptr|173
-    i32.const 2
-    i32.add
-    local.set $ptr|173
-    local.get $len|174
-    i32.const 2
-    i32.sub
-    local.set $len|174
-   end
-   local.get $dest|172
-   local.set $dest|177
-   local.get $ptr|173
-   local.set $ptr|178
-   local.get $len|174
-   local.set $len|179
-   local.get $len|179
-   if
-    local.get $dest|177
-    local.get $ptr|178
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|146
-  end
-  local.tee $day
-  i32.store $0 offset=28
-  i32.const 320
-  local.set $size
-  local.get $size
-  i32.const 1
-  call $~lib/rt/itcms/__new
-  local.set $181
-  block $~lib/copyupto/__copyupto64|inlined.4 (result i32)
-   block $~lib/copyupto/__copyupto64|inlined.3 (result i32)
-    block $~lib/copyupto/__copyupto64|inlined.2 (result i32)
-     block $~lib/copyupto/__copyupto64|inlined.1 (result i32)
-      block $~lib/copyupto/__copyupto64|inlined.0 (result i32)
-       local.get $181
-       local.set $dest|182
-       local.get $week
-       local.set $src
-       local.get $src
-       call $~lib/string/String#get:length
-       local.set $l
-       local.get $l
-       i32.const 64
-       i32.ge_s
-       if
-        local.get $dest|182
-        local.set $dest|185
-        local.get $src
-        local.set $ptr|186
-        local.get $dest|185
-        local.get $ptr|186
-        i64.load $0
-        i64.store $0
-        local.get $dest|185
-        i32.const 8
-        i32.add
-        local.set $dest|185
-        local.get $ptr|186
-        i32.const 8
-        i32.add
-        local.set $ptr|186
-        local.get $dest|185
-        local.get $ptr|186
-        i64.load $0
-        i64.store $0
-        local.get $dest|185
-        i32.const 8
-        i32.add
-        local.set $dest|185
-        local.get $ptr|186
-        i32.const 8
-        i32.add
-        local.set $ptr|186
-        local.get $dest|185
-        local.get $ptr|186
-        i64.load $0
-        i64.store $0
-        local.get $dest|185
-        i32.const 8
-        i32.add
-        local.set $dest|185
-        local.get $ptr|186
-        i32.const 8
-        i32.add
-        local.set $ptr|186
-        local.get $dest|185
-        local.get $ptr|186
-        i64.load $0
-        i64.store $0
-        local.get $dest|185
-        i32.const 8
-        i32.add
-        local.set $dest|185
-        local.get $ptr|186
-        i32.const 8
-        i32.add
-        local.set $ptr|186
-        local.get $dest|185
-        local.get $ptr|186
-        i64.load $0
-        i64.store $0
-        local.get $dest|185
-        i32.const 8
-        i32.add
-        local.set $dest|185
-        local.get $ptr|186
-        i32.const 8
-        i32.add
-        local.set $ptr|186
-        local.get $dest|185
-        local.get $ptr|186
-        i64.load $0
-        i64.store $0
-        local.get $dest|185
-        i32.const 8
-        i32.add
-        local.set $dest|185
-        local.get $ptr|186
-        i32.const 8
-        i32.add
-        local.set $ptr|186
-        local.get $dest|185
-        local.get $ptr|186
-        i64.load $0
-        i64.store $0
-        local.get $dest|185
-        i32.const 8
-        i32.add
-        local.set $dest|185
-        local.get $ptr|186
-        i32.const 8
-        i32.add
-        local.set $ptr|186
-        local.get $dest|185
-        local.get $ptr|186
-        i64.load $0
-        i64.store $0
-        local.get $dest|182
-        i32.const 64
-        i32.add
-        br $~lib/copyupto/__copyupto64|inlined.0
-       end
-       local.get $dest|182
-       local.set $dest|187
-       local.get $src
-       local.set $ptr|188
-       local.get $l
-       local.set $len|189
-       local.get $len|189
-       i32.const 32
-       i32.ge_s
-       if
-        local.get $dest|187
-        local.set $dest|190
-        local.get $ptr|188
-        local.set $ptr|191
-        local.get $dest|190
-        local.get $ptr|191
-        i64.load $0
-        i64.store $0
-        local.get $dest|190
-        i32.const 8
-        i32.add
-        local.set $dest|190
-        local.get $ptr|191
-        i32.const 8
-        i32.add
-        local.set $ptr|191
-        local.get $dest|190
-        local.get $ptr|191
-        i64.load $0
-        i64.store $0
-        local.get $dest|190
-        i32.const 8
-        i32.add
-        local.set $dest|190
-        local.get $ptr|191
-        i32.const 8
-        i32.add
-        local.set $ptr|191
-        local.get $dest|190
-        local.get $ptr|191
-        i64.load $0
-        i64.store $0
-        local.get $dest|190
-        i32.const 8
-        i32.add
-        local.set $dest|190
-        local.get $ptr|191
-        i32.const 8
-        i32.add
-        local.set $ptr|191
-        local.get $dest|190
-        local.get $ptr|191
-        i64.load $0
-        i64.store $0
-        local.get $dest|187
-        i32.const 32
-        i32.add
-        local.set $dest|187
-        local.get $ptr|188
-        i32.const 32
-        i32.add
-        local.set $ptr|188
-        local.get $len|189
-        i32.const 32
-        i32.sub
-        local.set $len|189
-       end
-       local.get $dest|187
-       local.set $dest|192
-       local.get $ptr|188
-       local.set $ptr|193
-       local.get $len|189
-       local.set $len|194
-       local.get $len|194
-       i32.const 16
-       i32.ge_s
-       if
-        local.get $dest|192
-        local.set $dest|195
-        local.get $ptr|193
-        local.set $ptr|196
-        local.get $dest|195
-        local.get $ptr|196
-        i64.load $0
-        i64.store $0
-        local.get $dest|195
-        i32.const 8
-        i32.add
-        local.set $dest|195
-        local.get $ptr|196
-        i32.const 8
-        i32.add
-        local.set $ptr|196
-        local.get $dest|195
-        local.get $ptr|196
-        i64.load $0
-        i64.store $0
-        local.get $dest|192
-        i32.const 16
-        i32.add
-        local.set $dest|192
-        local.get $ptr|193
-        i32.const 16
-        i32.add
-        local.set $ptr|193
-        local.get $len|194
-        i32.const 16
-        i32.sub
-        local.set $len|194
-       end
-       local.get $dest|192
-       local.set $dest|197
-       local.get $ptr|193
-       local.set $ptr|198
-       local.get $len|194
-       local.set $len|199
-       local.get $len|199
-       i32.const 8
-       i32.ge_s
-       if
-        local.get $dest|197
-        local.set $dest|200
-        local.get $ptr|198
-        local.set $ptr|201
-        local.get $dest|200
-        local.get $ptr|201
-        i64.load $0
-        i64.store $0
-        local.get $dest|197
-        i32.const 8
-        i32.add
-        local.set $dest|197
-        local.get $ptr|198
-        i32.const 8
-        i32.add
-        local.set $ptr|198
-        local.get $len|199
-        i32.const 8
-        i32.sub
-        local.set $len|199
-       end
-       local.get $dest|197
-       local.set $dest|202
-       local.get $ptr|198
-       local.set $ptr|203
-       local.get $len|199
-       local.set $len|204
-       local.get $len|204
-       i32.const 4
-       i32.ge_s
-       if
-        local.get $dest|202
-        local.set $dest|205
-        local.get $ptr|203
-        local.set $ptr|206
-        local.get $dest|205
-        local.get $ptr|206
-        i32.load $0
-        i32.store $0
-        local.get $dest|202
-        i32.const 4
-        i32.add
-        local.set $dest|202
-        local.get $ptr|203
-        i32.const 4
-        i32.add
-        local.set $ptr|203
-        local.get $len|204
-        i32.const 4
-        i32.sub
-        local.set $len|204
-       end
-       local.get $dest|202
-       local.set $dest|207
-       local.get $ptr|203
-       local.set $ptr|208
-       local.get $len|204
-       local.set $len|209
-       local.get $len|209
-       i32.const 2
-       i32.ge_s
-       if
-        local.get $dest|207
-        local.set $dest|210
-        local.get $ptr|208
-        local.set $ptr|211
-        local.get $dest|210
-        local.get $ptr|211
-        i32.load16_u $0
-        i32.store16 $0
-        local.get $dest|207
-        i32.const 2
-        i32.add
-        local.set $dest|207
-        local.get $ptr|208
-        i32.const 2
-        i32.add
-        local.set $ptr|208
-        local.get $len|209
-        i32.const 2
-        i32.sub
-        local.set $len|209
-       end
-       local.get $dest|207
-       local.set $dest|212
-       local.get $ptr|208
-       local.set $ptr|213
-       local.get $len|209
-       local.set $len|214
-       local.get $len|214
-       if
-        local.get $dest|212
-        local.get $ptr|213
-        i32.load8_u $0
-        i32.store8 $0
-       end
-       local.get $dest|182
-       local.get $l
-       i32.add
-      end
-      local.set $dest|215
-      local.get $month
-      local.set $src|216
-      local.get $src|216
-      call $~lib/string/String#get:length
-      local.set $l|217
-      local.get $l|217
-      i32.const 64
-      i32.ge_s
-      if
-       local.get $dest|215
-       local.set $dest|218
-       local.get $src|216
-       local.set $ptr|219
-       local.get $dest|218
-       local.get $ptr|219
-       i64.load $0
-       i64.store $0
-       local.get $dest|218
-       i32.const 8
-       i32.add
-       local.set $dest|218
-       local.get $ptr|219
-       i32.const 8
-       i32.add
-       local.set $ptr|219
-       local.get $dest|218
-       local.get $ptr|219
-       i64.load $0
-       i64.store $0
-       local.get $dest|218
-       i32.const 8
-       i32.add
-       local.set $dest|218
-       local.get $ptr|219
-       i32.const 8
-       i32.add
-       local.set $ptr|219
-       local.get $dest|218
-       local.get $ptr|219
-       i64.load $0
-       i64.store $0
-       local.get $dest|218
-       i32.const 8
-       i32.add
-       local.set $dest|218
-       local.get $ptr|219
-       i32.const 8
-       i32.add
-       local.set $ptr|219
-       local.get $dest|218
-       local.get $ptr|219
-       i64.load $0
-       i64.store $0
-       local.get $dest|218
-       i32.const 8
-       i32.add
-       local.set $dest|218
-       local.get $ptr|219
-       i32.const 8
-       i32.add
-       local.set $ptr|219
-       local.get $dest|218
-       local.get $ptr|219
-       i64.load $0
-       i64.store $0
-       local.get $dest|218
-       i32.const 8
-       i32.add
-       local.set $dest|218
-       local.get $ptr|219
-       i32.const 8
-       i32.add
-       local.set $ptr|219
-       local.get $dest|218
-       local.get $ptr|219
-       i64.load $0
-       i64.store $0
-       local.get $dest|218
-       i32.const 8
-       i32.add
-       local.set $dest|218
-       local.get $ptr|219
-       i32.const 8
-       i32.add
-       local.set $ptr|219
-       local.get $dest|218
-       local.get $ptr|219
-       i64.load $0
-       i64.store $0
-       local.get $dest|218
-       i32.const 8
-       i32.add
-       local.set $dest|218
-       local.get $ptr|219
-       i32.const 8
-       i32.add
-       local.set $ptr|219
-       local.get $dest|218
-       local.get $ptr|219
-       i64.load $0
-       i64.store $0
-       local.get $dest|215
-       i32.const 64
-       i32.add
-       br $~lib/copyupto/__copyupto64|inlined.1
-      end
-      local.get $dest|215
-      local.set $dest|220
-      local.get $src|216
-      local.set $ptr|221
-      local.get $l|217
-      local.set $len|222
-      local.get $len|222
-      i32.const 32
-      i32.ge_s
-      if
-       local.get $dest|220
-       local.set $dest|223
-       local.get $ptr|221
-       local.set $ptr|224
-       local.get $dest|223
-       local.get $ptr|224
-       i64.load $0
-       i64.store $0
-       local.get $dest|223
-       i32.const 8
-       i32.add
-       local.set $dest|223
-       local.get $ptr|224
-       i32.const 8
-       i32.add
-       local.set $ptr|224
-       local.get $dest|223
-       local.get $ptr|224
-       i64.load $0
-       i64.store $0
-       local.get $dest|223
-       i32.const 8
-       i32.add
-       local.set $dest|223
-       local.get $ptr|224
-       i32.const 8
-       i32.add
-       local.set $ptr|224
-       local.get $dest|223
-       local.get $ptr|224
-       i64.load $0
-       i64.store $0
-       local.get $dest|223
-       i32.const 8
-       i32.add
-       local.set $dest|223
-       local.get $ptr|224
-       i32.const 8
-       i32.add
-       local.set $ptr|224
-       local.get $dest|223
-       local.get $ptr|224
-       i64.load $0
-       i64.store $0
-       local.get $dest|220
-       i32.const 32
-       i32.add
-       local.set $dest|220
-       local.get $ptr|221
-       i32.const 32
-       i32.add
-       local.set $ptr|221
-       local.get $len|222
-       i32.const 32
-       i32.sub
-       local.set $len|222
-      end
-      local.get $dest|220
-      local.set $dest|225
-      local.get $ptr|221
-      local.set $ptr|226
-      local.get $len|222
-      local.set $len|227
-      local.get $len|227
-      i32.const 16
-      i32.ge_s
-      if
-       local.get $dest|225
-       local.set $dest|228
-       local.get $ptr|226
-       local.set $ptr|229
-       local.get $dest|228
-       local.get $ptr|229
-       i64.load $0
-       i64.store $0
-       local.get $dest|228
-       i32.const 8
-       i32.add
-       local.set $dest|228
-       local.get $ptr|229
-       i32.const 8
-       i32.add
-       local.set $ptr|229
-       local.get $dest|228
-       local.get $ptr|229
-       i64.load $0
-       i64.store $0
-       local.get $dest|225
-       i32.const 16
-       i32.add
-       local.set $dest|225
-       local.get $ptr|226
-       i32.const 16
-       i32.add
-       local.set $ptr|226
-       local.get $len|227
-       i32.const 16
-       i32.sub
-       local.set $len|227
-      end
-      local.get $dest|225
-      local.set $dest|230
-      local.get $ptr|226
-      local.set $ptr|231
-      local.get $len|227
-      local.set $len|232
-      local.get $len|232
-      i32.const 8
-      i32.ge_s
-      if
-       local.get $dest|230
-       local.set $dest|233
-       local.get $ptr|231
-       local.set $ptr|234
-       local.get $dest|233
-       local.get $ptr|234
-       i64.load $0
-       i64.store $0
-       local.get $dest|230
-       i32.const 8
-       i32.add
-       local.set $dest|230
-       local.get $ptr|231
-       i32.const 8
-       i32.add
-       local.set $ptr|231
-       local.get $len|232
-       i32.const 8
-       i32.sub
-       local.set $len|232
-      end
-      local.get $dest|230
-      local.set $dest|235
-      local.get $ptr|231
-      local.set $ptr|236
-      local.get $len|232
-      local.set $len|237
-      local.get $len|237
-      i32.const 4
-      i32.ge_s
-      if
-       local.get $dest|235
-       local.set $dest|238
-       local.get $ptr|236
-       local.set $ptr|239
-       local.get $dest|238
-       local.get $ptr|239
-       i32.load $0
-       i32.store $0
-       local.get $dest|235
-       i32.const 4
-       i32.add
-       local.set $dest|235
-       local.get $ptr|236
-       i32.const 4
-       i32.add
-       local.set $ptr|236
-       local.get $len|237
-       i32.const 4
-       i32.sub
-       local.set $len|237
-      end
-      local.get $dest|235
-      local.set $dest|240
-      local.get $ptr|236
-      local.set $ptr|241
-      local.get $len|237
-      local.set $len|242
-      local.get $len|242
-      i32.const 2
-      i32.ge_s
-      if
-       local.get $dest|240
-       local.set $dest|243
-       local.get $ptr|241
-       local.set $ptr|244
-       local.get $dest|243
-       local.get $ptr|244
-       i32.load16_u $0
-       i32.store16 $0
-       local.get $dest|240
-       i32.const 2
-       i32.add
-       local.set $dest|240
-       local.get $ptr|241
-       i32.const 2
-       i32.add
-       local.set $ptr|241
-       local.get $len|242
-       i32.const 2
-       i32.sub
-       local.set $len|242
-      end
-      local.get $dest|240
-      local.set $dest|245
-      local.get $ptr|241
-      local.set $ptr|246
-      local.get $len|242
-      local.set $len|247
-      local.get $len|247
-      if
-       local.get $dest|245
-       local.get $ptr|246
-       i32.load8_u $0
-       i32.store8 $0
-      end
-      local.get $dest|215
-      local.get $l|217
-      i32.add
-     end
-     local.set $dest|248
-     local.get $day
-     local.set $src|249
-     local.get $src|249
-     call $~lib/string/String#get:length
-     local.set $l|250
-     local.get $l|250
-     i32.const 64
-     i32.ge_s
-     if
-      local.get $dest|248
-      local.set $dest|251
-      local.get $src|249
-      local.set $ptr|252
-      local.get $dest|251
-      local.get $ptr|252
-      i64.load $0
-      i64.store $0
-      local.get $dest|251
-      i32.const 8
-      i32.add
-      local.set $dest|251
-      local.get $ptr|252
-      i32.const 8
-      i32.add
-      local.set $ptr|252
-      local.get $dest|251
-      local.get $ptr|252
-      i64.load $0
-      i64.store $0
-      local.get $dest|251
-      i32.const 8
-      i32.add
-      local.set $dest|251
-      local.get $ptr|252
-      i32.const 8
-      i32.add
-      local.set $ptr|252
-      local.get $dest|251
-      local.get $ptr|252
-      i64.load $0
-      i64.store $0
-      local.get $dest|251
-      i32.const 8
-      i32.add
-      local.set $dest|251
-      local.get $ptr|252
-      i32.const 8
-      i32.add
-      local.set $ptr|252
-      local.get $dest|251
-      local.get $ptr|252
-      i64.load $0
-      i64.store $0
-      local.get $dest|251
-      i32.const 8
-      i32.add
-      local.set $dest|251
-      local.get $ptr|252
-      i32.const 8
-      i32.add
-      local.set $ptr|252
-      local.get $dest|251
-      local.get $ptr|252
-      i64.load $0
-      i64.store $0
-      local.get $dest|251
-      i32.const 8
-      i32.add
-      local.set $dest|251
-      local.get $ptr|252
-      i32.const 8
-      i32.add
-      local.set $ptr|252
-      local.get $dest|251
-      local.get $ptr|252
-      i64.load $0
-      i64.store $0
-      local.get $dest|251
-      i32.const 8
-      i32.add
-      local.set $dest|251
-      local.get $ptr|252
-      i32.const 8
-      i32.add
-      local.set $ptr|252
-      local.get $dest|251
-      local.get $ptr|252
-      i64.load $0
-      i64.store $0
-      local.get $dest|251
-      i32.const 8
-      i32.add
-      local.set $dest|251
-      local.get $ptr|252
-      i32.const 8
-      i32.add
-      local.set $ptr|252
-      local.get $dest|251
-      local.get $ptr|252
-      i64.load $0
-      i64.store $0
-      local.get $dest|248
-      i32.const 64
-      i32.add
-      br $~lib/copyupto/__copyupto64|inlined.2
-     end
-     local.get $dest|248
-     local.set $dest|253
-     local.get $src|249
-     local.set $ptr|254
-     local.get $l|250
-     local.set $len|255
-     local.get $len|255
-     i32.const 32
-     i32.ge_s
-     if
-      local.get $dest|253
-      local.set $dest|256
-      local.get $ptr|254
-      local.set $ptr|257
-      local.get $dest|256
-      local.get $ptr|257
-      i64.load $0
-      i64.store $0
-      local.get $dest|256
-      i32.const 8
-      i32.add
-      local.set $dest|256
-      local.get $ptr|257
-      i32.const 8
-      i32.add
-      local.set $ptr|257
-      local.get $dest|256
-      local.get $ptr|257
-      i64.load $0
-      i64.store $0
-      local.get $dest|256
-      i32.const 8
-      i32.add
-      local.set $dest|256
-      local.get $ptr|257
-      i32.const 8
-      i32.add
-      local.set $ptr|257
-      local.get $dest|256
-      local.get $ptr|257
-      i64.load $0
-      i64.store $0
-      local.get $dest|256
-      i32.const 8
-      i32.add
-      local.set $dest|256
-      local.get $ptr|257
-      i32.const 8
-      i32.add
-      local.set $ptr|257
-      local.get $dest|256
-      local.get $ptr|257
-      i64.load $0
-      i64.store $0
-      local.get $dest|253
-      i32.const 32
-      i32.add
-      local.set $dest|253
-      local.get $ptr|254
-      i32.const 32
-      i32.add
-      local.set $ptr|254
-      local.get $len|255
-      i32.const 32
-      i32.sub
-      local.set $len|255
-     end
-     local.get $dest|253
-     local.set $dest|258
-     local.get $ptr|254
-     local.set $ptr|259
-     local.get $len|255
-     local.set $len|260
-     local.get $len|260
-     i32.const 16
-     i32.ge_s
-     if
-      local.get $dest|258
-      local.set $dest|261
-      local.get $ptr|259
-      local.set $ptr|262
-      local.get $dest|261
-      local.get $ptr|262
-      i64.load $0
-      i64.store $0
-      local.get $dest|261
-      i32.const 8
-      i32.add
-      local.set $dest|261
-      local.get $ptr|262
-      i32.const 8
-      i32.add
-      local.set $ptr|262
-      local.get $dest|261
-      local.get $ptr|262
-      i64.load $0
-      i64.store $0
-      local.get $dest|258
-      i32.const 16
-      i32.add
-      local.set $dest|258
-      local.get $ptr|259
-      i32.const 16
-      i32.add
-      local.set $ptr|259
-      local.get $len|260
-      i32.const 16
-      i32.sub
-      local.set $len|260
-     end
-     local.get $dest|258
-     local.set $dest|263
-     local.get $ptr|259
-     local.set $ptr|264
-     local.get $len|260
-     local.set $len|265
-     local.get $len|265
-     i32.const 8
-     i32.ge_s
-     if
-      local.get $dest|263
-      local.set $dest|266
-      local.get $ptr|264
-      local.set $ptr|267
-      local.get $dest|266
-      local.get $ptr|267
-      i64.load $0
-      i64.store $0
-      local.get $dest|263
-      i32.const 8
-      i32.add
-      local.set $dest|263
-      local.get $ptr|264
-      i32.const 8
-      i32.add
-      local.set $ptr|264
-      local.get $len|265
-      i32.const 8
-      i32.sub
-      local.set $len|265
-     end
-     local.get $dest|263
-     local.set $dest|268
-     local.get $ptr|264
-     local.set $ptr|269
-     local.get $len|265
-     local.set $len|270
-     local.get $len|270
-     i32.const 4
-     i32.ge_s
-     if
-      local.get $dest|268
-      local.set $dest|271
-      local.get $ptr|269
-      local.set $ptr|272
-      local.get $dest|271
-      local.get $ptr|272
-      i32.load $0
-      i32.store $0
-      local.get $dest|268
-      i32.const 4
-      i32.add
-      local.set $dest|268
-      local.get $ptr|269
-      i32.const 4
-      i32.add
-      local.set $ptr|269
-      local.get $len|270
-      i32.const 4
-      i32.sub
-      local.set $len|270
-     end
-     local.get $dest|268
-     local.set $dest|273
-     local.get $ptr|269
-     local.set $ptr|274
-     local.get $len|270
-     local.set $len|275
-     local.get $len|275
-     i32.const 2
-     i32.ge_s
-     if
-      local.get $dest|273
-      local.set $dest|276
-      local.get $ptr|274
-      local.set $ptr|277
-      local.get $dest|276
-      local.get $ptr|277
-      i32.load16_u $0
-      i32.store16 $0
-      local.get $dest|273
-      i32.const 2
-      i32.add
-      local.set $dest|273
-      local.get $ptr|274
-      i32.const 2
-      i32.add
-      local.set $ptr|274
-      local.get $len|275
-      i32.const 2
-      i32.sub
-      local.set $len|275
-     end
-     local.get $dest|273
-     local.set $dest|278
-     local.get $ptr|274
-     local.set $ptr|279
-     local.get $len|275
-     local.set $len|280
-     local.get $len|280
-     if
-      local.get $dest|278
-      local.get $ptr|279
-      i32.load8_u $0
-      i32.store8 $0
-     end
-     local.get $dest|248
-     local.get $l|250
-     i32.add
-    end
-    local.set $dest|281
-    global.get $~lib/memory/__stack_pointer
-    local.get $yr
-    i32.const 0
-    i32.lt_s
-    if (result i32)
-     i32.const 1072
-    else
-     i32.const 1104
-    end
-    local.tee $src|282
-    i32.store $0 offset=32
-    local.get $src|282
-    call $~lib/string/String#get:length
-    local.set $l|283
-    local.get $l|283
-    i32.const 64
-    i32.ge_s
-    if
-     local.get $dest|281
-     local.set $dest|284
-     local.get $src|282
-     local.set $ptr|285
-     local.get $dest|284
-     local.get $ptr|285
-     i64.load $0
-     i64.store $0
-     local.get $dest|284
-     i32.const 8
-     i32.add
-     local.set $dest|284
-     local.get $ptr|285
-     i32.const 8
-     i32.add
-     local.set $ptr|285
-     local.get $dest|284
-     local.get $ptr|285
-     i64.load $0
-     i64.store $0
-     local.get $dest|284
-     i32.const 8
-     i32.add
-     local.set $dest|284
-     local.get $ptr|285
-     i32.const 8
-     i32.add
-     local.set $ptr|285
-     local.get $dest|284
-     local.get $ptr|285
-     i64.load $0
-     i64.store $0
-     local.get $dest|284
-     i32.const 8
-     i32.add
-     local.set $dest|284
-     local.get $ptr|285
-     i32.const 8
-     i32.add
-     local.set $ptr|285
-     local.get $dest|284
-     local.get $ptr|285
-     i64.load $0
-     i64.store $0
-     local.get $dest|284
-     i32.const 8
-     i32.add
-     local.set $dest|284
-     local.get $ptr|285
-     i32.const 8
-     i32.add
-     local.set $ptr|285
-     local.get $dest|284
-     local.get $ptr|285
-     i64.load $0
-     i64.store $0
-     local.get $dest|284
-     i32.const 8
-     i32.add
-     local.set $dest|284
-     local.get $ptr|285
-     i32.const 8
-     i32.add
-     local.set $ptr|285
-     local.get $dest|284
-     local.get $ptr|285
-     i64.load $0
-     i64.store $0
-     local.get $dest|284
-     i32.const 8
-     i32.add
-     local.set $dest|284
-     local.get $ptr|285
-     i32.const 8
-     i32.add
-     local.set $ptr|285
-     local.get $dest|284
-     local.get $ptr|285
-     i64.load $0
-     i64.store $0
-     local.get $dest|284
-     i32.const 8
-     i32.add
-     local.set $dest|284
-     local.get $ptr|285
-     i32.const 8
-     i32.add
-     local.set $ptr|285
-     local.get $dest|284
-     local.get $ptr|285
-     i64.load $0
-     i64.store $0
-     local.get $dest|281
-     i32.const 64
-     i32.add
-     br $~lib/copyupto/__copyupto64|inlined.3
-    end
-    local.get $dest|281
-    local.set $dest|286
-    local.get $src|282
-    local.set $ptr|287
-    local.get $l|283
-    local.set $len|288
-    local.get $len|288
-    i32.const 32
-    i32.ge_s
-    if
-     local.get $dest|286
-     local.set $dest|289
-     local.get $ptr|287
-     local.set $ptr|290
-     local.get $dest|289
-     local.get $ptr|290
-     i64.load $0
-     i64.store $0
-     local.get $dest|289
-     i32.const 8
-     i32.add
-     local.set $dest|289
-     local.get $ptr|290
-     i32.const 8
-     i32.add
-     local.set $ptr|290
-     local.get $dest|289
-     local.get $ptr|290
-     i64.load $0
-     i64.store $0
-     local.get $dest|289
-     i32.const 8
-     i32.add
-     local.set $dest|289
-     local.get $ptr|290
-     i32.const 8
-     i32.add
-     local.set $ptr|290
-     local.get $dest|289
-     local.get $ptr|290
-     i64.load $0
-     i64.store $0
-     local.get $dest|289
-     i32.const 8
-     i32.add
-     local.set $dest|289
-     local.get $ptr|290
-     i32.const 8
-     i32.add
-     local.set $ptr|290
-     local.get $dest|289
-     local.get $ptr|290
-     i64.load $0
-     i64.store $0
-     local.get $dest|286
-     i32.const 32
-     i32.add
-     local.set $dest|286
-     local.get $ptr|287
-     i32.const 32
-     i32.add
-     local.set $ptr|287
-     local.get $len|288
-     i32.const 32
-     i32.sub
-     local.set $len|288
-    end
-    local.get $dest|286
-    local.set $dest|291
-    local.get $ptr|287
-    local.set $ptr|292
-    local.get $len|288
-    local.set $len|293
-    local.get $len|293
-    i32.const 16
-    i32.ge_s
-    if
-     local.get $dest|291
-     local.set $dest|294
-     local.get $ptr|292
-     local.set $ptr|295
-     local.get $dest|294
-     local.get $ptr|295
-     i64.load $0
-     i64.store $0
-     local.get $dest|294
-     i32.const 8
-     i32.add
-     local.set $dest|294
-     local.get $ptr|295
-     i32.const 8
-     i32.add
-     local.set $ptr|295
-     local.get $dest|294
-     local.get $ptr|295
-     i64.load $0
-     i64.store $0
-     local.get $dest|291
-     i32.const 16
-     i32.add
-     local.set $dest|291
-     local.get $ptr|292
-     i32.const 16
-     i32.add
-     local.set $ptr|292
-     local.get $len|293
-     i32.const 16
-     i32.sub
-     local.set $len|293
-    end
-    local.get $dest|291
-    local.set $dest|296
-    local.get $ptr|292
-    local.set $ptr|297
-    local.get $len|293
-    local.set $len|298
-    local.get $len|298
-    i32.const 8
-    i32.ge_s
-    if
-     local.get $dest|296
-     local.set $dest|299
-     local.get $ptr|297
-     local.set $ptr|300
-     local.get $dest|299
-     local.get $ptr|300
-     i64.load $0
-     i64.store $0
-     local.get $dest|296
-     i32.const 8
-     i32.add
-     local.set $dest|296
-     local.get $ptr|297
-     i32.const 8
-     i32.add
-     local.set $ptr|297
-     local.get $len|298
-     i32.const 8
-     i32.sub
-     local.set $len|298
-    end
-    local.get $dest|296
-    local.set $dest|301
-    local.get $ptr|297
-    local.set $ptr|302
-    local.get $len|298
-    local.set $len|303
-    local.get $len|303
-    i32.const 4
-    i32.ge_s
-    if
-     local.get $dest|301
-     local.set $dest|304
-     local.get $ptr|302
-     local.set $ptr|305
-     local.get $dest|304
-     local.get $ptr|305
-     i32.load $0
-     i32.store $0
-     local.get $dest|301
-     i32.const 4
-     i32.add
-     local.set $dest|301
-     local.get $ptr|302
-     i32.const 4
-     i32.add
-     local.set $ptr|302
-     local.get $len|303
-     i32.const 4
-     i32.sub
-     local.set $len|303
-    end
-    local.get $dest|301
-    local.set $dest|306
-    local.get $ptr|302
-    local.set $ptr|307
-    local.get $len|303
-    local.set $len|308
-    local.get $len|308
-    i32.const 2
-    i32.ge_s
-    if
-     local.get $dest|306
-     local.set $dest|309
-     local.get $ptr|307
-     local.set $ptr|310
-     local.get $dest|309
-     local.get $ptr|310
-     i32.load16_u $0
-     i32.store16 $0
-     local.get $dest|306
-     i32.const 2
-     i32.add
-     local.set $dest|306
-     local.get $ptr|307
-     i32.const 2
-     i32.add
-     local.set $ptr|307
-     local.get $len|308
-     i32.const 2
-     i32.sub
-     local.set $len|308
-    end
-    local.get $dest|306
-    local.set $dest|311
-    local.get $ptr|307
-    local.set $ptr|312
-    local.get $len|308
-    local.set $len|313
-    local.get $len|313
-    if
-     local.get $dest|311
-     local.get $ptr|312
-     i32.load8_u $0
-     i32.store8 $0
-    end
-    local.get $dest|281
-    local.get $l|283
-    i32.add
-   end
-   local.set $dest|314
-   local.get $year
-   local.set $src|315
-   local.get $src|315
-   call $~lib/string/String#get:length
-   local.set $l|316
-   local.get $l|316
-   i32.const 64
-   i32.ge_s
-   if
-    local.get $dest|314
-    local.set $dest|317
-    local.get $src|315
-    local.set $ptr|318
-    local.get $dest|317
-    local.get $ptr|318
-    i64.load $0
-    i64.store $0
-    local.get $dest|317
-    i32.const 8
-    i32.add
-    local.set $dest|317
-    local.get $ptr|318
-    i32.const 8
-    i32.add
-    local.set $ptr|318
-    local.get $dest|317
-    local.get $ptr|318
-    i64.load $0
-    i64.store $0
-    local.get $dest|317
-    i32.const 8
-    i32.add
-    local.set $dest|317
-    local.get $ptr|318
-    i32.const 8
-    i32.add
-    local.set $ptr|318
-    local.get $dest|317
-    local.get $ptr|318
-    i64.load $0
-    i64.store $0
-    local.get $dest|317
-    i32.const 8
-    i32.add
-    local.set $dest|317
-    local.get $ptr|318
-    i32.const 8
-    i32.add
-    local.set $ptr|318
-    local.get $dest|317
-    local.get $ptr|318
-    i64.load $0
-    i64.store $0
-    local.get $dest|317
-    i32.const 8
-    i32.add
-    local.set $dest|317
-    local.get $ptr|318
-    i32.const 8
-    i32.add
-    local.set $ptr|318
-    local.get $dest|317
-    local.get $ptr|318
-    i64.load $0
-    i64.store $0
-    local.get $dest|317
-    i32.const 8
-    i32.add
-    local.set $dest|317
-    local.get $ptr|318
-    i32.const 8
-    i32.add
-    local.set $ptr|318
-    local.get $dest|317
-    local.get $ptr|318
-    i64.load $0
-    i64.store $0
-    local.get $dest|317
-    i32.const 8
-    i32.add
-    local.set $dest|317
-    local.get $ptr|318
-    i32.const 8
-    i32.add
-    local.set $ptr|318
-    local.get $dest|317
-    local.get $ptr|318
-    i64.load $0
-    i64.store $0
-    local.get $dest|317
-    i32.const 8
-    i32.add
-    local.set $dest|317
-    local.get $ptr|318
-    i32.const 8
-    i32.add
-    local.set $ptr|318
-    local.get $dest|317
-    local.get $ptr|318
-    i64.load $0
-    i64.store $0
-    local.get $dest|314
-    i32.const 64
-    i32.add
-    br $~lib/copyupto/__copyupto64|inlined.4
-   end
-   local.get $dest|314
-   local.set $dest|319
-   local.get $src|315
-   local.set $ptr|320
-   local.get $l|316
-   local.set $len|321
-   local.get $len|321
-   i32.const 32
-   i32.ge_s
-   if
-    local.get $dest|319
-    local.set $dest|322
-    local.get $ptr|320
-    local.set $ptr|323
-    local.get $dest|322
-    local.get $ptr|323
-    i64.load $0
-    i64.store $0
-    local.get $dest|322
-    i32.const 8
-    i32.add
-    local.set $dest|322
-    local.get $ptr|323
-    i32.const 8
-    i32.add
-    local.set $ptr|323
-    local.get $dest|322
-    local.get $ptr|323
-    i64.load $0
-    i64.store $0
-    local.get $dest|322
-    i32.const 8
-    i32.add
-    local.set $dest|322
-    local.get $ptr|323
-    i32.const 8
-    i32.add
-    local.set $ptr|323
-    local.get $dest|322
-    local.get $ptr|323
-    i64.load $0
-    i64.store $0
-    local.get $dest|322
-    i32.const 8
-    i32.add
-    local.set $dest|322
-    local.get $ptr|323
-    i32.const 8
-    i32.add
-    local.set $ptr|323
-    local.get $dest|322
-    local.get $ptr|323
-    i64.load $0
-    i64.store $0
-    local.get $dest|319
-    i32.const 32
-    i32.add
-    local.set $dest|319
-    local.get $ptr|320
-    i32.const 32
-    i32.add
-    local.set $ptr|320
-    local.get $len|321
-    i32.const 32
-    i32.sub
-    local.set $len|321
-   end
-   local.get $dest|319
-   local.set $dest|324
-   local.get $ptr|320
-   local.set $ptr|325
-   local.get $len|321
-   local.set $len|326
-   local.get $len|326
-   i32.const 16
-   i32.ge_s
-   if
-    local.get $dest|324
-    local.set $dest|327
-    local.get $ptr|325
-    local.set $ptr|328
-    local.get $dest|327
-    local.get $ptr|328
-    i64.load $0
-    i64.store $0
-    local.get $dest|327
-    i32.const 8
-    i32.add
-    local.set $dest|327
-    local.get $ptr|328
-    i32.const 8
-    i32.add
-    local.set $ptr|328
-    local.get $dest|327
-    local.get $ptr|328
-    i64.load $0
-    i64.store $0
-    local.get $dest|324
-    i32.const 16
-    i32.add
-    local.set $dest|324
-    local.get $ptr|325
-    i32.const 16
-    i32.add
-    local.set $ptr|325
-    local.get $len|326
-    i32.const 16
-    i32.sub
-    local.set $len|326
-   end
-   local.get $dest|324
-   local.set $dest|329
-   local.get $ptr|325
-   local.set $ptr|330
-   local.get $len|326
-   local.set $len|331
-   local.get $len|331
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|329
-    local.set $dest|332
-    local.get $ptr|330
-    local.set $ptr|333
-    local.get $dest|332
-    local.get $ptr|333
-    i64.load $0
-    i64.store $0
-    local.get $dest|329
-    i32.const 8
-    i32.add
-    local.set $dest|329
-    local.get $ptr|330
-    i32.const 8
-    i32.add
-    local.set $ptr|330
-    local.get $len|331
-    i32.const 8
-    i32.sub
-    local.set $len|331
-   end
-   local.get $dest|329
-   local.set $dest|334
-   local.get $ptr|330
-   local.set $ptr|335
-   local.get $len|331
-   local.set $len|336
-   local.get $len|336
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|334
-    local.set $dest|337
-    local.get $ptr|335
-    local.set $ptr|338
-    local.get $dest|337
-    local.get $ptr|338
-    i32.load $0
-    i32.store $0
-    local.get $dest|334
-    i32.const 4
-    i32.add
-    local.set $dest|334
-    local.get $ptr|335
-    i32.const 4
-    i32.add
-    local.set $ptr|335
-    local.get $len|336
-    i32.const 4
-    i32.sub
-    local.set $len|336
-   end
-   local.get $dest|334
-   local.set $dest|339
-   local.get $ptr|335
-   local.set $ptr|340
-   local.get $len|336
-   local.set $len|341
-   local.get $len|341
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|339
-    local.set $dest|342
-    local.get $ptr|340
-    local.set $ptr|343
-    local.get $dest|342
-    local.get $ptr|343
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|339
-    i32.const 2
-    i32.add
-    local.set $dest|339
-    local.get $ptr|340
-    i32.const 2
-    i32.add
-    local.set $ptr|340
-    local.get $len|341
-    i32.const 2
-    i32.sub
-    local.set $len|341
-   end
-   local.get $dest|339
-   local.set $dest|344
-   local.get $ptr|340
-   local.set $ptr|345
-   local.get $len|341
-   local.set $len|346
-   local.get $len|346
-   if
-    local.get $dest|344
-    local.get $ptr|345
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $dest|314
-   local.get $l|316
-   i32.add
-  end
-  local.set $dest|347
-  local.get $181
-  local.set $src|348
-  local.get $src|348
-  i32.const 20
-  i32.sub
-  local.get $dest|347
-  local.get $src|348
-  i32.sub
-  call $~lib/rt/common/OBJECT#set:rtSize
-  local.get $src|348
-  local.set $350
-  global.get $~lib/memory/__stack_pointer
-  i32.const 36
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $350
- )
- (func $~lib/date/Date#toTimeString (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $this|1 i32)
-  (local $a i64)
-  (local $b i64)
-  (local $m i64)
-  (local $value i32)
-  (local $padding i32)
-  (local $this|7 i32)
-  (local $value|8 i32)
-  (local $sign i32)
-  (local $decimals i32)
-  (local $out i32)
-  (local $end i32)
-  (local $num i32)
-  (local $t i32)
-  (local $r i32)
-  (local $end|16 i32)
-  (local $num|17 i32)
-  (local $t|18 i32)
-  (local $r|19 i32)
-  (local $end|20 i32)
-  (local $num|21 i32)
-  (local $t|22 i32)
-  (local $r|23 i32)
-  (local $end|24 i32)
-  (local $num|25 i32)
-  (local $t|26 i32)
-  (local $r|27 i32)
-  (local $end|28 i32)
-  (local $num|29 i32)
-  (local $t|30 i32)
-  (local $r|31 i32)
-  (local $end|32 i32)
-  (local $num|33 i32)
-  (local $t|34 i32)
-  (local $r|35 i32)
-  (local $end|36 i32)
-  (local $num|37 i32)
-  (local $t|38 i32)
-  (local $r|39 i32)
-  (local $end|40 i32)
-  (local $num|41 i32)
-  (local $t|42 i32)
-  (local $r|43 i32)
-  (local $end|44 i32)
-  (local $num|45 i32)
-  (local $t|46 i32)
-  (local $r|47 i32)
-  (local $end|48 i32)
-  (local $num|49 i32)
-  (local $s i32)
-  (local $inSize i32)
-  (local $targetSize i32)
-  (local $prependSize i32)
-  (local $out|54 i32)
-  (local $dest i32)
-  (local $value|56 i32)
-  (local $count i32)
-  (local $58 i32)
-  (local $59 i32)
-  (local $60 i32)
-  (local $61 i32)
-  (local $dest|62 i32)
-  (local $value|63 i32)
-  (local $count|64 i32)
-  (local $65 i32)
-  (local $66 i32)
-  (local $dest|67 i32)
-  (local $value|68 i32)
-  (local $count|69 i32)
-  (local $dest|70 i32)
-  (local $ptr i32)
-  (local $len i32)
-  (local $dest|73 i32)
-  (local $ptr|74 i32)
-  (local $dest|75 i32)
-  (local $ptr|76 i32)
-  (local $len|77 i32)
-  (local $dest|78 i32)
-  (local $ptr|79 i32)
-  (local $dest|80 i32)
-  (local $ptr|81 i32)
-  (local $len|82 i32)
-  (local $dest|83 i32)
-  (local $ptr|84 i32)
-  (local $dest|85 i32)
-  (local $ptr|86 i32)
-  (local $len|87 i32)
-  (local $hours i32)
-  (local $this|89 i32)
-  (local $a|90 i64)
-  (local $b|91 i64)
-  (local $m|92 i64)
-  (local $value|93 i32)
-  (local $padding|94 i32)
-  (local $this|95 i32)
-  (local $value|96 i32)
-  (local $sign|97 i32)
-  (local $decimals|98 i32)
-  (local $out|99 i32)
-  (local $end|100 i32)
-  (local $num|101 i32)
-  (local $t|102 i32)
-  (local $r|103 i32)
-  (local $end|104 i32)
-  (local $num|105 i32)
-  (local $t|106 i32)
-  (local $r|107 i32)
-  (local $end|108 i32)
-  (local $num|109 i32)
-  (local $t|110 i32)
-  (local $r|111 i32)
-  (local $end|112 i32)
-  (local $num|113 i32)
-  (local $t|114 i32)
-  (local $r|115 i32)
-  (local $end|116 i32)
-  (local $num|117 i32)
-  (local $t|118 i32)
-  (local $r|119 i32)
-  (local $end|120 i32)
-  (local $num|121 i32)
-  (local $t|122 i32)
-  (local $r|123 i32)
-  (local $end|124 i32)
-  (local $num|125 i32)
-  (local $t|126 i32)
-  (local $r|127 i32)
-  (local $end|128 i32)
-  (local $num|129 i32)
-  (local $t|130 i32)
-  (local $r|131 i32)
-  (local $end|132 i32)
-  (local $num|133 i32)
-  (local $t|134 i32)
-  (local $r|135 i32)
-  (local $end|136 i32)
-  (local $num|137 i32)
-  (local $s|138 i32)
-  (local $inSize|139 i32)
-  (local $targetSize|140 i32)
-  (local $prependSize|141 i32)
-  (local $out|142 i32)
-  (local $dest|143 i32)
-  (local $value|144 i32)
-  (local $count|145 i32)
-  (local $146 i32)
-  (local $147 i32)
-  (local $148 i32)
-  (local $149 i32)
-  (local $dest|150 i32)
-  (local $value|151 i32)
-  (local $count|152 i32)
-  (local $153 i32)
-  (local $154 i32)
-  (local $dest|155 i32)
-  (local $value|156 i32)
-  (local $count|157 i32)
-  (local $dest|158 i32)
-  (local $ptr|159 i32)
-  (local $len|160 i32)
-  (local $dest|161 i32)
-  (local $ptr|162 i32)
-  (local $dest|163 i32)
-  (local $ptr|164 i32)
-  (local $len|165 i32)
-  (local $dest|166 i32)
-  (local $ptr|167 i32)
-  (local $dest|168 i32)
-  (local $ptr|169 i32)
-  (local $len|170 i32)
-  (local $dest|171 i32)
-  (local $ptr|172 i32)
-  (local $dest|173 i32)
-  (local $ptr|174 i32)
-  (local $len|175 i32)
-  (local $mins i32)
-  (local $this|177 i32)
-  (local $a|178 i64)
-  (local $b|179 i64)
-  (local $m|180 i64)
-  (local $value|181 i32)
-  (local $padding|182 i32)
-  (local $this|183 i32)
-  (local $value|184 i32)
-  (local $sign|185 i32)
-  (local $decimals|186 i32)
-  (local $out|187 i32)
-  (local $end|188 i32)
-  (local $num|189 i32)
-  (local $t|190 i32)
-  (local $r|191 i32)
-  (local $end|192 i32)
-  (local $num|193 i32)
-  (local $t|194 i32)
-  (local $r|195 i32)
-  (local $end|196 i32)
-  (local $num|197 i32)
-  (local $t|198 i32)
-  (local $r|199 i32)
-  (local $end|200 i32)
-  (local $num|201 i32)
-  (local $t|202 i32)
-  (local $r|203 i32)
-  (local $end|204 i32)
-  (local $num|205 i32)
-  (local $t|206 i32)
-  (local $r|207 i32)
-  (local $end|208 i32)
-  (local $num|209 i32)
-  (local $t|210 i32)
-  (local $r|211 i32)
-  (local $end|212 i32)
-  (local $num|213 i32)
-  (local $t|214 i32)
-  (local $r|215 i32)
-  (local $end|216 i32)
-  (local $num|217 i32)
-  (local $t|218 i32)
-  (local $r|219 i32)
-  (local $end|220 i32)
-  (local $num|221 i32)
-  (local $t|222 i32)
-  (local $r|223 i32)
-  (local $end|224 i32)
-  (local $num|225 i32)
-  (local $s|226 i32)
-  (local $inSize|227 i32)
-  (local $targetSize|228 i32)
-  (local $prependSize|229 i32)
-  (local $out|230 i32)
-  (local $dest|231 i32)
-  (local $value|232 i32)
-  (local $count|233 i32)
-  (local $234 i32)
-  (local $235 i32)
-  (local $236 i32)
-  (local $237 i32)
-  (local $dest|238 i32)
-  (local $value|239 i32)
-  (local $count|240 i32)
-  (local $241 i32)
-  (local $242 i32)
-  (local $dest|243 i32)
-  (local $value|244 i32)
-  (local $count|245 i32)
-  (local $dest|246 i32)
-  (local $ptr|247 i32)
-  (local $len|248 i32)
-  (local $dest|249 i32)
-  (local $ptr|250 i32)
-  (local $dest|251 i32)
-  (local $ptr|252 i32)
-  (local $len|253 i32)
-  (local $dest|254 i32)
-  (local $ptr|255 i32)
-  (local $dest|256 i32)
-  (local $ptr|257 i32)
-  (local $len|258 i32)
-  (local $dest|259 i32)
-  (local $ptr|260 i32)
-  (local $dest|261 i32)
-  (local $ptr|262 i32)
-  (local $len|263 i32)
-  (local $secs i32)
-  (local $265 i32)
-  (local $dest|266 i32)
-  (local $src i32)
-  (local $l i32)
-  (local $dest|269 i32)
-  (local $ptr|270 i32)
-  (local $dest|271 i32)
-  (local $ptr|272 i32)
-  (local $len|273 i32)
-  (local $dest|274 i32)
-  (local $ptr|275 i32)
-  (local $dest|276 i32)
-  (local $ptr|277 i32)
-  (local $len|278 i32)
-  (local $dest|279 i32)
-  (local $ptr|280 i32)
-  (local $dest|281 i32)
-  (local $ptr|282 i32)
-  (local $len|283 i32)
-  (local $dest|284 i32)
-  (local $ptr|285 i32)
-  (local $dest|286 i32)
-  (local $ptr|287 i32)
-  (local $len|288 i32)
-  (local $dest|289 i32)
-  (local $ptr|290 i32)
-  (local $dest|291 i32)
-  (local $ptr|292 i32)
-  (local $len|293 i32)
-  (local $dest|294 i32)
-  (local $ptr|295 i32)
-  (local $dest|296 i32)
-  (local $ptr|297 i32)
-  (local $len|298 i32)
-  (local $dest|299 i32)
-  (local $src|300 i32)
-  (local $dest|301 i32)
-  (local $ptr|302 i32)
-  (local $dest|303 i32)
-  (local $src|304 i32)
-  (local $l|305 i32)
-  (local $dest|306 i32)
-  (local $ptr|307 i32)
-  (local $dest|308 i32)
-  (local $ptr|309 i32)
-  (local $len|310 i32)
-  (local $dest|311 i32)
-  (local $ptr|312 i32)
-  (local $dest|313 i32)
-  (local $ptr|314 i32)
-  (local $len|315 i32)
-  (local $dest|316 i32)
-  (local $ptr|317 i32)
-  (local $dest|318 i32)
-  (local $ptr|319 i32)
-  (local $len|320 i32)
-  (local $dest|321 i32)
-  (local $ptr|322 i32)
-  (local $dest|323 i32)
-  (local $ptr|324 i32)
-  (local $len|325 i32)
-  (local $dest|326 i32)
-  (local $ptr|327 i32)
-  (local $dest|328 i32)
-  (local $ptr|329 i32)
-  (local $len|330 i32)
-  (local $dest|331 i32)
-  (local $ptr|332 i32)
-  (local $dest|333 i32)
-  (local $ptr|334 i32)
-  (local $len|335 i32)
-  (local $dest|336 i32)
-  (local $src|337 i32)
-  (local $dest|338 i32)
-  (local $ptr|339 i32)
-  (local $dest|340 i32)
-  (local $src|341 i32)
-  (local $l|342 i32)
-  (local $dest|343 i32)
-  (local $ptr|344 i32)
-  (local $dest|345 i32)
-  (local $ptr|346 i32)
-  (local $len|347 i32)
-  (local $dest|348 i32)
-  (local $ptr|349 i32)
-  (local $dest|350 i32)
-  (local $ptr|351 i32)
-  (local $len|352 i32)
-  (local $dest|353 i32)
-  (local $ptr|354 i32)
-  (local $dest|355 i32)
-  (local $ptr|356 i32)
-  (local $len|357 i32)
-  (local $dest|358 i32)
-  (local $ptr|359 i32)
-  (local $dest|360 i32)
-  (local $ptr|361 i32)
-  (local $len|362 i32)
-  (local $dest|363 i32)
-  (local $ptr|364 i32)
-  (local $dest|365 i32)
-  (local $ptr|366 i32)
-  (local $len|367 i32)
-  (local $dest|368 i32)
-  (local $ptr|369 i32)
-  (local $dest|370 i32)
-  (local $ptr|371 i32)
-  (local $len|372 i32)
-  (local $dest|373 i32)
-  (local $src|374 i32)
-  (local $size i32)
-  (local $376 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 32
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 32
-  memory.fill $0
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.2 (result i32)
-   local.get $this
-   local.set $this|1
-   local.get $this|1
-   i64.load $0 offset=16
-   local.set $a
-   i32.const 86400000
-   i64.extend_i32_s
-   local.set $b
-   local.get $a
-   local.get $b
-   i64.rem_s
-   local.set $m
-   local.get $m
-   local.get $m
-   i64.const 0
-   i64.lt_s
-   if (result i64)
-    local.get $b
-   else
-    i64.const 0
-   end
-   i64.add
-   i32.wrap_i64
-   i32.const 3600000
-   i32.div_s
-   local.set $value
-   i32.const 2
-   local.set $padding
-   global.get $~lib/memory/__stack_pointer
-   local.get $value
-   local.set $this|7
-   block $~lib/util/number/i32toa|inlined.2 (result i32)
-    local.get $this|7
-    local.set $value|8
-    local.get $value|8
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.2
-    end
-    local.get $value|8
-    i32.const 31
-    i32.shr_u
-    local.set $sign
-    local.get $sign
-    if
-     i32.const 0
-     local.get $value|8
-     i32.sub
-     local.set $value|8
-    end
-    local.get $value|8
-    call $~lib/util/number/decimalCount32
-    local.set $decimals
-    local.get $sign
-    local.get $decimals
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out
-    local.get $out
-    local.get $sign
-    i32.add
-    local.get $decimals
-    i32.add
-    local.set $end
-    local.get $value|8
-    local.set $num
-    local.get $num
-    i32.const 10
-    i32.div_u
-    local.set $t
-    local.get $num
-    i32.const 10
-    i32.rem_u
-    local.set $r
-    local.get $end
-    i32.const 1
-    i32.sub
-    local.set $end
-    local.get $end
-    i32.const 48
-    local.get $r
-    i32.add
-    i32.store8 $0
-    local.get $t
-    if
-     local.get $end
-     local.set $end|16
-     local.get $t
-     local.set $num|17
-     local.get $num|17
-     i32.const 10
-     i32.div_u
-     local.set $t|18
-     local.get $num|17
-     i32.const 10
-     i32.rem_u
-     local.set $r|19
-     local.get $end|16
-     i32.const 1
-     i32.sub
-     local.set $end|16
-     local.get $end|16
-     i32.const 48
-     local.get $r|19
-     i32.add
-     i32.store8 $0
-     local.get $t|18
-     if
-      local.get $end|16
-      local.set $end|20
-      local.get $t|18
-      local.set $num|21
-      local.get $num|21
-      i32.const 10
-      i32.div_u
-      local.set $t|22
-      local.get $num|21
-      i32.const 10
-      i32.rem_u
-      local.set $r|23
-      local.get $end|20
-      i32.const 1
-      i32.sub
-      local.set $end|20
-      local.get $end|20
-      i32.const 48
-      local.get $r|23
-      i32.add
-      i32.store8 $0
-      local.get $t|22
-      if
-       local.get $end|20
-       local.set $end|24
-       local.get $t|22
-       local.set $num|25
-       local.get $num|25
-       i32.const 10
-       i32.div_u
-       local.set $t|26
-       local.get $num|25
-       i32.const 10
-       i32.rem_u
-       local.set $r|27
-       local.get $end|24
-       i32.const 1
-       i32.sub
-       local.set $end|24
-       local.get $end|24
-       i32.const 48
-       local.get $r|27
-       i32.add
-       i32.store8 $0
-       local.get $t|26
-       if
-        local.get $end|24
-        local.set $end|28
-        local.get $t|26
-        local.set $num|29
-        local.get $num|29
-        i32.const 10
-        i32.div_u
-        local.set $t|30
-        local.get $num|29
-        i32.const 10
-        i32.rem_u
-        local.set $r|31
-        local.get $end|28
-        i32.const 1
-        i32.sub
-        local.set $end|28
-        local.get $end|28
-        i32.const 48
-        local.get $r|31
-        i32.add
-        i32.store8 $0
-        local.get $t|30
-        if
-         local.get $end|28
-         local.set $end|32
-         local.get $t|30
-         local.set $num|33
-         local.get $num|33
-         i32.const 10
-         i32.div_u
-         local.set $t|34
-         local.get $num|33
-         i32.const 10
-         i32.rem_u
-         local.set $r|35
-         local.get $end|32
-         i32.const 1
-         i32.sub
-         local.set $end|32
-         local.get $end|32
-         i32.const 48
-         local.get $r|35
-         i32.add
-         i32.store8 $0
-         local.get $t|34
-         if
-          local.get $end|32
-          local.set $end|36
-          local.get $t|34
-          local.set $num|37
-          local.get $num|37
-          i32.const 10
-          i32.div_u
-          local.set $t|38
-          local.get $num|37
-          i32.const 10
-          i32.rem_u
-          local.set $r|39
-          local.get $end|36
-          i32.const 1
-          i32.sub
-          local.set $end|36
-          local.get $end|36
-          i32.const 48
-          local.get $r|39
-          i32.add
-          i32.store8 $0
-          local.get $t|38
-          if
-           local.get $end|36
-           local.set $end|40
-           local.get $t|38
-           local.set $num|41
-           local.get $num|41
-           i32.const 10
-           i32.div_u
-           local.set $t|42
-           local.get $num|41
-           i32.const 10
-           i32.rem_u
-           local.set $r|43
-           local.get $end|40
-           i32.const 1
-           i32.sub
-           local.set $end|40
-           local.get $end|40
-           i32.const 48
-           local.get $r|43
-           i32.add
-           i32.store8 $0
-           local.get $t|42
-           if
-            local.get $end|40
-            local.set $end|44
-            local.get $t|42
-            local.set $num|45
-            local.get $num|45
-            i32.const 10
-            i32.div_u
-            local.set $t|46
-            local.get $num|45
-            i32.const 10
-            i32.rem_u
-            local.set $r|47
-            local.get $end|44
-            i32.const 1
-            i32.sub
-            local.set $end|44
-            local.get $end|44
-            i32.const 48
-            local.get $r|47
-            i32.add
-            i32.store8 $0
-            local.get $t|46
-            if
-             local.get $end|44
-             local.set $end|48
-             local.get $t|46
-             local.set $num|49
-             local.get $end|48
-             i32.const 1
-             i32.sub
-             local.tee $end|48
-             i32.const 48
-             local.get $num|49
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign
-    if
-     local.get $out
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out
-   end
-   local.tee $s
-   i32.store $0
-   local.get $s
-   call $~lib/string/String#get:length
-   local.set $inSize
-   local.get $padding
-   local.set $targetSize
-   local.get $targetSize
-   local.get $inSize
-   i32.le_u
-   if
-    local.get $s
-    br $~lib/date/stringify|inlined.2
-   end
-   local.get $targetSize
-   local.get $inSize
-   i32.sub
-   local.set $prependSize
-   local.get $targetSize
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|54
-   local.get $out|54
-   local.set $dest
-   i32.const 48
-   local.set $value|56
-   local.get $prependSize
-   local.set $count
-   local.get $count
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest
-    local.tee $58
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $58
-    local.get $value|56
-    i32.store8 $0
-    local.get $dest
-    local.tee $59
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $59
-    local.get $value|56
-    i32.store8 $0
-    local.get $dest
-    local.tee $60
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $60
-    local.get $value|56
-    i32.store8 $0
-    local.get $dest
-    local.tee $61
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $61
-    local.get $value|56
-    i32.store8 $0
-    local.get $count
-    i32.const 4
-    i32.sub
-    local.set $count
-   end
-   local.get $dest
-   local.set $dest|62
-   local.get $value|56
-   local.set $value|63
-   local.get $count
-   local.set $count|64
-   local.get $count|64
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|62
-    local.tee $65
-    i32.const 1
-    i32.add
-    local.set $dest|62
-    local.get $65
-    local.get $value|63
-    i32.store8 $0
-    local.get $dest|62
-    local.tee $66
-    i32.const 1
-    i32.add
-    local.set $dest|62
-    local.get $66
-    local.get $value|63
-    i32.store8 $0
-    local.get $count|64
-    i32.const 2
-    i32.sub
-    local.set $count|64
-   end
-   local.get $dest|62
-   local.set $dest|67
-   local.get $value|63
-   local.set $value|68
-   local.get $count|64
-   local.set $count|69
-   local.get $count|69
-   if
-    local.get $dest|67
-    local.get $value|68
-    i32.store8 $0
-   end
-   local.get $out|54
-   local.get $prependSize
-   i32.add
-   local.set $dest|70
-   local.get $s
-   local.set $ptr
-   local.get $inSize
-   local.set $len
-   local.get $len
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|70
-    local.set $dest|73
-    local.get $ptr
-    local.set $ptr|74
-    local.get $dest|73
-    local.get $ptr|74
-    i64.load $0
-    i64.store $0
-    local.get $dest|70
-    i32.const 8
-    i32.add
-    local.set $dest|70
-    local.get $ptr
-    i32.const 8
-    i32.add
-    local.set $ptr
-    local.get $len
-    i32.const 8
-    i32.sub
-    local.set $len
-   end
-   local.get $dest|70
-   local.set $dest|75
-   local.get $ptr
-   local.set $ptr|76
-   local.get $len
-   local.set $len|77
-   local.get $len|77
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|75
-    local.set $dest|78
-    local.get $ptr|76
-    local.set $ptr|79
-    local.get $dest|78
-    local.get $ptr|79
-    i32.load $0
-    i32.store $0
-    local.get $dest|75
-    i32.const 4
-    i32.add
-    local.set $dest|75
-    local.get $ptr|76
-    i32.const 4
-    i32.add
-    local.set $ptr|76
-    local.get $len|77
-    i32.const 4
-    i32.sub
-    local.set $len|77
-   end
-   local.get $dest|75
-   local.set $dest|80
-   local.get $ptr|76
-   local.set $ptr|81
-   local.get $len|77
-   local.set $len|82
-   local.get $len|82
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|80
-    local.set $dest|83
-    local.get $ptr|81
-    local.set $ptr|84
-    local.get $dest|83
-    local.get $ptr|84
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|80
-    i32.const 2
-    i32.add
-    local.set $dest|80
-    local.get $ptr|81
-    i32.const 2
-    i32.add
-    local.set $ptr|81
-    local.get $len|82
-    i32.const 2
-    i32.sub
-    local.set $len|82
-   end
-   local.get $dest|80
-   local.set $dest|85
-   local.get $ptr|81
-   local.set $ptr|86
-   local.get $len|82
-   local.set $len|87
-   local.get $len|87
-   if
-    local.get $dest|85
-    local.get $ptr|86
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|54
-  end
-  local.tee $hours
-  i32.store $0 offset=4
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.3 (result i32)
-   local.get $this
-   local.set $this|89
-   local.get $this|89
-   i64.load $0 offset=16
-   local.set $a|90
-   i32.const 3600000
-   i64.extend_i32_s
-   local.set $b|91
-   local.get $a|90
-   local.get $b|91
-   i64.rem_s
-   local.set $m|92
-   local.get $m|92
-   local.get $m|92
-   i64.const 0
-   i64.lt_s
-   if (result i64)
-    local.get $b|91
-   else
-    i64.const 0
-   end
-   i64.add
-   i32.wrap_i64
-   i32.const 60000
-   i32.div_s
-   local.set $value|93
-   i32.const 2
-   local.set $padding|94
-   global.get $~lib/memory/__stack_pointer
-   local.get $value|93
-   local.set $this|95
-   block $~lib/util/number/i32toa|inlined.3 (result i32)
-    local.get $this|95
-    local.set $value|96
-    local.get $value|96
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.3
-    end
-    local.get $value|96
-    i32.const 31
-    i32.shr_u
-    local.set $sign|97
-    local.get $sign|97
-    if
-     i32.const 0
-     local.get $value|96
-     i32.sub
-     local.set $value|96
-    end
-    local.get $value|96
-    call $~lib/util/number/decimalCount32
-    local.set $decimals|98
-    local.get $sign|97
-    local.get $decimals|98
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out|99
-    local.get $out|99
-    local.get $sign|97
-    i32.add
-    local.get $decimals|98
-    i32.add
-    local.set $end|100
-    local.get $value|96
-    local.set $num|101
-    local.get $num|101
-    i32.const 10
-    i32.div_u
-    local.set $t|102
-    local.get $num|101
-    i32.const 10
-    i32.rem_u
-    local.set $r|103
-    local.get $end|100
-    i32.const 1
-    i32.sub
-    local.set $end|100
-    local.get $end|100
-    i32.const 48
-    local.get $r|103
-    i32.add
-    i32.store8 $0
-    local.get $t|102
-    if
-     local.get $end|100
-     local.set $end|104
-     local.get $t|102
-     local.set $num|105
-     local.get $num|105
-     i32.const 10
-     i32.div_u
-     local.set $t|106
-     local.get $num|105
-     i32.const 10
-     i32.rem_u
-     local.set $r|107
-     local.get $end|104
-     i32.const 1
-     i32.sub
-     local.set $end|104
-     local.get $end|104
-     i32.const 48
-     local.get $r|107
-     i32.add
-     i32.store8 $0
-     local.get $t|106
-     if
-      local.get $end|104
-      local.set $end|108
-      local.get $t|106
-      local.set $num|109
-      local.get $num|109
-      i32.const 10
-      i32.div_u
-      local.set $t|110
-      local.get $num|109
-      i32.const 10
-      i32.rem_u
-      local.set $r|111
-      local.get $end|108
-      i32.const 1
-      i32.sub
-      local.set $end|108
-      local.get $end|108
-      i32.const 48
-      local.get $r|111
-      i32.add
-      i32.store8 $0
-      local.get $t|110
-      if
-       local.get $end|108
-       local.set $end|112
-       local.get $t|110
-       local.set $num|113
-       local.get $num|113
-       i32.const 10
-       i32.div_u
-       local.set $t|114
-       local.get $num|113
-       i32.const 10
-       i32.rem_u
-       local.set $r|115
-       local.get $end|112
-       i32.const 1
-       i32.sub
-       local.set $end|112
-       local.get $end|112
-       i32.const 48
-       local.get $r|115
-       i32.add
-       i32.store8 $0
-       local.get $t|114
-       if
-        local.get $end|112
-        local.set $end|116
-        local.get $t|114
-        local.set $num|117
-        local.get $num|117
-        i32.const 10
-        i32.div_u
-        local.set $t|118
-        local.get $num|117
-        i32.const 10
-        i32.rem_u
-        local.set $r|119
-        local.get $end|116
-        i32.const 1
-        i32.sub
-        local.set $end|116
-        local.get $end|116
-        i32.const 48
-        local.get $r|119
-        i32.add
-        i32.store8 $0
-        local.get $t|118
-        if
-         local.get $end|116
-         local.set $end|120
-         local.get $t|118
-         local.set $num|121
-         local.get $num|121
-         i32.const 10
-         i32.div_u
-         local.set $t|122
-         local.get $num|121
-         i32.const 10
-         i32.rem_u
-         local.set $r|123
-         local.get $end|120
-         i32.const 1
-         i32.sub
-         local.set $end|120
-         local.get $end|120
-         i32.const 48
-         local.get $r|123
-         i32.add
-         i32.store8 $0
-         local.get $t|122
-         if
-          local.get $end|120
-          local.set $end|124
-          local.get $t|122
-          local.set $num|125
-          local.get $num|125
-          i32.const 10
-          i32.div_u
-          local.set $t|126
-          local.get $num|125
-          i32.const 10
-          i32.rem_u
-          local.set $r|127
-          local.get $end|124
-          i32.const 1
-          i32.sub
-          local.set $end|124
-          local.get $end|124
-          i32.const 48
-          local.get $r|127
-          i32.add
-          i32.store8 $0
-          local.get $t|126
-          if
-           local.get $end|124
-           local.set $end|128
-           local.get $t|126
-           local.set $num|129
-           local.get $num|129
-           i32.const 10
-           i32.div_u
-           local.set $t|130
-           local.get $num|129
-           i32.const 10
-           i32.rem_u
-           local.set $r|131
-           local.get $end|128
-           i32.const 1
-           i32.sub
-           local.set $end|128
-           local.get $end|128
-           i32.const 48
-           local.get $r|131
-           i32.add
-           i32.store8 $0
-           local.get $t|130
-           if
-            local.get $end|128
-            local.set $end|132
-            local.get $t|130
-            local.set $num|133
-            local.get $num|133
-            i32.const 10
-            i32.div_u
-            local.set $t|134
-            local.get $num|133
-            i32.const 10
-            i32.rem_u
-            local.set $r|135
-            local.get $end|132
-            i32.const 1
-            i32.sub
-            local.set $end|132
-            local.get $end|132
-            i32.const 48
-            local.get $r|135
-            i32.add
-            i32.store8 $0
-            local.get $t|134
-            if
-             local.get $end|132
-             local.set $end|136
-             local.get $t|134
-             local.set $num|137
-             local.get $end|136
-             i32.const 1
-             i32.sub
-             local.tee $end|136
-             i32.const 48
-             local.get $num|137
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign|97
-    if
-     local.get $out|99
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out|99
-   end
-   local.tee $s|138
-   i32.store $0 offset=8
-   local.get $s|138
-   call $~lib/string/String#get:length
-   local.set $inSize|139
-   local.get $padding|94
-   local.set $targetSize|140
-   local.get $targetSize|140
-   local.get $inSize|139
-   i32.le_u
-   if
-    local.get $s|138
-    br $~lib/date/stringify|inlined.3
-   end
-   local.get $targetSize|140
-   local.get $inSize|139
-   i32.sub
-   local.set $prependSize|141
-   local.get $targetSize|140
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|142
-   local.get $out|142
-   local.set $dest|143
-   i32.const 48
-   local.set $value|144
-   local.get $prependSize|141
-   local.set $count|145
-   local.get $count|145
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest|143
-    local.tee $146
-    i32.const 1
-    i32.add
-    local.set $dest|143
-    local.get $146
-    local.get $value|144
-    i32.store8 $0
-    local.get $dest|143
-    local.tee $147
-    i32.const 1
-    i32.add
-    local.set $dest|143
-    local.get $147
-    local.get $value|144
-    i32.store8 $0
-    local.get $dest|143
-    local.tee $148
-    i32.const 1
-    i32.add
-    local.set $dest|143
-    local.get $148
-    local.get $value|144
-    i32.store8 $0
-    local.get $dest|143
-    local.tee $149
-    i32.const 1
-    i32.add
-    local.set $dest|143
-    local.get $149
-    local.get $value|144
-    i32.store8 $0
-    local.get $count|145
-    i32.const 4
-    i32.sub
-    local.set $count|145
-   end
-   local.get $dest|143
-   local.set $dest|150
-   local.get $value|144
-   local.set $value|151
-   local.get $count|145
-   local.set $count|152
-   local.get $count|152
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|150
-    local.tee $153
-    i32.const 1
-    i32.add
-    local.set $dest|150
-    local.get $153
-    local.get $value|151
-    i32.store8 $0
-    local.get $dest|150
-    local.tee $154
-    i32.const 1
-    i32.add
-    local.set $dest|150
-    local.get $154
-    local.get $value|151
-    i32.store8 $0
-    local.get $count|152
-    i32.const 2
-    i32.sub
-    local.set $count|152
-   end
-   local.get $dest|150
-   local.set $dest|155
-   local.get $value|151
-   local.set $value|156
-   local.get $count|152
-   local.set $count|157
-   local.get $count|157
-   if
-    local.get $dest|155
-    local.get $value|156
-    i32.store8 $0
-   end
-   local.get $out|142
-   local.get $prependSize|141
-   i32.add
-   local.set $dest|158
-   local.get $s|138
-   local.set $ptr|159
-   local.get $inSize|139
-   local.set $len|160
-   local.get $len|160
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|158
-    local.set $dest|161
-    local.get $ptr|159
-    local.set $ptr|162
-    local.get $dest|161
-    local.get $ptr|162
-    i64.load $0
-    i64.store $0
-    local.get $dest|158
-    i32.const 8
-    i32.add
-    local.set $dest|158
-    local.get $ptr|159
-    i32.const 8
-    i32.add
-    local.set $ptr|159
-    local.get $len|160
-    i32.const 8
-    i32.sub
-    local.set $len|160
-   end
-   local.get $dest|158
-   local.set $dest|163
-   local.get $ptr|159
-   local.set $ptr|164
-   local.get $len|160
-   local.set $len|165
-   local.get $len|165
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|163
-    local.set $dest|166
-    local.get $ptr|164
-    local.set $ptr|167
-    local.get $dest|166
-    local.get $ptr|167
-    i32.load $0
-    i32.store $0
-    local.get $dest|163
-    i32.const 4
-    i32.add
-    local.set $dest|163
-    local.get $ptr|164
-    i32.const 4
-    i32.add
-    local.set $ptr|164
-    local.get $len|165
-    i32.const 4
-    i32.sub
-    local.set $len|165
-   end
-   local.get $dest|163
-   local.set $dest|168
-   local.get $ptr|164
-   local.set $ptr|169
-   local.get $len|165
-   local.set $len|170
-   local.get $len|170
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|168
-    local.set $dest|171
-    local.get $ptr|169
-    local.set $ptr|172
-    local.get $dest|171
-    local.get $ptr|172
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|168
-    i32.const 2
-    i32.add
-    local.set $dest|168
-    local.get $ptr|169
-    i32.const 2
-    i32.add
-    local.set $ptr|169
-    local.get $len|170
-    i32.const 2
-    i32.sub
-    local.set $len|170
-   end
-   local.get $dest|168
-   local.set $dest|173
-   local.get $ptr|169
-   local.set $ptr|174
-   local.get $len|170
-   local.set $len|175
-   local.get $len|175
-   if
-    local.get $dest|173
-    local.get $ptr|174
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|142
-  end
-  local.tee $mins
-  i32.store $0 offset=12
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.4 (result i32)
-   local.get $this
-   local.set $this|177
-   local.get $this|177
-   i64.load $0 offset=16
-   local.set $a|178
-   i32.const 60000
-   i64.extend_i32_s
-   local.set $b|179
-   local.get $a|178
-   local.get $b|179
-   i64.rem_s
-   local.set $m|180
-   local.get $m|180
-   local.get $m|180
-   i64.const 0
-   i64.lt_s
-   if (result i64)
-    local.get $b|179
-   else
-    i64.const 0
-   end
-   i64.add
-   i32.wrap_i64
-   i32.const 1000
-   i32.div_s
-   local.set $value|181
-   i32.const 2
-   local.set $padding|182
-   global.get $~lib/memory/__stack_pointer
-   local.get $value|181
-   local.set $this|183
-   block $~lib/util/number/i32toa|inlined.4 (result i32)
-    local.get $this|183
-    local.set $value|184
-    local.get $value|184
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.4
-    end
-    local.get $value|184
-    i32.const 31
-    i32.shr_u
-    local.set $sign|185
-    local.get $sign|185
-    if
-     i32.const 0
-     local.get $value|184
-     i32.sub
-     local.set $value|184
-    end
-    local.get $value|184
-    call $~lib/util/number/decimalCount32
-    local.set $decimals|186
-    local.get $sign|185
-    local.get $decimals|186
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out|187
-    local.get $out|187
-    local.get $sign|185
-    i32.add
-    local.get $decimals|186
-    i32.add
-    local.set $end|188
-    local.get $value|184
-    local.set $num|189
-    local.get $num|189
-    i32.const 10
-    i32.div_u
-    local.set $t|190
-    local.get $num|189
-    i32.const 10
-    i32.rem_u
-    local.set $r|191
-    local.get $end|188
-    i32.const 1
-    i32.sub
-    local.set $end|188
-    local.get $end|188
-    i32.const 48
-    local.get $r|191
-    i32.add
-    i32.store8 $0
-    local.get $t|190
-    if
-     local.get $end|188
-     local.set $end|192
-     local.get $t|190
-     local.set $num|193
-     local.get $num|193
-     i32.const 10
-     i32.div_u
-     local.set $t|194
-     local.get $num|193
-     i32.const 10
-     i32.rem_u
-     local.set $r|195
-     local.get $end|192
-     i32.const 1
-     i32.sub
-     local.set $end|192
-     local.get $end|192
-     i32.const 48
-     local.get $r|195
-     i32.add
-     i32.store8 $0
-     local.get $t|194
-     if
-      local.get $end|192
-      local.set $end|196
-      local.get $t|194
-      local.set $num|197
-      local.get $num|197
-      i32.const 10
-      i32.div_u
-      local.set $t|198
-      local.get $num|197
-      i32.const 10
-      i32.rem_u
-      local.set $r|199
-      local.get $end|196
-      i32.const 1
-      i32.sub
-      local.set $end|196
-      local.get $end|196
-      i32.const 48
-      local.get $r|199
-      i32.add
-      i32.store8 $0
-      local.get $t|198
-      if
-       local.get $end|196
-       local.set $end|200
-       local.get $t|198
-       local.set $num|201
-       local.get $num|201
-       i32.const 10
-       i32.div_u
-       local.set $t|202
-       local.get $num|201
-       i32.const 10
-       i32.rem_u
-       local.set $r|203
-       local.get $end|200
-       i32.const 1
-       i32.sub
-       local.set $end|200
-       local.get $end|200
-       i32.const 48
-       local.get $r|203
-       i32.add
-       i32.store8 $0
-       local.get $t|202
-       if
-        local.get $end|200
-        local.set $end|204
-        local.get $t|202
-        local.set $num|205
-        local.get $num|205
-        i32.const 10
-        i32.div_u
-        local.set $t|206
-        local.get $num|205
-        i32.const 10
-        i32.rem_u
-        local.set $r|207
-        local.get $end|204
-        i32.const 1
-        i32.sub
-        local.set $end|204
-        local.get $end|204
-        i32.const 48
-        local.get $r|207
-        i32.add
-        i32.store8 $0
-        local.get $t|206
-        if
-         local.get $end|204
-         local.set $end|208
-         local.get $t|206
-         local.set $num|209
-         local.get $num|209
-         i32.const 10
-         i32.div_u
-         local.set $t|210
-         local.get $num|209
-         i32.const 10
-         i32.rem_u
-         local.set $r|211
-         local.get $end|208
-         i32.const 1
-         i32.sub
-         local.set $end|208
-         local.get $end|208
-         i32.const 48
-         local.get $r|211
-         i32.add
-         i32.store8 $0
-         local.get $t|210
-         if
-          local.get $end|208
-          local.set $end|212
-          local.get $t|210
-          local.set $num|213
-          local.get $num|213
-          i32.const 10
-          i32.div_u
-          local.set $t|214
-          local.get $num|213
-          i32.const 10
-          i32.rem_u
-          local.set $r|215
-          local.get $end|212
-          i32.const 1
-          i32.sub
-          local.set $end|212
-          local.get $end|212
-          i32.const 48
-          local.get $r|215
-          i32.add
-          i32.store8 $0
-          local.get $t|214
-          if
-           local.get $end|212
-           local.set $end|216
-           local.get $t|214
-           local.set $num|217
-           local.get $num|217
-           i32.const 10
-           i32.div_u
-           local.set $t|218
-           local.get $num|217
-           i32.const 10
-           i32.rem_u
-           local.set $r|219
-           local.get $end|216
-           i32.const 1
-           i32.sub
-           local.set $end|216
-           local.get $end|216
-           i32.const 48
-           local.get $r|219
-           i32.add
-           i32.store8 $0
-           local.get $t|218
-           if
-            local.get $end|216
-            local.set $end|220
-            local.get $t|218
-            local.set $num|221
-            local.get $num|221
-            i32.const 10
-            i32.div_u
-            local.set $t|222
-            local.get $num|221
-            i32.const 10
-            i32.rem_u
-            local.set $r|223
-            local.get $end|220
-            i32.const 1
-            i32.sub
-            local.set $end|220
-            local.get $end|220
-            i32.const 48
-            local.get $r|223
-            i32.add
-            i32.store8 $0
-            local.get $t|222
-            if
-             local.get $end|220
-             local.set $end|224
-             local.get $t|222
-             local.set $num|225
-             local.get $end|224
-             i32.const 1
-             i32.sub
-             local.tee $end|224
-             i32.const 48
-             local.get $num|225
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign|185
-    if
-     local.get $out|187
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out|187
-   end
-   local.tee $s|226
-   i32.store $0 offset=16
-   local.get $s|226
-   call $~lib/string/String#get:length
-   local.set $inSize|227
-   local.get $padding|182
-   local.set $targetSize|228
-   local.get $targetSize|228
-   local.get $inSize|227
-   i32.le_u
-   if
-    local.get $s|226
-    br $~lib/date/stringify|inlined.4
-   end
-   local.get $targetSize|228
-   local.get $inSize|227
-   i32.sub
-   local.set $prependSize|229
-   local.get $targetSize|228
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|230
-   local.get $out|230
-   local.set $dest|231
-   i32.const 48
-   local.set $value|232
-   local.get $prependSize|229
-   local.set $count|233
-   local.get $count|233
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest|231
-    local.tee $234
-    i32.const 1
-    i32.add
-    local.set $dest|231
-    local.get $234
-    local.get $value|232
-    i32.store8 $0
-    local.get $dest|231
-    local.tee $235
-    i32.const 1
-    i32.add
-    local.set $dest|231
-    local.get $235
-    local.get $value|232
-    i32.store8 $0
-    local.get $dest|231
-    local.tee $236
-    i32.const 1
-    i32.add
-    local.set $dest|231
-    local.get $236
-    local.get $value|232
-    i32.store8 $0
-    local.get $dest|231
-    local.tee $237
-    i32.const 1
-    i32.add
-    local.set $dest|231
-    local.get $237
-    local.get $value|232
-    i32.store8 $0
-    local.get $count|233
-    i32.const 4
-    i32.sub
-    local.set $count|233
-   end
-   local.get $dest|231
-   local.set $dest|238
-   local.get $value|232
-   local.set $value|239
-   local.get $count|233
-   local.set $count|240
-   local.get $count|240
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|238
-    local.tee $241
-    i32.const 1
-    i32.add
-    local.set $dest|238
-    local.get $241
-    local.get $value|239
-    i32.store8 $0
-    local.get $dest|238
-    local.tee $242
-    i32.const 1
-    i32.add
-    local.set $dest|238
-    local.get $242
-    local.get $value|239
-    i32.store8 $0
-    local.get $count|240
-    i32.const 2
-    i32.sub
-    local.set $count|240
-   end
-   local.get $dest|238
-   local.set $dest|243
-   local.get $value|239
-   local.set $value|244
-   local.get $count|240
-   local.set $count|245
-   local.get $count|245
-   if
-    local.get $dest|243
-    local.get $value|244
-    i32.store8 $0
-   end
-   local.get $out|230
-   local.get $prependSize|229
-   i32.add
-   local.set $dest|246
-   local.get $s|226
-   local.set $ptr|247
-   local.get $inSize|227
-   local.set $len|248
-   local.get $len|248
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|246
-    local.set $dest|249
-    local.get $ptr|247
-    local.set $ptr|250
-    local.get $dest|249
-    local.get $ptr|250
-    i64.load $0
-    i64.store $0
-    local.get $dest|246
-    i32.const 8
-    i32.add
-    local.set $dest|246
-    local.get $ptr|247
-    i32.const 8
-    i32.add
-    local.set $ptr|247
-    local.get $len|248
-    i32.const 8
-    i32.sub
-    local.set $len|248
-   end
-   local.get $dest|246
-   local.set $dest|251
-   local.get $ptr|247
-   local.set $ptr|252
-   local.get $len|248
-   local.set $len|253
-   local.get $len|253
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|251
-    local.set $dest|254
-    local.get $ptr|252
-    local.set $ptr|255
-    local.get $dest|254
-    local.get $ptr|255
-    i32.load $0
-    i32.store $0
-    local.get $dest|251
-    i32.const 4
-    i32.add
-    local.set $dest|251
-    local.get $ptr|252
-    i32.const 4
-    i32.add
-    local.set $ptr|252
-    local.get $len|253
-    i32.const 4
-    i32.sub
-    local.set $len|253
-   end
-   local.get $dest|251
-   local.set $dest|256
-   local.get $ptr|252
-   local.set $ptr|257
-   local.get $len|253
-   local.set $len|258
-   local.get $len|258
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|256
-    local.set $dest|259
-    local.get $ptr|257
-    local.set $ptr|260
-    local.get $dest|259
-    local.get $ptr|260
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|256
-    i32.const 2
-    i32.add
-    local.set $dest|256
-    local.get $ptr|257
-    i32.const 2
-    i32.add
-    local.set $ptr|257
-    local.get $len|258
-    i32.const 2
-    i32.sub
-    local.set $len|258
-   end
-   local.get $dest|256
-   local.set $dest|261
-   local.get $ptr|257
-   local.set $ptr|262
-   local.get $len|258
-   local.set $len|263
-   local.get $len|263
-   if
-    local.get $dest|261
-    local.get $ptr|262
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|230
-  end
-  local.tee $secs
-  i32.store $0 offset=20
-  i32.const 194
-  local.set $size
-  local.get $size
-  i32.const 1
-  call $~lib/rt/itcms/__new
-  local.set $265
-  block $~lib/copyupto/__copyupto64|inlined.7 (result i32)
-   block $~lib/copyupto/__copyupto64|inlined.6 (result i32)
-    block $~lib/copyupto/__copyupto64|inlined.5 (result i32)
-     local.get $265
-     local.set $dest|266
-     local.get $hours
-     local.set $src
-     local.get $src
-     call $~lib/string/String#get:length
-     local.set $l
-     local.get $l
-     i32.const 64
-     i32.ge_s
-     if
-      local.get $dest|266
-      local.set $dest|269
-      local.get $src
-      local.set $ptr|270
-      local.get $dest|269
-      local.get $ptr|270
-      i64.load $0
-      i64.store $0
-      local.get $dest|269
-      i32.const 8
-      i32.add
-      local.set $dest|269
-      local.get $ptr|270
-      i32.const 8
-      i32.add
-      local.set $ptr|270
-      local.get $dest|269
-      local.get $ptr|270
-      i64.load $0
-      i64.store $0
-      local.get $dest|269
-      i32.const 8
-      i32.add
-      local.set $dest|269
-      local.get $ptr|270
-      i32.const 8
-      i32.add
-      local.set $ptr|270
-      local.get $dest|269
-      local.get $ptr|270
-      i64.load $0
-      i64.store $0
-      local.get $dest|269
-      i32.const 8
-      i32.add
-      local.set $dest|269
-      local.get $ptr|270
-      i32.const 8
-      i32.add
-      local.set $ptr|270
-      local.get $dest|269
-      local.get $ptr|270
-      i64.load $0
-      i64.store $0
-      local.get $dest|269
-      i32.const 8
-      i32.add
-      local.set $dest|269
-      local.get $ptr|270
-      i32.const 8
-      i32.add
-      local.set $ptr|270
-      local.get $dest|269
-      local.get $ptr|270
-      i64.load $0
-      i64.store $0
-      local.get $dest|269
-      i32.const 8
-      i32.add
-      local.set $dest|269
-      local.get $ptr|270
-      i32.const 8
-      i32.add
-      local.set $ptr|270
-      local.get $dest|269
-      local.get $ptr|270
-      i64.load $0
-      i64.store $0
-      local.get $dest|269
-      i32.const 8
-      i32.add
-      local.set $dest|269
-      local.get $ptr|270
-      i32.const 8
-      i32.add
-      local.set $ptr|270
-      local.get $dest|269
-      local.get $ptr|270
-      i64.load $0
-      i64.store $0
-      local.get $dest|269
-      i32.const 8
-      i32.add
-      local.set $dest|269
-      local.get $ptr|270
-      i32.const 8
-      i32.add
-      local.set $ptr|270
-      local.get $dest|269
-      local.get $ptr|270
-      i64.load $0
-      i64.store $0
-      local.get $dest|266
-      i32.const 64
-      i32.add
-      br $~lib/copyupto/__copyupto64|inlined.5
-     end
-     local.get $dest|266
-     local.set $dest|271
-     local.get $src
-     local.set $ptr|272
-     local.get $l
-     local.set $len|273
-     local.get $len|273
-     i32.const 32
-     i32.ge_s
-     if
-      local.get $dest|271
-      local.set $dest|274
-      local.get $ptr|272
-      local.set $ptr|275
-      local.get $dest|274
-      local.get $ptr|275
-      i64.load $0
-      i64.store $0
-      local.get $dest|274
-      i32.const 8
-      i32.add
-      local.set $dest|274
-      local.get $ptr|275
-      i32.const 8
-      i32.add
-      local.set $ptr|275
-      local.get $dest|274
-      local.get $ptr|275
-      i64.load $0
-      i64.store $0
-      local.get $dest|274
-      i32.const 8
-      i32.add
-      local.set $dest|274
-      local.get $ptr|275
-      i32.const 8
-      i32.add
-      local.set $ptr|275
-      local.get $dest|274
-      local.get $ptr|275
-      i64.load $0
-      i64.store $0
-      local.get $dest|274
-      i32.const 8
-      i32.add
-      local.set $dest|274
-      local.get $ptr|275
-      i32.const 8
-      i32.add
-      local.set $ptr|275
-      local.get $dest|274
-      local.get $ptr|275
-      i64.load $0
-      i64.store $0
-      local.get $dest|271
-      i32.const 32
-      i32.add
-      local.set $dest|271
-      local.get $ptr|272
-      i32.const 32
-      i32.add
-      local.set $ptr|272
-      local.get $len|273
-      i32.const 32
-      i32.sub
-      local.set $len|273
-     end
-     local.get $dest|271
-     local.set $dest|276
-     local.get $ptr|272
-     local.set $ptr|277
-     local.get $len|273
-     local.set $len|278
-     local.get $len|278
-     i32.const 16
-     i32.ge_s
-     if
-      local.get $dest|276
-      local.set $dest|279
-      local.get $ptr|277
-      local.set $ptr|280
-      local.get $dest|279
-      local.get $ptr|280
-      i64.load $0
-      i64.store $0
-      local.get $dest|279
-      i32.const 8
-      i32.add
-      local.set $dest|279
-      local.get $ptr|280
-      i32.const 8
-      i32.add
-      local.set $ptr|280
-      local.get $dest|279
-      local.get $ptr|280
-      i64.load $0
-      i64.store $0
-      local.get $dest|276
-      i32.const 16
-      i32.add
-      local.set $dest|276
-      local.get $ptr|277
-      i32.const 16
-      i32.add
-      local.set $ptr|277
-      local.get $len|278
-      i32.const 16
-      i32.sub
-      local.set $len|278
-     end
-     local.get $dest|276
-     local.set $dest|281
-     local.get $ptr|277
-     local.set $ptr|282
-     local.get $len|278
-     local.set $len|283
-     local.get $len|283
-     i32.const 8
-     i32.ge_s
-     if
-      local.get $dest|281
-      local.set $dest|284
-      local.get $ptr|282
-      local.set $ptr|285
-      local.get $dest|284
-      local.get $ptr|285
-      i64.load $0
-      i64.store $0
-      local.get $dest|281
-      i32.const 8
-      i32.add
-      local.set $dest|281
-      local.get $ptr|282
-      i32.const 8
-      i32.add
-      local.set $ptr|282
-      local.get $len|283
-      i32.const 8
-      i32.sub
-      local.set $len|283
-     end
-     local.get $dest|281
-     local.set $dest|286
-     local.get $ptr|282
-     local.set $ptr|287
-     local.get $len|283
-     local.set $len|288
-     local.get $len|288
-     i32.const 4
-     i32.ge_s
-     if
-      local.get $dest|286
-      local.set $dest|289
-      local.get $ptr|287
-      local.set $ptr|290
-      local.get $dest|289
-      local.get $ptr|290
-      i32.load $0
-      i32.store $0
-      local.get $dest|286
-      i32.const 4
-      i32.add
-      local.set $dest|286
-      local.get $ptr|287
-      i32.const 4
-      i32.add
-      local.set $ptr|287
-      local.get $len|288
-      i32.const 4
-      i32.sub
-      local.set $len|288
-     end
-     local.get $dest|286
-     local.set $dest|291
-     local.get $ptr|287
-     local.set $ptr|292
-     local.get $len|288
-     local.set $len|293
-     local.get $len|293
-     i32.const 2
-     i32.ge_s
-     if
-      local.get $dest|291
-      local.set $dest|294
-      local.get $ptr|292
-      local.set $ptr|295
-      local.get $dest|294
-      local.get $ptr|295
-      i32.load16_u $0
-      i32.store16 $0
-      local.get $dest|291
-      i32.const 2
-      i32.add
-      local.set $dest|291
-      local.get $ptr|292
-      i32.const 2
-      i32.add
-      local.set $ptr|292
-      local.get $len|293
-      i32.const 2
-      i32.sub
-      local.set $len|293
-     end
-     local.get $dest|291
-     local.set $dest|296
-     local.get $ptr|292
-     local.set $ptr|297
-     local.get $len|293
-     local.set $len|298
-     local.get $len|298
-     if
-      local.get $dest|296
-      local.get $ptr|297
-      i32.load8_u $0
-      i32.store8 $0
-     end
-     local.get $dest|266
-     local.get $l
-     i32.add
-    end
-    local.set $dest|299
-    global.get $~lib/memory/__stack_pointer
-    i32.const 1280
-    local.tee $src|300
-    i32.store $0 offset=24
-    local.get $dest|299
-    local.set $dest|301
-    local.get $src|300
-    local.set $ptr|302
-    local.get $dest|301
-    local.get $ptr|302
-    i32.load8_u $0
-    i32.store8 $0
-    local.get $dest|299
-    i32.const 1
-    i32.add
-    local.set $dest|303
-    local.get $mins
-    local.set $src|304
-    local.get $src|304
-    call $~lib/string/String#get:length
-    local.set $l|305
-    local.get $l|305
-    i32.const 64
-    i32.ge_s
-    if
-     local.get $dest|303
-     local.set $dest|306
-     local.get $src|304
-     local.set $ptr|307
-     local.get $dest|306
-     local.get $ptr|307
-     i64.load $0
-     i64.store $0
-     local.get $dest|306
-     i32.const 8
-     i32.add
-     local.set $dest|306
-     local.get $ptr|307
-     i32.const 8
-     i32.add
-     local.set $ptr|307
-     local.get $dest|306
-     local.get $ptr|307
-     i64.load $0
-     i64.store $0
-     local.get $dest|306
-     i32.const 8
-     i32.add
-     local.set $dest|306
-     local.get $ptr|307
-     i32.const 8
-     i32.add
-     local.set $ptr|307
-     local.get $dest|306
-     local.get $ptr|307
-     i64.load $0
-     i64.store $0
-     local.get $dest|306
-     i32.const 8
-     i32.add
-     local.set $dest|306
-     local.get $ptr|307
-     i32.const 8
-     i32.add
-     local.set $ptr|307
-     local.get $dest|306
-     local.get $ptr|307
-     i64.load $0
-     i64.store $0
-     local.get $dest|306
-     i32.const 8
-     i32.add
-     local.set $dest|306
-     local.get $ptr|307
-     i32.const 8
-     i32.add
-     local.set $ptr|307
-     local.get $dest|306
-     local.get $ptr|307
-     i64.load $0
-     i64.store $0
-     local.get $dest|306
-     i32.const 8
-     i32.add
-     local.set $dest|306
-     local.get $ptr|307
-     i32.const 8
-     i32.add
-     local.set $ptr|307
-     local.get $dest|306
-     local.get $ptr|307
-     i64.load $0
-     i64.store $0
-     local.get $dest|306
-     i32.const 8
-     i32.add
-     local.set $dest|306
-     local.get $ptr|307
-     i32.const 8
-     i32.add
-     local.set $ptr|307
-     local.get $dest|306
-     local.get $ptr|307
-     i64.load $0
-     i64.store $0
-     local.get $dest|306
-     i32.const 8
-     i32.add
-     local.set $dest|306
-     local.get $ptr|307
-     i32.const 8
-     i32.add
-     local.set $ptr|307
-     local.get $dest|306
-     local.get $ptr|307
-     i64.load $0
-     i64.store $0
-     local.get $dest|303
-     i32.const 64
-     i32.add
-     br $~lib/copyupto/__copyupto64|inlined.6
-    end
-    local.get $dest|303
-    local.set $dest|308
-    local.get $src|304
-    local.set $ptr|309
-    local.get $l|305
-    local.set $len|310
-    local.get $len|310
-    i32.const 32
-    i32.ge_s
-    if
-     local.get $dest|308
-     local.set $dest|311
-     local.get $ptr|309
-     local.set $ptr|312
-     local.get $dest|311
-     local.get $ptr|312
-     i64.load $0
-     i64.store $0
-     local.get $dest|311
-     i32.const 8
-     i32.add
-     local.set $dest|311
-     local.get $ptr|312
-     i32.const 8
-     i32.add
-     local.set $ptr|312
-     local.get $dest|311
-     local.get $ptr|312
-     i64.load $0
-     i64.store $0
-     local.get $dest|311
-     i32.const 8
-     i32.add
-     local.set $dest|311
-     local.get $ptr|312
-     i32.const 8
-     i32.add
-     local.set $ptr|312
-     local.get $dest|311
-     local.get $ptr|312
-     i64.load $0
-     i64.store $0
-     local.get $dest|311
-     i32.const 8
-     i32.add
-     local.set $dest|311
-     local.get $ptr|312
-     i32.const 8
-     i32.add
-     local.set $ptr|312
-     local.get $dest|311
-     local.get $ptr|312
-     i64.load $0
-     i64.store $0
-     local.get $dest|308
-     i32.const 32
-     i32.add
-     local.set $dest|308
-     local.get $ptr|309
-     i32.const 32
-     i32.add
-     local.set $ptr|309
-     local.get $len|310
-     i32.const 32
-     i32.sub
-     local.set $len|310
-    end
-    local.get $dest|308
-    local.set $dest|313
-    local.get $ptr|309
-    local.set $ptr|314
-    local.get $len|310
-    local.set $len|315
-    local.get $len|315
-    i32.const 16
-    i32.ge_s
-    if
-     local.get $dest|313
-     local.set $dest|316
-     local.get $ptr|314
-     local.set $ptr|317
-     local.get $dest|316
-     local.get $ptr|317
-     i64.load $0
-     i64.store $0
-     local.get $dest|316
-     i32.const 8
-     i32.add
-     local.set $dest|316
-     local.get $ptr|317
-     i32.const 8
-     i32.add
-     local.set $ptr|317
-     local.get $dest|316
-     local.get $ptr|317
-     i64.load $0
-     i64.store $0
-     local.get $dest|313
-     i32.const 16
-     i32.add
-     local.set $dest|313
-     local.get $ptr|314
-     i32.const 16
-     i32.add
-     local.set $ptr|314
-     local.get $len|315
-     i32.const 16
-     i32.sub
-     local.set $len|315
-    end
-    local.get $dest|313
-    local.set $dest|318
-    local.get $ptr|314
-    local.set $ptr|319
-    local.get $len|315
-    local.set $len|320
-    local.get $len|320
-    i32.const 8
-    i32.ge_s
-    if
-     local.get $dest|318
-     local.set $dest|321
-     local.get $ptr|319
-     local.set $ptr|322
-     local.get $dest|321
-     local.get $ptr|322
-     i64.load $0
-     i64.store $0
-     local.get $dest|318
-     i32.const 8
-     i32.add
-     local.set $dest|318
-     local.get $ptr|319
-     i32.const 8
-     i32.add
-     local.set $ptr|319
-     local.get $len|320
-     i32.const 8
-     i32.sub
-     local.set $len|320
-    end
-    local.get $dest|318
-    local.set $dest|323
-    local.get $ptr|319
-    local.set $ptr|324
-    local.get $len|320
-    local.set $len|325
-    local.get $len|325
-    i32.const 4
-    i32.ge_s
-    if
-     local.get $dest|323
-     local.set $dest|326
-     local.get $ptr|324
-     local.set $ptr|327
-     local.get $dest|326
-     local.get $ptr|327
-     i32.load $0
-     i32.store $0
-     local.get $dest|323
-     i32.const 4
-     i32.add
-     local.set $dest|323
-     local.get $ptr|324
-     i32.const 4
-     i32.add
-     local.set $ptr|324
-     local.get $len|325
-     i32.const 4
-     i32.sub
-     local.set $len|325
-    end
-    local.get $dest|323
-    local.set $dest|328
-    local.get $ptr|324
-    local.set $ptr|329
-    local.get $len|325
-    local.set $len|330
-    local.get $len|330
-    i32.const 2
-    i32.ge_s
-    if
-     local.get $dest|328
-     local.set $dest|331
-     local.get $ptr|329
-     local.set $ptr|332
-     local.get $dest|331
-     local.get $ptr|332
-     i32.load16_u $0
-     i32.store16 $0
-     local.get $dest|328
-     i32.const 2
-     i32.add
-     local.set $dest|328
-     local.get $ptr|329
-     i32.const 2
-     i32.add
-     local.set $ptr|329
-     local.get $len|330
-     i32.const 2
-     i32.sub
-     local.set $len|330
-    end
-    local.get $dest|328
-    local.set $dest|333
-    local.get $ptr|329
-    local.set $ptr|334
-    local.get $len|330
-    local.set $len|335
-    local.get $len|335
-    if
-     local.get $dest|333
-     local.get $ptr|334
-     i32.load8_u $0
-     i32.store8 $0
-    end
-    local.get $dest|303
-    local.get $l|305
-    i32.add
-   end
-   local.set $dest|336
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1280
-   local.tee $src|337
-   i32.store $0 offset=28
-   local.get $dest|336
-   local.set $dest|338
-   local.get $src|337
-   local.set $ptr|339
-   local.get $dest|338
-   local.get $ptr|339
-   i32.load8_u $0
-   i32.store8 $0
-   local.get $dest|336
-   i32.const 1
-   i32.add
-   local.set $dest|340
-   local.get $secs
-   local.set $src|341
-   local.get $src|341
-   call $~lib/string/String#get:length
-   local.set $l|342
-   local.get $l|342
-   i32.const 64
-   i32.ge_s
-   if
-    local.get $dest|340
-    local.set $dest|343
-    local.get $src|341
-    local.set $ptr|344
-    local.get $dest|343
-    local.get $ptr|344
-    i64.load $0
-    i64.store $0
-    local.get $dest|343
-    i32.const 8
-    i32.add
-    local.set $dest|343
-    local.get $ptr|344
-    i32.const 8
-    i32.add
-    local.set $ptr|344
-    local.get $dest|343
-    local.get $ptr|344
-    i64.load $0
-    i64.store $0
-    local.get $dest|343
-    i32.const 8
-    i32.add
-    local.set $dest|343
-    local.get $ptr|344
-    i32.const 8
-    i32.add
-    local.set $ptr|344
-    local.get $dest|343
-    local.get $ptr|344
-    i64.load $0
-    i64.store $0
-    local.get $dest|343
-    i32.const 8
-    i32.add
-    local.set $dest|343
-    local.get $ptr|344
-    i32.const 8
-    i32.add
-    local.set $ptr|344
-    local.get $dest|343
-    local.get $ptr|344
-    i64.load $0
-    i64.store $0
-    local.get $dest|343
-    i32.const 8
-    i32.add
-    local.set $dest|343
-    local.get $ptr|344
-    i32.const 8
-    i32.add
-    local.set $ptr|344
-    local.get $dest|343
-    local.get $ptr|344
-    i64.load $0
-    i64.store $0
-    local.get $dest|343
-    i32.const 8
-    i32.add
-    local.set $dest|343
-    local.get $ptr|344
-    i32.const 8
-    i32.add
-    local.set $ptr|344
-    local.get $dest|343
-    local.get $ptr|344
-    i64.load $0
-    i64.store $0
-    local.get $dest|343
-    i32.const 8
-    i32.add
-    local.set $dest|343
-    local.get $ptr|344
-    i32.const 8
-    i32.add
-    local.set $ptr|344
-    local.get $dest|343
-    local.get $ptr|344
-    i64.load $0
-    i64.store $0
-    local.get $dest|343
-    i32.const 8
-    i32.add
-    local.set $dest|343
-    local.get $ptr|344
-    i32.const 8
-    i32.add
-    local.set $ptr|344
-    local.get $dest|343
-    local.get $ptr|344
-    i64.load $0
-    i64.store $0
-    local.get $dest|340
-    i32.const 64
-    i32.add
-    br $~lib/copyupto/__copyupto64|inlined.7
-   end
-   local.get $dest|340
-   local.set $dest|345
-   local.get $src|341
-   local.set $ptr|346
-   local.get $l|342
-   local.set $len|347
-   local.get $len|347
-   i32.const 32
-   i32.ge_s
-   if
-    local.get $dest|345
-    local.set $dest|348
-    local.get $ptr|346
-    local.set $ptr|349
-    local.get $dest|348
-    local.get $ptr|349
-    i64.load $0
-    i64.store $0
-    local.get $dest|348
-    i32.const 8
-    i32.add
-    local.set $dest|348
-    local.get $ptr|349
-    i32.const 8
-    i32.add
-    local.set $ptr|349
-    local.get $dest|348
-    local.get $ptr|349
-    i64.load $0
-    i64.store $0
-    local.get $dest|348
-    i32.const 8
-    i32.add
-    local.set $dest|348
-    local.get $ptr|349
-    i32.const 8
-    i32.add
-    local.set $ptr|349
-    local.get $dest|348
-    local.get $ptr|349
-    i64.load $0
-    i64.store $0
-    local.get $dest|348
-    i32.const 8
-    i32.add
-    local.set $dest|348
-    local.get $ptr|349
-    i32.const 8
-    i32.add
-    local.set $ptr|349
-    local.get $dest|348
-    local.get $ptr|349
-    i64.load $0
-    i64.store $0
-    local.get $dest|345
-    i32.const 32
-    i32.add
-    local.set $dest|345
-    local.get $ptr|346
-    i32.const 32
-    i32.add
-    local.set $ptr|346
-    local.get $len|347
-    i32.const 32
-    i32.sub
-    local.set $len|347
-   end
-   local.get $dest|345
-   local.set $dest|350
-   local.get $ptr|346
-   local.set $ptr|351
-   local.get $len|347
-   local.set $len|352
-   local.get $len|352
-   i32.const 16
-   i32.ge_s
-   if
-    local.get $dest|350
-    local.set $dest|353
-    local.get $ptr|351
-    local.set $ptr|354
-    local.get $dest|353
-    local.get $ptr|354
-    i64.load $0
-    i64.store $0
-    local.get $dest|353
-    i32.const 8
-    i32.add
-    local.set $dest|353
-    local.get $ptr|354
-    i32.const 8
-    i32.add
-    local.set $ptr|354
-    local.get $dest|353
-    local.get $ptr|354
-    i64.load $0
-    i64.store $0
-    local.get $dest|350
-    i32.const 16
-    i32.add
-    local.set $dest|350
-    local.get $ptr|351
-    i32.const 16
-    i32.add
-    local.set $ptr|351
-    local.get $len|352
-    i32.const 16
-    i32.sub
-    local.set $len|352
-   end
-   local.get $dest|350
-   local.set $dest|355
-   local.get $ptr|351
-   local.set $ptr|356
-   local.get $len|352
-   local.set $len|357
-   local.get $len|357
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|355
-    local.set $dest|358
-    local.get $ptr|356
-    local.set $ptr|359
-    local.get $dest|358
-    local.get $ptr|359
-    i64.load $0
-    i64.store $0
-    local.get $dest|355
-    i32.const 8
-    i32.add
-    local.set $dest|355
-    local.get $ptr|356
-    i32.const 8
-    i32.add
-    local.set $ptr|356
-    local.get $len|357
-    i32.const 8
-    i32.sub
-    local.set $len|357
-   end
-   local.get $dest|355
-   local.set $dest|360
-   local.get $ptr|356
-   local.set $ptr|361
-   local.get $len|357
-   local.set $len|362
-   local.get $len|362
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|360
-    local.set $dest|363
-    local.get $ptr|361
-    local.set $ptr|364
-    local.get $dest|363
-    local.get $ptr|364
-    i32.load $0
-    i32.store $0
-    local.get $dest|360
-    i32.const 4
-    i32.add
-    local.set $dest|360
-    local.get $ptr|361
-    i32.const 4
-    i32.add
-    local.set $ptr|361
-    local.get $len|362
-    i32.const 4
-    i32.sub
-    local.set $len|362
-   end
-   local.get $dest|360
-   local.set $dest|365
-   local.get $ptr|361
-   local.set $ptr|366
-   local.get $len|362
-   local.set $len|367
-   local.get $len|367
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|365
-    local.set $dest|368
-    local.get $ptr|366
-    local.set $ptr|369
-    local.get $dest|368
-    local.get $ptr|369
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|365
-    i32.const 2
-    i32.add
-    local.set $dest|365
-    local.get $ptr|366
-    i32.const 2
-    i32.add
-    local.set $ptr|366
-    local.get $len|367
-    i32.const 2
-    i32.sub
-    local.set $len|367
-   end
-   local.get $dest|365
-   local.set $dest|370
-   local.get $ptr|366
-   local.set $ptr|371
-   local.get $len|367
-   local.set $len|372
-   local.get $len|372
-   if
-    local.get $dest|370
-    local.get $ptr|371
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $dest|340
-   local.get $l|342
-   i32.add
-  end
-  local.set $dest|373
-  local.get $265
-  local.set $src|374
-  local.get $src|374
-  i32.const 20
-  i32.sub
-  local.get $dest|373
-  local.get $src|374
-  i32.sub
-  call $~lib/rt/common/OBJECT#set:rtSize
-  local.get $src|374
-  local.set $376
-  global.get $~lib/memory/__stack_pointer
-  i32.const 32
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $376
- )
- (func $~lib/date/Date#toUTCString (type $i32_=>_i32) (param $this i32) (result i32)
-  (local $1 i32)
-  (local $weeks i32)
-  (local $3 i32)
-  (local $months i32)
-  (local $mo i32)
-  (local $da i32)
-  (local $yr i32)
-  (local $wd i32)
-  (local $9 i32)
-  (local $10 i32)
-  (local $value i32)
-  (local $padding i32)
-  (local $this|13 i32)
-  (local $value|14 i32)
-  (local $sign i32)
-  (local $decimals i32)
-  (local $out i32)
-  (local $end i32)
-  (local $num i32)
-  (local $t i32)
-  (local $r i32)
-  (local $end|22 i32)
-  (local $num|23 i32)
-  (local $t|24 i32)
-  (local $r|25 i32)
-  (local $end|26 i32)
-  (local $num|27 i32)
-  (local $t|28 i32)
-  (local $r|29 i32)
-  (local $end|30 i32)
-  (local $num|31 i32)
-  (local $t|32 i32)
-  (local $r|33 i32)
-  (local $end|34 i32)
-  (local $num|35 i32)
-  (local $t|36 i32)
-  (local $r|37 i32)
-  (local $end|38 i32)
-  (local $num|39 i32)
-  (local $t|40 i32)
-  (local $r|41 i32)
-  (local $end|42 i32)
-  (local $num|43 i32)
-  (local $t|44 i32)
-  (local $r|45 i32)
-  (local $end|46 i32)
-  (local $num|47 i32)
-  (local $t|48 i32)
-  (local $r|49 i32)
-  (local $end|50 i32)
-  (local $num|51 i32)
-  (local $t|52 i32)
-  (local $r|53 i32)
-  (local $end|54 i32)
-  (local $num|55 i32)
-  (local $s i32)
-  (local $inSize i32)
-  (local $targetSize i32)
-  (local $prependSize i32)
-  (local $out|60 i32)
-  (local $dest i32)
-  (local $value|62 i32)
-  (local $count i32)
-  (local $64 i32)
-  (local $65 i32)
-  (local $66 i32)
-  (local $67 i32)
-  (local $dest|68 i32)
-  (local $value|69 i32)
-  (local $count|70 i32)
-  (local $71 i32)
-  (local $72 i32)
-  (local $dest|73 i32)
-  (local $value|74 i32)
-  (local $count|75 i32)
-  (local $dest|76 i32)
-  (local $ptr i32)
-  (local $len i32)
-  (local $dest|79 i32)
-  (local $ptr|80 i32)
-  (local $dest|81 i32)
-  (local $ptr|82 i32)
-  (local $len|83 i32)
-  (local $dest|84 i32)
-  (local $ptr|85 i32)
-  (local $dest|86 i32)
-  (local $ptr|87 i32)
-  (local $len|88 i32)
-  (local $dest|89 i32)
-  (local $ptr|90 i32)
-  (local $dest|91 i32)
-  (local $ptr|92 i32)
-  (local $len|93 i32)
-  (local $year i32)
-  (local $month i32)
-  (local $week i32)
-  (local $value|97 i32)
-  (local $padding|98 i32)
-  (local $this|99 i32)
-  (local $value|100 i32)
-  (local $sign|101 i32)
-  (local $decimals|102 i32)
-  (local $out|103 i32)
-  (local $end|104 i32)
-  (local $num|105 i32)
-  (local $t|106 i32)
-  (local $r|107 i32)
-  (local $end|108 i32)
-  (local $num|109 i32)
-  (local $t|110 i32)
-  (local $r|111 i32)
-  (local $end|112 i32)
-  (local $num|113 i32)
-  (local $t|114 i32)
-  (local $r|115 i32)
-  (local $end|116 i32)
-  (local $num|117 i32)
-  (local $t|118 i32)
-  (local $r|119 i32)
-  (local $end|120 i32)
-  (local $num|121 i32)
-  (local $t|122 i32)
-  (local $r|123 i32)
-  (local $end|124 i32)
-  (local $num|125 i32)
-  (local $t|126 i32)
-  (local $r|127 i32)
-  (local $end|128 i32)
-  (local $num|129 i32)
-  (local $t|130 i32)
-  (local $r|131 i32)
-  (local $end|132 i32)
-  (local $num|133 i32)
-  (local $t|134 i32)
-  (local $r|135 i32)
-  (local $end|136 i32)
-  (local $num|137 i32)
-  (local $t|138 i32)
-  (local $r|139 i32)
-  (local $end|140 i32)
-  (local $num|141 i32)
-  (local $s|142 i32)
-  (local $inSize|143 i32)
-  (local $targetSize|144 i32)
-  (local $prependSize|145 i32)
-  (local $out|146 i32)
-  (local $dest|147 i32)
-  (local $value|148 i32)
-  (local $count|149 i32)
-  (local $150 i32)
-  (local $151 i32)
-  (local $152 i32)
-  (local $153 i32)
-  (local $dest|154 i32)
-  (local $value|155 i32)
-  (local $count|156 i32)
-  (local $157 i32)
-  (local $158 i32)
-  (local $dest|159 i32)
-  (local $value|160 i32)
-  (local $count|161 i32)
-  (local $dest|162 i32)
-  (local $ptr|163 i32)
-  (local $len|164 i32)
-  (local $dest|165 i32)
-  (local $ptr|166 i32)
-  (local $dest|167 i32)
-  (local $ptr|168 i32)
-  (local $len|169 i32)
-  (local $dest|170 i32)
-  (local $ptr|171 i32)
-  (local $dest|172 i32)
-  (local $ptr|173 i32)
-  (local $len|174 i32)
-  (local $dest|175 i32)
-  (local $ptr|176 i32)
-  (local $dest|177 i32)
-  (local $ptr|178 i32)
-  (local $len|179 i32)
-  (local $day i32)
-  (local $this|181 i32)
-  (local $a i64)
-  (local $b i64)
-  (local $m i64)
-  (local $value|185 i32)
-  (local $padding|186 i32)
-  (local $this|187 i32)
-  (local $value|188 i32)
-  (local $sign|189 i32)
-  (local $decimals|190 i32)
-  (local $out|191 i32)
-  (local $end|192 i32)
-  (local $num|193 i32)
-  (local $t|194 i32)
-  (local $r|195 i32)
-  (local $end|196 i32)
-  (local $num|197 i32)
-  (local $t|198 i32)
-  (local $r|199 i32)
-  (local $end|200 i32)
-  (local $num|201 i32)
-  (local $t|202 i32)
-  (local $r|203 i32)
-  (local $end|204 i32)
-  (local $num|205 i32)
-  (local $t|206 i32)
-  (local $r|207 i32)
-  (local $end|208 i32)
-  (local $num|209 i32)
-  (local $t|210 i32)
-  (local $r|211 i32)
-  (local $end|212 i32)
-  (local $num|213 i32)
-  (local $t|214 i32)
-  (local $r|215 i32)
-  (local $end|216 i32)
-  (local $num|217 i32)
-  (local $t|218 i32)
-  (local $r|219 i32)
-  (local $end|220 i32)
-  (local $num|221 i32)
-  (local $t|222 i32)
-  (local $r|223 i32)
-  (local $end|224 i32)
-  (local $num|225 i32)
-  (local $t|226 i32)
-  (local $r|227 i32)
-  (local $end|228 i32)
-  (local $num|229 i32)
-  (local $s|230 i32)
-  (local $inSize|231 i32)
-  (local $targetSize|232 i32)
-  (local $prependSize|233 i32)
-  (local $out|234 i32)
-  (local $dest|235 i32)
-  (local $value|236 i32)
-  (local $count|237 i32)
-  (local $238 i32)
-  (local $239 i32)
-  (local $240 i32)
-  (local $241 i32)
-  (local $dest|242 i32)
-  (local $value|243 i32)
-  (local $count|244 i32)
-  (local $245 i32)
-  (local $246 i32)
-  (local $dest|247 i32)
-  (local $value|248 i32)
-  (local $count|249 i32)
-  (local $dest|250 i32)
-  (local $ptr|251 i32)
-  (local $len|252 i32)
-  (local $dest|253 i32)
-  (local $ptr|254 i32)
-  (local $dest|255 i32)
-  (local $ptr|256 i32)
-  (local $len|257 i32)
-  (local $dest|258 i32)
-  (local $ptr|259 i32)
-  (local $dest|260 i32)
-  (local $ptr|261 i32)
-  (local $len|262 i32)
-  (local $dest|263 i32)
-  (local $ptr|264 i32)
-  (local $dest|265 i32)
-  (local $ptr|266 i32)
-  (local $len|267 i32)
-  (local $hours i32)
-  (local $this|269 i32)
-  (local $a|270 i64)
-  (local $b|271 i64)
-  (local $m|272 i64)
-  (local $value|273 i32)
-  (local $padding|274 i32)
-  (local $this|275 i32)
-  (local $value|276 i32)
-  (local $sign|277 i32)
-  (local $decimals|278 i32)
-  (local $out|279 i32)
-  (local $end|280 i32)
-  (local $num|281 i32)
-  (local $t|282 i32)
-  (local $r|283 i32)
-  (local $end|284 i32)
-  (local $num|285 i32)
-  (local $t|286 i32)
-  (local $r|287 i32)
-  (local $end|288 i32)
-  (local $num|289 i32)
-  (local $t|290 i32)
-  (local $r|291 i32)
-  (local $end|292 i32)
-  (local $num|293 i32)
-  (local $t|294 i32)
-  (local $r|295 i32)
-  (local $end|296 i32)
-  (local $num|297 i32)
-  (local $t|298 i32)
-  (local $r|299 i32)
-  (local $end|300 i32)
-  (local $num|301 i32)
-  (local $t|302 i32)
-  (local $r|303 i32)
-  (local $end|304 i32)
-  (local $num|305 i32)
-  (local $t|306 i32)
-  (local $r|307 i32)
-  (local $end|308 i32)
-  (local $num|309 i32)
-  (local $t|310 i32)
-  (local $r|311 i32)
-  (local $end|312 i32)
-  (local $num|313 i32)
-  (local $t|314 i32)
-  (local $r|315 i32)
-  (local $end|316 i32)
-  (local $num|317 i32)
-  (local $s|318 i32)
-  (local $inSize|319 i32)
-  (local $targetSize|320 i32)
-  (local $prependSize|321 i32)
-  (local $out|322 i32)
-  (local $dest|323 i32)
-  (local $value|324 i32)
-  (local $count|325 i32)
-  (local $326 i32)
-  (local $327 i32)
-  (local $328 i32)
-  (local $329 i32)
-  (local $dest|330 i32)
-  (local $value|331 i32)
-  (local $count|332 i32)
-  (local $333 i32)
-  (local $334 i32)
-  (local $dest|335 i32)
-  (local $value|336 i32)
-  (local $count|337 i32)
-  (local $dest|338 i32)
-  (local $ptr|339 i32)
-  (local $len|340 i32)
-  (local $dest|341 i32)
-  (local $ptr|342 i32)
-  (local $dest|343 i32)
-  (local $ptr|344 i32)
-  (local $len|345 i32)
-  (local $dest|346 i32)
-  (local $ptr|347 i32)
-  (local $dest|348 i32)
-  (local $ptr|349 i32)
-  (local $len|350 i32)
-  (local $dest|351 i32)
-  (local $ptr|352 i32)
-  (local $dest|353 i32)
-  (local $ptr|354 i32)
-  (local $len|355 i32)
-  (local $mins i32)
-  (local $this|357 i32)
-  (local $a|358 i64)
-  (local $b|359 i64)
-  (local $m|360 i64)
-  (local $value|361 i32)
-  (local $padding|362 i32)
-  (local $this|363 i32)
-  (local $value|364 i32)
-  (local $sign|365 i32)
-  (local $decimals|366 i32)
-  (local $out|367 i32)
-  (local $end|368 i32)
-  (local $num|369 i32)
-  (local $t|370 i32)
-  (local $r|371 i32)
-  (local $end|372 i32)
-  (local $num|373 i32)
-  (local $t|374 i32)
-  (local $r|375 i32)
-  (local $end|376 i32)
-  (local $num|377 i32)
-  (local $t|378 i32)
-  (local $r|379 i32)
-  (local $end|380 i32)
-  (local $num|381 i32)
-  (local $t|382 i32)
-  (local $r|383 i32)
-  (local $end|384 i32)
-  (local $num|385 i32)
-  (local $t|386 i32)
-  (local $r|387 i32)
-  (local $end|388 i32)
-  (local $num|389 i32)
-  (local $t|390 i32)
-  (local $r|391 i32)
-  (local $end|392 i32)
-  (local $num|393 i32)
-  (local $t|394 i32)
-  (local $r|395 i32)
-  (local $end|396 i32)
-  (local $num|397 i32)
-  (local $t|398 i32)
-  (local $r|399 i32)
-  (local $end|400 i32)
-  (local $num|401 i32)
-  (local $t|402 i32)
-  (local $r|403 i32)
-  (local $end|404 i32)
-  (local $num|405 i32)
-  (local $s|406 i32)
-  (local $inSize|407 i32)
-  (local $targetSize|408 i32)
-  (local $prependSize|409 i32)
-  (local $out|410 i32)
-  (local $dest|411 i32)
-  (local $value|412 i32)
-  (local $count|413 i32)
-  (local $414 i32)
-  (local $415 i32)
-  (local $416 i32)
-  (local $417 i32)
-  (local $dest|418 i32)
-  (local $value|419 i32)
-  (local $count|420 i32)
-  (local $421 i32)
-  (local $422 i32)
-  (local $dest|423 i32)
-  (local $value|424 i32)
-  (local $count|425 i32)
-  (local $dest|426 i32)
-  (local $ptr|427 i32)
-  (local $len|428 i32)
-  (local $dest|429 i32)
-  (local $ptr|430 i32)
-  (local $dest|431 i32)
-  (local $ptr|432 i32)
-  (local $len|433 i32)
-  (local $dest|434 i32)
-  (local $ptr|435 i32)
-  (local $dest|436 i32)
-  (local $ptr|437 i32)
-  (local $len|438 i32)
-  (local $dest|439 i32)
-  (local $ptr|440 i32)
-  (local $dest|441 i32)
-  (local $ptr|442 i32)
-  (local $len|443 i32)
-  (local $secs i32)
-  (local $445 i32)
-  (local $dest|446 i32)
-  (local $src i32)
-  (local $l i32)
-  (local $dest|449 i32)
-  (local $ptr|450 i32)
-  (local $dest|451 i32)
-  (local $ptr|452 i32)
-  (local $len|453 i32)
-  (local $dest|454 i32)
-  (local $ptr|455 i32)
-  (local $dest|456 i32)
-  (local $ptr|457 i32)
-  (local $len|458 i32)
-  (local $dest|459 i32)
-  (local $ptr|460 i32)
-  (local $dest|461 i32)
-  (local $ptr|462 i32)
-  (local $len|463 i32)
-  (local $dest|464 i32)
-  (local $ptr|465 i32)
-  (local $dest|466 i32)
-  (local $ptr|467 i32)
-  (local $len|468 i32)
-  (local $dest|469 i32)
-  (local $ptr|470 i32)
-  (local $dest|471 i32)
-  (local $ptr|472 i32)
-  (local $len|473 i32)
-  (local $dest|474 i32)
-  (local $ptr|475 i32)
-  (local $dest|476 i32)
-  (local $ptr|477 i32)
-  (local $len|478 i32)
-  (local $dest|479 i32)
-  (local $src|480 i32)
-  (local $l|481 i32)
-  (local $dest|482 i32)
-  (local $ptr|483 i32)
-  (local $dest|484 i32)
-  (local $ptr|485 i32)
-  (local $len|486 i32)
-  (local $dest|487 i32)
-  (local $ptr|488 i32)
-  (local $dest|489 i32)
-  (local $ptr|490 i32)
-  (local $len|491 i32)
-  (local $dest|492 i32)
-  (local $ptr|493 i32)
-  (local $dest|494 i32)
-  (local $ptr|495 i32)
-  (local $len|496 i32)
-  (local $dest|497 i32)
-  (local $ptr|498 i32)
-  (local $dest|499 i32)
-  (local $ptr|500 i32)
-  (local $len|501 i32)
-  (local $dest|502 i32)
-  (local $ptr|503 i32)
-  (local $dest|504 i32)
-  (local $ptr|505 i32)
-  (local $len|506 i32)
-  (local $dest|507 i32)
-  (local $ptr|508 i32)
-  (local $dest|509 i32)
-  (local $ptr|510 i32)
-  (local $len|511 i32)
-  (local $dest|512 i32)
-  (local $src|513 i32)
-  (local $l|514 i32)
-  (local $dest|515 i32)
-  (local $ptr|516 i32)
-  (local $dest|517 i32)
-  (local $ptr|518 i32)
-  (local $len|519 i32)
-  (local $dest|520 i32)
-  (local $ptr|521 i32)
-  (local $dest|522 i32)
-  (local $ptr|523 i32)
-  (local $len|524 i32)
-  (local $dest|525 i32)
-  (local $ptr|526 i32)
-  (local $dest|527 i32)
-  (local $ptr|528 i32)
-  (local $len|529 i32)
-  (local $dest|530 i32)
-  (local $ptr|531 i32)
-  (local $dest|532 i32)
-  (local $ptr|533 i32)
-  (local $len|534 i32)
-  (local $dest|535 i32)
-  (local $ptr|536 i32)
-  (local $dest|537 i32)
-  (local $ptr|538 i32)
-  (local $len|539 i32)
-  (local $dest|540 i32)
-  (local $ptr|541 i32)
-  (local $dest|542 i32)
-  (local $ptr|543 i32)
-  (local $len|544 i32)
-  (local $dest|545 i32)
-  (local $src|546 i32)
-  (local $l|547 i32)
-  (local $dest|548 i32)
-  (local $ptr|549 i32)
-  (local $dest|550 i32)
-  (local $ptr|551 i32)
-  (local $len|552 i32)
-  (local $dest|553 i32)
-  (local $ptr|554 i32)
-  (local $dest|555 i32)
-  (local $ptr|556 i32)
-  (local $len|557 i32)
-  (local $dest|558 i32)
-  (local $ptr|559 i32)
-  (local $dest|560 i32)
-  (local $ptr|561 i32)
-  (local $len|562 i32)
-  (local $dest|563 i32)
-  (local $ptr|564 i32)
-  (local $dest|565 i32)
-  (local $ptr|566 i32)
-  (local $len|567 i32)
-  (local $dest|568 i32)
-  (local $ptr|569 i32)
-  (local $dest|570 i32)
-  (local $ptr|571 i32)
-  (local $len|572 i32)
-  (local $dest|573 i32)
-  (local $ptr|574 i32)
-  (local $dest|575 i32)
-  (local $ptr|576 i32)
-  (local $len|577 i32)
-  (local $dest|578 i32)
-  (local $src|579 i32)
-  (local $l|580 i32)
-  (local $dest|581 i32)
-  (local $ptr|582 i32)
-  (local $dest|583 i32)
-  (local $ptr|584 i32)
-  (local $len|585 i32)
-  (local $dest|586 i32)
-  (local $ptr|587 i32)
-  (local $dest|588 i32)
-  (local $ptr|589 i32)
-  (local $len|590 i32)
-  (local $dest|591 i32)
-  (local $ptr|592 i32)
-  (local $dest|593 i32)
-  (local $ptr|594 i32)
-  (local $len|595 i32)
-  (local $dest|596 i32)
-  (local $ptr|597 i32)
-  (local $dest|598 i32)
-  (local $ptr|599 i32)
-  (local $len|600 i32)
-  (local $dest|601 i32)
-  (local $ptr|602 i32)
-  (local $dest|603 i32)
-  (local $ptr|604 i32)
-  (local $len|605 i32)
-  (local $dest|606 i32)
-  (local $ptr|607 i32)
-  (local $dest|608 i32)
-  (local $ptr|609 i32)
-  (local $len|610 i32)
-  (local $dest|611 i32)
-  (local $src|612 i32)
-  (local $dest|613 i32)
-  (local $ptr|614 i32)
-  (local $dest|615 i32)
-  (local $src|616 i32)
-  (local $l|617 i32)
-  (local $dest|618 i32)
-  (local $ptr|619 i32)
-  (local $dest|620 i32)
-  (local $ptr|621 i32)
-  (local $len|622 i32)
-  (local $dest|623 i32)
-  (local $ptr|624 i32)
-  (local $dest|625 i32)
-  (local $ptr|626 i32)
-  (local $len|627 i32)
-  (local $dest|628 i32)
-  (local $ptr|629 i32)
-  (local $dest|630 i32)
-  (local $ptr|631 i32)
-  (local $len|632 i32)
-  (local $dest|633 i32)
-  (local $ptr|634 i32)
-  (local $dest|635 i32)
-  (local $ptr|636 i32)
-  (local $len|637 i32)
-  (local $dest|638 i32)
-  (local $ptr|639 i32)
-  (local $dest|640 i32)
-  (local $ptr|641 i32)
-  (local $len|642 i32)
-  (local $dest|643 i32)
-  (local $ptr|644 i32)
-  (local $dest|645 i32)
-  (local $ptr|646 i32)
-  (local $len|647 i32)
-  (local $dest|648 i32)
-  (local $src|649 i32)
-  (local $dest|650 i32)
-  (local $ptr|651 i32)
-  (local $dest|652 i32)
-  (local $src|653 i32)
-  (local $l|654 i32)
-  (local $dest|655 i32)
-  (local $ptr|656 i32)
-  (local $dest|657 i32)
-  (local $ptr|658 i32)
-  (local $len|659 i32)
-  (local $dest|660 i32)
-  (local $ptr|661 i32)
-  (local $dest|662 i32)
-  (local $ptr|663 i32)
-  (local $len|664 i32)
-  (local $dest|665 i32)
-  (local $ptr|666 i32)
-  (local $dest|667 i32)
-  (local $ptr|668 i32)
-  (local $len|669 i32)
-  (local $dest|670 i32)
-  (local $ptr|671 i32)
-  (local $dest|672 i32)
-  (local $ptr|673 i32)
-  (local $len|674 i32)
-  (local $dest|675 i32)
-  (local $ptr|676 i32)
-  (local $dest|677 i32)
-  (local $ptr|678 i32)
-  (local $len|679 i32)
-  (local $dest|680 i32)
-  (local $ptr|681 i32)
-  (local $dest|682 i32)
-  (local $ptr|683 i32)
-  (local $len|684 i32)
-  (local $dest|685 i32)
-  (local $src|686 i32)
-  (local $dest|687 i32)
-  (local $ptr|688 i32)
-  (local $dest|689 i32)
-  (local $src|690 i32)
-  (local $l|691 i32)
-  (local $dest|692 i32)
-  (local $ptr|693 i32)
-  (local $dest|694 i32)
-  (local $ptr|695 i32)
-  (local $len|696 i32)
-  (local $dest|697 i32)
-  (local $ptr|698 i32)
-  (local $dest|699 i32)
-  (local $ptr|700 i32)
-  (local $len|701 i32)
-  (local $dest|702 i32)
-  (local $ptr|703 i32)
-  (local $dest|704 i32)
-  (local $ptr|705 i32)
-  (local $len|706 i32)
-  (local $dest|707 i32)
-  (local $ptr|708 i32)
-  (local $dest|709 i32)
-  (local $ptr|710 i32)
-  (local $len|711 i32)
-  (local $dest|712 i32)
-  (local $ptr|713 i32)
-  (local $dest|714 i32)
-  (local $ptr|715 i32)
-  (local $len|716 i32)
-  (local $dest|717 i32)
-  (local $ptr|718 i32)
-  (local $dest|719 i32)
-  (local $ptr|720 i32)
-  (local $len|721 i32)
-  (local $dest|722 i32)
-  (local $src|723 i32)
-  (local $dest|724 i32)
-  (local $ptr|725 i32)
-  (local $dest|726 i32)
-  (local $src|727 i32)
-  (local $size i32)
-  (local $729 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 76
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 76
-  memory.fill $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 28
-  i32.const 4
-  i32.const 1600
-  call $~lib/rt/__newBuffer
-  local.tee $weeks
-  i32.store $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 48
-  i32.const 4
-  i32.const 2032
-  call $~lib/rt/__newBuffer
-  local.tee $months
-  i32.store $0 offset=4
-  local.get $this
-  i32.load $0 offset=4
-  local.set $mo
-  local.get $this
-  i32.load $0 offset=8
-  local.set $da
-  local.get $this
-  i32.load $0
-  local.set $yr
-  local.get $yr
-  local.get $mo
-  local.get $da
-  call $~lib/date/dayOfWeek
-  local.set $wd
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.5 (result i32)
-   local.get $yr
-   local.tee $9
-   i32.const 31
-   i32.shr_s
-   local.tee $10
-   local.get $9
-   i32.add
-   local.get $10
-   i32.xor
-   local.set $value
-   i32.const 4
-   local.set $padding
-   global.get $~lib/memory/__stack_pointer
-   local.get $value
-   local.set $this|13
-   block $~lib/util/number/i32toa|inlined.5 (result i32)
-    local.get $this|13
-    local.set $value|14
-    local.get $value|14
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.5
-    end
-    local.get $value|14
-    i32.const 31
-    i32.shr_u
-    local.set $sign
-    local.get $sign
-    if
-     i32.const 0
-     local.get $value|14
-     i32.sub
-     local.set $value|14
-    end
-    local.get $value|14
-    call $~lib/util/number/decimalCount32
-    local.set $decimals
-    local.get $sign
-    local.get $decimals
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out
-    local.get $out
-    local.get $sign
-    i32.add
-    local.get $decimals
-    i32.add
-    local.set $end
-    local.get $value|14
-    local.set $num
-    local.get $num
-    i32.const 10
-    i32.div_u
-    local.set $t
-    local.get $num
-    i32.const 10
-    i32.rem_u
-    local.set $r
-    local.get $end
-    i32.const 1
-    i32.sub
-    local.set $end
-    local.get $end
-    i32.const 48
-    local.get $r
-    i32.add
-    i32.store8 $0
-    local.get $t
-    if
-     local.get $end
-     local.set $end|22
-     local.get $t
-     local.set $num|23
-     local.get $num|23
-     i32.const 10
-     i32.div_u
-     local.set $t|24
-     local.get $num|23
-     i32.const 10
-     i32.rem_u
-     local.set $r|25
-     local.get $end|22
-     i32.const 1
-     i32.sub
-     local.set $end|22
-     local.get $end|22
-     i32.const 48
-     local.get $r|25
-     i32.add
-     i32.store8 $0
-     local.get $t|24
-     if
-      local.get $end|22
-      local.set $end|26
-      local.get $t|24
-      local.set $num|27
-      local.get $num|27
-      i32.const 10
-      i32.div_u
-      local.set $t|28
-      local.get $num|27
-      i32.const 10
-      i32.rem_u
-      local.set $r|29
-      local.get $end|26
-      i32.const 1
-      i32.sub
-      local.set $end|26
-      local.get $end|26
-      i32.const 48
-      local.get $r|29
-      i32.add
-      i32.store8 $0
-      local.get $t|28
-      if
-       local.get $end|26
-       local.set $end|30
-       local.get $t|28
-       local.set $num|31
-       local.get $num|31
-       i32.const 10
-       i32.div_u
-       local.set $t|32
-       local.get $num|31
-       i32.const 10
-       i32.rem_u
-       local.set $r|33
-       local.get $end|30
-       i32.const 1
-       i32.sub
-       local.set $end|30
-       local.get $end|30
-       i32.const 48
-       local.get $r|33
-       i32.add
-       i32.store8 $0
-       local.get $t|32
-       if
-        local.get $end|30
-        local.set $end|34
-        local.get $t|32
-        local.set $num|35
-        local.get $num|35
-        i32.const 10
-        i32.div_u
-        local.set $t|36
-        local.get $num|35
-        i32.const 10
-        i32.rem_u
-        local.set $r|37
-        local.get $end|34
-        i32.const 1
-        i32.sub
-        local.set $end|34
-        local.get $end|34
-        i32.const 48
-        local.get $r|37
-        i32.add
-        i32.store8 $0
-        local.get $t|36
-        if
-         local.get $end|34
-         local.set $end|38
-         local.get $t|36
-         local.set $num|39
-         local.get $num|39
-         i32.const 10
-         i32.div_u
-         local.set $t|40
-         local.get $num|39
-         i32.const 10
-         i32.rem_u
-         local.set $r|41
-         local.get $end|38
-         i32.const 1
-         i32.sub
-         local.set $end|38
-         local.get $end|38
-         i32.const 48
-         local.get $r|41
-         i32.add
-         i32.store8 $0
-         local.get $t|40
-         if
-          local.get $end|38
-          local.set $end|42
-          local.get $t|40
-          local.set $num|43
-          local.get $num|43
-          i32.const 10
-          i32.div_u
-          local.set $t|44
-          local.get $num|43
-          i32.const 10
-          i32.rem_u
-          local.set $r|45
-          local.get $end|42
-          i32.const 1
-          i32.sub
-          local.set $end|42
-          local.get $end|42
-          i32.const 48
-          local.get $r|45
-          i32.add
-          i32.store8 $0
-          local.get $t|44
-          if
-           local.get $end|42
-           local.set $end|46
-           local.get $t|44
-           local.set $num|47
-           local.get $num|47
-           i32.const 10
-           i32.div_u
-           local.set $t|48
-           local.get $num|47
-           i32.const 10
-           i32.rem_u
-           local.set $r|49
-           local.get $end|46
-           i32.const 1
-           i32.sub
-           local.set $end|46
-           local.get $end|46
-           i32.const 48
-           local.get $r|49
-           i32.add
-           i32.store8 $0
-           local.get $t|48
-           if
-            local.get $end|46
-            local.set $end|50
-            local.get $t|48
-            local.set $num|51
-            local.get $num|51
-            i32.const 10
-            i32.div_u
-            local.set $t|52
-            local.get $num|51
-            i32.const 10
-            i32.rem_u
-            local.set $r|53
-            local.get $end|50
-            i32.const 1
-            i32.sub
-            local.set $end|50
-            local.get $end|50
-            i32.const 48
-            local.get $r|53
-            i32.add
-            i32.store8 $0
-            local.get $t|52
-            if
-             local.get $end|50
-             local.set $end|54
-             local.get $t|52
-             local.set $num|55
-             local.get $end|54
-             i32.const 1
-             i32.sub
-             local.tee $end|54
-             i32.const 48
-             local.get $num|55
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign
-    if
-     local.get $out
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out
-   end
-   local.tee $s
-   i32.store $0 offset=8
-   local.get $s
-   call $~lib/string/String#get:length
-   local.set $inSize
-   local.get $padding
-   local.set $targetSize
-   local.get $targetSize
-   local.get $inSize
-   i32.le_u
-   if
-    local.get $s
-    br $~lib/date/stringify|inlined.5
-   end
-   local.get $targetSize
-   local.get $inSize
-   i32.sub
-   local.set $prependSize
-   local.get $targetSize
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|60
-   local.get $out|60
-   local.set $dest
-   i32.const 48
-   local.set $value|62
-   local.get $prependSize
-   local.set $count
-   local.get $count
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest
-    local.tee $64
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $64
-    local.get $value|62
-    i32.store8 $0
-    local.get $dest
-    local.tee $65
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $65
-    local.get $value|62
-    i32.store8 $0
-    local.get $dest
-    local.tee $66
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $66
-    local.get $value|62
-    i32.store8 $0
-    local.get $dest
-    local.tee $67
-    i32.const 1
-    i32.add
-    local.set $dest
-    local.get $67
-    local.get $value|62
-    i32.store8 $0
-    local.get $count
-    i32.const 4
-    i32.sub
-    local.set $count
-   end
-   local.get $dest
-   local.set $dest|68
-   local.get $value|62
-   local.set $value|69
-   local.get $count
-   local.set $count|70
-   local.get $count|70
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|68
-    local.tee $71
-    i32.const 1
-    i32.add
-    local.set $dest|68
-    local.get $71
-    local.get $value|69
-    i32.store8 $0
-    local.get $dest|68
-    local.tee $72
-    i32.const 1
-    i32.add
-    local.set $dest|68
-    local.get $72
-    local.get $value|69
-    i32.store8 $0
-    local.get $count|70
-    i32.const 2
-    i32.sub
-    local.set $count|70
-   end
-   local.get $dest|68
-   local.set $dest|73
-   local.get $value|69
-   local.set $value|74
-   local.get $count|70
-   local.set $count|75
-   local.get $count|75
-   if
-    local.get $dest|73
-    local.get $value|74
-    i32.store8 $0
-   end
-   local.get $out|60
-   local.get $prependSize
-   i32.add
-   local.set $dest|76
-   local.get $s
-   local.set $ptr
-   local.get $inSize
-   local.set $len
-   local.get $len
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|76
-    local.set $dest|79
-    local.get $ptr
-    local.set $ptr|80
-    local.get $dest|79
-    local.get $ptr|80
-    i64.load $0
-    i64.store $0
-    local.get $dest|76
-    i32.const 8
-    i32.add
-    local.set $dest|76
-    local.get $ptr
-    i32.const 8
-    i32.add
-    local.set $ptr
-    local.get $len
-    i32.const 8
-    i32.sub
-    local.set $len
-   end
-   local.get $dest|76
-   local.set $dest|81
-   local.get $ptr
-   local.set $ptr|82
-   local.get $len
-   local.set $len|83
-   local.get $len|83
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|81
-    local.set $dest|84
-    local.get $ptr|82
-    local.set $ptr|85
-    local.get $dest|84
-    local.get $ptr|85
-    i32.load $0
-    i32.store $0
-    local.get $dest|81
-    i32.const 4
-    i32.add
-    local.set $dest|81
-    local.get $ptr|82
-    i32.const 4
-    i32.add
-    local.set $ptr|82
-    local.get $len|83
-    i32.const 4
-    i32.sub
-    local.set $len|83
-   end
-   local.get $dest|81
-   local.set $dest|86
-   local.get $ptr|82
-   local.set $ptr|87
-   local.get $len|83
-   local.set $len|88
-   local.get $len|88
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|86
-    local.set $dest|89
-    local.get $ptr|87
-    local.set $ptr|90
-    local.get $dest|89
-    local.get $ptr|90
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|86
-    i32.const 2
-    i32.add
-    local.set $dest|86
-    local.get $ptr|87
-    i32.const 2
-    i32.add
-    local.set $ptr|87
-    local.get $len|88
-    i32.const 2
-    i32.sub
-    local.set $len|88
-   end
-   local.get $dest|86
-   local.set $dest|91
-   local.get $ptr|87
-   local.set $ptr|92
-   local.get $len|88
-   local.set $len|93
-   local.get $len|93
-   if
-    local.get $dest|91
-    local.get $ptr|92
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|60
-  end
-  local.tee $year
-  i32.store $0 offset=12
-  global.get $~lib/memory/__stack_pointer
-  local.get $months
-  local.get $mo
-  i32.const 1
-  i32.sub
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__uget
-  local.tee $month
-  i32.store $0 offset=16
-  global.get $~lib/memory/__stack_pointer
-  local.get $weeks
-  local.get $wd
-  call $~lib/staticarray/StaticArray<~lib/string/String>#__uget
-  local.tee $week
-  i32.store $0 offset=20
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.6 (result i32)
-   local.get $da
-   local.set $value|97
-   i32.const 2
-   local.set $padding|98
-   global.get $~lib/memory/__stack_pointer
-   local.get $value|97
-   local.set $this|99
-   block $~lib/util/number/i32toa|inlined.6 (result i32)
-    local.get $this|99
-    local.set $value|100
-    local.get $value|100
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.6
-    end
-    local.get $value|100
-    i32.const 31
-    i32.shr_u
-    local.set $sign|101
-    local.get $sign|101
-    if
-     i32.const 0
-     local.get $value|100
-     i32.sub
-     local.set $value|100
-    end
-    local.get $value|100
-    call $~lib/util/number/decimalCount32
-    local.set $decimals|102
-    local.get $sign|101
-    local.get $decimals|102
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out|103
-    local.get $out|103
-    local.get $sign|101
-    i32.add
-    local.get $decimals|102
-    i32.add
-    local.set $end|104
-    local.get $value|100
-    local.set $num|105
-    local.get $num|105
-    i32.const 10
-    i32.div_u
-    local.set $t|106
-    local.get $num|105
-    i32.const 10
-    i32.rem_u
-    local.set $r|107
-    local.get $end|104
-    i32.const 1
-    i32.sub
-    local.set $end|104
-    local.get $end|104
-    i32.const 48
-    local.get $r|107
-    i32.add
-    i32.store8 $0
-    local.get $t|106
-    if
-     local.get $end|104
-     local.set $end|108
-     local.get $t|106
-     local.set $num|109
-     local.get $num|109
-     i32.const 10
-     i32.div_u
-     local.set $t|110
-     local.get $num|109
-     i32.const 10
-     i32.rem_u
-     local.set $r|111
-     local.get $end|108
-     i32.const 1
-     i32.sub
-     local.set $end|108
-     local.get $end|108
-     i32.const 48
-     local.get $r|111
-     i32.add
-     i32.store8 $0
-     local.get $t|110
-     if
-      local.get $end|108
-      local.set $end|112
-      local.get $t|110
-      local.set $num|113
-      local.get $num|113
-      i32.const 10
-      i32.div_u
-      local.set $t|114
-      local.get $num|113
-      i32.const 10
-      i32.rem_u
-      local.set $r|115
-      local.get $end|112
-      i32.const 1
-      i32.sub
-      local.set $end|112
-      local.get $end|112
-      i32.const 48
-      local.get $r|115
-      i32.add
-      i32.store8 $0
-      local.get $t|114
-      if
-       local.get $end|112
-       local.set $end|116
-       local.get $t|114
-       local.set $num|117
-       local.get $num|117
-       i32.const 10
-       i32.div_u
-       local.set $t|118
-       local.get $num|117
-       i32.const 10
-       i32.rem_u
-       local.set $r|119
-       local.get $end|116
-       i32.const 1
-       i32.sub
-       local.set $end|116
-       local.get $end|116
-       i32.const 48
-       local.get $r|119
-       i32.add
-       i32.store8 $0
-       local.get $t|118
-       if
-        local.get $end|116
-        local.set $end|120
-        local.get $t|118
-        local.set $num|121
-        local.get $num|121
-        i32.const 10
-        i32.div_u
-        local.set $t|122
-        local.get $num|121
-        i32.const 10
-        i32.rem_u
-        local.set $r|123
-        local.get $end|120
-        i32.const 1
-        i32.sub
-        local.set $end|120
-        local.get $end|120
-        i32.const 48
-        local.get $r|123
-        i32.add
-        i32.store8 $0
-        local.get $t|122
-        if
-         local.get $end|120
-         local.set $end|124
-         local.get $t|122
-         local.set $num|125
-         local.get $num|125
-         i32.const 10
-         i32.div_u
-         local.set $t|126
-         local.get $num|125
-         i32.const 10
-         i32.rem_u
-         local.set $r|127
-         local.get $end|124
-         i32.const 1
-         i32.sub
-         local.set $end|124
-         local.get $end|124
-         i32.const 48
-         local.get $r|127
-         i32.add
-         i32.store8 $0
-         local.get $t|126
-         if
-          local.get $end|124
-          local.set $end|128
-          local.get $t|126
-          local.set $num|129
-          local.get $num|129
-          i32.const 10
-          i32.div_u
-          local.set $t|130
-          local.get $num|129
-          i32.const 10
-          i32.rem_u
-          local.set $r|131
-          local.get $end|128
-          i32.const 1
-          i32.sub
-          local.set $end|128
-          local.get $end|128
-          i32.const 48
-          local.get $r|131
-          i32.add
-          i32.store8 $0
-          local.get $t|130
-          if
-           local.get $end|128
-           local.set $end|132
-           local.get $t|130
-           local.set $num|133
-           local.get $num|133
-           i32.const 10
-           i32.div_u
-           local.set $t|134
-           local.get $num|133
-           i32.const 10
-           i32.rem_u
-           local.set $r|135
-           local.get $end|132
-           i32.const 1
-           i32.sub
-           local.set $end|132
-           local.get $end|132
-           i32.const 48
-           local.get $r|135
-           i32.add
-           i32.store8 $0
-           local.get $t|134
-           if
-            local.get $end|132
-            local.set $end|136
-            local.get $t|134
-            local.set $num|137
-            local.get $num|137
-            i32.const 10
-            i32.div_u
-            local.set $t|138
-            local.get $num|137
-            i32.const 10
-            i32.rem_u
-            local.set $r|139
-            local.get $end|136
-            i32.const 1
-            i32.sub
-            local.set $end|136
-            local.get $end|136
-            i32.const 48
-            local.get $r|139
-            i32.add
-            i32.store8 $0
-            local.get $t|138
-            if
-             local.get $end|136
-             local.set $end|140
-             local.get $t|138
-             local.set $num|141
-             local.get $end|140
-             i32.const 1
-             i32.sub
-             local.tee $end|140
-             i32.const 48
-             local.get $num|141
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign|101
-    if
-     local.get $out|103
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out|103
-   end
-   local.tee $s|142
-   i32.store $0 offset=24
-   local.get $s|142
-   call $~lib/string/String#get:length
-   local.set $inSize|143
-   local.get $padding|98
-   local.set $targetSize|144
-   local.get $targetSize|144
-   local.get $inSize|143
-   i32.le_u
-   if
-    local.get $s|142
-    br $~lib/date/stringify|inlined.6
-   end
-   local.get $targetSize|144
-   local.get $inSize|143
-   i32.sub
-   local.set $prependSize|145
-   local.get $targetSize|144
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|146
-   local.get $out|146
-   local.set $dest|147
-   i32.const 48
-   local.set $value|148
-   local.get $prependSize|145
-   local.set $count|149
-   local.get $count|149
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest|147
-    local.tee $150
-    i32.const 1
-    i32.add
-    local.set $dest|147
-    local.get $150
-    local.get $value|148
-    i32.store8 $0
-    local.get $dest|147
-    local.tee $151
-    i32.const 1
-    i32.add
-    local.set $dest|147
-    local.get $151
-    local.get $value|148
-    i32.store8 $0
-    local.get $dest|147
-    local.tee $152
-    i32.const 1
-    i32.add
-    local.set $dest|147
-    local.get $152
-    local.get $value|148
-    i32.store8 $0
-    local.get $dest|147
-    local.tee $153
-    i32.const 1
-    i32.add
-    local.set $dest|147
-    local.get $153
-    local.get $value|148
-    i32.store8 $0
-    local.get $count|149
-    i32.const 4
-    i32.sub
-    local.set $count|149
-   end
-   local.get $dest|147
-   local.set $dest|154
-   local.get $value|148
-   local.set $value|155
-   local.get $count|149
-   local.set $count|156
-   local.get $count|156
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|154
-    local.tee $157
-    i32.const 1
-    i32.add
-    local.set $dest|154
-    local.get $157
-    local.get $value|155
-    i32.store8 $0
-    local.get $dest|154
-    local.tee $158
-    i32.const 1
-    i32.add
-    local.set $dest|154
-    local.get $158
-    local.get $value|155
-    i32.store8 $0
-    local.get $count|156
-    i32.const 2
-    i32.sub
-    local.set $count|156
-   end
-   local.get $dest|154
-   local.set $dest|159
-   local.get $value|155
-   local.set $value|160
-   local.get $count|156
-   local.set $count|161
-   local.get $count|161
-   if
-    local.get $dest|159
-    local.get $value|160
-    i32.store8 $0
-   end
-   local.get $out|146
-   local.get $prependSize|145
-   i32.add
-   local.set $dest|162
-   local.get $s|142
-   local.set $ptr|163
-   local.get $inSize|143
-   local.set $len|164
-   local.get $len|164
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|162
-    local.set $dest|165
-    local.get $ptr|163
-    local.set $ptr|166
-    local.get $dest|165
-    local.get $ptr|166
-    i64.load $0
-    i64.store $0
-    local.get $dest|162
-    i32.const 8
-    i32.add
-    local.set $dest|162
-    local.get $ptr|163
-    i32.const 8
-    i32.add
-    local.set $ptr|163
-    local.get $len|164
-    i32.const 8
-    i32.sub
-    local.set $len|164
-   end
-   local.get $dest|162
-   local.set $dest|167
-   local.get $ptr|163
-   local.set $ptr|168
-   local.get $len|164
-   local.set $len|169
-   local.get $len|169
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|167
-    local.set $dest|170
-    local.get $ptr|168
-    local.set $ptr|171
-    local.get $dest|170
-    local.get $ptr|171
-    i32.load $0
-    i32.store $0
-    local.get $dest|167
-    i32.const 4
-    i32.add
-    local.set $dest|167
-    local.get $ptr|168
-    i32.const 4
-    i32.add
-    local.set $ptr|168
-    local.get $len|169
-    i32.const 4
-    i32.sub
-    local.set $len|169
-   end
-   local.get $dest|167
-   local.set $dest|172
-   local.get $ptr|168
-   local.set $ptr|173
-   local.get $len|169
-   local.set $len|174
-   local.get $len|174
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|172
-    local.set $dest|175
-    local.get $ptr|173
-    local.set $ptr|176
-    local.get $dest|175
-    local.get $ptr|176
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|172
-    i32.const 2
-    i32.add
-    local.set $dest|172
-    local.get $ptr|173
-    i32.const 2
-    i32.add
-    local.set $ptr|173
-    local.get $len|174
-    i32.const 2
-    i32.sub
-    local.set $len|174
-   end
-   local.get $dest|172
-   local.set $dest|177
-   local.get $ptr|173
-   local.set $ptr|178
-   local.get $len|174
-   local.set $len|179
-   local.get $len|179
-   if
-    local.get $dest|177
-    local.get $ptr|178
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|146
-  end
-  local.tee $day
-  i32.store $0 offset=28
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.7 (result i32)
-   local.get $this
-   local.set $this|181
-   local.get $this|181
-   i64.load $0 offset=16
-   local.set $a
-   i32.const 86400000
-   i64.extend_i32_s
-   local.set $b
-   local.get $a
-   local.get $b
-   i64.rem_s
-   local.set $m
-   local.get $m
-   local.get $m
-   i64.const 0
-   i64.lt_s
-   if (result i64)
-    local.get $b
-   else
-    i64.const 0
-   end
-   i64.add
-   i32.wrap_i64
-   i32.const 3600000
-   i32.div_s
-   local.set $value|185
-   i32.const 2
-   local.set $padding|186
-   global.get $~lib/memory/__stack_pointer
-   local.get $value|185
-   local.set $this|187
-   block $~lib/util/number/i32toa|inlined.7 (result i32)
-    local.get $this|187
-    local.set $value|188
-    local.get $value|188
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.7
-    end
-    local.get $value|188
-    i32.const 31
-    i32.shr_u
-    local.set $sign|189
-    local.get $sign|189
-    if
-     i32.const 0
-     local.get $value|188
-     i32.sub
-     local.set $value|188
-    end
-    local.get $value|188
-    call $~lib/util/number/decimalCount32
-    local.set $decimals|190
-    local.get $sign|189
-    local.get $decimals|190
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out|191
-    local.get $out|191
-    local.get $sign|189
-    i32.add
-    local.get $decimals|190
-    i32.add
-    local.set $end|192
-    local.get $value|188
-    local.set $num|193
-    local.get $num|193
-    i32.const 10
-    i32.div_u
-    local.set $t|194
-    local.get $num|193
-    i32.const 10
-    i32.rem_u
-    local.set $r|195
-    local.get $end|192
-    i32.const 1
-    i32.sub
-    local.set $end|192
-    local.get $end|192
-    i32.const 48
-    local.get $r|195
-    i32.add
-    i32.store8 $0
-    local.get $t|194
-    if
-     local.get $end|192
-     local.set $end|196
-     local.get $t|194
-     local.set $num|197
-     local.get $num|197
-     i32.const 10
-     i32.div_u
-     local.set $t|198
-     local.get $num|197
-     i32.const 10
-     i32.rem_u
-     local.set $r|199
-     local.get $end|196
-     i32.const 1
-     i32.sub
-     local.set $end|196
-     local.get $end|196
-     i32.const 48
-     local.get $r|199
-     i32.add
-     i32.store8 $0
-     local.get $t|198
-     if
-      local.get $end|196
-      local.set $end|200
-      local.get $t|198
-      local.set $num|201
-      local.get $num|201
-      i32.const 10
-      i32.div_u
-      local.set $t|202
-      local.get $num|201
-      i32.const 10
-      i32.rem_u
-      local.set $r|203
-      local.get $end|200
-      i32.const 1
-      i32.sub
-      local.set $end|200
-      local.get $end|200
-      i32.const 48
-      local.get $r|203
-      i32.add
-      i32.store8 $0
-      local.get $t|202
-      if
-       local.get $end|200
-       local.set $end|204
-       local.get $t|202
-       local.set $num|205
-       local.get $num|205
-       i32.const 10
-       i32.div_u
-       local.set $t|206
-       local.get $num|205
-       i32.const 10
-       i32.rem_u
-       local.set $r|207
-       local.get $end|204
-       i32.const 1
-       i32.sub
-       local.set $end|204
-       local.get $end|204
-       i32.const 48
-       local.get $r|207
-       i32.add
-       i32.store8 $0
-       local.get $t|206
-       if
-        local.get $end|204
-        local.set $end|208
-        local.get $t|206
-        local.set $num|209
-        local.get $num|209
-        i32.const 10
-        i32.div_u
-        local.set $t|210
-        local.get $num|209
-        i32.const 10
-        i32.rem_u
-        local.set $r|211
-        local.get $end|208
-        i32.const 1
-        i32.sub
-        local.set $end|208
-        local.get $end|208
-        i32.const 48
-        local.get $r|211
-        i32.add
-        i32.store8 $0
-        local.get $t|210
-        if
-         local.get $end|208
-         local.set $end|212
-         local.get $t|210
-         local.set $num|213
-         local.get $num|213
-         i32.const 10
-         i32.div_u
-         local.set $t|214
-         local.get $num|213
-         i32.const 10
-         i32.rem_u
-         local.set $r|215
-         local.get $end|212
-         i32.const 1
-         i32.sub
-         local.set $end|212
-         local.get $end|212
-         i32.const 48
-         local.get $r|215
-         i32.add
-         i32.store8 $0
-         local.get $t|214
-         if
-          local.get $end|212
-          local.set $end|216
-          local.get $t|214
-          local.set $num|217
-          local.get $num|217
-          i32.const 10
-          i32.div_u
-          local.set $t|218
-          local.get $num|217
-          i32.const 10
-          i32.rem_u
-          local.set $r|219
-          local.get $end|216
-          i32.const 1
-          i32.sub
-          local.set $end|216
-          local.get $end|216
-          i32.const 48
-          local.get $r|219
-          i32.add
-          i32.store8 $0
-          local.get $t|218
-          if
-           local.get $end|216
-           local.set $end|220
-           local.get $t|218
-           local.set $num|221
-           local.get $num|221
-           i32.const 10
-           i32.div_u
-           local.set $t|222
-           local.get $num|221
-           i32.const 10
-           i32.rem_u
-           local.set $r|223
-           local.get $end|220
-           i32.const 1
-           i32.sub
-           local.set $end|220
-           local.get $end|220
-           i32.const 48
-           local.get $r|223
-           i32.add
-           i32.store8 $0
-           local.get $t|222
-           if
-            local.get $end|220
-            local.set $end|224
-            local.get $t|222
-            local.set $num|225
-            local.get $num|225
-            i32.const 10
-            i32.div_u
-            local.set $t|226
-            local.get $num|225
-            i32.const 10
-            i32.rem_u
-            local.set $r|227
-            local.get $end|224
-            i32.const 1
-            i32.sub
-            local.set $end|224
-            local.get $end|224
-            i32.const 48
-            local.get $r|227
-            i32.add
-            i32.store8 $0
-            local.get $t|226
-            if
-             local.get $end|224
-             local.set $end|228
-             local.get $t|226
-             local.set $num|229
-             local.get $end|228
-             i32.const 1
-             i32.sub
-             local.tee $end|228
-             i32.const 48
-             local.get $num|229
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign|189
-    if
-     local.get $out|191
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out|191
-   end
-   local.tee $s|230
-   i32.store $0 offset=32
-   local.get $s|230
-   call $~lib/string/String#get:length
-   local.set $inSize|231
-   local.get $padding|186
-   local.set $targetSize|232
-   local.get $targetSize|232
-   local.get $inSize|231
-   i32.le_u
-   if
-    local.get $s|230
-    br $~lib/date/stringify|inlined.7
-   end
-   local.get $targetSize|232
-   local.get $inSize|231
-   i32.sub
-   local.set $prependSize|233
-   local.get $targetSize|232
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|234
-   local.get $out|234
-   local.set $dest|235
-   i32.const 48
-   local.set $value|236
-   local.get $prependSize|233
-   local.set $count|237
-   local.get $count|237
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest|235
-    local.tee $238
-    i32.const 1
-    i32.add
-    local.set $dest|235
-    local.get $238
-    local.get $value|236
-    i32.store8 $0
-    local.get $dest|235
-    local.tee $239
-    i32.const 1
-    i32.add
-    local.set $dest|235
-    local.get $239
-    local.get $value|236
-    i32.store8 $0
-    local.get $dest|235
-    local.tee $240
-    i32.const 1
-    i32.add
-    local.set $dest|235
-    local.get $240
-    local.get $value|236
-    i32.store8 $0
-    local.get $dest|235
-    local.tee $241
-    i32.const 1
-    i32.add
-    local.set $dest|235
-    local.get $241
-    local.get $value|236
-    i32.store8 $0
-    local.get $count|237
-    i32.const 4
-    i32.sub
-    local.set $count|237
-   end
-   local.get $dest|235
-   local.set $dest|242
-   local.get $value|236
-   local.set $value|243
-   local.get $count|237
-   local.set $count|244
-   local.get $count|244
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|242
-    local.tee $245
-    i32.const 1
-    i32.add
-    local.set $dest|242
-    local.get $245
-    local.get $value|243
-    i32.store8 $0
-    local.get $dest|242
-    local.tee $246
-    i32.const 1
-    i32.add
-    local.set $dest|242
-    local.get $246
-    local.get $value|243
-    i32.store8 $0
-    local.get $count|244
-    i32.const 2
-    i32.sub
-    local.set $count|244
-   end
-   local.get $dest|242
-   local.set $dest|247
-   local.get $value|243
-   local.set $value|248
-   local.get $count|244
-   local.set $count|249
-   local.get $count|249
-   if
-    local.get $dest|247
-    local.get $value|248
-    i32.store8 $0
-   end
-   local.get $out|234
-   local.get $prependSize|233
-   i32.add
-   local.set $dest|250
-   local.get $s|230
-   local.set $ptr|251
-   local.get $inSize|231
-   local.set $len|252
-   local.get $len|252
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|250
-    local.set $dest|253
-    local.get $ptr|251
-    local.set $ptr|254
-    local.get $dest|253
-    local.get $ptr|254
-    i64.load $0
-    i64.store $0
-    local.get $dest|250
-    i32.const 8
-    i32.add
-    local.set $dest|250
-    local.get $ptr|251
-    i32.const 8
-    i32.add
-    local.set $ptr|251
-    local.get $len|252
-    i32.const 8
-    i32.sub
-    local.set $len|252
-   end
-   local.get $dest|250
-   local.set $dest|255
-   local.get $ptr|251
-   local.set $ptr|256
-   local.get $len|252
-   local.set $len|257
-   local.get $len|257
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|255
-    local.set $dest|258
-    local.get $ptr|256
-    local.set $ptr|259
-    local.get $dest|258
-    local.get $ptr|259
-    i32.load $0
-    i32.store $0
-    local.get $dest|255
-    i32.const 4
-    i32.add
-    local.set $dest|255
-    local.get $ptr|256
-    i32.const 4
-    i32.add
-    local.set $ptr|256
-    local.get $len|257
-    i32.const 4
-    i32.sub
-    local.set $len|257
-   end
-   local.get $dest|255
-   local.set $dest|260
-   local.get $ptr|256
-   local.set $ptr|261
-   local.get $len|257
-   local.set $len|262
-   local.get $len|262
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|260
-    local.set $dest|263
-    local.get $ptr|261
-    local.set $ptr|264
-    local.get $dest|263
-    local.get $ptr|264
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|260
-    i32.const 2
-    i32.add
-    local.set $dest|260
-    local.get $ptr|261
-    i32.const 2
-    i32.add
-    local.set $ptr|261
-    local.get $len|262
-    i32.const 2
-    i32.sub
-    local.set $len|262
-   end
-   local.get $dest|260
-   local.set $dest|265
-   local.get $ptr|261
-   local.set $ptr|266
-   local.get $len|262
-   local.set $len|267
-   local.get $len|267
-   if
-    local.get $dest|265
-    local.get $ptr|266
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|234
-  end
-  local.tee $hours
-  i32.store $0 offset=36
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.8 (result i32)
-   local.get $this
-   local.set $this|269
-   local.get $this|269
-   i64.load $0 offset=16
-   local.set $a|270
-   i32.const 3600000
-   i64.extend_i32_s
-   local.set $b|271
-   local.get $a|270
-   local.get $b|271
-   i64.rem_s
-   local.set $m|272
-   local.get $m|272
-   local.get $m|272
-   i64.const 0
-   i64.lt_s
-   if (result i64)
-    local.get $b|271
-   else
-    i64.const 0
-   end
-   i64.add
-   i32.wrap_i64
-   i32.const 60000
-   i32.div_s
-   local.set $value|273
-   i32.const 2
-   local.set $padding|274
-   global.get $~lib/memory/__stack_pointer
-   local.get $value|273
-   local.set $this|275
-   block $~lib/util/number/i32toa|inlined.8 (result i32)
-    local.get $this|275
-    local.set $value|276
-    local.get $value|276
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.8
-    end
-    local.get $value|276
-    i32.const 31
-    i32.shr_u
-    local.set $sign|277
-    local.get $sign|277
-    if
-     i32.const 0
-     local.get $value|276
-     i32.sub
-     local.set $value|276
-    end
-    local.get $value|276
-    call $~lib/util/number/decimalCount32
-    local.set $decimals|278
-    local.get $sign|277
-    local.get $decimals|278
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out|279
-    local.get $out|279
-    local.get $sign|277
-    i32.add
-    local.get $decimals|278
-    i32.add
-    local.set $end|280
-    local.get $value|276
-    local.set $num|281
-    local.get $num|281
-    i32.const 10
-    i32.div_u
-    local.set $t|282
-    local.get $num|281
-    i32.const 10
-    i32.rem_u
-    local.set $r|283
-    local.get $end|280
-    i32.const 1
-    i32.sub
-    local.set $end|280
-    local.get $end|280
-    i32.const 48
-    local.get $r|283
-    i32.add
-    i32.store8 $0
-    local.get $t|282
-    if
-     local.get $end|280
-     local.set $end|284
-     local.get $t|282
-     local.set $num|285
-     local.get $num|285
-     i32.const 10
-     i32.div_u
-     local.set $t|286
-     local.get $num|285
-     i32.const 10
-     i32.rem_u
-     local.set $r|287
-     local.get $end|284
-     i32.const 1
-     i32.sub
-     local.set $end|284
-     local.get $end|284
-     i32.const 48
-     local.get $r|287
-     i32.add
-     i32.store8 $0
-     local.get $t|286
-     if
-      local.get $end|284
-      local.set $end|288
-      local.get $t|286
-      local.set $num|289
-      local.get $num|289
-      i32.const 10
-      i32.div_u
-      local.set $t|290
-      local.get $num|289
-      i32.const 10
-      i32.rem_u
-      local.set $r|291
-      local.get $end|288
-      i32.const 1
-      i32.sub
-      local.set $end|288
-      local.get $end|288
-      i32.const 48
-      local.get $r|291
-      i32.add
-      i32.store8 $0
-      local.get $t|290
-      if
-       local.get $end|288
-       local.set $end|292
-       local.get $t|290
-       local.set $num|293
-       local.get $num|293
-       i32.const 10
-       i32.div_u
-       local.set $t|294
-       local.get $num|293
-       i32.const 10
-       i32.rem_u
-       local.set $r|295
-       local.get $end|292
-       i32.const 1
-       i32.sub
-       local.set $end|292
-       local.get $end|292
-       i32.const 48
-       local.get $r|295
-       i32.add
-       i32.store8 $0
-       local.get $t|294
-       if
-        local.get $end|292
-        local.set $end|296
-        local.get $t|294
-        local.set $num|297
-        local.get $num|297
-        i32.const 10
-        i32.div_u
-        local.set $t|298
-        local.get $num|297
-        i32.const 10
-        i32.rem_u
-        local.set $r|299
-        local.get $end|296
-        i32.const 1
-        i32.sub
-        local.set $end|296
-        local.get $end|296
-        i32.const 48
-        local.get $r|299
-        i32.add
-        i32.store8 $0
-        local.get $t|298
-        if
-         local.get $end|296
-         local.set $end|300
-         local.get $t|298
-         local.set $num|301
-         local.get $num|301
-         i32.const 10
-         i32.div_u
-         local.set $t|302
-         local.get $num|301
-         i32.const 10
-         i32.rem_u
-         local.set $r|303
-         local.get $end|300
-         i32.const 1
-         i32.sub
-         local.set $end|300
-         local.get $end|300
-         i32.const 48
-         local.get $r|303
-         i32.add
-         i32.store8 $0
-         local.get $t|302
-         if
-          local.get $end|300
-          local.set $end|304
-          local.get $t|302
-          local.set $num|305
-          local.get $num|305
-          i32.const 10
-          i32.div_u
-          local.set $t|306
-          local.get $num|305
-          i32.const 10
-          i32.rem_u
-          local.set $r|307
-          local.get $end|304
-          i32.const 1
-          i32.sub
-          local.set $end|304
-          local.get $end|304
-          i32.const 48
-          local.get $r|307
-          i32.add
-          i32.store8 $0
-          local.get $t|306
-          if
-           local.get $end|304
-           local.set $end|308
-           local.get $t|306
-           local.set $num|309
-           local.get $num|309
-           i32.const 10
-           i32.div_u
-           local.set $t|310
-           local.get $num|309
-           i32.const 10
-           i32.rem_u
-           local.set $r|311
-           local.get $end|308
-           i32.const 1
-           i32.sub
-           local.set $end|308
-           local.get $end|308
-           i32.const 48
-           local.get $r|311
-           i32.add
-           i32.store8 $0
-           local.get $t|310
-           if
-            local.get $end|308
-            local.set $end|312
-            local.get $t|310
-            local.set $num|313
-            local.get $num|313
-            i32.const 10
-            i32.div_u
-            local.set $t|314
-            local.get $num|313
-            i32.const 10
-            i32.rem_u
-            local.set $r|315
-            local.get $end|312
-            i32.const 1
-            i32.sub
-            local.set $end|312
-            local.get $end|312
-            i32.const 48
-            local.get $r|315
-            i32.add
-            i32.store8 $0
-            local.get $t|314
-            if
-             local.get $end|312
-             local.set $end|316
-             local.get $t|314
-             local.set $num|317
-             local.get $end|316
-             i32.const 1
-             i32.sub
-             local.tee $end|316
-             i32.const 48
-             local.get $num|317
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign|277
-    if
-     local.get $out|279
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out|279
-   end
-   local.tee $s|318
-   i32.store $0 offset=40
-   local.get $s|318
-   call $~lib/string/String#get:length
-   local.set $inSize|319
-   local.get $padding|274
-   local.set $targetSize|320
-   local.get $targetSize|320
-   local.get $inSize|319
-   i32.le_u
-   if
-    local.get $s|318
-    br $~lib/date/stringify|inlined.8
-   end
-   local.get $targetSize|320
-   local.get $inSize|319
-   i32.sub
-   local.set $prependSize|321
-   local.get $targetSize|320
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|322
-   local.get $out|322
-   local.set $dest|323
-   i32.const 48
-   local.set $value|324
-   local.get $prependSize|321
-   local.set $count|325
-   local.get $count|325
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest|323
-    local.tee $326
-    i32.const 1
-    i32.add
-    local.set $dest|323
-    local.get $326
-    local.get $value|324
-    i32.store8 $0
-    local.get $dest|323
-    local.tee $327
-    i32.const 1
-    i32.add
-    local.set $dest|323
-    local.get $327
-    local.get $value|324
-    i32.store8 $0
-    local.get $dest|323
-    local.tee $328
-    i32.const 1
-    i32.add
-    local.set $dest|323
-    local.get $328
-    local.get $value|324
-    i32.store8 $0
-    local.get $dest|323
-    local.tee $329
-    i32.const 1
-    i32.add
-    local.set $dest|323
-    local.get $329
-    local.get $value|324
-    i32.store8 $0
-    local.get $count|325
-    i32.const 4
-    i32.sub
-    local.set $count|325
-   end
-   local.get $dest|323
-   local.set $dest|330
-   local.get $value|324
-   local.set $value|331
-   local.get $count|325
-   local.set $count|332
-   local.get $count|332
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|330
-    local.tee $333
-    i32.const 1
-    i32.add
-    local.set $dest|330
-    local.get $333
-    local.get $value|331
-    i32.store8 $0
-    local.get $dest|330
-    local.tee $334
-    i32.const 1
-    i32.add
-    local.set $dest|330
-    local.get $334
-    local.get $value|331
-    i32.store8 $0
-    local.get $count|332
-    i32.const 2
-    i32.sub
-    local.set $count|332
-   end
-   local.get $dest|330
-   local.set $dest|335
-   local.get $value|331
-   local.set $value|336
-   local.get $count|332
-   local.set $count|337
-   local.get $count|337
-   if
-    local.get $dest|335
-    local.get $value|336
-    i32.store8 $0
-   end
-   local.get $out|322
-   local.get $prependSize|321
-   i32.add
-   local.set $dest|338
-   local.get $s|318
-   local.set $ptr|339
-   local.get $inSize|319
-   local.set $len|340
-   local.get $len|340
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|338
-    local.set $dest|341
-    local.get $ptr|339
-    local.set $ptr|342
-    local.get $dest|341
-    local.get $ptr|342
-    i64.load $0
-    i64.store $0
-    local.get $dest|338
-    i32.const 8
-    i32.add
-    local.set $dest|338
-    local.get $ptr|339
-    i32.const 8
-    i32.add
-    local.set $ptr|339
-    local.get $len|340
-    i32.const 8
-    i32.sub
-    local.set $len|340
-   end
-   local.get $dest|338
-   local.set $dest|343
-   local.get $ptr|339
-   local.set $ptr|344
-   local.get $len|340
-   local.set $len|345
-   local.get $len|345
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|343
-    local.set $dest|346
-    local.get $ptr|344
-    local.set $ptr|347
-    local.get $dest|346
-    local.get $ptr|347
-    i32.load $0
-    i32.store $0
-    local.get $dest|343
-    i32.const 4
-    i32.add
-    local.set $dest|343
-    local.get $ptr|344
-    i32.const 4
-    i32.add
-    local.set $ptr|344
-    local.get $len|345
-    i32.const 4
-    i32.sub
-    local.set $len|345
-   end
-   local.get $dest|343
-   local.set $dest|348
-   local.get $ptr|344
-   local.set $ptr|349
-   local.get $len|345
-   local.set $len|350
-   local.get $len|350
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|348
-    local.set $dest|351
-    local.get $ptr|349
-    local.set $ptr|352
-    local.get $dest|351
-    local.get $ptr|352
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|348
-    i32.const 2
-    i32.add
-    local.set $dest|348
-    local.get $ptr|349
-    i32.const 2
-    i32.add
-    local.set $ptr|349
-    local.get $len|350
-    i32.const 2
-    i32.sub
-    local.set $len|350
-   end
-   local.get $dest|348
-   local.set $dest|353
-   local.get $ptr|349
-   local.set $ptr|354
-   local.get $len|350
-   local.set $len|355
-   local.get $len|355
-   if
-    local.get $dest|353
-    local.get $ptr|354
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|322
-  end
-  local.tee $mins
-  i32.store $0 offset=44
-  global.get $~lib/memory/__stack_pointer
-  block $~lib/date/stringify|inlined.9 (result i32)
-   local.get $this
-   local.set $this|357
-   local.get $this|357
-   i64.load $0 offset=16
-   local.set $a|358
-   i32.const 60000
-   i64.extend_i32_s
-   local.set $b|359
-   local.get $a|358
-   local.get $b|359
-   i64.rem_s
-   local.set $m|360
-   local.get $m|360
-   local.get $m|360
-   i64.const 0
-   i64.lt_s
-   if (result i64)
-    local.get $b|359
-   else
-    i64.const 0
-   end
-   i64.add
-   i32.wrap_i64
-   i32.const 1000
-   i32.div_s
-   local.set $value|361
-   i32.const 2
-   local.set $padding|362
-   global.get $~lib/memory/__stack_pointer
-   local.get $value|361
-   local.set $this|363
-   block $~lib/util/number/i32toa|inlined.9 (result i32)
-    local.get $this|363
-    local.set $value|364
-    local.get $value|364
-    i32.eqz
-    if
-     i32.const 1040
-     br $~lib/util/number/i32toa|inlined.9
-    end
-    local.get $value|364
-    i32.const 31
-    i32.shr_u
-    local.set $sign|365
-    local.get $sign|365
-    if
-     i32.const 0
-     local.get $value|364
-     i32.sub
-     local.set $value|364
-    end
-    local.get $value|364
-    call $~lib/util/number/decimalCount32
-    local.set $decimals|366
-    local.get $sign|365
-    local.get $decimals|366
-    i32.add
-    i32.const 1
-    call $~lib/rt/itcms/__new
-    local.set $out|367
-    local.get $out|367
-    local.get $sign|365
-    i32.add
-    local.get $decimals|366
-    i32.add
-    local.set $end|368
-    local.get $value|364
-    local.set $num|369
-    local.get $num|369
-    i32.const 10
-    i32.div_u
-    local.set $t|370
-    local.get $num|369
-    i32.const 10
-    i32.rem_u
-    local.set $r|371
-    local.get $end|368
-    i32.const 1
-    i32.sub
-    local.set $end|368
-    local.get $end|368
-    i32.const 48
-    local.get $r|371
-    i32.add
-    i32.store8 $0
-    local.get $t|370
-    if
-     local.get $end|368
-     local.set $end|372
-     local.get $t|370
-     local.set $num|373
-     local.get $num|373
-     i32.const 10
-     i32.div_u
-     local.set $t|374
-     local.get $num|373
-     i32.const 10
-     i32.rem_u
-     local.set $r|375
-     local.get $end|372
-     i32.const 1
-     i32.sub
-     local.set $end|372
-     local.get $end|372
-     i32.const 48
-     local.get $r|375
-     i32.add
-     i32.store8 $0
-     local.get $t|374
-     if
-      local.get $end|372
-      local.set $end|376
-      local.get $t|374
-      local.set $num|377
-      local.get $num|377
-      i32.const 10
-      i32.div_u
-      local.set $t|378
-      local.get $num|377
-      i32.const 10
-      i32.rem_u
-      local.set $r|379
-      local.get $end|376
-      i32.const 1
-      i32.sub
-      local.set $end|376
-      local.get $end|376
-      i32.const 48
-      local.get $r|379
-      i32.add
-      i32.store8 $0
-      local.get $t|378
-      if
-       local.get $end|376
-       local.set $end|380
-       local.get $t|378
-       local.set $num|381
-       local.get $num|381
-       i32.const 10
-       i32.div_u
-       local.set $t|382
-       local.get $num|381
-       i32.const 10
-       i32.rem_u
-       local.set $r|383
-       local.get $end|380
-       i32.const 1
-       i32.sub
-       local.set $end|380
-       local.get $end|380
-       i32.const 48
-       local.get $r|383
-       i32.add
-       i32.store8 $0
-       local.get $t|382
-       if
-        local.get $end|380
-        local.set $end|384
-        local.get $t|382
-        local.set $num|385
-        local.get $num|385
-        i32.const 10
-        i32.div_u
-        local.set $t|386
-        local.get $num|385
-        i32.const 10
-        i32.rem_u
-        local.set $r|387
-        local.get $end|384
-        i32.const 1
-        i32.sub
-        local.set $end|384
-        local.get $end|384
-        i32.const 48
-        local.get $r|387
-        i32.add
-        i32.store8 $0
-        local.get $t|386
-        if
-         local.get $end|384
-         local.set $end|388
-         local.get $t|386
-         local.set $num|389
-         local.get $num|389
-         i32.const 10
-         i32.div_u
-         local.set $t|390
-         local.get $num|389
-         i32.const 10
-         i32.rem_u
-         local.set $r|391
-         local.get $end|388
-         i32.const 1
-         i32.sub
-         local.set $end|388
-         local.get $end|388
-         i32.const 48
-         local.get $r|391
-         i32.add
-         i32.store8 $0
-         local.get $t|390
-         if
-          local.get $end|388
-          local.set $end|392
-          local.get $t|390
-          local.set $num|393
-          local.get $num|393
-          i32.const 10
-          i32.div_u
-          local.set $t|394
-          local.get $num|393
-          i32.const 10
-          i32.rem_u
-          local.set $r|395
-          local.get $end|392
-          i32.const 1
-          i32.sub
-          local.set $end|392
-          local.get $end|392
-          i32.const 48
-          local.get $r|395
-          i32.add
-          i32.store8 $0
-          local.get $t|394
-          if
-           local.get $end|392
-           local.set $end|396
-           local.get $t|394
-           local.set $num|397
-           local.get $num|397
-           i32.const 10
-           i32.div_u
-           local.set $t|398
-           local.get $num|397
-           i32.const 10
-           i32.rem_u
-           local.set $r|399
-           local.get $end|396
-           i32.const 1
-           i32.sub
-           local.set $end|396
-           local.get $end|396
-           i32.const 48
-           local.get $r|399
-           i32.add
-           i32.store8 $0
-           local.get $t|398
-           if
-            local.get $end|396
-            local.set $end|400
-            local.get $t|398
-            local.set $num|401
-            local.get $num|401
-            i32.const 10
-            i32.div_u
-            local.set $t|402
-            local.get $num|401
-            i32.const 10
-            i32.rem_u
-            local.set $r|403
-            local.get $end|400
-            i32.const 1
-            i32.sub
-            local.set $end|400
-            local.get $end|400
-            i32.const 48
-            local.get $r|403
-            i32.add
-            i32.store8 $0
-            local.get $t|402
-            if
-             local.get $end|400
-             local.set $end|404
-             local.get $t|402
-             local.set $num|405
-             local.get $end|404
-             i32.const 1
-             i32.sub
-             local.tee $end|404
-             i32.const 48
-             local.get $num|405
-             i32.add
-             i32.store8 $0
-            end
-           end
-          end
-         end
-        end
-       end
-      end
-     end
-    end
-    local.get $sign|365
-    if
-     local.get $out|367
-     i32.const 45
-     i32.store8 $0
-    end
-    local.get $out|367
-   end
-   local.tee $s|406
-   i32.store $0 offset=48
-   local.get $s|406
-   call $~lib/string/String#get:length
-   local.set $inSize|407
-   local.get $padding|362
-   local.set $targetSize|408
-   local.get $targetSize|408
-   local.get $inSize|407
-   i32.le_u
-   if
-    local.get $s|406
-    br $~lib/date/stringify|inlined.9
-   end
-   local.get $targetSize|408
-   local.get $inSize|407
-   i32.sub
-   local.set $prependSize|409
-   local.get $targetSize|408
-   i32.const 1
-   call $~lib/rt/itcms/__new
-   local.set $out|410
-   local.get $out|410
-   local.set $dest|411
-   i32.const 48
-   local.set $value|412
-   local.get $prependSize|409
-   local.set $count|413
-   local.get $count|413
-   i32.const 4
-   i32.ge_u
-   if
-    local.get $dest|411
-    local.tee $414
-    i32.const 1
-    i32.add
-    local.set $dest|411
-    local.get $414
-    local.get $value|412
-    i32.store8 $0
-    local.get $dest|411
-    local.tee $415
-    i32.const 1
-    i32.add
-    local.set $dest|411
-    local.get $415
-    local.get $value|412
-    i32.store8 $0
-    local.get $dest|411
-    local.tee $416
-    i32.const 1
-    i32.add
-    local.set $dest|411
-    local.get $416
-    local.get $value|412
-    i32.store8 $0
-    local.get $dest|411
-    local.tee $417
-    i32.const 1
-    i32.add
-    local.set $dest|411
-    local.get $417
-    local.get $value|412
-    i32.store8 $0
-    local.get $count|413
-    i32.const 4
-    i32.sub
-    local.set $count|413
-   end
-   local.get $dest|411
-   local.set $dest|418
-   local.get $value|412
-   local.set $value|419
-   local.get $count|413
-   local.set $count|420
-   local.get $count|420
-   i32.const 2
-   i32.ge_u
-   if
-    local.get $dest|418
-    local.tee $421
-    i32.const 1
-    i32.add
-    local.set $dest|418
-    local.get $421
-    local.get $value|419
-    i32.store8 $0
-    local.get $dest|418
-    local.tee $422
-    i32.const 1
-    i32.add
-    local.set $dest|418
-    local.get $422
-    local.get $value|419
-    i32.store8 $0
-    local.get $count|420
-    i32.const 2
-    i32.sub
-    local.set $count|420
-   end
-   local.get $dest|418
-   local.set $dest|423
-   local.get $value|419
-   local.set $value|424
-   local.get $count|420
-   local.set $count|425
-   local.get $count|425
-   if
-    local.get $dest|423
-    local.get $value|424
-    i32.store8 $0
-   end
-   local.get $out|410
-   local.get $prependSize|409
-   i32.add
-   local.set $dest|426
-   local.get $s|406
-   local.set $ptr|427
-   local.get $inSize|407
-   local.set $len|428
-   local.get $len|428
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|426
-    local.set $dest|429
-    local.get $ptr|427
-    local.set $ptr|430
-    local.get $dest|429
-    local.get $ptr|430
-    i64.load $0
-    i64.store $0
-    local.get $dest|426
-    i32.const 8
-    i32.add
-    local.set $dest|426
-    local.get $ptr|427
-    i32.const 8
-    i32.add
-    local.set $ptr|427
-    local.get $len|428
-    i32.const 8
-    i32.sub
-    local.set $len|428
-   end
-   local.get $dest|426
-   local.set $dest|431
-   local.get $ptr|427
-   local.set $ptr|432
-   local.get $len|428
-   local.set $len|433
-   local.get $len|433
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|431
-    local.set $dest|434
-    local.get $ptr|432
-    local.set $ptr|435
-    local.get $dest|434
-    local.get $ptr|435
-    i32.load $0
-    i32.store $0
-    local.get $dest|431
-    i32.const 4
-    i32.add
-    local.set $dest|431
-    local.get $ptr|432
-    i32.const 4
-    i32.add
-    local.set $ptr|432
-    local.get $len|433
-    i32.const 4
-    i32.sub
-    local.set $len|433
-   end
-   local.get $dest|431
-   local.set $dest|436
-   local.get $ptr|432
-   local.set $ptr|437
-   local.get $len|433
-   local.set $len|438
-   local.get $len|438
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|436
-    local.set $dest|439
-    local.get $ptr|437
-    local.set $ptr|440
-    local.get $dest|439
-    local.get $ptr|440
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|436
-    i32.const 2
-    i32.add
-    local.set $dest|436
-    local.get $ptr|437
-    i32.const 2
-    i32.add
-    local.set $ptr|437
-    local.get $len|438
-    i32.const 2
-    i32.sub
-    local.set $len|438
-   end
-   local.get $dest|436
-   local.set $dest|441
-   local.get $ptr|437
-   local.set $ptr|442
-   local.get $len|438
-   local.set $len|443
-   local.get $len|443
-   if
-    local.get $dest|441
-    local.get $ptr|442
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $out|410
-  end
-  local.tee $secs
-  i32.store $0 offset=52
-  i32.const 519
-  local.set $size
-  local.get $size
-  i32.const 1
-  call $~lib/rt/itcms/__new
-  local.set $445
-  block $~lib/copyupto/__copyupto64|inlined.15 (result i32)
-   block $~lib/copyupto/__copyupto64|inlined.14 (result i32)
-    block $~lib/copyupto/__copyupto64|inlined.13 (result i32)
-     block $~lib/copyupto/__copyupto64|inlined.12 (result i32)
-      block $~lib/copyupto/__copyupto64|inlined.11 (result i32)
-       block $~lib/copyupto/__copyupto64|inlined.10 (result i32)
-        block $~lib/copyupto/__copyupto64|inlined.9 (result i32)
-         block $~lib/copyupto/__copyupto64|inlined.8 (result i32)
-          local.get $445
-          local.set $dest|446
-          local.get $week
-          local.set $src
-          local.get $src
-          call $~lib/string/String#get:length
-          local.set $l
-          local.get $l
-          i32.const 64
-          i32.ge_s
-          if
-           local.get $dest|446
-           local.set $dest|449
-           local.get $src
-           local.set $ptr|450
-           local.get $dest|449
-           local.get $ptr|450
-           i64.load $0
-           i64.store $0
-           local.get $dest|449
-           i32.const 8
-           i32.add
-           local.set $dest|449
-           local.get $ptr|450
-           i32.const 8
-           i32.add
-           local.set $ptr|450
-           local.get $dest|449
-           local.get $ptr|450
-           i64.load $0
-           i64.store $0
-           local.get $dest|449
-           i32.const 8
-           i32.add
-           local.set $dest|449
-           local.get $ptr|450
-           i32.const 8
-           i32.add
-           local.set $ptr|450
-           local.get $dest|449
-           local.get $ptr|450
-           i64.load $0
-           i64.store $0
-           local.get $dest|449
-           i32.const 8
-           i32.add
-           local.set $dest|449
-           local.get $ptr|450
-           i32.const 8
-           i32.add
-           local.set $ptr|450
-           local.get $dest|449
-           local.get $ptr|450
-           i64.load $0
-           i64.store $0
-           local.get $dest|449
-           i32.const 8
-           i32.add
-           local.set $dest|449
-           local.get $ptr|450
-           i32.const 8
-           i32.add
-           local.set $ptr|450
-           local.get $dest|449
-           local.get $ptr|450
-           i64.load $0
-           i64.store $0
-           local.get $dest|449
-           i32.const 8
-           i32.add
-           local.set $dest|449
-           local.get $ptr|450
-           i32.const 8
-           i32.add
-           local.set $ptr|450
-           local.get $dest|449
-           local.get $ptr|450
-           i64.load $0
-           i64.store $0
-           local.get $dest|449
-           i32.const 8
-           i32.add
-           local.set $dest|449
-           local.get $ptr|450
-           i32.const 8
-           i32.add
-           local.set $ptr|450
-           local.get $dest|449
-           local.get $ptr|450
-           i64.load $0
-           i64.store $0
-           local.get $dest|449
-           i32.const 8
-           i32.add
-           local.set $dest|449
-           local.get $ptr|450
-           i32.const 8
-           i32.add
-           local.set $ptr|450
-           local.get $dest|449
-           local.get $ptr|450
-           i64.load $0
-           i64.store $0
-           local.get $dest|446
-           i32.const 64
-           i32.add
-           br $~lib/copyupto/__copyupto64|inlined.8
-          end
-          local.get $dest|446
-          local.set $dest|451
-          local.get $src
-          local.set $ptr|452
-          local.get $l
-          local.set $len|453
-          local.get $len|453
-          i32.const 32
-          i32.ge_s
-          if
-           local.get $dest|451
-           local.set $dest|454
-           local.get $ptr|452
-           local.set $ptr|455
-           local.get $dest|454
-           local.get $ptr|455
-           i64.load $0
-           i64.store $0
-           local.get $dest|454
-           i32.const 8
-           i32.add
-           local.set $dest|454
-           local.get $ptr|455
-           i32.const 8
-           i32.add
-           local.set $ptr|455
-           local.get $dest|454
-           local.get $ptr|455
-           i64.load $0
-           i64.store $0
-           local.get $dest|454
-           i32.const 8
-           i32.add
-           local.set $dest|454
-           local.get $ptr|455
-           i32.const 8
-           i32.add
-           local.set $ptr|455
-           local.get $dest|454
-           local.get $ptr|455
-           i64.load $0
-           i64.store $0
-           local.get $dest|454
-           i32.const 8
-           i32.add
-           local.set $dest|454
-           local.get $ptr|455
-           i32.const 8
-           i32.add
-           local.set $ptr|455
-           local.get $dest|454
-           local.get $ptr|455
-           i64.load $0
-           i64.store $0
-           local.get $dest|451
-           i32.const 32
-           i32.add
-           local.set $dest|451
-           local.get $ptr|452
-           i32.const 32
-           i32.add
-           local.set $ptr|452
-           local.get $len|453
-           i32.const 32
-           i32.sub
-           local.set $len|453
-          end
-          local.get $dest|451
-          local.set $dest|456
-          local.get $ptr|452
-          local.set $ptr|457
-          local.get $len|453
-          local.set $len|458
-          local.get $len|458
-          i32.const 16
-          i32.ge_s
-          if
-           local.get $dest|456
-           local.set $dest|459
-           local.get $ptr|457
-           local.set $ptr|460
-           local.get $dest|459
-           local.get $ptr|460
-           i64.load $0
-           i64.store $0
-           local.get $dest|459
-           i32.const 8
-           i32.add
-           local.set $dest|459
-           local.get $ptr|460
-           i32.const 8
-           i32.add
-           local.set $ptr|460
-           local.get $dest|459
-           local.get $ptr|460
-           i64.load $0
-           i64.store $0
-           local.get $dest|456
-           i32.const 16
-           i32.add
-           local.set $dest|456
-           local.get $ptr|457
-           i32.const 16
-           i32.add
-           local.set $ptr|457
-           local.get $len|458
-           i32.const 16
-           i32.sub
-           local.set $len|458
-          end
-          local.get $dest|456
-          local.set $dest|461
-          local.get $ptr|457
-          local.set $ptr|462
-          local.get $len|458
-          local.set $len|463
-          local.get $len|463
-          i32.const 8
-          i32.ge_s
-          if
-           local.get $dest|461
-           local.set $dest|464
-           local.get $ptr|462
-           local.set $ptr|465
-           local.get $dest|464
-           local.get $ptr|465
-           i64.load $0
-           i64.store $0
-           local.get $dest|461
-           i32.const 8
-           i32.add
-           local.set $dest|461
-           local.get $ptr|462
-           i32.const 8
-           i32.add
-           local.set $ptr|462
-           local.get $len|463
-           i32.const 8
-           i32.sub
-           local.set $len|463
-          end
-          local.get $dest|461
-          local.set $dest|466
-          local.get $ptr|462
-          local.set $ptr|467
-          local.get $len|463
-          local.set $len|468
-          local.get $len|468
-          i32.const 4
-          i32.ge_s
-          if
-           local.get $dest|466
-           local.set $dest|469
-           local.get $ptr|467
-           local.set $ptr|470
-           local.get $dest|469
-           local.get $ptr|470
-           i32.load $0
-           i32.store $0
-           local.get $dest|466
-           i32.const 4
-           i32.add
-           local.set $dest|466
-           local.get $ptr|467
-           i32.const 4
-           i32.add
-           local.set $ptr|467
-           local.get $len|468
-           i32.const 4
-           i32.sub
-           local.set $len|468
-          end
-          local.get $dest|466
-          local.set $dest|471
-          local.get $ptr|467
-          local.set $ptr|472
-          local.get $len|468
-          local.set $len|473
-          local.get $len|473
-          i32.const 2
-          i32.ge_s
-          if
-           local.get $dest|471
-           local.set $dest|474
-           local.get $ptr|472
-           local.set $ptr|475
-           local.get $dest|474
-           local.get $ptr|475
-           i32.load16_u $0
-           i32.store16 $0
-           local.get $dest|471
-           i32.const 2
-           i32.add
-           local.set $dest|471
-           local.get $ptr|472
-           i32.const 2
-           i32.add
-           local.set $ptr|472
-           local.get $len|473
-           i32.const 2
-           i32.sub
-           local.set $len|473
-          end
-          local.get $dest|471
-          local.set $dest|476
-          local.get $ptr|472
-          local.set $ptr|477
-          local.get $len|473
-          local.set $len|478
-          local.get $len|478
-          if
-           local.get $dest|476
-           local.get $ptr|477
-           i32.load8_u $0
-           i32.store8 $0
-          end
-          local.get $dest|446
-          local.get $l
-          i32.add
-         end
-         local.set $dest|479
-         local.get $day
-         local.set $src|480
-         local.get $src|480
-         call $~lib/string/String#get:length
-         local.set $l|481
-         local.get $l|481
-         i32.const 64
-         i32.ge_s
-         if
-          local.get $dest|479
-          local.set $dest|482
-          local.get $src|480
-          local.set $ptr|483
-          local.get $dest|482
-          local.get $ptr|483
-          i64.load $0
-          i64.store $0
-          local.get $dest|482
-          i32.const 8
-          i32.add
-          local.set $dest|482
-          local.get $ptr|483
-          i32.const 8
-          i32.add
-          local.set $ptr|483
-          local.get $dest|482
-          local.get $ptr|483
-          i64.load $0
-          i64.store $0
-          local.get $dest|482
-          i32.const 8
-          i32.add
-          local.set $dest|482
-          local.get $ptr|483
-          i32.const 8
-          i32.add
-          local.set $ptr|483
-          local.get $dest|482
-          local.get $ptr|483
-          i64.load $0
-          i64.store $0
-          local.get $dest|482
-          i32.const 8
-          i32.add
-          local.set $dest|482
-          local.get $ptr|483
-          i32.const 8
-          i32.add
-          local.set $ptr|483
-          local.get $dest|482
-          local.get $ptr|483
-          i64.load $0
-          i64.store $0
-          local.get $dest|482
-          i32.const 8
-          i32.add
-          local.set $dest|482
-          local.get $ptr|483
-          i32.const 8
-          i32.add
-          local.set $ptr|483
-          local.get $dest|482
-          local.get $ptr|483
-          i64.load $0
-          i64.store $0
-          local.get $dest|482
-          i32.const 8
-          i32.add
-          local.set $dest|482
-          local.get $ptr|483
-          i32.const 8
-          i32.add
-          local.set $ptr|483
-          local.get $dest|482
-          local.get $ptr|483
-          i64.load $0
-          i64.store $0
-          local.get $dest|482
-          i32.const 8
-          i32.add
-          local.set $dest|482
-          local.get $ptr|483
-          i32.const 8
-          i32.add
-          local.set $ptr|483
-          local.get $dest|482
-          local.get $ptr|483
-          i64.load $0
-          i64.store $0
-          local.get $dest|482
-          i32.const 8
-          i32.add
-          local.set $dest|482
-          local.get $ptr|483
-          i32.const 8
-          i32.add
-          local.set $ptr|483
-          local.get $dest|482
-          local.get $ptr|483
-          i64.load $0
-          i64.store $0
-          local.get $dest|479
-          i32.const 64
-          i32.add
-          br $~lib/copyupto/__copyupto64|inlined.9
-         end
-         local.get $dest|479
-         local.set $dest|484
-         local.get $src|480
-         local.set $ptr|485
-         local.get $l|481
-         local.set $len|486
-         local.get $len|486
-         i32.const 32
-         i32.ge_s
-         if
-          local.get $dest|484
-          local.set $dest|487
-          local.get $ptr|485
-          local.set $ptr|488
-          local.get $dest|487
-          local.get $ptr|488
-          i64.load $0
-          i64.store $0
-          local.get $dest|487
-          i32.const 8
-          i32.add
-          local.set $dest|487
-          local.get $ptr|488
-          i32.const 8
-          i32.add
-          local.set $ptr|488
-          local.get $dest|487
-          local.get $ptr|488
-          i64.load $0
-          i64.store $0
-          local.get $dest|487
-          i32.const 8
-          i32.add
-          local.set $dest|487
-          local.get $ptr|488
-          i32.const 8
-          i32.add
-          local.set $ptr|488
-          local.get $dest|487
-          local.get $ptr|488
-          i64.load $0
-          i64.store $0
-          local.get $dest|487
-          i32.const 8
-          i32.add
-          local.set $dest|487
-          local.get $ptr|488
-          i32.const 8
-          i32.add
-          local.set $ptr|488
-          local.get $dest|487
-          local.get $ptr|488
-          i64.load $0
-          i64.store $0
-          local.get $dest|484
-          i32.const 32
-          i32.add
-          local.set $dest|484
-          local.get $ptr|485
-          i32.const 32
-          i32.add
-          local.set $ptr|485
-          local.get $len|486
-          i32.const 32
-          i32.sub
-          local.set $len|486
-         end
-         local.get $dest|484
-         local.set $dest|489
-         local.get $ptr|485
-         local.set $ptr|490
-         local.get $len|486
-         local.set $len|491
-         local.get $len|491
-         i32.const 16
-         i32.ge_s
-         if
-          local.get $dest|489
-          local.set $dest|492
-          local.get $ptr|490
-          local.set $ptr|493
-          local.get $dest|492
-          local.get $ptr|493
-          i64.load $0
-          i64.store $0
-          local.get $dest|492
-          i32.const 8
-          i32.add
-          local.set $dest|492
-          local.get $ptr|493
-          i32.const 8
-          i32.add
-          local.set $ptr|493
-          local.get $dest|492
-          local.get $ptr|493
-          i64.load $0
-          i64.store $0
-          local.get $dest|489
-          i32.const 16
-          i32.add
-          local.set $dest|489
-          local.get $ptr|490
-          i32.const 16
-          i32.add
-          local.set $ptr|490
-          local.get $len|491
-          i32.const 16
-          i32.sub
-          local.set $len|491
-         end
-         local.get $dest|489
-         local.set $dest|494
-         local.get $ptr|490
-         local.set $ptr|495
-         local.get $len|491
-         local.set $len|496
-         local.get $len|496
-         i32.const 8
-         i32.ge_s
-         if
-          local.get $dest|494
-          local.set $dest|497
-          local.get $ptr|495
-          local.set $ptr|498
-          local.get $dest|497
-          local.get $ptr|498
-          i64.load $0
-          i64.store $0
-          local.get $dest|494
-          i32.const 8
-          i32.add
-          local.set $dest|494
-          local.get $ptr|495
-          i32.const 8
-          i32.add
-          local.set $ptr|495
-          local.get $len|496
-          i32.const 8
-          i32.sub
-          local.set $len|496
-         end
-         local.get $dest|494
-         local.set $dest|499
-         local.get $ptr|495
-         local.set $ptr|500
-         local.get $len|496
-         local.set $len|501
-         local.get $len|501
-         i32.const 4
-         i32.ge_s
-         if
-          local.get $dest|499
-          local.set $dest|502
-          local.get $ptr|500
-          local.set $ptr|503
-          local.get $dest|502
-          local.get $ptr|503
-          i32.load $0
-          i32.store $0
-          local.get $dest|499
-          i32.const 4
-          i32.add
-          local.set $dest|499
-          local.get $ptr|500
-          i32.const 4
-          i32.add
-          local.set $ptr|500
-          local.get $len|501
-          i32.const 4
-          i32.sub
-          local.set $len|501
-         end
-         local.get $dest|499
-         local.set $dest|504
-         local.get $ptr|500
-         local.set $ptr|505
-         local.get $len|501
-         local.set $len|506
-         local.get $len|506
-         i32.const 2
-         i32.ge_s
-         if
-          local.get $dest|504
-          local.set $dest|507
-          local.get $ptr|505
-          local.set $ptr|508
-          local.get $dest|507
-          local.get $ptr|508
-          i32.load16_u $0
-          i32.store16 $0
-          local.get $dest|504
-          i32.const 2
-          i32.add
-          local.set $dest|504
-          local.get $ptr|505
-          i32.const 2
-          i32.add
-          local.set $ptr|505
-          local.get $len|506
-          i32.const 2
-          i32.sub
-          local.set $len|506
-         end
-         local.get $dest|504
-         local.set $dest|509
-         local.get $ptr|505
-         local.set $ptr|510
-         local.get $len|506
-         local.set $len|511
-         local.get $len|511
-         if
-          local.get $dest|509
-          local.get $ptr|510
-          i32.load8_u $0
-          i32.store8 $0
-         end
-         local.get $dest|479
-         local.get $l|481
-         i32.add
-        end
-        local.set $dest|512
-        local.get $month
-        local.set $src|513
-        local.get $src|513
-        call $~lib/string/String#get:length
-        local.set $l|514
-        local.get $l|514
-        i32.const 64
-        i32.ge_s
-        if
-         local.get $dest|512
-         local.set $dest|515
-         local.get $src|513
-         local.set $ptr|516
-         local.get $dest|515
-         local.get $ptr|516
-         i64.load $0
-         i64.store $0
-         local.get $dest|515
-         i32.const 8
-         i32.add
-         local.set $dest|515
-         local.get $ptr|516
-         i32.const 8
-         i32.add
-         local.set $ptr|516
-         local.get $dest|515
-         local.get $ptr|516
-         i64.load $0
-         i64.store $0
-         local.get $dest|515
-         i32.const 8
-         i32.add
-         local.set $dest|515
-         local.get $ptr|516
-         i32.const 8
-         i32.add
-         local.set $ptr|516
-         local.get $dest|515
-         local.get $ptr|516
-         i64.load $0
-         i64.store $0
-         local.get $dest|515
-         i32.const 8
-         i32.add
-         local.set $dest|515
-         local.get $ptr|516
-         i32.const 8
-         i32.add
-         local.set $ptr|516
-         local.get $dest|515
-         local.get $ptr|516
-         i64.load $0
-         i64.store $0
-         local.get $dest|515
-         i32.const 8
-         i32.add
-         local.set $dest|515
-         local.get $ptr|516
-         i32.const 8
-         i32.add
-         local.set $ptr|516
-         local.get $dest|515
-         local.get $ptr|516
-         i64.load $0
-         i64.store $0
-         local.get $dest|515
-         i32.const 8
-         i32.add
-         local.set $dest|515
-         local.get $ptr|516
-         i32.const 8
-         i32.add
-         local.set $ptr|516
-         local.get $dest|515
-         local.get $ptr|516
-         i64.load $0
-         i64.store $0
-         local.get $dest|515
-         i32.const 8
-         i32.add
-         local.set $dest|515
-         local.get $ptr|516
-         i32.const 8
-         i32.add
-         local.set $ptr|516
-         local.get $dest|515
-         local.get $ptr|516
-         i64.load $0
-         i64.store $0
-         local.get $dest|515
-         i32.const 8
-         i32.add
-         local.set $dest|515
-         local.get $ptr|516
-         i32.const 8
-         i32.add
-         local.set $ptr|516
-         local.get $dest|515
-         local.get $ptr|516
-         i64.load $0
-         i64.store $0
-         local.get $dest|512
-         i32.const 64
-         i32.add
-         br $~lib/copyupto/__copyupto64|inlined.10
-        end
-        local.get $dest|512
-        local.set $dest|517
-        local.get $src|513
-        local.set $ptr|518
-        local.get $l|514
-        local.set $len|519
-        local.get $len|519
-        i32.const 32
-        i32.ge_s
-        if
-         local.get $dest|517
-         local.set $dest|520
-         local.get $ptr|518
-         local.set $ptr|521
-         local.get $dest|520
-         local.get $ptr|521
-         i64.load $0
-         i64.store $0
-         local.get $dest|520
-         i32.const 8
-         i32.add
-         local.set $dest|520
-         local.get $ptr|521
-         i32.const 8
-         i32.add
-         local.set $ptr|521
-         local.get $dest|520
-         local.get $ptr|521
-         i64.load $0
-         i64.store $0
-         local.get $dest|520
-         i32.const 8
-         i32.add
-         local.set $dest|520
-         local.get $ptr|521
-         i32.const 8
-         i32.add
-         local.set $ptr|521
-         local.get $dest|520
-         local.get $ptr|521
-         i64.load $0
-         i64.store $0
-         local.get $dest|520
-         i32.const 8
-         i32.add
-         local.set $dest|520
-         local.get $ptr|521
-         i32.const 8
-         i32.add
-         local.set $ptr|521
-         local.get $dest|520
-         local.get $ptr|521
-         i64.load $0
-         i64.store $0
-         local.get $dest|517
-         i32.const 32
-         i32.add
-         local.set $dest|517
-         local.get $ptr|518
-         i32.const 32
-         i32.add
-         local.set $ptr|518
-         local.get $len|519
-         i32.const 32
-         i32.sub
-         local.set $len|519
-        end
-        local.get $dest|517
-        local.set $dest|522
-        local.get $ptr|518
-        local.set $ptr|523
-        local.get $len|519
-        local.set $len|524
-        local.get $len|524
-        i32.const 16
-        i32.ge_s
-        if
-         local.get $dest|522
-         local.set $dest|525
-         local.get $ptr|523
-         local.set $ptr|526
-         local.get $dest|525
-         local.get $ptr|526
-         i64.load $0
-         i64.store $0
-         local.get $dest|525
-         i32.const 8
-         i32.add
-         local.set $dest|525
-         local.get $ptr|526
-         i32.const 8
-         i32.add
-         local.set $ptr|526
-         local.get $dest|525
-         local.get $ptr|526
-         i64.load $0
-         i64.store $0
-         local.get $dest|522
-         i32.const 16
-         i32.add
-         local.set $dest|522
-         local.get $ptr|523
-         i32.const 16
-         i32.add
-         local.set $ptr|523
-         local.get $len|524
-         i32.const 16
-         i32.sub
-         local.set $len|524
-        end
-        local.get $dest|522
-        local.set $dest|527
-        local.get $ptr|523
-        local.set $ptr|528
-        local.get $len|524
-        local.set $len|529
-        local.get $len|529
-        i32.const 8
-        i32.ge_s
-        if
-         local.get $dest|527
-         local.set $dest|530
-         local.get $ptr|528
-         local.set $ptr|531
-         local.get $dest|530
-         local.get $ptr|531
-         i64.load $0
-         i64.store $0
-         local.get $dest|527
-         i32.const 8
-         i32.add
-         local.set $dest|527
-         local.get $ptr|528
-         i32.const 8
-         i32.add
-         local.set $ptr|528
-         local.get $len|529
-         i32.const 8
-         i32.sub
-         local.set $len|529
-        end
-        local.get $dest|527
-        local.set $dest|532
-        local.get $ptr|528
-        local.set $ptr|533
-        local.get $len|529
-        local.set $len|534
-        local.get $len|534
-        i32.const 4
-        i32.ge_s
-        if
-         local.get $dest|532
-         local.set $dest|535
-         local.get $ptr|533
-         local.set $ptr|536
-         local.get $dest|535
-         local.get $ptr|536
-         i32.load $0
-         i32.store $0
-         local.get $dest|532
-         i32.const 4
-         i32.add
-         local.set $dest|532
-         local.get $ptr|533
-         i32.const 4
-         i32.add
-         local.set $ptr|533
-         local.get $len|534
-         i32.const 4
-         i32.sub
-         local.set $len|534
-        end
-        local.get $dest|532
-        local.set $dest|537
-        local.get $ptr|533
-        local.set $ptr|538
-        local.get $len|534
-        local.set $len|539
-        local.get $len|539
-        i32.const 2
-        i32.ge_s
-        if
-         local.get $dest|537
-         local.set $dest|540
-         local.get $ptr|538
-         local.set $ptr|541
-         local.get $dest|540
-         local.get $ptr|541
-         i32.load16_u $0
-         i32.store16 $0
-         local.get $dest|537
-         i32.const 2
-         i32.add
-         local.set $dest|537
-         local.get $ptr|538
-         i32.const 2
-         i32.add
-         local.set $ptr|538
-         local.get $len|539
-         i32.const 2
-         i32.sub
-         local.set $len|539
-        end
-        local.get $dest|537
-        local.set $dest|542
-        local.get $ptr|538
-        local.set $ptr|543
-        local.get $len|539
-        local.set $len|544
-        local.get $len|544
-        if
-         local.get $dest|542
-         local.get $ptr|543
-         i32.load8_u $0
-         i32.store8 $0
-        end
-        local.get $dest|512
-        local.get $l|514
-        i32.add
-       end
-       local.set $dest|545
-       global.get $~lib/memory/__stack_pointer
-       local.get $yr
-       i32.const 0
-       i32.lt_s
-       if (result i32)
-        i32.const 2112
-       else
-        i32.const 544
-       end
-       local.tee $src|546
-       i32.store $0 offset=56
-       local.get $src|546
-       call $~lib/string/String#get:length
-       local.set $l|547
-       local.get $l|547
-       i32.const 64
-       i32.ge_s
-       if
-        local.get $dest|545
-        local.set $dest|548
-        local.get $src|546
-        local.set $ptr|549
-        local.get $dest|548
-        local.get $ptr|549
-        i64.load $0
-        i64.store $0
-        local.get $dest|548
-        i32.const 8
-        i32.add
-        local.set $dest|548
-        local.get $ptr|549
-        i32.const 8
-        i32.add
-        local.set $ptr|549
-        local.get $dest|548
-        local.get $ptr|549
-        i64.load $0
-        i64.store $0
-        local.get $dest|548
-        i32.const 8
-        i32.add
-        local.set $dest|548
-        local.get $ptr|549
-        i32.const 8
-        i32.add
-        local.set $ptr|549
-        local.get $dest|548
-        local.get $ptr|549
-        i64.load $0
-        i64.store $0
-        local.get $dest|548
-        i32.const 8
-        i32.add
-        local.set $dest|548
-        local.get $ptr|549
-        i32.const 8
-        i32.add
-        local.set $ptr|549
-        local.get $dest|548
-        local.get $ptr|549
-        i64.load $0
-        i64.store $0
-        local.get $dest|548
-        i32.const 8
-        i32.add
-        local.set $dest|548
-        local.get $ptr|549
-        i32.const 8
-        i32.add
-        local.set $ptr|549
-        local.get $dest|548
-        local.get $ptr|549
-        i64.load $0
-        i64.store $0
-        local.get $dest|548
-        i32.const 8
-        i32.add
-        local.set $dest|548
-        local.get $ptr|549
-        i32.const 8
-        i32.add
-        local.set $ptr|549
-        local.get $dest|548
-        local.get $ptr|549
-        i64.load $0
-        i64.store $0
-        local.get $dest|548
-        i32.const 8
-        i32.add
-        local.set $dest|548
-        local.get $ptr|549
-        i32.const 8
-        i32.add
-        local.set $ptr|549
-        local.get $dest|548
-        local.get $ptr|549
-        i64.load $0
-        i64.store $0
-        local.get $dest|548
-        i32.const 8
-        i32.add
-        local.set $dest|548
-        local.get $ptr|549
-        i32.const 8
-        i32.add
-        local.set $ptr|549
-        local.get $dest|548
-        local.get $ptr|549
-        i64.load $0
-        i64.store $0
-        local.get $dest|545
-        i32.const 64
-        i32.add
-        br $~lib/copyupto/__copyupto64|inlined.11
-       end
-       local.get $dest|545
-       local.set $dest|550
-       local.get $src|546
-       local.set $ptr|551
-       local.get $l|547
-       local.set $len|552
-       local.get $len|552
-       i32.const 32
-       i32.ge_s
-       if
-        local.get $dest|550
-        local.set $dest|553
-        local.get $ptr|551
-        local.set $ptr|554
-        local.get $dest|553
-        local.get $ptr|554
-        i64.load $0
-        i64.store $0
-        local.get $dest|553
-        i32.const 8
-        i32.add
-        local.set $dest|553
-        local.get $ptr|554
-        i32.const 8
-        i32.add
-        local.set $ptr|554
-        local.get $dest|553
-        local.get $ptr|554
-        i64.load $0
-        i64.store $0
-        local.get $dest|553
-        i32.const 8
-        i32.add
-        local.set $dest|553
-        local.get $ptr|554
-        i32.const 8
-        i32.add
-        local.set $ptr|554
-        local.get $dest|553
-        local.get $ptr|554
-        i64.load $0
-        i64.store $0
-        local.get $dest|553
-        i32.const 8
-        i32.add
-        local.set $dest|553
-        local.get $ptr|554
-        i32.const 8
-        i32.add
-        local.set $ptr|554
-        local.get $dest|553
-        local.get $ptr|554
-        i64.load $0
-        i64.store $0
-        local.get $dest|550
-        i32.const 32
-        i32.add
-        local.set $dest|550
-        local.get $ptr|551
-        i32.const 32
-        i32.add
-        local.set $ptr|551
-        local.get $len|552
-        i32.const 32
-        i32.sub
-        local.set $len|552
-       end
-       local.get $dest|550
-       local.set $dest|555
-       local.get $ptr|551
-       local.set $ptr|556
-       local.get $len|552
-       local.set $len|557
-       local.get $len|557
-       i32.const 16
-       i32.ge_s
-       if
-        local.get $dest|555
-        local.set $dest|558
-        local.get $ptr|556
-        local.set $ptr|559
-        local.get $dest|558
-        local.get $ptr|559
-        i64.load $0
-        i64.store $0
-        local.get $dest|558
-        i32.const 8
-        i32.add
-        local.set $dest|558
-        local.get $ptr|559
-        i32.const 8
-        i32.add
-        local.set $ptr|559
-        local.get $dest|558
-        local.get $ptr|559
-        i64.load $0
-        i64.store $0
-        local.get $dest|555
-        i32.const 16
-        i32.add
-        local.set $dest|555
-        local.get $ptr|556
-        i32.const 16
-        i32.add
-        local.set $ptr|556
-        local.get $len|557
-        i32.const 16
-        i32.sub
-        local.set $len|557
-       end
-       local.get $dest|555
-       local.set $dest|560
-       local.get $ptr|556
-       local.set $ptr|561
-       local.get $len|557
-       local.set $len|562
-       local.get $len|562
-       i32.const 8
-       i32.ge_s
-       if
-        local.get $dest|560
-        local.set $dest|563
-        local.get $ptr|561
-        local.set $ptr|564
-        local.get $dest|563
-        local.get $ptr|564
-        i64.load $0
-        i64.store $0
-        local.get $dest|560
-        i32.const 8
-        i32.add
-        local.set $dest|560
-        local.get $ptr|561
-        i32.const 8
-        i32.add
-        local.set $ptr|561
-        local.get $len|562
-        i32.const 8
-        i32.sub
-        local.set $len|562
-       end
-       local.get $dest|560
-       local.set $dest|565
-       local.get $ptr|561
-       local.set $ptr|566
-       local.get $len|562
-       local.set $len|567
-       local.get $len|567
-       i32.const 4
-       i32.ge_s
-       if
-        local.get $dest|565
-        local.set $dest|568
-        local.get $ptr|566
-        local.set $ptr|569
-        local.get $dest|568
-        local.get $ptr|569
-        i32.load $0
-        i32.store $0
-        local.get $dest|565
-        i32.const 4
-        i32.add
-        local.set $dest|565
-        local.get $ptr|566
-        i32.const 4
-        i32.add
-        local.set $ptr|566
-        local.get $len|567
-        i32.const 4
-        i32.sub
-        local.set $len|567
-       end
-       local.get $dest|565
-       local.set $dest|570
-       local.get $ptr|566
-       local.set $ptr|571
-       local.get $len|567
-       local.set $len|572
-       local.get $len|572
-       i32.const 2
-       i32.ge_s
-       if
-        local.get $dest|570
-        local.set $dest|573
-        local.get $ptr|571
-        local.set $ptr|574
-        local.get $dest|573
-        local.get $ptr|574
-        i32.load16_u $0
-        i32.store16 $0
-        local.get $dest|570
-        i32.const 2
-        i32.add
-        local.set $dest|570
-        local.get $ptr|571
-        i32.const 2
-        i32.add
-        local.set $ptr|571
-        local.get $len|572
-        i32.const 2
-        i32.sub
-        local.set $len|572
-       end
-       local.get $dest|570
-       local.set $dest|575
-       local.get $ptr|571
-       local.set $ptr|576
-       local.get $len|572
-       local.set $len|577
-       local.get $len|577
-       if
-        local.get $dest|575
-        local.get $ptr|576
-        i32.load8_u $0
-        i32.store8 $0
-       end
-       local.get $dest|545
-       local.get $l|547
-       i32.add
-      end
-      local.set $dest|578
-      local.get $year
-      local.set $src|579
-      local.get $src|579
-      call $~lib/string/String#get:length
-      local.set $l|580
-      local.get $l|580
-      i32.const 64
-      i32.ge_s
-      if
-       local.get $dest|578
-       local.set $dest|581
-       local.get $src|579
-       local.set $ptr|582
-       local.get $dest|581
-       local.get $ptr|582
-       i64.load $0
-       i64.store $0
-       local.get $dest|581
-       i32.const 8
-       i32.add
-       local.set $dest|581
-       local.get $ptr|582
-       i32.const 8
-       i32.add
-       local.set $ptr|582
-       local.get $dest|581
-       local.get $ptr|582
-       i64.load $0
-       i64.store $0
-       local.get $dest|581
-       i32.const 8
-       i32.add
-       local.set $dest|581
-       local.get $ptr|582
-       i32.const 8
-       i32.add
-       local.set $ptr|582
-       local.get $dest|581
-       local.get $ptr|582
-       i64.load $0
-       i64.store $0
-       local.get $dest|581
-       i32.const 8
-       i32.add
-       local.set $dest|581
-       local.get $ptr|582
-       i32.const 8
-       i32.add
-       local.set $ptr|582
-       local.get $dest|581
-       local.get $ptr|582
-       i64.load $0
-       i64.store $0
-       local.get $dest|581
-       i32.const 8
-       i32.add
-       local.set $dest|581
-       local.get $ptr|582
-       i32.const 8
-       i32.add
-       local.set $ptr|582
-       local.get $dest|581
-       local.get $ptr|582
-       i64.load $0
-       i64.store $0
-       local.get $dest|581
-       i32.const 8
-       i32.add
-       local.set $dest|581
-       local.get $ptr|582
-       i32.const 8
-       i32.add
-       local.set $ptr|582
-       local.get $dest|581
-       local.get $ptr|582
-       i64.load $0
-       i64.store $0
-       local.get $dest|581
-       i32.const 8
-       i32.add
-       local.set $dest|581
-       local.get $ptr|582
-       i32.const 8
-       i32.add
-       local.set $ptr|582
-       local.get $dest|581
-       local.get $ptr|582
-       i64.load $0
-       i64.store $0
-       local.get $dest|581
-       i32.const 8
-       i32.add
-       local.set $dest|581
-       local.get $ptr|582
-       i32.const 8
-       i32.add
-       local.set $ptr|582
-       local.get $dest|581
-       local.get $ptr|582
-       i64.load $0
-       i64.store $0
-       local.get $dest|578
-       i32.const 64
-       i32.add
-       br $~lib/copyupto/__copyupto64|inlined.12
-      end
-      local.get $dest|578
-      local.set $dest|583
-      local.get $src|579
-      local.set $ptr|584
-      local.get $l|580
-      local.set $len|585
-      local.get $len|585
-      i32.const 32
-      i32.ge_s
-      if
-       local.get $dest|583
-       local.set $dest|586
-       local.get $ptr|584
-       local.set $ptr|587
-       local.get $dest|586
-       local.get $ptr|587
-       i64.load $0
-       i64.store $0
-       local.get $dest|586
-       i32.const 8
-       i32.add
-       local.set $dest|586
-       local.get $ptr|587
-       i32.const 8
-       i32.add
-       local.set $ptr|587
-       local.get $dest|586
-       local.get $ptr|587
-       i64.load $0
-       i64.store $0
-       local.get $dest|586
-       i32.const 8
-       i32.add
-       local.set $dest|586
-       local.get $ptr|587
-       i32.const 8
-       i32.add
-       local.set $ptr|587
-       local.get $dest|586
-       local.get $ptr|587
-       i64.load $0
-       i64.store $0
-       local.get $dest|586
-       i32.const 8
-       i32.add
-       local.set $dest|586
-       local.get $ptr|587
-       i32.const 8
-       i32.add
-       local.set $ptr|587
-       local.get $dest|586
-       local.get $ptr|587
-       i64.load $0
-       i64.store $0
-       local.get $dest|583
-       i32.const 32
-       i32.add
-       local.set $dest|583
-       local.get $ptr|584
-       i32.const 32
-       i32.add
-       local.set $ptr|584
-       local.get $len|585
-       i32.const 32
-       i32.sub
-       local.set $len|585
-      end
-      local.get $dest|583
-      local.set $dest|588
-      local.get $ptr|584
-      local.set $ptr|589
-      local.get $len|585
-      local.set $len|590
-      local.get $len|590
-      i32.const 16
-      i32.ge_s
-      if
-       local.get $dest|588
-       local.set $dest|591
-       local.get $ptr|589
-       local.set $ptr|592
-       local.get $dest|591
-       local.get $ptr|592
-       i64.load $0
-       i64.store $0
-       local.get $dest|591
-       i32.const 8
-       i32.add
-       local.set $dest|591
-       local.get $ptr|592
-       i32.const 8
-       i32.add
-       local.set $ptr|592
-       local.get $dest|591
-       local.get $ptr|592
-       i64.load $0
-       i64.store $0
-       local.get $dest|588
-       i32.const 16
-       i32.add
-       local.set $dest|588
-       local.get $ptr|589
-       i32.const 16
-       i32.add
-       local.set $ptr|589
-       local.get $len|590
-       i32.const 16
-       i32.sub
-       local.set $len|590
-      end
-      local.get $dest|588
-      local.set $dest|593
-      local.get $ptr|589
-      local.set $ptr|594
-      local.get $len|590
-      local.set $len|595
-      local.get $len|595
-      i32.const 8
-      i32.ge_s
-      if
-       local.get $dest|593
-       local.set $dest|596
-       local.get $ptr|594
-       local.set $ptr|597
-       local.get $dest|596
-       local.get $ptr|597
-       i64.load $0
-       i64.store $0
-       local.get $dest|593
-       i32.const 8
-       i32.add
-       local.set $dest|593
-       local.get $ptr|594
-       i32.const 8
-       i32.add
-       local.set $ptr|594
-       local.get $len|595
-       i32.const 8
-       i32.sub
-       local.set $len|595
-      end
-      local.get $dest|593
-      local.set $dest|598
-      local.get $ptr|594
-      local.set $ptr|599
-      local.get $len|595
-      local.set $len|600
-      local.get $len|600
-      i32.const 4
-      i32.ge_s
-      if
-       local.get $dest|598
-       local.set $dest|601
-       local.get $ptr|599
-       local.set $ptr|602
-       local.get $dest|601
-       local.get $ptr|602
-       i32.load $0
-       i32.store $0
-       local.get $dest|598
-       i32.const 4
-       i32.add
-       local.set $dest|598
-       local.get $ptr|599
-       i32.const 4
-       i32.add
-       local.set $ptr|599
-       local.get $len|600
-       i32.const 4
-       i32.sub
-       local.set $len|600
-      end
-      local.get $dest|598
-      local.set $dest|603
-      local.get $ptr|599
-      local.set $ptr|604
-      local.get $len|600
-      local.set $len|605
-      local.get $len|605
-      i32.const 2
-      i32.ge_s
-      if
-       local.get $dest|603
-       local.set $dest|606
-       local.get $ptr|604
-       local.set $ptr|607
-       local.get $dest|606
-       local.get $ptr|607
-       i32.load16_u $0
-       i32.store16 $0
-       local.get $dest|603
-       i32.const 2
-       i32.add
-       local.set $dest|603
-       local.get $ptr|604
-       i32.const 2
-       i32.add
-       local.set $ptr|604
-       local.get $len|605
-       i32.const 2
-       i32.sub
-       local.set $len|605
-      end
-      local.get $dest|603
-      local.set $dest|608
-      local.get $ptr|604
-      local.set $ptr|609
-      local.get $len|605
-      local.set $len|610
-      local.get $len|610
-      if
-       local.get $dest|608
-       local.get $ptr|609
-       i32.load8_u $0
-       i32.store8 $0
-      end
-      local.get $dest|578
-      local.get $l|580
-      i32.add
-     end
-     local.set $dest|611
-     global.get $~lib/memory/__stack_pointer
-     i32.const 1104
-     local.tee $src|612
-     i32.store $0 offset=60
-     local.get $dest|611
-     local.set $dest|613
-     local.get $src|612
-     local.set $ptr|614
-     local.get $dest|613
-     local.get $ptr|614
-     i32.load8_u $0
-     i32.store8 $0
-     local.get $dest|611
-     i32.const 1
-     i32.add
-     local.set $dest|615
-     local.get $hours
-     local.set $src|616
-     local.get $src|616
-     call $~lib/string/String#get:length
-     local.set $l|617
-     local.get $l|617
-     i32.const 64
-     i32.ge_s
-     if
-      local.get $dest|615
-      local.set $dest|618
-      local.get $src|616
-      local.set $ptr|619
-      local.get $dest|618
-      local.get $ptr|619
-      i64.load $0
-      i64.store $0
-      local.get $dest|618
-      i32.const 8
-      i32.add
-      local.set $dest|618
-      local.get $ptr|619
-      i32.const 8
-      i32.add
-      local.set $ptr|619
-      local.get $dest|618
-      local.get $ptr|619
-      i64.load $0
-      i64.store $0
-      local.get $dest|618
-      i32.const 8
-      i32.add
-      local.set $dest|618
-      local.get $ptr|619
-      i32.const 8
-      i32.add
-      local.set $ptr|619
-      local.get $dest|618
-      local.get $ptr|619
-      i64.load $0
-      i64.store $0
-      local.get $dest|618
-      i32.const 8
-      i32.add
-      local.set $dest|618
-      local.get $ptr|619
-      i32.const 8
-      i32.add
-      local.set $ptr|619
-      local.get $dest|618
-      local.get $ptr|619
-      i64.load $0
-      i64.store $0
-      local.get $dest|618
-      i32.const 8
-      i32.add
-      local.set $dest|618
-      local.get $ptr|619
-      i32.const 8
-      i32.add
-      local.set $ptr|619
-      local.get $dest|618
-      local.get $ptr|619
-      i64.load $0
-      i64.store $0
-      local.get $dest|618
-      i32.const 8
-      i32.add
-      local.set $dest|618
-      local.get $ptr|619
-      i32.const 8
-      i32.add
-      local.set $ptr|619
-      local.get $dest|618
-      local.get $ptr|619
-      i64.load $0
-      i64.store $0
-      local.get $dest|618
-      i32.const 8
-      i32.add
-      local.set $dest|618
-      local.get $ptr|619
-      i32.const 8
-      i32.add
-      local.set $ptr|619
-      local.get $dest|618
-      local.get $ptr|619
-      i64.load $0
-      i64.store $0
-      local.get $dest|618
-      i32.const 8
-      i32.add
-      local.set $dest|618
-      local.get $ptr|619
-      i32.const 8
-      i32.add
-      local.set $ptr|619
-      local.get $dest|618
-      local.get $ptr|619
-      i64.load $0
-      i64.store $0
-      local.get $dest|615
-      i32.const 64
-      i32.add
-      br $~lib/copyupto/__copyupto64|inlined.13
-     end
-     local.get $dest|615
-     local.set $dest|620
-     local.get $src|616
-     local.set $ptr|621
-     local.get $l|617
-     local.set $len|622
-     local.get $len|622
-     i32.const 32
-     i32.ge_s
-     if
-      local.get $dest|620
-      local.set $dest|623
-      local.get $ptr|621
-      local.set $ptr|624
-      local.get $dest|623
-      local.get $ptr|624
-      i64.load $0
-      i64.store $0
-      local.get $dest|623
-      i32.const 8
-      i32.add
-      local.set $dest|623
-      local.get $ptr|624
-      i32.const 8
-      i32.add
-      local.set $ptr|624
-      local.get $dest|623
-      local.get $ptr|624
-      i64.load $0
-      i64.store $0
-      local.get $dest|623
-      i32.const 8
-      i32.add
-      local.set $dest|623
-      local.get $ptr|624
-      i32.const 8
-      i32.add
-      local.set $ptr|624
-      local.get $dest|623
-      local.get $ptr|624
-      i64.load $0
-      i64.store $0
-      local.get $dest|623
-      i32.const 8
-      i32.add
-      local.set $dest|623
-      local.get $ptr|624
-      i32.const 8
-      i32.add
-      local.set $ptr|624
-      local.get $dest|623
-      local.get $ptr|624
-      i64.load $0
-      i64.store $0
-      local.get $dest|620
-      i32.const 32
-      i32.add
-      local.set $dest|620
-      local.get $ptr|621
-      i32.const 32
-      i32.add
-      local.set $ptr|621
-      local.get $len|622
-      i32.const 32
-      i32.sub
-      local.set $len|622
-     end
-     local.get $dest|620
-     local.set $dest|625
-     local.get $ptr|621
-     local.set $ptr|626
-     local.get $len|622
-     local.set $len|627
-     local.get $len|627
-     i32.const 16
-     i32.ge_s
-     if
-      local.get $dest|625
-      local.set $dest|628
-      local.get $ptr|626
-      local.set $ptr|629
-      local.get $dest|628
-      local.get $ptr|629
-      i64.load $0
-      i64.store $0
-      local.get $dest|628
-      i32.const 8
-      i32.add
-      local.set $dest|628
-      local.get $ptr|629
-      i32.const 8
-      i32.add
-      local.set $ptr|629
-      local.get $dest|628
-      local.get $ptr|629
-      i64.load $0
-      i64.store $0
-      local.get $dest|625
-      i32.const 16
-      i32.add
-      local.set $dest|625
-      local.get $ptr|626
-      i32.const 16
-      i32.add
-      local.set $ptr|626
-      local.get $len|627
-      i32.const 16
-      i32.sub
-      local.set $len|627
-     end
-     local.get $dest|625
-     local.set $dest|630
-     local.get $ptr|626
-     local.set $ptr|631
-     local.get $len|627
-     local.set $len|632
-     local.get $len|632
-     i32.const 8
-     i32.ge_s
-     if
-      local.get $dest|630
-      local.set $dest|633
-      local.get $ptr|631
-      local.set $ptr|634
-      local.get $dest|633
-      local.get $ptr|634
-      i64.load $0
-      i64.store $0
-      local.get $dest|630
-      i32.const 8
-      i32.add
-      local.set $dest|630
-      local.get $ptr|631
-      i32.const 8
-      i32.add
-      local.set $ptr|631
-      local.get $len|632
-      i32.const 8
-      i32.sub
-      local.set $len|632
-     end
-     local.get $dest|630
-     local.set $dest|635
-     local.get $ptr|631
-     local.set $ptr|636
-     local.get $len|632
-     local.set $len|637
-     local.get $len|637
-     i32.const 4
-     i32.ge_s
-     if
-      local.get $dest|635
-      local.set $dest|638
-      local.get $ptr|636
-      local.set $ptr|639
-      local.get $dest|638
-      local.get $ptr|639
-      i32.load $0
-      i32.store $0
-      local.get $dest|635
-      i32.const 4
-      i32.add
-      local.set $dest|635
-      local.get $ptr|636
-      i32.const 4
-      i32.add
-      local.set $ptr|636
-      local.get $len|637
-      i32.const 4
-      i32.sub
-      local.set $len|637
-     end
-     local.get $dest|635
-     local.set $dest|640
-     local.get $ptr|636
-     local.set $ptr|641
-     local.get $len|637
-     local.set $len|642
-     local.get $len|642
-     i32.const 2
-     i32.ge_s
-     if
-      local.get $dest|640
-      local.set $dest|643
-      local.get $ptr|641
-      local.set $ptr|644
-      local.get $dest|643
-      local.get $ptr|644
-      i32.load16_u $0
-      i32.store16 $0
-      local.get $dest|640
-      i32.const 2
-      i32.add
-      local.set $dest|640
-      local.get $ptr|641
-      i32.const 2
-      i32.add
-      local.set $ptr|641
-      local.get $len|642
-      i32.const 2
-      i32.sub
-      local.set $len|642
-     end
-     local.get $dest|640
-     local.set $dest|645
-     local.get $ptr|641
-     local.set $ptr|646
-     local.get $len|642
-     local.set $len|647
-     local.get $len|647
-     if
-      local.get $dest|645
-      local.get $ptr|646
-      i32.load8_u $0
-      i32.store8 $0
-     end
-     local.get $dest|615
-     local.get $l|617
-     i32.add
-    end
-    local.set $dest|648
-    global.get $~lib/memory/__stack_pointer
-    i32.const 1280
-    local.tee $src|649
-    i32.store $0 offset=64
-    local.get $dest|648
-    local.set $dest|650
-    local.get $src|649
-    local.set $ptr|651
-    local.get $dest|650
-    local.get $ptr|651
-    i32.load8_u $0
-    i32.store8 $0
-    local.get $dest|648
-    i32.const 1
-    i32.add
-    local.set $dest|652
-    local.get $mins
-    local.set $src|653
-    local.get $src|653
-    call $~lib/string/String#get:length
-    local.set $l|654
-    local.get $l|654
-    i32.const 64
-    i32.ge_s
-    if
-     local.get $dest|652
-     local.set $dest|655
-     local.get $src|653
-     local.set $ptr|656
-     local.get $dest|655
-     local.get $ptr|656
-     i64.load $0
-     i64.store $0
-     local.get $dest|655
-     i32.const 8
-     i32.add
-     local.set $dest|655
-     local.get $ptr|656
-     i32.const 8
-     i32.add
-     local.set $ptr|656
-     local.get $dest|655
-     local.get $ptr|656
-     i64.load $0
-     i64.store $0
-     local.get $dest|655
-     i32.const 8
-     i32.add
-     local.set $dest|655
-     local.get $ptr|656
-     i32.const 8
-     i32.add
-     local.set $ptr|656
-     local.get $dest|655
-     local.get $ptr|656
-     i64.load $0
-     i64.store $0
-     local.get $dest|655
-     i32.const 8
-     i32.add
-     local.set $dest|655
-     local.get $ptr|656
-     i32.const 8
-     i32.add
-     local.set $ptr|656
-     local.get $dest|655
-     local.get $ptr|656
-     i64.load $0
-     i64.store $0
-     local.get $dest|655
-     i32.const 8
-     i32.add
-     local.set $dest|655
-     local.get $ptr|656
-     i32.const 8
-     i32.add
-     local.set $ptr|656
-     local.get $dest|655
-     local.get $ptr|656
-     i64.load $0
-     i64.store $0
-     local.get $dest|655
-     i32.const 8
-     i32.add
-     local.set $dest|655
-     local.get $ptr|656
-     i32.const 8
-     i32.add
-     local.set $ptr|656
-     local.get $dest|655
-     local.get $ptr|656
-     i64.load $0
-     i64.store $0
-     local.get $dest|655
-     i32.const 8
-     i32.add
-     local.set $dest|655
-     local.get $ptr|656
-     i32.const 8
-     i32.add
-     local.set $ptr|656
-     local.get $dest|655
-     local.get $ptr|656
-     i64.load $0
-     i64.store $0
-     local.get $dest|655
-     i32.const 8
-     i32.add
-     local.set $dest|655
-     local.get $ptr|656
-     i32.const 8
-     i32.add
-     local.set $ptr|656
-     local.get $dest|655
-     local.get $ptr|656
-     i64.load $0
-     i64.store $0
-     local.get $dest|652
-     i32.const 64
-     i32.add
-     br $~lib/copyupto/__copyupto64|inlined.14
-    end
-    local.get $dest|652
-    local.set $dest|657
-    local.get $src|653
-    local.set $ptr|658
-    local.get $l|654
-    local.set $len|659
-    local.get $len|659
-    i32.const 32
-    i32.ge_s
-    if
-     local.get $dest|657
-     local.set $dest|660
-     local.get $ptr|658
-     local.set $ptr|661
-     local.get $dest|660
-     local.get $ptr|661
-     i64.load $0
-     i64.store $0
-     local.get $dest|660
-     i32.const 8
-     i32.add
-     local.set $dest|660
-     local.get $ptr|661
-     i32.const 8
-     i32.add
-     local.set $ptr|661
-     local.get $dest|660
-     local.get $ptr|661
-     i64.load $0
-     i64.store $0
-     local.get $dest|660
-     i32.const 8
-     i32.add
-     local.set $dest|660
-     local.get $ptr|661
-     i32.const 8
-     i32.add
-     local.set $ptr|661
-     local.get $dest|660
-     local.get $ptr|661
-     i64.load $0
-     i64.store $0
-     local.get $dest|660
-     i32.const 8
-     i32.add
-     local.set $dest|660
-     local.get $ptr|661
-     i32.const 8
-     i32.add
-     local.set $ptr|661
-     local.get $dest|660
-     local.get $ptr|661
-     i64.load $0
-     i64.store $0
-     local.get $dest|657
-     i32.const 32
-     i32.add
-     local.set $dest|657
-     local.get $ptr|658
-     i32.const 32
-     i32.add
-     local.set $ptr|658
-     local.get $len|659
-     i32.const 32
-     i32.sub
-     local.set $len|659
-    end
-    local.get $dest|657
-    local.set $dest|662
-    local.get $ptr|658
-    local.set $ptr|663
-    local.get $len|659
-    local.set $len|664
-    local.get $len|664
-    i32.const 16
-    i32.ge_s
-    if
-     local.get $dest|662
-     local.set $dest|665
-     local.get $ptr|663
-     local.set $ptr|666
-     local.get $dest|665
-     local.get $ptr|666
-     i64.load $0
-     i64.store $0
-     local.get $dest|665
-     i32.const 8
-     i32.add
-     local.set $dest|665
-     local.get $ptr|666
-     i32.const 8
-     i32.add
-     local.set $ptr|666
-     local.get $dest|665
-     local.get $ptr|666
-     i64.load $0
-     i64.store $0
-     local.get $dest|662
-     i32.const 16
-     i32.add
-     local.set $dest|662
-     local.get $ptr|663
-     i32.const 16
-     i32.add
-     local.set $ptr|663
-     local.get $len|664
-     i32.const 16
-     i32.sub
-     local.set $len|664
-    end
-    local.get $dest|662
-    local.set $dest|667
-    local.get $ptr|663
-    local.set $ptr|668
-    local.get $len|664
-    local.set $len|669
-    local.get $len|669
-    i32.const 8
-    i32.ge_s
-    if
-     local.get $dest|667
-     local.set $dest|670
-     local.get $ptr|668
-     local.set $ptr|671
-     local.get $dest|670
-     local.get $ptr|671
-     i64.load $0
-     i64.store $0
-     local.get $dest|667
-     i32.const 8
-     i32.add
-     local.set $dest|667
-     local.get $ptr|668
-     i32.const 8
-     i32.add
-     local.set $ptr|668
-     local.get $len|669
-     i32.const 8
-     i32.sub
-     local.set $len|669
-    end
-    local.get $dest|667
-    local.set $dest|672
-    local.get $ptr|668
-    local.set $ptr|673
-    local.get $len|669
-    local.set $len|674
-    local.get $len|674
-    i32.const 4
-    i32.ge_s
-    if
-     local.get $dest|672
-     local.set $dest|675
-     local.get $ptr|673
-     local.set $ptr|676
-     local.get $dest|675
-     local.get $ptr|676
-     i32.load $0
-     i32.store $0
-     local.get $dest|672
-     i32.const 4
-     i32.add
-     local.set $dest|672
-     local.get $ptr|673
-     i32.const 4
-     i32.add
-     local.set $ptr|673
-     local.get $len|674
-     i32.const 4
-     i32.sub
-     local.set $len|674
-    end
-    local.get $dest|672
-    local.set $dest|677
-    local.get $ptr|673
-    local.set $ptr|678
-    local.get $len|674
-    local.set $len|679
-    local.get $len|679
-    i32.const 2
-    i32.ge_s
-    if
-     local.get $dest|677
-     local.set $dest|680
-     local.get $ptr|678
-     local.set $ptr|681
-     local.get $dest|680
-     local.get $ptr|681
-     i32.load16_u $0
-     i32.store16 $0
-     local.get $dest|677
-     i32.const 2
-     i32.add
-     local.set $dest|677
-     local.get $ptr|678
-     i32.const 2
-     i32.add
-     local.set $ptr|678
-     local.get $len|679
-     i32.const 2
-     i32.sub
-     local.set $len|679
-    end
-    local.get $dest|677
-    local.set $dest|682
-    local.get $ptr|678
-    local.set $ptr|683
-    local.get $len|679
-    local.set $len|684
-    local.get $len|684
-    if
-     local.get $dest|682
-     local.get $ptr|683
-     i32.load8_u $0
-     i32.store8 $0
-    end
-    local.get $dest|652
-    local.get $l|654
-    i32.add
-   end
-   local.set $dest|685
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1280
-   local.tee $src|686
-   i32.store $0 offset=68
-   local.get $dest|685
-   local.set $dest|687
-   local.get $src|686
-   local.set $ptr|688
-   local.get $dest|687
-   local.get $ptr|688
-   i32.load8_u $0
-   i32.store8 $0
-   local.get $dest|685
-   i32.const 1
-   i32.add
-   local.set $dest|689
-   local.get $secs
-   local.set $src|690
-   local.get $src|690
-   call $~lib/string/String#get:length
-   local.set $l|691
-   local.get $l|691
-   i32.const 64
-   i32.ge_s
-   if
-    local.get $dest|689
-    local.set $dest|692
-    local.get $src|690
-    local.set $ptr|693
-    local.get $dest|692
-    local.get $ptr|693
-    i64.load $0
-    i64.store $0
-    local.get $dest|692
-    i32.const 8
-    i32.add
-    local.set $dest|692
-    local.get $ptr|693
-    i32.const 8
-    i32.add
-    local.set $ptr|693
-    local.get $dest|692
-    local.get $ptr|693
-    i64.load $0
-    i64.store $0
-    local.get $dest|692
-    i32.const 8
-    i32.add
-    local.set $dest|692
-    local.get $ptr|693
-    i32.const 8
-    i32.add
-    local.set $ptr|693
-    local.get $dest|692
-    local.get $ptr|693
-    i64.load $0
-    i64.store $0
-    local.get $dest|692
-    i32.const 8
-    i32.add
-    local.set $dest|692
-    local.get $ptr|693
-    i32.const 8
-    i32.add
-    local.set $ptr|693
-    local.get $dest|692
-    local.get $ptr|693
-    i64.load $0
-    i64.store $0
-    local.get $dest|692
-    i32.const 8
-    i32.add
-    local.set $dest|692
-    local.get $ptr|693
-    i32.const 8
-    i32.add
-    local.set $ptr|693
-    local.get $dest|692
-    local.get $ptr|693
-    i64.load $0
-    i64.store $0
-    local.get $dest|692
-    i32.const 8
-    i32.add
-    local.set $dest|692
-    local.get $ptr|693
-    i32.const 8
-    i32.add
-    local.set $ptr|693
-    local.get $dest|692
-    local.get $ptr|693
-    i64.load $0
-    i64.store $0
-    local.get $dest|692
-    i32.const 8
-    i32.add
-    local.set $dest|692
-    local.get $ptr|693
-    i32.const 8
-    i32.add
-    local.set $ptr|693
-    local.get $dest|692
-    local.get $ptr|693
-    i64.load $0
-    i64.store $0
-    local.get $dest|692
-    i32.const 8
-    i32.add
-    local.set $dest|692
-    local.get $ptr|693
-    i32.const 8
-    i32.add
-    local.set $ptr|693
-    local.get $dest|692
-    local.get $ptr|693
-    i64.load $0
-    i64.store $0
-    local.get $dest|689
-    i32.const 64
-    i32.add
-    br $~lib/copyupto/__copyupto64|inlined.15
-   end
-   local.get $dest|689
-   local.set $dest|694
-   local.get $src|690
-   local.set $ptr|695
-   local.get $l|691
-   local.set $len|696
-   local.get $len|696
-   i32.const 32
-   i32.ge_s
-   if
-    local.get $dest|694
-    local.set $dest|697
-    local.get $ptr|695
-    local.set $ptr|698
-    local.get $dest|697
-    local.get $ptr|698
-    i64.load $0
-    i64.store $0
-    local.get $dest|697
-    i32.const 8
-    i32.add
-    local.set $dest|697
-    local.get $ptr|698
-    i32.const 8
-    i32.add
-    local.set $ptr|698
-    local.get $dest|697
-    local.get $ptr|698
-    i64.load $0
-    i64.store $0
-    local.get $dest|697
-    i32.const 8
-    i32.add
-    local.set $dest|697
-    local.get $ptr|698
-    i32.const 8
-    i32.add
-    local.set $ptr|698
-    local.get $dest|697
-    local.get $ptr|698
-    i64.load $0
-    i64.store $0
-    local.get $dest|697
-    i32.const 8
-    i32.add
-    local.set $dest|697
-    local.get $ptr|698
-    i32.const 8
-    i32.add
-    local.set $ptr|698
-    local.get $dest|697
-    local.get $ptr|698
-    i64.load $0
-    i64.store $0
-    local.get $dest|694
-    i32.const 32
-    i32.add
-    local.set $dest|694
-    local.get $ptr|695
-    i32.const 32
-    i32.add
-    local.set $ptr|695
-    local.get $len|696
-    i32.const 32
-    i32.sub
-    local.set $len|696
-   end
-   local.get $dest|694
-   local.set $dest|699
-   local.get $ptr|695
-   local.set $ptr|700
-   local.get $len|696
-   local.set $len|701
-   local.get $len|701
-   i32.const 16
-   i32.ge_s
-   if
-    local.get $dest|699
-    local.set $dest|702
-    local.get $ptr|700
-    local.set $ptr|703
-    local.get $dest|702
-    local.get $ptr|703
-    i64.load $0
-    i64.store $0
-    local.get $dest|702
-    i32.const 8
-    i32.add
-    local.set $dest|702
-    local.get $ptr|703
-    i32.const 8
-    i32.add
-    local.set $ptr|703
-    local.get $dest|702
-    local.get $ptr|703
-    i64.load $0
-    i64.store $0
-    local.get $dest|699
-    i32.const 16
-    i32.add
-    local.set $dest|699
-    local.get $ptr|700
-    i32.const 16
-    i32.add
-    local.set $ptr|700
-    local.get $len|701
-    i32.const 16
-    i32.sub
-    local.set $len|701
-   end
-   local.get $dest|699
-   local.set $dest|704
-   local.get $ptr|700
-   local.set $ptr|705
-   local.get $len|701
-   local.set $len|706
-   local.get $len|706
-   i32.const 8
-   i32.ge_s
-   if
-    local.get $dest|704
-    local.set $dest|707
-    local.get $ptr|705
-    local.set $ptr|708
-    local.get $dest|707
-    local.get $ptr|708
-    i64.load $0
-    i64.store $0
-    local.get $dest|704
-    i32.const 8
-    i32.add
-    local.set $dest|704
-    local.get $ptr|705
-    i32.const 8
-    i32.add
-    local.set $ptr|705
-    local.get $len|706
-    i32.const 8
-    i32.sub
-    local.set $len|706
-   end
-   local.get $dest|704
-   local.set $dest|709
-   local.get $ptr|705
-   local.set $ptr|710
-   local.get $len|706
-   local.set $len|711
-   local.get $len|711
-   i32.const 4
-   i32.ge_s
-   if
-    local.get $dest|709
-    local.set $dest|712
-    local.get $ptr|710
-    local.set $ptr|713
-    local.get $dest|712
-    local.get $ptr|713
-    i32.load $0
-    i32.store $0
-    local.get $dest|709
-    i32.const 4
-    i32.add
-    local.set $dest|709
-    local.get $ptr|710
-    i32.const 4
-    i32.add
-    local.set $ptr|710
-    local.get $len|711
-    i32.const 4
-    i32.sub
-    local.set $len|711
-   end
-   local.get $dest|709
-   local.set $dest|714
-   local.get $ptr|710
-   local.set $ptr|715
-   local.get $len|711
-   local.set $len|716
-   local.get $len|716
-   i32.const 2
-   i32.ge_s
-   if
-    local.get $dest|714
-    local.set $dest|717
-    local.get $ptr|715
-    local.set $ptr|718
-    local.get $dest|717
-    local.get $ptr|718
-    i32.load16_u $0
-    i32.store16 $0
-    local.get $dest|714
-    i32.const 2
-    i32.add
-    local.set $dest|714
-    local.get $ptr|715
-    i32.const 2
-    i32.add
-    local.set $ptr|715
-    local.get $len|716
-    i32.const 2
-    i32.sub
-    local.set $len|716
-   end
-   local.get $dest|714
-   local.set $dest|719
-   local.get $ptr|715
-   local.set $ptr|720
-   local.get $len|716
-   local.set $len|721
-   local.get $len|721
-   if
-    local.get $dest|719
-    local.get $ptr|720
-    i32.load8_u $0
-    i32.store8 $0
-   end
-   local.get $dest|689
-   local.get $l|691
-   i32.add
-  end
-  local.set $dest|722
-  global.get $~lib/memory/__stack_pointer
-  i32.const 2144
-  local.tee $src|723
-  i32.store $0 offset=72
-  local.get $dest|722
-  local.set $dest|724
-  local.get $src|723
-  local.set $ptr|725
-  local.get $dest|724
-  local.get $ptr|725
-  i32.load $0
-  i32.store $0
-  local.get $dest|722
-  i32.const 4
-  i32.add
-  local.set $dest|726
-  local.get $445
-  local.set $src|727
-  local.get $src|727
-  i32.const 20
-  i32.sub
-  local.get $dest|726
-  local.get $src|727
-  i32.sub
-  call $~lib/rt/common/OBJECT#set:rtSize
-  local.get $src|727
-  local.set $729
-  global.get $~lib/memory/__stack_pointer
-  i32.const 76
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $729
  )
 )

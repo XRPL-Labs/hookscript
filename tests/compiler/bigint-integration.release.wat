@@ -7,7 +7,7 @@
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $bigint-integration/internalValue i64 (i64.const 9007199254740991))
  (global $~started (mut i32) (i32.const 0))
- (memory $0 0)
+ (memory $0 1)
  (export "internalValue" (global $bigint-integration/internalValue))
  (export "getInternalValue" (func $bigint-integration/getInternalValue))
  (export "memory" (memory $0))

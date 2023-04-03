@@ -5,7 +5,7 @@
  (import "env" "_g" (func $~lib/builtins/_g (param i32 i32) (result i32)))
  (global $mutable-globals/internal (mut i32) (i32.const 124))
  (global $~started (mut i32) (i32.const 0))
- (memory $0 0)
+ (memory $0 1)
  (export "external" (global $mutable-globals/external))
  (export "internal" (global $mutable-globals/internal))
  (export "memory" (memory $0))

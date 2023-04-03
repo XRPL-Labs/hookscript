@@ -6972,8 +6972,8 @@ export class Compiler extends DiagnosticEmitter {
             : BinaryOp.SubI32,
           module.local_get(0, sizeTypeRef),
           sizeTypeRef == TypeRef.I64
-            ? module.i64(8) // rtId offset = -8
-            : module.i32(8)
+            ? module.i64(16) // rtId offset = -8 - object alignment = -16
+            : module.i32(16)
         ),
         TypeRef.I32
       )

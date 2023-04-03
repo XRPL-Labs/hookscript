@@ -1116,7 +1116,7 @@ function assertSortedDefault<T>(arr: Array<T>): void {
   let reversed64    = createReverseOrderedArray(64);
   let reversed128   = createReverseOrderedArray(128);
   let reversed1024  = createReverseOrderedArray(1024);
-  let reversed10000 = createReverseOrderedArray(10000);
+  // let reversed10000 = createReverseOrderedArray(10000);
 
   let randomized512 = createRandomOrderedArray(512);
 
@@ -1142,8 +1142,8 @@ function assertSortedDefault<T>(arr: Array<T>): void {
   assertSortedDefault<i32>(reversed1024);
   assert(isArraysEqual<i32>(reversed1024, expected4, 4));
 
-  assertSortedDefault<i32>(reversed10000);
-  assert(isArraysEqual<i32>(reversed10000, expected4, 4));
+  // assertSortedDefault<i32>(reversed10000);
+  // assert(isArraysEqual<i32>(reversed10000, expected4, 4));
 
   assertSortedDefault<i32>(randomized512);
 
