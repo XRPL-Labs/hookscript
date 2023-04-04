@@ -29,3 +29,26 @@
   assert(date.getUTCMinutes() == 3);
   assert(date.getUTCSeconds() == 11);
 }
+
+// Date setters ///////////////////////////////////////////////////////////////////////////////////
+{
+  let date = LedgerDate.fromLedgerTime(729001352);
+  date.setUTCFullYear(2024);
+  assert(date.getUTCFullYear() == 2024);
+  date.setUTCMonth(2, 2);
+  assert(date.getUTCMonth() == 2);
+  assert(date.getUTCDate() == 2);
+  date.setUTCMonth(3);
+  assert(date.getUTCMonth() == 3);
+  assert(date.getUTCDate() == 1);
+  date.setUTCDate(7);
+  assert(date.getUTCDate() == 7);
+  date.setUTCHours(11);
+  assert(date.getUTCHours() == 11);
+  date.setUTCMinutes(23);
+  assert(date.getUTCMinutes() == 23);
+  date.setUTCSeconds(33);
+  assert(date.getUTCSeconds() == 33);
+  date.setUTCMilliseconds(123);
+  assert(date.getUTCMilliseconds() == 123);
+}

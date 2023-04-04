@@ -57,4 +57,44 @@ export class LedgerDate {
   getUTCSeconds(): i32 {
     return this.unixDate.getUTCSeconds();
   }
+
+  @inline
+  getUTCMilliseconds(): i32 {
+    return this.unixDate.getUTCMilliseconds();
+  }
+
+  @inline
+  setUTCFullYear(value: i32): void {
+    this.unixDate.setUTCFullYear(value);
+  }
+
+  @inline
+  setUTCMonth(value: i32, day: i32 = 1): void{
+    this.unixDate.setUTCMonth(value, day);
+  }
+
+  @inline
+  setUTCDate(value: i32): void{
+    this.unixDate.setUTCDate(value);
+  }
+
+  @inline
+  setUTCHours(value: i32): void{
+    this.unixDate.setUTCHours(value);
+  }
+
+  @inline
+  setUTCMinutes(value: i32): void{
+    this.unixDate.setUTCMinutes(value);
+  }
+
+  @inline
+  setUTCSeconds(value: i32): void{
+    this.unixDate.setUTCSeconds(value);
+  }
+
+  @inline
+  setUTCMilliseconds(value: i32): void{
+    this.unixDate.setUTCMilliseconds(value);
+  }
 }
