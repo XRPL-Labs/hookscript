@@ -6,7 +6,7 @@ const NEW_COLLATERALIZATION_DENOMINATOR = 3
 const LIQ_COLLATERALIZATION_NUMERATOR = 5
 const LIQ_COLLATERALIZATION_DENOMINATOR = 6
 
-export function hook(reserved: i32): i64
+export function hook(reserved: i32)
 {
     etxn_reserve(1)
 
@@ -316,6 +316,4 @@ export function hook(reserved: i32): i64
 
         accept("Peggy: Sent you XRP!", 0)
     }
-
-    return 0
 }

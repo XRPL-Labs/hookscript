@@ -1,0 +1,16 @@
+{
+  "name": "peggy",
+  "version": "1.0.0",
+  "description": "Peggy hook provides an automated way to issue and redeem an over-collateralised XRP-backed stablecoin.",
+  "scripts": {
+    "compile": "../../assemblyscript/bin/asc.js --disable=bulk-memory --runtime=stub peggy.ts -O3 -o peggy.wasm && hook-cleaner peggy.wasm"
+  },
+  "author": "Equilibrium - https://equilibrium.co",
+  "license": "Public Domain",
+  "dependencies": {
+    "ripple-binary-codec": "^1.6.0-beta.0",
+    "ripple-keypairs": "^1.1.4",
+    "xrpl-accountlib": "^1.6.1",
+    "xrpl-client": "^2.0.1"
+  }
+}

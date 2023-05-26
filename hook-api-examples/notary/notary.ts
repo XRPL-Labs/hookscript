@@ -238,5 +238,4 @@ export function hook(reserved: i32): i64
     emit_sto(buffer5)
 
     accept("Notary: Emitted multisigned txn")
-    return 0
 }

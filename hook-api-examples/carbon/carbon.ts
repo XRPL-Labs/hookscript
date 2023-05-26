@@ -34,5 +34,4 @@ function hook(reserved: i32)
     })
 
     accept("Carbon: Emitted transaction")
-    _g(1, 1)
 }
