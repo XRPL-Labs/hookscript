@@ -17,7 +17,7 @@ HookScript is a Typescript-like language for compiling [XRPL Hooks](https://xrpl
 * Linear memory allocation using AssemblyScript <a href="https://www.assemblyscript.org/runtime.html#variants">stub runtime</a>. No garbage collection [<sup>[3]</sup>](./DOC.md#memory-allocation).
 * Strings are UTF-8, compatible with Hook API conventions [<sup>[4]</sup>](./DOC.md#string).
 * Core Hook Api functions are automatically imported and wrapped in a higher-level API [<sup>[5]</sup>](./spec.md#wrapped-imports).
-* High-level classes and funtions for working with XRPL accounts, amounts, etc [<sup>[6]</sup>](./DOC.md#high-level-api).
+* High-level classes and functions for working with XRPL accounts, amounts, etc [<sup>[6]</sup>](./DOC.md#high-level-api).
   
 Refer to the [Doc](./spec.md) for more details.
 
@@ -86,7 +86,7 @@ This repo contains examples of XRPL Hooks written in <a href="https://github.com
 The HookScript compiler is now installed from NPM and Hook Cleaner functionality has been integrated into it, so that a separate executable is no longer necessary.
 
 ## Get testnet XRP
-The Faucet is on the (main page)[https://hooks-testnet.xrpl-labs.com/]. Make a note of your secret (family seed) because you will need it for all the examples.
+The Faucet is on the [main page](https://hooks-testnet.xrpl-labs.com/). Make a note of your secret (family seed) because you will need it for all the examples.
 
 ## Testnet explorer
 Use the [Testnet Explorer](https://hooks-testnet-explorer.xrpl-labs.com/) to view transactions, accounts and hook state objects as you go.
@@ -112,7 +112,7 @@ You can check a reported `SetHook` transaction ID with the [Hooks Testnet Explor
 Finally run the additional `.js` files to interact with the Hook or write your own interaction.
 
 ## Viewing state
-You can view the current Hook State for your Hook by locating the account it is installed on with the (Hooks Testnet Explorer)[https://hooks-testnet-explorer.xrpl-labs.com/].
+You can view the current Hook State for your Hook by locating the account it is installed on with the [Hooks Testnet Explorer](https://hooks-testnet-explorer.xrpl-labs.com/).
 
 You can also run `./rippled account_objects <account on which the hook is installed on>` to inspect the Hook's State Data.
 
