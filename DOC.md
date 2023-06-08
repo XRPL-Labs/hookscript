@@ -13,7 +13,7 @@
 - [High-level API](#high-level-api)
   - [Functions](#functions)
     - [max\_iterations](#max_iterations)
-    - [emit.](#emit)
+    - [emit](#emit)
     - [console.log](#consolelog)
   - [Classes](#classes)
     - [Transaction (Tx)](#transaction-tx)
@@ -177,7 +177,7 @@ for (let i = 0; max_iterations(4), i < 4; ++i) {
 }
 ```
 
-### emit.
+### emit
 
 This function is used to emit a new trasaction from the hook. It takes a single argument of type [`EmitSpec`](./std/assembly/emitspec.ts) and returns `ByteArray` representing canonical hash of the emitted transaction.
 
